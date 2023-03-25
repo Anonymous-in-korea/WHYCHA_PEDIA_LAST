@@ -49,7 +49,18 @@
 		    	
 		    	/* 별점 색깔변경 */
 		    	$("#star_rating").change(function() {
-			        if ( $("#star_rating").val() == "0.5" ) {
+		    		if ( $("#star_rating").val() == "" ) {
+		    			$("#star_rating1").hide();
+			        	$("#star_rating2").hide();
+			        	$("#star_rating3").hide();
+			        	$("#star_rating4").hide();
+			        	$("#star_rating5").hide();
+			        	$("#star_rating6").hide();
+			        	$("#star_rating7").hide();
+			        	$("#star_rating8").hide();
+			        	$("#star_rating9").hide();
+			        	$("#star_rating10").hide();
+		    		} else if ( $("#star_rating").val() == "0.5" ) {
 			        	$("#star_rating1").show();
 			        	$("#star_rating2").hide();
 			        	$("#star_rating3").hide();
@@ -280,7 +291,7 @@
 		                                                            <div class="css-yt2kjp">
 		                                                                <!-- <div class="css-1k5zzs9">평가하기</div> -->
 		                                                                <select id="star_rating" style="border:none; text-align:center; item-align:center;">
-		                                                                	<option value="star_rating">별점평가하기</option>
+		                                                                	<option value="">별점평가하기</option>
 		                                                                	<option value="0.5">0.5점</option>
 		                                                                	<option value="1.0">1.0점</option>
 		                                                                	<option value="1.5">1.5점</option>
