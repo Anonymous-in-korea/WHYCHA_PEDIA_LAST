@@ -8,7 +8,12 @@ public class ContentsController {
 	
 	@GetMapping("contents")
 	public String contents() {
-		return "contents_sy";
+		return "contents";
+	}
+	
+	@GetMapping("movie_detail_info")
+	public String movie_detail_info() {
+		return "movie_detail_info";
 	}
 
 	@GetMapping("content_info_page")
