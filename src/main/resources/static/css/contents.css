@@ -401,8 +401,16 @@ html {
 		-ms-flex-direction: row;
 		flex-direction: row;
 		height: 58px;
-		margin-top: 20px;
+		margin-top: 10px;
 	}
+}
+
+.css-1mbuso5 {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    width: 100%;
+    height: 44px;
 }
 
 .css-1jlb6q {
@@ -427,6 +435,16 @@ html {
 }
 
 /* 별점 css */
+.star_left { width:40px; margin-left:10px; opacity:0.5; }
+.star { width:40px; opacity:0.5; }
+.star_right { width:40px; margin-right:10px; opacity:0.5; }
+.orange_half_left { width:20px; margin-left:10px; display:none; }
+.orange_star_left { width:40px; margin-left:10px; display:none; }
+.orange_half { width:20px; display:none; }
+.orange_star { width:40px; display:none; }
+.orange_half_right { width:20px; margin-right:10px; display:none; }
+.orange_star_right { width:40px; margin-right:10px; display:none; }
+
 .css-yt2kjp {
 	color: #787878;
 	font-size: 14px;
@@ -479,117 +497,6 @@ svg.css-fnwbjg {
     fill: rgb(238, 238, 238);
 }
 
-.css-18l1qa {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    white-space: nowrap;
-    width: 0px;
-    height: 44px;
-    overflow: hidden;
-}
-
-.css-ckxrx3 {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    white-space: nowrap;
-    width: 10%;
-    height: 44px;
-    overflow-x: hidden;
-    overflow-y: hidden;
-}
-
-.css-1sanbpz {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    white-space: nowrap;
-    width: 20%;
-    height: 44px;
-    overflow: hidden;
-}
-
-.css-iervsz {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    white-space: nowrap;
-    width: 30%;
-    height: 44px;
-    overflow: hidden;
-}
-
-.css-50k5s6 {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    white-space: nowrap;
-    width: 40%;
-    height: 44px;
-    overflow: hidden;
-}
-
-.css-lpc3q3 {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    white-space: nowrap;
-    width: 50%;
-    height: 44px;
-    overflow: hidden;
-}
-
-.css-zk6pdc {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    white-space: nowrap;
-    width: 60%;
-    height: 44px;
-    overflow: hidden;
-}
-
-.css-1bdtura {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    white-space: nowrap;
-    width: 70%;
-    height: 44px;
-    overflow: hidden;
-}
-
-.css-1m2z8xn {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    white-space: nowrap;
-    width: 80%;
-    height: 44px;
-    overflow: hidden;
-}
-
-.css-mqqwl4 {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    white-space: nowrap;
-    width: 90%;
-    height: 44px;
-    overflow: hidden;
-}
-
-
-.css-1a15m7k {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    white-space: nowrap;
-    width: 100%;
-    height: 44px;
-    overflow: hidden;
-}
 /* 별점 css */
 
 .css-s5x9hn-ContentActionDivider {
@@ -608,23 +515,28 @@ svg.css-fnwbjg {
 }
 
 .css-1xki7ez-ButtonBlock {
-	width: 100%;
-	margin: 16.5px -1.5px;
+    width: 100%;
+    margin-top: 16.5px;
+    margin-right: -1.5px;
 }
-
-@media ( min-width : 719px) {
-	.css-1xki7ez-ButtonBlock {
-		width: auto;
-		padding: 0 20px;
-		margin: 7.5px -1.5px;
-	}
+@media (min-width: 719px) {
+    .css-1xki7ez-ButtonBlock {
+        width: auto;
+        padding-top: 0px;
+        padding-right: 20px;
+        margin-top: 7.5px;
+        margin-right: -1.5px;
+    }
 }
-
-@media ( min-width : 1023px) {
-	.css-1xki7ez-ButtonBlock {
-		padding: 0 0 0 30px;
-		margin: 0 -16px;
-	}
+@media (min-width: 1023px) {
+    .css-1xki7ez-ButtonBlock {
+        padding-top: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        padding-left: 30px;
+        margin-top: 0px;
+        margin-right: -16px;
+    }
 }
 
 .css-1tc9iuk-StylelessButton-ContentActionButton {
@@ -2515,12 +2427,6 @@ h1, h3, p, hr {
 	object-fit: contain;
 }
 
-:root {
---sat: env(safe-area-inset-top);
---sal: env(safe-area-inset-left);
---sar: env(safe-area-inset-right);
---sab: env(safe-area-inset-bottom);
-        }
 
 html {
 	line-height: normal;
@@ -3218,24 +3124,54 @@ button, input, optgroup, select, textarea {
 }
 
 .css-1v9zk7c-RankingInfoList {
-	visibility: hidden;
-	text-align: left;
-	padding: 0 0 10px;
-	margin: 0 -4px;
+    text-align: left;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+    margin-top: 0px;
+    margin-right: -4px;
+    margin-bottom: 0px;
+    margin-left: -4px;
+}
+@media (min-width: 719px) {
+    .css-1v9zk7c-RankingInfoList {
+        padding-top: 0px;
+        padding-right: 0px;
+        padding-bottom: 10px;
+        padding-left: 18px;
+    }
+}
+@media (min-width: 1023px) {
+    .css-1v9zk7c-RankingInfoList {
+        padding-top: 0px;
+        padding-right: 0px;
+        padding-bottom: 10px;
+        padding-left: 25px;
+    }
 }
 
 .css-1v9zk7c-RankingInfoList li {
-	display: inline-block;
-	color: rgba(255, 255, 255, 0.5);
-	text-align: center;
-	font-size: 13px;
-	font-weight: 400;
-	-webkit-letter-spacing: -0.2px;
-	-moz-letter-spacing: -0.2px;
-	-ms-letter-spacing: -0.2px;
-	letter-spacing: -0.2px;
-	line-height: 18px;
-	margin: 0 4px;
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.2px;
+    line-height: 18px;
+    margin-top: 0px;
+    margin-right: 4px;
+    margin-bottom: 0px;
+    margin-left: 4px;
+}
+
+.css-1v9zk7c-RankingInfoList li:not([class*="RankingInfoListItem"]) {
+    display: none;
+}
+@media (min-width: 719px) {
+    .css-1v9zk7c-RankingInfoList li:not([class*="RankingInfoListItem"]) {
+        display: inline-block;
+    }
 }
 
 .css-1v9zk7c-RankingInfoList>li em {
@@ -4002,10 +3938,27 @@ a {
 	display: none;
 }
 
+svg.injected-svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    transition: transform 0.2s ease-in-out;
+    transform: scale(1.2);
+    transform-origin: center;
+}
+
+.css-1q1i623-SVG svg {
+    width: 24px;
+    height: auto;
+}
+
 svg{
     width: 24;
     height: 24;
     fill: none;
+    transition: transform 0.2s ease-in-out;
+    transform: scale(1.2);
+    transform-origin: center;
 }
 svg:not(:root) {
     overflow-clip-margin: content-box;
@@ -4017,6 +3970,77 @@ svg:not(:root) {
     line-height: 0;
 }
 
+.css-1tc9iuk-StylelessButton-ContentActionButton {
+    background-image: none;
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    border-top-width: initial;
+    border-right-width: initial;
+    border-bottom-width: initial;
+    border-left-width: initial;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    border-top-color: initial;
+    border-right-color: initial;
+    border-bottom-color: initial;
+    border-left-color: initial;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    cursor: pointer;
+    display: inline-flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    color: rgb(41, 42, 50);
+    font-size: 12px;
+    letter-spacing: -0.1px;
+    line-height: 13px;
+    text-align: center;
+    width: calc(25% - 3px);
+    min-width: 60px;
+    height: 43px;
+    margin-top: 0px;
+    margin-right: 1.5px;
+    margin-bottom: 0px;
+    margin-left: 1.5px;
+}
+
+@media (min-width: 719px) {
+    .css-1tc9iuk-StylelessButton-ContentActionButton {
+        line-height: 14px;
+        min-width: 55px;
+    }
+}
+
+@media (min-width: 1023px) {
+    .css-1tc9iuk-StylelessButton-ContentActionButton {
+        flex-direction: row;
+        font-size: 14px;
+        line-height: 14px;
+        width: auto;
+        height: unset;
+        margin-top: 0px;
+        margin-right: 16px;
+        margin-bottom: 0px;
+        margin-left: 16px;
+    }
+}
 
 
 

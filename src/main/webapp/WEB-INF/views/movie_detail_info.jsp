@@ -2307,12 +2307,12 @@
         }
     }</style>
     <meta content="추천, 평가, 영화, 책, 드라마, 애니메이션" name="keywords" data-rh="true">
-    <meta name="description" content="<아바타: 물의 길>은 판도라 행성에서 '제이크 설리'와 '네이티리'가 이룬 가족이 겪게 되는 무자비한 위협과 살아남기 위해 떠나야 하는 긴 여정과 전투, 그리고 견뎌내야 할 상처에 대한 이야기를 그렸다.
+    <meta name="description" content="[아바타: 물의 길]은 판도라 행성에서 '제이크 설리'와 '네이티리'가 이룬 가족이 겪게 되는 무자비한 위협과 살아남기 위해 떠나야 하는 긴 여정과 전투, 그리고 견뎌내야 할 상처에 대한 이야기를 그렸다.
 
 월드와이드 역대 흥행 순위 1위를 기록한 전편 <아바타>에 이어 제임스 카메론 감독이 13년만에 선보이는 영화로, 샘 워싱턴, 조 샐다나, 시고니 위버, 스티븐 랭, 케이트 윈슬렛이 출연하고 존 랜도가 프로듀싱을 맡았다."
           data-rh="true">
     <meta property="og:title" content="아바타: 물의 길(2022) - 왓챠피디아" data-rh="true">
-    <meta property="og:description" content="<아바타: 물의 길>은 판도라 행성에서 '제이크 설리'와 '네이티리'가 이룬 가족이 겪게 되는 무자비한 위협과 살아남기 위해 떠나야 하는 긴 여정과 전투, 그리고 견뎌내야 할 상처에 대한 이야기를 그렸다.
+    <meta property="og:description" content="[아바타: 물의 길]은 판도라 행성에서 '제이크 설리'와 '네이티리'가 이룬 가족이 겪게 되는 무자비한 위협과 살아남기 위해 떠나야 하는 긴 여정과 전투, 그리고 견뎌내야 할 상처에 대한 이야기를 그렸다.
 
 월드와이드 역대 흥행 순위 1위를 기록한 전편 <아바타>에 이어 제임스 카메론 감독이 13년만에 선보이는 영화로, 샘 워싱턴, 조 샐다나, 시고니 위버, 스티븐 랭, 케이트 윈슬렛이 출연하고 존 랜도가 프로듀싱을 맡았다."
           data-rh="true">
@@ -2328,7 +2328,7 @@
     <meta name="kakao:image"
           content="https://an2-img.amz.wtchn.net/image/v2/h8Sv_G8wplkIFxwfT6q7JA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk56QTFORFkzTXpreU1ERTFNREUyTURFaWZRLjd5bl9VWE13bEFJXzRjdXNmWV9VLU9NdG1iT04tUWRhSDRZR2d3emFJMEU"
           data-rh="true">
-    <meta property="kakao:description" content="<아바타: 물의 길>은 판도라 행성에서 '제이크 설리'와 '네이티리'가 이룬 가족이 겪게 되는 무자비한 위협과 살아남기 위해 떠나야 하는 긴 여정과 전투, 그리고 견뎌내야 할 상처에 대한 이야기를 그렸다.
+    <meta property="kakao:description" content="[아바타: 물의 길]은 판도라 행성에서 '제이크 설리'와 '네이티리'가 이룬 가족이 겪게 되는 무자비한 위협과 살아남기 위해 떠나야 하는 긴 여정과 전투, 그리고 견뎌내야 할 상처에 대한 이야기를 그렸다.
 
 월드와이드 역대 흥행 순위 1위를 기록한 전편 <아바타>에 이어 제임스 카메론 감독이 13년만에 선보이는 영화로, 샘 워싱턴, 조 샐다나, 시고니 위버, 스티븐 랭, 케이트 윈슬렛이 출연하고 존 랜도가 프로듀싱을 맡았다."
           data-rh="true">
@@ -2923,7 +2923,7 @@
         <div class="css-1xm32e0">
             <div th:replace="fragment/header::header">
             		<!-- header start -->
-					<%@ include file="head_foot/header1.jsp" %>
+					<%@ include file="head_foot/header.jsp" %>
 					<!-- header end -->
             
             
