@@ -382,28 +382,65 @@ html {
 }
 
 .css-5qj1gb-ContentActionSection {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
-	-webkit-flex-direction: column;
-	-ms-flex-direction: column;
-	flex-direction: column;
-	-webkit-align-items: center;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
 }
 
 @media ( min-width : 719px) {
 	.css-5qj1gb-ContentActionSection {
-		-webkit-flex-direction: row;
-		-ms-flex-direction: row;
 		flex-direction: row;
-		height: 58px;
-		margin-top: 10px;
+	    height: 58px;
+	    margin-top: 20px;
 	}
 }
+
+.select_image {
+  width:24px;
+  height:24px;
+  margin-right:10px;
+  position: relative;
+}
+.select_image img {
+  width:100%;
+  height:100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}
+.select_image img:hover {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+
+#wish_btn.active {
+  color: #FEAE27;
+}
+#wish_btn.active img {
+  color: #FEAE27;
+  filter: brightness(1.2);
+}
+
+#watch_btn.active {
+  color: #FEAE27;
+}
+#watch_btn.active img {
+  color: #FEAE27;
+  filter: brightness(1.2);
+}
+
+#collection_btn.active {
+  color: #FEAE27;
+}
+#collection_btn.active img {
+  color: #FEAE27;
+  filter: brightness(1.2);
+}
+
+
 
 .css-1mbuso5 {
     display: inline-block;
@@ -4762,7 +4799,7 @@ h1, h3, p, hr {
     -webkit-overflow-scrolling: touch;
 }
 
-.css-14gy7wr {
+.wish_pop_up_background {
     display: block;
     position: fixed;
     inset: 0px;
@@ -4911,7 +4948,34 @@ button {
     padding: 44px 0px 0px;
     overflow-y: scroll;
 }
-.css-oi2wld {
+.wish_content_box {
+    display: flex;
+    position: absolute;
+    inset: 0px;
+    flex-direction: column;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+
+}
+.comment_content_box {
+    display: flex;
+    position: absolute;
+    inset: 0px;
+    flex-direction: column;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+
+}
+.watch_content_box {
+    display: flex;
+    position: absolute;
+    inset: 0px;
+    flex-direction: column;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+
+}
+.collection_content_box {
     display: flex;
     position: absolute;
     inset: 0px;
@@ -5028,7 +5092,7 @@ button {
     word-spacing: normal;
 }
 
-.css-comment_popUp {
+.wish_pop_up_background {
     display: block;
     position: fixed;
     inset: 0px;
@@ -5036,7 +5100,7 @@ button {
     background: rgba(0, 0, 0, 0.56);
     overflow: hidden scroll;
 }
-.css-looking_popUp {
+.comment_pop_up_background {
     display: block;
     position: fixed;
     inset: 0px;
@@ -5044,7 +5108,7 @@ button {
     background: rgba(0, 0, 0, 0.56);
     overflow: hidden scroll;
 }
-.css-collection_popUp {
+.watch_pop_up_background {
     display: block;
     position: fixed;
     inset: 0px;
@@ -5052,6 +5116,16 @@ button {
     background: rgba(0, 0, 0, 0.56);
     overflow: hidden scroll;
 }
+.collection_pop_up_background {
+    display: block;
+    position: fixed;
+    inset: 0px;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.56);
+    overflow: hidden scroll;
+}
+
+
 
 
 .css-2ci6iq {

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -175,55 +176,135 @@
 		    	/* 별점 색깔변경 */
 		    	
 		    	
+		    	/* 아이콘 크기 변화 */
+		    	$('.select_image').hover(function() {
+					$('img', this).css({
+						'-webkit-transform': 'translate(-50%, -50%) scale(1.2)',
+						'-ms-transform': 'translate(-50%, -50%) scale(1.2)',
+						'transform': 'translate(-50%, -50%) scale(1.2)'
+					});
+				}, function() {
+					$('img', this).css({
+						'-webkit-transform': 'translate(-50%, -50%) scale(1)',
+						'-ms-transform': 'translate(-50%, -50%) scale(1)',
+						'transform': 'translate(-50%, -50%) scale(1)'
+					});
+				});
+		    	/* 아이콘 크기 변화 */
 		    	
-		    	/* 로그인 전 팝업창 start */
-		    	/* 보고싶어요 창 띄우기 */
-				/* $("#wish-btn").click(function() {
-					if ( $(".css-14gy7wr").css("display") == "none" ) { $(".css-14gy7wr").show(); }
-				}); */
-				/* 보고싶어요 창 내리기 */
-				/* $(".css-1d7tft4-StylelessButton-HeaderCloseButtonSelf").click(function() {
-					if ( $(".css-14gy7wr").css("display") != "none" ) { $(".css-14gy7wr").hide(); }
-				}); */
-				
-				/* 코멘트 창 띄우기 */
-				$("#comment-btn").click(function() {
-					if ( $(".css-comment_popUp").css("display") == "none" ) { $(".css-comment_popUp").show(); }
-				});
-				/* 코멘트 창 내리기 */
-				$(".css-1d7tft4-StylelessButton-HeaderCloseButtonSelf").click(function() {
-					if ( $(".css-comment_popUp").css("display") != "none" ) { $(".css-comment_popUp").hide(); }
-				});
-				
-				/* 보는중 창 띄우기 css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23*/
-				$("#watch-btn").click(function() {
-					if ( $(".css-looking_popUp").css("display") == "none" ) { $(".css-looking_popUp").show(); }
-				});
-				/* 보는중 창 내리기 */
-				$(".css-1d7tft4-StylelessButton-HeaderCloseButtonSelf").click(function() {
-					if ( $(".css-looking_popUp").css("display") != "none" ) { $(".css-looking_popUp").hide(); }
-				});
-				
-				/* 컬렉션 창 띄우기 css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23*/
-				$("#collection-btn").click(function() {
-					if ( $(".css-collection_popUp").css("display") == "none" ) { $(".css-collection_popUp").show(); }
-				});
-				/* 컬렉션 창 내리기 */
-				$(".css-1d7tft4-StylelessButton-HeaderCloseButtonSelf").click(function() {
-					if ( $(".css-collection_popUp").css("display") != "none" ) { $(".css-collection_popUp").hide(); }
-				});
-				/* 로그인 전 팝업창 end */
-				
-				
-				/* 로그인 후 팝업창 start */
-				/* 보고싶어요 창 띄우기 */
-				/* $("#wish-btn").on('click', function() {
-					if ( $(".css-15hndx7-StylelessButton-ContentActionButton").css("display") == "none" ) { 
-						  $(this).removeClass('css-1tc9iuk-StylelessButton-ContentActionButton');
-						  $(this).addClass('css-15hndx7-StylelessButton-ContentActionButton');
+		    	
+		    	/* 마우스로 클릭하면 색깔변화 (로그인 전) */
+		    	/* 보고싶어요 section start */
+		    	$("#wish_btn").on("click", function() {
+					if ( $("#wish_btn").hasClass("active") ) {
+						$("#wish_btn").removeClass("active");
+						$("#plus_icon").css({"display":"block"});
+						$("#wish_flag_icon").css({"display":"none"});
+					} else {
+						$("#wish_btn").addClass("active");
+						$("#plus_icon").css({"display":"none"});
+						$("#wish_flag_icon").css({"display":"block"});
+						if ( $(".wish_pop_up_background").css("display") == "none" ) { $(".wish_pop_up_background").show(); }
 					}
-				}); */
-				/* 로그인 후 팝업창 end */
+				});
+		    	/* 보고싶어요 창 내리기 */
+				$(".css-1d7tft4-StylelessButton-HeaderCloseButtonSelf, .wish_pop_up_background").click(function() {
+					if ( $(".wish_pop_up_background").css("display") != "none" ) {
+						$(".wish_pop_up_background").hide();
+						$("#wish_btn").removeClass("active");
+						$("#plus_icon").css({"display":"block"});
+						$("#wish_flag_icon").css({"display":"none"});
+					}
+				});
+		    	/* 창 내리기 방지 */
+		    	$(".wish_content_box").click(function(e) {
+					e.stopPropagation();
+					$(".wish_pop_up_background").css("display", "block");
+				});
+				/* 보고싶어요 section end */
+		    	
+				/* 코멘트 section start */
+		    	$("#comment_btn").on("click", function() {
+					if ( $("#comment_btn").hasClass("active") ) {
+						$("#comment_btn").removeClass("active");
+					} else {
+						$("#comment_btn").addClass("active");
+						if ( $(".comment_pop_up_background").css("display") == "none" ) { $(".comment_pop_up_background").show(); }
+					}
+				});
+		    	/* 코멘트 창 내리기 */
+				$(".css-1d7tft4-StylelessButton-HeaderCloseButtonSelf, .comment_pop_up_background").click(function() {
+					if ( $(".comment_pop_up_background").css("display") != "none" ) {
+						$(".comment_pop_up_background").hide();
+						$("#comment_btn").removeClass("active");
+					}
+					if ( $("#comment_btn").hasClass("active") ) { $("#comment_btn").removeClass("active"); }
+				});
+		    	/* 창 내리기 방지 */
+		    	$(".comment_content_box").click(function(e) {
+					e.stopPropagation();
+					$(".comment_pop_up_background").css("display", "block");
+				});
+		    	/* 코멘트 section end */
+		    	
+		    	/* 보는중 section start */
+		    	$("#watch_btn").on("click", function() {
+					if ( !$("#watch_btn").hasClass("active") ) {
+						$("#watch_btn").addClass("active");
+						$("#eye_icon").css({"display":"none"});
+						$("#eye_icon_color").css({"display":"block"});
+						if ( $(".watch_pop_up_background").css("display") == "none" ) { $(".watch_pop_up_background").show(); }
+					}
+				});
+		    	/* 보는중 창 내리기 */
+				$(".css-1d7tft4-StylelessButton-HeaderCloseButtonSelf, .watch_pop_up_background").click(function() {
+					if ( $(".watch_pop_up_background").css("display") != "none" ) {
+						$(".watch_pop_up_background").hide();
+						if ( $("#watch_btn").hasClass("active") ) {
+							$("#watch_btn").removeClass("active");
+							$("#eye_icon").css({"display":"block"});
+							$("#eye_icon_color").css({"display":"none"});
+						}
+					}
+					if ( $("#watch_btn").hasClass("active") ) { $("#watch_btn").removeClass("active"); }
+				});
+		    	/* 창 내리기 방지 */
+		    	$(".watch_content_box").click(function(e) {
+					e.stopPropagation();
+					$(".watch_pop_up_background").css("display", "block");
+				});
+		    	/* 보는중 section end */
+		    	
+		    	/* 콜렉션 section start */
+		    	$("#collection_btn").on("click", function() {
+					if ($("#collection_btn").hasClass("active")) {
+						$("#collection_btn").removeClass("active");
+						$("#collection_icon").css({"display":"block"});
+						$("#collection_icon_color").css({"display":"none"});
+					} else {
+						$("#collection_btn").addClass("active");
+						$("#collection_icon").css({"display":"none"});
+						$("#collection_icon_color").css({"display":"block"});
+						if ( $(".collection_pop_up_background").css("display") == "none" ) { $(".collection_pop_up_background").show(); }
+					}
+				});
+		    	/* 콜렉션 창 내리기 */
+				$(".css-1d7tft4-StylelessButton-HeaderCloseButtonSelf, .collection_pop_up_background").click(function() {
+					if ( $(".collection_pop_up_background").css("display") != "none" ) {
+						$(".collection_pop_up_background").hide();
+						$("#collection_btn").removeClass("active");
+						$("#collection_icon").css({"display":"block"});
+						$("#collection_icon_color").css({"display":"none"});
+					}
+					if ( $("#collection_btn").hasClass("active") ) { $("#collection_btn").removeClass("active"); }
+				});
+		    	/* 창 내리기 방지 */
+		    	$(".collection_content_box").click(function(e) {
+					e.stopPropagation();
+					$(".collection_pop_up_background").css("display", "block");
+				});
+		    	/* 콜렉션 section end */
+		    	/* 마우스로 클릭하면 색깔변화 (로그인 전) */
 	    	});
 	    </script>
 	</head>
@@ -236,7 +317,7 @@
 					<!-- header end -->
 					
 					<!-- pop_up 창 section -->
-					<%-- <%@ include file="popUP.jsp" %> --%>
+					<%@ include file="pop_up.jsp" %>
 					<!-- pop_up 창 section -->
 					
 					<!-- section start -->
@@ -287,9 +368,9 @@
 		                                                    <div class="css-11h0kfd-Detail e1svyhwg18">2022 ・ 액션/모험/판타지 ・ 미국</div>
 		                                                    <div class="css-og1gu8-ContentRatings e1svyhwg20">평균 ★3.8 (3,363명)</div>
 		                                                    <div class="css-5qj1gb-ContentActionSection e1svyhwg19">
+	                                                        	<!-- 별점 section start -->
 		                                                        <div class="css-1jlb6q">
 		                                                            <div class="css-yt2kjp">
-		                                                                <!-- <div class="css-1k5zzs9">평가하기</div> -->
 		                                                                <select id="star_rating" style="border:none; text-align:center; item-align:center;">
 		                                                                	<option value="">별점평가하기</option>
 		                                                                	<option value="0.5">0.5점</option>
@@ -304,198 +385,61 @@
 		                                                                	<option value="5.0">5.0점</option>
 		                                                                </select>
 		                                                            </div>
-		                                                            <div id="star_container" class="css-1mbuso5" style="position:relative">
-		                                                            	<div style="height: 38px; margin: 5px auto; position:absolute">
+		                                                            <div id="star_container" class="css-1mbuso5" style="width:238px; position:relative">
+		                                                            	<div style="width:100%; height: 38px; margin: 5px auto; position:absolute">
 			                                                            	<img src="/images/star.png" class="star_left">
 			                                                            	<img src="/images/star.png" class="star">
 			                                                            	<img src="/images/star.png" class="star">
 			                                                            	<img src="/images/star.png" class="star">
 			                                                            	<img src="/images/star.png" class="star_right">
 		                                                            	</div>
-		                                                            	<div style="height: 38px; margin: 5px auto; position:absolute">
+		                                                            	<div style="width:100%; height: 38px; margin: 5px auto; position:absolute">
 		                                                            		<img src="/images/orange_star_half.png" class="orange_half_left" id="star_rating1">
 		                                                            		<img src="/images/orange_star.png" class="orange_star_left" id="star_rating2">
 			                                                            	<img src="/images/orange_star_half.png" class="orange_half" id="star_rating3">
-			                                                            	<img src="/images/orange_star.png" class="orange_star" id="star_rating4" style="margin-left:0.5px;">
+			                                                            	<img src="/images/orange_star.png" class="orange_star" id="star_rating4" style="margin-left:-0.5px;">
 			                                                            	<img src="/images/orange_star_half.png" class="orange_half" id="star_rating5" style="">
-			                                                            	<img src="/images/orange_star.png" class="orange_star" id="star_rating6" style="margin-left:1px;">
+			                                                            	<img src="/images/orange_star.png" class="orange_star" id="star_rating6" style="margin-left:0.5px;">
 			                                                            	<img src="/images/orange_star_half.png" class="orange_half" id="star_rating7">
-			                                                            	<img src="/images/orange_star.png" class="orange_star" id="star_rating8" style="margin-left:0.5px;">
+			                                                            	<img src="/images/orange_star.png" class="orange_star" id="star_rating8" style="margin-left:-0.5px;">
 			                                                            	<img src="/images/orange_star_half.png" class="orange_half_right" id="star_rating9">
 			                                                            	<img src="/images/orange_star.png" class="orange_star_right" id="star_rating10" style="margin-left:0.5px;">
 		                                                            	</div>
 		                                                            </div>
 		                                                        </div>
+		                                                        <!-- 별점 section end -->
 		                                                        <div class="css-s5x9hn-ContentActionDivider e1svyhwg21"></div>
-		                                                        <div class="css-1xki7ez-ButtonBlock e1svyhwg22">
-		                                                            <button class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23" id="wish-btn">
-		                                                                <div class="Icon icPlus rotatingIcon css-1q1i623-SVG e1282e850">
-		                                                                    <div>
-		                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-		                                                                             width="24" height="24" viewBox="0 0 24 24"
-		                                                                             fill="none" class="injected-svg"
-		                                                                             data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwLjUgMTMuMDkyOUgxMy4xNDI4VjIwLjVIMTAuODU3MVYxMy4wOTI5SDMuNVYxMC44MDcxSDEwLjg1NzFWMy41SDEzLjE0MjhWMTAuODA3MUgyMC41VjEzLjA5MjlaIiBmaWxsPSJjdXJyZW50Q29sb3IiLz4KPC9zdmc+Cg=="
-		                                                                             xmlns:xlink="http://www.w3.org/1999/xlink" style="display: block;">
-		                                                                            <path d="M20.5 13.0929H13.1428V20.5H10.8571V13.0929H3.5V10.8071H10.8571V3.5H13.1428V10.8071H20.5V13.0929Z"
-		                                                                                  fill="currentColor"></path>
-		                                                                        </svg>
-		                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-		                                                                        	width="24" height="24" viewBox="0 0 24 24"
-		                                                                        	fill="none" class="injected-svg"
-		                                                                        	data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xOC41OTY5IDcuMTQ5NDFINS4yNjc2MUM1LjAxMzkgNy4xNDk0MSA0LjgwNzk4IDcuMzU1MzMgNC44MDc5OCA3LjYwOTA0VjIwLjAzNjVDNC44MDc5OCAyMC40MDk4IDUuMjI5MDEgMjAuNjI2NyA1LjUzMzI4IDIwLjQxMDdMMTEuOTMyMyAxNS44NzA1TDE4LjMzMTIgMjAuNDEwN0MxOC42MzU1IDIwLjYyNjcgMTkuMDU2NSAyMC40MDk4IDE5LjA1NjUgMjAuMDM2NVY3LjYwOTA0QzE5LjA1NjUgNy4zNTUzMyAxOC44NTA2IDcuMTQ5NDEgMTguNTk2OSA3LjE0OTQxWiIgZmlsbD0iY3VycmVudENvbG9yIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTguMTM3MyAzSDUuNzI3MjVDNS4yMTg4OSAzIDQuODA3OTggMy40MTE4MyA0LjgwNzk4IDMuOTE5MjZWNS4yOTgxNUM0LjgwNzk4IDUuNTUxODcgNS4wMTM5IDUuNzU3NzkgNS4yNjc2MSA1Ljc1Nzc5SDE4LjU5NjlDMTguODUwNiA1Ljc1Nzc5IDE5LjA1NjUgNS41NTE4NyAxOS4wNTY1IDUuMjk4MTVWMy45MTkyNkMxOS4wNTY1IDMuNDExODMgMTguNjQ0NyAzIDE4LjEzNzMgM1oiIGZpbGw9ImN1cnJlbnRDb2xvciIvPgo8L3N2Zz4K"
-		                                                                        	xmlns:xlink="http://www.w3.org/1999/xlink" style="display: none;">
-		                                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5969 7.14941H5.26761C5.0139 7.14941 4.80798 7.35533 4.80798 7.60904V20.0365C4.80798 20.4098 5.22901 20.6267 5.53328 20.4107L11.9323 15.8705L18.3312 20.4107C18.6355 20.6267 19.0565 20.4098 19.0565 20.0365V7.60904C19.0565 7.35533 18.8506 7.14941 18.5969 7.14941Z" fill="currentColor"></path>
-		                                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M18.1373 3H5.72725C5.21889 3 4.80798 3.41183 4.80798 3.91926V5.29815C4.80798 5.55187 5.0139 5.75779 5.26761 5.75779H18.5969C18.8506 5.75779 19.0565 5.55187 19.0565 5.29815V3.91926C19.0565 3.41183 18.6447 3 18.1373 3Z" fill="currentColor"></path>
-		                                                                        </svg>
-		                                                                    </div>
-		                                                                </div>
-		                                                                보고싶어요
+		                                                        <!-- 별점 오른쪽 section start -->
+		                                                        <div class="css-1xki7ez-ButtonBlock e1svyhwg22" style="display:flex; flex-direction:row;">
+		                                                            <button class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23" id="wish_btn">
+		                                                            	<div class="select_image">
+	                                                                    	<img src="/images/plus_icon.png" id="plus_icon" style="display:block;">
+	                                                                    	<img src="/images/wish_flag_icon.png" id="wish_flag_icon" style="display:none;">
+		                                                            	</div>
+		                                                                <strong>보고싶어요</strong>
 		                                                            </button>
-		                                                            <button class="css-3p9quy-StylelessButton-ContentActionButton-ContentCommentButtonOnXs e1svyhwg24">
-		                                                                <div class="Icon icPencil css-1q1i623-SVG e1282e850">
-		                                                                    <div>
-		                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-		                                                                             width="24" height="24" viewBox="0 0 24 24"
-		                                                                             fill="none" class="injected-svg"
-		                                                                             data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMgMTcuMjUyNVYyMS4wMDI1SDYuNzVMMTcuODEgOS45NDI1TDE0LjA2IDYuMTkyNUwzIDE3LjI1MjVaTTIwLjcxIDcuMDQyNUMyMS4xIDYuNjUyNSAyMS4xIDYuMDIyNSAyMC43MSA1LjYzMjVMMTguMzcgMy4yOTI1QzE3Ljk4IDIuOTAyNSAxNy4zNSAyLjkwMjUgMTYuOTYgMy4yOTI1TDE1LjEzIDUuMTIyNUwxOC44OCA4Ljg3MjVMMjAuNzEgNy4wNDI1WiIgZmlsbD0iY3VycmVudENvbG9yIi8+Cjwvc3ZnPgo="
-		                                                                             xmlns:xlink="http://www.w3.org/1999/xlink">
-		                                                                            <path d="M3 17.2525V21.0025H6.75L17.81 9.9425L14.06 6.1925L3 17.2525ZM20.71 7.0425C21.1 6.6525 21.1 6.0225 20.71 5.6325L18.37 3.2925C17.98 2.9025 17.35 2.9025 16.96 3.2925L15.13 5.1225L18.88 8.8725L20.71 7.0425Z"
-		                                                                                  fill="currentColor"></path>
-		                                                                        </svg>
-		                                                                    </div>
-		                                                                </div>
-		                                                                코멘트
+		                                                            <button class="css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm e1svyhwg25" id="comment_btn">
+		                                                            	<div class="select_image">
+			                                                            	<img src="/images/pen_icon.png" style="display:block;">
+		                                                            	</div>
+		                                                                <strong>코멘트</strong>
 		                                                            </button>
-		                                                            <button class="css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm e1svyhwg25">
-		                                                                <div class="Icon icPencil css-1q1i623-SVG e1282e850">
-		                                                                    <div>
-		                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-		                                                                             width="24" height="24" viewBox="0 0 24 24"
-		                                                                             fill="none" class="injected-svg"
-		                                                                             data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMgMTcuMjUyNVYyMS4wMDI1SDYuNzVMMTcuODEgOS45NDI1TDE0LjA2IDYuMTkyNUwzIDE3LjI1MjVaTTIwLjcxIDcuMDQyNUMyMS4xIDYuNjUyNSAyMS4xIDYuMDIyNSAyMC43MSA1LjYzMjVMMTguMzcgMy4yOTI1QzE3Ljk4IDIuOTAyNSAxNy4zNSAyLjkwMjUgMTYuOTYgMy4yOTI1TDE1LjEzIDUuMTIyNUwxOC44OCA4Ljg3MjVMMjAuNzEgNy4wNDI1WiIgZmlsbD0iY3VycmVudENvbG9yIi8+Cjwvc3ZnPgo="
-		                                                                             xmlns:xlink="http://www.w3.org/1999/xlink">
-		                                                                            <path d="M3 17.2525V21.0025H6.75L17.81 9.9425L14.06 6.1925L3 17.2525ZM20.71 7.0425C21.1 6.6525 21.1 6.0225 20.71 5.6325L18.37 3.2925C17.98 2.9025 17.35 2.9025 16.96 3.2925L15.13 5.1225L18.88 8.8725L20.71 7.0425Z"
-		                                                                                  fill="currentColor"></path>
-		                                                                        </svg>
-		                                                                    </div>
-		                                                                </div>
-		                                                                코멘트
-		                                                                <div class="css-4w39q2-StyledDropdownWrapper e1svyhwg28 off">
-		                                                                    <div class="css-ve4kut">
-		                                                                        <div class="e1svyhwg29 css-1t4uwd9-StyledDropdownMenuItem">
-		                                                                            <div class="Icon icPencil icon css-1q1i623-SVG e1282e850">
-		                                                                                <div>
-		                                                                                    <svg xmlns="http://www.w3.org/2000/svg"
-		                                                                                         width="24" height="24"
-		                                                                                         viewBox="0 0 24 24" fill="none"
-		                                                                                         class="injected-svg"
-		                                                                                         data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMgMTcuMjUyNVYyMS4wMDI1SDYuNzVMMTcuODEgOS45NDI1TDE0LjA2IDYuMTkyNUwzIDE3LjI1MjVaTTIwLjcxIDcuMDQyNUMyMS4xIDYuNjUyNSAyMS4xIDYuMDIyNSAyMC43MSA1LjYzMjVMMTguMzcgMy4yOTI1QzE3Ljk4IDIuOTAyNSAxNy4zNSAyLjkwMjUgMTYuOTYgMy4yOTI1TDE1LjEzIDUuMTIyNUwxOC44OCA4Ljg3MjVMMjAuNzEgNy4wNDI1WiIgZmlsbD0iY3VycmVudENvbG9yIi8+Cjwvc3ZnPgo="
-		                                                                                         xmlns:xlink="http://www.w3.org/1999/xlink">
-		                                                                                        <path d="M3 17.2525V21.0025H6.75L17.81 9.9425L14.06 6.1925L3 17.2525ZM20.71 7.0425C21.1 6.6525 21.1 6.0225 20.71 5.6325L18.37 3.2925C17.98 2.9025 17.35 2.9025 16.96 3.2925L15.13 5.1225L18.88 8.8725L20.71 7.0425Z"
-		                                                                                              fill="currentColor"></path>
-		                                                                                    </svg>
-		                                                                                </div>
-		                                                                            </div>
-		                                                                            코멘트 수정
-		                                                                        </div>
-		                                                                        <div class="e1svyhwg29 css-1t4uwd9-StyledDropdownMenuItem">
-		                                                                            <div class="Icon icTrash icon css-1q1i623-SVG e1282e850">
-		                                                                                <div>
-		                                                                                    <svg xmlns="http://www.w3.org/2000/svg"
-		                                                                                         width="24" height="24"
-		                                                                                         viewBox="0 0 24 24" fill="none"
-		                                                                                         class="injected-svg"
-		                                                                                         data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYgMTkuNzVDNiAyMC44NSA2LjkgMjEuNzUgOCAyMS43NUgxNkMxNy4xIDIxLjc1IDE4IDIwLjg1IDE4IDE5Ljc1VjcuNzVINlYxOS43NVoiIGZpbGw9ImN1cnJlbnRDb2xvciIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTE1LjAwMTIgNS43NDZDMTQuNTg4MiA1Ljc0NiAxNC4yNTMyIDUuNDExIDE0LjI1MzIgNC45OThWMy43NDZIOS43NDkxN1Y0Ljk5OEM5Ljc0OTE3IDUuNDExIDkuNDE0MTcgNS43NDYgOS4wMDExNyA1Ljc0NkM4LjU4ODE3IDUuNzQ2IDguMjUzMTcgNS40MTEgOC4yNTMxNyA0Ljk5OFYyLjk5OEM4LjI1MzE3IDIuNTg1IDguNTg4MTcgMi4yNSA5LjAwMTE3IDIuMjVIMTUuMDAxMkMxNS40MTQyIDIuMjUgMTUuNzQ5MiAyLjU4NSAxNS43NDkyIDIuOTk4VjQuOTk4QzE1Ljc0OTIgNS40MTEgMTUuNDE0MiA1Ljc0NiAxNS4wMDEyIDUuNzQ2WiIgZmlsbD0iY3VycmVudENvbG9yIi8+CjxyZWN0IHg9IjUiIHk9IjQuNzUiIHdpZHRoPSIxNCIgaGVpZ2h0PSIyIiBmaWxsPSJjdXJyZW50Q29sb3IiLz4KPC9zdmc+Cg=="
-		                                                                                         xmlns:xlink="http://www.w3.org/1999/xlink">
-		                                                                                        <path d="M6 19.75C6 20.85 6.9 21.75 8 21.75H16C17.1 21.75 18 20.85 18 19.75V7.75H6V19.75Z"
-		                                                                                              fill="currentColor"></path>
-		                                                                                        <path fill-rule="evenodd"
-		                                                                                              clip-rule="evenodd"
-		                                                                                              d="M15.0012 5.746C14.5882 5.746 14.2532 5.411 14.2532 4.998V3.746H9.74917V4.998C9.74917 5.411 9.41417 5.746 9.00117 5.746C8.58817 5.746 8.25317 5.411 8.25317 4.998V2.998C8.25317 2.585 8.58817 2.25 9.00117 2.25H15.0012C15.4142 2.25 15.7492 2.585 15.7492 2.998V4.998C15.7492 5.411 15.4142 5.746 15.0012 5.746Z"
-		                                                                                              fill="currentColor"></path>
-		                                                                                        <rect x="5" y="4.75" width="14"
-		                                                                                              height="2"
-		                                                                                              fill="currentColor"></rect>
-		                                                                                    </svg>
-		                                                                                </div>
-		                                                                            </div>
-		                                                                            코멘트 삭제
-		                                                                        </div>
-		                                                                    </div>
-		                                                                </div>
+		                                                            <button class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23" id="watch_btn">
+		                                                            	<div class="select_image">
+			                                                            	<img src="/images/eye_icon.png" id="eye_icon" style="display:block;">
+			                                                            	<img src="/images/eye_icon_color.png" id="eye_icon_color" style="display:none;">
+		                                                            	</div>
+		                                                                <strong>보는중</strong>
 		                                                            </button>
-		                                                            <button class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23" id="watch-btn">
-		                                                                <div class="Icon icEye css-1q1i623-SVG e1282e850">
-		                                                                    <div>
-		                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-		                                                                             width="24" height="24" viewBox="0 0 24 24"
-		                                                                             fill="none" class="injected-svg"
-		                                                                             data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDVDNyA1IDIuNzMgOC4xMSAxIDEyLjVDMi43MyAxNi44OSA3IDIwIDEyIDIwQzE3IDIwIDIxLjI3IDE2Ljg5IDIzIDEyLjVDMjEuMjcgOC4xMSAxNyA1IDEyIDVaTTEyIDE3LjVDOS4yNCAxNy41IDcgMTUuMjYgNyAxMi41QzcgOS43NCA5LjI0IDcuNSAxMiA3LjVDMTQuNzYgNy41IDE3IDkuNzQgMTcgMTIuNUMxNyAxNS4yNiAxNC43NiAxNy41IDEyIDE3LjVaTTEyIDkuNUMxMC4zNCA5LjUgOSAxMC44NCA5IDEyLjVDOSAxNC4xNiAxMC4zNCAxNS41IDEyIDE1LjVDMTMuNjYgMTUuNSAxNSAxNC4xNiAxNSAxMi41QzE1IDEwLjg0IDEzLjY2IDkuNSAxMiA5LjVaIiBmaWxsPSJjdXJyZW50Q29sb3IiLz4KPC9zdmc+Cg=="
-		                                                                             xmlns:xlink="http://www.w3.org/1999/xlink">
-		                                                                            <path d="M12 5C7 5 2.73 8.11 1 12.5C2.73 16.89 7 20 12 20C17 20 21.27 16.89 23 12.5C21.27 8.11 17 5 12 5ZM12 17.5C9.24 17.5 7 15.26 7 12.5C7 9.74 9.24 7.5 12 7.5C14.76 7.5 17 9.74 17 12.5C17 15.26 14.76 17.5 12 17.5ZM12 9.5C10.34 9.5 9 10.84 9 12.5C9 14.16 10.34 15.5 12 15.5C13.66 15.5 15 14.16 15 12.5C15 10.84 13.66 9.5 12 9.5Z"
-		                                                                                  fill="currentColor"></path>
-		                                                                        </svg>
-		                                                                    </div>
-		                                                                </div>
-		                                                                보는중
-		                                                            </button>
-		                                                            <button class="css-oi7iec-StylelessButton-ContentActionButton-ContentMoreButtonOnXs e1svyhwg26">
-		                                                                <div class="Icon icDots css-1q1i623-SVG e1282e850">
-		                                                                    <div>
-		                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-		                                                                             width="24" height="24" viewBox="0 0 24 24"
-		                                                                             fill="none" class="injected-svg"
-		                                                                             data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMy42MjU5IDExLjk5ODNDMTMuNjI1OSAxMi44OTQ4IDEyLjg5OTEgMTMuNjIxNSAxMi4wMDI2IDEzLjYyMTVDMTEuMTA2MSAxMy42MjE1IDEwLjM3OTMgMTIuODk0OCAxMC4zNzkzIDExLjk5ODNDMTAuMzc5MyAxMS4xMDE4IDExLjEwNjEgMTAuMzc1IDEyLjAwMjYgMTAuMzc1QzEyLjg5OTEgMTAuMzc1IDEzLjYyNTkgMTEuMTAxOCAxMy42MjU5IDExLjk5ODNaTTguMDI2ODIgMTEuOTk4NkM4LjAyNjgyIDEyLjg5NTEgNy4zMDAwNiAxMy42MjE5IDYuNDAzNTUgMTMuNjIxOUM1LjUwNzA0IDEzLjYyMTkgNC43ODAyNyAxMi44OTUxIDQuNzgwMjcgMTEuOTk4NkM0Ljc4MDI3IDExLjEwMjEgNS41MDcwNCAxMC4zNzUzIDYuNDAzNTUgMTAuMzc1M0M3LjMwMDA2IDEwLjM3NTMgOC4wMjY4MiAxMS4xMDIxIDguMDI2ODIgMTEuOTk4NlpNMTcuNjAxNyAxMy42MjE1QzE4LjQ5ODIgMTMuNjIxNSAxOS4yMjUgMTIuODk0OCAxOS4yMjUgMTEuOTk4M0MxOS4yMjUgMTEuMTAxOCAxOC40OTgyIDEwLjM3NSAxNy42MDE3IDEwLjM3NUMxNi43MDUyIDEwLjM3NSAxNS45Nzg0IDExLjEwMTggMTUuOTc4NCAxMS45OTgzQzE1Ljk3ODQgMTIuODk0OCAxNi43MDUyIDEzLjYyMTUgMTcuNjAxNyAxMy42MjE1WiIgZmlsbD0iY3VycmVudENvbG9yIi8+Cjwvc3ZnPgo="
-		                                                                             xmlns:xlink="http://www.w3.org/1999/xlink">
-		                                                                            <path fill-rule="evenodd"
-		                                                                                  clip-rule="evenodd"
-		                                                                                  d="M13.6259 11.9983C13.6259 12.8948 12.8991 13.6215 12.0026 13.6215C11.1061 13.6215 10.3793 12.8948 10.3793 11.9983C10.3793 11.1018 11.1061 10.375 12.0026 10.375C12.8991 10.375 13.6259 11.1018 13.6259 11.9983ZM8.02682 11.9986C8.02682 12.8951 7.30006 13.6219 6.40355 13.6219C5.50704 13.6219 4.78027 12.8951 4.78027 11.9986C4.78027 11.1021 5.50704 10.3753 6.40355 10.3753C7.30006 10.3753 8.02682 11.1021 8.02682 11.9986ZM17.6017 13.6215C18.4982 13.6215 19.225 12.8948 19.225 11.9983C19.225 11.1018 18.4982 10.375 17.6017 10.375C16.7052 10.375 15.9784 11.1018 15.9784 11.9983C15.9784 12.8948 16.7052 13.6215 17.6017 13.6215Z"
-		                                                                                  fill="currentColor"></path>
-		                                                                        </svg>
-		                                                                    </div>
-		                                                                </div>
-		                                                                더보기
-		                                                            </button>
-		                                                            <button class="css-1u6iefh-StylelessButton-ContentActionButton-ContentMoreButtonOnSm e1svyhwg27">
-		                                                                <div class="Icon icDots css-1q1i623-SVG e1282e850">
-		                                                                    <div>
-		                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-		                                                                             width="24" height="24" viewBox="0 0 24 24"
-		                                                                             fill="none" class="injected-svg"
-		                                                                             data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMy42MjU5IDExLjk5ODNDMTMuNjI1OSAxMi44OTQ4IDEyLjg5OTEgMTMuNjIxNSAxMi4wMDI2IDEzLjYyMTVDMTEuMTA2MSAxMy42MjE1IDEwLjM3OTMgMTIuODk0OCAxMC4zNzkzIDExLjk5ODNDMTAuMzc5MyAxMS4xMDE4IDExLjEwNjEgMTAuMzc1IDEyLjAwMjYgMTAuMzc1QzEyLjg5OTEgMTAuMzc1IDEzLjYyNTkgMTEuMTAxOCAxMy42MjU5IDExLjk5ODNaTTguMDI2ODIgMTEuOTk4NkM4LjAyNjgyIDEyLjg5NTEgNy4zMDAwNiAxMy42MjE5IDYuNDAzNTUgMTMuNjIxOUM1LjUwNzA0IDEzLjYyMTkgNC43ODAyNyAxMi44OTUxIDQuNzgwMjcgMTEuOTk4NkM0Ljc4MDI3IDExLjEwMjEgNS41MDcwNCAxMC4zNzUzIDYuNDAzNTUgMTAuMzc1M0M3LjMwMDA2IDEwLjM3NTMgOC4wMjY4MiAxMS4xMDIxIDguMDI2ODIgMTEuOTk4NlpNMTcuNjAxNyAxMy42MjE1QzE4LjQ5ODIgMTMuNjIxNSAxOS4yMjUgMTIuODk0OCAxOS4yMjUgMTEuOTk4M0MxOS4yMjUgMTEuMTAxOCAxOC40OTgyIDEwLjM3NSAxNy42MDE3IDEwLjM3NUMxNi43MDUyIDEwLjM3NSAxNS45Nzg0IDExLjEwMTggMTUuOTc4NCAxMS45OTgzQzE1Ljk3ODQgMTIuODk0OCAxNi43MDUyIDEzLjYyMTUgMTcuNjAxNyAxMy42MjE1WiIgZmlsbD0iY3VycmVudENvbG9yIi8+Cjwvc3ZnPgo="
-		                                                                             xmlns:xlink="http://www.w3.org/1999/xlink">
-		                                                                            <path fill-rule="evenodd"
-		                                                                                  clip-rule="evenodd"
-		                                                                                  d="M13.6259 11.9983C13.6259 12.8948 12.8991 13.6215 12.0026 13.6215C11.1061 13.6215 10.3793 12.8948 10.3793 11.9983C10.3793 11.1018 11.1061 10.375 12.0026 10.375C12.8991 10.375 13.6259 11.1018 13.6259 11.9983ZM8.02682 11.9986C8.02682 12.8951 7.30006 13.6219 6.40355 13.6219C5.50704 13.6219 4.78027 12.8951 4.78027 11.9986C4.78027 11.1021 5.50704 10.3753 6.40355 10.3753C7.30006 10.3753 8.02682 11.1021 8.02682 11.9986ZM17.6017 13.6215C18.4982 13.6215 19.225 12.8948 19.225 11.9983C19.225 11.1018 18.4982 10.375 17.6017 10.375C16.7052 10.375 15.9784 11.1018 15.9784 11.9983C15.9784 12.8948 16.7052 13.6215 17.6017 13.6215Z"
-		                                                                                  fill="currentColor"></path>
-		                                                                        </svg>
-		                                                                    </div>
-		                                                                </div>
-		                                                                더보기
-		                                                                <div class="css-4w39q2-StyledDropdownWrapper e1svyhwg28 off">
-		                                                                    <div class="css-ve4kut">
-		                                                                        <div class="e1svyhwg29 css-1t4uwd9-StyledDropdownMenuItem" id="hate">
-		                                                                            <div class="Icon icBlock icon css-1q1i623-SVG e1282e850">
-		                                                                                <div>
-		                                                                                    <svg xmlns="http://www.w3.org/2000/svg"
-		                                                                                         width="24" height="24"
-		                                                                                         viewBox="0 0 24 24" fill="none"
-		                                                                                         class="injected-svg"
-		                                                                                         data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00IDEyQzQgMTAuMTU0IDQuNjM0IDguNDU4IDUuNjg3IDcuMTAzTDE2Ljg5NiAxOC4zMTJDMTUuNTQyIDE5LjM2NiAxMy44NDYgMjAgMTIgMjBDNy41ODggMjAgNCAxNi40MTEgNCAxMlpNMjAgMTJDMjAgMTMuODQ2IDE5LjM2NSAxNS41NDIgMTguMzExIDE2Ljg5N0w3LjEwMiA1LjY4OEM4LjQ1NyA0LjYzNCAxMC4xNTQgNCAxMiA0QzE2LjQxIDQgMjAgNy41ODkgMjAgMTJaTTEyIDJDNi40NzcgMiAyIDYuNDc3IDIgMTJDMiAxNy41MjIgNi40NzcgMjIgMTIgMjJDMTcuNTIyIDIyIDIyIDE3LjUyMiAyMiAxMkMyMiA2LjQ3NyAxNy41MjIgMiAxMiAyWiIgZmlsbD0iY3VycmVudENvbG9yIi8+Cjwvc3ZnPgo="
-		                                                                                         xmlns:xlink="http://www.w3.org/1999/xlink">
-		                                                                                        <path fill-rule="evenodd"
-		                                                                                              clip-rule="evenodd"
-		                                                                                              d="M4 12C4 10.154 4.634 8.458 5.687 7.103L16.896 18.312C15.542 19.366 13.846 20 12 20C7.588 20 4 16.411 4 12ZM20 12C20 13.846 19.365 15.542 18.311 16.897L7.102 5.688C8.457 4.634 10.154 4 12 4C16.41 4 20 7.589 20 12ZM12 2C6.477 2 2 6.477 2 12C2 17.522 6.477 22 12 22C17.522 22 22 17.522 22 12C22 6.477 17.522 2 12 2Z"
-		                                                                                              fill="currentColor"></path>
-		                                                                                    </svg>
-		                                                                                </div>
-		                                                                            </div>
-		                                                                            관심없어요
-		                                                                        </div>
-		                                                                    </div>
-		                                                                </div>
+		                                                            <button class="css-1u6iefh-StylelessButton-ContentActionButton-ContentMoreButtonOnSm e1svyhwg27" id="collection_btn">
+		                                                            	<div class="select_image">
+			                                                            	<img src="/images/collection_icon.png" id="collection_icon" style="display:block;">
+			                                                            	<img src="/images/collection_icon_color.png" id="collection_icon_color" style="display:none;">
+		                                                            	</div>
+		                                                                <strong>콜렉션</strong>
 		                                                            </button>
 		                                                        </div>
+		                                                        <!-- 별점 오른쪽 section end -->
 		                                                    </div>
 		                                                </div>
 		                                            </div>
