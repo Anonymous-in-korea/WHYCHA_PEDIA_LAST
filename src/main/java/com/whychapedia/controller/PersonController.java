@@ -8,7 +8,7 @@ public class PersonController {
 
 	@GetMapping("person_detail")
 	public String personDetail() {
-		return "person_detail";
+		return "person_detail_GC";
 	}
 	
 }

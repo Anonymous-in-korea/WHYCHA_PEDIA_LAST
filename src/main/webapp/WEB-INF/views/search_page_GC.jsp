@@ -81,7 +81,6 @@
 	                                <li class="css-s8lqsd-StyledTab e1szkzar0">콘텐츠</li>
 	                                <li class="css-4tchbd-StyledTab e1szkzar0">인물</li>
 	                                <li class="css-4tchbd-StyledTab e1szkzar0">컬렉션</li>
-	                                <li class="css-4tchbd-StyledTab e1szkzar0">유저</li>
 	                            </ul>
 	                        </div>
 	                        <div class="css-ipmqep-StyledTabContentContainer e1szkzar3">

@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title th:text="${comment.name()}+'님이 '+${content.title}+'('+${content.makingDate}+')에 남긴 코멘트 - 왓챠피디아'">다솜땅님이 김광석(2016)에 남긴 코멘트 - 왓챠피디아</title>
+		<title>왓챠피디아</title>
 		
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		

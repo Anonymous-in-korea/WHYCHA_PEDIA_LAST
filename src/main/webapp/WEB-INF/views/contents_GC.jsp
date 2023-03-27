@@ -194,117 +194,153 @@
 		    	
 		    	
 		    	/* 마우스로 클릭하면 색깔변화 (로그인 전) */
-		    	/* 보고싶어요 section start */
-		    	$("#wish_btn").on("click", function() {
-					if ( $("#wish_btn").hasClass("active") ) {
-						$("#wish_btn").removeClass("active");
-						$("#plus_icon").css({"display":"block"});
-						$("#wish_flag_icon").css({"display":"none"});
-					} else {
-						$("#wish_btn").addClass("active");
-						$("#plus_icon").css({"display":"none"});
-						$("#wish_flag_icon").css({"display":"block"});
-						if ( $(".wish_pop_up_background").css("display") == "none" ) { $(".wish_pop_up_background").show(); }
-					}
-				});
-		    	/* 보고싶어요 창 내리기 */
-				$(".css-1d7tft4-StylelessButton-HeaderCloseButtonSelf, .wish_pop_up_background").click(function() {
-					if ( $(".wish_pop_up_background").css("display") != "none" ) {
-						$(".wish_pop_up_background").hide();
-						$("#wish_btn").removeClass("active");
-						$("#plus_icon").css({"display":"block"});
-						$("#wish_flag_icon").css({"display":"none"});
-					}
-				});
-		    	/* 창 내리기 방지 */
-		    	$(".wish_content_box").click(function(e) {
-					e.stopPropagation();
-					$(".wish_pop_up_background").css("display", "block");
-				});
-				/* 보고싶어요 section end */
-		    	
-				/* 코멘트 section start */
-		    	$("#comment_btn").on("click", function() {
-					if ( $("#comment_btn").hasClass("active") ) {
-						$("#comment_btn").removeClass("active");
-					} else {
-						$("#comment_btn").addClass("active");
-						if ( $(".comment_pop_up_background").css("display") == "none" ) { $(".comment_pop_up_background").show(); }
-					}
-				});
-		    	/* 코멘트 창 내리기 */
-				$(".css-1d7tft4-StylelessButton-HeaderCloseButtonSelf, .comment_pop_up_background").click(function() {
-					if ( $(".comment_pop_up_background").css("display") != "none" ) {
-						$(".comment_pop_up_background").hide();
-						$("#comment_btn").removeClass("active");
-					}
-					if ( $("#comment_btn").hasClass("active") ) { $("#comment_btn").removeClass("active"); }
-				});
-		    	/* 창 내리기 방지 */
-		    	$(".comment_content_box").click(function(e) {
-					e.stopPropagation();
-					$(".comment_pop_up_background").css("display", "block");
-				});
-		    	/* 코멘트 section end */
-		    	
-		    	/* 보는중 section start */
-		    	$("#watch_btn").on("click", function() {
-					if ( !$("#watch_btn").hasClass("active") ) {
-						$("#watch_btn").addClass("active");
-						$("#eye_icon").css({"display":"none"});
-						$("#eye_icon_color").css({"display":"block"});
-						if ( $(".watch_pop_up_background").css("display") == "none" ) { $(".watch_pop_up_background").show(); }
-					}
-				});
-		    	/* 보는중 창 내리기 */
-				$(".css-1d7tft4-StylelessButton-HeaderCloseButtonSelf, .watch_pop_up_background").click(function() {
-					if ( $(".watch_pop_up_background").css("display") != "none" ) {
-						$(".watch_pop_up_background").hide();
-						if ( $("#watch_btn").hasClass("active") ) {
-							$("#watch_btn").removeClass("active");
-							$("#eye_icon").css({"display":"block"});
-							$("#eye_icon_color").css({"display":"none"});
+			    	/* 보고싶어요 section start */
+			    	$("#wish_btn").on("click", function() {
+						if ( $("#wish_btn").hasClass("active") ) {
+							$("#wish_btn").removeClass("active");
+							$("#plus_icon").css({"display":"block"});
+							$("#wish_flag_icon").css({"display":"none"});
+						} else {
+							$("#wish_btn").addClass("active");
+							$("#plus_icon").css({"display":"none"});
+							$("#wish_flag_icon").css({"display":"block"});
+							if ( ${sessionId == null} && $(".wish_pop_up_background").css("display") == "none" ) { $(".wish_pop_up_background").show(); }
 						}
-					}
-					if ( $("#watch_btn").hasClass("active") ) { $("#watch_btn").removeClass("active"); }
-				});
-		    	/* 창 내리기 방지 */
-		    	$(".watch_content_box").click(function(e) {
-					e.stopPropagation();
-					$(".watch_pop_up_background").css("display", "block");
-				});
-		    	/* 보는중 section end */
-		    	
-		    	/* 콜렉션 section start */
-		    	$("#collection_btn").on("click", function() {
-					if ($("#collection_btn").hasClass("active")) {
-						$("#collection_btn").removeClass("active");
-						$("#collection_icon").css({"display":"block"});
-						$("#collection_icon_color").css({"display":"none"});
-					} else {
-						$("#collection_btn").addClass("active");
-						$("#collection_icon").css({"display":"none"});
-						$("#collection_icon_color").css({"display":"block"});
-						if ( $(".collection_pop_up_background").css("display") == "none" ) { $(".collection_pop_up_background").show(); }
-					}
-				});
-		    	/* 콜렉션 창 내리기 */
-				$(".css-1d7tft4-StylelessButton-HeaderCloseButtonSelf, .collection_pop_up_background").click(function() {
-					if ( $(".collection_pop_up_background").css("display") != "none" ) {
-						$(".collection_pop_up_background").hide();
-						$("#collection_btn").removeClass("active");
-						$("#collection_icon").css({"display":"block"});
-						$("#collection_icon_color").css({"display":"none"});
-					}
-					if ( $("#collection_btn").hasClass("active") ) { $("#collection_btn").removeClass("active"); }
-				});
-		    	/* 창 내리기 방지 */
-		    	$(".collection_content_box").click(function(e) {
-					e.stopPropagation();
-					$(".collection_pop_up_background").css("display", "block");
-				});
-		    	/* 콜렉션 section end */
+					});
+			    	/* 보고싶어요 창 내리기 */
+					$(".css-1d7tft4-StylelessButton-HeaderCloseButtonSelf, .wish_pop_up_background").click(function() {
+						if ( $(".wish_pop_up_background").css("display") != "none" ) {
+							$(".wish_pop_up_background").hide();
+							$("#wish_btn").removeClass("active");
+							$("#plus_icon").css({"display":"block"});
+							$("#wish_flag_icon").css({"display":"none"});
+						}
+					});
+			    	/* 창 내리기 방지 */
+			    	$(".wish_content_box").click(function(e) {
+						e.stopPropagation();
+						$(".wish_pop_up_background").css("display", "block");
+					});
+					/* 보고싶어요 section end */
+			    	
+					/* 코멘트 section start */
+			    	$("#comment_btn").on("click", function() {
+						if ( $("#comment_btn").hasClass("active") ) {
+							$("#comment_btn").removeClass("active");
+						} else {
+							$("#comment_btn").addClass("active");
+							if ( $(".comment_pop_up_background").css("display") == "none" ) { $(".comment_pop_up_background").show(); }
+						}
+					});
+			    	/* 코멘트 창 내리기 */
+					$(".css-1d7tft4-StylelessButton-HeaderCloseButtonSelf, .comment_pop_up_background").click(function() {
+						if ( $(".comment_pop_up_background").css("display") != "none" ) {
+							$(".comment_pop_up_background").hide();
+							$("#comment_btn").removeClass("active");
+						}
+						if ( $("#comment_btn").hasClass("active") ) { $("#comment_btn").removeClass("active"); }
+					});
+			    	/* 창 내리기 방지 */
+			    	$(".comment_content_box").click(function(e) {
+						e.stopPropagation();
+						$(".comment_pop_up_background").css("display", "block");
+					});
+			    	/* 코멘트 section end */
+			    	
+			    	/* 보는중 section start */
+			    	$("#watch_btn").on("click", function() {
+						if ( !$("#watch_btn").hasClass("active") ) {
+							$("#watch_btn").addClass("active");
+							$("#eye_icon").css({"display":"none"});
+							$("#eye_icon_color").css({"display":"block"});
+							if ( $(".watch_pop_up_background").css("display") == "none" ) { $(".watch_pop_up_background").show(); }
+						}
+					});
+			    	/* 보는중 창 내리기 */
+					$(".css-1d7tft4-StylelessButton-HeaderCloseButtonSelf, .watch_pop_up_background").click(function() {
+						if ( $(".watch_pop_up_background").css("display") != "none" ) {
+							$(".watch_pop_up_background").hide();
+							if ( $("#watch_btn").hasClass("active") ) {
+								$("#watch_btn").removeClass("active");
+								$("#eye_icon").css({"display":"block"});
+								$("#eye_icon_color").css({"display":"none"});
+							}
+						}
+						if ( $("#watch_btn").hasClass("active") ) { $("#watch_btn").removeClass("active"); }
+					});
+			    	/* 창 내리기 방지 */
+			    	$(".watch_content_box").click(function(e) {
+						e.stopPropagation();
+						$(".watch_pop_up_background").css("display", "block");
+					});
+			    	/* 보는중 section end */
+			    	
+			    	/* 콜렉션 section start */
+			    	$("#collection_btn").on("click", function() {
+						if ($("#collection_btn").hasClass("active")) {
+							$("#collection_btn").removeClass("active");
+							$("#collection_icon").css({"display":"block"});
+							$("#collection_icon_color").css({"display":"none"});
+						} else {
+							$("#collection_btn").addClass("active");
+							$("#collection_icon").css({"display":"none"});
+							$("#collection_icon_color").css({"display":"block"});
+							if ( $(".collection_pop_up_background").css("display") == "none" ) { $(".collection_pop_up_background").show(); }
+						}
+					});
+			    	/* 콜렉션 창 내리기 */
+					$(".css-1d7tft4-StylelessButton-HeaderCloseButtonSelf, .collection_pop_up_background").click(function() {
+						if ( $(".collection_pop_up_background").css("display") != "none" ) {
+							$(".collection_pop_up_background").hide();
+							$("#collection_btn").removeClass("active");
+							$("#collection_icon").css({"display":"block"});
+							$("#collection_icon_color").css({"display":"none"});
+						}
+						if ( $("#collection_btn").hasClass("active") ) { $("#collection_btn").removeClass("active"); }
+					});
+			    	/* 창 내리기 방지 */
+			    	$(".collection_content_box").click(function(e) {
+						e.stopPropagation();
+						$(".collection_pop_up_background").css("display", "block");
+					});
+			    	/* 콜렉션 section end */
 		    	/* 마우스로 클릭하면 색깔변화 (로그인 전) */
+		    		
+		    	/* 마우스로 클릭하면 색깔변화 (로그인 후) */
+			    	/* comment_box start */
+			    	$("#wish_btn").on("click", function() {
+						if ( $("#wish_btn").hasClass("active") ) {
+							$("#wish_btn").removeClass("active");
+							$("#plus_icon").css({"display":"block"});
+							$("#wish_flag_icon").css({"display":"none"});
+							$(".css-sd2jre-SectionBlock").hide();
+							$(".css-1v9og64-LeaveCommentSection").hide();
+						} else {
+							$("#wish_btn").addClass("active");
+							$("#plus_icon").css({"display":"none"});
+							$("#wish_flag_icon").css({"display":"block"});
+							if ( ${sessionId != null} && $(".css-1v9og64-LeaveCommentSection").css("display") == "none" ) {
+								$(".css-sd2jre-SectionBlock").show();
+								$(".css-1v9og64-LeaveCommentSection").show();
+							}
+						}
+					});
+			    	/* comment_box 창 내리기 */
+					$(".css-1d7tft4-StylelessButton-HeaderCloseButtonSelf, .wish_pop_up_background").click(function() {
+						if ( $(".wish_pop_up_background").css("display") != "none" ) {
+							$(".wish_pop_up_background").hide();
+							$("#wish_btn").removeClass("active");
+							$("#plus_icon").css({"display":"block"});
+							$("#wish_flag_icon").css({"display":"none"});
+						}
+					});
+			    	/* 창 내리기 방지 */
+			    	$(".wish_content_box").click(function(e) {
+						e.stopPropagation();
+						$(".wish_pop_up_background").css("display", "block");
+					});
+					/* 보고싶어요 section end */
+		    	/* 마우스로 클릭하면 색깔변화 (로그인 후) */
 	    	});
 	    </script>
 	</head>
@@ -317,7 +353,7 @@
 					<!-- header end -->
 					
 					<!-- pop_up 창 section -->
-					<%@ include file="pop_up.jsp" %>
+					<%@ include file="pop_up_GC.jsp" %>
 					<!-- pop_up 창 section -->
 					
 					<!-- section start -->
@@ -451,6 +487,65 @@
 		                                <div class="css-bs9kkj">
 		                                    <div class="css-1po9d5k">
 		                                        <div class="css-uvsgck">
+													<!-- 보고싶어요 or 보는 중 버튼 클릭 시 (로그인 후)  -->
+													<div data-rowindex="1" class="w_exposed_cell css-sd2jre-SectionBlock eue8w0j0" style="display:none;">
+														<div class="css-12ru3m0">
+															<!-- 코멘트 안달았을 때 나타나는 div start -->
+															<section class="css-1v9og64-LeaveCommentSection eue8w0j1" style="display:none;">
+																<div class="css-1gkas1x-Grid e1689zdh0">
+																	<div class="css-1y901al-Row emmoxnt0">
+																		<div class="css-vshgrn-LeaveCommentBlock eue8w0j2">
+																			<h3 class="css-1p0zhfu-Title eue8w0j11">[ 사용자 ]님의 생각을 글로 적어보세요.</h3>
+																			<div class="css-1jbrsnx-ButtonBlock eue8w0j12">
+																				<button class="css-2gm869-StylelessButton-MediumButton-LeaveCommentButton eue8w0j10">코멘트 남기기</button>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</section>
+															<!-- 코멘트 안달았을 때 나타나는 div end -->
+															
+															<!-- 코멘트 달았을 때 나타나는 div start -->
+															<div class="css-1gkas1x-Grid e1689zdh0 hasComm" style="display:none;">
+																<div class="css-1y901al-Row emmoxnt0">
+																	<section class="css-10tfsfb-MyCommentSection eue8w0j3">
+																		<div class="css-vo2laf-MyCommentBlock eue8w0j6">
+																			<div class="css-1rek3mo-MyProfilePhotoBlock eue8w0j4">
+																				<div class="css-ffwxzk">
+																					<div class="css-18d1ipb-ProfilePhotoImage"></div>
+																				</div>
+																			</div>
+																			<a class="css-1bh5fq7-StylelessLocalLink-LinkToMyComment eue8w0j13" href="/ko-KR/comments/1Vl2bWn96AMrR">
+																				<div class="css-2a9q6o-MyComment eue8w0j5">
+																					<div class=" css-gujidv-StyledSelf eb5y16b0">
+																						<div class="css-1fucs4t-StyledText eb5y16b1">개같다개같다개같다개같다</div>
+																					</div>
+																				</div>
+																			</a>
+																			<ul class="css-llsddo-VisualUl-CommentUpdateButtons eue8w0j7">
+																				<li class="css-15b6b8j-CommentUpdateButtonListItem eue8w0j8">
+																					<button id="delete-btn" class="css-1nmgbsq-StylelessButton-CommentUpdateButton eue8w0j9">
+																						<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0EwQTBBMCIgZD0iTTUuMjUgMTQuMjVoNy41di03LjVoMS41VjE1YS43NS43NSAwIDAgMS0uNzUuNzVoLTlhLjc1Ljc1IDAgMCAxLS43NS0uNzVWNi43NWgxLjV2Ny41ek0xMiA0LjVoMy43NVY2SDIuMjVWNC41SDZWM2EuNzUuNzUgMCAwIDEgLjc1LS43NWg0LjVBLjc1Ljc1IDAgMCAxIDEyIDN2MS41em0tMS41IDB2LS43NWgtM3YuNzVoM3pNNi43NSA2Ljc1aDEuNXY2Ljc1aC0xLjVWNi43NXptMyAwaDEuNXY2Ljc1aC0xLjVWNi43NXoiLz4KICAgIDwvZz4KPC9zdmc+Cg=="
+																							alt="delete comment">
+																						삭제
+																					</button>
+																				</li>
+																				<li class="css-15b6b8j-CommentUpdateButtonListItem eue8w0j8">
+																					<button id="edit-btn" class="css-1nmgbsq-StylelessButton-CommentUpdateButton eue8w0j9">
+																						<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0EwQTBBMCIgZD0iTTIuMTggMTUuMzlsLjcwMy0zLjk4IDMuNzEzIDMuNzEyLTMuOTgxLjcwMmEuMzc0LjM3NCAwIDAgMS0uNDM0LS40MzR6bTEuNDk4LTQuNzc2bDYuMzY0LTYuMzY0IDMuNzEzIDMuNzEyLTYuMzY0IDYuMzY0LTMuNzEzLTMuNzEyek0xNS42MDcgNS4wNGEuNzUuNzUgMCAwIDEgMCAxLjA2bC0xLjA2IDEuMDYxLTMuNzEzLTMuNzEyIDEuMDYtMS4wNmEuNzUuNzUgMCAwIDEgMS4wNiAwbDIuNjUzIDIuNjUxeiIvPgogICAgPC9nPgo8L3N2Zz4K"
+																							alt="edit comment">
+																						수정
+																					</button>
+																				</li>
+																			</ul>
+																		</div>
+																	</section>
+																</div>
+															</div>
+															<!-- 코멘트 달았을 때 나타나는 div end -->
+														</div>
+													</div>
+													<!-- 보고싶어요 or 보는 중 버튼 클릭 시 (로그인 후)  -->
 		                                            <div class="css-1nxfhfk">
 		                                                <div class="css-1jwavn9-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock">
 		                                                    <!-- 기본정보 	section start -->
