@@ -4,8 +4,8 @@
 
 .square_div{ position:relative; width:100%; }
 
-/* login CSS start */
-.css-14gy7wr-login {
+/* join CSS start */
+.css-14gy7wr-join {
     display: block;
     position: fixed;
     inset: 0px;
@@ -30,7 +30,7 @@
 input:focus{
     outline: none;
 }
-.css-ikkedy-login {
+.css-ikkedy-join {
     position: relative;
     background: rgb(255, 255, 255);
     width: 100%;
@@ -39,21 +39,21 @@ input:focus{
     overflow: hidden;
 }
 @media (min-width: 719px) {
-    .css-ikkedy-login {
+    .css-ikkedy-join {
         top:15%;
         display: inline-block;
         position: relative;
         vertical-align: middle;
         text-align: left;
         width: 375px;
-        height: 380px;
-        min-height: 380px;
+        height: 430px;
+        min-height: 430px;
         border-radius: 6px;
         overflow: auto;
     }
 }
 
-.css-1i2oi66-login {
+.css-1i2oi66-join {
     padding: 32px 0px 16px;
 }
 
@@ -63,9 +63,7 @@ input:focus{
     overflow: hidden;
 }
 
-
 .css-g6a59h {
-	color: gray;
     font-size: 17px;
     letter-spacing: -0.5px;
     line-height: 22px;
@@ -397,4 +395,4 @@ hr {
     height: 60%;
 }
 /* section part end */
-/* login CSS end */
+/* join CSS end */

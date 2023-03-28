@@ -5,14 +5,14 @@
 	<head>
 	   	 <meta charset="utf-8">
 		    <title>왓챠피디아 고객센터</title>
-		    <link rel="shortcut icon" type="image/x-icon" href="/images/whycha_small_logo1.png">
+		    <link rel="shortcut icon" type="image/x-icon" href="../images/whycha_small_logo1.png">
 		   	<link rel="preconnect" href="https://fonts.googleapis.com">
-		   	<link href="/css/faq.css" rel="stylesheet" type="text/css">
+		   	<link href="../css/faq.css" rel="stylesheet" type="text/css">
 			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 			<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 			<!--style css 빼지 마시오 ! -->
-		    <link href="/css/style.css" rel="stylesheet" type="text/css">
-		    <link rel="shortcut icon" type="image/x-icon" href="/images/whycha_small_logo1.png">
+		    <link href="../css/style_SY.css" rel="stylesheet" type="text/css">
+		    <link rel="shortcut icon" type="image/x-icon" href="../images/whycha_small_logo1.png">
 		    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 		    <script src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/412615499/?random=1622645735533&amp;cv=9&amp;fst=1622645735533&amp;num=1&amp;guid=ON&amp;resp=GooglemKTybQhCsO&amp;eid=2505059650&amp;u_h=1050&amp;u_w=1680&amp;u_ah=1025&amp;u_aw=1680&amp;u_cd=30&amp;u_his=4&amp;u_tz=540&amp;u_java=false&amp;u_nplug=3&amp;u_nmime=4&amp;gtm=2wg5q1&amp;sendb=1&amp;ig=1&amp;frm=0&amp;url=https%3A%2F%2Fwatcha.com%2Fnotices&amp;ref=https%3A%2F%2Fwatcha.com%2Fmanage_profiles&amp;tiba=%EC%99%93%EC%B1%A0&amp;hn=www.googleadservices.com&amp;async=1&amp;rfmt=3&amp;fmt=4"></script>
 	</head>

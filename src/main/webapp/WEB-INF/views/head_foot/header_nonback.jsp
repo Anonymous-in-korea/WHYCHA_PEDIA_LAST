@@ -6,7 +6,7 @@
 			<div class="header_footer_div">
 				<ul class="header_ul">
 					<li class="header_li">
-						<a href="/"><img src="/images/no1_WHYCHA_NONBACK.png" id="logo_change" class="logo_image"></a>
+						<a href="/"><img src="/images/no1_WHYCHA_NONBACK.png" id="logo_change" style="width: 210px;"></a>
 					</li>
 					<li class="header_li_searchBox">
 						<div class="header_li_searchBox_div">
@@ -33,12 +33,14 @@
 					<!-- 로그인 하기 전 -->
 					
 					<!-- login section start -->
-					<div class="css-14gy7wr" style="display:none;">
+					<div class="css-14gy7wr-login" style="display:none;">
 						<div class="css-rpyl6s">
-							<div class="css-ikkedy">
-								<div class="css-1i2oi66">
+							<div class="css-ikkedy-login">
+								<div class="css-1i2oi66-login">
 									<header class="css-17bvwx1">
-										<span src="/images/watcha_main_logo.jpg" width="198px" height="38.03px" class="css-1xku4w9"></span>
+										<a href="/">
+											<img src="/images/no1_WHYCHA.png" width="210px" height="38.03px">
+										</a>
 									</header>
 									<h2 class="css-g6a59h">로그인</h2>
 									<section>
@@ -69,43 +71,9 @@
 						                            </div>
 													<button type="button" id="loginBtn" class="css-qr0uqd-StylelessButton">로그인</button>
 												</form>
-												<div class="css-liv8hf">
-													<button id="pwSearch" class="css-gq8fs1-StylelessButton">비밀번호를 잊어버리셨나요?</button>
-												</div>
-												<div class="css-gcz1qq">
+												<div class="css-gcz1qq" style="text-align:center; margin-top:10px;">
 													계정이 없으신가요?
 													<button id="joinBtn" class="css-gq8fs1-StylelessButton">회원가입</button>
-												</div>
-												<hr class="css-dnzt4"></hr>
-												<ul class="css-brz23g">
-													<li class="css-1i82ydo">
-														<button type="button" class="css-8oaf5r">
-															<img src="/images/kakao_url.svg" class="css-1hfgk44">
-														</button>
-													</li>
-													<li class="css-1i82ydo">
-														<button type="button" class="css-1smkj82">
-															<img src="/images/google_url.svg" class="css-1hfgk44">
-														</button>
-													</li>
-													<li class="css-1i82ydo">
-														<button type="button" class="css-bxzc43">
-															<img src="/images/twitter_url.svg" class="css-1hfgk44">
-														</button>
-													</li>
-													<li class="css-1i82ydo">
-														<button type="button" class="css-1jztl1f">
-															<img src="/images/line_url.svg" class="css-1hfgk44">
-														</button>
-													</li>
-													<li class="css-1i82ydo">
-														<button type="button" class="css-1r1efk8">
-															<img src="/images/facebook_url.svg" class="css-1hfgk44">
-														</button>
-													</li>
-												</ul>
-												<div class="css-jh98cl">
-													TIP.왓챠 계정이 있으신가요? 왓챠와 왓챠피디아는 같은 계정을 사용해요.
 												</div>
 											</div>
 										</div>
@@ -137,6 +105,69 @@
 						</a>
 					</li> -->
 					<!-- 로그인 한 후 -->
+					
+					<!-- 회원가입 section start -->
+					<div class="css-14gy7wr-join" style="display:none;">
+						<div class="css-rpyl6s">
+							<div class="css-ikkedy-join">
+								<div class="css-1i2oi66-join">
+									<header class="css-17bvwx1">
+										<a href="/">
+											<img src="/images/no1_WHYCHA.png" width="210px" height="38.03px">
+										</a>
+									</header>
+									<h2 class="css-g6a59h">회원가입</h2>
+									<section>
+										<div class="css-1gkas1x-Grid e1689zdh0">
+											<div class="css-1y901al-Row emmoxnt0">
+												<form action="" method="post" name="member_input">
+													<div class="css-1o72pil">
+														<label value="false" class="css-a4glo0">
+															<div class="css-1smbjja">
+																<input autocomplete="off" placeholder="이름" type="text" name="name" class="css-1oyrbwm" value="">
+															</div>
+															<div value="false" class="css-lcodwd">
+																<span data-test="clearButton" aria-label="clear" role="button" class="css-qe0tnm"></span>
+															</div>
+															<span value="false" class="css-gem1s0"></span>
+														</label>
+													</div>
+													<div class="css-1o72pil">
+														<label value="false" class="css-a4glo0">
+															<div class="css-1smbjja">
+																<input autocomplete="off" placeholder="이메일" type="email" name="email" class="css-1oyrbwm" value="">
+															</div>
+															<div value="false" class="css-lcodwd">
+																<span data-test="clearButton" aria-label="clear" role="button" class="css-qe0tnm"></span>
+															</div>
+															<span value="false" class="css-gem1s0"></span>
+														</label>
+													</div>
+													<div class="css-1o72pil">
+														<label value="false" class="css-a4glo0">
+															<div class="css-1smbjja">
+																<input autocomplete="off" placeholder="비밀번호" type="password" name="password" class="css-1oyrbwm" value="">
+															</div>
+															<div value="false" class="css-lcodwd">
+																<span data-test="clearButton" aria-label="clear" role="button" class="css-qe0tnm"></span>
+															</div>
+															<span value="false" class="css-gem1s0"></span>
+														</label>
+													</div>
+													<button type="button" id="member_input_btn" class="css-qr0uqd-StylelessButton">회원가입</button>
+												</form>
+												<div class="css-17kylon" style="text-align:center; margin-top:10px;">
+													<span style="color:gray; font-size:15px;">이미 가입하셨나요?</span>
+													<button class="css-gq8fs1-StylelessButton">로그인</button>
+												</div>
+											</div>
+										</div>
+									</section>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 회원가입 section end -->
 				</ul>
 			</div>
 		</div>

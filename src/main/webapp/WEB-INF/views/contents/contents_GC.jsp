@@ -9,16 +9,18 @@
 	    
 	    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	    
-	    <link rel="icon" href="/image/favicon.png">
-	    <link href="/css/contents.css" rel="stylesheet">
-	    <link href="/css/style.css" rel="stylesheet">
-	    <link href="/css/header.css" rel="stylesheet" type="text/css">
-	    <link href="/css/login.css" rel="stylesheet" type="text/css">
-		<link href="/css/footer.css" rel="stylesheet" type="text/css">
+	    <link href="../image/favicon.png" rel="icon">
+	    <link href="../css/contents.css" rel="stylesheet">
+	    <link href="../css/style.css" rel="stylesheet">
+	    <link href="../css/header.css" rel="stylesheet" type="text/css">
+	    <link href="../css/login.css" rel="stylesheet" type="text/css">
+	    <link href="../css/join.css" rel="stylesheet" type="text/css">
+		<link href="../css/footer.css" rel="stylesheet" type="text/css">
 	    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 	
-	    <script src="/js/slide_scroll.js"></script>
-		<script src="/js/login.js"></script>
+	    <script src="../js/slide_scroll.js"></script>
+		<script src="../js/login.js"></script>
+		<script src="../js/join.js"></script>
 	
 		<script>
 	    	$(function() {
@@ -349,11 +351,11 @@
 	    	<div class="css-5jq76">
 		        <div class="css-1xm32e0">
 					<!-- header start -->
-					<%@ include file="head_foot/header_nonback.jsp" %>
+					<%@ include file="../head_foot/header_nonback.jsp" %>
 					<!-- header end -->
 					
 					<!-- pop_up 창 section -->
-					<%@ include file="pop_up_GC.jsp" %>
+					<%@ include file="../pop_up_GC.jsp" %>
 					<!-- pop_up 창 section -->
 					
 					<!-- section start -->
@@ -1473,7 +1475,7 @@
 		                            </div>
 		                        </div>
 			 					<!-- footer start -->
-								<%@ include file="head_foot/footer1.jsp" %>
+								<%@ include file="../head_foot/footer1.jsp" %>
 								<!-- footer end -->
 		                    </div>
 		                </div>
