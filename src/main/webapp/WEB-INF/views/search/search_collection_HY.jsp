@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link href="/css/header.css" rel="stylesheet" type="text/css">
-		<link href="css/searchCollection.css" rel="stylesheet" type="text/css">
-		<script  src="http://code.jquery.com/jquery-latest.min.js"></script>	
+		<link href="../css/header.css" rel="stylesheet" type="text/css">
+		<link href="../css/searchCollection.css" rel="stylesheet" type="text/css">
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>	
 		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 		<meta charset="utf-8">
 		<title>왓챠피디아 - collection</title>
@@ -15,7 +15,7 @@
 			<div class="css-5jq76">
 				<div class="css-1xm32e0">
 					<!-- header start -->
-					<%@ include file="head_foot/header.jsp" %>
+					<%@ include file="../head_foot/header.jsp" %>
 					<!-- header end -->
 					<section class="css-18gwkcr">
 						<section class="css-le8j8b">

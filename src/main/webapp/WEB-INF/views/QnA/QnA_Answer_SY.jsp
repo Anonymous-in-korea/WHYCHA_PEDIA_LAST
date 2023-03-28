@@ -8,17 +8,17 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-		<link rel="shortcut icon" type="image/x-icon" href="/images/whycha_small_logo1.png">
-		<link href="/css/style.css" rel="stylesheet" type="text/css">
-		<link href="/css/QnA_Answer.css" rel="stylesheet" type="text/css">
+		<link href="../images/whycha_small_logo1.png" rel="shortcut icon" type="image/x-icon">
+		<link href="../css/style_SY.css" rel="stylesheet" type="text/css">
+		<link href="../css/QnA_Answer_SY.css" rel="stylesheet" type="text/css">
 	<body class="">
 			<a class="skip-navigation" tabindex="1" href="#main-content">주 콘텐츠로 건너뛰기</a>
 			<header class="header">
-				<div class="logo">
-					<a title="홈" href="/hc/ko"> 
-						<img src="//theme.zdassets.com/theme_assets/9911886/3440919ca9ca844a1d733b48a46fce8ee5208620.png" alt="왓챠피디아 고객센터 헬프 센터 홈 페이지">
-					</a>
-				</div>
+				<a href="/"> 
+					<div class="logo">
+						<img src="../images/no1_WHYCHA.png">
+					</div>
+				</a>
 				<div class="nav-wrapper">
 					<div class="user-info dropdown">
 						<button class="dropdown-toggle" aria-haspopup="true">

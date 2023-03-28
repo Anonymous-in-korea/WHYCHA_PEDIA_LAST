@@ -3,24 +3,29 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<link href="/css/header.css" rel="stylesheet" type="text/css">
-	<link href="/css/footer.css" rel="stylesheet" type="text/css">
-	<link href="/css/collectionDetail.css" rel="stylesheet" type="text/css">
-	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script defer src="/js/collectionDetail_young.js"></script>
-	<link rel="icon" href="/image/favicon.png" />
-	<!-- Google Tag Manager -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-	<meta charset="utf-8">
-	<title>&lt;어벤져스 : 엔드게임&gt; 보기 전, 마블 영화 정주행 순서! by WATCHA - 왓챠피디아</title>
-		
+		<meta charset="UTF-8">
+		<title>&lt;어벤져스 : 엔드게임&gt; 보기 전, 마블 영화 정주행 순서! by WATCHA - 왓챠피디아</title>
+
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+		<link href="../css/header.css" rel="stylesheet" type="text/css">
+		<link href="../css/login.css" rel="stylesheet" type="text/css">
+	    <link href="../css/join.css" rel="stylesheet" type="text/css">
+		<link href="../css/footer.css" rel="stylesheet" type="text/css">
+		<link href="../css/collectionDetail.css" rel="stylesheet" type="text/css">
+		<link href="../image/favicon.png" rel="icon">
+	    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+		<script src="../js/collectionDetail_young.js"></script>
+		<script src="../js/login.js"></script>
+		<script src="../js/join.js"></script>
 	</head>
 	<body>
 		<div id="root">
 			<div class="css-5jq76">
 				<div class="css-1xm32e0">
 					<!-- header start -->
-					<%@ include file="head_foot/header.jsp" %>
+					<%@ include file="../head_foot/header.jsp" %>
 					<!-- header end -->
 					<section class="css-18gwkcr">
 						<div class="css-g0jd7y">
@@ -1064,9 +1069,9 @@
 								</div>
 							</section>
 							<!-- footer start -->
-							<%@ include file="head_foot/footer1.jsp" %>
+							<%@ include file="../head_foot/footer1.jsp" %>
 							<!-- footer end -->
-					</div>
+						</div>
 <!-- 				<div disabled="" class="css-pjxj5o"></div> -->
 <!-- 				<div class="css-vi9yju"> -->
 <!-- 					<div></div> -->

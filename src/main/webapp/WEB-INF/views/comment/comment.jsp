@@ -3,15 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
      <link href="/css/header.css" rel="stylesheet" type="text/css">
 	<link href="/css/footer.css" rel="stylesheet" type="text/css">
     <style>
-        html{
-            font-family: 'Noto Sans KR', sans-serif;
-        }
+        html{ font-family: 'Noto Sans KR', sans-serif; }
+        
         :root {
             --sat: env(safe-area-inset-top);
             --sal: env(safe-area-inset-left);
@@ -19,9 +20,8 @@
             --sab: env(safe-area-inset-bottom);
         }
 
-        html {
-            line-height: normal;
-        }</style>
+        html { line-height: normal; }
+    </style>
     <!-- Google Tag Manager -->
     <script src="https://connect.facebook.net/ko_KR/sdk.js?hash=613e8e7a69472a2adc8d0bfe3ae5d5b4" async=""
             crossorigin="anonymous"></script>
@@ -30,53 +30,6 @@
     <script type="text/javascript" async=""
             src="https://www.googletagmanager.com/gtag/js?id=G-1PYHGTCRYW&amp;l=dataLayer&amp;cx=c"></script>
     <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
-    <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-KVV8C33"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [
-            {dimension5: ''},
-            {dimension6: 'undefined'}
-        ];
-        (function (w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-KVV8C33');
-    </script>
-
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-27006241-7"></script>
-
-
-    <!-- Global Site Tag (gtag.js) - Google Analytics -->
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-
-        gtag('config', 'UA-27006241-7');
-        gtag('config', 'G-1PYHGTCRYW');
-        if (false) {
-            gtag("config", 'undefined');
-        }
-        if (false) {
-            gtag("config", 'undefined');
-        }
-    </script>
-
-
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title th:text="${contentTitle} + ':목차 - 왓챠피디아'">아바타: 물의 길(2022):목차 - 왓챠피디아</title>
     <meta data-rh="true" content="추천, 평가, 영화, 책, 드라마, 애니메이션" name="keywords">
     <meta data-rh="true" content="9811060e374931ab817c913e27ba9851e42122b6" name="naver-site-verification">
@@ -115,14 +68,13 @@
 
     <script src="/clipboard.min.js" async="" defer=""></script>
 
-    <style data-emotion="css-global"></style>
-    <style data-emotion="css-global"></style>
-    <style data-emotion="css-global"></style>
-    <style data-emotion-css="1xm32e0">.css-1xm32e0 {
+	<style>
+    .css-1xm32e0 {
         position: relative;
         width: 100%;
-    }</style>
-    <style data-emotion-css="6k8tqb">.css-6k8tqb {
+    }
+
+	.css-6k8tqb {
         display: none;
         position: fixed;
         top: 0px;
@@ -137,44 +89,41 @@
         -webkit-transition: background-color 200ms;
         transition: background-color 200ms;
     }
-
     @media (min-width: 720px) {
         .css-6k8tqb {
             display: block;
         }
-    }</style>
-    <style data-emotion-css="1djzg97">.css-1djzg97 {
+    }
+
+	.css-1djzg97 {
         max-width: 1320px;
         margin-right: 20px;
         margin-left: 20px;
     }
-
     @media (min-width: 600px) {
         .css-1djzg97 {
             margin-right: 20px;
             margin-left: 20px;
         }
     }
-
     @media (min-width: 760px) {
         .css-1djzg97 {
             margin: 0 3.5%;
         }
     }
-
     @media (min-width: 1100px) {
         .css-1djzg97 {
             margin: 0 60px;
         }
     }
-
     @media (min-width: 1440px) {
         .css-1djzg97 {
             margin-right: auto;
             margin-left: auto;
         }
-    }</style>
-    <style data-emotion-css="6v7b8v-VisualUl">.css-6v7b8v-VisualUl {
+    }
+
+	.css-6v7b8v-VisualUl {
         list-style: none;
         padding: 0;
         margin: 0;
@@ -184,21 +133,23 @@
         display: flex;
         overflow: hidden;
     }
-
     @media (max-width: 719px) {
         .css-6v7b8v-VisualUl {
             height: 100%;
             overflow: unset;
         }
-    }</style>
-    <style data-emotion-css="t686xv">.css-t686xv {
+    }
+
+	.css-t686xv {
         margin: 15px 15px 0 0;
-    }</style>
-    <style data-emotion-css="12v09xw">.css-12v09xw {
+    }
+
+	.css-12v09xw {
         width: 151px;
         height: 29px;
-    }</style>
-    <style data-emotion-css="bj71cw">.css-bj71cw {
+    }
+
+	.css-bj71cw {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -217,18 +168,17 @@
     .css-bj71cw.categories {
         margin: 0 0 0 18px;
     }
-
     @media (min-width: 860px) {
         .css-bj71cw.categories {
             margin: 0 0 0 24px;
         }
     }
-
     .css-bj71cw > a {
         -webkit-text-decoration: none;
         text-decoration: none;
-    }</style>
-    <style data-emotion-css="q65tx9-StylelessButton">.css-q65tx9-StylelessButton {
+    }
+
+	.css-q65tx9-StylelessButton {
         background: none;
         padding: 0;
         border: none;
@@ -244,8 +194,9 @@
 
     .css-q65tx9-StylelessButton:focus {
         outline: none;
-    }</style>
-    <style data-emotion-css="8az14u">.css-8az14u {
+    }
+
+	.css-8az14u {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -260,28 +211,25 @@
         -ms-flex-negative: 0;
         flex-shrink: 0;
     }
-
     .css-8az14u.categories {
         margin: 0 0 0 18px;
     }
-
     @media (min-width: 860px) {
         .css-8az14u.categories {
             margin: 0 0 0 24px;
         }
     }
-
     @media (min-width: 860px) {
         .css-8az14u {
             margin-right: 20px !important;
         }
     }
-
     .css-8az14u > a {
         -webkit-text-decoration: none;
         text-decoration: none;
-    }</style>
-    <style data-emotion-css="1c3wwgb">.css-1c3wwgb {
+    }
+
+	.css-1c3wwgb {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -303,12 +251,10 @@
     .css-1c3wwgb.categories {
         margin: 0 0 0 18px;
     }
-
     @media (max-width: 859px) {
         .css-1c3wwgb {
             width: 28px;
         }
-
         .css-1c3wwgb label {
             background-color: transparent;
             padding-left: 30px;
@@ -316,27 +262,26 @@
             cursor: pointer;
         }
     }
-
     @media (min-width: 860px) {
         .css-1c3wwgb {
             width: 300px;
         }
     }
-
     @media (min-width: 860px) {
         .css-1c3wwgb.categories {
             margin: 0 0 0 24px;
         }
     }
-
     .css-1c3wwgb > a {
         -webkit-text-decoration: none;
         text-decoration: none;
-    }</style>
-    <style data-emotion-css="1okeg7p">.css-1okeg7p {
+    }
+
+	.css-1okeg7p {
         margin: 12px 0;
-    }</style>
-    <style data-emotion-css="kyr608">.css-kyr608 {
+    }
+
+	.css-kyr608 {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -352,13 +297,13 @@
         padding: 7px 10px 8px 36px;
         border-radius: 2px;
     }
-
     @media (min-width: 860px) {
         .css-kyr608 {
             background: #f5f5f7 url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4IiB2aWV3Qm94PSIwIDAgMTYgMTYiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+SWNvbiAvIEljVGFiQmFyIC8gSWNTZWFyY2hBbmQ8L3RpdGxlPgogICAgPGcgaWQ9IlVJLS0t7ZmILS8t6rKA7IOJIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiBmaWxsLW9wYWNpdHk9IjAuNzYiPgogICAgICAgIDxnIGlkPSJfR2xvYmFsLS8tTmF2aWdhdGlvbkJhci0vLUl0ZW1zLS8tU2VhcmNoLS8tRW1wdHkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xMS4wMDAwMDAsIC0xMS4wMDAwMDApIiBmaWxsPSIjN0U3RTdFIj4KICAgICAgICAgICAgPGcgaWQ9Ikdyb3VwLTEzIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJJY29uLS8tSWNUYWJCYXItLy1JY1NlYXJjaEFuZCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAuMDAwMDAwLCAxMC4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNOC4wMjk5ODQxNSwxMi44NzM5OTc5IEM1LjQwNjA4MTEyLDEyLjg3Mzk5NzkgMy4yNzA1NDg1OCwxMC43MjI4NDAzIDMuMjcwNTQ4NTgsOC4wNzg3NTkgQzMuMjcwNTQ4NTgsNS40MzM4ODAwNyA1LjQwNjA4MTEyLDMuMjgyNzIyNTEgOC4wMjk5ODQxNSwzLjI4MjcyMjUxIEMxMC42NTM4ODcyLDMuMjgyNzIyNTEgMTIuNzg5NDE5Nyw1LjQzMzg4MDA3IDEyLjc4OTQxOTcsOC4wNzg3NTkgQzEyLjc4OTQxOTcsMTAuNzIyODQwMyAxMC42NTM4ODcyLDEyLjg3Mzk5NzkgOC4wMjk5ODQxNSwxMi44NzM5OTc5IE0xNi4wODEzNjkzLDE0Ljk1MTc3NTIgTDEzLjA4NjI0MTMsMTEuOTIwODUyNCBDMTMuODg4ODQ3LDEwLjg0OTY2MDUgMTQuMzcyNDY4Myw5LjUyMTYzNzc2IDE0LjM3MjQ2ODMsOC4wNzg3NTkgQzE0LjM3MjQ2ODMsNC41NTQxMTQ4NiAxMS41MjY5Mzg1LDEuNjg3NSA4LjAyOTk4NDE1LDEuNjg3NSBDNC41MzMwMjk4MywxLjY4NzUgMS42ODc1LDQuNTU0MTE0ODYgMS42ODc1LDguMDc4NzU5IEMxLjY4NzUsMTEuNjAyNjA1NSA0LjUzMzAyOTgzLDE0LjQ2OTIyMDQgOC4wMjk5ODQxNSwxNC40NjkyMjA0IEM5LjUyNTk2NTA2LDE0LjQ2OTIyMDQgMTAuODk5MjU5NywxMy45NDE5OTkzIDExLjk4NDQzOTUsMTMuMDY2MjIyMiBMMTQuOTYwNTcwOSwxNi4wNzgwMDIzIEMxNS4xMDkzNzc0LDE2LjIyOTU0ODQgMTUuMzA4ODQxNSwxNi4zMTI1IDE1LjUyMDk3MDEsMTYuMzEyNSBDMTUuNzMxNTE1NSwxNi4zMTI1IDE1LjkyOTM5NjYsMTYuMjMwMzQ2IDE2LjA3OTc4NjIsMTYuMDgwMzk1MSBDMTYuMjI4NTkyOCwxNS45Mjk2NDY2IDE2LjMxMTcwMjgsMTUuNzI5NDQ2MiAxNi4zMTI1LDE1LjUxNjQ4NCBDMTYuMzEzMjg1OSwxNS4zMDM1MjE4IDE2LjIzMDk2NzMsMTUuMTAyNTIzNyAxNi4wODEzNjkzLDE0Ljk1MTc3NTIiIGlkPSJGaWxsLTEiIGZpbGw9IiNCQUJBQzMiPjwvcGF0aD4KICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+) no-repeat 10px 10px;
         }
-    }</style>
-    <style data-emotion-css="13i5xe6">.css-13i5xe6 {
+    }
+
+	.css-13i5xe6 {
         font-size: 14px;
         font-weight: 400;
         -webkit-letter-spacing: -0.3px;
@@ -375,31 +320,26 @@
         text-overflow: ellipsis;
         caret-color: #353535;
     }
-
     .css-13i5xe6::-moz-placeholder {
         color: #74747b;
     }
-
     .css-13i5xe6:focus {
         outline: none;
     }
-
     .css-13i5xe6::-webkit-input-placeholder {
         color: #74747b;
     }
-
     .css-13i5xe6::-moz-placeholder {
         color: #74747b;
     }
-
     .css-13i5xe6:-ms-input-placeholder {
         color: #74747b;
     }
-
     .css-13i5xe6::placeholder {
         color: #74747b;
-    }</style>
-    <style data-emotion-css="ikj5sk">.css-ikj5sk {
+    }
+
+	.css-ikj5sk {
         display: none;
         -webkit-align-items: center;
         -webkit-box-align: center;
@@ -408,21 +348,22 @@
         width: 22px;
         height: 100%;
     }
-
     @media (min-width: 860px) {
         .css-ikj5sk {
             display: none;
         }
-    }</style>
-    <style data-emotion-css="14vwb0g">.css-14vwb0g {
+    }
+
+	.css-14vwb0g {
         display: inline-block;
         background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGZpbGw9IiNBMEEwQTAiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEyLjIwOCAxMS40TDkuMzggOC41N2wtLjgwOS44MDkgMi44MjkgMi44MjgtMi44MjkgMi44MjguODA5LjgwOSAyLjgyOC0yLjgyOSAyLjgyOCAyLjgyOS44MDktLjgwOS0yLjgyOS0yLjgyOCAyLjgyOS0yLjgyOC0uODA5LS44MDktMi44MjggMi44Mjl6TTEyIDIwYTggOCAwIDEgMSAwLTE2IDggOCAwIDAgMSAwIDE2eiIvPgo8L3N2Zz4K) no-repeat center;
         background-size: cover;
         width: 22px;
         height: 22px;
         cursor: pointer;
-    }</style>
-    <style data-emotion-css="1kqg656">.css-1kqg656 {
+    }
+
+	.css-1kqg656 {
         display: none;
         color: #74747b;
         font-size: 14px;
@@ -431,46 +372,46 @@
         -ms-letter-spacing: -0.3px;
         letter-spacing: -0.3px;
     }
-
     @media (min-width: 860px) {
         .css-1kqg656 {
             display: inline;
         }
-    }</style>
-    <style data-emotion-css="1r8hvvw">.css-1r8hvvw {
-        display: inline;
     }
 
+	.css-1r8hvvw {
+        display: inline;
+    }
     @media (min-width: 860px) {
         .css-1r8hvvw {
             display: none;
         }
-    }</style>
-    <style data-emotion-css="94q8z7">.css-94q8z7 {
+    }
+
+	.css-94q8z7 {
         vertical-align: top;
         width: 22px;
         height: 22px;
         display: inline;
     }
-
     .css-94q8z7 .fillTarget {
         fill: #74747b;
         opacity: 0.66;
         -webkit-transition: fill 300ms;
         transition: fill 300ms;
     }
-
     @media (min-width: 860px) {
         .css-94q8z7 {
             display: none;
         }
-    }</style>
-    <style data-emotion-css="ps9ul3">.css-ps9ul3 {
+    }
+
+	.css-ps9ul3 {
         width: 28px;
         height: 28px;
         cursor: pointer;
-    }</style>
-    <style data-emotion-css="ipiine">.css-ipiine {
+    }
+
+	.css-ipiine {
         display: block;
         border: solid 1px rgba(0, 0, 0, 0.08);
         border-radius: 50%;
@@ -492,33 +433,32 @@
         overflow: hidden;
         width: 32px;
         height: 32px;
-/*         -webkit-undefined; */
-/*         -ms-flex-undefined; */
-/*         undefined; */
         width: 28px;
         height: 28px;
         cursor: pointer;
-    }</style>
-    <style data-emotion-css="18d1ipb-ProfilePhotoImage">.css-18d1ipb-ProfilePhotoImage {
+    }
+
+	.css-18d1ipb-ProfilePhotoImage {
         position: relative;
         z-index: 1;
         background: url(https://an2-glx.amz.wtchn.net/assets/default/user/photo_file_name_small-ab0a7f6a92a282859192ba17dd4822023e22273e168c2daf05795e5171e66446.jpg) no-repeat center;
         background-size: cover;
         width: 100%;
         height: 100%;
-    }</style>
-    <style data-emotion-css="99klbh">.css-99klbh {
+    }
+
+	.css-99klbh {
         padding-top: 0px;
         padding-bottom: 56px;
     }
-
     @media (min-width: 719px) {
         .css-99klbh {
             padding-top: 0px;
             padding-bottom: unset;
         }
-    }</style>
-    <style data-emotion-css="wg0jak">.css-wg0jak {
+    }
+
+	.css-wg0jak {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -541,13 +481,13 @@
         height: 56px;
         padding: 16px;
     }
-
     @media (min-width: 719px) {
         .css-wg0jak {
             display: none;
         }
-    }</style>
-    <style data-emotion-css="1xc2mdf-StylelessButton">.css-1xc2mdf-StylelessButton {
+    }
+
+	.css-1xc2mdf-StylelessButton {
         background: none;
         padding: 0;
         border: none;
@@ -556,28 +496,28 @@
         width: 24px;
         height: 24px;
     }
-
     .css-1xc2mdf-StylelessButton:focus {
         outline: none;
-    }</style>
-    <style data-emotion-css="dsxoah">.css-dsxoah {
+    }
+
+	.css-dsxoah {
         width: 24px;
         height: 24px;
     }
-
     .css-dsxoah .fillTarget {
         fill: #fff;
         stroke: #fff;
-    }</style>
-    <style data-emotion-css="13ol6c1">.css-13ol6c1 {
+    }
+
+	.css-13ol6c1 {
         width: 24px;
         height: 24px;
     }
-
     .css-13ol6c1 .fillTarget {
         fill: #fff;
-    }</style>
-    <style data-emotion-css="10ofaaw">@media (min-width: 719px) {
+    }
+
+	@media (min-width: 719px) {
         .css-10ofaaw {
             display: -webkit-box;
             display: -webkit-flex;
@@ -588,58 +528,56 @@
             flex-direction: column;
             min-height: calc(100vh - 0px);
         }
-    }</style>
-    <style data-emotion-css="1au2ec">.css-1au2ec {
-        background: #f8f8f8;
     }
 
+	.css-1au2ec {
+        background: #f8f8f8;
+    }
     @media (min-width: 719px) {
         .css-1au2ec {
             -webkit-flex: 1;
             -ms-flex: 1;
             flex: 1;
         }
-    }</style>
-    <style data-emotion-css="x864dh-Self">.css-x864dh-Self {
-        background: #fff;
     }
 
+	.css-x864dh-Self {
+        background: #fff;
+    }
     @media (min-width: 719px) {
         .css-x864dh-Self {
             border-bottom: 1px solid #e3e3e3;
         }
-    }</style>
-    <style data-emotion-css="wb83du-PosterContainer">.css-wb83du-PosterContainer {
+    }
+
+	.css-wb83du-PosterContainer {
         position: relative;
         box-sizing: border-box;
         min-height: 209px;
         padding: 44px 0 0;
     }
-
     @media (min-width: 719px) {
         .css-wb83du-PosterContainer {
             padding: 300px 0 0;
         }
     }
-
     @media (min-width: 1023px) {
         .css-wb83du-PosterContainer {
             padding: 270px 0 0;
         }
     }
-
     @media (min-width: 1300px) {
         .css-wb83du-PosterContainer {
             padding: 270px 0 0;
         }
     }
-
     @media (min-width: 1400px) {
         .css-wb83du-PosterContainer {
             padding: 270px 0 0;
         }
-    }</style>
-    <style data-emotion-css="oqg1df-BlurPosterBlock">.css-oqg1df-BlurPosterBlock {
+    }
+
+	.css-oqg1df-BlurPosterBlock {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -655,14 +593,16 @@
         width: 100%;
         height: 100%;
         overflow: hidden;
-    }</style>
-    <style data-emotion-css="1e8ou7s-LeftBackground">.css-1e8ou7s-LeftBackground {
+    }
+
+	.css-1e8ou7s-LeftBackground {
         -webkit-flex: 1;
         -ms-flex: 1;
         flex: 1;
         background: transparent;
-    }</style>
-    <style data-emotion-css="vp38c5-BlurPoster">.css-vp38c5-BlurPoster {
+    }
+
+	.css-vp38c5-BlurPoster {
         position: absolute;
         top: -10%;
         left: -10%;
@@ -671,7 +611,6 @@
         background: #282b38;
         background-size: cover;
     }
-
     @media (min-width: 719px) {
         .css-vp38c5-BlurPoster {
             position: relative;
@@ -683,56 +622,56 @@
             filter: none;
         }
     }
-
     @media (min-width: 1023px) {
         .css-vp38c5-BlurPoster {
             width: 100% px;
         }
     }
-
     @media (min-width: 1300px) {
         .css-vp38c5-BlurPoster {
             width: 100% px;
         }
     }
-
     @media (min-width: 1400px) {
         .css-vp38c5-BlurPoster {
             width: 100% px;
         }
-    }</style>
-    <style data-emotion-css="1e3gzd8-RightBackground">.css-1e3gzd8-RightBackground {
+    }
+
+	.css-1e3gzd8-RightBackground {
         -webkit-flex: 1;
         -ms-flex: 1;
         flex: 1;
         background: transparent;
-    }</style>
-    <style data-emotion-css="569z5v">.css-569z5v {
-        margin: 0 auto;
     }
 
+	.css-569z5v {
+        margin: 0 auto;
+    }
     @media (min-width: 719px) {
         .css-569z5v {
             max-width: 640px;
         }
     }
-
     @media (min-width: 1023px) {
         .css-569z5v {
             max-width: 960px;
         }
-    }</style>
-    <style data-emotion-css="1po9d5k">@media (min-width: 1023px) {
+    }
+
+	@media (min-width: 1023px) {
         .css-1po9d5k {
             margin: 0 -8px;
         }
-    }</style>
-    <style data-emotion-css="1d6udxb">@media (min-width: 1023px) {
+    }
+
+	@media (min-width: 1023px) {
         .css-1d6udxb {
             padding: 0 8px;
         }
-    }</style>
-    <style data-emotion-css="11zdk8l-PosterWithRankingInfoBlock">.css-11zdk8l-PosterWithRankingInfoBlock {
+    }
+
+	.css-11zdk8l-PosterWithRankingInfoBlock {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -745,7 +684,6 @@
         align-items: flex-end;
         padding: 0 20px 18px;
     }
-
     @media (min-width: 719px) {
         .css-11zdk8l-PosterWithRankingInfoBlock {
             position: relative;
@@ -753,13 +691,13 @@
             padding: 0 0 0 153px;
         }
     }
-
     @media (min-width: 1023px) {
         .css-11zdk8l-PosterWithRankingInfoBlock {
             padding: 0 0 0 166px;
         }
-    }</style>
-    <style data-emotion-css="omik0f">.css-omik0f {
+    }
+
+	.css-omik0f {
         background: #f8f8f8;
         display: block;
         position: relative;
@@ -772,7 +710,6 @@
         border: solid 1px #fff;
         border-radius: 3px;
     }
-
     @media (min-width: 719px) {
         .css-omik0f {
             position: absolute;
@@ -784,7 +721,6 @@
             box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
         }
     }
-
     @media (min-width: 1023px) {
         .css-omik0f {
             width: 166px;
@@ -795,8 +731,9 @@
     .css-omik0f span {
         background-color: #142A3D;
         background-size: contain;
-    }</style>
-    <style data-emotion-css="1si8mzt-StyledSelf">.css-1si8mzt-StyledSelf {
+    }
+
+	.css-1si8mzt-StyledSelf {
         position: relative;
         overflow: hidden;
         background: #f8f8f8;
@@ -811,7 +748,6 @@
         border: solid 1px #fff;
         border-radius: 3px;
     }
-
     @media (min-width: 719px) {
         .css-1si8mzt-StyledSelf {
             position: absolute;
@@ -823,7 +759,6 @@
             box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
         }
     }
-
     @media (min-width: 1023px) {
         .css-1si8mzt-StyledSelf {
             width: 166px;
@@ -834,8 +769,9 @@
     .css-1si8mzt-StyledSelf span {
         background-color: #142A3D;
         background-size: contain;
-    }</style>
-    <style data-emotion-css="5sjqrq-StyledBackground">.css-5sjqrq-StyledBackground {
+    }
+
+	.css-5sjqrq-StyledBackground {
         display: inline-block;
         position: absolute;
         top: 0;
@@ -848,8 +784,9 @@
         opacity: 0;
         -webkit-transition: 300ms;
         transition: 300ms;
-    }</style>
-    <style data-emotion-css="1w5skp4-ContentMetaInfoBlock">.css-1w5skp4-ContentMetaInfoBlock {
+    }
+
+	.css-1w5skp4-ContentMetaInfoBlock {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -870,31 +807,30 @@
         color: #dddee4;
         opacity: 0.8;
     }
-
     @media (min-width: 719px) {
         .css-1w5skp4-ContentMetaInfoBlock {
             min-height: unset;
             margin-left: unset;
         }
-
         .css-1w5skp4-ContentMetaInfoBlock [class*="Detail"] {
             display: none;
         }
-    }</style>
-    <style data-emotion-css="j40qn0-TitleOnPosterBlock">.css-j40qn0-TitleOnPosterBlock {
+    }
+
+	.css-j40qn0-TitleOnPosterBlock {
         color: #fff;
         font-size: 24px;
         line-height: 30px;
         overflow: hidden;
         text-overflow: ellipsis;
     }
-
     @media (min-width: 719px) {
         .css-j40qn0-TitleOnPosterBlock {
             display: none;
         }
-    }</style>
-    <style data-emotion-css="11h0kfd-Detail">.css-11h0kfd-Detail {
+    }
+
+	.css-11h0kfd-Detail {
         display: none;
         color: rgba(0, 0, 0, 0.5);
         font-size: 15px;
@@ -907,13 +843,11 @@
         box-sizing: border-box;
         margin-top: 3px;
     }
-
     @media (min-width: 719px) {
         .css-11h0kfd-Detail {
             display: block;
         }
     }
-
     @media (min-width: 1023px) {
         .css-11h0kfd-Detail {
             font-size: 17px;
@@ -925,36 +859,36 @@
             line-height: 22px;
             margin-top: 4px;
         }
-    }</style>
-    <style data-emotion-css="1p7n6er-Pane">.css-1p7n6er-Pane {
+    }
+
+	.css-1p7n6er-Pane {
         text-align: center;
         padding: 0 15px 0;
     }
-
     @media (min-width: 719px) {
         .css-1p7n6er-Pane {
             padding: 14px 16px 22px;
         }
-    }</style>
-    <style data-emotion-css="13h49w0-PaneInner">.css-13h49w0-PaneInner::after {
+    }
+
+	.css-13h49w0-PaneInner::after {
         content: "";
         display: block;
         clear: both;
     }
-
     @media (min-width: 719px) {
         .css-13h49w0-PaneInner {
             text-align: left;
             margin: 0 0 0 173px;
         }
     }
-
     @media (min-width: 1023px) {
         .css-13h49w0-PaneInner {
             margin: 0 0 0 191px;
         }
-    }</style>
-    <style data-emotion-css="171k8ad-Title">.css-171k8ad-Title {
+    }
+
+	.css-171k8ad-Title {
         display: none;
         font-size: 25px;
         font-weight: 700;
@@ -967,14 +901,12 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
-
     @media (min-width: 719px) {
         .css-171k8ad-Title {
             display: block;
             width: 520px;
         }
     }
-
     @media (min-width: 1023px) {
         .css-171k8ad-Title {
             font-size: 33px;
@@ -986,8 +918,9 @@
             line-height: 40px;
             line-height: 41px;
         }
-    }</style>
-    <style data-emotion-css="og1gu8-ContentRatings">.css-og1gu8-ContentRatings {
+    }
+
+	.css-og1gu8-ContentRatings {
         color: #282828;
         font-size: 15px;
         font-weight: 400;
@@ -1002,11 +935,9 @@
         padding: 9px 0;
         border-bottom: 1px solid #ededed;
     }
-
     .css-og1gu8-ContentRatings em {
         color: #ff2f6e;
     }
-
     @media (min-width: 719px) {
         .css-og1gu8-ContentRatings {
             border-top: 1px solid #ededed;
@@ -1014,7 +945,6 @@
             margin-top: 14px;
         }
     }
-
     @media (min-width: 1023px) {
         .css-og1gu8-ContentRatings {
             font-size: 17px;
@@ -1026,8 +956,9 @@
             line-height: 22px;
             padding: 8px 0;
         }
-    }</style>
-    <style data-emotion-css="5qj1gb-ContentActionSection">.css-5qj1gb-ContentActionSection {
+    }
+
+	.css-5qj1gb-ContentActionSection {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -1040,7 +971,6 @@
         -ms-flex-align: center;
         align-items: center;
     }
-
     @media (min-width: 719px) {
         .css-5qj1gb-ContentActionSection {
             -webkit-flex-direction: row;
@@ -1049,13 +979,13 @@
             height: 58px;
             margin-top: 20px;
         }
-    }</style>
-    <style data-emotion-css="1jlb6q">.css-1jlb6q {
+    }
+
+	.css-1jlb6q {
         width: 228px;
         height: 66px;
         margin: 20px auto 24px;
     }
-
     @media (min-width: 719px) {
         .css-1jlb6q {
             width: 196px;
@@ -1063,30 +993,31 @@
             margin: 0;
         }
     }
-
     @media (min-width: 1023px) {
         .css-1jlb6q {
             width: 238px;
             height: 57px;
         }
-    }</style>
-    <style data-emotion-css="yt2kjp">.css-yt2kjp {
+    }
+
+	.css-yt2kjp {
         color: #787878;
         font-size: 14px;
         line-height: 20px;
         text-align: center;
     }
-
     @media (min-width: 719px) {
         .css-yt2kjp {
             font-size: 12px;
             line-height: 16px;
         }
-    }</style>
-    <style data-emotion-css="1k5zzs9">.css-1k5zzs9 {
+    }
+
+	.css-1k5zzs9 {
         display: inline-block;
-    }</style>
-    <style data-emotion-css="1m7ruyk">.css-1m7ruyk {
+    }
+
+	.css-1m7ruyk {
         position: relative;
         text-align: center;
         width: 200px;
@@ -1094,46 +1025,44 @@
         cursor: pointer;
         width: 100%;
     }
-
     .css-1m7ruyk svg {
         width: 44px;
         height: 44px;
     }
-
     @media (min-width: 719px) {
         .css-1m7ruyk {
             width: 160px;
             margin: 3px auto 0;
         }
-
         .css-1m7ruyk svg {
             width: 32px;
             height: 32px;
         }
     }
-
     @media (min-width: 1023px) {
         .css-1m7ruyk {
             width: 190px;
         }
-
         .css-1m7ruyk svg {
             width: 38px;
             height: 38px;
         }
-    }</style>
-    <style data-emotion-css="1mbuso5">.css-1mbuso5 {
+    }
+
+	.css-1mbuso5 {
         display: inline-block;
         position: relative;
         vertical-align: top;
         height: 40px;
-    }</style>
-    <style data-emotion-css="fnwbjg">.css-fnwbjg {
+    }
+
+	.css-fnwbjg {
         vertical-align: top;
         width: 40px;
         height: 40px;
-    }</style>
-    <style data-emotion-css="18l1qa">.css-18l1qa {
+    }
+
+	.css-18l1qa {
         position: absolute;
         top: 0;
         left: 0;
@@ -1141,26 +1070,26 @@
         width: 0;
         height: 40px;
         overflow: hidden;
-    }</style>
-    <style data-emotion-css="s5x9hn-ContentActionDivider">.css-s5x9hn-ContentActionDivider {
+    }
+
+	.css-s5x9hn-ContentActionDivider {
         float: left;
         background: #ededed;
         width: 100%;
         height: 1px;
     }
-
     @media (min-width: 719px) {
         .css-s5x9hn-ContentActionDivider {
             display: block;
             width: 1px;
             height: 100%;
         }
-    }</style>
-    <style data-emotion-css="1xki7ez-ButtonBlock">.css-1xki7ez-ButtonBlock {
+    }
+
+	.css-1xki7ez-ButtonBlock {
         width: 100%;
         margin: 16.5px -1.5px;
     }
-
     @media (min-width: 719px) {
         .css-1xki7ez-ButtonBlock {
             width: auto;
@@ -1168,14 +1097,14 @@
             margin: 7.5px -1.5px;
         }
     }
-
     @media (min-width: 1023px) {
         .css-1xki7ez-ButtonBlock {
             padding: 0 0 0 30px;
             margin: 0 -16px;
         }
-    }</style>
-    <style data-emotion-css="1tc9iuk-StylelessButton-ContentActionButton">.css-1tc9iuk-StylelessButton-ContentActionButton {
+    }
+
+	.css-1tc9iuk-StylelessButton-ContentActionButton {
         background: none;
         padding: 0;
         border: none;
@@ -1205,22 +1134,18 @@
         height: 43px;
         margin: 0 1.5px;
     }
-
     .css-1tc9iuk-StylelessButton-ContentActionButton:focus {
         outline: none;
     }
-
     @media (min-width: 719px) {
         .css-1tc9iuk-StylelessButton-ContentActionButton {
             line-height: 14px;
             min-width: 55px;
         }
-
         .css-1tc9iuk-StylelessButton-ContentActionButton > [class*="Icon"] {
             margin: 0 0 4px 0;
         }
     }
-
     @media (min-width: 1023px) {
         .css-1tc9iuk-StylelessButton-ContentActionButton {
             -webkit-flex-direction: row;
@@ -1232,35 +1157,31 @@
             height: unset;
             margin: 0 16px;
         }
-
         .css-1tc9iuk-StylelessButton-ContentActionButton [class*="Icon"] {
             margin: 0 7px 0 0;
         }
     }
-
     .css-1tc9iuk-StylelessButton-ContentActionButton > [class*="Icon"] {
         -webkit-transition: 300ms;
         transition: 300ms;
     }
-
     .css-1tc9iuk-StylelessButton-ContentActionButton > [class*="Icon"][class*="rotatingIcon"] {
         -webkit-transform: rotate(90deg);
         -ms-transform: rotate(90deg);
         transform: rotate(90deg);
     }
-
     .css-1tc9iuk-StylelessButton-ContentActionButton:hover > [class*="Icon"][class*="rotatingIcon"] {
         -webkit-transform: scale(1.3) rotate(90deg);
         -ms-transform: scale(1.3) rotate(90deg);
         transform: scale(1.3) rotate(90deg);
     }
-
     .css-1tc9iuk-StylelessButton-ContentActionButton:hover > [class*="Icon"]:not([class*="rotatingIcon"]) {
         -webkit-transform: scale(1.3);
         -ms-transform: scale(1.3);
         transform: scale(1.3);
-    }</style>
-    <style data-emotion-css="1q1i623-SVG">.css-1q1i623-SVG {
+    }
+
+	.css-1q1i623-SVG {
         display: block;
         color: inherit;
         width: auto;
@@ -1268,16 +1189,15 @@
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
     }
-
     .css-1q1i623-SVG svg {
         width: 24px;
         height: auto;
     }
-
     .css-1q1i623-SVG > div {
         line-height: 0;
-    }</style>
-    <style data-emotion-css="3p9quy-StylelessButton-ContentActionButton-ContentCommentButtonOnXs">.css-3p9quy-StylelessButton-ContentActionButton-ContentCommentButtonOnXs {
+    }
+
+	.css-3p9quy-StylelessButton-ContentActionButton-ContentCommentButtonOnXs {
         background: none;
         padding: 0;
         border: none;
@@ -1307,22 +1227,18 @@
         height: 43px;
         margin: 0 1.5px;
     }
-
     .css-3p9quy-StylelessButton-ContentActionButton-ContentCommentButtonOnXs:focus {
         outline: none;
     }
-
     @media (min-width: 719px) {
         .css-3p9quy-StylelessButton-ContentActionButton-ContentCommentButtonOnXs {
             line-height: 14px;
             min-width: 55px;
         }
-
         .css-3p9quy-StylelessButton-ContentActionButton-ContentCommentButtonOnXs > [class*="Icon"] {
             margin: 0 0 4px 0;
         }
     }
-
     @media (min-width: 1023px) {
         .css-3p9quy-StylelessButton-ContentActionButton-ContentCommentButtonOnXs {
             -webkit-flex-direction: row;
@@ -1334,41 +1250,36 @@
             height: unset;
             margin: 0 16px;
         }
-
         .css-3p9quy-StylelessButton-ContentActionButton-ContentCommentButtonOnXs [class*="Icon"] {
             margin: 0 7px 0 0;
         }
     }
-
     .css-3p9quy-StylelessButton-ContentActionButton-ContentCommentButtonOnXs > [class*="Icon"] {
         -webkit-transition: 300ms;
         transition: 300ms;
     }
-
     .css-3p9quy-StylelessButton-ContentActionButton-ContentCommentButtonOnXs > [class*="Icon"][class*="rotatingIcon"] {
         -webkit-transform: rotate(90deg);
         -ms-transform: rotate(90deg);
         transform: rotate(90deg);
     }
-
     .css-3p9quy-StylelessButton-ContentActionButton-ContentCommentButtonOnXs:hover > [class*="Icon"][class*="rotatingIcon"] {
         -webkit-transform: scale(1.3) rotate(90deg);
         -ms-transform: scale(1.3) rotate(90deg);
         transform: scale(1.3) rotate(90deg);
     }
-
     .css-3p9quy-StylelessButton-ContentActionButton-ContentCommentButtonOnXs:hover > [class*="Icon"]:not([class*="rotatingIcon"]) {
         -webkit-transform: scale(1.3);
         -ms-transform: scale(1.3);
         transform: scale(1.3);
     }
-
     @media (min-width: 719px) {
         .css-3p9quy-StylelessButton-ContentActionButton-ContentCommentButtonOnXs {
             display: none;
         }
-    }</style>
-    <style data-emotion-css="orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm">.css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm {
+    }
+
+	.css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm {
         background: none;
         padding: 0;
         border: none;
@@ -1400,22 +1311,18 @@
         position: relative;
         display: none;
     }
-
     .css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm:focus {
         outline: none;
     }
-
     @media (min-width: 719px) {
         .css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm {
             line-height: 14px;
             min-width: 55px;
         }
-
         .css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm > [class*="Icon"] {
             margin: 0 0 4px 0;
         }
     }
-
     @media (min-width: 1023px) {
         .css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm {
             -webkit-flex-direction: row;
@@ -1427,35 +1334,29 @@
             height: unset;
             margin: 0 16px;
         }
-
         .css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm [class*="Icon"] {
             margin: 0 7px 0 0;
         }
     }
-
     .css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm > [class*="Icon"] {
         -webkit-transition: 300ms;
         transition: 300ms;
     }
-
     .css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm > [class*="Icon"][class*="rotatingIcon"] {
         -webkit-transform: rotate(90deg);
         -ms-transform: rotate(90deg);
         transform: rotate(90deg);
     }
-
     .css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm:hover > [class*="Icon"][class*="rotatingIcon"] {
         -webkit-transform: scale(1.3) rotate(90deg);
         -ms-transform: scale(1.3) rotate(90deg);
         transform: scale(1.3) rotate(90deg);
     }
-
     .css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm:hover > [class*="Icon"]:not([class*="rotatingIcon"]) {
         -webkit-transform: scale(1.3);
         -ms-transform: scale(1.3);
         transform: scale(1.3);
     }
-
     @media (min-width: 719px) {
         .css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm {
             display: -webkit-inline-box;
@@ -1463,8 +1364,9 @@
             display: -ms-inline-flexbox;
             display: inline-flex;
         }
-    }</style>
-    <style data-emotion-css="4w39q2-StyledDropdownWrapper">.css-4w39q2-StyledDropdownWrapper {
+    }
+
+	.css-4w39q2-StyledDropdownWrapper {
         display: none;
         position: absolute;
         top: 100%;
@@ -1472,13 +1374,13 @@
         z-index: 10;
         visibility: hidden;
     }
-
     @media (min-width: 719px) {
         .css-4w39q2-StyledDropdownWrapper {
             display: block;
         }
-    }</style>
-    <style data-emotion-css="ve4kut">.css-ve4kut {
+    }
+
+	.css-ve4kut {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -1492,11 +1394,13 @@
         padding: 5px;
         border-radius: 7px;
         box-shadow: 0 1px 6px rgba(0, 0, 0, 0.17);
-    }</style>
-    <style data-emotion-css="14a3x8q-StyledDropdownMenuItem">.css-14a3x8q-StyledDropdownMenuItem {
+    }
+
+	.css-14a3x8q-StyledDropdownMenuItem {
         color: #292a32;
-    }</style>
-    <style data-emotion-css="1t4uwd9-StyledDropdownMenuItem">.css-1t4uwd9-StyledDropdownMenuItem {
+    }
+
+	.css-1t4uwd9-StyledDropdownMenuItem {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -1514,19 +1418,17 @@
         cursor: pointer;
         color: #292a32;
     }
-
     .css-1t4uwd9-StyledDropdownMenuItem:hover {
         background: rgba(41, 42, 50, 0.08);
     }
-
     .css-1t4uwd9-StyledDropdownMenuItem:not(:last-of-type) {
         margin-bottom: 3px;
     }
-
     .css-1t4uwd9-StyledDropdownMenuItem .icon {
         margin: 0 12px;
-    }</style>
-    <style data-emotion-css="oi7iec-StylelessButton-ContentActionButton-ContentMoreButtonOnXs">.css-oi7iec-StylelessButton-ContentActionButton-ContentMoreButtonOnXs {
+    }
+
+	.css-oi7iec-StylelessButton-ContentActionButton-ContentMoreButtonOnXs {
         background: none;
         padding: 0;
         border: none;
@@ -1556,22 +1458,18 @@
         height: 43px;
         margin: 0 1.5px;
     }
-
     .css-oi7iec-StylelessButton-ContentActionButton-ContentMoreButtonOnXs:focus {
         outline: none;
     }
-
     @media (min-width: 719px) {
         .css-oi7iec-StylelessButton-ContentActionButton-ContentMoreButtonOnXs {
             line-height: 14px;
             min-width: 55px;
         }
-
         .css-oi7iec-StylelessButton-ContentActionButton-ContentMoreButtonOnXs > [class*="Icon"] {
             margin: 0 0 4px 0;
         }
     }
-
     @media (min-width: 1023px) {
         .css-oi7iec-StylelessButton-ContentActionButton-ContentMoreButtonOnXs {
             -webkit-flex-direction: row;
@@ -1583,41 +1481,36 @@
             height: unset;
             margin: 0 16px;
         }
-
         .css-oi7iec-StylelessButton-ContentActionButton-ContentMoreButtonOnXs [class*="Icon"] {
             margin: 0 7px 0 0;
         }
     }
-
     .css-oi7iec-StylelessButton-ContentActionButton-ContentMoreButtonOnXs > [class*="Icon"] {
         -webkit-transition: 300ms;
         transition: 300ms;
     }
-
     .css-oi7iec-StylelessButton-ContentActionButton-ContentMoreButtonOnXs > [class*="Icon"][class*="rotatingIcon"] {
         -webkit-transform: rotate(90deg);
         -ms-transform: rotate(90deg);
         transform: rotate(90deg);
     }
-
     .css-oi7iec-StylelessButton-ContentActionButton-ContentMoreButtonOnXs:hover > [class*="Icon"][class*="rotatingIcon"] {
         -webkit-transform: scale(1.3) rotate(90deg);
         -ms-transform: scale(1.3) rotate(90deg);
         transform: scale(1.3) rotate(90deg);
     }
-
     .css-oi7iec-StylelessButton-ContentActionButton-ContentMoreButtonOnXs:hover > [class*="Icon"]:not([class*="rotatingIcon"]) {
         -webkit-transform: scale(1.3);
         -ms-transform: scale(1.3);
         transform: scale(1.3);
     }
-
     @media (min-width: 719px) {
         .css-oi7iec-StylelessButton-ContentActionButton-ContentMoreButtonOnXs {
             display: none;
         }
-    }</style>
-    <style data-emotion-css="1u6iefh-StylelessButton-ContentActionButton-ContentMoreButtonOnSm">.css-1u6iefh-StylelessButton-ContentActionButton-ContentMoreButtonOnSm {
+    }
+
+	.css-1u6iefh-StylelessButton-ContentActionButton-ContentMoreButtonOnSm {
         background: none;
         padding: 0;
         border: none;
@@ -1649,22 +1542,18 @@
         position: relative;
         display: none;
     }
-
     .css-1u6iefh-StylelessButton-ContentActionButton-ContentMoreButtonOnSm:focus {
         outline: none;
     }
-
     @media (min-width: 719px) {
         .css-1u6iefh-StylelessButton-ContentActionButton-ContentMoreButtonOnSm {
             line-height: 14px;
             min-width: 55px;
         }
-
         .css-1u6iefh-StylelessButton-ContentActionButton-ContentMoreButtonOnSm > [class*="Icon"] {
             margin: 0 0 4px 0;
         }
     }
-
     @media (min-width: 1023px) {
         .css-1u6iefh-StylelessButton-ContentActionButton-ContentMoreButtonOnSm {
             -webkit-flex-direction: row;
@@ -1676,35 +1565,29 @@
             height: unset;
             margin: 0 16px;
         }
-
         .css-1u6iefh-StylelessButton-ContentActionButton-ContentMoreButtonOnSm [class*="Icon"] {
             margin: 0 7px 0 0;
         }
     }
-
     .css-1u6iefh-StylelessButton-ContentActionButton-ContentMoreButtonOnSm > [class*="Icon"] {
         -webkit-transition: 300ms;
         transition: 300ms;
     }
-
     .css-1u6iefh-StylelessButton-ContentActionButton-ContentMoreButtonOnSm > [class*="Icon"][class*="rotatingIcon"] {
         -webkit-transform: rotate(90deg);
         -ms-transform: rotate(90deg);
         transform: rotate(90deg);
     }
-
     .css-1u6iefh-StylelessButton-ContentActionButton-ContentMoreButtonOnSm:hover > [class*="Icon"][class*="rotatingIcon"] {
         -webkit-transform: scale(1.3) rotate(90deg);
         -ms-transform: scale(1.3) rotate(90deg);
         transform: scale(1.3) rotate(90deg);
     }
-
     .css-1u6iefh-StylelessButton-ContentActionButton-ContentMoreButtonOnSm:hover > [class*="Icon"]:not([class*="rotatingIcon"]) {
         -webkit-transform: scale(1.3);
         -ms-transform: scale(1.3);
         transform: scale(1.3);
     }
-
     @media (min-width: 719px) {
         .css-1u6iefh-StylelessButton-ContentActionButton-ContentMoreButtonOnSm {
             display: -webkit-inline-box;
@@ -1712,64 +1595,62 @@
             display: -ms-inline-flexbox;
             display: inline-flex;
         }
-    }</style>
-    <style data-emotion-css="1s8bs5j">.css-1s8bs5j {
-        overflow: hidden;
     }
 
+	.css-1s8bs5j {
+        overflow: hidden;
+    }
     @media (min-width: 719px) {
         .css-1s8bs5j {
             padding: 28px 0 48px;
         }
-    }</style>
-    <style data-emotion-css="bs9kkj">.css-bs9kkj {
-        margin: 0 auto;
     }
 
+	.css-bs9kkj {
+        margin: 0 auto;
+    }
     @media (min-width: 719px) {
         .css-bs9kkj {
             max-width: 640px;
         }
     }
-
     @media (min-width: 1023px) {
         .css-bs9kkj {
             max-width: 976px;
         }
-    }</style>
-    <style data-emotion-css="uvsgck">@media (min-width: 719px) {
+    }
+
+	@media (min-width: 719px) {
         .css-uvsgck {
             float: left;
             width: 100%;
         }
     }
-
     @media (min-width: 1023px) {
         .css-uvsgck {
             float: left;
             width: 640px;
             padding: 0 8px;
         }
-    }</style>
-    <style data-emotion-css="1nxfhfk">.css-1nxfhfk {
-        margin: 12px 0 0;
     }
 
+	.css-1nxfhfk {
+        margin: 12px 0 0;
+    }
     @media (min-width: 719px) {
         .css-1nxfhfk {
             margin: 0;
         }
-    }</style>
-    <style data-emotion-css="1jwavn9-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock">.css-1jwavn9-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock {
+    }
+
+	.css-1jwavn9-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock {
         background: #fff;
         border-color: #e3e3e3 !important;
         overflow: hidden;
     }
-
     .css-1jwavn9-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock:empty {
         display: none;
     }
-
     @media (min-width: 719px) and (max-width: 1023px) {
         .css-1jwavn9-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock {
             border-right: 1px solid;
@@ -1779,7 +1660,6 @@
             border-top-right-radius: 6px;
         }
     }
-
     @media (min-width: 1023px) {
         .css-1jwavn9-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock {
             border-right: 1px solid;
@@ -1788,17 +1668,21 @@
             border-top-left-radius: 6px;
             border-top-right-radius: 6px;
         }
-    }</style>
-    <style data-emotion-css="1tywu13">.css-1tywu13 {
+    }
+
+	.css-1tywu13 {
         padding: 8px 0 0;
-    }</style>
-    <style data-emotion-css="1y901al-Row">.css-1y901al-Row {
+    }
+
+	.css-1y901al-Row {
         margin: 0 20px;
-    }</style>
-    <style data-emotion-css="1ue9xs6">.css-1ue9xs6 {
+    }
+
+	.css-1ue9xs6 {
         overflow: hidden;
-    }</style>
-    <style data-emotion-css="1wtjsst">.css-1wtjsst {
+    }
+
+	.css-1wtjsst {
         float: left;
         color: #000;
         font-size: 19px;
@@ -1809,20 +1693,22 @@
         letter-spacing: -0.7px;
         line-height: 28px;
         margin: 8px 0;
-    }</style>
-    <style data-emotion-css="s289sk">.css-s289sk {
-        float: right;
-    }</style>
-    <style data-emotion-css="1ugqy9j">.css-1ugqy9j {
-        margin: 12px 0;
     }
 
+	.css-s289sk {
+        float: right;
+    }
+
+	.css-1ugqy9j {
+        margin: 12px 0;
+    }
     .css-1ugqy9j > a {
         color: #ff2f6e;
         -webkit-text-decoration: none;
         text-decoration: none;
-    }</style>
-    <style data-emotion-css="1k6vajx-Overview">.css-1k6vajx-Overview {
+    }
+
+	.css-1k6vajx-Overview {
         font-size: 15px;
         font-weight: 400;
         -webkit-letter-spacing: -0.5px;
@@ -1831,8 +1717,9 @@
         letter-spacing: -0.5px;
         line-height: 20px;
         color: #4a4a4a;
-    }</style>
-    <style data-emotion-css="wvh1uf-Summary">.css-wvh1uf-Summary {
+    }
+
+	.css-wvh1uf-Summary {
         color: #4a4a4a;
         font-size: 15px;
         font-weight: 400;
@@ -1842,22 +1729,25 @@
         letter-spacing: -0.2px;
         line-height: 24px;
         margin: 8px 0;
-    }</style>
-    <style data-emotion-css="1t00yeb-OverviewMeta">.css-1t00yeb-OverviewMeta {
+    }
+
+	.css-1t00yeb-OverviewMeta {
         display: inline-block;
         vertical-align: top;
         white-space: nowrap;
         width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
-    }</style>
-    <style data-emotion-css="k82gae-StyledSelf">.css-k82gae-StyledSelf {
+    }
+
+	.css-k82gae-StyledSelf {
         word-break: break-all;
         max-height: 72px;
         margin: 0;
         overflow: hidden;
-    }</style>
-    <style data-emotion-css="kywn6v-StyledText">.css-kywn6v-StyledText {
+    }
+
+	.css-kywn6v-StyledText {
         white-space: pre-wrap;
         color: #4a4a4a;
         font-size: 15px;
@@ -1867,23 +1757,25 @@
         -ms-letter-spacing: -0.2px;
         letter-spacing: -0.2px;
         line-height: 24px;
-    }</style>
-    <style data-emotion-css="g67iqr">.css-g67iqr {
+    }
+
+	.css-g67iqr {
         border: 0;
         border-bottom: 1px solid #f0f0f0;
         margin: 20px 0 0;
-    }</style>
-    <style data-emotion-css="usdi1z">.css-usdi1z {
+    }
+
+	.css-usdi1z {
         position: relative;
         -webkit-transform: translate3d(0, 0, 0);
         -ms-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
     }
-
     .css-usdi1z:hover .arrow_button {
         opacity: 1;
-    }</style>
-    <style data-emotion-css="awu20a">.css-awu20a {
+    }
+
+	.css-awu20a {
         overflow-x: auto;
         overflow-y: hidden;
         -webkit-overflow-scrolling: touch;
@@ -1892,26 +1784,28 @@
         -ms-scrollbar-width: none;
         scrollbar-width: none;
     }
-
     .css-awu20a::-webkit-scrollbar {
         display: none !important;
-    }</style>
-    <style data-emotion-css="174lxc3">.css-174lxc3 {
+    }
+
+	.css-174lxc3 {
         -webkit-transition: 500ms;
         transition: 500ms;
-    }</style>
-    <style data-emotion-css="13avw3k-PeopleUlRow">.css-13avw3k-PeopleUlRow {
+    }
+
+	.css-13avw3k-PeopleUlRow {
         margin: 0 15px 0 25px;
-    }</style>
-    <style data-emotion-css="2ymp91-PeopleStackableUl">.css-2ymp91-PeopleStackableUl {
+    }
+
+	.css-2ymp91-PeopleStackableUl {
         margin-top: 4px;
         margin-bottom: 16px;
     }
-
     .css-2ymp91-PeopleStackableUl .profilePhotoBlock, .css-2ymp91-PeopleStackableUl [class*="ProfilePhotoImage"] {
         border-radius: 5px !important;
-    }</style>
-    <style data-emotion-css="1br354h-VisualUl-PeopleStackableUl">.css-1br354h-VisualUl-PeopleStackableUl {
+    }
+
+	.css-1br354h-VisualUl-PeopleStackableUl {
         list-style: none;
         padding: 0;
         margin: 0;
@@ -1931,46 +1825,37 @@
         margin-top: 4px;
         margin-bottom: 16px;
     }
-
     .css-1br354h-VisualUl-PeopleStackableUl::after {
         content: "";
         display: inline-block;
         width: 20px;
         height: 100%;
     }
-
     @media (min-width: 719px) {
         .css-1br354h-VisualUl-PeopleStackableUl > li {
             width: 50%;
-/*             -webkit-undefined; */
-/*             -ms-flex-undefined; */
-/*             undefined; */
         }
     }
-
     @media (min-width: 1023px) {
         .css-1br354h-VisualUl-PeopleStackableUl > li {
             width: 50%;
-/*             -webkit-undefined; */
-/*             -ms-flex-undefined; */
-/*             undefined; */
         }
     }
-
     .css-1br354h-VisualUl-PeopleStackableUl .profilePhotoBlock, .css-1br354h-VisualUl-PeopleStackableUl [class*="ProfilePhotoImage"] {
         border-radius: 5px !important;
-    }</style>
-    <style data-emotion-css="54rr1e">.css-54rr1e {
+    }
+
+	.css-54rr1e {
         box-sizing: border-box;
         width: 100%;
         padding-right: 15px;
     }
-
     .css-54rr1e [class*="ProfilePhotoImage"] {
         border-radius: 50%;
         box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08) inset;
-    }</style>
-    <style data-emotion-css="1aaqvgs-InnerPartOfListWithImage">.css-1aaqvgs-InnerPartOfListWithImage {
+    }
+
+	.css-1aaqvgs-InnerPartOfListWithImage {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -1983,11 +1868,13 @@
         -webkit-text-decoration: none;
         text-decoration: none;
         height: 76px;
-    }</style>
-    <style data-emotion-css="cssveg">.css-cssveg {
+    }
+
+	.css-cssveg {
         position: relative;
-    }</style>
-    <style data-emotion-css="13zlig9">.css-13zlig9 {
+    }
+
+	.css-13zlig9 {
         display: block;
         border: solid 1px rgba(0, 0, 0, 0.08);
         border-radius: 50%;
@@ -2009,16 +1896,18 @@
         overflow: hidden;
         border: none;
         margin: 0 12px 0 0;
-    }</style>
-    <style data-emotion-css="19sds7m-ProfilePhotoImage">.css-19sds7m-ProfilePhotoImage {
+    }
+
+	.css-19sds7m-ProfilePhotoImage {
         position: relative;
         z-index: 1;
         background: url(https://an2-img.amz.wtchn.net/image/v2/aFUjpQa1oHa6cfn35B3C_g.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qUXdlREkwTUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNCbGNuTnZiaTh4TmpZNU1UYzNPVEkwTnpJeE16UXdOemd6SW4wLnBuWjNJd2RfS056WTY0YXRxdTdEckQ0Zy1EMVU4VHhJZllwbXZ0aVRsUXc) no-repeat center;
         background-size: cover;
         width: 100%;
         height: 100%;
-    }</style>
-    <style data-emotion-css="zoy7di">.css-zoy7di {
+    }
+
+	.css-zoy7di {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -2035,8 +1924,9 @@
         border-bottom: 1px solid #f0f0f0;
         overflow: hidden;
         text-overflow: ellipsis;
-    }</style>
-    <style data-emotion-css="qkf9j">.css-qkf9j {
+    }
+
+	.css-qkf9j {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -2054,8 +1944,9 @@
         padding: 0 10px 0 0;
         overflow: hidden;
         text-overflow: ellipsis;
-    }</style>
-    <style data-emotion-css="17vuhtq">.css-17vuhtq {
+    }
+
+	.css-17vuhtq {
         color: #1e1e1e;
         font-size: 17px;
         font-weight: 400;
@@ -2071,8 +1962,9 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-    }</style>
-    <style data-emotion-css="1evnpxk-StyledSubtitle">.css-1evnpxk-StyledSubtitle {
+    }
+
+	.css-1evnpxk-StyledSubtitle {
         color: #8c8c8c;
         font-size: 14px;
         font-weight: 400;
@@ -2085,24 +1977,27 @@
         margin-top: 4px;
         overflow: hidden;
         text-overflow: ellipsis;
-    }</style>
-    <style data-emotion-css="7oko15-ProfilePhotoImage">.css-7oko15-ProfilePhotoImage {
+    }
+
+	.css-7oko15-ProfilePhotoImage {
         position: relative;
         z-index: 1;
         background: url(https://an2-img.amz.wtchn.net/image/v2/2Nt3ILqqixka_1r78AmQPQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qUXdlREkwTUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNCbGNuTnZiaTh4TmpZNU1UYzRNRE0xTmpZNE1ESTVORGd3SW4wLkt1MWY3XzZnSE0xeUpZYS1mdDNXanBfVWNKVHFuUF9INnd2TThRMjJLWGc) no-repeat center;
         background-size: cover;
         width: 100%;
         height: 100%;
-    }</style>
-    <style data-emotion-css="1nf5dk1-ProfilePhotoImage">.css-1nf5dk1-ProfilePhotoImage {
+    }
+
+	.css-1nf5dk1-ProfilePhotoImage {
         position: relative;
         z-index: 1;
         background: url(https://an2-img.amz.wtchn.net/image/v2/uNpHVlHaG13BlY4eQuxCLw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qUXdlREkwTUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNCbGNuTnZiaTh4TmpZNU1UYzNPVFkyTVRnek9UWTJOakkwSW4wLmxaWlBvZGViYndCeTlKNHZnaTRkOWpjSkhWQnhDRXV1dlBPbzJTWmZWU00) no-repeat center;
         background-size: cover;
         width: 100%;
         height: 100%;
-    }</style>
-    <style data-emotion-css="16n7af8">.css-16n7af8 {
+    }
+
+	.css-16n7af8 {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -2118,32 +2013,36 @@
         height: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
-    }</style>
-    <style data-emotion-css="7n996g-ProfilePhotoImage">.css-7n996g-ProfilePhotoImage {
+    }
+
+	.css-7n996g-ProfilePhotoImage {
         position: relative;
         z-index: 1;
         background: url(https://an2-img.amz.wtchn.net/image/v2/HIvBW6Myk3M4mwa919b-og.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qUXdlREkwTUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNCbGNuTnZiaTh4TmpZNU1UYzNPVE0yTlRJd056Z3dPVE13SW4wLkxodG9IbFZrSTZUMWZVaWRXYmpJdWtvX0lFQ0pnc3FuenJCOFJ5NjlJR2M) no-repeat center;
         background-size: cover;
         width: 100%;
         height: 100%;
-    }</style>
-    <style data-emotion-css="ehmj6z-ProfilePhotoImage">.css-ehmj6z-ProfilePhotoImage {
+    }
+
+	.css-ehmj6z-ProfilePhotoImage {
         position: relative;
         z-index: 1;
         background: url(https://an2-img.amz.wtchn.net/image/v2/Sw9HFZuDa3heRxhXy7PXBQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qUXdlREkwTUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNCbGNuTnZiaTh4TmpZNU1UYzNPVFUxTnpFNU5UazNPVEF5SW4wLjRReHFJUDFtZ1hNdjBqbTF3NGtnaGVFbjlTeHNPTktxWWRoODZ2b2VIOFE) no-repeat center;
         background-size: cover;
         width: 100%;
         height: 100%;
-    }</style>
-    <style data-emotion-css="187ptih-ProfilePhotoImage">.css-187ptih-ProfilePhotoImage {
+    }
+
+	.css-187ptih-ProfilePhotoImage {
         position: relative;
         z-index: 1;
         background: url(https://an2-img.amz.wtchn.net/image/v2/-SeJQnTjTAlzNO4ERLamwA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qUXdlREkwTUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNCbGNuTnZiaTh4TmpZNU1UYzNPVFEyTlRjNE9UQTVNamc1SW4wLlJ5X2l5dWRNVG5CZVBsbnVkRUVZeFZhODV5YWQySmFINGljVHg2dzhfSHM) no-repeat center;
         background-size: cover;
         width: 100%;
         height: 100%;
-    }</style>
-    <style data-emotion-css="6qnjre">.css-6qnjre {
+    }
+
+	.css-6qnjre {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -2153,8 +2052,9 @@
         -ms-flex-align: center;
         align-items: center;
         height: 100%;
-    }</style>
-    <style data-emotion-css="a89h8a">.css-a89h8a {
+    }
+
+	.css-a89h8a {
         display: none;
         position: absolute;
         top: 0;
@@ -2162,8 +2062,9 @@
         left: 0;
         width: 0;
         height: 100%;
-    }</style>
-    <style data-emotion-css="1qgb5vh">.css-1qgb5vh {
+    }
+
+	.css-1qgb5vh {
         display: none;
         position: absolute;
         top: 0;
@@ -2171,8 +2072,9 @@
         right: 0;
         width: 0;
         height: 100%;
-    }</style>
-    <style data-emotion-css="38kpup">.css-38kpup {
+    }
+
+	.css-38kpup {
         display: none;
         position: absolute;
         top: 0;
@@ -2186,8 +2088,9 @@
         opacity: 0;
         -webkit-transition: 300ms;
         transition: 300ms;
-    }</style>
-    <style data-emotion-css="1hestod">.css-1hestod {
+    }
+
+	.css-1hestod {
         background: #a5a5aa url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDEyIDE2Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMEgxMlYxNkgweiIgdHJhbnNmb3JtPSJyb3RhdGUoMTgwIDYgOCkiLz4KICAgICAgICA8cGF0aCBmaWxsPSIjMjkyQTMyIiBzdHJva2U9IiMyOTJBMzIiIHN0cm9rZS13aWR0aD0iLjM1IiBkPSJNMy40MjkgMTMuNDA5TDQuMzU0IDE0LjI1OCAxMC42OCA4LjQ2IDExLjE0MyA4LjAzNiA0LjM1NCAxLjgxMyAzLjQyOSAyLjY2MiA5LjI5MSA4LjAzNnoiIHRyYW5zZm9ybT0icm90YXRlKDE4MCA2IDgpIi8+CiAgICA8L2c+Cjwvc3ZnPgo=) no-repeat 12px;
         background-color: #fff;
         box-sizing: border-box;
@@ -2203,11 +2106,11 @@
         -webkit-transition: opacity 300ms;
         transition: opacity 300ms;
     }
-
     .css-1hestod:hover {
         opacity: 1;
-    }</style>
-    <style data-emotion-css="h5qs9h">.css-h5qs9h {
+    }
+
+	.css-h5qs9h {
         display: none;
         position: absolute;
         top: 0;
@@ -2221,8 +2124,9 @@
         opacity: 0;
         -webkit-transition: 300ms;
         transition: 300ms;
-    }</style>
-    <style data-emotion-css="vp7uyl">.css-vp7uyl {
+    }
+
+	.css-vp7uyl {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -2249,23 +2153,22 @@
         -webkit-transition: opacity 300ms;
         transition: opacity 300ms;
     }
-
     .css-vp7uyl > img {
         opacity: 0.4;
     }
-
     .css-vp7uyl:hover > img {
         opacity: 0.8;
     }
-
     .css-vp7uyl:hover {
         opacity: 1;
-    }</style>
-    <style data-emotion-css="god8tc">.css-god8tc {
+    }
+
+	.css-god8tc {
         border: 0;
         border-bottom: 1px solid #f0f0f0;
-    }</style>
-    <style data-emotion-css="14yj34l-RatingStatHeaderTopRight">.css-14yj34l-RatingStatHeaderTopRight {
+    }
+
+	.css-14yj34l-RatingStatHeaderTopRight {
         float: right;
         color: #282828;
         font-size: 17px;
@@ -2278,7 +2181,6 @@
         text-align: right;
         margin: 10px 0 0;
     }
-
     .css-14yj34l-RatingStatHeaderTopRight > strong {
         font-size: 14px;
         font-weight: 400;
@@ -2288,12 +2190,14 @@
         letter-spacing: -0.3px;
         line-height: 19px;
         color: #787878;
-    }</style>
-    <style data-emotion-css="wqfuxa">.css-wqfuxa {
+    }
+
+	.css-wqfuxa {
         max-width: 375px;
         margin: 58px auto 0;
-    }</style>
-    <style data-emotion-css="g1q7ln">.css-g1q7ln {
+    }
+
+	.css-g1q7ln {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -2304,32 +2208,17 @@
         align-items: flex-end;
         text-align: center;
         margin: 0 -1px;
-    }</style>
-    <style data-emotion-css="hugi8h">.css-hugi8h {
+    }
+
+	.css-hugi8h {
         -webkit-flex: 1;
         -ms-flex: 1;
         flex: 1;
         box-sizing: border-box;
         padding: 0 1px;
-    }</style>
-    <style data-emotion-css="1n3dn6t">.css-1n3dn6t {
-        display: block;
-        position: relative;
-        background: #ffdd63;
-        color: #a0a0a0;
-        vertical-align: bottom;
-        font-size: 12px;
-        font-weight: 400;
-        -webkit-letter-spacing: -0.2px;
-        -moz-letter-spacing: -0.2px;
-        -ms-letter-spacing: -0.2px;
-        letter-spacing: -0.2px;
-        line-height: 16px;
-        text-align: left;
-        height: 1px;
-        margin: 0 0 22px;
-    }</style>
-    <style data-emotion-css="111q860-Bar">.css-111q860-Bar {
+    }
+
+	.css-1n3dn6t {
         display: block;
         position: relative;
         background: #ffdd63;
@@ -2347,6 +2236,23 @@
         margin: 0 0 22px;
     }
 
+	.css-111q860-Bar {
+        display: block;
+        position: relative;
+        background: #ffdd63;
+        color: #a0a0a0;
+        vertical-align: bottom;
+        font-size: 12px;
+        font-weight: 400;
+        -webkit-letter-spacing: -0.2px;
+        -moz-letter-spacing: -0.2px;
+        -ms-letter-spacing: -0.2px;
+        letter-spacing: -0.2px;
+        line-height: 16px;
+        text-align: left;
+        height: 1px;
+        margin: 0 0 22px;
+    }
     .css-111q860-Bar::after {
         content: "1";
         display: block;
@@ -2355,8 +2261,9 @@
         bottom: -22px;
         left: 0;
         text-align: center;
-    }</style>
-    <style data-emotion-css="r41bl-Bar">.css-r41bl-Bar {
+    }
+
+	.css-r41bl-Bar {
         display: block;
         position: relative;
         background: #ffdd63;
@@ -2373,7 +2280,6 @@
         height: 1px;
         margin: 0 0 22px;
     }
-
     .css-r41bl-Bar::after {
         content: "2";
         display: block;
@@ -2382,8 +2288,9 @@
         bottom: -22px;
         left: 0;
         text-align: center;
-    }</style>
-    <style data-emotion-css="1c4g190-Bar">.css-1c4g190-Bar {
+    }
+
+	.css-1c4g190-Bar {
         display: block;
         position: relative;
         background: #ffdd63;
@@ -2400,7 +2307,6 @@
         height: 17.6px;
         margin: 0 0 22px;
     }
-
     .css-1c4g190-Bar::after {
         content: "3";
         display: block;
@@ -2409,8 +2315,9 @@
         bottom: -22px;
         left: 0;
         text-align: center;
-    }</style>
-    <style data-emotion-css="wv4rqq-Bar">.css-wv4rqq-Bar {
+    }
+
+	.css-wv4rqq-Bar {
         display: block;
         position: relative;
         background: #ffdd63;
@@ -2427,7 +2334,6 @@
         height: 35.2px;
         margin: 0 0 22px;
     }
-
     .css-wv4rqq-Bar::after {
         content: "4";
         display: block;
@@ -2436,8 +2342,9 @@
         bottom: -22px;
         left: 0;
         text-align: center;
-    }</style>
-    <style data-emotion-css="mr14ik-Bar">.css-mr14ik-Bar {
+    }
+
+	.css-mr14ik-Bar {
         display: block;
         position: relative;
         background: #ffa136;
@@ -2454,7 +2361,6 @@
         height: 88px;
         margin: 0 0 22px;
     }
-
     .css-mr14ik-Bar::after {
         content: "5";
         display: block;
@@ -2463,70 +2369,69 @@
         bottom: -22px;
         left: 0;
         text-align: center;
-    }</style>
-    <style data-emotion-css="hn83j">.css-hn83j {
+    }
+
+	.css-hn83j {
         border: 0;
         border-bottom: 1px solid #f0f0f0;
         margin: 24px 0 0;
-    }</style>
-    <style data-emotion-css="wpsvu8">@media (min-width: 719px) {
+    }
+
+	@media (min-width: 719px) {
         .css-wpsvu8 {
             float: left;
             width: 100%;
         }
     }
-
     @media (min-width: 1023px) {
         .css-wpsvu8 {
             float: right;
             width: 320px;
             padding: 0 8px;
         }
-    }</style>
-    <style data-emotion-css="vhzoa-RoundedCornerBlock">.css-vhzoa-RoundedCornerBlock {
+    }
+
+	.css-vhzoa-RoundedCornerBlock {
         background: #fff;
         border-color: #e3e3e3 !important;
         overflow: hidden;
     }
-
     .css-vhzoa-RoundedCornerBlock:empty {
         display: none;
     }
-
     @media (min-width: 719px) and (max-width: 1023px) {
         .css-vhzoa-RoundedCornerBlock {
             border-right: 1px solid;
             border-left: 1px solid;
         }
-    }</style>
-    <style data-emotion-css="1oj6s32">.css-1oj6s32:empty {
-        display: none;
     }
 
+	.css-1oj6s32:empty {
+        display: none;
+    }
     @media (min-width: 1023px) {
         .css-1oj6s32 > section:last-child hr {
             display: none;
         }
-    }</style>
-    <style data-emotion-css="gdpty9">.css-gdpty9 {
-        display: none;
     }
 
+	.css-gdpty9 {
+        display: none;
+    }
     @media (min-width: 1023px) {
         .css-gdpty9 {
             display: block;
         }
-    }</style>
-    <style data-emotion-css="1gfvga7-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock">.css-1gfvga7-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock {
+    }
+
+	.css-1gfvga7-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock {
         background: #fff;
         border-color: #e3e3e3 !important;
         overflow: hidden;
     }
-
     .css-1gfvga7-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock:empty {
         display: none;
     }
-
     @media (min-width: 719px) and (max-width: 1023px) {
         .css-1gfvga7-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock {
             border-right: 1px solid;
@@ -2536,7 +2441,6 @@
             border-bottom-left-radius: 6px;
         }
     }
-
     @media (min-width: 1023px) {
         .css-1gfvga7-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock {
             border-right: 1px solid;
@@ -2545,31 +2449,34 @@
             border-bottom-right-radius: 6px;
             border-bottom-left-radius: 6px;
         }
-    }</style>
-    <style data-emotion-css="1fpxu0i">@media (min-width: 1023px) {
+    }
+
+	@media (min-width: 1023px) {
         .css-1fpxu0i {
             display: none;
         }
-    }</style>
-    <style data-emotion-css="wfb65d-Self">.css-wfb65d-Self {
-        display: none;
     }
 
+	.css-wfb65d-Self {
+        display: none;
+    }
     @media (min-width: 719px) {
         .css-wfb65d-Self {
             display: block;
             box-sizing: border-box;
             width: 100%;
         }
-    }</style>
-    <style data-emotion-css="1iuqns0-StyledFooterTopSection">.css-1iuqns0-StyledFooterTopSection {
+    }
+
+	.css-1iuqns0-StyledFooterTopSection {
         background-color: #101113;
         line-height: 62px;
         text-align: center;
         width: 100%;
         height: 62px;
-    }</style>
-    <style data-emotion-css="z9tuc7-StyledRatingSummary">.css-z9tuc7-StyledRatingSummary {
+    }
+
+	.css-z9tuc7-StyledRatingSummary {
         color: #d1d1d2;
         font-size: 19px;
         font-weight: 500;
@@ -2579,27 +2486,28 @@
         letter-spacing: -0.3px;
         line-height: 22px;
     }
-
     .css-z9tuc7-StyledRatingSummary > em {
         color: #ff0558;
-    }</style>
-    <style data-emotion-css="1k1hgyy-FooterSection">.css-1k1hgyy-FooterSection {
+    }
+
+	.css-1k1hgyy-FooterSection {
         background-color: #1c1d1f;
         padding: 20px 0 38px;
     }
-
     .css-1k1hgyy-FooterSection > div {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;
-    }</style>
-    <style data-emotion-css="7sb2y7-FooterLeft">.css-7sb2y7-FooterLeft {
+    }
+
+	.css-7sb2y7-FooterLeft {
         -webkit-flex: 1;
         -ms-flex: 1;
         flex: 1;
-    }</style>
-    <style data-emotion-css="r41819-VisualUl-StyledTermsAndPolicy">.css-r41819-VisualUl-StyledTermsAndPolicy {
+    }
+
+	.css-r41819-VisualUl-StyledTermsAndPolicy {
         list-style: none;
         padding: 0;
         margin: 0;
@@ -2611,8 +2519,9 @@
         -ms-letter-spacing: -0.3px;
         letter-spacing: -0.3px;
         line-height: 22px;
-    }</style>
-    <style data-emotion-css="1i0sjqh-StyledTermsAndPolicyList-StyledTermsAndPolicyList">.css-1i0sjqh-StyledTermsAndPolicyList-StyledTermsAndPolicyList {
+    }
+
+	.css-1i0sjqh-StyledTermsAndPolicyList-StyledTermsAndPolicyList {
         display: inline-block;
         color: #a5a5a7;
         font-size: 13px;
@@ -2625,7 +2534,6 @@
         vertical-align: top;
         cursor: pointer;
     }
-
     .css-1i0sjqh-StyledTermsAndPolicyList-StyledTermsAndPolicyList::after {
         content: "";
         display: inline-block;
@@ -2634,8 +2542,9 @@
         width: 1px;
         height: 12px;
         margin: 5px 8px 0;
-    }</style>
-    <style data-emotion-css="5qs3nd-StyledTermsAndPolicyList-StyledTermsAndPolicyList">.css-5qs3nd-StyledTermsAndPolicyList-StyledTermsAndPolicyList {
+    }
+
+	.css-5qs3nd-StyledTermsAndPolicyList-StyledTermsAndPolicyList {
         display: inline-block;
         color: #a5a5a7;
         font-size: 13px;
@@ -2655,7 +2564,6 @@
         line-height: 22px;
         cursor: pointer;
     }
-
     .css-5qs3nd-StyledTermsAndPolicyList-StyledTermsAndPolicyList::after {
         content: "";
         display: inline-block;
@@ -2664,8 +2572,9 @@
         width: 1px;
         height: 12px;
         margin: 5px 8px 0;
-    }</style>
-    <style data-emotion-css="8093ho-StylelessHref-StyledMailLink-StyledTextLink">.css-8093ho-StylelessHref-StyledMailLink-StyledTextLink {
+    }
+
+	.css-8093ho-StylelessHref-StyledMailLink-StyledTextLink {
         color: #000;
         -webkit-text-decoration: none;
         text-decoration: none;
@@ -2679,8 +2588,9 @@
         line-height: 22px;
         -webkit-text-decoration: none;
         text-decoration: none;
-    }</style>
-    <style data-emotion-css="lixodn-VisualUl-StyledTermsAndPolicy-StyledCS">.css-lixodn-VisualUl-StyledTermsAndPolicy-StyledCS {
+    }
+
+	.css-lixodn-VisualUl-StyledTermsAndPolicy-StyledCS {
         list-style: none;
         padding: 0;
         margin: 0;
@@ -2693,8 +2603,33 @@
         letter-spacing: -0.3px;
         line-height: 22px;
         margin-top: 12px;
-    }</style>
-    <style data-emotion-css="18lsujb-StyledTermsAndPolicyList-StyledTermsAndPolicyList-StyledCSList">.css-18lsujb-StyledTermsAndPolicyList-StyledTermsAndPolicyList-StyledCSList {
+    }
+
+	.css-18lsujb-StyledTermsAndPolicyList-StyledTermsAndPolicyList-StyledCSList {
+        display: inline-block;
+        color: #a5a5a7;
+        font-size: 13px;
+        font-weight: 400;
+        -webkit-letter-spacing: -0.3px;
+        -moz-letter-spacing: -0.3px;
+        -ms-letter-spacing: -0.3px;
+        letter-spacing: -0.3px;
+        line-height: 22px;
+        vertical-align: top;
+        cursor: pointer;
+        cursor: auto;
+    }
+    .css-18lsujb-StyledTermsAndPolicyList-StyledTermsAndPolicyList-StyledCSList::after {
+        content: "";
+        display: inline-block;
+        background: #848485;
+        vertical-align: top;
+        width: 1px;
+        height: 12px;
+        margin: 5px 8px 0;
+    }
+
+	.css-1bz3wqq-StyledTermsAndPolicyList-StyledCSList {
         display: inline-block;
         color: #a5a5a7;
         font-size: 13px;
@@ -2709,30 +2644,7 @@
         cursor: auto;
     }
 
-    .css-18lsujb-StyledTermsAndPolicyList-StyledTermsAndPolicyList-StyledCSList::after {
-        content: "";
-        display: inline-block;
-        background: #848485;
-        vertical-align: top;
-        width: 1px;
-        height: 12px;
-        margin: 5px 8px 0;
-    }</style>
-    <style data-emotion-css="1bz3wqq-StyledTermsAndPolicyList-StyledCSList">.css-1bz3wqq-StyledTermsAndPolicyList-StyledCSList {
-        display: inline-block;
-        color: #a5a5a7;
-        font-size: 13px;
-        font-weight: 400;
-        -webkit-letter-spacing: -0.3px;
-        -moz-letter-spacing: -0.3px;
-        -ms-letter-spacing: -0.3px;
-        letter-spacing: -0.3px;
-        line-height: 22px;
-        vertical-align: top;
-        cursor: pointer;
-        cursor: auto;
-    }</style>
-    <style data-emotion-css="gb6obi-StylelessHref-StyledMailLink">.css-gb6obi-StylelessHref-StyledMailLink {
+	.css-gb6obi-StylelessHref-StyledMailLink {
         color: #000;
         -webkit-text-decoration: none;
         text-decoration: none;
@@ -2746,8 +2658,9 @@
         line-height: 22px;
         -webkit-text-decoration: none;
         text-decoration: none;
-    }</style>
-    <style data-emotion-css="8niyb4-VisualUl-StyledTermsAndPolicy-StyledCoWork">.css-8niyb4-VisualUl-StyledTermsAndPolicy-StyledCoWork {
+    }
+
+	.css-8niyb4-VisualUl-StyledTermsAndPolicy-StyledCoWork {
         list-style: none;
         padding: 0;
         margin: 0;
@@ -2759,8 +2672,33 @@
         -ms-letter-spacing: -0.3px;
         letter-spacing: -0.3px;
         line-height: 22px;
-    }</style>
-    <style data-emotion-css="1kk9xna-StyledTermsAndPolicyList-StyledTermsAndPolicyList-StyledCoWorkList">.css-1kk9xna-StyledTermsAndPolicyList-StyledTermsAndPolicyList-StyledCoWorkList {
+    }
+
+	.css-1kk9xna-StyledTermsAndPolicyList-StyledTermsAndPolicyList-StyledCoWorkList {
+        display: inline-block;
+        color: #a5a5a7;
+        font-size: 13px;
+        font-weight: 400;
+        -webkit-letter-spacing: -0.3px;
+        -moz-letter-spacing: -0.3px;
+        -ms-letter-spacing: -0.3px;
+        letter-spacing: -0.3px;
+        line-height: 22px;
+        vertical-align: top;
+        cursor: pointer;
+        cursor: auto;
+    }
+    .css-1kk9xna-StyledTermsAndPolicyList-StyledTermsAndPolicyList-StyledCoWorkList::after {
+        content: "";
+        display: inline-block;
+        background: #848485;
+        vertical-align: top;
+        width: 1px;
+        height: 12px;
+        margin: 5px 8px 0;
+    }
+
+	.css-dbeq2k-StyledTermsAndPolicyList-StyledCoWorkList {
         display: inline-block;
         color: #a5a5a7;
         font-size: 13px;
@@ -2775,30 +2713,7 @@
         cursor: auto;
     }
 
-    .css-1kk9xna-StyledTermsAndPolicyList-StyledTermsAndPolicyList-StyledCoWorkList::after {
-        content: "";
-        display: inline-block;
-        background: #848485;
-        vertical-align: top;
-        width: 1px;
-        height: 12px;
-        margin: 5px 8px 0;
-    }</style>
-    <style data-emotion-css="dbeq2k-StyledTermsAndPolicyList-StyledCoWorkList">.css-dbeq2k-StyledTermsAndPolicyList-StyledCoWorkList {
-        display: inline-block;
-        color: #a5a5a7;
-        font-size: 13px;
-        font-weight: 400;
-        -webkit-letter-spacing: -0.3px;
-        -moz-letter-spacing: -0.3px;
-        -ms-letter-spacing: -0.3px;
-        letter-spacing: -0.3px;
-        line-height: 22px;
-        vertical-align: top;
-        cursor: pointer;
-        cursor: auto;
-    }</style>
-    <style data-emotion-css="1hpdmor-VisualUl-StyledTermsAndPolicy-StyledCompanyInfo-StyledCompanyInfo">.css-1hpdmor-VisualUl-StyledTermsAndPolicy-StyledCompanyInfo-StyledCompanyInfo {
+	.css-1hpdmor-VisualUl-StyledTermsAndPolicy-StyledCompanyInfo-StyledCompanyInfo {
         list-style: none;
         padding: 0;
         margin: 0;
@@ -2812,8 +2727,9 @@
         line-height: 22px;
         color: #848485;
         margin-top: 13px;
-    }</style>
-    <style data-emotion-css="1viwtk8-StyledTermsAndPolicyList-StyledTermsAndPolicyList-StyledCompanyInfoList">.css-1viwtk8-StyledTermsAndPolicyList-StyledTermsAndPolicyList-StyledCompanyInfoList {
+    }
+
+	.css-1viwtk8-StyledTermsAndPolicyList-StyledTermsAndPolicyList-StyledCompanyInfoList {
         display: inline-block;
         color: #a5a5a7;
         font-size: 13px;
@@ -2828,7 +2744,6 @@
         color: inherit;
         cursor: text;
     }
-
     .css-1viwtk8-StyledTermsAndPolicyList-StyledTermsAndPolicyList-StyledCompanyInfoList::after {
         content: "";
         display: inline-block;
@@ -2838,13 +2753,13 @@
         height: 12px;
         margin: 5px 8px 0;
     }
-
     .css-1viwtk8-StyledTermsAndPolicyList-StyledTermsAndPolicyList-StyledCompanyInfoList > span > a {
         color: inherit !important;
         -webkit-text-decoration: none;
         text-decoration: none;
-    }</style>
-    <style data-emotion-css="m13hby-StyledTermsAndPolicyList-StyledCompanyInfoList">.css-m13hby-StyledTermsAndPolicyList-StyledCompanyInfoList {
+    }
+
+	.css-m13hby-StyledTermsAndPolicyList-StyledCompanyInfoList {
         display: inline-block;
         color: #a5a5a7;
         font-size: 13px;
@@ -2859,13 +2774,13 @@
         color: inherit;
         cursor: text;
     }
-
     .css-m13hby-StyledTermsAndPolicyList-StyledCompanyInfoList > span > a {
         color: inherit !important;
         -webkit-text-decoration: none;
         text-decoration: none;
-    }</style>
-    <style data-emotion-css="151owug-VisualUl-StyledTermsAndPolicy-StyledCompanyInfo">.css-151owug-VisualUl-StyledTermsAndPolicy-StyledCompanyInfo {
+    }
+
+	.css-151owug-VisualUl-StyledTermsAndPolicy-StyledCompanyInfo {
         list-style: none;
         padding: 0;
         margin: 0;
@@ -2878,19 +2793,21 @@
         letter-spacing: -0.3px;
         line-height: 22px;
         color: #848485;
-    }</style>
-    <style data-emotion-css="86imik">.css-86imik {
+    }
+
+	.css-86imik {
         width: 73px;
         height: 14.02px;
     }
-
     .css-86imik .fillTarget {
         fill: #848485;
-    }</style>
-    <style data-emotion-css="1ftyzsu-LanguageContainer">.css-1ftyzsu-LanguageContainer {
+    }
+
+	.css-1ftyzsu-LanguageContainer {
         text-align: right;
-    }</style>
-    <style data-emotion-css="1patnhf-StylelessButton">.css-1patnhf-StylelessButton {
+    }
+
+	.css-1patnhf-StylelessButton {
         background: none;
         padding: 0;
         border: none;
@@ -2913,11 +2830,9 @@
         border: solid 1px #848485;
         border-radius: 2px;
     }
-
     .css-1patnhf-StylelessButton:focus {
         outline: none;
     }
-
     .css-1patnhf-StylelessButton::after {
         content: "";
         display: inline-block;
@@ -2928,11 +2843,11 @@
         width: 16px;
         height: 16px;
     }
-
     .css-1patnhf-StylelessButton:hover {
         border-color: #a5a5a7;
-    }</style>
-    <style data-emotion-css="16pbkjy-VisualUl-FooterLinks-FooterLinks">.css-16pbkjy-VisualUl-FooterLinks-FooterLinks {
+    }
+
+	.css-16pbkjy-VisualUl-FooterLinks-FooterLinks {
         list-style: none;
         padding: 0;
         margin: 0;
@@ -2949,12 +2864,14 @@
         -ms-flex-align: center;
         align-items: center;
         margin: 99px 0 -4px;
-    }</style>
-    <style data-emotion-css="6clrd1-FooterLinkList">.css-6clrd1-FooterLinkList {
+    }
+
+	.css-6clrd1-FooterLinkList {
         display: inline-block;
         padding-left: 14px;
-    }</style>
-    <style data-emotion-css="1d271tm-FooterLink">.css-1d271tm-FooterLink {
+    }
+
+	.css-1d271tm-FooterLink {
         display: -webkit-inline-box;
         display: -webkit-inline-flex;
         display: -ms-inline-flexbox;
@@ -2968,15 +2885,14 @@
         width: 24px;
         height: 24px;
     }
-
     .css-1d271tm-FooterLink > svg path {
         fill: #848485;
     }
-
     .css-1d271tm-FooterLink:hover > svg path {
         fill: #a5a5a7;
-    }</style>
-    <style data-emotion-css="1hbqdut-FooterLink-FooterLink">.css-1hbqdut-FooterLink-FooterLink {
+    }
+	
+	.css-1hbqdut-FooterLink-FooterLink {
         display: -webkit-inline-box;
         display: -webkit-inline-flex;
         display: -ms-inline-flexbox;
@@ -2995,19 +2911,17 @@
         border: 1px solid #848485;
         border-radius: 50%;
     }
-
     .css-1hbqdut-FooterLink-FooterLink:hover {
         border-color: #a5a5a7;
     }
-
     .css-1hbqdut-FooterLink-FooterLink > svg path {
         fill: #848485;
     }
-
     .css-1hbqdut-FooterLink-FooterLink:hover > svg path {
         fill: #a5a5a7;
-    }</style>
-    <style data-emotion-css="1jjny0x">.css-1jjny0x {
+    }
+
+	.css-1jjny0x {
         position: fixed;
         bottom: 0;
         z-index: 51;
@@ -3016,25 +2930,25 @@
         width: 100%;
         border-top: 1px solid #d2d2d2;
     }
-
     .css-1jjny0x::after {
         content: "";
         display: block;
         background: #fff;
         height: env(safe-area-inset-bottom);
     }
-
     @media (min-width: 720px) {
         .css-1jjny0x {
             display: none;
         }
-    }</style>
-    <style data-emotion-css="1ho7bw2">.css-1ho7bw2 {
+    }
+
+	.css-1ho7bw2 {
         box-sizing: border-box;
         height: 56px;
         padding: 8px 0 4px;
-    }</style>
-    <style data-emotion-css="vsvx7g-VisualUl">.css-vsvx7g-VisualUl {
+    }
+
+	.css-vsvx7g-VisualUl {
         list-style: none;
         padding: 0;
         margin: 0;
@@ -3044,15 +2958,15 @@
         display: flex;
         height: 100%;
         overflow: hidden;
-    }</style>
-    <style data-emotion-css="1hz4g3g">.css-1hz4g3g {
+    }
+
+	.css-1hz4g3g {
         -webkit-flex: 1;
         -ms-flex: 1;
         flex: 1;
         text-align: center;
         height: 100%;
     }
-
     .css-1hz4g3g > a {
         display: block;
         color: inherit;
@@ -3067,37 +2981,38 @@
         height: 100%;
         margin: 0 10px;
     }
-
     .css-1hz4g3g > a > svg {
         display: block;
         margin: 0 auto;
-    }</style>
-    <style data-emotion-css="1u7hvrn">.css-1u7hvrn {
+    }
+	
+	.css-1u7hvrn {
         width: 24px;
         height: 24px;
     }
-
     .css-1u7hvrn .fillTarget {
         fill: #292a32;
-    }</style>
-    <style data-emotion-css="vuw3o9">.css-vuw3o9 {
+    }
+
+	.css-vuw3o9 {
         color: #292a32;
         line-height: 17px;
         white-space: nowrap;
         padding-top: 3px;
-    }</style>
-    <style data-emotion-css="wax28p">.css-wax28p {
+    }
+
+	.css-wax28p {
         vertical-align: top;
         width: 24px;
         height: 24px;
     }
-
     .css-wax28p .fillTarget {
         fill: #babac3;
         -webkit-transition: fill 300ms;
         transition: fill 300ms;
-    }</style>
-    <style data-emotion-css="1yjwko3">.css-1yjwko3 {
+    }
+
+	.css-1yjwko3 {
         color: #babac3;
         line-height: 17px;
         white-space: nowrap;
@@ -5034,7 +4949,7 @@
             <div th:replace="fragment/header::header">
             
             		<!-- header start -->
-					<%@ include file="head_foot/header1.jsp" %>
+					<%@ include file="../head_foot/header.jsp" %>
 					<!-- header end -->
             
             
@@ -5456,7 +5371,7 @@
             <div th:replace="fragment/footer::footer">
             
           			  <!-- footer start -->
-					<%@ include file="head_foot/footer1.jsp" %>
+					<%@ include file="../head_foot/footer1.jsp" %>
 					<!-- footer end -->
             
             

@@ -14,11 +14,13 @@
 		
 		<link href="/css/header.css" rel="stylesheet" type="text/css">
 		<link href="/css/login.css" rel="stylesheet" type="text/css">
+		<link href="/css/join.css" rel="stylesheet" type="text/css">
 		<link href="/css/index_section.css" rel="stylesheet" type="text/css">
 		<link href="/css/footer.css" rel="stylesheet" type="text/css">
 		
 		<script src="/js/slide_scroll.js"></script>
 		<script src="/js/login.js"></script>
+		<script src="/js/join.js"></script>
 		
 		<style>
 			* { margin:0; padding:0; text-decoration:none; font-family:'Noto Sans KR', sans-serif; }
