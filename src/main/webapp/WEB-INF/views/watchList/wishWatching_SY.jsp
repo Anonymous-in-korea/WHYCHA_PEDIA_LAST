@@ -19,7 +19,7 @@
 	        <div class="css-1xm32e0">
 	          <div th:replace="fragment/header::header">
           	<!-- header start -->
-				<%@ include file="head_foot/header.jsp"%>
+				<%@ include file="../head_foot/header.jsp"%>
 			<!-- header end -->
 	          	</div>
 			          <section class="css-18gwkcr">

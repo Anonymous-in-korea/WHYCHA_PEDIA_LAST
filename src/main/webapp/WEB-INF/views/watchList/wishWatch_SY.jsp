@@ -17,7 +17,7 @@
 			<div class="css-5jq76">
 				<div class="css-1xm32e0">
 					<!-- header start -->
-					<%@ include file="head_foot/header.jsp"%>
+					<%@ include file="../head_foot/header.jsp"%>
 					<!-- header end -->
 					<section class="css-18gwkcr">
 						<div class="css-7zhfhb">
