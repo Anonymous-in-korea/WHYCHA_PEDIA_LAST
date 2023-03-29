@@ -3,6 +3,7 @@ package com.whychapedia.mapper;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.whychapedia.vo.MemberVo;
+import com.whychapedia.vo.MemberVo;
 
 @Mapper
 public interface MemberMapper {

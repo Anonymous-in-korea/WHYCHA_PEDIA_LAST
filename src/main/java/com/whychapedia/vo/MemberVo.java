@@ -1,21 +1,23 @@
 package com.whychapedia.vo;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class MemberVo {
-
 	private int id;
-	private String user_email, user_pw, user_name, user_desc, user_pic_url;
-	private Timestamp regi_date;
-	private int is_block;
-	
+	private String user_eamil;
+	private String user_pw;
+	private String user_name;
+	private String user_desc;
+	private String user_pic_url;
+	private Date regi_date;
+	private int is_block; // 1=정상 회원 2=block 회원
 }
