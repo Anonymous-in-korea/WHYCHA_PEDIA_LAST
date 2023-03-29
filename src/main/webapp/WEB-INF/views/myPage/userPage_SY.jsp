@@ -8,10 +8,10 @@
 			<link rel="preconnect" href="https://fonts.googleapis.com">
 			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 			<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-			<link href="/css/header.css" rel="stylesheet" type="text/css">
-			<link href="/css/footer.css" rel="stylesheet" type="text/css">
-			<link href="/css/userPage_SY.css" rel="stylesheet" type="text/css">
-			<link rel="shortcut icon" type="image/x-icon" href="/images/whycha_small_logo1.png">
+			<link href="../css/header.css" rel="stylesheet" type="text/css">
+			<link href="../css/footer.css" rel="stylesheet" type="text/css">
+			<link href="../css/userPage_SY.css" rel="stylesheet" type="text/css">
+			<link rel="shortcut icon" type="image/x-icon" href="../images/whycha_small_logo1.png">
 			<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 			<script type="text/javascript">
 			$(function() {
@@ -32,7 +32,7 @@
 				<div class="css-5jq76">
 					<div class="css-1xm32e0">
 						<!-- header start -->
-						<%@ include file="head_foot/header.jsp"%>
+						<%@ include file="../head_foot/header.jsp"%>
 					<!-- header end -->
 						<section class="css-18gwkcr">
 							<div class="css-egiga7-Self e19zkogf0">
@@ -69,7 +69,7 @@
 														<ul class="css-10n5vg9-VisualUl ep5cwgq0">
 															<li class="css-4ip9lp-AnalysisListItem e19zkogf10">
 																<a target="_blank" rel="noopener noreferrer" title="취향분석"
-															   	   href="/ko-KR/users/djaxbJPMVAxLw/analysis">
+															   	   href="/myPage/my_analysis_HY">
 															   		<span
 																	   src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNFRjY5MkUiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTEuMTggMTEuOTZoMy43NHY4LjM2SDEuMTh6TTE1Ljc1IDE2LjgzaDMuNzR2My40OWgtMy43NHpNNi4wNCA5LjEyaDMuNzR2MTEuMkg2LjA0ek0xMC45IDEzLjg0aDMuNzR2Ni40OEgxMC45eiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNGRkNBMjIiIGQ9Ik0xNy40NCAxLjM3bDEuNjYgNCA0LjMxLjM0LTMuMjggMi44MSAxIDQuMjEtMy42OS0yLjI2LTMuNjkgMi4yNiAxLjAxLTQuMjEtMy4yOS0yLjgxIDQuMzItLjM0eiIvPgogICAgPC9nPgo8L3N2Zz4K"
 																	   height="24px" width="24px"
@@ -146,7 +146,7 @@
 							<!--유저페이지 content 끝  -->
 							</div>
 							<!-- footer start -->
-							<%@ include file="head_foot/footer1.jsp"%>
+							<%@ include file="../head_foot/footer1.jsp"%>
 							<!-- footer end -->
 						</div>
 					</section>
@@ -169,7 +169,8 @@
 									<div class="css-1yiw2hp">
 										<div class="css-1gkas1x-Grid e1689zdh0">
 											<div class="css-1y901al-Row emmoxnt0">
-												<ul class="css-1ys57hl-VisualUl">
+<!------------------------------------------------------------- 생략 ----------------------------------------->										
+<!-- 												<ul class="css-1ys57hl-VisualUl">
 													<li class="css-md4jey">
 														<div class="css-11axhrb">
 															<div class="css-1ciqeix">마케팅 정보</div>
@@ -182,8 +183,8 @@
 															<div class="css-0"></div>
 														</div>
 													</li>
-												</ul>
-												<section class="css-15wbb47">
+												</ul> -->
+<!-- 												<section class="css-15wbb47">
 													<div class="css-1y6tmwg">서비스 설정</div>
 													<ul class="css-10n5vg9-VisualUl ep5cwgq0">
 														<li class="css-md4jey"><div class="css-11axhrb">
@@ -202,12 +203,14 @@
 															</div>
 														</li>
 													</ul>
-												</section>
+												</section> -->
+<!------------------------------------------------------------- 생략 끝  ----------------------------------------->	
+														<!-- 설정 내용 시작  -->													
 												<section class="css-15wbb47">
 													<div class="css-1y6tmwg">고객센터</div>
 													<ul class="css-10n5vg9-VisualUl ep5cwgq0">
 														<li class="css-17543n0">
-															<a href="/zendesk/login" target="_blank" rel="noopener noreferrer" class="css-1rwabqo-StylelessHref">
+															<a href="../QnA/QnA_SY" target="_blank" rel="noopener noreferrer" class="css-1rwabqo-StylelessHref">
 																<div class="css-1ciqeix">문의하기 / FAQ</div>
 																<div class="css-0"></div>
 															</a>
@@ -222,8 +225,9 @@
 													</ul>
 												</section>
 												<section class="css-15wbb47">
-													<li class="css-md4jey"><div class="css-11axhrb">
-															<div class="css-1ciqeix">
+													<li class="css-md4jey">
+														<div class="css-11axhrb">
+															<div class="css-1ciqeix" id="announcement_open_Btn">
 																<span>공지사항</span>
 															</div>
 															<div class="css-0"></div>
@@ -233,7 +237,7 @@
 												<section class="css-15wbb47">
 													<li class="css-md4jey">
 														<div class="css-11axhrb">
-															<div class="css-1ciqeix">
+															<div class="css-1ciqeix" id="logout_open_Btn">
 																<span>로그아웃</span>
 															</div>
 															<div class="css-0"></div>
@@ -241,7 +245,7 @@
 													</li>
 													<li class="css-md4jey">
 														<div class="css-11axhrb">
-															<div class="css-1ciqeix">탈퇴하기</div>
+															<div class="css-1ciqeix" id="deregister_open_Btn">탈퇴하기</div>
 															<div class="css-0"></div>
 														</div>
 													</li>
@@ -252,7 +256,19 @@
 								</div>
 							</div>
 						</div>
+						<!-- -------------------설정 내용 끝  ------------------------------------------------------------------  -->
 		<!-- ------------------------------------설정창 팝업 끝-------------------------------------------------------------- -->
+							<!-- ---------------공지 팝업 start------------------------------ -->
+							<%@ include file="../myPage/announcement_SH.jsp"%>
+							<!-- ---------------공지 팝업 end------------------------------ -->
+							
+							<!-- ---------------로그아웃 팝업 start------------------------------ -->
+							<%@ include file="../myPage/logout_SH.jsp"%>
+							<!-- ---------------로그아웃 팝업 end------------------------------ -->
+							<!-- ---------------탈퇴 팝업 start------------------------------ -->
+							<%@ include file="../myPage/deregister_SH.jsp"%>
+							<!-- ---------------탈퇴 팝업 end------------------------------ -->
+				
 				</div>
 			</div>
 		</div>

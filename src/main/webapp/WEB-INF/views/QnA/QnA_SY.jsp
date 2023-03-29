@@ -7,7 +7,7 @@
 		    <title>왓챠피디아 고객센터</title>
 		    <link rel="shortcut icon" type="image/x-icon" href="../images/whycha_small_logo1.png">
 		   	<link rel="preconnect" href="https://fonts.googleapis.com">
-		   	<link href="../css/faq.css" rel="stylesheet" type="text/css">
+		   	<link href="../css/faq_SY.css" rel="stylesheet" type="text/css">
 			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 			<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 			<!--style css 빼지 마시오 ! -->
@@ -32,9 +32,7 @@
 	            </button>
 	            <nav class="user-nav" id="user-nav"></nav>
 	            <div class="user-info dropdown">
-	                <button class="dropdown-toggle" aria-haspopup="true">
-	                    <span data-user-name="true">원수영</span>
-	                </button>
+	                    <span data-user-name="true">원수영 회원님, why?cha에게 질문이 있으신가요?</span>
 	            </div>
 	        </div>
 	    </header>

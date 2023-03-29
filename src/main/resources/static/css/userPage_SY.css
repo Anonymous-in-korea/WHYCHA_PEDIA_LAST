@@ -1529,7 +1529,7 @@ ul ul {
 /* 설정창 팝업창  시작*/
 .css-15gy7wr {
 	/* display: block; */
-   display: none; 
+    display: none; 
     position: fixed;
     inset: 0px;
     z-index: 100;
@@ -1854,3 +1854,14 @@ ul ul {
 	}
 }
 /* 설정창 팝업창  끝*/
+
+/* 공지 팝업창  시작*/
+/* .css-15gy7wr {
+	display: block;
+    display: none; 
+    position: fixed;
+    inset: 0px;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.56);
+    overflow: hidden scroll;
+} */

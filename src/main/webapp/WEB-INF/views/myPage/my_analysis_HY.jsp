@@ -4,8 +4,8 @@
 <html>
 	<head>
 	  <link rel="icon" href="/image/favicon.png">
-	  <link href="/css/header.css" rel="stylesheet" type="text/css">
-	  <link href="css/my_taste_HY.css" rel="stylesheet" type="text/css">	
+	  <link href="../css/header.css" rel="stylesheet" type="text/css">
+	  <link href="../css/my_taste_HY.css" rel="stylesheet" type="text/css">	
 	  <!-- Google Tag Manager -->
 	  <meta charset="utf-8">
 	  <title>왓챠가 분석한 영's님의 취향보고서</title>
@@ -15,7 +15,7 @@
 	    <div class="css-5jq76">
 	      <div class="css-1xm32e0">
 	      	<!-- header start -->
-			<%@ include file="head_foot/header.jsp" %>
+			<%@ include file="../head_foot/header.jsp" %>
 			<!-- header end -->
 	        <section class="css-113bxwv">
 	          <div class="css-67lr2q">
