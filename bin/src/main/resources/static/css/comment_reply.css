@@ -1,0 +1,969 @@
+@charset "UTF-8";
+
+* { margin:0; padding:0; text-decoration:none; font-family:'Noto Sans KR', sans-serif; }
+			
+.square_div{ position:relative; width:100%; }
+
+:root { --sat: env(safe-area-inset-top); --sal: env(safe-area-inset-left); --sar: env(safe-area-inset-right); --sab: env(safe-area-inset-bottom); }
+      
+      a { background-color: transparent; }
+      a:-webkit-any-link { color: -webkit-link; cursor: pointer; text-decoration: none; }
+
+img { border-style: none; }
+img[Attributes] { width: 16px; aspect-ratio: auto 16 / 16; height: 16px; }
+img { overflow-clip-margin: content-box; overflow: clip; }
+
+section { display: block; }
+
+div { display: block; }
+
+button { appearance: auto; writing-mode: horizontal-tb !important; text-rendering: auto; color: buttontext;
+    letter-spacing: normal; word-spacing: normal; line-height: normal; text-transform: none; text-indent: 0px; text-shadow: none;
+    display: inline-block; text-align: center; align-items: flex-start; cursor: default; box-sizing: border-box; background-color: buttonface;
+    margin: 0em; padding: 1px 6px; border-width: 2px; border-style: outset; border-color: buttonborder; border-image: initial; }
+button, input, optgroup, select, textarea { font-family: inherit; font-size: 100%; line-height: 1.15; margin: 0; }
+button, input { overflow: visible; }
+button, select { text-transform: none; }
+button, [type="button"], [type="reset"], [type="submit"] { -webkit-appearance: button; }
+button, input, optgroup, select, textarea { line-height: normal; font-size: 100%; }
+      
+      em { font-style: normal; }
+      
+      svg:not(:root) { overflow-clip-margin: content-box; overflow: hidden; }
+      :not(svg) { transform-origin: 0px 0px; }
+      
+      h1, h3, p, hr { margin: 0px; }
+      
+hr { display: block; unicode-bidi: isolate; margin-inline-start: auto; margin-inline-end: auto; overflow: hidden; border-style: inset;
+    border-width: 1px; box-sizing: content-box; height: 0; overflow: visible; }
+    
+      
+      
+      
+      
+      
+/* section css start */
+      .css-18gwkcr {
+    padding-top: 0px;
+    padding-bottom: 56px;
+}
+@media (min-width: 719px) {
+	.css-18gwkcr {
+	    padding-top: 62px;
+	    padding-bottom: unset;
+	}
+}
+
+.css-leo5si-Self {
+    display: flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    min-height: calc(100vh - 62px);
+}
+
+.css-funxdv-StyledCommentPageContainer > section {
+             -webkit-flex: 1;
+             -ms-flex: 1;
+             flex: 1;
+         }
+@media (min-width: 719px) {
+	.css-funxdv-StyledCommentPageContainer {
+	    display:-webkit-box;
+                 display: -webkit-flex;
+                 display: -ms-flexbox;
+                 display: flex;
+                 -webkit-flex-direction: column;
+                 -ms-flex-direction: column;
+                 flex-direction: column;
+	}
+}
+@media (min-width: 719px) {
+	.css-funxdv-StyledCommentPageContainer > section {
+	    flex: 1 1 0%;
+	}
+}
+
+.css-nyfngm-HeaderBarPrimitive {
+    position: fixed;
+             top: 0;
+             left: 0;
+             z-index: 50;
+             background: #fff;
+             box-sizing: border-box;
+             font-size: 17px;
+             font-weight: 700;
+             -webkit-letter-spacing: -0.5px;
+             -moz-letter-spacing: -0.5px;
+             -ms-letter-spacing: -0.5px;
+             letter-spacing: -0.5px;
+             line-height: 22px;
+             width: 100%;
+             height: 44px;
+             padding: 0 16px;
+             border-bottom: 1px solid #e3e3e3;
+             display: -webkit-box;
+             display: -webkit-flex;
+             display: -ms-flexbox;
+             display: flex;
+             -webkit-box-pack: justify;
+             -webkit-justify-content: space-between;
+             -ms-flex-pack: justify;
+             justify-content: space-between;
+             box-sizing: border-box;
+             top: 62px;
+             display: none;
+}
+@media (max-width: 719px) {
+             .css-nyfngm-HeaderBarPrimitive {
+                 top:0px;
+                 display:-webkit-box;
+                 display: -webkit-flex;
+                 display: -ms-flexbox;
+                 display: flex;
+             }
+         }
+
+.css-19pxr9t {
+    position: relative;
+    z-index: 2;
+}
+
+.css-a6n3jw-StylelessButton-HeaderCloseButtonSelf-TopLeftButton {
+    background-position: initial;
+    background-size: initial;
+    background-repeat: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    padding: 0px;
+    border: none;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    margin: 10px 0px;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9IiNGRjJGNkUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTYuNzU1IDExLjk4OGw0Ljk1OCA0Ljk1OGEuOTguOTggMCAxIDEtMS4zODcgMS4zODdMNCAxMi4wMDdsLjAwNS0uMDA1TDQgMTEuOTk3bDYuMzQzLTYuMzQzYS45Ny45NyAwIDEgMSAxLjM3MyAxLjM3M2wtNC45NjEgNC45NnoiLz4KICAgICAgICA8cGF0aCBkPSJNNiAxMWgxM2ExIDEgMCAwIDEgMCAySDZ2LTJ6Ii8+CiAgICA8L2c+Cjwvc3ZnPgo=) !important;
+    outline: none;
+}
+
+.css-5pjt39 {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    z-index: 1;
+    white-space: nowrap;
+    text-align: center;
+    width: calc(100vw - 112px);
+    height: 22px;
+    margin: 11px auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.css-1rqhhm-StylelessButton-HeaderCloseButtonSelf-TopRightMoreButton {
+    background-position: initial;
+    background-size: initial;
+    background-repeat: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    padding: 0px;
+    border: none;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    margin: 10px 0px;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTguOTk3NiAxMy40OTc2QzE4LjE2ODYgMTMuNDk3NiAxNy40OTc2IDEyLjgyNTYgMTcuNDk3NiAxMS45OTc2QzE3LjQ5NzYgMTEuMTY4NiAxOC4xNjg2IDEwLjQ5NzYgMTguOTk3NiAxMC40OTc2QzE5LjgyNTYgMTAuNDk3NiAyMC40OTc2IDExLjE2ODYgMjAuNDk3NiAxMS45OTc2QzIwLjQ5NzYgMTIuODI1NiAxOS44MjU2IDEzLjQ5NzYgMTguOTk3NiAxMy40OTc2Wk0xMy41IDExLjk5NzZDMTMuNSAxMS4xNjg2IDEyLjgyOCAxMC40OTc2IDEyIDEwLjQ5NzZDMTEuMTcxIDEwLjQ5NzYgMTAuNSAxMS4xNjg2IDEwLjUgMTEuOTk3NkMxMC41IDEyLjgyNTYgMTEuMTcxIDEzLjQ5NzYgMTIgMTMuNDk3NkMxMi44MjggMTMuNDk3NiAxMy41IDEyLjgyNTYgMTMuNSAxMS45OTc2Wk02LjUwMjQ0IDExLjk5NzZDNi41MDI0NCAxMS4xNjg2IDUuODMxNDQgMTAuNDk3NiA1LjAwMjQ0IDEwLjQ5NzZDNC4xNzM0NCAxMC40OTc2IDMuNTAyNDQgMTEuMTY4NiAzLjUwMjQ0IDExLjk5NzZDMy41MDI0NCAxMi44MjU2IDQuMTczNDQgMTMuNDk3NiA1LjAwMjQ0IDEzLjQ5NzZDNS44MzE0NCAxMy40OTc2IDYuNTAyNDQgMTIuODI1NiA2LjUwMjQ0IDExLjk5NzZaIiBmaWxsPSIjRkYyRjZFIi8+Cjwvc3ZnPgo=) !important;
+}
+
+.css-fr521c-StyledSectionContainer {
+    max-width: 1320px;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+@media (min-width: 719px) {
+	.css-fr521c-StyledSectionContainer {
+	    margin-bottom: 55px;
+	}
+}
+@media (min-width: 760px) {
+	.css-fr521c-StyledSectionContainer {
+	    margin-right: 3.5%;
+	    margin-left: 3.5%;
+	}
+}
+@media (min-width: 1100px) {
+	.css-fr521c-StyledSectionContainer {
+	    margin-right: 60px;
+	    margin-left: 60px;
+	}
+}
+@media (min-width: 1440px) {
+	.css-fr521c-StyledSectionContainer {
+	    margin-right: auto;
+	    margin-left: auto;
+	}
+}
+
+.css-1d7xpnn-CommentContainer {
+    margin: 18px 0px 16px;
+}
+
+/* 댓글달린 영화정보 start */
+.css-1p3jp2v {
+    display: flex;
+    margin-bottom: 18px;
+}
+
+.css-1cvf9dk {
+    flex: 1 1 0%;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: -0.7px;
+    line-height: 22px;
+    overflow: hidden;
+}
+.css-1cvf9dk > a {
+    display: flex;
+    flex: 1 1 0%;
+    -webkit-box-align: center;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+.css-1f9m1s4-StylelessLocalLink {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+.css-1byz60h {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 50%;
+    display: flex;
+    position: relative;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    overflow: hidden;
+    flex-shrink: 0;
+    margin: 3px 5px 3px 0px;
+    width: 20px;
+    height: 20px;
+}
+
+.css-wm1n5y-ProfilePhotoImage {
+    position: relative;
+    z-index: 1;
+    background: url(/images/watcha_badge.png) center center / cover no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.css-1sg2lsz {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.css-a7gqjg {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: -0.2px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    color: rgb(74, 74, 74);
+    line-height: 16px;
+}
+
+.css-19w3a64 {
+    display: inline-block;
+    background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTQuNzcwNDYgMC41NjI0NTlDNS4yNDMyOCAtMC4xNTY0MzIgNi4zMTE0NyAtMC4xOTMwNyA2LjgzNTM1IDAuNDkyMTU1QzcuMTczMzcgMC45MzM3ODggNy43NzM4NSAxLjEwMTEzIDguMzAxODEgMC45MDAxMjFDOS4xMTk4IDAuNTg4MjA1IDEwLjAwNjIgMS4xNjc0OCAxMC4wMTQ0IDIuMDIxMDRDMTAuMDE5NSAyLjU2OTYxIDEwLjQwNTUgMy4wNDc4OCAxMC45NTM5IDMuMTg1NTJDMTEuODA0NiAzLjM5OTQxIDEyLjE3MDIgNC4zNzQ3NiAxMS42NjA2IDUuMDY4OUMxMS4zMzE4IDUuNTE2NDggMTEuMzUzMiA2LjEyMTQ5IDExLjcxMzcgNi41NDYyOUMxMi4yNzIzIDcuMjA0NzggMTEuOTc3MiA4LjIwMTkyIDExLjE0MzggOC40NzIyNUMxMC42MDY3IDguNjQ3NTIgMTAuMjU3NCA5LjE1MDU0IDEwLjI5MTEgOS42OTkxMkMxMC4zNDQyIDEwLjU0OTcgOS41MDE3NCAxMS4xODc0IDguNjYzMzIgMTAuOTMxOUM4LjEyMjA4IDEwLjc2NzYgNy41MzQ4OCAxMC45NzQ1IDcuMjI5NTQgMTEuNDM3OUM2Ljc1NjcyIDEyLjE1NjggNS42ODc1MSAxMi4xOTI1IDUuMTY0NjUgMTEuNTA4MkM0LjgyNjYzIDExLjA2NTYgNC4yMjYxNSAxMC44OTgzIDMuNjk4MTkgMTEuMTAwM0MyLjg4MDIgMTEuNDEyMiAxLjk5Mzc4IDEwLjgzMTkgMS45ODQ1OSA5Ljk4MDM0QzEuOTgwNTEgOS40Mjk3OCAxLjU5NTUxIDguOTUyNSAxLjA0NjEgOC44MTM4N0MwLjE5NTQyOCA4LjU5OTk5IC0wLjE3MDE2NiA3LjYyNjYxIDAuMzM5NDE5IDYuOTMyNDdDMC42NjgyNDkgNi40ODM5MSAwLjY0NjgwNCA1Ljg3NzkgMC4yODYzMTYgNS40NTMxQy0wLjI3MjI4NyA0Ljc5NDYxIDAuMDIyODQzIDMuNzk5NDUgMC44NTYxNTIgMy41MjcxNUMxLjM5MzMxIDMuMzUyODcgMS43NDM1OSAyLjg1MDgzIDEuNzA4ODYgMi4zMDEyN0MxLjY1NTc2IDEuNDUwNjggMi40OTgyNiAwLjgxMTk5MiAzLjMzNjY4IDEuMDY4NDZDMy44Nzc5MiAxLjIzMjgzIDQuNDY1MTIgMS4wMjU4OCA0Ljc3MDQ2IDAuNTYyNDU5WiIgZmlsbD0iIzBFMEYxMCIvPgogIDxwYXRoIGQ9Ik03LjY5NzMzIDIuNDUwMkw3LjI4NjEyIDcuNzkzOTJMNy4xNzc3NCA3Ljc5ODI4TDYuNDUyMjYgMy45Nzk3NUg1LjI2MTIzTDQuNjY1NTggNy44OTE1N0w0LjUzNTc1IDcuODk2OEwzLjk1MDk2IDMuOTc5NzVIMi41TDMuODEwMjcgOS43MTU4Mkw1LjMxNTI4IDkuNjE0MzlMNS44NDU3NCA1Ljk3MTdINS45NjQ5OEw2LjU2MDM1IDkuNTMwMTFMOC4wNzY1MSA5LjQyNzIzTDkuMTA1MTEgMi40NTAySDcuNjk3MzNaIiBmaWxsPSIjRkYwNTU4Ii8+Cjwvc3ZnPgo=) center center / contain no-repeat;
+    vertical-align: middle;
+    width: 12px;
+    height: 12px;
+    margin-left: 2px;
+}
+
+.css-1hy7aba {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: -0.2px;
+    color: rgb(120, 120, 120);
+    line-height: 16px;
+    margin-left: 4px;
+}
+
+.css-1f9m1s4-StylelessLocalLink:hover, .css-1f9m1s4-StylelessLocalLink:visited, .css-1f9m1s4-StylelessLocalLink:active {
+    color: rgb(0, 0, 0);
+}
+
+.css-dbu6le {
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    letter-spacing: -0.6px;
+    line-height: 21px;
+    margin-top: 3px;
+}
+
+.css-1futg35 {
+    color: rgb(120, 120, 120);
+    font-size: 12px;
+    letter-spacing: -0.2px;
+    line-height: 16px;
+    margin-top: 3px;
+}
+
+.css-1edcxeb {
+    display: flex;
+    margin-top: 5px;
+}
+
+.css-1cxhrll {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    background: rgb(255, 255, 255);
+    color: rgb(74, 74, 74);
+    font-weight: 400;
+    letter-spacing: -0.3px;
+    font-size: 13px;
+    line-height: 16px;
+    box-sizing: border-box;
+    height: 24px;
+    padding-right: 8px;
+    padding-left: 8px;
+    border: 1px solid rgb(234, 234, 234);
+    border-radius: 13px;
+}
+.css-1cxhrll > img {
+    vertical-align: top;
+}
+.css-1cxhrll > span {
+    margin-left: 4px;
+}
+
+.css-1dl0k9f-StyledLazyLoadingImage {
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 72px;
+    height: 106px;
+    border: 0.5px solid rgba(0, 0, 0, 0.16);
+    border-radius: 3px;
+    background: rgb(248, 248, 248);
+    transition: all 300ms ease 0s;
+}
+
+.css-qhzw1o-StyledImg {
+    vertical-align: top;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    object-fit: cover;
+    transition: opacity 420ms ease 0s;
+}
+
+
+
+
+.css-cb09zq {
+    position: relative;
+    color: rgb(74, 74, 74);
+    font-size: 16px;
+    letter-spacing: -0.6px;
+    line-height: 25px;
+    margin-bottom: 22px;
+}
+
+.css-1g78l7j {
+    white-space: pre-wrap;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: -0.2px;
+    line-height: 24px;
+    overflow: hidden;
+    opacity: 1;
+    transition: all 400ms ease 0s;
+}
+
+.css-hkgyal {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 40px;
+    margin-top: 32px;
+}
+
+.css-prw2jl {
+    color: rgb(120, 120, 120);
+    font-size: 12px;
+    letter-spacing: -0.2px;
+    line-height: 16px;
+}
+
+.css-1n0dvqq {
+    margin-right: 18px;
+}
+
+.css-j985f6 {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.css-4ygot5 {
+    position: relative;
+}
+.css-4ygot5:hover {
+    cursor: pointer;
+}
+
+.css-1b4hoch-SVG {
+    display: block;
+    color: inherit;
+    font-family: "Inter",Helvetica,"Apple Color Emoji",Arial,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";
+    width: auto;
+    height: auto;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.css-1b4hoch-SVG svg {
+    width: 20px;
+    height: auto;
+}
+.css-1b4hoch-SVG > div {
+    line-height: 0;
+}
+svg[Attributes] {
+    width: 20;
+    height: 20;
+    fill: none;
+}
+
+path[Attributes] {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    d: path("M 11.251 5.42676 C 11.251 6.11759 10.691 6.67676 10.001 6.67676 C 9.31014 6.67676 8.75098 6.11759 8.75098 5.42676 C 8.75098 4.73676 9.31014 4.17676 10.001 4.17676 C 10.691 4.17676 11.251 4.73676 11.251 5.42676 Z M 10.001 8.74993 C 9.31014 8.74993 8.75098 9.30993 8.75098 9.99993 C 8.75098 10.6908 9.31014 11.2499 10.001 11.2499 C 10.691 11.2499 11.251 10.6908 11.251 9.99993 C 11.251 9.30993 10.691 8.74993 10.001 8.74993 Z M 10.001 13.3231 C 9.31014 13.3231 8.75098 13.8823 8.75098 14.5731 C 8.75098 15.2639 9.31014 15.8231 10.001 15.8231 C 10.691 15.8231 11.251 15.2639 11.251 14.5731 C 11.251 13.8823 10.691 13.3231 10.001 13.3231 Z");
+    fill: rgb(160, 160, 160);
+}
+
+.css-4in6y9 {
+    position: absolute;
+    top: 100%;
+    right: 0px;
+    z-index: 10;
+    font-size: 15px;
+    display: none;
+}
+
+.css-ughty8 {
+    position: absolute;
+    top: 100%;
+    right: 0px;
+    z-index: 10;
+    font-size: 15px;
+    display: block;
+}
+
+.css-ve4kut {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    background: #fff;
+    box-sizing: border-box;
+    width: 176px;
+    padding: 5px;
+    border-radius: 7px;
+    box-shadow: 0 1px 6px rgb(0 0 0 / 17%);
+}
+
+.css-19hkid5 {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    background: rgb(255, 255, 255);
+    color: rgb(41, 42, 50);
+    box-sizing: border-box;
+    width: 100%;
+    height: 36px;
+    border-radius: 5px;
+    cursor: pointer;
+    padding-left: 7px;
+}
+.css-19hkid5:hover {
+    background: rgba(41,42,50,0.08);
+}
+.css-19hkid5:not(:last-of-type) {
+    margin-bottom: 3px;
+}
+.css-19hkid5 .icon {
+	margin: 0 12px;
+}
+
+.css-1nfwvb4-StylelessButton {
+    background: none;
+    border: none;
+    margin: 0px;
+    cursor: pointer;
+    font-weight: 400;
+    letter-spacing: -0.3px;
+    line-height: 18px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    color: rgb(103, 104, 106);
+    font-size: 12px;
+    min-width: 58px;
+    height: 26px;
+    padding: 0px 10px;
+    border-radius: 5px;
+}
+.css-1nfwvb4-StylelessButton:hover {
+    background-color: rgba(41, 42, 50, 0.08);
+    color: rgba(41, 42, 50, 0.8);
+}
+
+.css-s99igu {
+    width: 14px;
+    height: 14px;
+    margin-right: 5px;
+    fill: rgb(160, 160, 160);
+}
+
+g[Attributes] {
+    fill-rule: evenodd;
+}
+
+path[Attributes] {
+    d: path("M 2.18 15.39 l 0.703 -3.98 l 3.713 3.712 l -3.981 0.702 a 0.374 0.374 0 0 1 -0.434 -0.434 Z m 1.498 -4.776 l 6.364 -6.364 l 3.713 3.712 l -6.364 6.364 l -3.713 -3.712 Z M 15.607 5.04 a 0.75 0.75 0 0 1 0 1.06 l -1.06 1.061 l -3.713 -3.712 l 1.06 -1.06 a 0.75 0.75 0 0 1 1.06 0 l 2.653 2.651 Z");
+}
+
+path[Attributes] {
+    d: path("M 5.25 14.25 h 7.5 v -7.5 h 1.5 V 15 a 0.75 0.75 0 0 1 -0.75 0.75 h -9 a 0.75 0.75 0 0 1 -0.75 -0.75 V 6.75 h 1.5 v 7.5 Z M 12 4.5 h 3.75 V 6 H 2.25 V 4.5 H 6 V 3 a 0.75 0.75 0 0 1 0.75 -0.75 h 4.5 A 0.75 0.75 0 0 1 12 3 v 1.5 Z m -1.5 0 v -0.75 h -3 v 0.75 h 3 Z M 6.75 6.75 h 1.5 v 6.75 h -1.5 V 6.75 Z m 3 0 h 1.5 v 6.75 h -1.5 V 6.75 Z");
+}
+
+.css-god8tc {
+    border-width: 0px 0px 1px;
+    border-top-style: initial;
+    border-right-style: initial;
+    border-left-style: initial;
+    border-top-color: initial;
+    border-right-color: initial;
+    border-left-color: initial;
+    border-image: initial;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(240, 240, 240);
+}
+
+.css-1y901al-Row {
+    margin: 0px 20px;
+}
+
+.css-cxqjs3 {
+    display: grid;
+    position: relative;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    height: 43px;
+}
+
+.css-135c2b4-StylelessButton-StyledActionButton {
+    background: none;
+    padding: 0px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    position: relative;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    color: rgb(103, 104, 106);
+    font-size: 15px;
+    letter-spacing: -0.3px;
+    line-height: 18px;
+    border-radius: 5px;
+    margin: 3px;
+}
+.css-135c2b4-StylelessButton-StyledActionButton:focus {
+    outline: none;
+}
+.css-135c2b4-StylelessButton-StyledActionButton svg {
+    margin-right: 5px;
+}
+.css-135c2b4-StylelessButton-StyledActionButton, .css-135c2b4-StylelessButton-StyledActionButton .fillTarget {
+	-webkit-transition: all 70ms linear;
+    transition: all 70ms linear 0s;
+}
+.css-135c2b4-StylelessButton-StyledActionButton:hover {
+    background-color: rgba(41,42,50,0.08);
+    color: rgba(41,42,50,1);
+}
+.css-135c2b4-StylelessButton-StyledActionButton:hover svg *:not([fill="none"]) {
+    fill: rgba(41,42,50,1);
+}
+.css-135c2b4-StylelessButton-StyledActionButton:not(:last-of-type)::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: -4px;
+    background: #f0f0f0;
+    width: 1px;
+    height: 14px;
+}
+.css-135c2b4-StylelessButton-StyledActionButton.boing [class*="StyledIconContainer"] {
+    -webkit-animation: boing 300ms;
+    animation: boing 300ms;
+}
+@-webkit-keyframes boing {
+    50% {
+        -webkit-transform: scale(1.5) rotate(-20deg);
+        -ms-transform: scale(1.5) rotate(-20deg);
+        transform: scale(1.5) rotate(-20deg);
+    }
+}
+@keyframes boing {
+    50% {
+        -webkit-transform: scale(1.5) rotate(-20deg);
+        -ms-transform: scale(1.5) rotate(-20deg);
+        transform: scale(1.5) rotate(-20deg);
+    }
+}
+
+.css-1umclh2-StyledIconContainer {
+    display: flex;
+}
+
+.css-vkoibk {
+    width: 20px;
+    height: 20px;
+}
+
+path[Attributes] {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    d: path("M 5.6252 7.9043 H 3.1252 C 2.6652 7.9043 2.29187 8.27763 2.29187 8.73763 V 17.071 C 2.29187 17.531 2.6652 17.9043 3.1252 17.9043 H 5.6252 C 6.08604 17.9043 6.45854 17.531 6.45854 17.071 V 8.73763 C 6.45854 8.27763 6.08604 7.9043 5.6252 7.9043 Z");
+    fill: rgb(135, 137, 139);
+}
+
+path[Attributes] { /* 좋아요버튼 아이콘 */
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    d: path("M 11.71 4.34525 L 11.7017 3.99359 L 11.6825 3.14525 L 11.6809 3.09692 L 11.6759 3.04942 C 11.6684 2.96942 11.6792 2.93442 11.6775 2.93275 C 11.6917 2.92442 11.7534 2.90442 11.8725 2.90442 C 12.115 2.90442 13.3225 2.97609 13.3225 4.38692 C 13.3225 4.93359 13.2775 5.35859 13.1809 5.72692 L 12.8375 7.03275 C 12.8034 7.16525 12.9025 7.29442 13.0392 7.29442 H 14.3892 H 15.7317 C 16.0575 7.29442 16.3684 7.43692 16.585 7.68442 C 16.7975 7.93025 16.9009 8.25609 16.87 8.58275 L 15.6717 14.7703 L 15.6634 14.8119 L 15.6584 14.8536 C 15.59 15.3961 15.0959 15.8211 14.5334 15.8211 H 8.54169 V 8.19942 C 8.54169 7.89109 8.71169 7.56275 9.04835 7.22359 L 11.3417 4.90025 L 11.5775 4.66109 C 11.71 4.52359 11.71 4.34525 11.71 4.34525 Z M 17.5275 6.86525 C 17.0734 6.34275 16.4184 6.04442 15.7317 6.04442 H 14.3892 C 14.5167 5.56025 14.5725 5.02942 14.5725 4.38692 C 14.5725 2.50942 13.1734 1.65442 11.8725 1.65442 C 11.3825 1.65442 11 1.80775 10.7367 2.11025 C 10.5667 2.30359 10.3792 2.64442 10.4325 3.17359 L 10.4517 4.02192 L 8.15835 6.34525 C 7.58335 6.92692 7.29169 7.55109 7.29169 8.19942 V 16.2378 C 7.29169 16.6978 7.66502 17.0711 8.12502 17.0711 H 14.5334 C 15.7342 17.0711 16.7559 16.1603 16.8992 15.0078 L 18.1067 8.77192 C 18.1925 8.08109 17.9809 7.38692 17.5275 6.86525 Z");
+    fill: rgb(135, 137, 139);
+}
+
+path[Attributes] { /* 댓글버튼 아이콘 */
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    d: path("M 9.99963 2.08325 C 5.65046 2.08325 2.12546 5.02159 2.12546 8.64575 C 2.12546 10.5891 3.13962 12.3358 4.74962 13.5374 L 4.61129 17.2416 C 4.61129 17.4899 4.81462 17.6591 5.03046 17.6591 C 5.12129 17.6591 5.21462 17.6291 5.29462 17.5616 L 8.12462 15.0208 C 8.72629 15.1433 9.35379 15.2083 9.99963 15.2083 C 14.3496 15.2083 17.8746 12.2699 17.8746 8.64575 C 17.8746 5.02159 14.3496 2.08325 9.99963 2.08325 Z M 9.99962 3.33325 C 13.653 3.33325 16.6246 5.71659 16.6246 8.64575 C 16.6246 11.5749 13.653 13.9583 9.99962 13.9583 C 9.44962 13.9583 8.90296 13.9041 8.37379 13.7966 C 8.29129 13.7791 8.20796 13.7708 8.12462 13.7708 C 7.81962 13.7708 7.52046 13.8833 7.28962 14.0908 L 5.93462 15.3074 L 5.99879 13.5841 C 6.01462 13.1733 5.82712 12.7808 5.49796 12.5349 C 4.14879 11.5291 3.37546 10.1116 3.37546 8.64575 C 3.37546 5.71659 6.34712 3.33325 9.99962 3.33325 Z");
+    fill: rgb(135, 137, 139);
+}
+
+path[Attributes] { /* 공유버튼 아이콘 */
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    d: path("M 14.6475 13.314 C 13.9492 13.314 13.3192 13.6015 12.8658 14.0631 L 6.98249 10.664 C 7.04166 10.4515 7.08333 10.2315 7.08333 9.99981 C 7.08333 9.76815 7.04166 9.54815 6.98333 9.33565 L 12.8658 5.93565 C 13.3192 6.39731 13.9492 6.68481 14.6475 6.68481 C 16.0275 6.68481 17.1475 5.56565 17.1475 4.18481 C 17.1475 2.80481 16.0275 1.68481 14.6475 1.68481 C 13.2675 1.68481 12.1475 2.80481 12.1475 4.18481 C 12.1475 4.41648 12.1892 4.63648 12.2483 4.84981 L 6.365 8.24898 C 5.91166 7.78731 5.28166 7.49981 4.58333 7.49981 C 3.20249 7.49981 2.08333 8.61898 2.08333 9.99981 C 2.08333 11.3806 3.20249 12.4998 4.58333 12.4998 C 5.28166 12.4998 5.91166 12.2123 6.365 11.7506 L 12.2483 15.1498 C 12.1892 15.3623 12.1475 15.5823 12.1475 15.814 C 12.1475 17.1948 13.2675 18.314 14.6475 18.314 C 16.0275 18.314 17.1475 17.1948 17.1475 15.814 C 17.1475 14.4331 16.0275 13.314 14.6475 13.314 Z");
+    fill: rgb(135, 137, 139);
+}
+
+.css-pfmsf9 {
+    position: absolute;
+    top: calc(100% + 5px);
+    right: calc((33% - 176px) / 2);
+    z-index: 10;
+    display: none;
+}
+
+.css-1cqdd33-StylelessHref { /* 공유버튼 - twitter */
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+.css-3wahtm {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    background: rgb(255, 255, 255);
+    color: rgb(41, 42, 50);
+    box-sizing: border-box;
+    width: 100%;
+    height: 36px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.css-3wahtm .icon {
+    margin: 0px 12px;
+}
+
+.css-ormu9t-SVG {
+    display: block;
+    color: rgb(41, 42, 50);
+    font-family: Inter, Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+    width: auto;
+    height: auto;
+    backface-visibility: hidden;
+}
+.css-ormu9t-SVG > div {
+    line-height: 0;
+}
+.css-ormu9t-SVG svg {
+    width: 24px;
+    height: auto;
+}
+svg[Attributes] {
+    width: 24;
+    height: 24;
+    fill: none;
+}
+svg:not(:root) {
+    overflow-clip-margin: content-box;
+    overflow: hidden;
+}
+
+path[Attributes] { /* 공유버튼 - 트위터 아이콘 */
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    d: path("M 8.47535 19.7 C 15.6455 19.7 19.5665 13.8527 19.5665 8.78235 C 19.5665 8.61619 19.5631 8.45078 19.5553 8.28627 C 20.3164 7.74471 20.978 7.06894 21.5 6.29951 C 20.8015 6.60489 20.0498 6.81077 19.2613 6.90354 C 20.0662 6.42863 20.6841 5.67693 20.9754 4.78099 C 20.2221 5.22051 19.3882 5.54018 18.5003 5.71232 C 17.789 4.96652 16.7759 4.5 15.6549 4.5 C 13.502 4.5 11.7562 6.21849 11.7562 8.33692 C 11.7562 8.63811 11.7905 8.93085 11.8573 9.21184 C 8.61762 9.05152 5.74482 7.52454 3.8224 5.20278 C 3.48732 5.7697 3.2945 6.42863 3.2945 7.13134 C 3.2945 8.46268 3.98268 9.63789 5.02913 10.3254 C 4.38982 10.306 3.78904 10.1331 3.26365 9.84534 C 3.26274 9.86135 3.26274 9.87743 3.26274 9.89427 C 3.26274 11.7529 4.60664 13.3043 6.39014 13.6561 C 6.0628 13.7438 5.71822 13.7911 5.36254 13.7911 C 5.11144 13.7911 4.86717 13.7666 4.62975 13.7219 C 5.12603 15.2464 6.56501 16.3558 8.27136 16.3871 C 6.93696 17.4162 5.25629 18.0295 3.42994 18.0295 C 3.11537 18.0295 2.80514 18.0119 2.5 17.9764 C 4.22528 19.0647 6.27363 19.7 8.47535 19.7 Z");
+    fill: currentcolor;
+}
+
+path[Attributes] { /* 공유버튼 - 페이스북 아이콘 */
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    d: path("M 21.5 12.0581 C 21.5 6.7793 17.2467 2.5 12 2.5 C 6.75329 2.5 2.5 6.7793 2.5 12.0581 C 2.5 16.8288 5.97401 20.783 10.5156 21.5 V 14.821 H 8.10352 V 12.0581 H 10.5156 V 9.95232 C 10.5156 7.55682 11.9339 6.23363 14.1039 6.23363 C 15.1433 6.23363 16.2305 6.42031 16.2305 6.42031 V 8.77249 H 15.0325 C 13.8524 8.77249 13.4844 9.50927 13.4844 10.2651 V 12.0581 H 16.1191 L 15.6979 14.821 H 13.4844 V 21.5 C 18.026 20.783 21.5 16.8288 21.5 12.0581 Z");
+    fill: currentcolor;
+}
+
+path[Attributes] { /* 공유버튼 - 카카오톡 아이콘 */
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    d: path("M 12.0394 18.3 C 17.0318 18.3 21.0789 15.0988 21.0789 11.15 C 21.0789 7.20116 17.0318 4 12.0394 4 C 7.04709 4 3 7.20116 3 11.15 C 3 13.7249 4.72075 15.9819 7.30229 17.2407 C 7.03607 18.3554 6.56855 20.3198 6.55147 20.4385 C 6.52754 20.6048 6.71925 20.7406 6.88758 20.6251 C 7.0105 20.5408 9.25295 19.0102 10.4541 18.1904 C 10.9688 18.2624 11.4986 18.3 12.0394 18.3 Z");
+    fill: currentcolor;
+}
+
+path[Attributes] { /* 공유버튼 - 링크복사 아이콘 */
+    d: path("M 3.9 12 C 3.9 10.29 5.29 8.9 7 8.9 H 11 V 7 H 7 C 4.24 7 2 9.24 2 12 C 2 14.76 4.24 17 7 17 H 11 V 15.1 H 7 C 5.29 15.1 3.9 13.71 3.9 12 Z M 8 13 H 16 V 11 H 8 V 13 Z M 17 7 H 13 V 8.9 H 17 C 18.71 8.9 20.1 10.29 20.1 12 C 20.1 13.71 18.71 15.1 17 15.1 H 13 V 17 H 17 C 19.76 17 22 14.76 22 12 C 22 9.24 19.76 7 17 7 Z");
+    fill: currentcolor;
+}
+
+.css-1hxlv9b {
+    position: fixed;
+    top: -3000px;
+    height: 0px;
+    overflow: hidden;
+}
+
+
+.css-1r5nwql { /* 회원정보 section */
+    margin-top: 35px;
+}
+
+.css-1m1whp6:first-of-type {
+    border-top: none;
+}
+.css-1m1whp6 { /* 회원정보 DIV2 */
+    width: 100%;
+    padding: 12px 0px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.css-ov1ktg { /* 회원정보 DIV3 */
+    display: flex;
+}
+
+.css-255jr8 { /* 회원 프로필사진 a태그 */
+    display: inherit;
+    -webkit-box-align: inherit;
+    align-items: inherit;
+    text-decoration: none;
+}
+
+.css-bnsanu { /* 회원 프로필사진 */
+    background: url(https://an2-img.amz.wtchn.net/image/v2/n61WJY8ewRZUlLKOtTnLLA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UQXdlREV3TUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNWelpYSXZNelpzZGxneVlqWk1lRmhrYmk5d2NtOW1hV3hsTHpFMk1qazVPVFk1TURneE1EWTNNekUxTWpBaWZRLkRibTdoQWxzM3F1MHp0NTN5QVA1MW95aTZ6Z1lyS0xDYnR2MjllRnFnalE) center center / contain no-repeat;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    box-shadow: rgb(0 0 0 / 8%) 0px 0px 0px 1px inset;
+}
+
+.css-199ku80 { /* 댓글전체박스 */
+    width: calc(100% - 40px);
+    margin-left: auto;
+}
+
+.css-1sg2lsz { /* 회원 이름 */
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.css-255jr8 { /* 회원 이름 a태그 */
+    display: inherit;
+    -webkit-box-align: inherit;
+    align-items: inherit;
+    text-decoration: none;
+}
+
+.css-72k174 { /* 회원 이름 */
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    line-height: 18px;
+}
+
+.css-13ebre0-SVG { /* 왓챠회원 뱃지박스 */
+    display: block;
+    color: inherit;
+    font-family: Inter, Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+    width: auto;
+    height: auto;
+    backface-visibility: hidden;
+    margin-left: 4px;
+}
+.css-13ebre0-SVG > div { /* 왓챠회원 뱃지박스 */
+    line-height: 0;
+}
+.css-13ebre0-SVG svg { /* 왓챠회원 뱃지박스 */
+    width: 12px;
+    height: auto;
+}
+
+path[Attributes] { /* 왓챠회원 뱃지박스1 */
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    d: path("M 4.77046 0.562459 C 5.24328 -0.156432 6.31147 -0.19307 6.83535 0.492155 C 7.17337 0.933788 7.77385 1.10113 8.30181 0.900121 C 9.1198 0.588205 10.0062 1.16748 10.0144 2.02104 C 10.0195 2.56961 10.4055 3.04788 10.9539 3.18552 C 11.8046 3.39941 12.1702 4.37476 11.6606 5.0689 C 11.3318 5.51648 11.3532 6.12149 11.7137 6.54629 C 12.2723 7.20478 11.9772 8.20192 11.1438 8.47225 C 10.6067 8.64752 10.2574 9.15054 10.2911 9.69912 C 10.3442 10.5497 9.50174 11.1874 8.66332 10.9319 C 8.12208 10.7676 7.53488 10.9745 7.22954 11.4379 C 6.75672 12.1568 5.68751 12.1925 5.16465 11.5082 C 4.82663 11.0656 4.22615 10.8983 3.69819 11.1003 C 2.8802 11.4122 1.99378 10.8319 1.98459 9.98034 C 1.98051 9.42978 1.59551 8.9525 1.0461 8.81387 C 0.195428 8.59999 -0.170166 7.62661 0.339419 6.93247 C 0.668249 6.48391 0.646804 5.8779 0.286316 5.4531 C -0.272287 4.79461 0.022843 3.79945 0.856152 3.52715 C 1.39331 3.35287 1.74359 2.85083 1.70886 2.30127 C 1.65576 1.45068 2.49826 0.811992 3.33668 1.06846 C 3.87792 1.23283 4.46512 1.02588 4.77046 0.562459 Z");
+    fill: rgb(14, 15, 16);
+}
+path[Attributes] { /* 왓챠회원 뱃지 */
+    d: path("M 7.69733 2.44995 L 7.28612 7.79367 L 7.17774 7.79803 L 6.45226 3.97951 H 5.26123 L 4.66558 7.89132 L 4.53575 7.89655 L 3.95096 3.97951 H 2.5 L 3.81027 9.71558 L 5.31528 9.61415 L 5.84574 5.97145 H 5.96498 L 6.56035 9.52987 L 8.07651 9.42699 L 9.10511 2.44995 H 7.69733 Z");
+    fill: rgb(255, 5, 88);
+}
+
+.css-maxfbg { /* 댓글부분 - 며칠 전 */
+    color: rgb(140, 140, 140);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.2px;
+    line-height: 16px;
+    margin-left: auto;
+}
+
+.css-yb0jaq { /* 댓글부분 - 댓글 */
+    color: rgb(74, 74, 74);
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: -0.55px;
+    line-height: 22px;
+    white-space: pre-wrap;
+    width: calc(100% - 40px);
+    margin-top: 4px;
+    margin-bottom: 8px;
+}
+
+.css-ov1ktg { /* 댓글부분 - 좋아요 DIV */
+    display: flex;
+}
+
+.css-1d8juai { /* 댓글부분 - 좋아요 DIV2 */
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    color: rgb(135, 137, 139);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: -0.3px;
+    line-height: 18px;
+    height: 24px;
+    padding: 0px 9px;
+    border-radius: 5px;
+    margin-right: auto;
+    margin-left: -8px;
+}
+.css-1d8juai [class*="Icon"] { /* 댓글부분 - 좋아요 아이콘 DIV */
+    margin-right: 6px;
+}
+.css-1d8juai:hover {
+	background: rgba(41,42,50,0.08);
+	cursor: pointer;
+}
+
+.css-1tuvmpc-SVG { /* 댓글부분 - 좋아요 아이콘 DIV */
+    display: block;
+    color: inherit;
+    font-family: Inter, Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+    width: auto;
+    height: auto;
+    backface-visibility: hidden;
+}
+.css-1tuvmpc-SVG > div {
+    line-height: 0;
+}
+.css-1tuvmpc-SVG svg { /* 댓글부분 - 좋아요 아이콘 */
+    width: 14px;
+    height: auto;
+}
+svg[Attributes] {
+    width: 14;
+    height: 14;
+    fill: none;
+}
+path[Attributes] {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    d: path("M 3.93783 5.5332 H 2.18783 C 1.86583 5.5332 1.60449 5.79454 1.60449 6.11654 V 11.9499 C 1.60449 12.2719 1.86583 12.5332 2.18783 12.5332 H 3.93783 C 4.26041 12.5332 4.52116 12.2719 4.52116 11.9499 V 6.11654 C 4.52116 5.79454 4.26041 5.5332 3.93783 5.5332 Z");
+    fill: rgb(135, 137, 139);
+}
+path[Attributes] { /* 댓글부분 - 좋아요 아이콘 끝 */
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    d: path("M 8.19733 3.04179 L 8.19149 2.79562 L 8.17808 2.20179 L 8.17691 2.16795 L 8.17341 2.1347 C 8.16816 2.0787 8.17574 2.0542 8.17458 2.05304 C 8.18449 2.0472 8.22766 2.0332 8.31108 2.0332 C 8.48083 2.0332 9.32608 2.08337 9.32608 3.07095 C 9.32608 3.45362 9.29458 3.75112 9.22691 4.00895 L 8.98658 4.92304 C 8.96266 5.01579 9.03208 5.1062 9.12774 5.1062 H 10.0727 H 11.0125 C 11.2406 5.1062 11.4582 5.20595 11.6098 5.3792 C 11.7586 5.55129 11.8309 5.77937 11.8093 6.00804 L 10.9705 10.3393 L 10.9647 10.3685 L 10.9612 10.3976 C 10.9133 10.7774 10.5674 11.0749 10.1737 11.0749 H 5.97949 V 5.7397 C 5.97949 5.52387 6.09849 5.29404 6.33416 5.05662 L 7.93949 3.43029 L 8.10458 3.26287 C 8.19733 3.16662 8.19733 3.04179 8.19733 3.04179 Z M 12.2696 4.80579 C 11.9517 4.44004 11.4932 4.2312 11.0125 4.2312 H 10.0727 C 10.162 3.89229 10.2011 3.5207 10.2011 3.07095 C 10.2011 1.7567 9.22166 1.1582 8.31108 1.1582 C 7.96808 1.1582 7.70033 1.26554 7.51599 1.47729 C 7.39699 1.61262 7.26574 1.8512 7.30308 2.22162 L 7.31649 2.81545 L 5.71116 4.44179 C 5.30866 4.84895 5.10449 5.28587 5.10449 5.7397 V 11.3665 C 5.10449 11.6885 5.36583 11.9499 5.68783 11.9499 H 10.1737 C 11.0142 11.9499 11.7294 11.3123 11.8297 10.5055 L 12.675 6.14045 C 12.7351 5.65687 12.5869 5.17095 12.2696 4.80579 Z");
+    fill: rgb(135, 137, 139);
+}
+
+.css-4ygot5 { /* 댓글부분 - 오른쪽 점 세 개 기능 탭 */
+    position: relative;
+}
+svg[Attributes] {
+    width: 20;
+    height: 20;
+    fill: none;
+}
+path[Attributes] {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    d: path("M 11.251 5.42676 C 11.251 6.11759 10.691 6.67676 10.001 6.67676 C 9.31014 6.67676 8.75098 6.11759 8.75098 5.42676 C 8.75098 4.73676 9.31014 4.17676 10.001 4.17676 C 10.691 4.17676 11.251 4.73676 11.251 5.42676 Z M 10.001 8.74993 C 9.31014 8.74993 8.75098 9.30993 8.75098 9.99993 C 8.75098 10.6908 9.31014 11.2499 10.001 11.2499 C 10.691 11.2499 11.251 10.6908 11.251 9.99993 C 11.251 9.30993 10.691 8.74993 10.001 8.74993 Z M 10.001 13.3231 C 9.31014 13.3231 8.75098 13.8823 8.75098 14.5731 C 8.75098 15.2639 9.31014 15.8231 10.001 15.8231 C 10.691 15.8231 11.251 15.2639 11.251 14.5731 C 11.251 13.8823 10.691 13.3231 10.001 13.3231 Z");
+    fill: rgb(160, 160, 160);
+}
+
+.css-1pfl1eu { /* 부적절한 표현 신고 */
+    position: absolute;
+    top: 100%;
+    right: 0px;
+    z-index: 10;
+    visibility: visible;
+}
+
+.css-6btlr7 {
+    font-size: 15px;
+}
+/* 댓글부분 section */
+/* 댓글달린 영화정보 end */
+/* section css end */

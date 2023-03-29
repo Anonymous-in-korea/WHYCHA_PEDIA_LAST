@@ -1,0 +1,126 @@
+@charset "UTF-8";
+
+
+.deregister { /* display: block; */
+	display: none;
+	position: fixed;
+	inset: 0px;
+	z-index: 100;
+	background: rgba(0, 0, 0, 0.56);
+	overflow: hidden scroll;
+}
+
+.deregister_alarm { /* display: block; */
+	display: none;
+	position: fixed;
+	inset: 0px;
+	z-index: 100;
+	background: rgba(0, 0, 0, 0.56);
+	overflow: hidden scroll;
+}
+
+.css-14gy7wr {
+    display: block;
+    position: fixed;
+    inset: 0px;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.56);
+    overflow: hidden scroll;
+}
+
+
+.css-rpyl6s {
+    position: absolute;
+    inset: 0px;
+    z-index: 101;
+}
+
+.css-1yszxv0 {
+    display: flex;
+    position: absolute;
+    inset: 0px;
+    z-index: 102;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.css-f35o9y {
+    background: rgb(255, 255, 255);
+    text-align: center;
+    width: 280px;
+    padding: 20px 0px 0px;
+    border-radius: 8px;
+}
+
+.css-1y901al-Row {
+    margin: 0 20px;
+}
+
+.css-2djw8f {
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    white-space: pre-wrap;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 22px;
+}
+
+.css-148qwic {
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    line-height: 20px;
+    white-space: pre-wrap;
+    padding: 0px 0px 24px;
+    border-bottom: 1px solid rgb(210, 210, 210);
+    margin: 8px 0px 0px;
+    word-break: break-all;
+}
+
+
+.css-gy4ioq > button {
+    margin: 11px 0px
+}
+
+.css-1gdw77k-StylelessButton {
+    background: none;
+    padding: 0px;
+    border-top-width: initial;
+    border-bottom-width: initial;
+    border-left-width: initial;
+    border-style: none solid none none;
+    border-image: initial;
+    margin: 0px;
+    cursor: pointer;
+    flex: 1 1 0%;
+    color: #FEAE27;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: -0.7px;
+    line-height: 22px;
+    border-right-width: 1px;
+    border-color: rgb(210, 210, 210) !important;
+}
+
+
+.css-sfhtz9-StylelessButton {
+    background: none;
+    padding: 0px;
+    border-width: initial;
+    border-style: none;
+    border-image: initial;
+    margin: 0px;
+    cursor: pointer;
+    flex: 1 1 0%;
+    color: #FEAE27;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: -0.7px;
+    line-height: 22px;
+    border-color: rgb(210, 210, 210) !important;
+}
+

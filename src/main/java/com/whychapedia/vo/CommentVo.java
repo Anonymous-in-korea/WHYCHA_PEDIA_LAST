@@ -1,0 +1,23 @@
+package com.whychapedia.vo;
+
+import java.sql.Date;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class CommentVo {
+	private int id;
+	private int movie_id;
+	private int user_id;
+	private String comment_content;
+	private Date regi_date;
+	private int is_blind; // 1-blind x 2-blind o
+	private int is_spoil; // 1-spoil x 2-spoil o
+
+}
