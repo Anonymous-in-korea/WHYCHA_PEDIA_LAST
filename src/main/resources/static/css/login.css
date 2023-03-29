@@ -34,7 +34,7 @@ input:focus{
     position: relative;
     background: rgb(255, 255, 255);
     width: 100%;
-    height: 380px;
+    height: 400px;
     box-shadow: rgb(0 0 0 / 12%) 0px 0px 6px 0px;
     overflow: hidden;
 }
@@ -46,7 +46,7 @@ input:focus{
         vertical-align: middle;
         text-align: left;
         width: 375px;
-        height: 380px;
+        height: 400px;
         min-height: 380px;
         border-radius: 6px;
         overflow: auto;
@@ -89,6 +89,17 @@ input:focus{
     -webkit-box-align: center;
     align-items: center;
     background: rgb(245, 245, 245);
+    box-sizing: border-box;
+    width: 100%;
+    height: 44px;
+    padding: 0px 12px;
+    border-radius: 6px;
+}
+.css-a4glo0-active {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    background: #FEAE27;
     box-sizing: border-box;
     width: 100%;
     height: 44px;

@@ -46,34 +46,28 @@
 									<section>
 										<div class="css-1gkas1x-Grid e1689zdh0">
 											<div class="css-1y901al-Row emmoxnt0">
-												<form action="" method="post" name="login">
+												<form action="/login" method="post" name="login">
 													<div class="css-1o72pil">
-						                                <label value="false" class="css-a4glo0">
+						                                <label value="false" id="email_box" class="css-a4glo0">
 						                                    <div class="css-1smbjja">
-						                                        <input autocomplete="off" placeholder="이메일" type="email" name="userEmail" id="userEmail" class="css-1oyrbwm"  value="" />
+						                                        <input autocomplete="off" placeholder="이메일" type="email" name="user_email" id="user_email" class="css-1oyrbwm"  value="" />
 						                                    </div>
-						                                    <div value="false" class="css-lcodwd">
-						                                        <span data-test="clearButton" aria-label="clear" role="button" class="css-qe0tnm"></span>
-						                                    </div>
-						                                    <span value="false" class="css-gem1s0"></span>
 						                                </label>
+					                                    <div id="email_error" style="argin-left:10px; font-size:11px;"></div>
 						                            </div>
 						                            <div class="css-1o72pil">
-						                                <label value="false" class="css-a4glo0">
+						                                <label value="false" id="pw_box" class="css-a4glo0">
 						                                    <div class="css-1smbjja">
-						                                        <input autocomplete="off" placeholder="비밀번호" type="password" name="userPw" id="userPw" class="css-1oyrbwm" value="" />
+						                                        <input autocomplete="off" placeholder="비밀번호" type="password" name="user_pw" id="user_pw" class="css-1oyrbwm" value="" />
 						                                    </div>
-						                                    <div value="false" class="css-lcodwd">
-						                                        <span data-test="clearButton" aria-label="clear" role="button" class="css-qe0tnm"></span>
-						                                    </div>
-						                                    <span value="false" class="css-gem1s0"></span>
 						                                </label>
+						                                <div id="pw_error" style="argin-left:10px; font-size:11px;"></div>
 						                            </div>
 													<button type="button" id="loginBtn" class="css-qr0uqd-StylelessButton">로그인</button>
 												</form>
 												<div class="css-gcz1qq" style="text-align:center; margin-top:10px;">
 													계정이 없으신가요?
-													<button id="joinBtn" class="css-gq8fs1-StylelessButton">회원가입</button>
+													<button type="button" id="join_btn" class="css-gq8fs1-StylelessButton">회원가입</button>
 												</div>
 											</div>
 										</div>
@@ -83,6 +77,60 @@
 						</div>
 					</div>
 					<!-- login section end -->
+					
+					<!-- 회원가입 section start -->
+					<div class="css-14gy7wr-join" style="display:none;">
+						<div class="css-rpyl6s">
+							<div class="css-ikkedy-join">
+								<div class="css-1i2oi66-join">
+									<header class="css-17bvwx1">
+										<a href="/">
+											<img src="/images/no1_WHYCHA.png" width="210px" height="38.03px">
+										</a>
+									</header>
+									<h2 class="css-g6a59h">회원가입</h2>
+									<section>
+										<div class="css-1gkas1x-Grid e1689zdh0">
+											<div class="css-1y901al-Row emmoxnt0">
+												<form action="/join" method="post" name="join">
+													<div class="css-1o72pil">
+														<label value="false" id="join_name_box" class="css-a4glo0">
+															<div class="css-1smbjja">
+																<input autocomplete="off" placeholder="이름" type="text" name="user_name" id="join_name" class="css-1oyrbwm" value="">
+															</div>
+														</label>
+														<div id="join_name_error" style="argin-left:10px; font-size:11px;"></div>
+													</div>
+													<div class="css-1o72pil">
+														<label value="false" id="join_email_box" class="css-a4glo0">
+															<div class="css-1smbjja">
+																<input autocomplete="off" placeholder="이메일" type="email" name="user_email" id="join_email" class="css-1oyrbwm" value="">
+															</div>
+														</label>
+														<div id="join_email_error" style="argin-left:10px; font-size:11px;"></div>
+													</div>
+													<div class="css-1o72pil">
+														<label value="false" id="join_pw_box" class="css-a4glo0">
+															<div class="css-1smbjja">
+																<input autocomplete="off" placeholder="비밀번호" type="password" name="user_pw" id="join_pw" class="css-1oyrbwm" value="">
+															</div>
+														</label>
+														<div id="join_pw_error" style="argin-left:10px; font-size:11px;"></div>
+													</div>
+													<button type="button" id="joinBtn" class="css-qr0uqd-StylelessButton">회원가입</button>
+												</form>
+												<div class="css-17kylon" style="text-align:center; margin-top:10px;">
+													<span style="color:gray; font-size:15px;">이미 가입하셨나요?</span>
+													<button id="login_btn" class="css-gq8fs1-StylelessButton">로그인</button>
+												</div>
+											</div>
+										</div>
+									</section>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 회원가입 section end -->
 					
 					<!-- 로그인 한 후 -->
 					<!-- <li class="header_li_button">
@@ -105,70 +153,6 @@
 						</a>
 					</li> -->
 					<!-- 로그인 한 후 -->
-					
-					
-					<!-- 회원가입 section start -->
-					<div class="css-14gy7wr-join" style="display:none;">
-						<div class="css-rpyl6s">
-							<div class="css-ikkedy-join">
-								<div class="css-1i2oi66-join">
-									<header class="css-17bvwx1">
-										<a href="/">
-											<img src="/images/no1_WHYCHA.png" width="210px" height="38.03px">
-										</a>
-									</header>
-									<h2 class="css-g6a59h">회원가입</h2>
-									<section>
-										<div class="css-1gkas1x-Grid e1689zdh0">
-											<div class="css-1y901al-Row emmoxnt0">
-												<form action="" method="post" name="member_input">
-													<div class="css-1o72pil">
-														<label value="false" class="css-a4glo0">
-															<div class="css-1smbjja">
-																<input autocomplete="off" placeholder="이름" type="text" name="name" class="css-1oyrbwm" value="">
-															</div>
-															<div value="false" class="css-lcodwd">
-																<span data-test="clearButton" aria-label="clear" role="button" class="css-qe0tnm"></span>
-															</div>
-															<span value="false" class="css-gem1s0"></span>
-														</label>
-													</div>
-													<div class="css-1o72pil">
-														<label value="false" class="css-a4glo0">
-															<div class="css-1smbjja">
-																<input autocomplete="off" placeholder="이메일" type="email" name="email" class="css-1oyrbwm" value="">
-															</div>
-															<div value="false" class="css-lcodwd">
-																<span data-test="clearButton" aria-label="clear" role="button" class="css-qe0tnm"></span>
-															</div>
-															<span value="false" class="css-gem1s0"></span>
-														</label>
-													</div>
-													<div class="css-1o72pil">
-														<label value="false" class="css-a4glo0">
-															<div class="css-1smbjja">
-																<input autocomplete="off" placeholder="비밀번호" type="password" name="password" class="css-1oyrbwm" value="">
-															</div>
-															<div value="false" class="css-lcodwd">
-																<span data-test="clearButton" aria-label="clear" role="button" class="css-qe0tnm"></span>
-															</div>
-															<span value="false" class="css-gem1s0"></span>
-														</label>
-													</div>
-													<button type="button" id="member_input_btn" class="css-qr0uqd-StylelessButton">회원가입</button>
-												</form>
-												<div class="css-17kylon" style="text-align:center; margin-top:10px;">
-													<span style="color:gray; font-size:15px;">이미 가입하셨나요?</span>
-													<button class="css-gq8fs1-StylelessButton">로그인</button>
-												</div>
-											</div>
-										</div>
-									</section>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- 회원가입 section end -->
 				</ul>
 			</div>
 		</div>
