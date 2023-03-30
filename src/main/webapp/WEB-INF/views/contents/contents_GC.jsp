@@ -355,7 +355,7 @@
 					<!-- header end -->
 					
 					<!-- pop_up 창 section -->
-					<%@ include file="../pop_up_GC.jsp" %>
+					<%@ include file="../contents_pop_up_GC.jsp" %>
 					<!-- pop_up 창 section -->
 					
 					<!-- section start -->

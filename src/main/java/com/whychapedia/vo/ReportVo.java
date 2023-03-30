@@ -2,11 +2,14 @@ package com.whychapedia.vo;
 
 import java.sql.Date;
 
+import org.springframework.stereotype.Component;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Component
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
