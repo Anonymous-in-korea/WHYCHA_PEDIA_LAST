@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.whychapedia.mapper.MovieGenreMapper">
+    
+     <!--주어진 영화고유 아이디 10개로 영화 장르 정보 10개 가져오기 -->
+ <select id="selectTop10Genre" resultType="com.whychapedia.vo.MovieGenreVo">
+ 	SELECT mg.id, mg.movie_id, mg.genre_id, g.genre_kor
+  		FROM movie_genre mg
+  		JOIN genre g ON mg.genre_id = g.id
+  		WHERE mg.movie_id IN (
+    	<foreach collection="Movie10IDList" item="movieId" separator=",">
+    	  #{movieId}
+   	    </foreach>
+ 		 )
+</select>
+ 
+ 
+  </mapper>

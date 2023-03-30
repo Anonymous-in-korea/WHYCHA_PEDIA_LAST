@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.whychapedia.mapper.StarRateMapper">
+  <!--별점 높은 영화 10개 가져오기 -->
+  <select id="selectMovieTop10" resultType="com.whychapedia.vo.StarRateVo">
+ 	SELECT movie_id
+    FROM (
+      SELECT movie_id, AVG(score) as avg_score
+      FROM star_rate
+      GROUP BY movie_id
+      ORDER BY avg_score DESC
+    )
+     FETCH FIRST 10 ROWS ONLY
+  </select>
+
+
+	
+	
+  </mapper>
