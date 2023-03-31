@@ -7,8 +7,12 @@ import com.whychapedia.vo.StarRateVo;
 
 public interface MovieService {
 
+	
+	List<MovieVo> selectTopAllMovie(List<Integer> TopMovieIDList);
 
-	List<MovieVo> selectTop10All(List<Integer> starRateTop10MovieIDList);
+	MovieVo selectOneMovie(int movie_id);
+
+	List<MovieVo> selectAllMovieofTheDirector(int theDirectorId);
 
 	
 
