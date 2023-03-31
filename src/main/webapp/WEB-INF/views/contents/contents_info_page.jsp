@@ -45,7 +45,7 @@
 		        <div class="square_div">
 		            
 					<!-- header start -->
-					<%@ include file="head_foot/header.jsp" %>
+					<%@ include file="../head_foot/header.jsp" %>
 					<!-- header end -->
 
 		            <section class="section">

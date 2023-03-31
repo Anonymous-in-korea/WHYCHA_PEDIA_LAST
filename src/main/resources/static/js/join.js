@@ -3,6 +3,8 @@ $(function() {
 	$(".join_button").click(function() {
 		if ( $(".css-14gy7wr-join").css("display") == "none" ) {
 			$(".css-14gy7wr-join").show();
+			$("#join_name").focus();
+			$(".css-14gy7wr-login").hide();
 		}
 	});
 	/* 회원가입 창 내리기 */
