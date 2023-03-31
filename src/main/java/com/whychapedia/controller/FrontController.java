@@ -80,11 +80,12 @@ public class FrontController {
 		model.addAttribute("directorName", directorName);
 		System.out.println("-------------------end_감독-controller--------------------------------");
 		
-
-		
-		
-		
 		return "index_GC_prac";
+	}
+	
+	@GetMapping("index_GC")
+	public String index_GC() {
+		return "index_GC";
 	}
 	
 }
