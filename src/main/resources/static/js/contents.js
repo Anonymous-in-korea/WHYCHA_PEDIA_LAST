@@ -9,6 +9,8 @@ $(function() {
             $(".searchBox_input").addClass("active");
             $(".login_button").addClass("active");
             $(".join_button").addClass("active");
+            $(".evaluate_button").addClass("active");
+            $(".user_picture_div").addClass("active");
             $("#logo_change").attr("src", "/images/no1_WHYCHA.png")
         } else {
             $(".header").removeClass("active");
@@ -18,6 +20,8 @@ $(function() {
             $(".searchBox_input").removeClass("active");
             $(".login_button").removeClass("active");
             $(".join_button").removeClass("active");
+            $(".evaluate_button").removeClass("active");
+            $(".user_picture_div").removeClass("active");
             $("#logo_change").attr("src", "/images/no1_WHYCHA_NONBACK.png")
         }
     });

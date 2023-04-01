@@ -47,8 +47,6 @@ public class FrontController {
 	@Autowired
 	MovieOttVo movieOttVo;
 	
-	
-	
 	@GetMapping("/")
 	public String index(Model model) {
 		//별점 높은 순 영화
@@ -81,11 +79,6 @@ public class FrontController {
 		System.out.println("-------------------end_감독-controller--------------------------------");
 		
 		return "index_GC_prac";
-	}
-	
-	@GetMapping("index_GC")
-	public String index_GC() {
-		return "index_GC";
 	}
 	
 }

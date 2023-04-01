@@ -31,6 +31,18 @@
 		</style>
 	</head>
 	<body>
+		<c:if test="${ result == 0 }">
+			<script> alert("ID 또는 PW가 일치하지 않습니다. 다시 로그인해주세요."); location.href="/"; </script>
+		</c:if>
+		<c:if test="${ result == 1 }">
+			<script> alert("로그인되었습니다"); location.href="/"; </script>
+		</c:if>
+		<c:if test="${ check == 0 }">
+			<script> alert("${ insert_fail }"); location.href="/"; </script>
+		</c:if>
+		<c:if test="${ check == 1 }">
+			<script> alert("${ insert_success }"); location.href="/"; </script>
+		</c:if>
 		<div id="root">
 			<div class="css-5jq76">
 				<div class="square_div">
