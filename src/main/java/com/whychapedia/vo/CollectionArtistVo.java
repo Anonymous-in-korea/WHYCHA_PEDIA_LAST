@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class CollectionArtistVo {
 	int id;
 	int user_id;
-	int type_id; // director,actor
+	int director_id;
+	int actor_actor;
 
 }

@@ -175,7 +175,7 @@
 								<!-- 화제의 감독영화 5개 div start -->
 								<div class="movie_binding" data-rowindex="1">
 									<div class="list_title_div">
-										<p class="list_title">화제의 감독영화</p>
+										<p class="list_title">화제의 ${directorName} 감독 영화</p>
 									</div>
 									<div class="list_box_5ea">
 										<div class="list_box2">
@@ -184,27 +184,27 @@
 													<div class="list_box5">
 														<ul class="list_box_ul" id="DIRECTOR">
 															<!-- foreach문 돌릴 부분 영화컨텐츠부분 -->
-															<c:forEach items="${whatchaTop10List}" var="movieWhatcha" varStatus="status">											
+															<c:forEach items="${directorMovieList}" var="directorMovie" varStatus="status">											
 																<li class="list_box_li"> <!-- 10개  -->
-																	<a title="${movieWhatcha.movie_kor_title}" href="#">
+																	<a title="${directorMovie.movie_kor_title}" href="#">
 																		<div class="list_box_poster">
 																			<div class="list_box_poster2 ezcopuc0">
-																				<img src="${movieWhatcha.movie_post_url}" class="list_box_poster_image ezcopuc1">
+																				<img src="${directorMovie.movie_post_url}" class="list_box_poster_image ezcopuc1">
 																			</div>
 																			<div class="list_box_number">${status.index + 1}</div>
 																			<div class="ottBadge list_box_watcha_badge" src="https://an2-img.amz.wtchn.net/image/v2/33c15d90f101414a351372f19172859f.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKd1lYUm9Jam9pTDNZeUwzTjBiM0psTDNWcGJXRm5aUzh4TmpFeE1qQXdNVGN3T1RZd05qWTVNRE0xSW4wLlFwWFc3MERPaF9GR3ZMWVVzSUFCOFdLNWhLRjE3Ym5za1Z1bVFEN0lsSkU"></div>
 																		</div>
 																		<div class="list_box_info">
-																			<div class="list_box_info_title">${movieWhatcha.movie_kor_title}</div>
-																			<div class="list_box_info_year"><fmt:formatDate value="${movieWhatcha.movie_release_date}" pattern="yyyy"/></div>
+																			<div class="list_box_info_title">${directorMovie.movie_kor_title}</div>
+																			<div class="list_box_info_year"><fmt:formatDate value="${directorMovie.movie_release_date}" pattern="yyyy"/></div>
 																			<div class="average list_box_info_avg">
 																				<span>평균</span>
 																				<svg width="12" height="10" viewBox="0 0 12 10" xmlns="http://www.w3.org/2000/svg" fill="#555765" class="list_box_info_star">
 																					<path fill-rule="evenodd" clip-rule="evenodd" d="M6 8.02L3.14233 9.91131C2.91094 10.0644 2.61352 9.84836 2.68767 9.58097L3.60334 6.27872L0.921531 4.14536C0.704379 3.97262 0.817982 3.62299 1.0952 3.61087L4.51878 3.46128L5.719 0.251483C5.81619 -10.008421 6.18381 -0.00842094 6.281 0.251483L7.48122 3.46128L10.9048 3.61087C11.182 3.62299 11.2956 3.97262 11.0785 4.14536L8.39666 6.27872L9.31233 9.58097C9.38648 9.84836 9.08906 10.0644 8.85767 9.91131L6 8.02Z"></path>
 																				</svg>
-																				<span>${movieWhatcha.movie_rating}</span>
+																				<span>${directorMovie.movie_rating}</span>
 																			</div>
-																			<div class="list_box_info_per">누적 관객 ${movieWhatcha.movie_total_audience}</div>
+																			<div class="list_box_info_per">누적 관객 ${directorMovie.movie_total_audience}</div>
 																		</div>
 																	</a>
 																</li>

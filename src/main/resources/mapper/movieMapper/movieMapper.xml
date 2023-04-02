@@ -19,7 +19,7 @@
 			FROM movie m
 			JOIN movie_director md
 			ON m.ID = md.MOVIE_ID
-			WHERE md.ID = #{theDirectorId}
+			WHERE md.director_id = #{theDirectorId}
   </select>
   
 

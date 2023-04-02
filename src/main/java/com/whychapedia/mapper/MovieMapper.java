@@ -12,7 +12,7 @@ public interface MovieMapper {
 	List<MovieVo> selectTopMovie(List<Integer> topMovieIdList);
 	// 주어진 movie_id에 대한 한개의 영화 정보 들고오기
 	MovieVo selectOneMovie(int theMovieId);
-	// 감독 아이디 한 개로 그에 해당하는 movie_vo 받아오기 	
+	// 감독 아이디 한 개로 그에 해당하는 movie_vo list 받아오기 	
 	List<MovieVo> selectAllMovieofTheDirector(int theDirectorId);
 
 }

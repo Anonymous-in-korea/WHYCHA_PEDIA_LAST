@@ -15,5 +15,6 @@ import lombok.NoArgsConstructor;
 public class MovieGalleryTrailerVo {
 	private int id; //겔러리 또는 트레일러의 vo
 	private int movie_id; 
-	private String movie_type_url;//type=gallery or Trailer
+	private String movie_gallery_url;
+	private String movie_trailer_url;
 }
