@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whychapedia.mapper.AdminAnnouncementMapper">
+
+	<!-- admin 공지사항 list query구문 -->
+	<select id="adminAnnouncementList" resultType="com.whychapedia.vo.AnnouncementVo">
+		select * from
+		( select rownum rnum, a.id, a.announcement_title, a.announcement_content, a.announcement_url, b.admin_name as admin_name, a.announcement_date, a.announcement_important
+		from announcement a, admin b
+		where a.admin_id = b.id
+		order by a.announcement_important desc, a.id asc )
+		where rnum between 1 and 5
+	</select>
+	
+</mapper>
