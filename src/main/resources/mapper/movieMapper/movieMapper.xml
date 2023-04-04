@@ -44,7 +44,7 @@
   
      <!--컬렉션_영화vo 가져와서 해당 영화 정보 모두 가져오기 (list) -->
   <select id="selectOneMovie" resultType="com.whychapedia.vo.MovieVo">
-		SELECT * FROM movie WHERE id =${theMovieId}
+		SELECT * FROM movie WHERE id =${movie_id}
             
  
   </select>

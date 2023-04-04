@@ -20,5 +20,4 @@ public class StarRateVo {
 	private int movie_id;
 	private int user_id;
 	private Date regi_date; //별점 등록일 
-
 }

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -69,6 +70,27 @@
 	                                            </div>
 	                                        </div>
 	                                    </div>
+	                                    <script>
+		                                    $(function(){
+			                                    $("#star_rating").change(function() {
+			                                    	var selected_star_rate = $("#star_rating option:selected").val();
+			                                    	alert("selected_star_rate : " + selected_star_rate);
+			                                    	$.ajax({
+				                    					type:"post",
+				                    					url:"/contents/movieStarRate",
+				                    					data:{"movie_id":parseInt(${movieVo.id}), "star_rate":parseInt(selected_star_rate)},
+				                    					dataType:"json",
+				                    					//contentType:'application/json',
+				                    					success:function(data){
+				                    						alert("성공");
+				                    					},
+				                    					error:function(){
+				                    						alert("aaㅇㄴㄹㅇㄴㄹaa 오류로 인해 확인이 되지 않았습니다. 다시 입력해주세요.");
+				                    					}
+				                    				}); //ajax
+		                                    	});
+		                                     });
+	                                    </script>
 										<div class="css-1p7n6er-Pane e1svyhwg15">
 											<div class="css-569z5v">
 												<div class="css-1po9d5k">
@@ -81,7 +103,7 @@
 		                                                    <div class="css-5qj1gb-ContentActionSection e1svyhwg19">
 		                                                    	<!-- 별점 section start -->
 		                                                        <div class="css-1jlb6q">
-		                                                            <div class="css-yt2kjp">
+		                                                            <div class="css-yt2kjp">     
 																		<select id="star_rating" style="border:none; text-align:center; item-align:center;">
 																			<option value="">별점평가하기</option>
 																			<option value="0.5">0.5점</option>
@@ -119,6 +141,8 @@
 		                                                            </div>
 		                                                        </div>
 		                                                        <!-- 별점 section end -->
+		                                                        
+		                                                        
 	                                                        	<div class="css-s5x9hn-ContentActionDivider e1svyhwg21"></div>
 	                                                        	<!-- 별점 오른쪽 section start -->
 																<div class="css-1xki7ez-ButtonBlock e1svyhwg22">
@@ -260,7 +284,7 @@
 		                                                                	<h2 class="css-1wtjsst">기본정보</h2>
 		                                                                    <div class="css-s289sk">
 		                                                                        <div class="css-1ugqy9j">
-		                                                                        	<a href="contents/contents_info_page_GC">더보기</a>
+		                                                                        	<a href="/contents/contents_info_page?movieId='${movieVo.id }'">더보기</a>
 		                                                                        </div>
 		                                                                    </div>
 		                                                                </header>
