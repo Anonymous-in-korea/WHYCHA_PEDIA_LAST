@@ -24,10 +24,25 @@
 		</style>
 	</head>
     <body class="sb-nav-fixed">
+    
+    	<!-- 로그인 script start -->
+		<c:if test="${ result == 1 }">
+			<script>alert("로그인되었습니다");</script>
+		</c:if>
+		<c:if test="${ adminSessionEmail == null }">
+			<script>alert("로그인을 해주세요"); location.href="/admin/whycha_pedia_admin_login";</script>
+		</c:if>
+		<!-- 로그인 script end -->
+		
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                	<c:if test="${ adminSessionEmail != null }">
                 	<a href="/admin/admin_index"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+                	</c:if>
+                	<c:if test="${ adminSessionEmail == null }">
+                	<a href="/admin/whycha_pedia_admin_login"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+                	</c:if>
 					<%@ include file="fragment/sidefooter.jsp" %>
 					<%@ include file="fragment/sidenav.jsp" %>
                 </nav>

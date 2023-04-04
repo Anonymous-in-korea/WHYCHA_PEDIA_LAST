@@ -1,5 +1,65 @@
 @charset "UTF-8";
 
+/* 오른쪽 메뉴바 */
+.dropdown-menu {
+    background: #fff;
+    border: 1px solid #d8d8d8;
+    border-radius: 3px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    display: none;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+    left: 0;
+    margin-top: 1px;
+    min-width: 170px;
+    padding: 10px 0;
+    position: absolute;
+    text-align: left;
+    z-index: 1000;
+}
+.dropdown-menu [role="menuitem"] {
+    color: #333;
+    cursor: pointer;
+    display: block;
+    padding: 7px 40px 7px 20px;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    text-align: start;
+    line-height: inherit;
+    width: 100%;
+}
+
+@media (min-width: 768px){
+	
+	.nav-wrapper a {
+	    display: inline-block;
+	}
+}
+.nav-wrapper a {
+    border: 0;
+    color:  rgba(254,174,39) !important;
+    display: none;
+    font-size: 14px;
+    padding: 0 20px 0 0;
+    width: auto;
+}
+
+.user-info > button {
+    border: 0;
+    color: rgba(254,174,39);
+    min-width: 0;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.user-info > button:hover, .user-info > button:focus {
+    color: rgba(254,174,39);
+    background-color: transparent;
+}
+
 
 /* list앞 원형 점  */
 .avatar1 .icon-agent1 {
@@ -833,17 +893,7 @@
 	border-radius: 3px;
 }
 
-.css-wvwa3p {
-	position: relative;
-	background: #F82F62;
-	padding: 27px 30px 40px;
-}
 
-@media ( max-width :599px) {
-	.css-wvwa3p {
-		padding-bottom: 25px;
-	}
-}
 
 .css-1wn0ztv {
 	color: rgba(255, 255, 255, 0.2);
@@ -2634,7 +2684,7 @@ li {
 
 .css-wvwa3p {
 	position: relative;
-	background: #F82F62;
+	background: #ff7f27;
 	padding: 27px 30px 40px;
 }
 

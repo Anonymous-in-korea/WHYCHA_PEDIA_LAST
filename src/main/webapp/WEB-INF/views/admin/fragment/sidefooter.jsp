@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <div class="sb-sidenav-footer">
-  <div class="small">접속자<br><span>${ adminSessionId }</span><br><span>(${ adminSessionName })</span></div>
+  <div class="small">접속자<br><span>${ adminSessionEmail }</span><br><span>(${ adminSessionName })</span></div>
 </div>

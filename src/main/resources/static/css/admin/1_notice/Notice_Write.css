@@ -1,4 +1,4 @@
-#ntcTitle{
+#announcement_title{
     width: 100%;
     border:0.5px solid rgb(241, 241, 241);
     text-align: center;
@@ -7,7 +7,7 @@
     margin-bottom: 20px;
 }
 
-#ntcText{
+#announcement_content{
     width : 500px;
     height: 400px;
     resize: none;
@@ -17,9 +17,6 @@
     width : 450px;
     height: 50px;
 }
-
-
-
 
 #btn0{
     display: flex;
@@ -64,7 +61,7 @@
     border:solid 1px ;
     margin: 5px;
 }
-#ntcBtnLink{
+#announcement_url{
     width: 500px;
     heigth: 50px;
 }
@@ -167,8 +164,7 @@
     margin:10px;
 }
 
-#btn1,
-#btn2 {
+#btn1, #btn2, #btn3 {
     margin: 0 5px;
     border: 0.5px solid rgb(228, 223, 223);
     padding: 3px 15px;

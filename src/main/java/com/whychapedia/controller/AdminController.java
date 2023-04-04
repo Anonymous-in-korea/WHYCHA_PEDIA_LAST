@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.whychapedia.service.AdminAnnouncementService;
 import com.whychapedia.service.AdminMemberService;
@@ -53,26 +52,43 @@ public class AdminController {
 		return "admin/0_login/admin_login";
 	}
 
-	// 완성되면 지울 메서드
-	//admin index page
+	
+	
+	//admin index login before
 	@GetMapping("admin/admin_index")
-	public String admin_index() {
+	public String admin_index(Model model) {
+		
+		// admin 페이지 공지사항 리스트 메서드
+		List<AnnouncementVo> adminAnnouncementList = adminAnnouncementService.adminAnnouncementList();
+		model.addAttribute("adminAnnouncementList", adminAnnouncementList);
+
+		// admin 페이지 QnA 리스트 메서드
+		List<QuestionListVo> adminQnAList = adminQnAListService.adminQnAList();
+		model.addAttribute("adminQnAList", adminQnAList);
+
+		// admin 페이지 신고사항 리스트 메서드
+		List<ReportVo> adminReportList = adminReportListService.adminReportList();
+		model.addAttribute("adminReportList", adminReportList);
+		
 		return "admin/admin_index";
 	}
-	// 완성되면 지울 메서드
 	
 	//admin index login after
 	@RequestMapping("admin/admin_index")
-	public String admin_login(Model model, @RequestParam String admin_email, @RequestParam String admin_pw) {
+	public String admin_index(Model model, @RequestParam String admin_email, @RequestParam String admin_pw) {
 		
 		int result = 0;
 		adminVo = adminMemberService.adminSelectOne(admin_email, admin_pw);
 		if ( adminVo != null ) {
-			session.setAttribute("adminSessionId", adminVo.getAdmin_email());
+			session.setAttribute("adminSessionId", adminVo.getId());
+			session.setAttribute("adminSessionEmail", adminVo.getAdmin_email());
 			session.setAttribute("adminSessionName", adminVo.getAdmin_name());
 			result = 1;
+			model.addAttribute("result", result);
+		} else {
+			model.addAttribute("result", result);
+			return "admin/0_login/admin_login";
 		}
-		model.addAttribute("result", result);
 		
 		if ( result == 1 ) {
 			
