@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.whychapedia.mapper.MovieMapper">
 
-    <!--서로 다른 영화 아이디가 담긴 list를 받아서 해당 영화 # 개 넣기 (불러올 영화 번호를 알고 있는 상태)-->
+  <!--서로 다른 영화 아이디가 담긴 list를 받아서 해당 영화 # 개 넣기 (불러올 영화 번호를 알고 있는 상태)-->
   <select id="selectTopMovie" resultType="com.whychapedia.vo.MovieVo">
         SELECT * FROM movie WHERE id IN (
             <foreach collection="topMovieIdList" item="movieId" separator=",">
@@ -13,7 +13,7 @@
         )
   </select>
   
-     <!--감독 아이디로 해당 감독 영화 받아오기 	 -->
+  <!--감독 아이디로 해당 감독 영화 받아오기 	 -->
   <select id="selectAllMovieofTheDirector" resultType="com.whychapedia.vo.MovieVo">
         SELECT m.*
 			FROM movie m
@@ -22,6 +22,32 @@
 			WHERE md.director_id = #{theDirectorId}
   </select>
   
+  <!--영화 평점 높은 순으로 #개 영화 들고오기-->
+  <select id="selectTopRateMovieList" resultType="com.whychapedia.vo.MovieVo">
+		SELECT *
+		FROM (
+		SELECT *
+		FROM movie
+		ORDER BY movie_rating DESC
+		)
+		WHERE ROWNUM &lt;= #{movie_num}
+  </select>
+  
+   <!--컬렉션_영화vo 가져와서 해당 영화 정보 모두 가져오기 (list) -->
+  <select id="selectMovieInCollectionList" resultType="com.whychapedia.vo.MovieVo">
+		SELECT * FROM movie WHERE id IN (
+            <foreach collection="movieCollectionVoList" item="movieCollectionVo" separator=",">
+                #{movieCollectionVo.movie_id}
+            </foreach>
+        ) 
+  </select>
+  
+     <!--컬렉션_영화vo 가져와서 해당 영화 정보 모두 가져오기 (list) -->
+  <select id="selectOneMovie" resultType="com.whychapedia.vo.MovieVo">
+		SELECT * FROM movie WHERE id =${theMovieId}
+            
+ 
+  </select>
 
   
   

@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class LikeVo {
 	private int id;
-	private int type_id; 
 	private int director_id;
 	private int actor_id;
 	private int collection_id;

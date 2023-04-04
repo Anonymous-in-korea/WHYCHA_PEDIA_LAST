@@ -1,11 +1,16 @@
 package com.whychapedia.service;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.whychapedia.mapper.MovieMapper;
+import com.whychapedia.vo.MovieCollectionVo;
 import com.whychapedia.vo.MovieVo;
 import com.whychapedia.vo.StarRateVo;
 
@@ -49,6 +54,34 @@ public class MovieServiceImpl implements MovieService {
 		System.out.println("selectAllMovieofTheDirector 길이:"+selectAllMovieofTheDirector.size());	
 		System.out.println("끝: MovieServiceImpl:selectAllMovieofTheDirector");
 		return selectAllMovieofTheDirector;
+	}
+	
+	// movie_num만큼 평점 높은 영화 가져오기 
+	@Override
+	public List<MovieVo> selectTopRateMovieList(int movie_num) {
+		System.out.println("시작: MovieServiceImpl:selectTopRateMovieList");
+		List<MovieVo> selectAllMovieofTheDirector=movieMapper.selectTopRateMovieList(movie_num);
+		System.out.println("끝: MovieServiceImpl:selectTopRateMovieList");
+		return selectAllMovieofTheDirector;
+	}
+	
+	//컬렉션_영화vo 가져와서 해당 영화 정보 모두 가져오기 (list) 
+	@Override
+	public List<MovieVo> selectMovieInCollectionList(List<MovieCollectionVo> movieCollectionVoList) {
+		List<MovieVo> selectMovieInCollectionList=movieMapper.selectMovieInCollectionList(movieCollectionVoList);
+		//중복 삭제
+		Set<Integer> movieIdSet = new HashSet<>();
+		List<MovieVo> NoRepeatselectMovieInCollectionList = new ArrayList<>();
+		for (MovieVo movieVo : selectMovieInCollectionList) {
+		    if (movieIdSet.add(movieVo.getId())) {
+		        NoRepeatselectMovieInCollectionList.add(movieVo);
+		    }
+		}
+
+		
+		
+		
+		return NoRepeatselectMovieInCollectionList;
 	}
 	
 
