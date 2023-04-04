@@ -40,7 +40,7 @@ input:focus{
 }
 @media (min-width: 719px) {
     .css-ikkedy-join {
-        top:15%;
+    	top: 20%;
         display: inline-block;
         position: relative;
         vertical-align: middle;
@@ -141,7 +141,7 @@ input:focus{
     padding: 0px;
     border: none;
     cursor: pointer;
-    background: rgb(255, 47, 110);
+    background: #FEAE27;
     color: rgb(255, 255, 255);
     text-align: center;
     font-size: 17px;
@@ -213,7 +213,7 @@ textarea {
     border: none;
     margin: 0px;
     cursor: pointer;
-    color: rgb(255, 47, 110);
+    color: #FEAE27;
 }
 
 .css-gcz1qq {
@@ -223,15 +223,6 @@ textarea {
     line-height: 20px;
     color: rgb(140, 140, 140);
     text-align: center;
-}
-
-.css-gq8fs1-StylelessButton {
-    background: none;
-    padding: 0px;
-    border: none;
-    margin: 0px;
-    cursor: pointer;
-    color: rgb(255, 47, 110);
 }
 
 .css-dnzt4 {

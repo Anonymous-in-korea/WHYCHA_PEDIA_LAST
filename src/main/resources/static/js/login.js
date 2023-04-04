@@ -1,8 +1,10 @@
-$(function() {
+ $(function() {
 	/* 로그인 창 띄우기 */
 	$(".login_button").click(function() {
 		if ( $(".css-14gy7wr-login").css("display") == "none" ) {
 			$(".css-14gy7wr-login").show();
+			$("#user_email").focus();
+			$(".css-14gy7wr-join").hide();
 		}
 	});
 	/* 로그인 창 내리기 */
@@ -14,6 +16,13 @@ $(function() {
 	/* 로그인 박스영역 클릭 시 창 내림 방지 */
 	$(".css-1i2oi66-login").click(function(event) {
 	  event.stopPropagation();
+	});
+	
+	/* 엔터키를 누르면 로그인 실행 스크립트 */
+	$("#user_pw").on("keypress", function(event) {
+		if ( event.keycode == 13 ) {
+			alert("test");
+		}
 	});
 	
 	
@@ -32,7 +41,9 @@ $(function() {
 	let pwPattern = /^(?=.*[A-Za-z])[A-Za-z\d\S]{6,}$/;
 	
 	$("#user_email").on("keydown", function() {
-		if ( !emailPattern.test( $("#user_email").val() ) ) {
+		if ( $("#user_email").val() == "" ) {
+			$("#email_error").text("");
+		} else if ( !emailPattern.test( $("#user_email").val() ) ) {
 			$("#email_error").text("잘못된 입력입니다. 이메일형식으로 입력해주세요.");
 			$("#email_error").css({"color":"#FEAE27"});
 			$("#email_box").removeClass("css-a4glo0");
@@ -48,7 +59,9 @@ $(function() {
 	});
 	
 	$("#user_pw").on("keydown", function() {
-		if ( !pwPattern.test( $("#user_pw").val() ) ) {
+		if ( $("#user_pw").val() == "" ) {
+			$("#pw_error").text("");
+		} else if ( !pwPattern.test( $("#user_pw").val() ) ) {
 			$("#pw_error").text("잘못된 입력입니다. 영문자와 숫자를 사용하여 6자리 이상 입력해주세요.");
 			$("#pw_error").css({"color":"#FEAE27"});
 			$("#pw_box").removeClass("css-a4glo0");

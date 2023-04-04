@@ -3,6 +3,8 @@ $(function() {
 	$(".join_button").click(function() {
 		if ( $(".css-14gy7wr-join").css("display") == "none" ) {
 			$(".css-14gy7wr-join").show();
+			$("#join_name").focus();
+			$(".css-14gy7wr-login").hide();
 		}
 	});
 	/* 회원가입 창 내리기 */
@@ -31,9 +33,9 @@ $(function() {
 	let pw_flag = 0;
 	let namePattern = /^[가-힣]{1,10}$/;
 	let emailPattern = /^[\w\.-]{2,}@[\w\.-]+\.(com|net)$/;
-	let pwPattern = /^(?=.*[a-zA-Z])(?=.*[0-9]){6,}$/;
+	let pwPattern = /^(?=.*[A-Za-z])[A-Za-z\d\S]{6,}$/;
 	
-	$("#join_name").on("keyup", function() {
+	$("#join_name").on("keydown", function() {
 		if ( !namePattern.test( $("#join_name").val() ) ) {
 			$("#join_name_error").text("잘못된 입력입니다. 국문으로 한 글자 이상 입력해주세요.");
 			$("#join_name_error").css({"color":"#FEAE27"});
@@ -49,7 +51,7 @@ $(function() {
 		}
 	});
 
-	$("#join_email").on("keyup", function() {
+	$("#join_email").on("keydown", function() {
 		if ( !emailPattern.test( $("#join_email").val() ) ) {
 			$("#join_email_error").text("잘못된 입력입니다. 이메일형식으로 입력해주세요.");
 			$("#join_email_error").css({"color":"#FEAE27"});
@@ -65,8 +67,10 @@ $(function() {
 		}
 	});
 	
-	$("#join_pw").on("keyup", function() {
-		if ( !pwPattern.test( $("#join_pw").val() ) ) {
+	$("#join_pw").on("keydown", function() {
+		if ( $("#join_pw").val() == "" ) {
+			$("#join_pw_error").text("");
+		} else if ( !pwPattern.test( $("#join_pw").val() ) ) {
 			$("#join_pw_error").text("잘못된 입력입니다. 영문자와 숫자를 사용하여 6자리 이상 입력해주세요.");
 			$("#join_pw_error").css({"color":"#FEAE27"});
 			$("#join_pw_box").removeClass("css-a4glo0");

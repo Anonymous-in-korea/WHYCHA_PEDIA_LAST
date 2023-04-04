@@ -14,7 +14,8 @@ import lombok.NoArgsConstructor;
 @Data
 public class ArtistVo {
 	private int id;
-	private String artist_name; //actor,director
+	private String artist_name;
+	private String director_name;
 	private String artist_post_url;
 
 }

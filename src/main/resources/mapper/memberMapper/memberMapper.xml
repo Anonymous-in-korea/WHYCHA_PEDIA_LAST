@@ -4,8 +4,19 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.whychapedia.mapper.MemberMapper">
 
+	<!-- 로그인 query구문 -->
 	<select id="memberSelectOne" resultType="com.whychapedia.vo.MemberVo">
 		select * from wuser where user_email = #{user_email} and user_pw = #{user_pw}
+	</select>
+
+	<!-- 회원가입 ID체크 query구문 -->
+	<select id="memberIdCheck" resultType="com.whychapedia.vo.MemberVo">
+		select * from wuser where user_email = #{user_email}
+	</select>
+
+	<!-- 회원가입 query구문 -->
+	<select id="memberInsertOne" resultType="com.whychapedia.vo.MemberVo">
+		insert into wuser values ( 300, #{user_email}, #{user_pw}, #{user_name}, 0, 0, sysdate, 1 )
 	</select>
 	
 </mapper>

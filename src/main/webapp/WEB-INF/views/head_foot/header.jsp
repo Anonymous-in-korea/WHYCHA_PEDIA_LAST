@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <header class="header active">
 	<nav>
 		<div class="css-1gkas1x-Grid e1689zdh0">
@@ -13,7 +14,7 @@
 							<div class="header_li_searchBox_div2">
 								<form action="#" method="post" name="">
 									<label class="searchBox_label active">
-										<input type="text" autocomplete="off" placeholder="콘텐츠, 인물, 컬렉션, 유저를 검색해보세요"
+										<input type="text" autocomplete="off" placeholder="콘텐츠, 인물, 컬렉션을 검색해보세요"
 											name="searchKeyword" value class="searchBox_input active">
 										<div value="false" class="searchBox_reset">
 											<span aria-label="clear" role="button" class="searchBox_reset_button"></span>
@@ -24,12 +25,14 @@
 						</div>
 					</li>
 					<!-- 로그인 하기 전 -->
+					<c:if test="${ sessionId == null }">
 					<li class="header_li_button">
 						<button class="login_button active">로그인</button>
 					</li>
 					<li class="header_li_button">
 						<button class="join_button active">회원가입</button>
 					</li>
+					</c:if>
 					<!-- 로그인 하기 전 -->
 					
 					<!-- login section start -->
@@ -46,7 +49,8 @@
 									<section>
 										<div class="css-1gkas1x-Grid e1689zdh0">
 											<div class="css-1y901al-Row emmoxnt0">
-												<form action="/login" method="post" name="login">
+												<form action="/" method="post" name="login">
+													<%-- <input type="hidden" name="redirectUrl" value="${pageContext.request.requestURI}"> --%>
 													<div class="css-1o72pil">
 						                                <label value="false" id="email_box" class="css-a4glo0">
 						                                    <div class="css-1smbjja">
@@ -133,7 +137,8 @@
 					<!-- 회원가입 section end -->
 					
 					<!-- 로그인 한 후 -->
-					<!-- <li class="header_li_button">
+					<c:if test="${ sessionId != null }">
+					<li class="header_li_button">
 						<a href="">
 							<span class="evaluate_button active">평가하기</span>
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" width="22" height="22" class="evaluate_svg">
@@ -146,12 +151,13 @@
 						</a>
 					</li>
 					<li  class="header_li_button">
-						<a href="" title="박규창's page">
+						<a href="" title="${ sessionName }'s page">
 							<div class="user_picture_div">
-								<div class="user_picture"></div>
+								<img src="${ sessionUserPic }" class="user_picture">
 							</div>
 						</a>
-					</li> -->
+					</li>
+					</c:if>
 					<!-- 로그인 한 후 -->
 				</ul>
 			</div>

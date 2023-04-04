@@ -3,18 +3,26 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.whychapedia.mapper.MovieMapper">
-  
-  
-  
-  
-    <!--주어진 영화고유 아이디 10개로 영화 정보 10개 가져오기 -->
-  <select id="select10Movie" resultType="com.whychapedia.vo.MovieVo">
+
+    <!--서로 다른 영화 아이디가 담긴 list를 받아서 해당 영화 # 개 넣기 (불러올 영화 번호를 알고 있는 상태)-->
+  <select id="selectTopMovie" resultType="com.whychapedia.vo.MovieVo">
         SELECT * FROM movie WHERE id IN (
-            <foreach collection="movieTop10List" item="movieId" separator=",">
+            <foreach collection="topMovieIdList" item="movieId" separator=",">
                 #{movieId}
             </foreach>
         )
   </select>
+  
+     <!--감독 아이디로 해당 감독 영화 받아오기 	 -->
+  <select id="selectAllMovieofTheDirector" resultType="com.whychapedia.vo.MovieVo">
+        SELECT m.*
+			FROM movie m
+			JOIN movie_director md
+			ON m.ID = md.MOVIE_ID
+			WHERE md.director_id = #{theDirectorId}
+  </select>
+  
+
   
   
   

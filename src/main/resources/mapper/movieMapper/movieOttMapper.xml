@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="com.whychapedia.mapper.MovieOttMapper">
+		   <!--해당 ott top10개 가져오기 -->
+		  <select id="selectMovieTop" resultType="com.whychapedia.vo.MovieOttVo">
+		 	SELECT movie_id,ott_rank
+			FROM movie_ott
+			WHERE ott_id = #{ott_id} AND ott_rank BETWEEN 1 AND #{movie_num}
+			ORDER BY ott_rank ASC
+		  </select>
+
+    </mapper>

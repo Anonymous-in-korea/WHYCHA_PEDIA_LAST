@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whychapedia.mapper.LikeMapper">
+	<!--좋아요 많이 받은 사람 "theNum"만큼 가져오기 -->
+	<select id="selectTopLikeList" resultType="java.lang.Integer">
+				select director_id fROM
+				(SELECT director_id, COUNT(*) as num_likes 
+				FROM director_like
+				GROUP BY director_id
+				ORDER BY num_likes DESC
+				FETCH FIRST #{theNum} ROWS ONLY)
+	</select>
+</mapper>

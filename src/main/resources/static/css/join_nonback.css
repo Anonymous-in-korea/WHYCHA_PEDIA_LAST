@@ -4,8 +4,8 @@
 
 .square_div{ position:relative; width:100%; }
 
-/* login CSS start */
-.css-14gy7wr-login {
+/* join CSS start */
+.css-14gy7wr-join {
     display: block;
     position: fixed;
     inset: 0px;
@@ -30,48 +30,46 @@
 input:focus{
     outline: none;
 }
-.css-ikkedy-login {
+.css-ikkedy-join {
     position: relative;
     background: rgb(255, 255, 255);
     width: 100%;
-    height: 400px;
+    height: 584px;
     box-shadow: rgb(0 0 0 / 12%) 0px 0px 6px 0px;
     overflow: hidden;
 }
 @media (min-width: 719px) {
-    .css-ikkedy-login {
-    	top: 20%;
+    .css-ikkedy-join {
         display: inline-block;
         position: relative;
         vertical-align: middle;
         text-align: left;
         width: 375px;
-        height: 400px;
-        min-height: 380px;
+        height: 584px;
+        min-height: 430px;
         border-radius: 6px;
         overflow: auto;
     }
 }
 
-.css-1i2oi66-login {
+.css-1i2oi66-join {
     padding: 32px 0px 16px;
 }
 
 .css-17bvwx1 {
     text-align: center;
-    margin: 0px 0px 14px;
+    margin: 30px 0px;
     overflow: hidden;
 }
 
-
 .css-g6a59h {
 	color: gray;
-    font-size: 17px;
+    font-size: 25px;
     letter-spacing: -0.5px;
     line-height: 22px;
     font-weight: 700;
     text-align: center;
-    margin: 24px 0px 20px;
+    margin: 40px 0px;
 }
 
 /* login section css start */
@@ -89,17 +87,6 @@ input:focus{
     -webkit-box-align: center;
     align-items: center;
     background: rgb(245, 245, 245);
-    box-sizing: border-box;
-    width: 100%;
-    height: 44px;
-    padding: 0px 12px;
-    border-radius: 6px;
-}
-.css-a4glo0-active {
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    background: #FEAE27;
     box-sizing: border-box;
     width: 100%;
     height: 44px;
@@ -399,4 +386,4 @@ hr {
     height: 60%;
 }
 /* section part end */
-/* login CSS end */
+/* join CSS end */
