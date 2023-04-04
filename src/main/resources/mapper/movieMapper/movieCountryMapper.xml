@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.whychapedia.mapper.MovieCountryMapper">
+    
+
+ <select id="selectAllCountry" resultType="com.whychapedia.vo.MovieCountryVo">
+ 	SELECT *
+		FROM movie_country mc
+		JOIN country c ON mc.country_id = c.id
+		WHERE mc.movie_id = ${movie_id}
+ 		 
+ </select>	 
+ </mapper>

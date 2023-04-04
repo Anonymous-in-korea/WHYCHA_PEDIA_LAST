@@ -4,8 +4,19 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.whychapedia.mapper.MovieGenreMapper">
     
+
+ <select id="selectAllGenre" resultType="com.whychapedia.vo.MovieGenreVo">
+ 	SELECT *
+  		FROM movie_genre mg
+  		JOIN genre g ON mg.genre_id = g.id
+  		WHERE mg.movie_id = ${movie_id}
+ 		 
+ </select>	 
+ 		 
+ 		 
+ 		 
      <!--주어진 영화고유 아이디 10개로 영화 장르 정보 10개 가져오기 -->
- <select id="selectTop10Genre" resultType="com.whychapedia.vo.MovieGenreVo">
+<!--  <select id="selectTop10Genre" resultType="com.whychapedia.vo.MovieGenreVo">
  	SELECT mg.id, mg.movie_id, mg.genre_id, g.genre_kor
   		FROM movie_genre mg
   		JOIN genre g ON mg.genre_id = g.id
@@ -15,6 +26,8 @@
    	    </foreach>
  		 )
 </select>
+ -->
+
  
  
   </mapper>

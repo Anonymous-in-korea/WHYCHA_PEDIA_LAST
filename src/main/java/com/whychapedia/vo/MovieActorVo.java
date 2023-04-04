@@ -17,5 +17,7 @@ public class MovieActorVo {
 	private int movie_id;
 	private int actor_id;
 	private String actor_role;
+	private String actor_name;
+	private String actor_post_url;
 
 }

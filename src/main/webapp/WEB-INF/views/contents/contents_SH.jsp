@@ -72,6 +72,7 @@
 	                                    </div>
 	                                    <script>
 		                                    $(function(){
+		                                    	
 			                                    $("#star_rating").change(function() {
 			                                    	var selected_star_rate = $("#star_rating option:selected").val();
 			                                    	alert("selected_star_rate : " + selected_star_rate);
