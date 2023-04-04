@@ -7,5 +7,33 @@
 	<select id="selectOneDirectortName" resultType="java.lang.String">
 		select director_name from director where id=#{DirectorId}
 	</select>
+	
+	<!-- 해당유저의 좋아하는 배우 정보 가져오기 -->
+	<select id="selectActorAll" resultType="com.whychapedia.vo.ArtistVo">
+		select * from actor where id in (
+	    <foreach collection="actorLike_list" item="actorVo"  separator="," >
+	        #{actorVo.actor_id}
+	    </foreach>
+	    )
+	</select>
+	<!-- 해당유저의 좋아하는 배우 정보 가져오기 -->
+	<select id="selectDirectorAll" resultType="com.whychapedia.vo.ArtistVo">
+		select * from director where id in (
+	    <foreach collection="directorLike_list" item="directorVo"  separator="," >
+	        #{directorVo.director_id}
+	    </foreach>
+	    )
+	</select>
+	
+	<!-- 해당검색어를 가지고 관련 배우 가져오기 -->
+	<select id="selectSearchActorAll" resultType="com.whychapedia.vo.ArtistVo">
+	<!-- 		select * from actor where replace (actor_name,' ','')like '%#{searchKeyword}%' -->
+		select * from actor where replace (actor_name,' ','')like '%팀버튼%'
+	</select>
+	
+	<!-- 해당검색어를 가지고 관련 감독 가져오기 -->
+	<select id="selectSearchDirectorAll" resultType="com.whychapedia.vo.ArtistVo">
+		select * from director where replace (director_name,' ','')like '%#{searchKeyword}%'
+	</select>
   
   </mapper>

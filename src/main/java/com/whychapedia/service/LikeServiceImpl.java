@@ -36,4 +36,18 @@ public class LikeServiceImpl implements LikeService {
 		return theDirectorId;
 	}
 
+	@Override//해당유저가 좋아하는 actor_id전체 가져오기 
+	public List<LikeVo> selectActor_like_id(int sessionId) {
+		List<LikeVo> actorLike_list= likeMapper.selectActor_like_id(sessionId);
+		System.out.println("selectActor_like_id_list_size : "+actorLike_list.size());
+		return actorLike_list;
+	}
+
+	@Override//해당유저가 좋아하는 director_id전체 가져오기 
+	public List<LikeVo> selectDirector_like_id(int sessionId) {
+		List<LikeVo> directorLike_list= likeMapper.selectDirector_like_id(sessionId);
+		System.out.println("selectDirector_like_id_list_size : "+directorLike_list.size());
+		return directorLike_list;
+	}
+
 }
