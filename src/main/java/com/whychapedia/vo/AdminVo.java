@@ -18,7 +18,7 @@ public class AdminVo {
 	private int id;
 	private int admin_position;
 	private String admin_name;
-	private String admin_eamil;
+	private String admin_email;
 	private String admin_pw;
 	private int is_block; // 1=정상 2=block 
 	private Date regi_date;

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whychapedia.mapper.AdminMemberMapper">
+
+	<!-- admin 로그인 query구문 -->
+	<select id="adminSelectOne" resultType="com.whychapedia.vo.AdminVo">
+		select * from admin where admin_email = #{admin_email} and admin_pw = #{admin_pw}
+	</select>
+
+</mapper>
