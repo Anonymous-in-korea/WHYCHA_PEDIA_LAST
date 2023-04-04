@@ -23,6 +23,16 @@
 		<script src="/js/slide_scroll.js"></script>
 		<script src="/js/login.js"></script>
 		<script src="/js/join.js"></script>
+		<!--검색창 스크립트  -->
+		<script>
+			$(document).ready(function() {
+				  $("form").on("submit", function(event) {
+				    event.preventDefault();
+				    var searchKeyword = $("input[name='searchKeyword']").val();
+				    window.location.href = "/search/searchPerson?searchKeyword=" + searchKeyword;
+				  });
+			});
+		</script>
 		
 		<style>
 			* { margin:0; padding:0; text-decoration:none; font-family:'Noto Sans KR', sans-serif; }
