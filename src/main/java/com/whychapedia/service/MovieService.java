@@ -2,6 +2,7 @@ package com.whychapedia.service;
 
 import java.util.List;
 
+import com.whychapedia.vo.MovieCollectionVo;
 import com.whychapedia.vo.MovieVo;
 import com.whychapedia.vo.StarRateVo;
 
@@ -13,6 +14,10 @@ public interface MovieService {
 	MovieVo selectOneMovie(int movie_id);
 
 	List<MovieVo> selectAllMovieofTheDirector(int theDirectorId);
+
+	List<MovieVo> selectTopRateMovieList(int movie_num);
+
+	List<MovieVo> selectMovieInCollectionList(List<MovieCollectionVo> movieCollectionVoList);
 
 	
 

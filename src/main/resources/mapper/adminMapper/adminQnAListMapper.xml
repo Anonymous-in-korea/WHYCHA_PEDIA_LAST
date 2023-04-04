@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whychapedia.mapper.AdminQnAListMapper">
+
+	<!-- admin 공지사항 list query구문 -->
+	<select id="adminQnAList" resultType="com.whychapedia.vo.QuestionListVo">
+		select * from
+		( select rownum rnum, a.id, a.question_title, a.question_content, a.question_file_url, b.user_name as user_name, a.regi_date, a.processing_statu
+		from question_list a, wuser b
+		where a.user_id = b.id
+		order by a.regi_date desc )
+		where rnum between 1 and 5
+	</select>
+	
+</mapper>

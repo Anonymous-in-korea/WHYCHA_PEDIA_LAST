@@ -20,6 +20,7 @@ public class AnnouncementVo {
 	private String announcement_content;
 	private String announcement_url;
 	private int admin_id;
+	private String admin_name;
 	private Date announcement_date;
 	private int announcement_import; // 안중요:1 중요:2
 	

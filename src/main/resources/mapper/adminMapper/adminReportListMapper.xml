@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whychapedia.mapper.AdminReportListMapper">
+
+	<!-- admin 신고사항 list query구문 -->
+	<select id="adminReportList" resultType="com.whychapedia.vo.ReportVo">
+		select * from
+		( select rownum rnum, r.id, r.comment_id, w.user_name as user_name, r.regi_date, r.reported_reason, a.admin_name as admin_name, r.processing_date, r.report_result
+		from report r join wuser w on r.reported_by_user = w.id left join admin a on r.admin_id = a.id
+		order by r.regi_date desc )
+		where rnum between 1 and 5
+	</select>
+	
+</mapper>

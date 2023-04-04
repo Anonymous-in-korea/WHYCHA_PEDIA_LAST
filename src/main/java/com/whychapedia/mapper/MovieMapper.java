@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.whychapedia.vo.MovieCollectionVo;
 import com.whychapedia.vo.MovieVo;
 
 @Mapper
@@ -14,5 +15,10 @@ public interface MovieMapper {
 	MovieVo selectOneMovie(int theMovieId);
 	// 감독 아이디 한 개로 그에 해당하는 movie_vo list 받아오기 	
 	List<MovieVo> selectAllMovieofTheDirector(int theDirectorId);
+	// movie_num만큼 평점 높은 영화 가져오기 
+	List<MovieVo> selectTopRateMovieList(int movie_num);
+	//컬렉션_영화vo 가져와서 해당 영화 정보 모두 가져오기 (list) 
+	List<MovieVo> selectMovieInCollectionList(List<MovieCollectionVo> movieCollectionVoList);
+
 
 }

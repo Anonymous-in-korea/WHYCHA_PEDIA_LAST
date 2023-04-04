@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whychapedia.mapper.MovieCollectionMapper">
+	<!--와이챠 피디아 무비_컬레션 각각의 vo 데리고 오기 즉, 각 컬렉션마다 영화 아이디 불러오기-->
+	<select id="selectCollectionVoList" resultType="com.whychapedia.vo.MovieCollectionVo">
+			SELECT * FROM movie_collection WHERE collection_id IN (
+            <foreach collection="collectionVoList" item="collectionVo" separator=",">
+                #{collectionVo.id}
+            </foreach>
+        )
+	</select>
+</mapper>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -18,6 +19,9 @@
 		
 		<script src="/js/admin/scripts.js"></script>
 		
+		<style>
+			a { text-decoration:none; }
+		</style>
 	</head>
     <body class="sb-nav-fixed">
         <div id="layoutSidenav">
@@ -53,70 +57,132 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- 공지사항 section start -->
                         <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                QnA_LIST
-                            </div>
-                            <div class="card-body">
-                                <table id="datatablesSimple">
-                                	<colgroup>
-										<col width="5%">
-										<col width="40%">
-										<col width="15%">
-										<col width="15%">
-										<col width="15%">
-										<col width="10%">
-									</colgroup>
-                                    <thead>
-                                        <tr>
-                                            <th>번호</th>
-			                                <th>제목</th>
-			                                <th>작성자</th>
-			                                <th>작성날짜</th>
-			                                <th>등록설정</th>
-			                                <th>등록여부</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Garrett Winters</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>63</td>
-                                            <td>2011/07/25</td>
-                                            <td>$170,750</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ashton Cox</td>
-                                            <td>Junior Technical Author</td>
-                                            <td>San Francisco</td>
-                                            <td>66</td>
-                                            <td>2009/01/12</td>
-                                            <td>$86,000</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+		                    <div class="card-header">
+		                        <i class="fas fa-table me-1"></i>
+		                        공지사항
+		                    </div>
+		                    <div class="card-body">
+		                    	<div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
+		                            <div class="datatable-container">
+		                                <table class="datatable-table" id="datatablesSimple">
+		                                	<colgroup>
+												<col width="10%">
+												<col width="50%">
+												<col width="20%">
+												<col width="20%">
+											</colgroup>
+		                                    <thead>
+		                                        <tr>
+		                    						<th data-sortable="true" style="text-align:center;">번호</th>
+		                    						<th data-sortable="true" style="text-align:center;">공지사항 제목</th>
+		                    						<th data-sortable="true" style="text-align:center;">작성자</th>
+		                    						<th data-sortable="true" style="text-align:center;">작성일</th>
+		                    					</tr>
+		                                    </thead>
+		                                    <tbody id="tbody">
+		                                    	<c:forEach items="${adminAnnouncementList}" var="noticeList" varStatus="status">
+		                                        <tr>
+		                                            <td>${ noticeList.id }</td>
+		                                            <td><a href="">${ noticeList.announcement_title }</a></td>
+		                                            <td>${ noticeList.admin_name }</td>
+		                                            <td>${ noticeList.announcement_date }</td>
+		                                        </tr>
+		                                        </c:forEach>
+		                                    </tbody>
+		                                </table>
+		                            </div>
+								</div>
+							</div>
                         </div>
+                        <!-- 공지사항 section end -->
+                        <!-- QnA section start -->
+                        <div class="card mb-4">
+		                    <div class="card-header">
+		                        <i class="fas fa-table me-1"></i>
+		                        QnA
+		                    </div>
+		                    <div class="card-body">
+		                    	<div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
+		                            <div class="datatable-container">
+		                                <table class="datatable-table" id="datatablesSimple">
+		                                	<colgroup>
+												<col width="10%">
+												<col width="50%">
+												<col width="20%">
+												<col width="20%">
+											</colgroup>
+		                                    <thead>
+		                                        <tr>
+		                    						<th data-sortable="true" style="text-align:center;">번호</th>
+		                    						<th data-sortable="true" style="text-align:center;">QnA 제목</th>
+		                    						<th data-sortable="true" style="text-align:center;">작성자</th>
+		                    						<th data-sortable="true" style="text-align:center;">작성일</th>
+		                    					</tr>
+		                                    </thead>
+		                                    <tbody id="tbody">
+		                                    	<c:forEach items="${adminQnAList}" var="QnAList" varStatus="status">
+		                                        <tr>
+		                                            <td>${ QnAList.id }</td>
+		                                            <td><a href="">${ QnAList.question_title }</a></td>
+		                                            <td>${ QnAList.user_name }</td>
+		                                            <td>${ QnAList.regi_date }</td>
+		                                        </tr>
+		                                        </c:forEach>
+		                                    </tbody>
+		                                </table>
+		                            </div>
+								</div>
+							</div>
+                        </div>
+                        <!-- QnA section end -->
+                        <!-- 코멘트 section start -->
+                        <div class="card mb-4">
+		                    <div class="card-header">
+		                        <i class="fas fa-table me-1"></i>
+		                        신고사항
+		                    </div>
+		                    <div class="card-body">
+		                    	<div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
+		                            <div class="datatable-container">
+		                                <table class="datatable-table" id="datatablesSimple">
+		                                	<colgroup>
+												<col width="15%">
+												<col width="15%">
+												<col width="15%">
+												<col width="20%">
+												<col width="15%">
+												<col width="20%">
+											</colgroup>
+		                                    <thead>
+		                                        <tr>
+		                    						<th data-sortable="true" style="text-align:center;">번호</th>
+		                    						<th data-sortable="true" style="text-align:center;">작성자</th>
+		                    						<th data-sortable="true" style="text-align:center;">신고사항</th>
+		                    						<th data-sortable="true" style="text-align:center;">작성일</th>
+		                    						<th data-sortable="true" style="text-align:center;">처리자</th>
+		                    						<th data-sortable="true" style="text-align:center;">처리일</th>
+		                    					</tr>
+		                                    </thead>
+		                                    <tbody id="tbody">
+		                                    	<c:forEach items="${adminReportList}" var="ReportList" varStatus="status">
+		                                        <tr>
+		                                            <td>${ ReportList.id }</td>
+		                                            <td>${ ReportList.user_name }</td>
+		                                            <td><a href="">${ ReportList.reported_reason }</a></td>
+		                                            <td>${ ReportList.regi_date }</td>
+		                                            <td>${ ReportList.admin_name }</td>
+		                                            <td>${ ReportList.processing_date }</td>
+		                                        </tr>
+		                                        </c:forEach>
+		                                    </tbody>
+		                                </table>
+		                            </div>
+								</div>
+							</div>
+                        </div>
+                        <!-- 코멘트 section end -->
                     </div>
                 </main>
             </div>

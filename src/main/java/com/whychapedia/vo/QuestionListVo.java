@@ -20,6 +20,7 @@ public class QuestionListVo {
 	private String quesiton_content;
 	private String question_file_url;
 	private int user_id;
+	private String user_name;
 	private Date regi_date;
 	private int processing_statu;  // 1번 미처리 2번 처리 
 
