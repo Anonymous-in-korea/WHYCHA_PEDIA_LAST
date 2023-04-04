@@ -20,7 +20,7 @@ public class ContentsController {
 	@Autowired
 	MovieVo movieVo;
 	
-	@GetMapping("contents/contents")
+	@GetMapping("/contents/contents2")
 	public String contents(@RequestParam int id, Model model) {
 		//영화 기본 정보 가져오기 (영화테이블에서)
 		System.out.println("-------------------start_영화 기본 정보-ContentsController--------------------------------");
@@ -28,7 +28,7 @@ public class ContentsController {
 		System.out.println("해당 영화 한국 제목:"+movieVo.getMovie_kor_title());
 		System.out.println("-------------------end_영화 기본 순-ContentsController--------------------------------"); 
 		model.addAttribute("movieVo",movieVo);
-		return "contents/contents";
+		return "/contents/contents2";
 	}
 	
 	@GetMapping("/contents/contents_info_page")

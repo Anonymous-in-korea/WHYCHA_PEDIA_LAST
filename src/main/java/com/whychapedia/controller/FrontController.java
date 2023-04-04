@@ -134,7 +134,7 @@ public class FrontController {
 		
 		
 		
-		return "index_GC";
+		return "index_SH";
 	}
 	
 }
