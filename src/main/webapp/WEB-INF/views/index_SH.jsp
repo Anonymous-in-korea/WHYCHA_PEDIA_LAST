@@ -70,7 +70,7 @@
 															<!-- foreach문 돌릴 부분 영화컨텐츠부분 -->
 															<c:forEach items="${starTop10List}" var="movieStar" varStatus="status">											
 																<li class="list_box_li"> <!-- 10개  -->
-																	<a title="${movieStar.movie_kor_title}" href="/contents/contents2?id=${movieStar.id}">
+																	<a title="${movieStar.movie_kor_title}" href="/contents/contents_SH?id=${movieStar.id}">
 																		<div class="list_box_poster">
 																			<div class="list_box_poster2 ezcopuc0">
 																				<img src="${movieStar.movie_post_url}" class="list_box_poster_image ezcopuc1">
@@ -127,7 +127,7 @@
 															<!-- foreach문 돌릴 부분 영화컨텐츠부분 -->
 															<c:forEach items="${whatchaTop10List}" var="movieWhatcha" varStatus="status">											
 																<li class="list_box_li"> <!-- 10개  -->
-																	<a title="${movieWhatcha.movie_kor_title}" href="/contents/contents?id=${movieWhatcha.id}">
+																	<a title="${movieWhatcha.movie_kor_title}" href="/contents/contents_SH?id=${movieWhatcha.id}">
 																		<div class="list_box_poster">
 																			<div class="list_box_poster2 ezcopuc0">
 																				<img src="${movieWhatcha.movie_post_url}" class="list_box_poster_image ezcopuc1">
@@ -186,7 +186,7 @@
 															<!-- foreach문 돌릴 부분 영화컨텐츠부분 -->
 															<c:forEach items="${directorMovieList}" var="directorMovie" varStatus="status">											
 																<li class="list_box_li"> <!-- 10개  -->
-																	<a title="${directorMovie.movie_kor_title}" href="/contents/contents?id=${directorMovie.id}">
+																	<a title="${directorMovie.movie_kor_title}" href="/contents/contents_SH?id=${directorMovie.id}">
 																		<div class="list_box_poster">
 																			<div class="list_box_poster2 ezcopuc0">
 																				<img src="${directorMovie.movie_post_url}" class="list_box_poster_image ezcopuc1">
@@ -244,7 +244,7 @@
 													 <!-- foreach문 돌릴 부분 영화컨텐츠부분 -->
 													 		<c:forEach items="${RateHighMovieList}" var="movieRate" varStatus="status">
 															<li class="list_box_li">
-				                                                <a title="${movieRate.movie_kor_title}" href="/contents/contents?id=${movieRate.id}">
+				                                                <a title="${movieRate.movie_kor_title}" href="/contents/contents_SH?id=${movieRate.id}">
 				                                                   <div class="list_box_poster">
 				                                                      <div class="list_box_poster2 ezcopuc0">
 				                                                         <img src="${movieRate.movie_post_url}" class="list_box_poster_image ezcopuc1">

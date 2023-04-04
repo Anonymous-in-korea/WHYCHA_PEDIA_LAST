@@ -8,7 +8,9 @@ import com.whychapedia.vo.MovieVo;
 
 
 public interface MovieGenreService {
-	//영화 10개 장르 가져오기
-	List<MovieGenreVo> selectTop10Genre(List<Integer> Movie10IDList);
 
+	List<MovieGenreVo> selectTheGenre(int movie_id);
+
+	//영화 10개 장르 가져오기
+	//List<MovieGenreVo> selectTop10Genre(List<Integer> Movie10IDList);
 }

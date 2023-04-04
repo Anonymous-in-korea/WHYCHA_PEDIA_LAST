@@ -19,17 +19,39 @@ public class MovieGenreServiceImpl implements MovieGenreService {
 	
 	@Autowired
 	MovieGenreMapper movieGenreMapper;
-	
-	//영화 10개 장르 가져오기 
+
+
+	//해당 영화 장르 가져오기
 	@Override
-	public List<MovieGenreVo> selectTop10Genre(List<Integer> Movie10IDList) {
-		System.out.println("시작: MovieGenreServiceImpl:selectTop10Genre");
-		List<MovieGenreVo> movieGenreTop10List=movieGenreMapper.selectTop10Genre(Movie10IDList);
-		System.out.println("첫번쨰 영화 아이디:"+movieGenreTop10List.get(0).getGenre_kor());
-		System.out.println("StarTop10MovieIDList 길이:"+movieGenreTop10List.size());	
-		System.out.println("끝: MovieGenreServiceImpl:selectTop10Genre");
-		return movieGenreTop10List;
+	public List<MovieGenreVo> selectTheGenre(int movie_id) {
+		List<MovieGenreVo> movieGenreVoList=movieGenreMapper.selectAllGenre(movie_id);
+		return movieGenreVoList;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
+	 * //영화 10개 장르 가져오기
+	 * 
+	 * @Override public List<MovieGenreVo> selectTop10Genre(List<Integer>
+	 * Movie10IDList) {
+	 * System.out.println("시작: MovieGenreServiceImpl:selectTop10Genre");
+	 * List<MovieGenreVo>
+	 * movieGenreTop10List=movieGenreMapper.selectTop10Genre(Movie10IDList);
+	 * System.out.println("첫번쨰 영화 아이디:"+movieGenreTop10List.get(0).getGenre_kor());
+	 * System.out.println("StarTop10MovieIDList 길이:"+movieGenreTop10List.size());
+	 * System.out.println("끝: MovieGenreServiceImpl:selectTop10Genre"); return
+	 * movieGenreTop10List; }
+	 */
 
 
 

@@ -16,4 +16,6 @@ public class MovieDirectorVo {
 	private int id; // 무비-감독 고유 아이디 
 	private int movie_id;
 	private int director_id;
+	private String director_name;
+	private String director_post_url;
 }
