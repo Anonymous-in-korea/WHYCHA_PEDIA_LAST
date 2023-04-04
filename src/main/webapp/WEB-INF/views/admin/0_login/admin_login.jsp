@@ -15,6 +15,13 @@
 		<script defer src="/js/admin/Login.js"></script>
 	</head>
 	<body>
+		
+		<!-- 로그인 section start -->
+		<c:if test="${ result == 0 }">
+			<script> alert("ID 또는 PW가 일치하지 않습니다. 다시 로그인해주세요."); location.href="/admin/whycha_pedia_admin_login"; </script>
+		</c:if>
+		<!-- 로그인 section end -->
+		
 		<div id="app">
 			<section>
 				<div id="icon">

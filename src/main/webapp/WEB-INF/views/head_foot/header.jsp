@@ -50,7 +50,7 @@
 										<div class="css-1gkas1x-Grid e1689zdh0">
 											<div class="css-1y901al-Row emmoxnt0">
 												<form action="/" method="post" name="login">
-													<%-- <input type="hidden" name="redirectUrl" value="${pageContext.request.requestURI}"> --%>
+													<input type="hidden" name="redirectUrl" id="redirectUrl" value="">
 													<div class="css-1o72pil">
 						                                <label value="false" id="email_box" class="css-a4glo0">
 						                                    <div class="css-1smbjja">
@@ -97,6 +97,7 @@
 										<div class="css-1gkas1x-Grid e1689zdh0">
 											<div class="css-1y901al-Row emmoxnt0">
 												<form action="/join" method="post" name="join">
+													<input type="hidden" name="redirectUrl" id="redirectUrl" value="">
 													<div class="css-1o72pil">
 														<label value="false" id="join_name_box" class="css-a4glo0">
 															<div class="css-1smbjja">

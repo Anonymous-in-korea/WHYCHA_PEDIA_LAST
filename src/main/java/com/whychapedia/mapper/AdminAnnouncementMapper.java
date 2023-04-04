@@ -11,4 +11,6 @@ public interface AdminAnnouncementMapper {
 
 	public List<AnnouncementVo> adminAnnouncementList();
 
+	public List<AnnouncementVo> adminAnnouncementListAll();
+
 }

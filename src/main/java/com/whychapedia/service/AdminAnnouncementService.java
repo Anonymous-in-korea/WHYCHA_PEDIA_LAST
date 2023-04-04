@@ -8,4 +8,6 @@ public interface AdminAnnouncementService {
 
 	public List<AnnouncementVo> adminAnnouncementList(); // admin 페이지 공지사항 리스트 메서드
 
+	public List<AnnouncementVo> adminAnnouncementListAll();
+
 }

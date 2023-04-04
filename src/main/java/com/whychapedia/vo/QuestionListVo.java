@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class QuestionListVo {
 	private int id; // 질문 고유 아이디 
 	private String question_title;
-	private String quesiton_content;
+	private String question_content;
 	private String question_file_url;
 	private int user_id;
 	private String user_name;

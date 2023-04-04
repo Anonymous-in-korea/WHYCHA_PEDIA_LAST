@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whychapedia.mapper.AdminAnnouncementModifyMapper">
+
+	<!-- admin 공지사항 일반등록하기 query구문 -->
+	<select id="adminAnnouncementModifyOne" resultType="com.whychapedia.vo.AnnouncementVo">
+		update announcement set announcement_title=#{ announcement_title }, announcement_content=#{ announcement_content }, announcement_url=#{ announcement_url }, admin_id=#{ admin_id },
+		announcement_date=sysdate, announcement_important=#{ announcement_important }, update_date=null, is_regi=#{ is_regi } where id=#{ id }
+	</select>
+
+	<!-- admin 공지사항 바로등록하기 query구문 -->
+	<select id="adminAnnouncementDirectModifyOne" resultType="com.whychapedia.vo.AnnouncementVo">
+		update announcement set announcement_title=#{ announcement_title }, announcement_content=#{ announcement_content }, announcement_url=#{ announcement_url }, admin_id=#{ admin_id },
+		announcement_date=sysdate, announcement_important=#{ announcement_important }, update_date=sysdate, is_regi=#{ is_regi } where id=#{ id }
+	</select>
+
+	<!-- admin 공지사항 List에서 미등록 버튼처리 query구문 -->
+	<select id="adminAnnouncementUpdateOne" resultType="com.whychapedia.vo.AnnouncementVo">
+		update announcement set is_regi=#{ is_regi } where id=#{ id }
+	</select>
+	
+</mapper>
