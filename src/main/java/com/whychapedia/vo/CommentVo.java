@@ -22,5 +22,6 @@ public class CommentVo {
 	private Date regi_date;
 	private int is_blind; // 1-blind x 2-blind o
 	private int is_spoil; // 1-spoil x 2-spoil o
+	private int total_like;
 
 }
