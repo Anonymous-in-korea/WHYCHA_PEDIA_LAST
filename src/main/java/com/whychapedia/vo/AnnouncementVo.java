@@ -22,6 +22,8 @@ public class AnnouncementVo {
 	private int admin_id;
 	private String admin_name;
 	private Date announcement_date;
-	private int announcement_import; // 안중요:1 중요:2
+	private int announcement_important; // 안중요:1 중요:2
+	private Date update_date; // 공지사항 등록날짜
+	private int is_regi; // 공지사항 등록여부 바로등록:2 일반등록:1
 	
 }

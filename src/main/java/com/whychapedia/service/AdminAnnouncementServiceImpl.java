@@ -23,4 +23,10 @@ public class AdminAnnouncementServiceImpl implements AdminAnnouncementService {
 		return adminAnnouncementList;
 	}
 
+	@Override
+	public List<AnnouncementVo> adminAnnouncementListAll() {
+		List<AnnouncementVo> adminAnnouncementListAll = adminAnnouncementMapper.adminAnnouncementListAll();
+		return adminAnnouncementListAll;
+	}
+
 }

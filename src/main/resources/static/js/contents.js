@@ -374,4 +374,11 @@ $(function() {
 		/* 콜렉션_box end */
 		
 	/* 마우스로 클릭하면 색깔변화 (로그인 후) */
+	
+	/* 페이지 URL 넘겨주는 스크립트 start */
+	let url = window.location.href;
+	let pageName = url.substring( url.indexOf("/", 7) + 1 );
+	$( "#redirectUrl" ).val( pageName );
+	console.log( pageName );
+	/* 페이지 URL 넘겨주는 스크립트 end */
 });
