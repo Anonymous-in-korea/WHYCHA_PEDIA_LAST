@@ -18,4 +18,6 @@ public class MovieDirectorVo {
 	private int director_id;
 	private String director_name;
 	private String director_post_url;
+	private String director_role;
+	
 }
