@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>아바타:물의 길 (2022) - 왓챠피디아</title>
+		<title>Movie_Detail_Page</title>
 		
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		
@@ -56,14 +57,11 @@
 													<div class="css-1d6udxb">
 														<div class="css-11zdk8l-PosterWithRankingInfoBlock e1svyhwg10">
 															<div class=" css-1np54po-StyledLazyLoadingImage ezcopuc0">
-																<img alt="아바타: 물의 길의 포스터" src="https://an2-img.amz.wtchn.net/image/v2/FrxGEjpKFa3qoOkHXyVyLA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qZ3dlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk56QTFORFkzTXpreU1ERTFNREUyTURFaWZRLkVhSThNZFJPekYyZ20wRG1lNTRsckp4aTRVdml1X0Fpa1B2MC1uMERhZTg"
+																<img alt="background_post_url(배경 포스터)" src="${movieVo.movie_post_url}"
 	                                                            	class="css-qhzw1o-StyledImg ezcopuc1">
 															</div>
 															<div class="css-r6qxq2-ContentMetaInfoBlock e1svyhwg11">
 																<ul class="css-1v9zk7c-RankingInfoList e1svyhwg14">
-																	<li class="css-ejhszv-RankingInfoListItem e1svyhwg13">예매순위<em>1위(87%)</em></li>
-																	<li>개봉<em>2일째</em></li>
-																	<li>누적 관객<em>36만명</em></li>
 																</ul>
 	                                                        </div>
 	                                                    </div>
@@ -76,9 +74,10 @@
 												<div class="css-1po9d5k">
 													<div class="css-1d6udxb">
 														<div class="css-13h49w0-PaneInner e1svyhwg16">
-															<h1 class="css-171k8ad-Title e1svyhwg17">아바타: 물의 길</h1>
-															<div class="css-11h0kfd-Detail e1svyhwg18">2022 ・ 액션/모험/판타지 ・ 미국</div>
-		                                                    <div class="css-og1gu8-ContentRatings e1svyhwg20">평균 ★3.8 (3,363명)</div>
+															<h1 class="css-171k8ad-Title e1svyhwg17"></h1>
+															<div class="css-11h0kfd-Detail e1svyhwg18">
+															<fmt:formatDate value="${movieVo.movie_release_date}" pattern="yyyy"/> ・ 액션/모험/판타지 ・ 미국</div>
+		                                                    <div class="css-og1gu8-ContentRatings e1svyhwg20">평균 ★${movieVo.movie_rating} (${movieVo.movie_total_audience})</div>
 		                                                    <div class="css-5qj1gb-ContentActionSection e1svyhwg19">
 		                                                    	<!-- 별점 section start -->
 		                                                        <div class="css-1jlb6q">
@@ -271,19 +270,19 @@
 		                                                            <div class="css-1y901al-Row emmoxnt0">
 		                                                                <article class="css-1k6vajx-Overview eokm2780">
 		                                                                    <div class="css-wvh1uf-Summary eokm2781">
-		                                                                        <span>Avatar: The Way of Water</span>
-		                                                                        <span class="css-1t00yeb-OverviewMeta eokm2782">2022 · 미국 · 액션</span>
+		                                                                        <span>${movieVo.movie_kor_title}(${movieVo.movie_original_title})</span>
+		                                                                        <span class="css-1t00yeb-OverviewMeta eokm2782"><fmt:formatDate value="${movieVo.movie_release_date}" pattern="yyyy"/> · 미국 · 액션</span>
 		                                                                        <br>
-		                                                                        <span class="css-1t00yeb-OverviewMeta eokm2782">3시간 12분 · 12세</span>
+		                                                                        <span class="css-1t00yeb-OverviewMeta eokm2782">${movieVo.movie_running_time}분 · ${movieVo.movie_grade} </span>
 		                                                                    </div>
 		                                                                    <div class="css-k82gae-StyledSelf eb5y16b0">
-		                                                                        <div class="css-kywn6v-StyledText eb5y16b1">
+		                                                                <!--         <div class="css-kywn6v-StyledText eb5y16b1">
 		                                                                        	&lt;아바타:물의 길&gt;은 판도라 행성에서 '제이크 설리'와 '네이티리'가 이룬 가족이
 		                                                                            겪게 되는 무자비한 위협과 살아남기 위해 떠나야 하는 긴 여정과 전투, 그리고
 		                                                                            견뎌내야 할 상처에 대한 이야기를 그렸다. 월드와이드 역대 흥행 순위 1위를
 		                                                                            기록한 전편 &lt;아바타&gt;에 이어 제임스 카메론 감독이 13년만에
 		                                                                            선보이는 영화로,...
-		                                                                        </div>
+		                                                                        </div> -->
 		                                                                    </div>
 		                                                                </article>
 		                                                                <hr class="css-g67iqr">
@@ -428,7 +427,7 @@
 		                                                                <header class="css-1ue9xs6">
 		                                                                	<h2 class="css-1wtjsst">별점 그래프</h2>
 		                                                                	<span class="css-14yj34l-RatingStatHeaderTopRight e1dk30cn0">
-		                                                                		<h4 style="margin: 0">평균 ★4.2</h4>
+		                                                                		<h4 style="margin: 0">평균 ★ 별점</h4>
 		                                                                		<strong>(22명)</strong>
 		                                                                	</span>
 		                                                                </header>

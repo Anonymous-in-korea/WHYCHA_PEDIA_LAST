@@ -27,7 +27,7 @@ public class ContentsController {
 		movieVo=movieService.selectOneMovie(id);
 		System.out.println("해당 영화 한국 제목:"+movieVo.getMovie_kor_title());
 		System.out.println("-------------------end_영화 기본 순-ContentsController--------------------------------"); 
-		 
+		model.addAttribute("movieVo",movieVo);
 		return "contents/contents";
 	}
 	
