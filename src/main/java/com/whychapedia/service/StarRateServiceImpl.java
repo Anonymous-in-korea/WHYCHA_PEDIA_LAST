@@ -20,9 +20,9 @@ public class StarRateServiceImpl implements StarRateService {
 
 	//별점 높은 영화 10개 뽑아오기 	
 	@Override
-	public List<Integer> selectStarTop10(int limit) {
+	public List<Integer> selectStarTop(int limit) {
 		System.out.println("시작: StarRateServiceImpl:selectStarTop10All");
-		List<StarRateVo> StarTop10MovieList= starRateMapper.selectMovieTop10(limit);
+		List<StarRateVo> StarTop10MovieList= starRateMapper.selectMovieTop(limit);
 		List<Integer>StarTop10MovieIDList= new ArrayList<>();
 		for (StarRateVo starRateVo : StarTop10MovieList) {
 		    StarTop10MovieIDList.add(starRateVo.getMovie_id());
@@ -31,6 +31,26 @@ public class StarRateServiceImpl implements StarRateService {
 		System.out.println("StarTop10MovieIDList 길이:"+StarTop10MovieIDList.size());		
 		System.out.println("끝: StarRateServiceImpl:selectStarTop10All");
 		return StarTop10MovieIDList;
+	}
+
+	//영화 별점 넣기
+	@Override
+	public void insertStarRate(int user_id, int movie_id, int star_rate) {
+		starRateMapper.insertStarRate(user_id,movie_id,star_rate);
+	}
+	
+	//영화 별점 삭제하기
+	@Override
+	public void deleteStarRate(int user_id, int movie_id) {
+		starRateMapper.deleteStarRate(user_id,movie_id);
+		
+	}
+
+	//한명 별점 들고오기
+	@Override
+	public int selectMyStarRate(int user_id,int movie_id) {
+		int star_rate=starRateMapper.selectMyStarRate(user_id,movie_id);
+		return star_rate;
 	}
 
 

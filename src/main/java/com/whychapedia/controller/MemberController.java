@@ -24,7 +24,8 @@ public class MemberController {
 		int result = 0;
 		MemberVo memberVo = memberService.memberSelectOne(user_email, user_pw);
 		if ( memberVo != null ) {
-			session.setAttribute("sessionId", memberVo.getUser_email());
+			session.setAttribute("sessionId", memberVo.getId());
+			session.setAttribute("sessionEmail", memberVo.getUser_email());
 			session.setAttribute("sessionName", memberVo.getUser_name());
 			session.setAttribute("sessionUserPic", memberVo.getUser_pic_url());
 			result = 1;
@@ -41,7 +42,7 @@ public class MemberController {
 		 * redirectUrl; } else { return "redirect:/"; }
 		 */
 		
-		return "index_GC_prac";
+		return "index_SH";
 	}
 	
 	@RequestMapping("join")
@@ -60,7 +61,7 @@ public class MemberController {
 			model.addAttribute("insert_fail", "입력하신 E-MAIL이 이미 사용중입니다. 다시 입력해주세요.");
 		}
 		
-		return "index_GC_prac";
+		return "index_SH";
 	}
 	
 }

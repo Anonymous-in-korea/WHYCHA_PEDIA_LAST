@@ -65,7 +65,7 @@
 						<header class="section2_header">
 							<div class="header_div">
 								<div>
-									<button class="history_back e1t9gclr0 e1k34u8y0" onclick="location.href='/contents/contents?movieId="${movieVo.id}"'"></button>
+									<button class="history_back e1t9gclr0 e1k34u8y0" onclick="location.href='/contents/contents_SH?id=${movieVo.id}'"></button>
 								</div>
 							</div>
 							<div class="header_title_div">
@@ -77,7 +77,7 @@
 							<ul class="section2_content_ul e1kvv3950">
 								<dl class="section2_content_dl e1kvv3951">
 									<dt class="section2_content_dt e1kvv3952">영어 제목</dt>
-									<dd class="section2_content_dd e1kvv3953">${movieVo.movie_original_title }</dd>
+									<dd class="section2_content_dd e1kvv3953">${movieVo.movie_original_title}</dd>
 								</dl>
 								<dl class="section2_content_dl e1kvv3951">
 									<dt class="section2_content_dt e1kvv3952">제작 연도</dt>
@@ -85,11 +85,11 @@
 								</dl>
 								<dl class="section2_content_dl e1kvv3951">
 									<dt class="section2_content_dt e1kvv3952">국가</dt>
-									<dd class="section2_content_dd e1kvv3953">미국</dd>
+									<dd class="section2_content_dd e1kvv3953">${country}</dd>
 								</dl>
 								<dl class="section2_content_dl e1kvv3951">
 									<dt class="section2_content_dt e1kvv3952">장르</dt>
-									<dd class="section2_content_dd e1kvv3953">액션/모험/판타지/SF</dd>
+									<dd class="section2_content_dd e1kvv3953">${genre}</dd>
 								</dl>
 								<dl class="section2_content_dl e1kvv3951">
 									<dt class="section2_content_dt e1kvv3952">상영시간</dt>
@@ -102,10 +102,10 @@
 								<dl class="section2_content_dl2 e1kvv3951">
 									<dt class="section2_content_dt e1kvv3952">내용</dt>
 									<dd class="section2_content_dd2 e1kvv3954">
-										<c:if test="${ movieVo.movie_desc == '0' }">
+										<c:if test="${movieVo.movie_desc == '0' }">
 										영화 내용이 등록되지 않았습니다.
 										</c:if>
-										<c:if test="${ movieVo.movie_desc != '0' }">
+										<c:if test="${movieVo.movie_desc != '0' }">
 										${movieVo.movie_desc}
 										</c:if>
 									</dd>

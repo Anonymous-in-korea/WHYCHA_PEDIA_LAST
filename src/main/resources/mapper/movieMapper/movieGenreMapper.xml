@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.whychapedia.mapper.MovieGenreMapper">
     
-
+<!--해당 영화 장르 가져오기 -->
  <select id="selectAllGenre" resultType="com.whychapedia.vo.MovieGenreVo">
  	SELECT *
   		FROM movie_genre mg

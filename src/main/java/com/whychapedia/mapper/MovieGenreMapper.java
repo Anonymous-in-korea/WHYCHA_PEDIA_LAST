@@ -9,7 +9,7 @@ import com.whychapedia.vo.MovieGenreVo;
 @Mapper
 public interface MovieGenreMapper {
 	
-
+	//해당 영화 장르 가져오기
 	List<MovieGenreVo> selectAllGenre(int movie_id);
 	
 	

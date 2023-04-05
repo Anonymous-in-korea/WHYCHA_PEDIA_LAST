@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.whychapedia.mapper.MovieOttMapper;
+import com.whychapedia.vo.MovieGenreVo;
 import com.whychapedia.vo.MovieOttVo;
 import com.whychapedia.vo.StarRateVo;
 
@@ -30,6 +31,13 @@ public class MovieOttServiceImpl implements MovieOttService {
 		System.out.println("OTT10MovieIDList 길이:"+OTT10MovieIDList.size());	
 		System.out.println("끝: MovieOttServiceImpl:selectOttTop10");
 		return OTT10MovieIDList;
+	}
+	
+	//해당 영화 ott 가져오기
+	@Override
+	public List<MovieOttVo> selectTheOtt(int movie_id) {
+		List<MovieOttVo> movieOttVoList=movieOttMapper.selectAllOtt(movie_id);
+		return movieOttVoList;
 	}
 
 }
