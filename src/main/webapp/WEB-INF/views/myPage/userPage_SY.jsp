@@ -30,8 +30,8 @@
 				$("#logout_open_Btn").click(function() {
 					if ( $(".css-14gy7wr").css("display") == "none" ) {
 						$(".css-14gy7wr").show();
-						$(".css-15gy7wr").css({"z-index":"99"});
-						$(".css-14gy7wr").css({"z-index":"100"});
+						$(".css-15gy7wr").css({"z-index":"200"});
+						$(".css-14gy7wr").css({"z-index":"99"});
 					}
 				});
 				
@@ -90,11 +90,16 @@
 													<header class="css-1hjjbcz-ProfileHeader e19zkogf4">
 														<div class="css-1gry5r7">
 														<!--유저 프로필 이미지 -->
-															<div class="css-h6h0rq-ProfilePhotoImage"></div>
+														<c:if test="${sessionUserPic != '0' }">
+															<div class="css-h6h0rq-ProfilePhotoImage" style="background-image:url('${sessionUserPic}')"></div>
+														</c:if>
+														<c:if test="${sessionUserPic == '0' }">
+															<div class="css-h6h0rq-ProfilePhotoImage""></div>
+														</c:if>
 														</div>
 														<div class="css-5inudd-NameBlock e19zkogf5">
 															<!--유저이름 -->
-															<h1 class="css-aizam7-Name e19zkogf6">원수영</h1>
+															<h1 class="css-aizam7-Name e19zkogf6">${sessionName}</h1>
 															<!--유저이름 -->
 														</div>
 														<div class="css-7w44b1-AboutMe e19zkogf9">
@@ -107,7 +112,7 @@
 													<ul class="css-10n5vg9-VisualUl ep5cwgq0">
 														<li class="css-4ip9lp-AnalysisListItem e19zkogf10">
 															<a target="_blank" rel="noopener noreferrer" title="취향분석"
-														   	   href="/myPage/my_analysis_HY">
+														   	   href="/myPage/my_analysis_HY?id=${sessionId}">
 														   		<span
 																   src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNFRjY5MkUiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTEuMTggMTEuOTZoMy43NHY4LjM2SDEuMTh6TTE1Ljc1IDE2LjgzaDMuNzR2My40OWgtMy43NHpNNi4wNCA5LjEyaDMuNzR2MTEuMkg2LjA0ek0xMC45IDEzLjg0aDMuNzR2Ni40OEgxMC45eiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNGRkNBMjIiIGQ9Ik0xNy40NCAxLjM3bDEuNjYgNCA0LjMxLjM0LTMuMjggMi44MSAxIDQuMjEtMy42OS0yLjI2LTMuNjkgMi4yNiAxLjAxLTQuMjEtMy4yOS0yLjgxIDQuMzItLjM0eiIvPgogICAgPC9nPgo8L3N2Zz4K"
 																   height="24px" width="24px"

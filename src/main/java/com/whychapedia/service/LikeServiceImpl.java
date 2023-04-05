@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.whychapedia.mapper.LikeMapper;
+import com.whychapedia.vo.CommentVo;
 import com.whychapedia.vo.LikeVo;
 
 @Service
@@ -48,6 +49,27 @@ public class LikeServiceImpl implements LikeService {
 		List<LikeVo> directorLike_list= likeMapper.selectDirector_like_id(sessionId);
 		System.out.println("selectDirector_like_id_list_size : "+directorLike_list.size());
 		return directorLike_list;
+	}
+	
+	//해당 코멘트에 대한 likelist 받아오기
+	@Override
+	public List<LikeVo> selectCommentLike(List<CommentVo> commentVolist) {
+		List<LikeVo> likevolist = likeMapper.selectCommentLike(commentVolist);
+		return likevolist;
+	}
+
+	@Override //좋아요 1 추가하기 
+	public int insertLikeOne(int comment_id, int user_id) {
+		int insertLike = likeMapper.insertLikeOne(comment_id, user_id);
+		System.out.println("likeservice insertLikeOne: "+ insertLike);
+		return insertLike;
+	}
+
+	@Override //좋아요 1 삭제하기 
+	public int deleteLikeOne(int comment_id, int user_id) {
+		int deleteLike = likeMapper.deleteLikeOne(comment_id, user_id);
+		System.out.println("likeservice deleteLikeOne: "+ deleteLike);
+		return deleteLike;
 	}
 
 }

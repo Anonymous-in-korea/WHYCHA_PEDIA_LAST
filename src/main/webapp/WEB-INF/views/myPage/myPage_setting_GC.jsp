@@ -23,7 +23,7 @@
 							<div class="css-1y6tmwg">고객센터</div>
 							<ul class="css-10n5vg9-VisualUl ep5cwgq0">
 								<li class="css-17543n0">
-									<a href="../QnA/QnA_SY" target="_blank" rel="noopener noreferrer" class="css-1rwabqo-StylelessHref">
+									<a href="../QnA/QnA_SY?id=${sessionId}" target="_blank" rel="noopener noreferrer" class="css-1rwabqo-StylelessHref">
 										<div class="css-1ciqeix">문의하기 / FAQ</div>
 										<div class="css-0"></div>
 									</a>

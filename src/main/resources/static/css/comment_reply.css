@@ -266,6 +266,30 @@ hr { display: block; unicode-bidi: isolate; margin-inline-start: auto; margin-in
     height: 100%;
 }
 
+.css-2vv1gk7-ProfilePhotoImage {
+    position: relative;
+    z-index: 1;
+    background: url("https://an2-img.amz.wtchn.net/image/v2/EqfzGrDmAWfd3LFiDwnn_A.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UQXdlREV3TUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNWelpYSXZVa3BuYTNGc1FqWmhOVmd3WWk5d2NtOW1hV3hsTHpFMk1qazNPVGd5T0RZMk1UZ3dPVFExT1RJaWZRLjFVbVppRGZYSWhvR1k5RXJKeWVQR3ZlM0hKdGc3S08td3BRNWpRay1rQ2c") center center / cover no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.css-1vv1gk7-ProfilePhotoImage {
+    position: relative;
+    z-index: 1;
+    background: url("https://an2-glx.amz.wtchn.net/assets/default/user/photo_file_name_small-ab0a7f6a92a282859192ba17dd4822023e22273e168c2daf05795e5171e66446.jpg") center center / cover no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.css-293y94 {
+    background: url("https://an2-glx.amz.wtchn.net/assets/default/user/photo_file_name_small-ab0a7f6a92a282859192ba17dd4822023e22273e168c2daf05795e5171e66446.jpg") center center / contain no-repeat;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px inset;
+}
+
 .css-1sg2lsz {
     display: flex;
     -webkit-box-align: center;

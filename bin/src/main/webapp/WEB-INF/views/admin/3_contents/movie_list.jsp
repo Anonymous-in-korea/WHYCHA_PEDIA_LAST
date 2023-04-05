@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -24,7 +25,12 @@
 		<div id="layoutSidenav">
 		    <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                	<c:if test="${ adminSessionEmail != null }">
                 	<a href="/admin/admin_index"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+                	</c:if>
+                	<c:if test="${ adminSessionEmail == null }">
+                	<a href="/admin/whycha_pedia_admin_login"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+                	</c:if>
 					<%@ include file="../fragment/sidefooter.jsp" %>
 					<%@ include file="../fragment/sidenav.jsp" %>
                 </nav>
@@ -103,50 +109,20 @@
 		                    				</thead>
 		                    				<!-- c:foreach로 반복 돌리기 -->
 		                    				<tbody>
+		                    					<c:if test="${result == 1}">
+												<c:forEach items="${adminContentsList}" var="movieList" varStatus="status">
 		                    					<tr>
-		                    						<td>1</td>
+		                    						<td>${ movieList.id }</td>
 		                    						<td>
-		                    							<a href="/admin/3_contents/movie_view">
-		                    								슬램덩크
-		                    							</a>
+		                    							<a href="/admin/3_contents/movie_view">${ movieList.movie_kor_title }</a>
 		                    						</td>
 		                    						<td>깐데또까상</td>
 		                    						<td>2023-03-10</td>
 		                    						<td>스포츠</td>
 		                    						<td>니뽄</td>
 		                    					</tr>
-		                    					<tr>
-		                    						<td>2</td>
-		                    						<td>서비스가 왜 이렇게 개판이에요? 환불해주세요.</td>
-		                    						<td>내가낸데뭐</td>
-		                    						<td>2023-03-10</td>
-		                    						<td>2023-03-17</td>
-		                    						<td>답변완료</td>
-		                    					</tr>
-		                    					<tr>
-		                    						<td>3</td>
-		                    						<td>서비스가 왜 이렇게 개판이에요? 환불해주세요.</td>
-		                    						<td>내가낸데뭐</td>
-		                    						<td>2023-03-10</td>
-		                    						<td>2023-03-17</td>
-		                    						<td>답변완료</td>
-		                    					</tr>
-		                    					<tr>
-		                    						<td>4</td>
-		                    						<td>서비스가 왜 이렇게 개판이에요? 환불해주세요.</td>
-		                    						<td>내가낸데뭐</td>
-		                    						<td>2023-03-10</td>
-		                    						<td>2023-03-17</td>
-		                    						<td>답변완료</td>
-		                    					</tr>
-		                    					<tr>
-		                    						<td>5</td>
-		                    						<td>서비스가 왜 이렇게 개판이에요? 환불해주세요.</td>
-		                    						<td>내가낸데뭐</td>
-		                    						<td>2023-03-10</td>
-		                    						<td>2023-03-17</td>
-		                    						<td>답변완료</td>
-		                    					</tr>
+		                    					</c:forEach>
+												</c:if>
 		                    				</tbody>
 		                    				<!-- c:foreach로 반복 돌리기 -->
 		                    			</table>

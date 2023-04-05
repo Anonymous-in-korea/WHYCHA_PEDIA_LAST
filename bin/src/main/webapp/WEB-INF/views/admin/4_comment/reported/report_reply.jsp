@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -115,7 +116,12 @@
 		<div id="layoutSidenav">
 			<div id="layoutSidenav_nav">
 				<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-					<a href="/admin/admin_index"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+					<c:if test="${ adminSessionEmail != null }">
+                	<a href="/admin/admin_index"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+                	</c:if>
+                	<c:if test="${ adminSessionEmail == null }">
+                	<a href="/admin/whycha_pedia_admin_login"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+                	</c:if>
 					<%@ include file="../../fragment/sidefooter.jsp" %>
 					<%@ include file="../../fragment/sidenav.jsp" %>
 				</nav>
@@ -140,9 +146,9 @@
 											<span id="date">[ 신고일자 : 2023-03-23 ]</span>
 										</p>
 										<div id="comment_main" style="border:2px solid gray; border-radius:2px; padding-left:5px;">
-											<p>[ 신고된 코멘트 작성자 : 홍길동 ]</p>
+											<p>[ 신고된 코멘트 작성자 : ${ reportVo.user_name } ]</p>
 											<p>[ 신고된 코멘트 내용 ]</p>
-											<p style="padding-left:15px;">문제의 코멘트 내용 자리</p>
+											<p style="padding-left:15px;">${ commentVo.comment_content }</p>
 										</div>
 										<p id="users_cautionCnt" style="border:2px solid gray; border-radius:2px; padding-left:5px;">
 											유저의 제제현황 : [ 경고 0회 ], [ 정지 0회 ]
