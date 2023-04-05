@@ -3,85 +3,67 @@
 <link href="../css/announcement_SH.css" rel="stylesheet" type="text/css">
 <body>
 	<!-- 설정 톱니바퀴 팝업창 CSS -->
-
-
 	<!--announcement 팝업 창 띄우기/내리기 스크립트  -->
-	<script type="text/javascript">
-			$(function() {
-				/* 설정 창 띄우기 */
-					$("#announcement_open_Btn").click(function() {
-						if ( $(".announcement").css("display") == "none" ) { $(".announcement").show(); }
-					});
-				
-				/* 설정 창 내리기 */
-				$("#announcement_close_Btn").click(function() {
-					if ( $(".announcement").css("display") != "none" ) { $(".announcement").hide(); }
-				})
-			});
-	</script>
-
-	<!--기사(article) 상세 띄우기/접기  -->
-	<script type="text/javascript">
- $(document).ready(function() {
-	  $('.css-10c763p-StylelessButton').click(function() {
-	    var li = $(this).parent();
-	    var div = $(this).next('.css-xrw3e9');
-	    var article = div.find('.css-1u4x0ui');
-	    if (li.hasClass('css-15gurup-StyledCollapseListItem')) {
-	      li.removeClass('css-15gurup-StyledCollapseListItem').addClass('css-7zhfhb');
-	      width=article.width()+100;
-	      height=article.height()+100;
-	      div.css('height', height);
-	    } else if (li.hasClass('css-7zhfhb')) {
-	      li.removeClass('css-7zhfhb').addClass('css-15gurup-StyledCollapseListItem');
-	      div.css('height', '0');
-	    }
-	  });
-	});
-
-</script>
-
-
-
-
-
-
 	<script>
+		$(function() {
+			/* 설정 창 띄우기 */
+			$("#announcement_open_Btn").click(function() {
+				if ( $(".announcement").css("display") == "none" ) { $(".announcement").show(); }
+			});
+				
+			/* 설정 창 내리기 */
+			$("#announcement_close_Btn").click(function() {
+				if ( $(".announcement").css("display") != "none" ) { $(".announcement").hide(); }
+			});
 
-  let modalList = createApp({
-    data() {
-      return {
-        main_modal: false,
-        notice_signal: false,
-      };
-    },
-    methods: {
-      main_modal_change() {
-        this.main_modal = !this.main_modal;
-      },
-      notice_change() {
-        this.notice_signal = !this.notice_signal;
-      }
-    },
-  }).mount("#app");
+			<!--기사(article) 상세 띄우기/접기  -->
+			$('.css-10c763p-StylelessButton').click(function() {
+				var li = $(this).parent();
+				var div = $(this).next('.css-xrw3e9');
+				var article = div.find('.css-1u4x0ui');
+				if (li.hasClass('css-15gurup-StyledCollapseListItem')) {
+					li.removeClass('css-15gurup-StyledCollapseListItem').addClass('css-7zhfhb');
+					width=article.width()+100;
+					height=article.height()+100;
+					div.css('height', height);
+				} else if (li.hasClass('css-7zhfhb')) {
+					li.removeClass('css-7zhfhb').addClass('css-15gurup-StyledCollapseListItem');
+					div.css('height', '0');
+				}
+			});
+		});
 
-  document.addEventListener("click",(e)=>{
-    if(document.querySelector("#modal-container-gaaIcctt8e6Uqo5nHzT52") &&
-            modalList.notice_signal == false){
-      if(!document.querySelector("div.css-ikkedy").contains(e.target)){
-        modalList.main_modal = false;
-      }
-    }
+		let modalList = createApp({
+			data() {
+				return {
+					main_modal: false,
+					notice_signal: false,
+				};
+			},
+			methods: {
+				main_modal_change() {
+					this.main_modal = !this.main_modal;
+				},
+				notice_change() {
+					this.notice_signal = !this.notice_signal;
+				}
+			},
+		}).mount("#app");
 
-    if(modalList.notice_signal == true) {
-      if(!document.querySelector(".css-8kej5s").contains(e.target)){
-        modalList.notice_signal = false;
-      }
-    }
-  },true)
-  
-  
-</script>
+		document.addEventListener("click",(e)=>{
+			if(document.querySelector("#modal-container-gaaIcctt8e6Uqo5nHzT52") && modalList.notice_signal == false){
+				if(!document.querySelector("div.css-ikkedy").contains(e.target)){
+					modalList.main_modal = false;
+				}
+			}
+
+			if(modalList.notice_signal == true) {
+				if(!document.querySelector(".css-8kej5s").contains(e.target)){
+					modalList.notice_signal = false;
+				}
+			}
+		},true)
+	</script>
 	<!-- 공지사항 팝업 열림! -->
 	<div class="announcement">
 		<div id="modal-container-thg3K61bbP9KCrJxZTi2q" class="css-rpyl6s">

@@ -8,10 +8,12 @@ public interface StarRateService {
 
 	List<Integer> selectStarTop(int limit);
 
-	void insertStarRate(int user_id, int movie_id, int star_rate);
+	int insertStarRate(int user_id, int movie_id, double star_rate);
 
-	void deleteStarRate(int user_id, int movie_id);
+	int deleteStarRate(int user_id, int movie_id);
 
 	int selectMyStarRate(int user_id, int movie_id);
+
+	int selectIsRating(int user_id, int movie_id);
 
 }
