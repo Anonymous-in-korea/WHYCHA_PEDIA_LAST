@@ -9,5 +9,13 @@
   		JOIN director d ON md.director_id = d.id
   		WHERE md.movie_id = ${movie_id}		
  </select>	
+  	<!-- 해당검색어를 가지고 관련 감독 가져오기 -->
+<select id="selectSearchDirectorAll" resultType="com.whychapedia.vo.MovieDirectorVo">
+	SELECT DISTINCT director.id, director.director_name, director.director_post_url, movie_director.director_role
+	FROM director
+	INNER JOIN movie_director
+	ON director.id = movie_director.director_id
+	WHERE REPLACE(director.director_name, ' ', '') LIKE '%' || #{searchKeyword} || '%'
+</select>
  
  </mapper>

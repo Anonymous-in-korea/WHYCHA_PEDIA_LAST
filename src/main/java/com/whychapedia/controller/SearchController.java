@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.whychapedia.service.ArtistService;
+import com.whychapedia.service.MovieActorService;
+import com.whychapedia.service.MovieDirectorService;
 import com.whychapedia.vo.ArtistVo;
+import com.whychapedia.vo.MovieActorVo;
+import com.whychapedia.vo.MovieDirectorVo;
 
 
 
@@ -22,27 +26,28 @@ public class SearchController {
 	
 
 
-	@Autowired 
-	ArtistService artistService;
+	@Autowired
+	MovieActorService movieActorService;
+	@Autowired
+	MovieDirectorService movieDirectorService;
 
 	
 	
-	@RequestMapping(method = RequestMethod.GET, value = "search/searchPerson")
+	@RequestMapping(method = RequestMethod.GET, value = "search/searchPerson_SY")
 	public String searchPerson(@RequestParam("searchKeyword") String searchKeyword, Model model) {
-		
 		//해당 actor_id의 actor_name과 actor_post_url가져오기
-		List<ArtistVo> actorSearchlist = artistService.selectSearchActorAll(searchKeyword);
+		List<MovieActorVo> actorSearchlist = movieActorService.selectSearchActorAll(searchKeyword);
 		System.out.println("selectSearchActorAll_list_size"+actorSearchlist.size());
 		model.addAttribute("actorSearchlist",actorSearchlist);
 		
-		//해당 actor_id의 actor_name과 actor_post_url가져오기
-		List<ArtistVo> directorSearchlist = artistService.selectSearchDirectorAll(searchKeyword);
+		//해당 director_id의 director_name과 director_post_url가져오기
+		List<MovieDirectorVo> directorSearchlist = movieDirectorService.selectSearchDirectorAll(searchKeyword);
 		System.out.println("selectSearchDirectorAll_list_size"+directorSearchlist.size());
 		model.addAttribute("directorSearchlist",directorSearchlist);
+		System.out.println(directorSearchlist);
 		
 		
-		//"redirect:/search/searchPerson?searchKeyword=" + searchKeyword;
-		 return "search/searchPerson";
+		 return "search/searchPerson_SY";
 	}
 
 	  

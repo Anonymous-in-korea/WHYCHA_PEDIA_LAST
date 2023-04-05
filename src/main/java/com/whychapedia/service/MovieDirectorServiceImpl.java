@@ -23,6 +23,14 @@ public class MovieDirectorServiceImpl implements MovieDirectorService {
 		return selectTheDirector;
 	}
 	
+	//해당검색어를 가지고 관련 감독 가져오기
+	@Override
+	public List<MovieDirectorVo> selectSearchDirectorAll(String searchKeyword) {
+		List<MovieDirectorVo> directorSearchlist= movieDirectorMapper.selectSearchDirectorAll(searchKeyword);
+		System.err.println("selectSearchDirectorAll_list_size : "+directorSearchlist.size());
+		System.out.println(directorSearchlist);
+		return directorSearchlist;
+	}
 	
 
 }

@@ -41,7 +41,7 @@ public class MyPageController {
 		return "myPage/my_analysis_HY";
 	}
 	
-	@GetMapping("myPage/actor_director_like")
+	@GetMapping("myPage/actor_director_like_SY")
 	public String actor_director_like(Model model) {
 		//actor_id를 가지고오기
 		List<LikeVo> actorLike_list = likeService.selectActor_like_id(6);
@@ -65,7 +65,7 @@ public class MyPageController {
 		model.addAttribute("director_list",director_list);
 
 		
-		return "myPage/actor_director_like";
+		return "myPage/actor_director_like_SY";
 	}
 
 	

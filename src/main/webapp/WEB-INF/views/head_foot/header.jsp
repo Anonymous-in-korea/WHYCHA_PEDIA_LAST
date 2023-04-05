@@ -1,18 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<!--검색창 스크립트  -->
+		<script>
+			$(document).ready(function() {
+				  $("form").on("submit", function(event) {
+				    event.preventDefault();
+				    var searchKeyword = $("input[name='searchKeyword']").val();
+				    window.location.href = "/search/searchPerson_SY?searchKeyword=" + searchKeyword;
+				  });
+			});
+		</script>
 <header class="header active">
 	<nav>
 		<div class="css-1gkas1x-Grid e1689zdh0">
 			<div class="header_footer_div">
 				<ul class="header_ul">
 					<li class="header_li">
-						<a href="/"><img src="/images/no1_WHYCHA.png" style="width: 210px;"></a>
+						<a href="/"><img src="/images/no1_WHYCHA_orange.png" style="width: 210px;"></a>
 					</li>
 					<li class="header_li_searchBox">
 						<div class="header_li_searchBox_div">
 							<div class="header_li_searchBox_div2">
-								<form action="#" method="post" name="">
+								<form action="/search/searchPerson?searchKeyword=${searchKeyword}"  method="post" name="">
 									<label class="searchBox_label active">
 										<input type="text" autocomplete="off" placeholder="콘텐츠, 인물, 컬렉션을 검색해보세요"
 											name="searchKeyword" value class="searchBox_input active">
@@ -49,7 +60,7 @@
 									<section>
 										<div class="css-1gkas1x-Grid e1689zdh0">
 											<div class="css-1y901al-Row emmoxnt0">
-												<form action="/search/searchPerson?searchKeyword=${searchword}" method="post" name="login">
+												<form action="/search/searchPerson?searchKeyword=${searchKeyword}" method="post" name="login">
 													<input type="hidden" name="redirectUrl" id="redirectUrl" value="">
 													<div class="css-1o72pil">
 						                                <label value="false" id="email_box" class="css-a4glo0">

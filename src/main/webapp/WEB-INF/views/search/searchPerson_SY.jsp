@@ -7,11 +7,12 @@
 <head>
     <meta charset="utf-8">
     <title>왓챠피디아 - 영화, 책, TV 프로그램 추천 및 평가 서비스</title>
-    <link href="/css/searchPerson.css" rel="stylesheet" type="text/css">
+    <link href="/css/searchPerson_SY.css" rel="stylesheet" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 	<link href="/css/header.css" rel="stylesheet" type="text/css">
+	<link rel="shortcut icon" type="image/x-icon" href="/images/whycha_small_logo1.png">
     
 </head>
 <body>
@@ -75,14 +76,14 @@
 	                                                        </div>
 	                                                        <div class="css-1evnpxk-StyledSubtitle">
 	                                                            <div class="css-qzyxgk">
-		                                                            <span class="css-htvp8y">저자</span>
+		                                                            <span class="css-htvp8y">${avo.actor_role}</span>
 		                                                            <span class="css-1jpatke"> ・ </span>
-		                                                            <span class="personContents css-yn5nfu" title="${avo.actor_name}">광고하지 마라</span>
+		                                                            <span class="personContents css-yn5nfu" title="${avo.actor_name}">수영이는 이쁘니까</span>
 	                                                            </div>
 	                                                        </div>
 	                                                        <div class="css-v9psum">
-	                                                            <div title="다바타 신타로" class="css-txztjz">
-	                                                            	<span class="css-mudjgk">광고하지 마라</span>
+	                                                            <div title="${avo.actor_name}" class="css-txztjz">
+	                                                            	<span class="css-mudjgk">배우</span>
 	                                                            </div>
 	                                                        </div>
 	                                                    </div>
@@ -109,14 +110,14 @@
 	                                                        </div>
 	                                                        <div class="css-1evnpxk-StyledSubtitle">
 	                                                            <div class="css-qzyxgk">
-		                                                            <span class="css-htvp8y">저자</span>
+		                                                            <span class="css-htvp8y">${dvo.director_role}</span>
 		                                                            <span class="css-1jpatke"> ・ </span>
 		                                                            <span class="personContents css-yn5nfu" title="다바타 신타로">광고하지 마라</span>
 	                                                            </div>
 	                                                        </div>
 	                                                        <div class="css-v9psum">
 	                                                            <div title="다바타 신타로" class="css-txztjz">
-	                                                            	<span class="css-mudjgk">광고하지 마라</span>
+	                                                            	<span class="css-mudjgk">감독</span>
 	                                                            </div>
 	                                                        </div>
 	                                                    </div>

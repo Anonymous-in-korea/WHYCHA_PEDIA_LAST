@@ -26,4 +26,12 @@ public class MovieActorServiceImpl implements MovieActorService {
 		return selectTheActor;
 	}
 
+	//해당검색어를 가지고 관련 배우 가져오기
+	@Override
+	public List<MovieActorVo> selectSearchActorAll(String searchKeyword) {
+		List<MovieActorVo> actorSearchlist= movieActorMapper.selectSearchActorAll(searchKeyword);
+		System.err.println("selectSearchActorAll_list_size : "+actorSearchlist.size());
+		System.out.println(actorSearchlist);
+		return actorSearchlist;
+	}
 }
