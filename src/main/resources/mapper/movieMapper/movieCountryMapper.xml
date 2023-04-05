@@ -9,7 +9,7 @@
  	SELECT *
 		FROM movie_country mc
 		JOIN country c ON mc.country_id = c.id
-		WHERE mc.movie_id = ${movie_id}
+		WHERE mc.movie_id = #{movie_id}
  		 
  </select>	 
  </mapper>

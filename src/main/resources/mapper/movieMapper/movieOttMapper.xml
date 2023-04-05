@@ -16,7 +16,7 @@
  		SELECT *
 	  		FROM movie_ott mo
 	  		JOIN ott o ON mo.ott_id = o.id
-	  		WHERE mo.movie_id = ${movie_id}
+	  		WHERE mo.movie_id = #{movie_id}
  		 
  </select>	
 
