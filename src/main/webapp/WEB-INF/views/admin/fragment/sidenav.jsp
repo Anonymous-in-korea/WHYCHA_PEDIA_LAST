@@ -56,7 +56,6 @@
 		<div class="collapse" id="collapseLayouts_comment" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 			<nav class="sb-sidenav-menu-nested nav">
 				<a class="nav-link" href="/admin/4_comment/reported/report_page">코멘트 신고접수/처리</a>
-				<a class="nav-link" href="/admin/4_comment/reported/report_reply">신고 코멘트 처리페이지</a>
 			</nav>
 		</div>
 

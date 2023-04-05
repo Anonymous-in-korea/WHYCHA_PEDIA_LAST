@@ -55,9 +55,6 @@ public class AdminQnAController {
 		if ( questionListVo != null ) {
 			model.addAttribute("questionListVo", questionListVo);
 			model.addAttribute("answerListVo", answerListVo);
-		} else {
-			model.addAttribute("QnA_view_fail", "QnA를 가져오는데 실패했습니다.");
-			return "admin/2_qna/QnA_list";
 		}
 		
 		return "admin/2_qna/QnA_view";

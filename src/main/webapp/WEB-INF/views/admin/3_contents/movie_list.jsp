@@ -114,9 +114,7 @@
 		                    					<tr>
 		                    						<td>${ movieList.id }</td>
 		                    						<td>
-		                    							<a href="/admin/3_contents/movie_view">
-		                    								${ movieList.movie_kor_title }
-		                    							</a>
+		                    							<a href="/admin/3_contents/movie_view">${ movieList.movie_kor_title }</a>
 		                    						</td>
 		                    						<td>깐데또까상</td>
 		                    						<td>2023-03-10</td>

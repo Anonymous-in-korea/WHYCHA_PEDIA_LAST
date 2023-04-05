@@ -35,24 +35,73 @@ $(function() {
 	$("#star_rating").change(function() {
 		if ( $("#star_rating").val() == "" ) { $("#star_rating1").hide(); $("#star_rating2").hide(); $("#star_rating3").hide(); $("#star_rating4").hide();
         	$("#star_rating5").hide(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
+        	
 		} else if ( $("#star_rating").val() == "0.5" ) { $("#star_rating1").show(); $("#star_rating2").hide(); $("#star_rating3").hide(); $("#star_rating4").hide();
         	$("#star_rating5").hide(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
+        	
         } else if ( $("#star_rating").val() == "1.0" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").hide();
         	$("#star_rating5").hide(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
+        	
         } else if ( $("#star_rating").val() == "1.5" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").show(); $("#star_rating4").hide();
         	$("#star_rating5").hide(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
+        	
         } else if ( $("#star_rating").val() == "2.0" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
         	$("#star_rating5").hide(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
+        	
         } else if ( $("#star_rating").val() == "2.5" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
         	$("#star_rating5").show(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
+        	
         } else if ( $("#star_rating").val() == "3.0" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
         	$("#star_rating5").hide(); $("#star_rating6").show(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
+        	
         } else if ( $("#star_rating").val() == "3.5" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
         	$("#star_rating5").hide(); $("#star_rating6").show(); $("#star_rating7").show(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
+        	
         } else if ( $("#star_rating").val() == "4.0" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
         	$("#star_rating5").hide(); $("#star_rating6").show(); $("#star_rating7").hide(); $("#star_rating8").show(); $("#star_rating9").hide(); $("#star_rating10").hide();
+        	
         } else if ( $("#star_rating").val() == "4.5" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
         	$("#star_rating5").hide(); $("#star_rating6").show(); $("#star_rating7").hide(); $("#star_rating8").show(); $("#star_rating9").show(); $("#star_rating10").hide();
+        	
+        } else { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show(); $("#star_rating5").hide();
+        	$("#star_rating6").show(); $("#star_rating7").hide(); $("#star_rating8").show(); $("#star_rating9").hide(); $("#star_rating10").show();
+        }
+    });
+	/* 별점 색깔변경 */
+
+
+	/* 별점 색깔변경 (로그인 후 저장된 별점 불러올 때) */
+	$("#star_rating").change(function() {
+		if ( $("#star_rating").val() == "" ) { $("#star_rating1").hide(); $("#star_rating2").hide(); $("#star_rating3").hide(); $("#star_rating4").hide();
+        	$("#star_rating5").hide(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
+        	
+		} else if ( $("#star_rating").val() == "0.5" ) { $("#star_rating1").show(); $("#star_rating2").hide(); $("#star_rating3").hide(); $("#star_rating4").hide();
+        	$("#star_rating5").hide(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
+        	
+        } else if ( $("#star_rating").val() == "1.0" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").hide();
+        	$("#star_rating5").hide(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
+        	
+        } else if ( $("#star_rating").val() == "1.5" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").show(); $("#star_rating4").hide();
+        	$("#star_rating5").hide(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
+        	
+        } else if ( $("#star_rating").val() == "2.0" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
+        	$("#star_rating5").hide(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
+        	
+        } else if ( $("#star_rating").val() == "2.5" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
+        	$("#star_rating5").show(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
+        	
+        } else if ( $("#star_rating").val() == "3.0" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
+        	$("#star_rating5").hide(); $("#star_rating6").show(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
+        	
+        } else if ( $("#star_rating").val() == "3.5" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
+        	$("#star_rating5").hide(); $("#star_rating6").show(); $("#star_rating7").show(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
+        	
+        } else if ( $("#star_rating").val() == "4.0" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
+        	$("#star_rating5").hide(); $("#star_rating6").show(); $("#star_rating7").hide(); $("#star_rating8").show(); $("#star_rating9").hide(); $("#star_rating10").hide();
+        	
+        } else if ( $("#star_rating").val() == "4.5" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
+        	$("#star_rating5").hide(); $("#star_rating6").show(); $("#star_rating7").hide(); $("#star_rating8").show(); $("#star_rating9").show(); $("#star_rating10").hide();
+        	
         } else { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show(); $("#star_rating5").hide();
         	$("#star_rating6").show(); $("#star_rating7").hide(); $("#star_rating8").show(); $("#star_rating9").hide(); $("#star_rating10").show();
         }
