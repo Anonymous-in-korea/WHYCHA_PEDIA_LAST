@@ -11,5 +11,7 @@ public interface MovieActorMapper {
 
 	List<MovieActorVo> selectAllActor(int movie_id);
 	
+	List<MovieActorVo> selectSearchActorAll(String searchKeyword);
+	
 
 }

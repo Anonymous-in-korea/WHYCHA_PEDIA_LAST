@@ -8,5 +8,6 @@ import com.whychapedia.vo.MovieActorVo;
 public interface MovieActorService {
 
 	List<MovieActorVo> selectTheActor(int movie_id);
-
+	
+	List<MovieActorVo> selectSearchActorAll(String searchKeyword);
 }

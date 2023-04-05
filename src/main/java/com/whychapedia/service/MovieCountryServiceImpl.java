@@ -1,6 +1,7 @@
 package com.whychapedia.service;
 
 import java.util.List;
+import java.util.StringJoiner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,20 @@ public class MovieCountryServiceImpl implements MovieCountryService {
 	public List<MovieCountryVo> selectTheCountry(int movie_id) {
 		List<MovieCountryVo> movieCountryVoList=movieCountryMapper.selectAllCountry(movie_id);
 		return movieCountryVoList;
+	}
+	
+	//해당 영화 나라 합쳐서 String으로 변환 
+	@Override
+	public String countryListToString(List<MovieCountryVo> movieCountryVoList) {
+		StringJoiner joiner = new StringJoiner("/");
+		if (movieCountryVoList != null) {
+		    for (MovieCountryVo movieCountryVo : movieCountryVoList) {
+		        joiner.add(movieCountryVo.getName_kor());
+		    }
+		}
+		//나라가 null일 경우 빈공백 반환
+		String countryListToString=joiner.toString();
+		return countryListToString;
 	}
 
 }

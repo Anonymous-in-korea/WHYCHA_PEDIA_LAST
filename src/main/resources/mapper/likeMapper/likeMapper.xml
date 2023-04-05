@@ -12,4 +12,11 @@
 				ORDER BY num_likes DESC
 				FETCH FIRST #{theNum} ROWS ONLY)
 	</select>
+		
+	<select id="selectActor_like_id" resultType="com.whychapedia.vo.LikeVo">
+		select actor_id from actor_like where user_id=#{sessionId}
+	</select>
+	<select id="selectDirector_like_id" resultType="com.whychapedia.vo.LikeVo">
+		select director_id from director_like where user_id=#{sessionId}
+	</select>
 </mapper>

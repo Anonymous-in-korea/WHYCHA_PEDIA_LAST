@@ -47,8 +47,9 @@
 											<div class="css-oqg1df-BlurPosterBlock e1svyhwg2">
 												<div color="#9A7D69" class="css-mainn9-LeftBackground e1svyhwg6"></div>
 												<div class="css-92c08v-BlurPoster e1svyhwg4">
-													<div color="#9A7D69" class="css-16kdtrk-LeftGradient e1svyhwg8"></div>
-													<div color="#D1B99F" class="css-1x8lfzg-RightGradient e1svyhwg9"></div>
+													<img id="background-poster-image" src="${movieVo.background_post_url}" alt="Poster Image">
+													<!--<div color="#9A7D69" class="css-16kdtrk-LeftGradient e1svyhwg8"></div> -->
+													<!--<div color="#D1B99F" class="css-1x8lfzg-RightGradient e1svyhwg9"></div> -->
 												</div>
 												<div color="#D1B99F" class="css-194pp5q-RightBackground e1svyhwg7"></div>
 												<div class="css-1ubeqqm-DimmedLayer e1svyhwg3"></div>
@@ -70,6 +71,7 @@
 	                                            </div>
 	                                        </div>
 	                                    </div>
+	                                    <!-- 별점 section ajax start-->
 	                                    <script>
 		                                    $(function(){
 		                                    	
@@ -86,12 +88,13 @@
 				                    						alert("성공");
 				                    					},
 				                    					error:function(){
-				                    						alert("aaㅇㄴㄹㅇㄴㄹaa 오류로 인해 확인이 되지 않았습니다. 다시 입력해주세요.");
+				                    						alert("오류로 인해 확인이 되지 않았습니다. 다시 입력해주세요.");
 				                    					}
 				                    				}); //ajax
 		                                    	});
 		                                     });
 	                                    </script>
+	                                    <!-- 별점 section ajax end-->
 										<div class="css-1p7n6er-Pane e1svyhwg15">
 											<div class="css-569z5v">
 												<div class="css-1po9d5k">
@@ -99,24 +102,24 @@
 														<div class="css-13h49w0-PaneInner e1svyhwg16">
 															<h1 class="css-171k8ad-Title e1svyhwg17"></h1>
 															<div class="css-11h0kfd-Detail e1svyhwg18">
-															<fmt:formatDate value="${movieVo.movie_release_date}" pattern="yyyy"/> ・ 액션/모험/판타지 ・ 미국</div>
+															<fmt:formatDate value="${movieVo.movie_release_date}" pattern="yyyy"/> ・ ${genre} ・ ${country}</div>
 		                                                    <div class="css-og1gu8-ContentRatings e1svyhwg20">평균 ★${movieVo.movie_rating} (${movieVo.movie_total_audience})</div>
 		                                                    <div class="css-5qj1gb-ContentActionSection e1svyhwg19">
 		                                                    	<!-- 별점 section start -->
 		                                                        <div class="css-1jlb6q">
 		                                                            <div class="css-yt2kjp">     
 																		<select id="star_rating" style="border:none; text-align:center; item-align:center;">
-																			<option value="">별점평가하기</option>
-																			<option value="0.5">0.5점</option>
-																			<option value="1.0">1.0점</option>
-																			<option value="1.5">1.5점</option>
-																			<option value="2.0">2.0점</option>
-																			<option value="2.5">2.5점</option>
-																			<option value="3.0">3.0점</option>
-																			<option value="3.5">3.5점</option>
-																			<option value="4.0">4.0점</option>
-																			<option value="4.5">4.5점</option>
-																			<option value="5.0">5.0점</option>
+																			<option value="0" ${my_star_rate == 0 ? 'selected' : ''}>별점평가하기</option>
+																			<option value="0.5" ${my_star_rate == 0.5 ? 'selected' : ''}>0.5점</option>
+																			<option value="1.0" ${my_star_rate == 1.0 ? 'selected' : ''}>1.0점</option>
+																			<option value="1.5" ${my_star_rate == 1.5 ? 'selected' : ''}>1.5점</option>
+																			<option value="2.0" ${my_star_rate == 2.0 ? 'selected' : ''}>2.0점</option>
+																			<option value="2.5" ${my_star_rate == 2.5 ? 'selected' : ''}>2.5점</option>
+																			<option value="3.0" ${my_star_rate == 3.0 ? 'selected' : ''}>3.0점</option>
+																			<option value="3.5" ${my_star_rate == 3.5 ? 'selected' : ''}>3.5점</option>
+																			<option value="4.0" ${my_star_rate == 4.0 ? 'selected' : ''}>4.0점</option>
+																			<option value="4.5" ${my_star_rate == 4.5 ? 'selected' : ''}>4.5점</option>
+																			<option value="5.0" ${my_star_rate == 5.0 ? 'selected' : ''}>5.0점</option>
 																		</select>
 		                                                            </div>
 		                                                            <div id="star_container" class="css-1mbuso5" style="cursor:pointer; width:238px; position:relative;">
@@ -285,7 +288,7 @@
 		                                                                	<h2 class="css-1wtjsst">기본정보</h2>
 		                                                                    <div class="css-s289sk">
 		                                                                        <div class="css-1ugqy9j">
-		                                                                        	<a href="/contents/contents_info_page?movieId='${movieVo.id }'">더보기</a>
+		                                                                        	<a href="/contents/contents_info_page?movieId=${movieVo.id}">더보기</a>
 		                                                                        </div>
 		                                                                    </div>
 		                                                                </header>
@@ -296,7 +299,7 @@
 		                                                                <article class="css-1k6vajx-Overview eokm2780">
 		                                                                    <div class="css-wvh1uf-Summary eokm2781">
 		                                                                        <span>${movieVo.movie_kor_title}(${movieVo.movie_original_title})</span>
-		                                                                        <span class="css-1t00yeb-OverviewMeta eokm2782"><fmt:formatDate value="${movieVo.movie_release_date}" pattern="yyyy"/> · 미국 · 액션</span>
+		                                                                        <span class="css-1t00yeb-OverviewMeta eokm2782"><fmt:formatDate value="${movieVo.movie_release_date}" pattern="yyyy"/> · ${country} · ${genre}</span>
 		                                                                        <br>
 		                                                                        <span class="css-1t00yeb-OverviewMeta eokm2782">${movieVo.movie_running_time}분 · ${movieVo.movie_grade} </span>
 		                                                                    </div>
@@ -698,8 +701,10 @@
 		                                                                    <div class="css-1gkas1x-Grid e1689zdh0">
 		                                                                        <div class="css-1y901al-Row emmoxnt0">
 		                                                                            <ul class="css-1ohwri2-VisualUl-PartnerStackableUl e85xbnu0">
+		                                                                                <!-- foreach문 돌릴 부분 OTT start -->
+		                                                                                <c:forEach items="${movieOttVoList}" var="movieOttVo">
 		                                                                                <li class="css-wj6fn0">
-		                                                                                	<a href="https://redirect.watcha.com/galaxy/aHR0cHM6Ly93ZWJ0b29uLmtha2FvLmNvbS9jb250ZW50L-uCmC3tmLzsnpDrp4wt66CI67Ko7JeFLzIzMjA"
+		                                                                                	<a href="${movieOttVo.provider_name}"
 																								target="_blank" title="카카오웹툰"
 		                                                                                        class="css-1wacncs-InnerPartOfListWithImage">
 			                                                                                    <div class="css-cssveg">
@@ -709,15 +714,17 @@
 			                                                                                    </div>
 			                                                                                    <div class="css-zoy7di">
 			                                                                                        <div class="externalServiceTitles css-qkf9j">
-			                                                                                            <div class="css-17vuhtq">카카오웹툰</div>
+			                                                                                            <div class="css-17vuhtq">${movieOttVo.provider_name}</div>
 			                                                                                        </div>
 			                                                                                        <div>
-			                                                                                        	<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iOXB4IiBoZWlnaHQ9IjE0cHgiIHZpZXdCb3g9IjAgMCA5IDE0IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPHRpdGxlPkhvbWUvU2VjdGlvbi9IZWFkZXIvel9JdGVtcy9BcnJvdzwvdGl0bGU+CiAgICA8ZyBpZD0iSG9tZS9TZWN0aW9uL0hlYWRlci96X0l0ZW1zL0Fycm93IiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiBzdHJva2UtbGluZWNhcD0icm91bmQiPgogICAgICAgIDxwb2x5bGluZSBpZD0iUGF0aC1Db3B5LTYiIHN0cm9rZT0iI0E1QTVBQSIgc3Ryb2tlLXdpZHRoPSIyIiBwb2ludHM9IjEgMSA3IDcgMSAxMyI+PC9wb2x5bGluZT4KICAgIDwvZz4KPC9zdmc+"
+																										<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iOXB4IiBoZWlnaHQ9IjE0cHgiIHZpZXdCb3g9IjAgMCA5IDE0IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPHRpdGxlPkhvbWUvU2VjdGlvbi9IZWFkZXIvel9JdGVtcy9BcnJvdzwvdGl0bGU+CiAgICA8ZyBpZD0iSG9tZS9TZWN0aW9uL0hlYWRlci96X0l0ZW1zL0Fycm93IiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiBzdHJva2UtbGluZWNhcD0icm91bmQiPgogICAgICAgIDxwb2x5bGluZSBpZD0iUGF0aC1Db3B5LTYiIHN0cm9rZT0iI0E1QTVBQSIgc3Ryb2tlLXdpZHRoPSIyIiBwb2ludHM9IjEgMSA3IDcgMSAxMyI+PC9wb2x5bGluZT4KICAgIDwvZz4KPC9zdmc+"
 																											alt="Arrow">
 																									</div>
 			                                                                                    </div>
 			                                                                                </a>
 																						</li>
+																						</c:forEach>
+																						<!-- foreach문 돌릴 부분 OTT end-->	
 		                                                                                <li class="css-wj6fn0">
 		                                                                                	<a href="https://redirect.watcha.com/galaxy/aHR0cHM6Ly9saW5rLXBhZ2Uua2FrYW8uY29tL2dvdG9fdmlldz9zZXJpZXNfaWQ9NTA4NjY0ODEmcmVmZXJyZXI9dXRtX3NvdXJjZSUzRHdhdGNoX3BlZGlh"
 																								target="_blank" title="카카오페이지" class="css-1wacncs-InnerPartOfListWithImage">
@@ -757,7 +764,7 @@
 		                                                            <div class="css-1y901al-Row emmoxnt0">
 		                                                                <header class="css-1ue9xs6">
 		                                                                	<h2 class="css-1wtjsst">갤러리</h2>
-		                                                                	<a href="" class="pink">모아보기</a>
+		                                                                	<!-- <a href="" class="pink">모아보기</a> -->
 		                                                                </header>
 		                                                            </div>
 		                                                        </div>
@@ -767,37 +774,15 @@
 		                                                                    <div class="css-1gkas1x-Grid e1689zdh0">
 		                                                                        <div class="css-1y901al-Row emmoxnt0">
 		                                                                            <ul class="css-1cduxg0-VisualUl">
+		                                                                            <!-- foreach문 돌릴 부분 갤러리 start -->
+																					<c:forEach items="${movieGalleryVoList}" var="movieGalleryVo">	
 		                                                                                <li class="css-1cw0vk0">
 		                                                                                    <div class="css-1qwe0o7-StyledSelf e1q5rx9q0">
-		                                                                                        <img height="100%" class="css-bhgne5-StyledBackground e1q5rx9q1" src="https://an2-img.amz.wtchn.net/image/v2/qYVmXw7ylGy2Fo7GdQyNyA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5qUXdlRE0yTUhFNE1DSmRMQ0p3SWpvaUwzWXhMMkozWVdRNWNuRnFlbkJ3Wkd4NGJITTJiMnR6SW4wLm9yNGNMdDNTdXBxc0loZ1lYYmR6UkI5azY2VGo5WUFtbXRYT3FOeDMxeUk">
+		                                                                                        <img height="100%" class="css-bhgne5-StyledBackground e1q5rx9q1" src="${movieGalleryVo.movie_gallery_url}">
 		                                                                                    </div>
 		                                                                                </li>
-		                                                                                <li class="css-1cw0vk0">
-		                                                                                    <div class="css-1qwe0o7-StyledSelf e1q5rx9q0">
-		                                                                                        <img height="100%" class="css-bhgne5-StyledBackground e1q5rx9q1" src="https://an2-img.amz.wtchn.net/image/v2/FcaaVfhrDYms84UQfy85og.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5qUXdlRE0yTUhFNE1DSmRMQ0p3SWpvaUwzWXhMM0YzYm5abWVIUnVjSGxzWW1KNGRHcHljV3hzSW4wLlpzU0w1bGpyRE54UE8yc0syVWlKZWRRcnd0Rjhzanh3TElTaWdfMEpBUFE">
-		                                                                                    </div>
-		                                                                                </li>
-		                                                                                <li class="css-1cw0vk0">
-		                                                                                    <div class="css-1qwe0o7-StyledSelf e1q5rx9q0">
-		                                                                                        <img height="100%" class="css-bhgne5-StyledBackground e1q5rx9q1" src="https://an2-img.amz.wtchn.net/image/v2/O0ir-PUFI-OIIFJf4okbug.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5qUXdlRE0yTUhFNE1DSmRMQ0p3SWpvaUwzWXhMMmRwZW5aNWVIcHhjbU5xZDNac2VtYzVhbmwxSW4wLkxsb1ZmZ3hTZVlmR3puM0xKYXd6QkY4QkFZUUh1cEtoZlVXZ25yOVM4OTg">
-		                                                                                    </div>
-		                                                                                </li>
-		                                                                                <li class="css-1cw0vk0">
-		                                                                                    <div class="css-1qwe0o7-StyledSelf e1q5rx9q0">
-		                                                                                        <img height="100%" class="css-bhgne5-StyledBackground e1q5rx9q1" src="https://an2-img.amz.wtchn.net/image/v2/-bNsG7W68ktN54GhRuHklw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5qUXdlRE0yTUhFNE1DSmRMQ0p3SWpvaUwzWXhMM0o2YUdabWFtSjBiR2RsT1dOaVpXWmlZbW80SW4wLmJVUnRuLWstM18zTUpmWWZvOUwtdTBsUmFEaHRoQnNqOUZTUTRqZHlqb1k">
-		                                                                                    </div>
-		                                                                                </li>
-		                                                                                <li class="css-1cw0vk0">
-		                                                                                    <div class="css-1qwe0o7-StyledSelf e1q5rx9q0">
-		                                                                                        <img height="100%" class="css-bhgne5-StyledBackground e1q5rx9q1" src="https://an2-img.amz.wtchn.net/image/v2/Sw3rZjUrs3e_lbHMolXmPA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5qUXdlRE0yTUhFNE1DSmRMQ0p3SWpvaUwzWXhMM0p5Y1dwbVpHZHFOM1o0T1doeU0ySmpZM1pzSW4wLmVSdkttOXBGVTFDc3pWaG55am5DWldtZ2tZSzVrWjdWZXhENHRSem16MmM">
-		                                                                                    </div>
-		                                                                                </li>
-		                                                                                <li class="css-1cw0vk0">
-		                                                                                    <div class="css-1qwe0o7-StyledSelf e1q5rx9q0">
-		                                                                                        <img height="100%" class="css-bhgne5-StyledBackground e1q5rx9q1" src="https://an2-img.amz.wtchn.net/image/v2/c4-LMx92VyGuBzSBvPj5lQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5qUXdlRE0yTUhFNE1DSmRMQ0p3SWpvaUwzWXhMM0pzZW1aaWVYaHJOM2MyZVRCbFluQnJjbkJpSW4wLkxRQmFNaFpfU0hlRDZDeUtDa19KaVF0YTNId3huTGtUdVhmSWRwNFBFYm8">
-		                                                                                    </div>
-		                                                                                </li>
-		                                                                                <div class="css-ml096x"></div>
+		                                                                             </c:forEach>
+		                                                                             <!-- foreach문 돌릴 부분 갤러리 end-->		                                                                             
 		                                                                            </ul>
 		                                                                        </div>
 		                                                                    </div>
@@ -841,13 +826,15 @@
 		                                                                    <div class="css-1gkas1x-Grid e1689zdh0">
 		                                                                        <div class="css-1y901al-Row emmoxnt0">
 		                                                                            <ul class="e10pt7680 css-wq135y-VisualUl-VideoHorizontalUl">
+		                                                                            	<!-- foreach문 돌릴 부분 동영상 start -->
+		                                                                            	<c:forEach items="${movieTrailerVoList}" var="movieTrailerVo" varStatus="status">	
 		                                                                                <li class="css-1xgzykb-VideoListItem e10pt7681">
 		                                                                                    <div class="css-7wh3a0">
-		                                                                                    	<a href="https://redirect.watcha.com/galaxy/aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g_dj1OaU16M0xSZFhfaw"
+		                                                                                    	<a href="${movieTrailerVo.movie_trailer_url}"
 																									target="_blank" rel="noopener noreferrer" class="css-18apgv4">
 			                                                                                        <div class="css-8g82qf-StyledSelf e1q5rx9q0">
 			                                                                                            <span class="css-bhgne5-StyledBackground e1q5rx9q1"
-			                                                                                                  style="background-image: url(https://img.youtube.com/watch?v=JNL44p5kzTk;);">
+			                                                                                                  style="background-image: url(${movieTrailerVo.movie_trailer_post});">
 																										</span>
 			                                                                                            <div class="css-1ytinql">
 			                                                                                                <span src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTUiIGZpbGw9IiMwMDAiIGZpbGwtb3BhY2l0eT0iLjUxIi8+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGRiIgZD0iTTE2IDMwYzcuNzMyIDAgMTQtNi4yNjggMTQtMTQgMC03LjczMS02LjI2OC0xNC0xNC0xNFMyIDguMjY5IDIgMTZjMCA3LjczMiA2LjI2OCAxNCAxNCAxNG0wIDJDNy4xNjMgMzIgMCAyNC44MzcgMCAxNiAwIDcuMTY0IDcuMTYzIDAgMTYgMHMxNiA3LjE2NCAxNiAxNmMwIDguODM3LTcuMTYzIDE2LTE2IDE2Ii8+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGRiIgZD0iTTEyIDIyLjA5VjkuOTFhLjUuNSAwIDAgMSAuNzY5LS40MjFsOS41NjggNi4wODlhLjUuNSAwIDAgMSAwIC44NDRsLTkuNTY4IDYuMDlBLjUuNSAwIDAgMSAxMiAyMi4wOSIvPgogICAgPC9nPgo8L3N2Zz4K"
@@ -858,7 +845,7 @@
 			                                                                                        <div class="css-xghows">
 			                                                                                            <div class="css-17y9cpn">
 			                                                                                                <div class=" css-sloxdm-StyledSelf eb5y16b0">
-			                                                                                                    <div class="css-1fucs4t-StyledText eb5y16b1">재개봉 30초 예고편
+			                                                                                                    <div class="css-1fucs4t-StyledText eb5y16b1">메인예고편 ${status.index + 1}
 			                                                                                                    </div>
 			                                                                                                </div>
 			                                                                                            </div>
@@ -866,6 +853,8 @@
 			                                                                                    </a>
 																							</div>
 		                                                                                </li>
+		                                                                                </c:forEach>
+		                                                                                <!-- foreach문 돌릴 부분 동영상 end-->
 		                                                                                <li class="css-1xgzykb-VideoListItem e10pt7681">
 		                                                                                    <div class="css-7wh3a0">
 		                                                                                    	<a href="https://redirect.watcha.com/galaxy/aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g_dj1NeDdrQUEwWVVQMA"

@@ -8,4 +8,6 @@ public interface MovieCountryService {
 
 	List<MovieCountryVo> selectTheCountry(int movie_id);
 
+	String countryListToString(List<MovieCountryVo> movieCountryVoList);
+
 }

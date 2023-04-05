@@ -4878,7 +4878,17 @@ html {
             width: 120%;
             height: 110%;
             filter: blur(15px);
-            background: url(https://an2-img.amz.wtchn.net/image/v2/TaANt4uBGjMfNlTydPjVig.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1USTRNSGczTWpCeE9EQWlYU3dpY0NJNklpOTJNaTl6ZEc5eVpTOXBiV0ZuWlM4eE5qWTNPRGN4TkRnNU5USXhPREkzTmpZeUluMC5icVFieTlYSDY4ak44WDdWSlBZRE9Cb196Z0RadmtsQ1RWZkVUWXFxSm00) center center / cover no-repeat;
+/*          background: url(https://an2-img.amz.wtchn.net/image/v2/TaANt4uBGjMfNlTydPjVig.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1USTRNSGczTWpCeE9EQWlYU3dpY0NJNklpOTJNaTl6ZEc5eVpTOXBiV0ZuWlM4eE5qWTNPRGN4TkRnNU5USXhPREkzTmpZeUluMC5icVFieTlYSDY4ak44WDdWSlBZRE9Cb196Z0RadmtsQ1RWZkVUWXFxSm00) center center / cover no-repeat; */
+        }
+        
+        #background-poster-image{
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 110%;
+            
+           
         }
 
         @media (min-width: 719px) {

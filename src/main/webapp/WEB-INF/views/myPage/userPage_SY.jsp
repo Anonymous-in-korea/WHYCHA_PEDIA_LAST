@@ -112,7 +112,7 @@
 																			<!--COLLECTION 버튼 끝  -->
 																			<!--ACTOR&DIRECTOR 시작  -->
 																				<li class="css-1u4jvye-CategoryArchivesListItem e19zkogf13">
-																					<a background="[object Object]" class="css-1e839ay-CategoryArchivesLink e19zkogf14" href="/ko-KR/users/djaxbJPMVAxLw/contents/books">
+																					<a background="[object Object]" class="css-1e839ay-CategoryArchivesLink e19zkogf14" href="/myPage/actor_director_like_SY">
 																						<ul class="css-1qiuf48-VisualUl-CategoryArchives e19zkogf15">
 																							<li class="css-r3hbc5-CategoryArchivesName e19zkogf16">ACTOR & DIRECTOR</li>
 																							<li class="css-7xoi89-CategoryArchivesRatedCount e19zkogf17">★0</li>
