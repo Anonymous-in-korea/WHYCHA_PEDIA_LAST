@@ -68,7 +68,7 @@ public class FrontController {
 	public String index(Model model) {
 		//별점 높은 순 영화
 		System.out.println("-------------------start_별점 높은 순-controller--------------------------------");
-		List<Integer> starRateTop10MovieIDList=starRateService.selectStarTop10(10);
+		List<Integer> starRateTop10MovieIDList=starRateService.selectStarTop(10);
 		List<MovieVo> starTop10List=movieService.selectTopAllMovie(starRateTop10MovieIDList);
 		System.out.println("index(controller):star"+starTop10List.get(0).getMovie_kor_title());
 		model.addAttribute("starTop10List", starTop10List);

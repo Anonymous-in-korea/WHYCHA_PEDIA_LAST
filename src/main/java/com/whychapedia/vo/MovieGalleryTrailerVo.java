@@ -17,4 +17,5 @@ public class MovieGalleryTrailerVo {
 	private int movie_id; 
 	private String movie_gallery_url;
 	private String movie_trailer_url;
+	private String movie_trailer_post;
 }

@@ -11,4 +11,6 @@ public interface MovieOttMapper {
 
 	List<MovieOttVo> selectMovieTop(int ott_id, int movie_num);
 
+	List<MovieOttVo> selectAllOtt(int movie_id);
+
 }
