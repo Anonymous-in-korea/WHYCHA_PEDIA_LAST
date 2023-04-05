@@ -1,6 +1,8 @@
 package com.whychapedia.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -87,51 +89,51 @@ public class ContentsController {
 
 	//영화 페이지
 	@GetMapping("/contents/contents_SH")
-	public String contents(@RequestParam int id, Model model) {
+	public String contents(@RequestParam int movie_id, Model model) {
 		
 		//----------------------------------------해당 영화 정보
 		System.out.println("-------------------start_영화 정보-Controller--------------------------------");
 		//movie table 정보(VO) 
-		movieVo=movieService.selectOneMovie(id);
+		movieVo=movieService.selectOneMovie(movie_id);
 		System.out.println("해당 영화 한국 제목:"+movieVo.getMovie_kor_title());
 		model.addAttribute("movieVo",movieVo);
 		
 		//movie_genre 정보(LIST<VO>)
-		List<MovieGenreVo> movieGenreVoList=movieGenreService.selectTheGenre(id);
+		List<MovieGenreVo> movieGenreVoList=movieGenreService.selectTheGenre(movie_id);
 		System.out.println("해당 영화 장르 리스트 첫 번쨰:"+movieGenreVoList.get(0).getGenre_kor());
 		//장르 합쳐서 string으로 반환
 		String genre=movieGenreService.genreListToString(movieGenreVoList);
 		model.addAttribute("genre",genre);
 		
 		//movie_country 정보(LIST<VO>)
-		List<MovieCountryVo> movieCountryVoList=movieCountryService.selectTheCountry(id);
+		List<MovieCountryVo> movieCountryVoList=movieCountryService.selectTheCountry(movie_id);
 		if(movieCountryVoList.size()!=0)System.out.println("해당 영화 나라 리스트 첫 번쨰:"+movieCountryVoList.get(0).getName_kor());
 		//나라 합쳐서 string으로 반환
 		String country=movieCountryService.countryListToString(movieCountryVoList);
 		model.addAttribute("country",country);
 		
 		//movie_actor 정보(LIST<VO>)
-		List<MovieActorVo> movieActorVoList=movieActorService.selectTheActor(id);
+		List<MovieActorVo> movieActorVoList=movieActorService.selectTheActor(movie_id);
 		if(movieActorVoList.size()!=0) System.out.println("해당 영화 배우 첫 번쨰:"+movieActorVoList.get(0).getActor_name());
 		model.addAttribute("movieCountryVoList",movieCountryVoList);
 		
 		//movie_director 정보(LIST<VO>)
-		List<MovieDirectorVo> movieDirectorVoList=movieDirectorService.selectTheDirector(id);
+		List<MovieDirectorVo> movieDirectorVoList=movieDirectorService.selectTheDirector(movie_id);
 		if(movieDirectorVoList.size()!=0) System.out.println("해당 영화 감독 첫 번쨰:"+movieDirectorVoList.get(0).getDirector_name());
 		model.addAttribute("movieCountryVoList",movieCountryVoList);
 		
 		//movieGallery 정보(LIST<VO>)
-		List<MovieGalleryTrailerVo> movieGalleryVoList=movieGalleryTrailerService.selectTheGallery(id);
+		List<MovieGalleryTrailerVo> movieGalleryVoList=movieGalleryTrailerService.selectTheGallery(movie_id);
 		if(movieGalleryVoList.size()!=0) System.out.println("해당 겔러리 첫 번쨰:"+movieGalleryVoList.get(0).getMovie_gallery_url());
 		model.addAttribute("movieGalleryVoList",movieGalleryVoList);
 		
 		//movieTrailer 정보(LIST<VO>) 
-		List<MovieGalleryTrailerVo> movieTrailerVoList=movieGalleryTrailerService.selectTheTrailer(id);
+		List<MovieGalleryTrailerVo> movieTrailerVoList=movieGalleryTrailerService.selectTheTrailer(movie_id);
 		if(movieTrailerVoList.size()!=0) System.out.println("해당 트레일러 첫 번쨰:"+movieTrailerVoList.get(0).getMovie_gallery_url());
 		model.addAttribute("movieTrailerVoList",movieTrailerVoList);
 		
 		//movieOtt 정보(<LIST<VO>)
-		List<MovieOttVo> movieOttVoList=movieOttService.selectTheOtt(id);
+		List<MovieOttVo> movieOttVoList=movieOttService.selectTheOtt(movie_id);
 		if(movieOttVoList.size()!=0) System.out.println("해당 ott 첫 번쨰:"+movieOttVoList.get(0).getProvider_name());
 		model.addAttribute("movieOttVoList",movieOttVoList);
 		
@@ -143,8 +145,9 @@ public class ContentsController {
 		System.out.println("-------------------start_나의 별점/코멘트 정보-Controller--------------------------------");
 		Integer sessionId = (Integer) session.getAttribute("sessionId");
 		int user_id = sessionId.intValue();
-		
-		int my_star_rate=starRateService.selectMyStarRate(user_id,id);
+		//user가 해당 영화에 대해서 평가 했는지 안했는지check (0:평가안함 1:평가함) 
+		int IsRating=starRateService.selectIsRating(user_id,movie_id);
+		int my_star_rate=starRateService.selectMyStarRate(user_id,movie_id);
 		model.addAttribute("my_star_rate",my_star_rate);
 		System.out.println("-------------------end_나의 별점/코멘트 정보-Controller--------------------------------");
 		//------------------------------------------나의 별점/코멘트 정보 
@@ -181,20 +184,28 @@ public class ContentsController {
 	
 	
 	//영화 별점 넣기 (ajax)
-	@RequestMapping("/contents/movieStarRate")
-	@ResponseBody
-	public String movieStarRate(int movie_id, int star_rate, Model model ) {
-		System.out.println("-------------------start_movieStarRateController--------------------------------");
-		Integer sessionId = (Integer) session.getAttribute("sessionId");
-		int user_id = sessionId.intValue();
-		System.out.println("user_id:"+user_id);
-		System.out.println("movie_id:"+movie_id);
-		System.out.println("star_rate:"+star_rate);
-		if(star_rate!=0)starRateService.insertStarRate(user_id,movie_id,star_rate);
-		else starRateService.deleteStarRate(user_id,movie_id);
-		System.out.println("-------------------end_movieStarRateController--------------------------------"); 
-		return null;
-	}
+	
+	  @RequestMapping("/contents/movieStarRate")
+	  
+	  @ResponseBody public Map<String, Integer> movieStarRate(int movie_id, double star_rate, Model model ) 
+	  { System.out.println("-------------------start_movieStarRateController--------------------------------"); 
+	  Integer sessionId = (Integer) session.getAttribute("sessionId"); int
+	  user_id = sessionId.intValue(); System.out.println("user_id:"+user_id);
+	  System.out.println("movie_id:"+movie_id);
+	  System.out.println("star_rate:"+star_rate); 
+	  //user가 해당 영화에 대해서 평가 했는지 안했는지check (0:평가안함 1:평가함) 
+	  int IsRating,update,insert,delete=0;
+	  IsRating=starRateService.selectIsRating(user_id,movie_id); //in
+	  if(star_rate!=0 && IsRating==0)
+	  update=starRateService.insertStarRate(user_id,movie_id,star_rate);
+	  //result=starRateService.insertStarRate(user_id,movie_id,star_rate); else
+	  //result=starRateService.deleteStarRate(user_id,movie_id); Map<String, Integer>
+	  //response = new HashMap<>(); response.put("result", result);
+	  //System.out.println("response:"+response); 
+	  System.out.println("-------------------end_movieStarRateController--------------------------------"); 
+	  //return response; 
+	  return null;}
+	 
 	
 	
 	

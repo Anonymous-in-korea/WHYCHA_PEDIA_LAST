@@ -71,7 +71,7 @@
 															<!-- foreach문 돌릴 부분 영화컨텐츠부분 -->
 															<c:forEach items="${starTop10List}" var="movieStar" varStatus="status">											
 																<li class="list_box_li"> <!-- 10개  -->
-																	<a title="${movieStar.movie_kor_title}" href="/contents/contents_SH?id=${movieStar.id}">
+																	<a title="${movieStar.movie_kor_title}" href="/contents/contents_SH?movie_id=${movieStar.id}">
 																		<div class="list_box_poster">
 																			<div class="list_box_poster2 ezcopuc0">
 																				<img src="${movieStar.movie_post_url}" class="list_box_poster_image ezcopuc1">
@@ -128,7 +128,7 @@
 															<!-- foreach문 돌릴 부분 영화컨텐츠부분 -->
 															<c:forEach items="${whatchaTop10List}" var="movieWhatcha" varStatus="status">											
 																<li class="list_box_li"> <!-- 10개  -->
-																	<a title="${movieWhatcha.movie_kor_title}" href="/contents/contents_SH?id=${movieWhatcha.id}">
+																	<a title="${movieWhatcha.movie_kor_title}" href="/contents/contents_SH?movie_id=${movieWhatcha.id}">
 																		<div class="list_box_poster">
 																			<div class="list_box_poster2 ezcopuc0">
 																				<img src="${movieWhatcha.movie_post_url}" class="list_box_poster_image ezcopuc1">
@@ -187,7 +187,7 @@
 															<!-- foreach문 돌릴 부분 영화컨텐츠부분 -->
 															<c:forEach items="${directorMovieList}" var="directorMovie" varStatus="status">											
 																<li class="list_box_li"> <!-- 10개  -->
-																	<a title="${directorMovie.movie_kor_title}" href="/contents/contents_SH?id=${directorMovie.id}">
+																	<a title="${directorMovie.movie_kor_title}" href="/contents/contents_SH?movie_id=${directorMovie.id}">
 																		<div class="list_box_poster">
 																			<div class="list_box_poster2 ezcopuc0">
 																				<img src="${directorMovie.movie_post_url}" class="list_box_poster_image ezcopuc1">
@@ -245,7 +245,7 @@
 													 <!-- foreach문 돌릴 부분 영화컨텐츠부분 -->
 													 		<c:forEach items="${RateHighMovieList}" var="movieRate" varStatus="status">
 															<li class="list_box_li">
-				                                                <a title="${movieRate.movie_kor_title}" href="/contents/contents_SH?id=${movieRate.id}">
+				                                                <a title="${movieRate.movie_kor_title}" href="/contents/contents_SH?movie_id=${movieRate.id}">
 				                                                   <div class="list_box_poster">
 				                                                      <div class="list_box_poster2 ezcopuc0">
 				                                                         <img src="${movieRate.movie_post_url}" class="list_box_poster_image ezcopuc1">
@@ -299,7 +299,7 @@
 														<!-- 컬렉션 foreach문 돌릴 부분 영화컨텐츠부분  -->
 														<c:forEach items="${WhychaCollectionVoList}" var="CollectionVo"> 
 															<li class="list_box_li_collection">
-																<a title="${CollectionVo.collection_name}" href="/collection/collection_detail_HY?id=${CollectionVo.id}">
+																<a title="${CollectionVo.collection_name}" href="/collection/collection_detail_HY?collection_id=${CollectionVo.id}">
 																	<div class="list_box_collection_poster">
 																		<div class="list_box_collection_poster2">
 																			<c:forEach items="${WhychaMovieCollectionVoPartList}" var="MovieCollectionVo">

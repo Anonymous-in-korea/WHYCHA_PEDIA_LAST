@@ -35,15 +35,24 @@ public class StarRateServiceImpl implements StarRateService {
 
 	//영화 별점 넣기
 	@Override
-	public void insertStarRate(int user_id, int movie_id, int star_rate) {
-		starRateMapper.insertStarRate(user_id,movie_id,star_rate);
+	public int insertStarRate(int user_id, int movie_id, double star_rate) {
+		int result=starRateMapper.insertStarRate(user_id,movie_id,star_rate);	
+		return result;
 	}
+	
+	//평가했는지 안했는지 확인하기
+	@Override
+	public int selectIsRating(int user_id, int movie_id) {
+		int IsRating=starRateMapper.selectIsRating(user_id,movie_id);
+		return IsRating;
+	}
+	
 	
 	//영화 별점 삭제하기
 	@Override
-	public void deleteStarRate(int user_id, int movie_id) {
-		starRateMapper.deleteStarRate(user_id,movie_id);
-		
+	public int deleteStarRate(int user_id, int movie_id) {
+		int result=starRateMapper.deleteStarRate(user_id,movie_id);
+		return result;
 	}
 
 	//한명 별점 들고오기
@@ -52,6 +61,7 @@ public class StarRateServiceImpl implements StarRateService {
 		int star_rate=starRateMapper.selectMyStarRate(user_id,movie_id);
 		return star_rate;
 	}
+
 
 
 	

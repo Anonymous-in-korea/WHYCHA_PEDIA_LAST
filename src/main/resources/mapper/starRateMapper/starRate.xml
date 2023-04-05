@@ -3,34 +3,39 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.whychapedia.mapper.StarRateMapper">
-  <!--별점 높은 영화 #개 가져오기 -->
-  <select id="selectMovieTop" resultType="com.whychapedia.vo.StarRateVo">
- 	SELECT movie_id
-    FROM (
-      SELECT movie_id, AVG(score) as avg_score
-      FROM star_rate
-      GROUP BY movie_id
-      ORDER BY avg_score DESC
-    )
-     FETCH FIRST 10 ROWS ONLY
-  </select>
+    <!--별점 높은 영화 #개 가져오기 -->
+	<select id="selectMovieTop" resultType="com.whychapedia.vo.StarRateVo">
+	 	SELECT movie_id
+	    FROM (
+	      SELECT movie_id, AVG(score) as avg_score
+	      FROM star_rate
+	      GROUP BY movie_id
+	      ORDER BY avg_score DESC
+	    )
+	     FETCH FIRST 10 ROWS ONLY
+	</select>
   
     <!--별점 높은 영화 #개 가져오기 -->
-  <select id="selectMyStarRate" resultType="int">
- 	SELECT score from star_rate where user_id=${user_id} and movie_id=${movie_id}
-  </select>
+	<select id="selectMyStarRate" resultType="int">
+ 		SELECT score from star_rate where user_id=${user_id} and movie_id=${movie_id}
+	</select>
   
+  	<!-- 평가했는지 안했는지 확인하기-->
+<!-- 	<select id="selectMyStarRate" resultType="int">
+		select count(*) from star_rate where user_id=${user_id} and movie_id=${movie_id}
+	</select> -->
   
   
 
-<!--영화 별점 넣기-->
-<!-- <insert id="insertStarRate">
+	<!-- 영화 처음 별점 넣기-->
+<!-- 	<insert id="insertStarRate">
+		insert into star_rate values (7940,#{star_rate},#{movie_id},#{user_id},sysdate)
+	</insert> -->
+
+
+
+<!--   <insert id="insertStarRate">
 		insert into star_rate values (11,#{question_title},#{question_content},0,6,sysdate,1)
-</insert>
- -->
- <!--  <insert id="insertStarRate">
-		insert into star_rate values (11,#{question_title},#{question_content},0,6,sysdate,1)
- </insert>	 -->
-	
+ </insert>	 --> 
 	
   </mapper>
