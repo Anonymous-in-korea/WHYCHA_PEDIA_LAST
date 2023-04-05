@@ -2,6 +2,8 @@ package com.whychapedia.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,9 +21,11 @@ public class MyPageController {
 	LikeService likeService;
 	@Autowired
 	ArtistService artistService;
+	@Autowired
+	HttpSession session;
+
 	
-	
-	@GetMapping("userPage_SY")
+	@GetMapping("myPage/userPage_SY")
 	public String userPage_SY(Model model) {
 		//actor_id를 가지고오기
 		List<LikeVo> actorLike_list = likeService.selectActor_like_id(6);
@@ -33,7 +37,7 @@ public class MyPageController {
 		System.out.println("selectDirector_like_id_list_size :"+directorLike_list.size());
 		model.addAttribute("directorLike_list",directorLike_list);
 				
-		return "userPage_SY";
+		return "myPage/userPage_SY";
 	}
 	
 	@GetMapping("myPage/my_analysis_HY")
@@ -68,7 +72,12 @@ public class MyPageController {
 		return "myPage/actor_director_like_SY";
 	}
 
-	
+	@GetMapping("myPage/logout_confirm_Btn")
+	public String logout() {
+		session.invalidate();
+		System.out.println("로그아웃 되었습니다.");
+		return "/";
+	}
 	
 	
 }

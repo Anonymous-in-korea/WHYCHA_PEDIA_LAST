@@ -152,7 +152,7 @@
 						</a>
 					</li>
 					<li class="header_li_button">
-						<a href="/userPage_SY" title="${ sessionName }'s page">
+						<a href="/myPage/userPage_SY" title="${ sessionName }'s page">
 							<div class="user_picture_div">
 								<img src="${ sessionUserPic }" class="user_picture">
 							</div>
