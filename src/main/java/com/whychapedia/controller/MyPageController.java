@@ -1,7 +1,6 @@
 package com.whychapedia.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.whychapedia.service.AnnouncementService;
 import com.whychapedia.service.ArtistService;
 import com.whychapedia.service.LikeService;
 import com.whychapedia.vo.ArtistVo;
@@ -25,8 +23,6 @@ public class MyPageController {
 	ArtistService artistService;
 	@Autowired
 	HttpSession session;
-	@Autowired
-	AnnouncementService announcementService;
 
 	
 	@GetMapping("myPage/userPage_SY")
@@ -40,10 +36,7 @@ public class MyPageController {
 		List<LikeVo> directorLike_list = likeService.selectDirector_like_id(6);
 		System.out.println("selectDirector_like_id_list_size :"+directorLike_list.size());
 		model.addAttribute("directorLike_list",directorLike_list);
-		
-		//공지사항 가져오기
-		Map<String, Object> map = announcementService.selectAnnouncementList();
-		model.addAttribute("map",map);
+				
 		return "myPage/userPage_SY";
 	}
 	

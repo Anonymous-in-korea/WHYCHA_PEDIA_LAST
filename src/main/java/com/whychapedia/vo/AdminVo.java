@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class AdminVo {
 	private int id;
-	private int admin_position;
+	private int admin_position; // 1=전체관리자  2=컨텐츠관리자  3=보드관리자  4=유저관리자
 	private String admin_name;
 	private String admin_email;
 	private String admin_pw;

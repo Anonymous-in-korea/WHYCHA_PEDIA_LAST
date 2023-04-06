@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,16 +25,27 @@
 		<!-- 이거 side_nav 작동하는 script임 -->
 
         <script src="/js/admin/scripts.js"></script>
+        <script src="/js/admin_logout.js"></script>
         
         <style>
             a { text-decoration: none; }
         </style>
     </head>
     <body class="sb-nav-fixed">
+    
+    	<c:if test="${ adminSessionEmail == null }">
+	    	<script>alert("관리자계정으로 로그인 후 접속해주세요."); location.href="/admin/whycha_pedia_admin_login";</script>
+    	</c:if>
+    
 	    <div id="layoutSidenav">
 	        <div id="layoutSidenav_nav">
 				<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-					<a href="/admin/admin_index"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+					<c:if test="${ adminSessionEmail != null }">
+                	<a href="/admin/admin_index"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+                	</c:if>
+                	<c:if test="${ adminSessionEmail == null }">
+                	<a href="/admin/whycha_pedia_admin_login"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+                	</c:if>
 					<%@ include file="../../fragment/sidefooter.jsp" %>
 					<%@ include file="../../fragment/sidenav.jsp" %>
 				</nav>
@@ -97,11 +109,6 @@
 		                    						</th>
 		                    						<th data-sortable="true" style="text-align:center;">
 		                    							<a href="" class="datatable-sorter">
-		                    								사원번호
-		                    							</a>
-		                    						</th>
-		                    						<th data-sortable="true" style="text-align:center;">
-		                    							<a href="" class="datatable-sorter">
 		                    								관리자유형
 		                    							</a>
 		                    						</th>
@@ -110,26 +117,52 @@
 		                    								계정등록일
 		                    							</a>
 		                    						</th>
+		                    						<th data-sortable="true" style="text-align:center;">
+		                    							<a href="" class="datatable-sorter">
+		                    								계정만료일
+		                    							</a>
+		                    						</th>
 		                    					</tr>
 		                    				</thead>
 		                    				<!-- c:foreach로 반복 돌리기 -->
 		                    				<tbody>
+		                    					<c:if test="${ result == 1 }">
+		                    					<c:forEach items="${ adminMemberList }" var="admin">
 		                    					<tr>
-		                    						<td>1</td>
+		                    						<td>${ admin.id }</td>
 		                    						<td>
-		                    							<a href="/admin/8_admin/hradmin/admin_detail">
-		                    								이승현
+		                    							<a href="/admin/8_admin/hradmin/admin_detail?id=${ admin.id }">
+		                    								${ admin.admin_name }
 		                    							</a>
 		                    						</td>
 		                    						<td>
-		                    							<a href="/admin/8_admin/hradmin/admin_detail">
-		                    								connelYo
+		                    							<a href="/admin/8_admin/hradmin/admin_detail?id=${ admin.id }">
+		                    								${ admin.admin_email }
 		                    							</a>
 		                    						</td>
-		                    						<td>76324517</td>
-		                    						<td>content_manager</td>
-		                    						<td>2023-03-21</td>
+		                    						<c:if test="${ admin.admin_position == 1 }">
+		                                            <td>SUPER_ADMIN</td>
+		                                            </c:if>
+		                                            <c:if test="${ admin.admin_position == 2 }">
+		                                            <td>CONTENT_ADMIN</td>
+		                                            </c:if>
+		                                            <c:if test="${ admin.admin_position == 3 }">
+		                                            <td>BOARD_ADMIN</td>
+		                                            </c:if>
+		                                            <c:if test="${ admin.admin_position == 4 }">
+		                                            <td>USER_ADMIN</td>
+		                                            </c:if>
+		                    						<td>${ admin.regi_date }</td>
+		                    						<td>${ admin.retire_date }</td>
 		                    					</tr>
+		                    					</c:forEach>
+		                    					</c:if>
+		                    					
+		                    					<c:if test="${ result == 0 }">
+		                    					<tr>
+		                    						<td colspan="6">등록된 관리자계정이 없습니다</td>
+		                    					</tr>
+		                    					</c:if>
 		                    				</tbody>
 		                    				<!-- c:foreach로 반복 돌리기 -->
 		                    			</table>
@@ -140,6 +173,9 @@
 		                    	</div>
                             </div>
                         </div>
+                    </div>
+                    <div id="button" style="float:right; margin-right:40px;">
+                    	<button type="button" onclick="location.href='/admin/8_admin/hradmin/admin_create'">계정생성하기</button>
                     </div>
                 </main>
             </div>
