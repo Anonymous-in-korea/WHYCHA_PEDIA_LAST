@@ -6140,7 +6140,8 @@ html {
              text-align: right;
              min-height: 18px;
              padding: 0px;
-         }.css-1ukikc-StylelessButton {
+         }
+         .css-1ukikc-StylelessButton {
               background: none rgb(255, 47, 110);
               border: none;
               margin: 0px 0px 0px 12px;
@@ -6154,7 +6155,7 @@ html {
               padding: 0px 40px;
               border-radius: 7px;
               opacity: 0.5;
-              cursor: not-allowed;
+              cursor: pointer;
           }
         @media (min-width: 719px){
             .css-rpyl6s::after {
@@ -6480,15 +6481,17 @@ html {
              border: solid 1px #d2d2d2;
          }
         .css-sd2jre-SectionBlock {
-            display: none;
+            display: block;
         }
         @media (min-width: 719px){
             .css-sd2jre-SectionBlock {
                 margin: 0 0 12px;
-            }.css-1v9og64-LeaveCommentSection {
+            }
+            .css-1v9og64-LeaveCommentSection {
                  padding: 12px 0;
                  border-top: 0;
-             }.css-vshgrn-LeaveCommentBlock {
+			}
+			.css-vshgrn-LeaveCommentBlock {
                   display: -webkit-box;
                   display: -webkit-flex;
                   display: -ms-flexbox;
@@ -6497,7 +6500,7 @@ html {
                   -webkit-box-align: center;
                   -ms-flex-align: center;
                   align-items: center;
-              }
+			}
             .css-1p0zhfu-Title {
                 -webkit-flex: 1;
                 -ms-flex: 1;

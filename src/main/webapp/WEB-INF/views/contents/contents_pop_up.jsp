@@ -172,7 +172,7 @@
 		<div class="css-1p257d1-modalAddStyle">
 			<header title="" class="css-166ww79-HeaderBarPrimitive-headerAddStyle">
 				<div class="css-19pxr9t"></div>
-				<em class="css-10mjbgt">아바타:물의 길</em>
+				<em class="css-10mjbgt">${movieVo.movie_kor_title}</em>
 				<div class="css-19pxr9t">
 					<button class="css-1lvet1d-StylelessButton"></button>
 				</div>
@@ -213,7 +213,7 @@
 					</div>
 					<div class="css-6qnjre">
 						<p class="css-1s08rlk"></p>
-						<button class="css-1ukikc-StylelessButton" disabled="">저장</button>
+						<button type="button" id="comment_input" class="css-1ukikc-StylelessButton">저장</button>
 					</div>
 				</div>
 			</div>

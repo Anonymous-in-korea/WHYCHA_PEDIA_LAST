@@ -10,10 +10,17 @@
 	
 	/* 페이지 URL넘겨주는 스크립트 */
 	const url = window.location.href; // Replace with your actual URL
-	const baseUrl = "http://localhost:8000"; // Replace with your actual base URL
+	const baseUrl = "http://localhost:8000"; // host??? request
 	const inputUrl = $("#redirectUrl");
 
 	inputUrl.val(url.replace(baseUrl, ""));
+	
+	/* 실험해보기 */
+	/*let URL = request.getRequestURL();
+	alert(URL);
+	
+	$("#redirectUrl").val(request.getRequestURL().toString().replace(request.getRequestURI(),""));*/
+
 	
 	/*----------------------------------------------------------- 문제의 Script들 --------------------------------------------------------------*/
 
