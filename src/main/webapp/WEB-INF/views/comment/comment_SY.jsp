@@ -1,0 +1,186 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
+<!DOCTYPE html>
+<html>
+	<head>
+	    <link rel="preconnect" href="https://fonts.googleapis.com">
+	    <link rel="preconnect" href="https://fonts.gstatic.com">
+	    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+	    <link href="/css/header.css" rel="stylesheet" type="text/css">
+		<link href="/css/footer.css" rel="stylesheet" type="text/css">
+		<link href="/css/comment_SY.css" rel="stylesheet" type="text/css">
+		<link rel="shortcut icon" type="image/x-icon" href="/images/whycha_small_logo1.png">
+	
+	    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	    <script defer src="/js/commentScript.js"></script>
+	    <script>
+		    $(function() {
+		    	/* 좋아요 클릭시 색변하기 */
+		   		$(".css-1h18l7j-StylelessButton").click(function() {
+	   		        var id = $(this).attr("id");
+// 	   		        var user_id = $("#user_id").val();
+	   		        alert(id);
+	   		        alert(user_id);
+	   		        var $button = $(this);
+		   		    if ($(this).hasClass("css-jj4q3s-StylelessButton-UserActionButton")) {
+		   		        $(this).removeClass("css-jj4q3s-StylelessButton-UserActionButton");
+		   		        $(this).addClass("css-1h18l7j-StylelessButton");
+		   		        $.ajax({
+		   		        	url:"/comment/comment_like_remove",
+		   		        	type:"post",
+		   		        	dataType:"json",
+		   		        	data:{
+		   		        		"user_id":"300",
+		   		        		"comment_id":id
+		   		        		},
+		   		        	success:function(data){
+		   		        		alert("성공");
+				   		       	console.log(data);
+				   		     	$(this).parent().parent().find(".comment_like").text(data);
+		   		        	},
+		   		        	error:function(){
+		   		        		alert("실패");
+		   		        	}
+		   		        });
+		   		    } else {
+		   		        $(this).removeClass("css-1h18l7j-StylelessButton");
+		   		        $(this).addClass("css-jj4q3s-StylelessButton-UserActionButton").attr("id",id);
+			   		    $.ajax({
+			   		       	url:"/comment/comment_like",
+			   		       	type:"post",
+			   		       	dataType:"json",
+			   		       	data:{
+			   		       		"user_id":"300",
+			   		       		"comment_id":id
+			   		       		},
+			   		       	success:function(data){
+			   		       		alert("성공");
+					   	       	console.log(data);
+					   	     	$(this).parent().parent().find(".comment_like").text(data);
+			   		       	},
+			   		       	error:function(){
+			   		       		alert("실패");
+			   		       	}
+			   		   });
+		   		    }
+		   		});
+		    });
+	    </script>
+	</head>
+	<body>
+		<div id="root">
+		    <div class="css-5jq76">
+		        <div class="css-1xm32e0">
+		            <div th:replace="fragment/header::header">
+		          	<!-- header start -->
+					<%@ include file="../head_foot/header.jsp" %>
+					<!-- header end -->
+		            </div>
+		            <section class="css-18gwkcr">
+		                <section class="css-9v5p4g-StyledSectionWithShrinkHeaderBar e1ntr3260">
+		                    <header class="css-4g5dyy-HeaderBarPrimitive">
+		                        <div class="css-uf1ume">
+		                            <div class="css-0">
+		                                <button class="e1t9gclr0 css-a6n3jw-StylelessButton-HeaderCloseButtonSelf-TopLeftButton e1k34u8y0" onclick="history.back();"></button>
+		                            </div>
+		                            <div class="css-0"></div>
+		                        </div>
+		                        <div class="css-1d4ojes">
+		                            <div class="css-1bvesam">코멘트</div>
+		                        </div>
+		                        <div class="css-10bjf2k">코멘트</div>
+		                    </header>
+		                    <div class="css-1gkas1x-Grid e1689zdh0">
+		                        <div class="css-1y901al-Row emmoxnt0">
+		                            <div class="css-tbg13q-CommentLists emaj6q20">
+		                                <ul class="css-10n5vg9-VisualUl ep5cwgq0">
+		                                <!--ul반복 시작 -->
+		                           		<c:forEach var="i" begin="0" end="${commentVolist.size()-1}" varStatus="status">
+		                                 <!--ul 코멘트 리스트2 시작 -->
+		                                    <div class="css-bawlbm" >
+		                                        <div class="css-4obf01">
+		                                            <div class="css-1cvf9dk">
+		                                            	<a title="Emma S" class="css-1f9m1s4-StylelessLocalLink eovgsd01" href="/ko-KR/users/DgwxAMa03axrM">
+			                                                <div class="css-107z6xc">
+			                                                <c:if test="${memberVolist[i].user_pic_url != '0' }">
+			                                                    <div class="css-7n996g-ProfilePhotoImage" style="background-image: url('${memberVolist[i].user_pic_url}');"></div>
+															</c:if>
+			                                                <c:if test="${memberVolist[i].user_pic_url == '0' }">
+			                                                    <div class="css-7n996g-ProfilePhotoImage"></div>
+															</c:if>
+			                                                </div>
+			                                                <div class="css-1agoci2" >${memberVolist[i].user_name}
+		                                                		<span src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTQuNzcwNDYgMC41NjI0NTlDNS4yNDMyOCAtMC4xNTY0MzIgNi4zMTE0NyAtMC4xOTMwNyA2LjgzNTM1IDAuNDkyMTU1QzcuMTczMzcgMC45MzM3ODggNy43NzM4NSAxLjEwMTEzIDguMzAxODEgMC45MDAxMjFDOS4xMTk4IDAuNTg4MjA1IDEwLjAwNjIgMS4xNjc0OCAxMC4wMTQ0IDIuMDIxMDRDMTAuMDE5NSAyLjU2OTYxIDEwLjQwNTUgMy4wNDc4OCAxMC45NTM5IDMuMTg1NTJDMTEuODA0NiAzLjM5OTQxIDEyLjE3MDIgNC4zNzQ3NiAxMS42NjA2IDUuMDY4OUMxMS4zMzE4IDUuNTE2NDggMTEuMzUzMiA2LjEyMTQ5IDExLjcxMzcgNi41NDYyOUMxMi4yNzIzIDcuMjA0NzggMTEuOTc3MiA4LjIwMTkyIDExLjE0MzggOC40NzIyNUMxMC42MDY3IDguNjQ3NTIgMTAuMjU3NCA5LjE1MDU0IDEwLjI5MTEgOS42OTkxMkMxMC4zNDQyIDEwLjU0OTcgOS41MDE3NCAxMS4xODc0IDguNjYzMzIgMTAuOTMxOUM4LjEyMjA4IDEwLjc2NzYgNy41MzQ4OCAxMC45NzQ1IDcuMjI5NTQgMTEuNDM3OUM2Ljc1NjcyIDEyLjE1NjggNS42ODc1MSAxMi4xOTI1IDUuMTY0NjUgMTEuNTA4MkM0LjgyNjYzIDExLjA2NTYgNC4yMjYxNSAxMC44OTgzIDMuNjk4MTkgMTEuMTAwM0MyLjg4MDIgMTEuNDEyMiAxLjk5Mzc4IDEwLjgzMTkgMS45ODQ1OSA5Ljk4MDM0QzEuOTgwNTEgOS40Mjk3OCAxLjU5NTUxIDguOTUyNSAxLjA0NjEgOC44MTM4N0MwLjE5NTQyOCA4LjU5OTk5IC0wLjE3MDE2NiA3LjYyNjYxIDAuMzM5NDE5IDYuOTMyNDdDMC42NjgyNDkgNi40ODM5MSAwLjY0NjgwNCA1Ljg3NzkgMC4yODYzMTYgNS40NTMxQy0wLjI3MjI4NyA0Ljc5NDYxIDAuMDIyODQzIDMuNzk5NDUgMC44NTYxNTIgMy41MjcxNUMxLjM5MzMxIDMuMzUyODcgMS43NDM1OSAyLjg1MDgzIDEuNzA4ODYgMi4zMDEyN0MxLjY1NTc2IDEuNDUwNjggMi40OTgyNiAwLjgxMTk5MiAzLjMzNjY4IDEuMDY4NDZDMy44Nzc5MiAxLjIzMjgzIDQuNDY1MTIgMS4wMjU4OCA0Ljc3MDQ2IDAuNTYyNDU5WiIgZmlsbD0iIzBFMEYxMCIvPgogIDxwYXRoIGQ9Ik03LjY5NzMzIDIuNDUwMkw3LjI4NjEyIDcuNzkzOTJMNy4xNzc3NCA3Ljc5ODI4TDYuNDUyMjYgMy45Nzk3NUg1LjI2MTIzTDQuNjY1NTggNy44OTE1N0w0LjUzNTc1IDcuODk2OEwzLjk1MDk2IDMuOTc5NzVIMi41TDMuODEwMjcgOS43MTU4Mkw1LjMxNTI4IDkuNjE0MzlMNS44NDU3NCA1Ljk3MTdINS45NjQ5OEw2LjU2MDM1IDkuNTMwMTFMOC4wNzY1MSA5LjQyNzIzTDkuMTA1MTEgMi40NTAySDcuNjk3MzNaIiBmaWxsPSIjRkYwNTU4Ii8+Cjwvc3ZnPgo="
+	                                                              class="css-amcv0d">
+	                                                        	</span>
+			                                                </div>
+			                                            </a>
+			                                         </div>
+			                                         <div class="css-yqs4xl">
+				                                         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGZpbGw9IiM0QTRBNEEiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEyIDE3Ljk4bC02LjAxNSA0LjM5MmMtLjUwOC4zNzItMS4xOTQtLjEyNi0uOTk4LS43MjVsMi4zMTctNy4wODEtNi4wMzUtNC4zNjdjLS41MS0uMzY5LS4yNDctMS4xNzUuMzgyLTEuMTc0bDcuNDQ3LjAxNiAyLjI4Ni03LjA5MWMuMTkyLS42IDEuMDQtLjYgMS4yMzMgMGwyLjI4NiA3LjA5IDcuNDQ3LS4wMTVjLjYyOS0uMDAxLjg5LjgwNS4zOCAxLjE3NGwtNi4wMzMgNC4zNjcgMi4zMTYgNy4wOGMuMTk2LjYtLjQ5IDEuMDk4LS45OTkuNzI2TDEyIDE3Ljk4eiIvPgo8L3N2Zz4K" width="16px" height="16px" alt="star">
+				                                         <span>${starRatelist[i].score}</span>
+			                                         </div>
+		                                        </div>
+		                                        <div class="css-4tkoly">
+		                                        	<a class="css-1f9m1s4-StylelessLocalLink eovgsd01" href="comment_reply_GC?comment_id=${commentVolist[i].id}">
+		                                            	<div class="css-1g78l7j" >
+		                                            		<span>${commentVolist[i].comment_content}</span>
+		                                            	</div>
+		                                        	</a>
+		                                        	<!-- 스포일러 -->
+<%-- 	                                        		<c:if test="${commentVolist[i].is_spoil == 2 }"> --%>
+<!-- 														<span class="css-xstsdj">스포일러가 있어요!! -->
+<!-- 															<button aria-label="Accept Spoiler" class="css-13mdv8k-StylelessButton">&nbsp;보기</button> -->
+<!-- 														</span> -->
+<%-- 	                                        		</c:if> --%>
+													<!-- 스포일러 -->
+		                                        </div>
+		                                        <div class="css-1atijos">
+		                                        	<span src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgZmlsbD0iIzc4Nzg3OCI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik02Ljc1IDkuNDg1aC0zYTEgMSAwIDAgMC0xIDF2MTBhMSAxIDAgMCAwIDEgMWgzYTEgMSAwIDAgMCAxLTF2LTEwYTEgMSAwIDAgMC0xLTFNMjAuNjU3IDguNTY2YTIuMzYzIDIuMzYzIDAgMCAwLTEuNzc5LS44MTNIMTYuNjJsLjE2NC0uNjI3Yy4xMzctLjUyOC4yMDEtMS4xMi4yMDEtMS44NjMgMC0xLjkxOS0xLjM3NS0yLjc3OC0yLjczOC0yLjc3OC0uNDQ0IDAtLjc2Ni4xMjMtLjk4Ni4zNzYtLjIuMjI3LS4yODIuNTMtLjI0My45MzVsLjAzIDEuMjMtMi45MDMgMi45NGMtLjU5My42LS44OTQgMS4yMy0uODk0IDEuODcydjkuNjQ3YS41LjUgMCAwIDAgLjUuNWg3LjY4N2EyLjM4OCAyLjM4OCAwIDAgMCAyLjM0OC0yLjA3bDEuNDQ1LTcuNDUyYTIuNDQgMi40NCAwIDAgMC0uNTc0LTEuODk3Ii8+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K"
+		                                                  width="18px" height="18px" class="css-64x8kr">
+		                                            </span>
+		                                            <em class="comment_like">${commentVolist[i].like_count}</em>
+		                                            <span src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGZpbGw9IiM3ODc4NzgiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTkuODU3IDE3Ljc4Nkw2IDIxdi00LjkxYy0xLjg0MS0xLjM3My0zLTMuMzY5LTMtNS41OUMzIDYuMzU4IDcuMDMgMyAxMiAzczkgMy4zNTggOSA3LjVjMCA0LjE0Mi00LjAzIDcuNS05IDcuNS0uNzM5IDAtMS40NTYtLjA3NC0yLjE0My0uMjE0eiIvPgo8L3N2Zz4K"
+		                                                  width="18px" height="18px" class="css-q0vi8">
+		                                            </span>
+		                                            <em>${replyCount[i]}</em>
+		                                        </div>
+			                                        <div class="css-hy68ty" >
+			                                            <input type="hidden" name="user_id" id="user_id" value="${commentVolist[i].user_id}">
+			                                            <button id="${commentVolist[i].id}" class="css-1h18l7j-StylelessButton">좋아요</button>
+<%-- 			                                        <c:set var="hasLike" value="false"/> --%>
+<%-- 			                                        <c:forEach var="j"  begin="0" end="${likeList.size()-1}"> --%>
+<%-- 			                                            <c:if test="${commentVolist[i].id == likeList[j].comment_id}"> --%>
+<%-- 			                                            	<c:if test="${likeList[j].user_id == '300' }"> --%>
+<%-- 				                                            	<c:set var="hasLike" value="true" /> --%>
+<%-- 			                                            	</c:if> --%>
+<%-- 			                                            </c:if> --%>
+			                                        </div>
+<%-- 		                                        </c:forEach> --%>
+<%-- 	                                           	<c:if test="${haseLike}"> --%>
+<%-- 								                    <button id="${commentVolist[i].id}" class="css-jj4q3s-StylelessButton-UserActionButton">좋아요</button> --%>
+<%-- 	                                           	</c:if> --%>
+<%-- 	                                           	<c:if test="${!haseLike}"> --%>
+<%-- 								                    <button id="${commentVolist[i].id}" class="css-1h18l7j-StylelessButton">좋아요</button> --%>
+<%-- 	                                           	</c:if> --%>
+		                                    </div>
+		                           		</c:forEach>
+		                                  <!--   ul 코멘트 리스트2 끝 -->
+		                                <!--ul반복 끝 -->
+		                                <div id="loading-icon">
+		                                    <img src="https://icon-library.com/images/spinner-icon-gif/spinner-icon-gif-28.jpg" height="35" width="35"/>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </section>
+		            </section>
+		            <div th:replace="fragment/footer::footer">
+		            </div>
+		        </div>
+		    </div>
+		</div>
+	</body>
+</html>

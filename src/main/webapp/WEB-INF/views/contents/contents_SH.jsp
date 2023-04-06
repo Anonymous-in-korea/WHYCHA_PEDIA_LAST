@@ -80,12 +80,12 @@
 	                                        	alert("selected_star_rate : " + selected_star_rate);
 	                                        	$.ajax({
 	                                    			type:"post",
-	                                    			url:"/contents/movieStarRate",
+	                                    			url:"/contents/MyStarRateChange",
 	                                    			data:{"movie_id":parseInt(${movieVo.id}),"star_rate":parseFloat(selected_star_rate)},
 	                                    			dataType:"json",
 	                                    			//contentType:'application/json',
 	                                    			success:function(data){
-	                                    				if(data !=null)alert("성공");
+	                                    				if(data[0]!=1)alert("성공");
 	                                    			},
 	                                    			error:function(){
 	                                    				alert("오류로 인해 확인이 되지 않았습니다. 다시 입력해주세요.");

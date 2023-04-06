@@ -6,13 +6,13 @@
   <select id="selectAllGallery" resultType="com.whychapedia.vo.MovieGalleryTrailerVo">
  	SELECT *
 		FROM movie_gallery 
-		WHERE movie_id = ${movie_id}
+		WHERE movie_id = #{movie_id}
  </select>	
  
    <select id="selectAllTrailer" resultType="com.whychapedia.vo.MovieGalleryTrailerVo">
  	SELECT *
 		FROM movie_trailer
-		WHERE movie_id = ${movie_id}
+		WHERE movie_id = #{movie_id}
  </select>	
   
   </mapper>

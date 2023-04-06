@@ -24,9 +24,7 @@
 			<div class="css-1xm32e0">
 			
 			<!--header 들어갈 부분  -->
-					<!-- header start -->
-					<%@ include file="head_foot/header1.jsp" %>
-					<!-- header end -->
+					<%@ include file="head_foot/header.jsp" %>
 			<!--header 들어갈 부분  -->
 			
 				<section class="css-18gwkcr">
@@ -35,8 +33,7 @@
 						<header class="css-4g5dyy-HeaderBarPrimitive">
 							<div class="css-uf1ume">
 								<div class="css-0">
-									<button
-										class="e1t9gclr0 css-a6n3jw-StylelessButton-HeaderCloseButtonSelf-TopLeftButton e1k34u8y0"></button>
+									<button class="e1t9gclr0 css-a6n3jw-StylelessButton-HeaderCloseButtonSelf-TopLeftButton e1k34u8y0"></button>
 								</div>
 								<div class="css-0"></div>
 							</div>

@@ -19,4 +19,22 @@
 	<select id="selectDirector_like_id" resultType="com.whychapedia.vo.LikeVo">
 		select director_id from director_like where user_id=#{sessionId}
 	</select>
+	
+	<!-- 코멘트 대한 like 가져오기  -->
+	<select id="selectCommentLike" resultType="com.whychapedia.vo.LikeVo">
+		select * fROM comment_like 
+		where comment_id in 
+			<foreach collection="commentVolist" item="comment" open="(" close=")" separator=",">
+				#{comment.id}
+			</foreach> 
+	</select>
+	
+	<!-- 코멘트 좋아요 추가 -->
+	<insert id="insertLikeOne">
+		insert into comment_like(id, comment_id, user_id) values((select coalesce(max(id),0)+1 from comment_like), #{comment_id}, #{user_id})
+	</insert>
+	<!-- 코멘트 좋아요 삭제 -->
+	<delete id="deleteLikeOne">
+		delete from comment_like where comment_id=#{comment_id} and user_id=#{user_id}
+	</delete>
 </mapper>
