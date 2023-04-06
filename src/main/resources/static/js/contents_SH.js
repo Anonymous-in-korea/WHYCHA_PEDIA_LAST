@@ -1,13 +1,14 @@
- 
+$(function(){	
 /*별점 추가 script*/ 
-/* $(function(){	
-    $("#star_rating").change(function() {
-    	var selected_star_rate = $("#star_rating option:selected").val();
-    	alert("selected_star_rate : " + selected_star_rate);
+   $("#star_rating").change(function() {
+    	var star_rate = $("#star_rating option:selected").val();
+    	var movieVoId = $("#ajaxMyRate").text();
+        alert(movieVoId); 
+    	alert("selected_star_rate : " + star_rate);
     	$.ajax({
 			type:"post",
-			url:"/contents/movieStarRate",
-			data:{"movie_id":parseInt(${movieVo.id}), "star_rate":parseInt(selected_star_rate)},
+			url:"/contents/MyStarRateChange",
+			data:{"movie_id":parseInt(movieVoId),"star_rate":parseInt(star_rate)},
 			dataType:"json",
 			//contentType:'application/json',
 			success:function(data){
@@ -19,6 +20,12 @@
 		}); //ajax
 	});
 /*--------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
- /*});*/
+ /*별점 그래프 script*/ 
+ 
+ 
+ 
+ });
+
+	                                  
 
 		                                  

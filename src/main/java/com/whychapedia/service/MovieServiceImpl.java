@@ -83,6 +83,13 @@ public class MovieServiceImpl implements MovieService {
 		
 		return NoRepeatselectMovieInCollectionList;
 	}
+
+	//해당 영화 같은 장르 영화 리스트 #개 가져오기
+	@Override
+	public List<MovieVo> selectMovieWithSameGenre(int num,int genre_id) {
+		List<MovieVo> selectMovieWithSameGenre=movieMapper.selectMovieWithSameGenre(num,genre_id);
+		return selectMovieWithSameGenre;
+	}
 	
 
 

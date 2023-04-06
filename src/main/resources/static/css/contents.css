@@ -2223,7 +2223,7 @@
        letter-spacing: -0.2px;
        line-height: 16px;
        text-align: left;
-       height: 1px;
+       /* height: 1px; */
        margin: 0 0 22px;
    }
    .css-111q860-Bar::after {
@@ -2250,7 +2250,7 @@
        letter-spacing: -0.2px;
        line-height: 16px;
        text-align: left;
-       height: 1px;
+       /* height: 1px; */
        margin: 0 0 22px;
    }
    .css-r41bl-Bar::after {
@@ -2277,7 +2277,7 @@
        letter-spacing: -0.2px;
        line-height: 16px;
        text-align: left;
-       height: 17.6px;
+       /* height: 17.6px; */
        margin: 0 0 22px;
    }
    .css-1c4g190-Bar::after {
@@ -2304,7 +2304,7 @@
        letter-spacing: -0.2px;
        line-height: 16px;
        text-align: left;
-       height: 35.2px;
+       /* height: 35.2px; */
        margin: 0 0 22px;
    }
    .css-wv4rqq-Bar::after {
@@ -2331,7 +2331,7 @@
        letter-spacing: -0.2px;
        line-height: 16px;
        text-align: left;
-       height: 88px;
+       /* height: 88px; */
        margin: 0 0 22px;
    }
    .css-mr14ik-Bar::after {
