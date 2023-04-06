@@ -5,14 +5,14 @@
 <mapper namespace="com.whychapedia.mapper.AdminAnnouncementInputMapper">
 
 	<!-- admin 공지사항 일반등록하기 query구문 -->
-	<select id="adminAnnouncementInputOne" resultType="com.whychapedia.vo.AnnouncementVo">
+	<insert id="adminAnnouncementInputOne">
 		insert into announcement ( id, announcement_title, announcement_content, announcement_url, admin_id, announcement_date, announcement_important, is_regi )
 		values ( 5, #{announcement_title}, #{announcement_content}, #{announcement_url}, #{admin_id}, sysdate, #{important}, #{is_regi} )
-	</select>
+	</insert>
 
 	<!-- admin 공지사항 바로등록하기 query구문 -->
-	<select id="adminAnnouncementDirectInputOne" resultType="com.whychapedia.vo.AnnouncementVo">
+	<insert id="adminAnnouncementDirectInputOne">
 		insert into announcement values ( 5, #{announcement_title}, #{announcement_content}, #{announcement_url}, #{admin_id}, sysdate, #{important}, sysdate, #{is_regi} )
-	</select>
+	</insert>
 	
 </mapper>

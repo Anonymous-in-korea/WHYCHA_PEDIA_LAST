@@ -19,6 +19,7 @@
 		
         <script src="/js/admin/reportdetail_reply.js"></script>
         <script src="/js/admin/scripts.js"></script>
+        <script src="/js/admin_logout.js"></script>
         
         <style>
         	.mt-4 { font-weight:700; }

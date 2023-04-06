@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.whychapedia.vo.CommentVo;
 import com.whychapedia.vo.StarRateVo;
 
 @Mapper
@@ -24,10 +23,7 @@ public interface StarRateMapper {
 	public int selectLastId();
 	//별점 바꾸기
 	public int updateStarRate(double star_rate, int movie_id, int user_id);
-	
-	//코멘트에 해당하는 별점 가져오기
-	List<StarRateVo> starRate(List<CommentVo> commentVolist);
-	//코멘트에 해당하는 별점 1개 가져오기
-	public StarRateVo selectStarRateOne(CommentVo cvo);
+	//별점 그래프 정보 가져오기
+	public int selectStarRateGraph(double score1,double score2,int movie_id);
 
 }

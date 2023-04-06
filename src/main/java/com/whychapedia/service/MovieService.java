@@ -19,6 +19,8 @@ public interface MovieService {
 
 	List<MovieVo> selectMovieInCollectionList(List<MovieCollectionVo> movieCollectionVoList);
 
+	List<MovieVo> selectMovieWithSameGenre(int num,int genre_id);
+
 	
 
 }

@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.whychapedia.mapper.StarRateMapper;
-import com.whychapedia.vo.CommentVo;
 import com.whychapedia.vo.StarRateVo;
 
 @Service
@@ -79,19 +78,30 @@ public class StarRateServiceImpl implements StarRateService {
 		return result;
 	}
 
+	//해당 영화 모든 유저의 별점 그래프 가져오기 
 	@Override
-	public List<StarRateVo> starRatelist(List<CommentVo> commentVolist) {
-		List<StarRateVo> starRatelist = starRateMapper.starRate(commentVolist);
-		System.out.println("starRateService starRatelist : "+starRatelist);
-		return starRatelist;
+	public List<Integer> StarRateGraph(int movie_id) {
+		List<Integer> StarRateGraph=new ArrayList<>();
+		for(int i=0;i<5;i++) {
+			StarRateGraph.add(starRateMapper.selectStarRateGraph(i+0.5,i+1,movie_id));
+		};
+		return StarRateGraph;
 	}
 	
-	//코멘트에 해당하는 별점 1개 가져오기
+	//해당 영화 별점 매긴 횟수
 	@Override
-	public StarRateVo starRateOne(CommentVo cvo) {
-		StarRateVo starOne = starRateMapper.selectStarRateOne(cvo);
-		return starOne;
+	public int totalStarRateNumber(List<Integer> movieStarRateGraph) {
+		int totalStarRateNumber=0;
+		 for (int rate : movieStarRateGraph) {
+		        totalStarRateNumber += rate;
+		    }
+		return totalStarRateNumber;
 	}
+
+
+
+	
+
 
 
 }

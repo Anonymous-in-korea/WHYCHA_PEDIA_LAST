@@ -19,6 +19,8 @@ public interface MovieMapper {
 	List<MovieVo> selectTopRateMovieList(int movie_num);
 	//컬렉션_영화vo 가져와서 해당 영화 정보 모두 가져오기 (list) 
 	List<MovieVo> selectMovieInCollectionList(List<MovieCollectionVo> movieCollectionVoList);
+	//해당 영화 같은 장르 영화 리스트 #개 가져오기
+	List<MovieVo> selectMovieWithSameGenre(int num, int genre_id);
 
 
 }

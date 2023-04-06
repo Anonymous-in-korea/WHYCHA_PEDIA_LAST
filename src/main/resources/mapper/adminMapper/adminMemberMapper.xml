@@ -9,4 +9,34 @@
 		select * from admin where admin_email = #{admin_email} and admin_pw = #{admin_pw}
 	</select>
 
+	<!-- admin Member List query구문 -->
+	<select id="adminMemberList" resultType="com.whychapedia.vo.AdminVo">
+		select * from admin
+	</select>
+
+	<!-- admin Member create admin_email체크 query구문 -->
+	<select id="admin_email_check" parameterType="String" resultType="int">
+		select count(admin_email) from admin where admin_email = #{admin_email}
+	</select>
+
+	<!-- admin Member create query구문 -->
+	<insert id="adminMemberInsert">
+		insert into admin values ( 6, #{admin_position}, #{admin_name}, #{admin_email}, #{admin_pw}, 1, sysdate, '1900/01/01' )
+	</insert>
+
+	<!-- admin Member 상세페이지 query구문 -->
+	<select id="adminMemberSelectOne" resultType="com.whychapedia.vo.AdminVo">
+		select * from admin where id = #{id}
+	</select>
+
+	<!-- admin Member 계정삭제 query구문 -->
+	<delete id="adminMemberDelete">
+		delete admin where id = #{id}
+	</delete>
+
+	<!-- admin Member 계정수정 query구문 -->
+	<update id="adminMemberModify">
+		update admin set admin_position=#{admin_position}, admin_name=#{admin_name}, admin_email=#{admin_email}, admin_pw=#{admin_pw} where id=#{id}
+	</update>
+
 </mapper>

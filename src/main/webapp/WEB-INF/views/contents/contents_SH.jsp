@@ -27,6 +27,7 @@
 		<script src="../js/contents_SH.js"></script>
 	</head>
 	<body>
+		<div id="ajaxMyRate" style="display:none;">${movieVo.id}</div>
 		<div id="root">
 			<div class="css-5jq76">
 				<div class="css-1xm32e0">
@@ -72,29 +73,6 @@
 	                                            </div>
 	                                        </div>
 	                                    </div>
-	                                    <!-- 별점 section ajax start-->
-	                                    <script>
-	                                    $(function(){	
-	                                        $("#star_rating").change(function() {
-	                                        	var selected_star_rate = $("#star_rating option:selected").val();
-	                                        	alert("selected_star_rate : " + selected_star_rate);
-	                                        	$.ajax({
-	                                    			type:"post",
-	                                    			url:"/contents/MyStarRateChange",
-	                                    			data:{"movie_id":parseInt(${movieVo.id}),"star_rate":parseFloat(selected_star_rate)},
-	                                    			dataType:"json",
-	                                    			//contentType:'application/json',
-	                                    			success:function(data){
-	                                    				if(data[0]!=1)alert("성공");
-	                                    			},
-	                                    			error:function(){
-	                                    				alert("오류로 인해 확인이 되지 않았습니다. 다시 입력해주세요.");
-	                                    			}
-	                                    		}); //ajax
-	                                    	});
-	                                     });
-	                                    </script>
-	                                    <!-- 별점 section ajax end-->
 										<div class="css-1p7n6er-Pane e1svyhwg15">
 											<div class="css-569z5v">
 												<div class="css-1po9d5k">
@@ -456,7 +434,7 @@
 		                                                                	<h2 class="css-1wtjsst">별점 그래프</h2>
 		                                                                	<span class="css-14yj34l-RatingStatHeaderTopRight e1dk30cn0">
 		                                                                		<h4 style="margin: 0">평균 ★ 별점</h4>
-		                                                                		<strong>(22명)</strong>
+		                                                                		<strong>(${totalStarRateNumber}명)</strong>
 		                                                                	</span>
 		                                                                </header>
 		                                                            </div>
@@ -464,21 +442,21 @@
 		                                                        <div class="css-1gkas1x-Grid e1689zdh0">
 		                                                            <div class="css-1y901al-Row emmoxnt0">
 		                                                                <div class="css-wqfuxa">
-		                                                                    <div class="css-g1q7ln">
+		                                                                    <div class="css-g1q7ln"> 
 		                                                                        <div class="css-hugi8h">
-		                                                                        	<span prefix="1" class="css-111q860-Bar"></span>
+		                                                                        	<span prefix="1" class="css-111q860-Bar" style="height:${movieStarRateGraph[0]}px"></span>
 		                                                                        </div>
 		                                                                        <div class="css-hugi8h">
-		                                                                        	<span prefix="2" class="css-5vyahd-Bar"></span>
+		                                                                        	<span prefix="2" class="css-5vyahd-Bar" style="height:${movieStarRateGraph[1]}px"></span>
 		                                                                        </div>
 		                                                                        <div class="css-hugi8h">
-		                                                                        	<span prefix="3" class="css-himw0d-Bar"></span>
+		                                                                        	<span prefix="3" class="css-himw0d-Bar" style="height:${movieStarRateGraph[2]}px"></span>
 		                                                                        </div>
 		                                                                        <div class="css-hugi8h">
-		                                                                        	<span prefix="4" class="css-3zcnds-Bar"></span>
+		                                                                        	<span prefix="4" class="css-3zcnds-Bar" style="height:${movieStarRateGraph[3]}px"></span>
 		                                                                        </div>
 		                                                                        <div class="css-hugi8h">
-		                                                                        	<span prefix="5" class="css-mr14ik-Bar"></span>
+		                                                                        	<span prefix="5" class="css-mr14ik-Bar" style="height:${movieStarRateGraph[4]}px"></span>
 		                                                                        </div>
 		                                                                    </div>
 		                                                                </div>
@@ -951,86 +929,29 @@
 		                                                        <div class="css-1gkas1x-Grid e1689zdh0">
 		                                                            <div class="css-1y901al-Row emmoxnt0">
 		                                                                <ul class="css-27z1qm-VisualUl-ContentGrid e14whxmg0">
+		                                                                <c:forEach items="${MovieWithSameGenreList}" var="movieSameGenreVo">
 		                                                                    <li class="css-1hp6p72">
-		                                                                    	<a title="로맨틱 홀리데이" href="/ko-KR/contents/mOAZPad">
+		                                                                    	<a title="${movieSameGenreVo.movie_kor_title}" href="/contents/contents_SH?movie_id=${movieSameGenreVo.id}">
 			                                                                        <div class="css-1qmeemv">
 			                                                                            <div class=" css-unzuzl-StyledLazyLoadingImage ezcopuc0">
-			                                                                                <img src="https://an2-img.amz.wtchn.net/image/v2/18czxRiKprJDG6QiaGH9iQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMjUxTjI5d2FUVjBkM0Y1YVdScVpIQm1kV3g1SW4wLnRUYkJCQmNjS1k2SkxkNkwxZmxMRFBIdEo3dkFIdmp0RXY1clZ6cWJJQUk"
+			                                                                                <img src="${movieSameGenreVo.movie_post_url}"
 			                                                                                     class="css-qhzw1o-StyledImg ezcopuc1">
 			                                                                            </div>
-			                                                                            <div class="ottBadge css-5o7sb2"
+			                                                                    <!--         <div class="ottBadge css-5o7sb2"
 			                                                                                 src="https://an2-img.amz.wtchn.net/image/v1/updatable_images/2571/original/42e70f1bc34d7af54478a311983ecf6d3601eefa.png"></div>
 			                                                                            <div class="ottBadge css-oobk33"
 			                                                                                 src="https://an2-img.amz.wtchn.net/image/v2/33c15d90f101414a351372f19172859f.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKd1lYUm9Jam9pTDNZeUwzTjBiM0psTDNWcGJXRm5aUzh4TmpFeE1qQXdNVGN3T1RZd05qWTVNRE0xSW4wLlFwWFc3MERPaF9GR3ZMWVVzSUFCOFdLNWhLRjE3Ym5za1Z1bVFEN0lsSkU"></div>
-			                                                                        </div>
+			                                                                     -->    </div>
 			                                                                        <div class="css-ixy093">
-			                                                                            <div class="css-niy0za">유 윌 미스 미</div>
+			                                                                            <div class="css-niy0za">${movieSameGenreVo.movie_kor_title}</div>
 			                                                                            <div>
-			                                                                                <div class="css-m9i0qw">평균 ★ 2.5</div>
-			                                                                                <div class="css-1vvt4am">영화</div>
+			                                                                                <div class="css-m9i0qw">${movieSameGenreVo.movie_rating}</div>
+			                                                                                <div class="css-1vvt4am">누적 관객 ${movieSameGenreVo.movie_total_audience}</div>
 			                                                                            </div>
 			                                                                        </div>
 		                                                                    	</a>
 		                                                                    </li>
-		                                                                    <li class="css-1hp6p72">
-		                                                                    	<a title="그 여자 작사 그 남자 작곡" href="/ko-KR/contents/mLOP2V5">
-			                                                                        <div class="css-1qmeemv">
-			                                                                            <div class=" css-unzuzl-StyledLazyLoadingImage ezcopuc0">
-			                                                                                <img src="https://an2-img.amz.wtchn.net/image/v2/c_Pi0LE0_sthoastM36qlQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM3BzTkdOaE9IUmxhamR2WlRKNmRUaG1NRFJ5SW4wLmFlTHVZWEdLYldRWGpfb2R6VVlTc2U0V01CclZHVzRTeGRoOGNhZ1RNcTQ"
-			                                                                                     class="css-qhzw1o-StyledImg ezcopuc1">
-			                                                                            </div>
-			                                                                            <div class="ottBadge css-oobk33"
-			                                                                                 src="https://an2-img.amz.wtchn.net/image/v2/33c15d90f101414a351372f19172859f.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKd1lYUm9Jam9pTDNZeUwzTjBiM0psTDNWcGJXRm5aUzh4TmpFeE1qQXdNVGN3T1RZd05qWTVNRE0xSW4wLlFwWFc3MERPaF9GR3ZMWVVzSUFCOFdLNWhLRjE3Ym5za1Z1bVFEN0lsSkU"></div>
-			                                                                        </div>
-			                                                                        <div class="css-ixy093">
-			                                                                            <div class="css-niy0za">그 여자 작사 그 남자 작곡</div>
-			                                                                            <div>
-			                                                                                <div class="css-1kcd80z">평가함 ★ 5.0</div>
-			                                                                                <div class="css-1vvt4am">영화</div>
-			                                                                            </div>
-			                                                                        </div>
-			                                                                    </a>
-																			</li>
-		                                                                    <li class="css-1hp6p72">
-		                                                                    	<a title="네번의 결혼식과 한번의 장례식" href="/ko-KR/contents/moW4Bqd">
-			                                                                        <div class="css-1qmeemv">
-			                                                                            <div class=" css-unzuzl-StyledLazyLoadingImage ezcopuc0">
-			                                                                                <img src="https://an2-img.amz.wtchn.net/image/v2/PaZVaU_j6UM6n9rQYk0Lvg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM0ZvWjJWdlluSmpialUzTkd4ck9YUTNkMnhpSW4wLmJKelMwZkVZWFI1ZlhGWmVqbThzdjFMRVNvM3R5QWdZV1ByUDVOM3Q2VXM"
-			                                                                                     class="css-qhzw1o-StyledImg ezcopuc1">
-			                                                                            </div>
-			                                                                            <div class="ottBadge css-oobk33"
-			                                                                                 src="https://an2-img.amz.wtchn.net/image/v2/33c15d90f101414a351372f19172859f.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKd1lYUm9Jam9pTDNZeUwzTjBiM0psTDNWcGJXRm5aUzh4TmpFeE1qQXdNVGN3T1RZd05qWTVNRE0xSW4wLlFwWFc3MERPaF9GR3ZMWVVzSUFCOFdLNWhLRjE3Ym5za1Z1bVFEN0lsSkU"></div>
-			                                                                        </div>
-			                                                                        <div class="css-ixy093">
-			                                                                            <div class="css-niy0za">네번의 결혼식과 한번의 장례식</div>
-			                                                                            <div>
-			                                                                                <div class="css-or38u3">예상 ★ 3.7</div>
-			                                                                                <div class="css-1vvt4am">영화</div>
-			                                                                            </div>
-			                                                                        </div>
-			                                                                    </a>
-																			</li>
-		                                                                    <li class="css-1hp6p72">
-		                                                                    	<a title="노팅 힐" href="/ko-KR/contents/my5Y83d">
-			                                                                        <div class="css-1qmeemv">
-			                                                                            <div class=" css-unzuzl-StyledLazyLoadingImage ezcopuc0">
-			                                                                                <img src="https://an2-img.amz.wtchn.net/image/v2/X_Uu6Uz2xR7zLxYAkyh2UA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM2cxYm05NGIyWXdNM2gwZUhZMmVtZHRjbTVtSW4wLm1lR0NnUDBlaHJIeWtJUzVjT3VUMFgtdlVjMnhLUFQ0RXEzc2dhbnN4LWc"
-			                                                                                     class="css-qhzw1o-StyledImg ezcopuc1">
-			                                                                            </div>
-			                                                                            <div class="ottBadge css-5o7sb2"
-			                                                                                 src="https://an2-img.amz.wtchn.net/image/v1/updatable_images/2571/original/42e70f1bc34d7af54478a311983ecf6d3601eefa.png"></div>
-			                                                                            <div class="ottBadge css-oobk33"
-			                                                                                 src="https://an2-img.amz.wtchn.net/image/v2/33c15d90f101414a351372f19172859f.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKd1lYUm9Jam9pTDNZeUwzTjBiM0psTDNWcGJXRm5aUzh4TmpFeE1qQXdNVGN3T1RZd05qWTVNRE0xSW4wLlFwWFc3MERPaF9GR3ZMWVVzSUFCOFdLNWhLRjE3Ym5za1Z1bVFEN0lsSkU"></div>
-			                                                                        </div>
-			                                                                        <div class="css-ixy093">
-			                                                                            <div class="css-niy0za">노팅 힐</div>
-			                                                                            <div>
-			                                                                                <div class="css-or38u3">예상 ★ 4.5</div>
-			                                                                                <div class="css-1vvt4am">영화</div>
-			                                                                            </div>
-			                                                                        </div>
-			                                                                    </a>
-																			</li>
+		                                                                 </c:forEach>
 		                                                                </ul>
 		                                                            </div>
 		                                                        </div>

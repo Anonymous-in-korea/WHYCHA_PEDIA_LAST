@@ -91,8 +91,11 @@ public class ContentsController {
 	@GetMapping("/contents/contents_SH")
 	public String contents(@RequestParam int movie_id, Model model) {
 		System.out.println("-------------------start_영화 정보-Controller--------------------------------");
+		
 		/*-------------------------------로그인 전 후 동일-------------------------------------------------*/
-		/*해당 영화 정보 START*/
+		
+		
+		/*         해당 영화 정보 START       */
 		//movie table 정보(VO) 
 		movieVo=movieService.selectOneMovie(movie_id);
 		System.out.println("해당 영화 한국 제목:"+movieVo.getMovie_kor_title());
@@ -137,9 +140,31 @@ public class ContentsController {
 		if(movieOttVoList.size()!=0) System.out.println("해당 ott 첫 번쨰:"+movieOttVoList.get(0).getProvider_name());
 		model.addAttribute("movieOttVoList",movieOttVoList);
 		System.out.println("-------------------start_영화 정보-Controller--------------------------------");
-		/*해당 영화 정보 END*/
+		/*     해당 영화 정보 END       */
 		
 		
+		/*    해당 영화 별점 정보 START     */
+		List<Integer> movieStarRateGraph=starRateService.StarRateGraph(movie_id);
+		int totalStarRateNumber=starRateService.totalStarRateNumber(movieStarRateGraph);
+		if(movieOttVoList.size()!=0) System.out.println("해당 영화 별점 정보:"+movieStarRateGraph.get(0));
+		if(totalStarRateNumber!=0) System.out.println("해당 영화 별점 정보:"+totalStarRateNumber);
+		model.addAttribute("totalStarRateNumber",totalStarRateNumber);
+		model.addAttribute("movieStarRateGraph",movieStarRateGraph);
+		/*     해당 영화 별점 정보 END      */
+		
+		
+		/*    같은 장르 영화 4개 가져오기 START     */
+		if(movieGenreVoList!=null) {
+		List<MovieVo> MovieWithSameGenreList=movieService.selectMovieWithSameGenre(4,movieGenreVoList.get(0).getGenre_id());
+		System.out.println(MovieWithSameGenreList.get(0).getMovie_kor_title());
+		model.addAttribute("MovieWithSameGenreList",MovieWithSameGenreList);
+		}
+		/*    같은 장르 영화 4개 가져오기  END     */
+		
+		
+		
+		
+
 		/*-------------------------------로그인 전/후 따로-------------------------------------------------*/
 		/*별점 정보 시작*/
 		System.out.println("-------------------start_나의 별점정보-Controller--------------------------------");

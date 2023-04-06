@@ -5,8 +5,8 @@
 <mapper namespace="com.whychapedia.mapper.AdminAnnouncementDelMapper">
 
 	<!-- admin 공지사항 삭제 query구문 -->
-	<select id="adminAnnouncementDeleteOne" resultType="com.whychapedia.vo.AnnouncementVo">
+	<delete id="adminAnnouncementDeleteOne">
 		delete from announcement where id = #{id}
-	</select>
+	</delete>
 	
 </mapper>

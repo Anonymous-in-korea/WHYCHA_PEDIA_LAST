@@ -21,10 +21,17 @@
 		<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 		<!-- 이거 side_nav 작동하는 script임 -->
 		
+		<script src="/js/admin_logout.js"></script>
+		
 		<!-- 보고 필요없으면 지울거임 -->
 		<!-- <script src="/js/admin/Notice.js"></script> -->
 	</head>
 	<body class="sb-nav-fixed">
+	
+		<c:if test="${ adminSessionEmail == null }">
+	    	<script>alert("관리자계정으로 로그인 후 접속해주세요."); location.href="/admin/whycha_pedia_admin_login";</script>
+    	</c:if>
+	
 		<div id="layoutSidenav">
 		    <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">

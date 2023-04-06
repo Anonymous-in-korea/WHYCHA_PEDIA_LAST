@@ -65,7 +65,7 @@
 						<header class="section2_header">
 							<div class="header_div">
 								<div>
-									<button class="history_back e1t9gclr0 e1k34u8y0" onclick="location.href='/contents/contents_SH?id=${movieVo.id}'"></button>
+									<button class="history_back e1t9gclr0 e1k34u8y0" onclick="location.href='/contents/contents_SH?movie_id=${movieVo.id}'"></button>
 								</div>
 							</div>
 							<div class="header_title_div">
