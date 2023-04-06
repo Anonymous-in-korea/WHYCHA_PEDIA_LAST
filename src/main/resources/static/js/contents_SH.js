@@ -1,6 +1,6 @@
 $(function(){	
-/*별점 추가 script*/ 
-   $("#star_rating").change(function() {
+/*별점 추가 script start*/ 
+   $("#ajaxMovieId").change(function() {
     	var star_rate = $("#star_rating option:selected").val();
     	var movieVoId = $("#ajaxMyRate").text();
         alert(movieVoId); 
@@ -19,13 +19,8 @@ $(function(){
 			}
 		}); //ajax
 	});
+		
+ /*별점 추가  script end*/ 
 /*--------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
- /*별점 그래프 script*/ 
- 
- 
- 
- });
 
-	                                  
-
-		                                  
+});                                 

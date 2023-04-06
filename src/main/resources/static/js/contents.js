@@ -171,6 +171,8 @@ $(function() {
 			$(".wish_pop_up_background").css("z-index", "10");
 		});
 
+
+
     	/* 창 내리기 방지 */
     	$(".wish_content_box").click(function(e) {
 			e.stopPropagation();
@@ -233,11 +235,14 @@ $(function() {
 				$(this).removeClass("active");
 				$("#eye_icon").css({"display":"block"});
 				$("#eye_icon_color").css({"display":"none"});
+				IsWatching=0; /*보지 않는 중으로 바뀜*/
+				
 			} else {
 				$(this).addClass("active");
 				$("#eye_icon").css({"display":"none"});
 				$("#eye_icon_color").css({"display":"block"});
 				if ( $(".watch_pop_up_background").css("display") == "none" ) { $(".watch_pop_up_background").show(); }
+				IsWatching=1; /*보는중으로 바뀜*/
 			}
 		});
 		
