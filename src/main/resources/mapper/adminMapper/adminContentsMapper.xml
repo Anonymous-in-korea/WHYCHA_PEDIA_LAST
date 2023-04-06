@@ -8,5 +8,10 @@
 	<select id="adminContentsList" resultType="com.whychapedia.vo.MovieVo">
 		select * from movie
 	</select>
+
+	<!-- admin artist list query구문 -->
+	<select id="adminArtistList" resultType="com.whychapedia.vo.ArtistVo">
+		select * from movie
+	</select>
 	
 </mapper>

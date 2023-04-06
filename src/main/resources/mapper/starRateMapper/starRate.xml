@@ -3,34 +3,69 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.whychapedia.mapper.StarRateMapper">
-  <!--별점 높은 영화 #개 가져오기 -->
-  <select id="selectMovieTop" resultType="com.whychapedia.vo.StarRateVo">
- 	SELECT movie_id
-    FROM (
-      SELECT movie_id, AVG(score) as avg_score
-      FROM star_rate
-      GROUP BY movie_id
-      ORDER BY avg_score DESC
-    )
-     FETCH FIRST 10 ROWS ONLY
-  </select>
-  
     <!--별점 높은 영화 #개 가져오기 -->
-  <select id="selectMyStarRate" resultType="int">
- 	SELECT score from star_rate where user_id=${user_id} and movie_id=${movie_id}
-  </select>
+	<select id="selectMovieTop" resultType="com.whychapedia.vo.StarRateVo">
+	 	SELECT movie_id
+	    FROM (
+	      SELECT movie_id, AVG(score) as avg_score
+	      FROM star_rate
+	      GROUP BY movie_id
+	      ORDER BY avg_score DESC
+	    )
+	     FETCH FIRST 10 ROWS ONLY
+	</select>
   
+    <!--해당 영화 해당 user의 별점 가져오기 -->
+	<select id="selectMyStarRate" resultType="int">
+ 		SELECT score from star_rate where user_id=#{user_id} and movie_id=#{movie_id}
+	</select>
   
-  
-
-<!--영화 별점 넣기-->
-<!-- <insert id="insertStarRate">
-		insert into star_rate values (11,#{question_title},#{question_content},0,6,sysdate,1)
-</insert>
- -->
- <!--  <insert id="insertStarRate">
-		insert into star_rate values (11,#{question_title},#{question_content},0,6,sysdate,1)
- </insert>	 -->
+  	<!-- 영화 별점 넣기(처음)-->
+	<insert id="insertStarRate" >
+		insert into star_rate values (#{id},#{star_rate},#{movie_id},#{user_id},sysdate)
+	</insert>
 	
+	<!-- 평가했는지 안했는지 확인하기-->
+	<select id="selectIsRating" resultType="int">
+		select count(*) from star_rate where user_id=#{user_id} and movie_id=#{movie_id}
+	</select>
+	
+	<!-- 마지막 고유 번호 가져오기 -->
+	<select id="selectLastId" resultType="int">
+		 SELECT id FROM (SELECT * FROM star_rate ORDER BY id DESC) WHERE ROWNUM &lt;= 1
+	</select>
+	
+	<!-- 영화 별점 바꾸기-->
+	<update id="updateStarRate">
+		update star_rate set score=#{star_rate} where user_id=#{user_id} and movie_id=#{movie_id}
+	</update>
+	
+	<!-- 영화 별점 삭제하기-->
+	<delete id="deleteStarRate">
+		delete star_rate where user_id=#{user_id} and movie_id=#{movie_id}  
+	</delete>
+	
+	<!-- 코멘트 영화 별점 가져오기 -->
+	<select id="starRate" resultType="com.whychapedia.vo.StarRateVo">
+		select * from star_rate 
+		where user_id in  (
+		<foreach collection="commentVolist" item="id" separator=",">
+			#{id.user_id}
+		</foreach>
+		)
+	 	and movie_id in (
+	 		<foreach collection="commentVolist" item="id" separator=",">
+				#{id.movie_id}
+			</foreach>
+		) 
+	</select>
+	
+	<!-- 코멘트 1개에 대한 영화 별점 가져오기 -->
+	<select id="selectStarRateOne" resultType="com.whychapedia.vo.StarRateVo">
+		select * from star_rate 
+		where user_id =	#{user_id}
+	 	and movie_id = #{movie_id}
+	</select>
+  
 	
   </mapper>

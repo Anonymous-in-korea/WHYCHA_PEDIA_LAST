@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whychapedia.mapper.CommentMapper">
+<!-- 		select wc.*, (SELECT COUNT(*) FROM comment_like WHERE comment_id = wc.id) AS num_likes -->
+<!-- 		from wcomment wc  -->
+<!-- 		where movie_id = #{movie_id} and is_blind !=2 -->
+<!-- 		ORDER BY num_likes DESC -->
+<!-- 		FETCH FIRST 10 ROWS ONLY -->
+	<select id="commentSelect10" resultType="com.whychapedia.vo.CommentVo">
+		select wc.*, (SELECT COUNT(*) FROM comment_like WHERE comment_id = wc.id) AS like_count
+		from wcomment wc 
+		where movie_id = #{movie_id} and is_blind !=2
+		ORDER BY like_count DESC
+		FETCH FIRST 10 ROWS ONLY
+	</select>
+	
+<!-- 	<select id="commentUser" resultType="com.whychapedia.vo.MemberVo"> -->
+<!-- 		select id, user_name, user_pic_url from wuser where id IN ( -->
+<!-- 			<foreach collection="userList" item = "userId" separator=","> -->
+<!-- 				#{userId} -->
+<!-- 			</foreach>  -->
+<!-- 			) -->
+<!-- 	</select> -->
+	
+	<!-- 코멘트 1개 가져오기 -->
+	<select id="selectCommentOne" resultType="com.whychapedia.vo.CommentVo">
+		select wc.*, (SELECT COUNT(*) FROM comment_like WHERE comment_id = wc.id) AS like_count from wcomment wc
+		where id = #{comment_id}
+	</select>
+	
+		<!-- 	해당 코멘트 댓글 수 -->
+	<select id="replyCount" resultType="int">
+		select count(id) as replycount from comment_reply
+		where comment_id in (
+		<foreach collection="commentId" item="id" separator=",">
+			#{id}
+		</foreach>
+		)
+		group by comment_id
+	</select>
+	
+<!-- 	해당 영화 코멘트 작성자 평점 -->
+<!-- 	<select id="starRate" resultType="com.whychapedia.vo.StarRateVo"> -->
+<!-- 		select * from star_rate  -->
+<!-- 		where user_id in  ( -->
+<!-- 		<foreach collection="commentId" item="id" separator=","> -->
+<!-- 			(SELECT user_id FROM wcomment WHERE id = #{id}) -->
+<!-- 		</foreach> -->
+<!-- 		) -->
+<!-- 	 	and movie_id in ( -->
+<!-- 	 		<foreach collection="commentId" item="id" separator=","> -->
+<!-- 				(SELECT movie_id FROM wcomment WHERE id = #{id}) -->
+<!-- 			</foreach> -->
+<!-- 		)  -->
+<!-- 	</select> -->
+	
+	<!-- 	해당 코멘트 좋아요 수 -->
+<!-- 	<select id="likeCount" resultType="int"> -->
+<!-- 		select count(*) from comment_like -->
+<!-- 		where comment_id in ( -->
+<!-- 		<foreach collection="commentId" item="id" separator=","> -->
+<!-- 			#{id} -->
+<!-- 		</foreach> -->
+<!-- 		) -->
+<!-- 		group by comment_id -->
+<!-- 	</select> -->
+	
+	
+</mapper>

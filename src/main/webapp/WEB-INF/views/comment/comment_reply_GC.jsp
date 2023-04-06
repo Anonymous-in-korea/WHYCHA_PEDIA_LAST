@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -53,8 +54,6 @@
 						}
 					}
 				}); */
-				
-				
 				$(".css-135c2b4-StylelessButton-StyledActionButton").click(function() {
 					if ( $(".css-pfmsf9").css("display") == "none" ) { $(".css-pfmsf9").show(); }
 					else if ( $(".css-pfmsf9").css("display") != "none" ) { $(".css-pfmsf9").hide(); }
@@ -68,7 +67,7 @@
 		        <div class="square_div">
 		            
 					<!-- header start -->
-					<%@ include file="head_foot/header.jsp" %>
+					<%@ include file="../head_foot/header.jsp" %>
 					<!-- header end -->
 
 		            <section class="css-18gwkcr">
@@ -93,13 +92,18 @@
 		                                    	<!-- 댓글이 달린 영화정보 -->
 		                                        <div class="css-1p3jp2v">
 		                                            <div class="css-1cvf9dk">
-		                                            	<a class="css-1f9m1s4-StylelessLocalLink eovgsd01" href="/ko-KR/users/VRZv4zNNPxr6y" id="user-info">
+		                                            	<a class="css-1f9m1s4-StylelessLocalLink eovgsd01" href="/myPage/userPage?id=${mvo.id}" id="user-info">
 			                                                <div class="css-1byz60h">
-			                                                    <div class="css-co0dyr-ProfilePhotoImage"></div>
+			                                                	<c:if test="${mvo.user_pic_url !='0'}">
+				                                                    <div class="css-1vv1gk7-ProfilePhotoImage" style="background-image:url('${mvo.user_pic_url}');"></div>
+			                                                	</c:if>
+			                                                	<c:if test="${mvo.user_pic_url =='0'}">
+				                                                    <div class="css-1vv1gk7-ProfilePhotoImage"></div>
+			                                                	</c:if>
 			                                                </div>
 			                                                <div class="css-1sg2lsz">
-			                                                    <div class="css-a7gqjg">다솜땅</div>
-			                                                    <div class="css-1hy7aba">5년 전</div>
+			                                                    <div class="css-a7gqjg">${mvo.user_name}</div>
+			                                                    <div class="css-1hy7aba">${cvo.regi_date}</div>
 			                                                </div>
 		                                            	</a>
 		                                            	<a class="css-1f9m1s4-StylelessLocalLink eovgsd01" id="content-info" href="/ko-KR/contents/m5eJDJZ">
@@ -112,7 +116,7 @@
 		                                            		<div class="css-1cxhrll">
 		                                            			<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGZpbGw9IiM0QTRBNEEiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEyIDE3Ljk4bC02LjAxNSA0LjM5MmMtLjUwOC4zNzItMS4xOTQtLjEyNi0uOTk4LS43MjVsMi4zMTctNy4wODEtNi4wMzUtNC4zNjdjLS41MS0uMzY5LS4yNDctMS4xNzUuMzgyLTEuMTc0bDcuNDQ3LjAxNiAyLjI4Ni03LjA5MWMuMTkyLS42IDEuMDQtLjYgMS4yMzMgMGwyLjI4NiA3LjA5IDcuNDQ3LS4wMTVjLjYyOS0uMDAxLjg5LjgwNS4zOCAxLjE3NGwtNi4wMzMgNC4zNjcgMi4zMTYgNy4wOGMuMTk2LjYtLjQ5IDEuMDk4LS45OTkuNzI2TDEyIDE3Ljk4eiIvPgo8L3N2Zz4K"
 		                                            				width="16px" height="16px" alt="star">
-		                                            			<span>&nbsp;3.5</span>
+		                                            			<span>&nbsp;${starRateOne.score}</span>
 		                                            		</div>
 		                                            	</div>
 		                                            </div>
@@ -126,7 +130,7 @@
 												<!-- 댓글이 달린 영화정보 -->
 												<!-- 댓글 내용 -->
 		                                        <div class="css-cb09zq">
-		                                            <div class="css-1g78l7j"><span>진실되게 궁금합니다.<br><br>어떻게 된 일인지..</span></div>
+		                                            <div class="css-1g78l7j"><span>${cvo.comment_content}</span></div>
 		                                        </div>
 		                                        <!-- 댓글 내용 -->
 		                                        <!-- 좋아요 수, 댓글 수, 오른쪽 옵션 버튼 -->
@@ -138,8 +142,8 @@
 		                                            </div> -->
 		                                            <!-- 좋아요가 하나도 없을 때 -->
 		                                            <div class="css-prw2jl">
-		                                            	<span class="css-1n0dvqq">좋아요 30</span>
-		                                            	<span class="css-0">댓글 20</span>
+		                                            	<span class="css-1n0dvqq">좋아요 ${cvo.like_count}</span>
+		                                            	<span class="css-0">댓글 ${replyList.size()}</span>
 													</div>
 		                                            <div class="css-j985f6" id="comment_opt">
 	                                                    <!-- 다른사람이 작성한 글 일때 -->
@@ -301,19 +305,25 @@
 		                                    </section>
 		                                    <section class="css-1r5nwql">
 		                                        <div class="css-0">
+		                                        <c:forEach var="i" begin="0" end="${replyList.size()-1}">
 		                                            <div class="css-1m1whp6">
 		                                                <div class="css-ov1ktg">
 		                                                	<a class="css-255jr8" href="/ko-KR/users/WwRqo1nZy5lzB">
-		                                                    	<div class="css-293y94"></div><!-- css-bnsanu -->
+		                                                		<c:if test="${replyuserList[i].user_pic_url != '0' }">
+			                                                    	<div class="css-293y94" style="background-image:url('${replyuserList[i].user_pic_url}');"></div><!-- css-bnsanu -->
+		                                                		</c:if>
+		                                                		<c:if test="${replyuserList[i].user_pic_url == '0' }">
+			                                                    	<div class="css-293y94"></div><!-- css-bnsanu -->
+		                                                		</c:if>
 		                                                	</a>
 		                                                    <div class="css-199ku80">
 		                                                        <div class="css-1sg2lsz">
 		                                                        	<a class="css-255jr8" href="/ko-KR/users/WwRqo1nZy5lzB">
-		                                                            	<div class="css-72k174">uNme</div>
+		                                                            	<div class="css-72k174">${replyuserList[i].user_name}</div>
 		                                                        	</a>
-		                                                            <div class="css-maxfbg">5년 전</div>
+		                                                            <div class="css-maxfbg">${replyList[i].regi_date}</div>
 		                                                        </div>
-		                                                        <div class="css-yb0jaq">그르게요...그게참답답함</div>
+		                                                        <div class="css-yb0jaq">${replyList[i].reply_content}</div>
 		                                                        <!-- 좋아요 아이콘 -->
 		                                                        <div class="css-ov1ktg">
 		                                                            <div class="css-1d8juai">
@@ -367,6 +377,7 @@
 		                                                    </div>
 		                                                </div>
 		                                            </div>
+		                                        </c:forEach>
 		                                        </div>
 		                                    </section>
 		                                </div>
@@ -375,7 +386,7 @@
 		                    </section>
 		                    
 		                    <!-- footer start -->
-							<%@ include file="head_foot/footer1.jsp" %>
+							<%@ include file="../head_foot/footer1.jsp" %>
 							<!-- footer end -->
 							
 		                </div>

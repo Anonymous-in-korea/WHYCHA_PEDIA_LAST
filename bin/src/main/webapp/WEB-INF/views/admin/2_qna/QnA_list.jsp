@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -24,7 +25,12 @@
 		<div id="layoutSidenav">
 		    <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                	<c:if test="${ adminSessionEmail != null }">
                 	<a href="/admin/admin_index"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+                	</c:if>
+                	<c:if test="${ adminSessionEmail == null }">
+                	<a href="/admin/whycha_pedia_admin_login"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+                	</c:if>
 					<%@ include file="../fragment/sidefooter.jsp" %>
 					<%@ include file="../fragment/sidenav.jsp" %>
                 </nav>
@@ -102,54 +108,40 @@
 		                    						</th>
 		                    					</tr>
 		                    				</thead>
-		                    				<!-- c:foreach로 반복 돌리기 -->
+
 		                    				<tbody>
+		                    					<c:if test="${result == 1}">
+												<c:forEach items="${adminQnAListAll}" var="QnAList" varStatus="status">
 		                    					<tr>
-		                    						<td>1</td>
-		                    						<td>
-		                    							<a href="/admin/2_qna/QnA_view">
-		                    								서비스가 왜 이렇게 개판이에요? 환불해주세요.
-		                    							</a>
-		                    						</td>
-		                    						<td>내가낸데뭐</td>
-		                    						<td>2023-03-10</td>
-		                    						<td>2023-03-17</td>
-		                    						<td>답변완료</td>
+		                    						<td>${ QnAList.id }</td>
+													<td><a href="/admin/2_qna/QnA_view?id=${ QnAList.id }">${ QnAList.question_title }</a></td>
+													<td>${ QnAList.user_name }</td>
+													<td>${ QnAList.regi_date }</td>
+													<c:if test="${ QnAList.processing_statu == 2 }">
+													<c:forEach items="${adminAnswerList}" var="answerList" varStatus="status">
+													<c:if test="${ QnAList.id == answerList.question_id }">
+														<td>${ answerList.regi_date }</td>
+													</c:if>
+			                    					</c:forEach>
+													</c:if>
+													<c:if test="${ QnAList.processing_statu == 1 }">
+													<td> </td>
+													</c:if>
+													<td>
+														<c:if test="${ QnAList.processing_statu == 1 }">답변요망</c:if>
+														<c:if test="${ QnAList.processing_statu == 2 }">답변완료</c:if>
+													</td>
 		                    					</tr>
-		                    					<tr>
-		                    						<td>2</td>
-		                    						<td>서비스가 왜 이렇게 개판이에요? 환불해주세요.</td>
-		                    						<td>내가낸데뭐</td>
-		                    						<td>2023-03-10</td>
-		                    						<td>2023-03-17</td>
-		                    						<td>답변완료</td>
-		                    					</tr>
-		                    					<tr>
-		                    						<td>3</td>
-		                    						<td>서비스가 왜 이렇게 개판이에요? 환불해주세요.</td>
-		                    						<td>내가낸데뭐</td>
-		                    						<td>2023-03-10</td>
-		                    						<td>2023-03-17</td>
-		                    						<td>답변완료</td>
-		                    					</tr>
-		                    					<tr>
-		                    						<td>4</td>
-		                    						<td>서비스가 왜 이렇게 개판이에요? 환불해주세요.</td>
-		                    						<td>내가낸데뭐</td>
-		                    						<td>2023-03-10</td>
-		                    						<td>2023-03-17</td>
-		                    						<td>답변완료</td>
-		                    					</tr>
-		                    					<tr>
-		                    						<td>5</td>
-		                    						<td>서비스가 왜 이렇게 개판이에요? 환불해주세요.</td>
-		                    						<td>내가낸데뭐</td>
-		                    						<td>2023-03-10</td>
-		                    						<td>2023-03-17</td>
-		                    						<td>답변완료</td>
-		                    					</tr>
+		                    					</c:forEach>
+												</c:if>
+												
+												<c:if test="${result == 0}">
+												<tr colspan="6">
+													<td style="text-align:center;">등록된 QnA가 없습니다.</td>
+												</tr>
+												</c:if>
 		                    				</tbody>
-		                    				<!-- c:foreach로 반복 돌리기 -->
+
 		                    			</table>
 		                    		</div>
 		                    		<div class="datatable-bottom">

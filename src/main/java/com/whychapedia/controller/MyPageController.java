@@ -1,12 +1,16 @@
 package com.whychapedia.controller;
 
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.whychapedia.service.AnnouncementService;
 import com.whychapedia.service.ArtistService;
 import com.whychapedia.service.LikeService;
 import com.whychapedia.vo.ArtistVo;
@@ -19,9 +23,13 @@ public class MyPageController {
 	LikeService likeService;
 	@Autowired
 	ArtistService artistService;
+	@Autowired
+	HttpSession session;
+	@Autowired
+	AnnouncementService announcementService;
+
 	
-	
-	@GetMapping("userPage_SY")
+	@GetMapping("myPage/userPage_SY")
 	public String userPage_SY(Model model) {
 		//actor_id를 가지고오기
 		List<LikeVo> actorLike_list = likeService.selectActor_like_id(6);
@@ -32,8 +40,11 @@ public class MyPageController {
 		List<LikeVo> directorLike_list = likeService.selectDirector_like_id(6);
 		System.out.println("selectDirector_like_id_list_size :"+directorLike_list.size());
 		model.addAttribute("directorLike_list",directorLike_list);
-				
-		return "userPage_SY";
+		
+		//공지사항 가져오기
+		Map<String, Object> map = announcementService.selectAnnouncementList();
+		model.addAttribute("map",map);
+		return "myPage/userPage_SY";
 	}
 	
 	@GetMapping("myPage/my_analysis_HY")
@@ -68,7 +79,12 @@ public class MyPageController {
 		return "myPage/actor_director_like_SY";
 	}
 
-	
+	@GetMapping("myPage/logout_confirm_Btn")
+	public String logout() {
+		session.invalidate();
+		System.out.println("로그아웃 되었습니다.");
+		return "/";
+	}
 	
 	
 }

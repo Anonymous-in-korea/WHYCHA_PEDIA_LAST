@@ -23,7 +23,7 @@ $(function() {
 				}
 		    	console.log("오른쪽버튼(1번 -translateX 값) : " + TOP10_translate);
 			} else {
-				if ( TOP10_translate == ( TOP10_lastWidth - (TOP10_rightWidth * 2) ) ) { /* 현재 페이지 X 값이 전체 width와 같아지면 더 넘어가지않게 stop */
+				if ( Math.ceil( -TOP10_translate / TOP10_width ) == ( TOP10_page - 2 ) ) { /* 현재 페이지 X 값이 전체 width와 같아지면 더 넘어가지않게 stop */
 			    	$(".list_box4.STAR_TOP10").css({"transform":"translateX(" + ( TOP10_translate + TOP10_rightWidth ) + "px)"});
 					$(".STAR_TOP10_list_box_right_div").css({"display":"none"});
 					TOP10_translate = TOP10_lastWidth - TOP10_rightWidth;
@@ -84,7 +84,7 @@ $(function() {
 					$(".WATCHA_list_box_right_div").css({"display":"none"});
 				}
 			} else {
-				if ( WATCHA10_translate == ( WATCHA10_lastWidth - (WATCHA10_rightWidth * 2) ) ) { /* 현재 페이지 X 값이 전체 width와 같아지면 더 넘어가지않게 stop */
+				if ( Math.ceil( -WATCHA10_translate / WATCHA10_width ) == ( WATCHA10_page - 2 ) ) { /* 현재 페이지 X 값이 전체 width와 같아지면 더 넘어가지않게 stop */
 			    	$(".list_box4.WATCHA").css({"transform":"translateX(" + ( WATCHA10_translate + WATCHA10_rightWidth ) + "px)"});
 					$(".WATCHA_list_box_right_div").css({"display":"none"});
 					WATCHA10_translate = WATCHA10_lastWidth - WATCHA10_rightWidth;
@@ -136,7 +136,7 @@ $(function() {
 					$(".DIRECTOR_list_box_right_div").css({"display":"none"});
 				}
 			} else {
-				if ( DIRECTOR_translate == ( DIRECTOR_lastWidth - (DIRECTOR_rightWidth * 2) ) ) { /* 현재 페이지 X 값이 전체 width와 같아지면 더 넘어가지않게 stop */
+				if ( Math.ceil( -DIRECTOR_translate / DIRECTOR_width ) == ( DIRECTOR_page - 2 ) ) { /* 현재 페이지 X 값이 전체 width와 같아지면 더 넘어가지않게 stop */
 			    	$(".list_box4.DIRECTOR").css({"transform":"translateX(" + ( DIRECTOR_translate + DIRECTOR_rightWidth ) + "px)"});
 					$(".DIRECTOR_list_box_right_div").css({"display":"none"});
 					DIRECTOR_translate = DIRECTOR_lastWidth - DIRECTOR_rightWidth;
@@ -188,7 +188,7 @@ $(function() {
 					$(".StarPoint_list_box_right_div").css({"display":"none"});
 				}
 			} else {
-				if ( StarPoint_translate == ( StarPoint_lastWidth - (StarPoint_rightWidth * 2) ) ) { /* 현재 페이지 X 값이 전체 width와 같아지면 더 넘어가지않게 stop */
+				if ( Math.ceil( -StarPoint_translate / StarPoint_width ) == ( StarPoint_page - 2 ) ) { /* 현재 페이지 X 값이 전체 width와 같아지면 더 넘어가지않게 stop */
 			    	$(".list_box4.StarPoint").css({"transform":"translateX(" + ( StarPoint_translate + StarPoint_rightWidth ) + "px)"});
 					$(".StarPoint_list_box_right_div").css({"display":"none"});
 					StarPoint_translate = StarPoint_lastWidth - StarPoint_rightWidth;
@@ -224,19 +224,22 @@ $(function() {
 		/* 오른쪽버튼 */
 		let collect_RW = -collect_width;
 		let collect_NC = $("#collect").children( $(".list_box_li_collection") ).length /* 현재 불러온 컨텐츠 총 갯수 */
-		let collect_page = collect_NC / 5; /* 표시될 페이지 수 */
+		let collect_page = Math.ceil( collect_NC / 5 ); /* 표시될 페이지 수 */
 		let collect_lastW = collect_RW * (collect_page - 1); /* 전체 width 값 */
 		let collect_NTX = 0; /* 현재 페이지의 translateX 값 */
 		
 	    $("#collect_right").click(function() {
 	    	/*console.log("오른쪽버튼(보여지는 페이지 길이) : " + collect_width);
-	    	console.log("오른쪽버튼(전체 width값) : " + collect_lastW);*/
+	    	console.log("오른쪽버튼(페이지의 수) : " + collect_page);
+	    	console.log("오른쪽버튼(총 컨텐츠 갯수) : " + collect_NC);
+	    	console.log("오른쪽버튼(전체 width값 collect_lastW) : " + collect_lastW);
+			console.log("오른쪽버튼(들어갈 때 -translateX 값 collect_NTX) : " + collect_NTX);*/
 			if ( collect_NTX == 0 ) { /* 오른쪽 넘김버튼 클릭 시 표시되는 width만큼 이동 */
 		    	collect_NTX += collect_RW; /* 이동한 만큼 추가해주기 */
 		    	$(".list_box4.collect").css({"transform":"translateX(" + collect_NTX + "px)"});
 		    	$(".col_list_box_left_div").css({"display":"flex"});
 			} else {
-				if ( collect_NTX == (collect_lastW - collect_RW) ) { /* 현재 페이지 X 값이 전체 width와 같아지면 더 넘어가지않게 stop */
+				if ( Math.ceil( -collect_NTX / collect_width ) == ( collect_page - 2 ) ) { /* 현재 페이지 X 값이 전체 width와 같아지면 더 넘어가지않게 stop */
 			    	collect_NTX += collect_RW; /* 이동한 만큼 추가해주기 */
 			    	$(".list_box4.collect").css({"transform":"translateX(" + collect_lastW + "px)"});
 					$(".col_list_box_right_div").css({"display":"none"});
@@ -245,13 +248,14 @@ $(function() {
 			    	$(".list_box4.collect").css({"transform":"translateX(" + collect_NTX + "px)"});
 				}
 			}
-			/*console.log("오른쪽버튼(현재 페이지의 -translateX 값) : " + collect_NTX);*/
+			/*console.log("오른쪽버튼(현재 페이지의 -translateX 값 collect_NTX) : " + collect_NTX);*/
 	    });
 		
 		/* 왼쪽버튼 */
 		$("#collect_left").click(function() {
 			/*console.log("왼쪽버튼(보여지는 페이지 길이) : " + collect_width);
-	    	console.log("왼쪽버튼(전체 width값) : " + collect_lastW);*/
+	    	console.log("왼쪽버튼(전체 width값) : " + collect_lastW);
+			console.log("왼쪽버튼(들어갈 때 -translateX 값) : " + collect_NTX);*/
 			if ( collect_NTX == collect_lastW ) {
 				$(".list_box4.collect").css({"transform":"translateX(" + (collect_NTX + collect_width) + "px)"});
 				$(".col_list_box_right_div").css({"display":"flex"});
@@ -259,6 +263,7 @@ $(function() {
 			} else if ( collect_NTX > collect_lastW ) {
 				$(".list_box4.collect").css({"transform":"translateX(" + (collect_NTX + collect_width) + "px)"});
 				collect_NTX += collect_width; /* 이동한 만큼 빼주기 */
+				$(".col_list_box_right_div").css({"display":"flex"});
 			}
 			
 			if ( collect_NTX == 0 ) {

@@ -19,4 +19,31 @@
 		insert into wuser values ( 300, #{user_email}, #{user_pw}, #{user_name}, 0, 0, sysdate, 1 )
 	</select>
 	
+		<!-- 코멘트에 해당하는 멤버 1명 가져오기 -->
+	<select id="commentMemberOne" resultType="com.whychapedia.vo.MemberVo">
+		select * from wuser where id = #{user_id}
+	</select>
+
+	<!-- 코멘트에 해당하는 댓글 userList 가져오기 -->
+	<select id="commReplyUserList" resultType="com.whychapedia.vo.MemberVo">
+		select * from wuser where id in 
+			<foreach collection="replyList" item="rlist" open="(" close=")" separator=",">
+				#{rlist.user_id}
+			</foreach>
+	</select>
+	
+	<!-- 코멘트에 해당하는 멤버 list 가져오기 commentVolist순서대로 받으려고 order by case when then 이용-->
+	<select id="commentUserList" resultType="com.whychapedia.vo.MemberVo">
+		select * from wuser where id in 
+			<foreach collection="commentVolist" item="comment" open="(" close=")" separator=",">
+				#{comment.user_id}
+			</foreach> 
+		ORDER BY 
+			case 
+				<foreach collection="commentVolist" item="comment" index="index">
+					when id = #{comment.user_id} then #{index}
+				</foreach>
+			end
+	</select>
+	
 </mapper>

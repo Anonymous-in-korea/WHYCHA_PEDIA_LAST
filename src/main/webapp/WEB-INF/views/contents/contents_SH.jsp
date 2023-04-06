@@ -24,6 +24,7 @@
 		<script src="../js/login.js"></script>
 		<script src="../js/join.js"></script>
 		<script src="../js/contents.js"></script>
+		<script src="../js/contents_SH.js"></script>
 	</head>
 	<body>
 		<div id="root">
@@ -73,26 +74,25 @@
 	                                    </div>
 	                                    <!-- 별점 section ajax start-->
 	                                    <script>
-		                                    $(function(){
-		                                    	
-			                                    $("#star_rating").change(function() {
-			                                    	var selected_star_rate = $("#star_rating option:selected").val();
-			                                    	alert("selected_star_rate : " + selected_star_rate);
-			                                    	$.ajax({
-				                    					type:"post",
-				                    					url:"/contents/movieStarRate",
-				                    					data:{"movie_id":parseInt(${movieVo.id}), "star_rate":parseInt(selected_star_rate)},
-				                    					dataType:"json",
-				                    					//contentType:'application/json',
-				                    					success:function(data){
-				                    						alert("성공");
-				                    					},
-				                    					error:function(){
-				                    						alert("오류로 인해 확인이 되지 않았습니다. 다시 입력해주세요.");
-				                    					}
-				                    				}); //ajax
-		                                    	});
-		                                     });
+	                                    $(function(){	
+	                                        $("#star_rating").change(function() {
+	                                        	var selected_star_rate = $("#star_rating option:selected").val();
+	                                        	alert("selected_star_rate : " + selected_star_rate);
+	                                        	$.ajax({
+	                                    			type:"post",
+	                                    			url:"/contents/MyStarRateChange",
+	                                    			data:{"movie_id":parseInt(${movieVo.id}),"star_rate":parseFloat(selected_star_rate)},
+	                                    			dataType:"json",
+	                                    			//contentType:'application/json',
+	                                    			success:function(data){
+	                                    				if(data[0]!=1)alert("성공");
+	                                    			},
+	                                    			error:function(){
+	                                    				alert("오류로 인해 확인이 되지 않았습니다. 다시 입력해주세요.");
+	                                    			}
+	                                    		}); //ajax
+	                                    	});
+	                                     });
 	                                    </script>
 	                                    <!-- 별점 section ajax end-->
 										<div class="css-1p7n6er-Pane e1svyhwg15">

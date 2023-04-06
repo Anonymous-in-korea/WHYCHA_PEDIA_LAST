@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -32,7 +33,12 @@
 		<div id="layoutSidenav">
 			<div id="layoutSidenav_nav">
 				<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-					<a href="/admin/admin_index"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+					<c:if test="${ adminSessionEmail != null }">
+                	<a href="/admin/admin_index"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+                	</c:if>
+                	<c:if test="${ adminSessionEmail == null }">
+                	<a href="/admin/whycha_pedia_admin_login"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+                	</c:if>
 					<%@ include file="../../fragment/sidefooter.jsp" %>
 					<%@ include file="../../fragment/sidenav.jsp" %>
 				</nav>
@@ -118,45 +124,43 @@
 		                    				</thead>
 		                    				<!-- c:foreach로 반복 돌리기 -->
 		                    				<tbody>
+		                    					<c:if test="${ result == 1 }">
+		                    					<c:forEach items="${ adminReportListAll }" var="reportList">
 		                    					<tr>
-		                    						<td>1</td>
-		                    						<td>신고자1</td>
+		                    						<td>${ reportList.id }</td>
+		                    						<td>${ reportList.user_name }</td>
 		                    						<td>
-		                    							<a href="/admin/4_comment/reported/report_reply">
-		                    								얘쨰럐고~~~~ 예베베베벱~~~ 응 아무고토 모타쥬??
+		                    							<c:forEach items="${ adminCommentListAll }" var="commentList">
+		                    							<c:if test="${ reportList.reported_by_user == commentList.user_id }">
+		                    							<a href="/admin/4_comment/reported/report_reply?id=${ reportList.id }">
+		                    								${ commentList.comment_content }
 		                    							</a>
+		                    							</c:if>
+		                    							</c:forEach>
 		                    						</td>
-		                    						<td>부적절</td>
-		                    						<td>2023-03-10</td>
-		                    						<td>2023-03-20</td>
-		                    						<td>대기중</td>
+		                    						<td>${ reportList.reported_reason }</td>
+		                    						<td>${ reportList.regi_date }</td>
+		                    						<c:if test="${ reportList.report_result != 0 }">
+		                    						<td>${ reportList.processing_date }</td>
+		                    						</c:if>
+		                    						<c:if test="${ reportList.report_result == 0 }">
+		                    						<td> </td>
+		                    						</c:if>
+		                    						<c:if test="${ reportList.report_result == 0 }">
+		                    						<td>처리대기중</td>
+		                    						</c:if>
+		                    						<c:if test="${ reportList.report_result == 1 }">
+		                    						<td>블라인드</td>
+		                    						</c:if>
+		                    						<c:if test="${ reportList.report_result == 2 }">
+		                    						<td>문제없음</td>
+		                    						</c:if>
+		                    						<c:if test="${ reportList.report_result == 3 }">
+		                    						<td>스포일러</td>
+		                    						</c:if>
 		                    					</tr>
-		                    					<tr>
-		                    						<td>2</td>
-		                    						<td>신고자2</td>
-		                    						<td>
-		                    							<a href="/admin/4_comment/reported/report_reply">
-		                    								대댓글
-		                    							</a>
-		                    						</td>
-		                    						<td>부적절</td>
-		                    						<td>2023-03-10</td>
-		                    						<td>2023-03-20</td>
-		                    						<td>대기중</td>
-		                    					</tr>
-		                    					<tr>
-		                    						<td>3</td>
-		                    						<td>신고자3</td>
-		                    						<td>
-		                    							<a href="/admin/4_comment/reported/report_reply">
-		                    								대댓글
-		                    							</a>
-		                    						</td>
-		                    						<td>0</td>
-		                    						<td>2023-03-10</td>
-		                    						<td>2023-03-20</td>
-		                    						<td>대기중</td>
-		                    					</tr>
+		                    					</c:forEach>
+		                    					</c:if>
 		                    				</tbody>
 		                    				<!-- c:foreach로 반복 돌리기 -->
 		                    			</table>

@@ -64,4 +64,10 @@ public class MemberController {
 		return "index_SH";
 	}
 	
+	@RequestMapping("logout")
+	public String logout() {
+		session.invalidate();
+		return "redirect:/";
+	}
+	
 }
