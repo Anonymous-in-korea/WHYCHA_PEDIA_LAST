@@ -1,4 +1,24 @@
 $(function() {
+	/*----------------------------------------------------------- 문제의 Script들 --------------------------------------------------------------*/
+	
+	/* 엔터키를 누르면 회원가입 실행 스크립트 */
+	$("#join_pw").on("keypress", function(event) {
+		if ( event.keyCode == 13 ) {
+			$("#joinBtn").click();
+		}
+	});
+	
+	/* 페이지 URL넘겨주는 스크립트 */
+	const url = window.location.href; // 현재 보고있는 페이지의 URL가져오기
+	const baseUrl = "http://localhost:8000"; // 가져온 URL에서 제거할 부분
+	const inputUrl = $("#redirectUrl"); // URL 결과물을 넣어줄 부분
+
+	inputUrl.val(url.replace(baseUrl, ""));
+	
+	/*----------------------------------------------------------- 문제의 Script들 --------------------------------------------------------------*/
+	
+	
+	
 	/* 회원가입 창 띄우기 */
 	$(".join_button").click(function() {
 		if ( $(".css-14gy7wr-join").css("display") == "none" ) {

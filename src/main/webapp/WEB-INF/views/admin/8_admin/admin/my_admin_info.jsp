@@ -22,17 +22,8 @@
 		<!-- 이거 side_nav 작동하는 script임 -->
         <script src="/js/admin/scripts.js"></script>
         <script src="/js/admin_logout.js"></script>
-        
-        <script>
-			$(document).one("ready", function() {
-				sessionIdPush.submit();
-			});
-        </script>
     </head>
     <body class="sb-nav-fixed">
-    	<form action="/admin/8_admin/admin/my_admin_info" method="post" id="sessionIdPush">
-    		<input type="hidden" name="adminSessionId" id="adminSessionId" value="${ adminSessionId }">
-    	</form>
 	    <div id="layoutSidenav">
 	        <div id="layoutSidenav_nav">
 				<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">

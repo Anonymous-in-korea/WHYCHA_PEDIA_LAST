@@ -30,8 +30,8 @@
 				$("#logout_open_Btn").click(function() {
 					if ( $(".css-14gy7wr").css("display") == "none" ) {
 						$(".css-14gy7wr").show();
-						$(".css-15gy7wr").css({"z-index":"200"});
-						$(".css-14gy7wr").css({"z-index":"99"});
+						$(".css-14gy7wr").css({"z-index":"100"});
+						$(".css-15gy7wr").css({"z-index":"99"});
 					}
 				});
 				

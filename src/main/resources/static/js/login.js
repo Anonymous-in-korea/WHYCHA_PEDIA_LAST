@@ -1,4 +1,24 @@
  $(function() {
+	/*----------------------------------------------------------- 문제의 Script들 --------------------------------------------------------------*/
+	
+	/* 엔터키를 누르면 로그인 실행 스크립트 */
+	$("#user_pw").on("keypress", function(event) {
+		if ( event.keyCode == 13 ) {
+			$("#loginBtn").click();
+		}
+	});
+	
+	/* 페이지 URL넘겨주는 스크립트 */
+	const url = window.location.href; // Replace with your actual URL
+	const baseUrl = "http://localhost:8000"; // Replace with your actual base URL
+	const inputUrl = $("#redirectUrl");
+
+	inputUrl.val(url.replace(baseUrl, ""));
+	
+	/*----------------------------------------------------------- 문제의 Script들 --------------------------------------------------------------*/
+
+
+
 	/* 로그인 창 띄우기 */
 	$(".login_button").click(function() {
 		if ( $(".css-14gy7wr-login").css("display") == "none" ) {
@@ -18,12 +38,7 @@
 	  event.stopPropagation();
 	});
 	
-	/* 엔터키를 누르면 로그인 실행 스크립트 */
-	$("#user_pw").on("keypress", function(event) {
-		if ( event.keycode == 13 ) {
-			alert("test");
-		}
-	});
+	
 	
 	
 	/* 회원가입 버튼 눌렀을 때 start */
@@ -32,6 +47,8 @@
 		$(".css-14gy7wr-join").show();
 	});
 	/* 회원가입 버튼 눌렀을 때 end */
+	
+	
 	
 	
 	/* 로그인 스크립트 start */
