@@ -27,7 +27,7 @@
 		<script src="../js/contents_SH.js"></script>
 	</head>
 	<body>
-		<div id="ajaxMyRate" style="display:none;">${movieVo.id}</div>
+		<div id="ajaxMovieId" style="display:none;">${movieVo.id}</div>
 		<div id="root">
 			<div class="css-5jq76">
 				<div class="css-1xm32e0">
@@ -128,8 +128,9 @@
 	                                                        	<div class="css-s5x9hn-ContentActionDivider e1svyhwg21"></div>
 	                                                        	<!-- 별점 오른쪽 section start -->
 																<div class="css-1xki7ez-ButtonBlock e1svyhwg22">
+																	<!--보고싶어요 시작-->
 																	<c:if test="${ sessionId == null }">
-																	<button class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23" id="wish_btn">
+																			<button class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23" id="wish_btn">
 																	</c:if>
 																	<c:if test="${ sessionId != null }">
 																	<button class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23" id="wish_btn_login">
@@ -141,7 +142,12 @@
 	                                                                	<strong class="text" style="margin-right:15px;">보고싶어요</strong>
 	                                                            	</button>
 	                                                            	<c:if test="${ sessionId == null }">
-	                                                            	<button class="css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm e1svyhwg25" id="comment_btn">
+	                                                            		<c:if test="${ isWishWatch == 1 }"> <!-- 1: 보고싶어요 체크  -->
+	                                                            			<button class="css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm e1svyhwg25" id="comment_btn">
+	                                                            		</c:if>
+	                                                            		<c:if test="${ isWishWatch == 0 }"> <!-- 0: 보고싶어요 안 체크  -->
+	                                                            			<button class="css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm e1svyhwg25" id="comment_btn">
+	                                                            		</c:if>
 	                                                            	</c:if>
 	                                                            	<c:if test="${ sessionId != null }">
 	                                                            	<button class="css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm e1svyhwg25" id="comment_btn_login">
@@ -152,11 +158,17 @@
 		                                                                </div>
 	                                                                	<strong class="text" style="margin-right:15px;">코멘트</strong>
 																	</button>
+																	<!--보는중 시작-->
 																	<c:if test="${ sessionId == null }">
-		                                                            <button class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23" id="watch_btn">
+		                                                            		<button class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23" id="watch_btn">
 																	</c:if>
-																	<c:if test="${ sessionId != null }">
-		                                                            <button class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23" id="watch_btn_login">
+																	<c:if test="${ sessionId != null }"> 
+																		<c:if test="${ isWatching == 1 }"> <!-- 1: 보는중 체크  -->
+		                                                            		<button class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23" id="watch_btn_login">
+		                                                            	</c:if>
+		                                                            	<c:if test="${ isWatching == 0 }"> <!-- 0: 보는중 안체크  -->
+		                                                            		<button class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23" id="watch_btn_login">
+		                                                            	</c:if>
 																	</c:if>
 		                                                                <div class="select_image">
 		                                                                    <img src="/images/eye_icon.png" id="eye_icon" style="display:block;">
@@ -833,56 +845,6 @@
 		                                                                                </li>
 		                                                                                </c:forEach>
 		                                                                                <!-- foreach문 돌릴 부분 동영상 end-->
-		                                                                                <li class="css-1xgzykb-VideoListItem e10pt7681">
-		                                                                                    <div class="css-7wh3a0">
-		                                                                                    	<a href="https://redirect.watcha.com/galaxy/aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g_dj1NeDdrQUEwWVVQMA"
-																									target="_blank" rel="noopener noreferrer" class="css-18apgv4">
-			                                                                                        <div class="css-8g82qf-StyledSelf e1q5rx9q0">
-			                                                                                            <span class="css-bhgne5-StyledBackground e1q5rx9q1"
-			                                                                                                  style="background-image: url(https://img.youtube.com/watch?v=JNL44p5kzTk;);">
-																										</span>
-			                                                                                            <div class="css-1ytinql">
-			                                                                                                <span src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTUiIGZpbGw9IiMwMDAiIGZpbGwtb3BhY2l0eT0iLjUxIi8+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGRiIgZD0iTTE2IDMwYzcuNzMyIDAgMTQtNi4yNjggMTQtMTQgMC03LjczMS02LjI2OC0xNC0xNC0xNFMyIDguMjY5IDIgMTZjMCA3LjczMiA2LjI2OCAxNCAxNCAxNG0wIDJDNy4xNjMgMzIgMCAyNC44MzcgMCAxNiAwIDcuMTY0IDcuMTYzIDAgMTYgMHMxNiA3LjE2NCAxNiAxNmMwIDguODM3LTcuMTYzIDE2LTE2IDE2Ii8+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGRiIgZD0iTTEyIDIyLjA5VjkuOTFhLjUuNSAwIDAgMSAuNzY5LS40MjFsOS41NjggNi4wODlhLjUuNSAwIDAgMSAwIC44NDRsLTkuNTY4IDYuMDlBLjUuNSAwIDAgMSAxMiAyMi4wOSIvPgogICAgPC9nPgo8L3N2Zz4K"
-																												width="24px" height="24px" class="css-kr87ki">
-																											</span>
-			                                                                                            </div>
-			                                                                                        </div>
-			                                                                                        <div class="css-xghows">
-			                                                                                            <div class="css-17y9cpn">
-			                                                                                                <div class=" css-sloxdm-StyledSelf eb5y16b0">
-			                                                                                                    <div class="css-1fucs4t-StyledText eb5y16b1">메인 예고편
-			                                                                                                    </div>
-			                                                                                                </div>
-			                                                                                            </div>
-			                                                                                        </div>
-			                                                                                    </a>
-																							</div>
-		                                                                                </li>
-		                                                                                <li class="css-1xgzykb-VideoListItem e10pt7681">
-		                                                                                    <div class="css-7wh3a0">
-		                                                                                    	<a href="https://redirect.watcha.com/galaxy/aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g_dj1vc0RWUW9oN3lodw"
-																									target="_blank" rel="noopener noreferrer" class="css-18apgv4">
-			                                                                                        <div class="css-8g82qf-StyledSelf e1q5rx9q0">
-			                                                                                            <span class="css-bhgne5-StyledBackground e1q5rx9q1"
-			                                                                                                  style="background-image: url(https://img.youtube.com/watch?v=JNL44p5kzTk;);">
-																										</span>
-			                                                                                            <div class="css-1ytinql">
-			                                                                                                <span src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTUiIGZpbGw9IiMwMDAiIGZpbGwtb3BhY2l0eT0iLjUxIi8+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGRiIgZD0iTTE2IDMwYzcuNzMyIDAgMTQtNi4yNjggMTQtMTQgMC03LjczMS02LjI2OC0xNC0xNC0xNFMyIDguMjY5IDIgMTZjMCA3LjczMiA2LjI2OCAxNCAxNCAxNG0wIDJDNy4xNjMgMzIgMCAyNC44MzcgMCAxNiAwIDcuMTY0IDcuMTYzIDAgMTYgMHMxNiA3LjE2NCAxNiAxNmMwIDguODM3LTcuMTYzIDE2LTE2IDE2Ii8+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGRiIgZD0iTTEyIDIyLjA5VjkuOTFhLjUuNSAwIDAgMSAuNzY5LS40MjFsOS41NjggNi4wODlhLjUuNSAwIDAgMSAwIC44NDRsLTkuNTY4IDYuMDlBLjUuNSAwIDAgMSAxMiAyMi4wOSIvPgogICAgPC9nPgo8L3N2Zz4K"
-																												width="24px" height="24px" class="css-kr87ki">
-																											</span>
-			                                                                                            </div>
-			                                                                                        </div>
-			                                                                                        <div class="css-xghows">
-			                                                                                            <div class="css-17y9cpn">
-			                                                                                                <div class=" css-sloxdm-StyledSelf eb5y16b0">
-			                                                                                                    <div class="css-1fucs4t-StyledText eb5y16b1">뮤직 비디오
-			                                                                                                    </div>
-			                                                                                                </div>
-			                                                                                            </div>
-			                                                                                        </div>
-			                                                                                    </a>
-																							</div>
-		                                                                                </li>
 		                                                                                <div class="css-ml096x"></div>
 		                                                                            </ul>
 		                                                                        </div>
@@ -945,7 +907,7 @@
 			                                                                        <div class="css-ixy093">
 			                                                                            <div class="css-niy0za">${movieSameGenreVo.movie_kor_title}</div>
 			                                                                            <div>
-			                                                                                <div class="css-m9i0qw">${movieSameGenreVo.movie_rating}</div>
+			                                                                                <div class="css-m9i0qw">평균 ★${movieSameGenreVo.movie_rating}</div>
 			                                                                                <div class="css-1vvt4am">누적 관객 ${movieSameGenreVo.movie_total_audience}</div>
 			                                                                            </div>
 			                                                                        </div>
