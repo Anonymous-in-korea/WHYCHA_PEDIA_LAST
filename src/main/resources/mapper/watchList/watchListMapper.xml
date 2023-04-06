@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.whychapedia.mapper.WatchListMapper">
+  
+      <!--해당 영화 해당 유저 보고싶어요 check -->
+	<select id="selectIsWatch" resultType="int">
+ 		select count(*) from watch_list where watch_list_type=#{watch_list_type} and movie_id=#{movie_id} and user_id=#{user_id}
+	</select>
+	
+	
+	
+  </mapper>

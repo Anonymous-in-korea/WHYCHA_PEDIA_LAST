@@ -23,6 +23,7 @@ import com.whychapedia.service.MovieGenreService;
 import com.whychapedia.service.MovieOttService;
 import com.whychapedia.service.MovieService;
 import com.whychapedia.service.StarRateService;
+import com.whychapedia.service.WatchListService;
 import com.whychapedia.vo.MovieActorVo;
 import com.whychapedia.vo.MovieCountryVo;
 import com.whychapedia.vo.MovieDirectorVo;
@@ -31,6 +32,7 @@ import com.whychapedia.vo.MovieGenreVo;
 import com.whychapedia.vo.MovieOttVo;
 import com.whychapedia.vo.MovieVo;
 import com.whychapedia.vo.StarRateVo;
+import com.whychapedia.vo.WatchListVo;
 
 @Controller
 public class ContentsController {
@@ -60,6 +62,13 @@ public class ContentsController {
 	MovieGalleryTrailerService movieGalleryTrailerService;
 	
 	@Autowired
+	MovieOttService movieOttService;
+	
+	@Autowired
+	WatchListService watchListService;
+	
+	
+	@Autowired
 	MovieVo movieVo;
 	
 	@Autowired
@@ -84,8 +93,9 @@ public class ContentsController {
 	MovieOttVo movieOttVo;
 	
 	@Autowired
-	MovieOttService movieOttService;
+	WatchListVo watchListVo;
 	
+
 
 	/*  영화페이지  */
 	@GetMapping("/contents/contents_SH")
@@ -168,8 +178,7 @@ public class ContentsController {
 		/*-------------------------------로그인 전/후 따로-------------------------------------------------*/
 		/*별점 정보 시작*/
 		System.out.println("-------------------start_나의 별점정보-Controller--------------------------------");
-		/* 로그인 전 0으로 default */
-		int my_star_rate=0;		
+		int my_star_rate=0;/* 로그인 전 0으로 default :별점 평가 하기 */		
 		/*로그인 후*/
 		if(session.getAttribute("sessionId")!=null) {
 			Integer sessionId = (Integer) session.getAttribute("sessionId");
@@ -181,13 +190,29 @@ public class ContentsController {
 			if(IsRating!=0)my_star_rate=starRateService.selectMyStarRate(user_id,movie_id);
 			/*평가하기 전 영화 경우 0값으로 디폴트*/
 			else my_star_rate=0;
-		}/*로그인 전*/
-		else my_star_rate=0;
+		}
 		System.out.println("나의 별점:"+my_star_rate);
 		
 		model.addAttribute("my_star_rate",my_star_rate);	
 		System.out.println("-------------------end_나의 별점Controller--------------------------------");
 		/*별점 정보 끝*/
+		
+		/*보고싶어요 && 보는중 시작*/
+		int isWishWatch=0;/* 로그인 전  default 0:보고싶어요 x */	
+		int isWatching=0;/* 로그인 전  default 0:보는중 x */	
+		/*로그인 후*/
+		if(session.getAttribute("sessionId")!=null) {
+			Integer sessionId = (Integer) session.getAttribute("sessionId");
+			int user_id = sessionId.intValue();
+			isWishWatch=watchListService.selectIsWatch(0,movie_id,user_id);
+			System.out.println("보고싶은가?"+isWishWatch);
+			isWatching=watchListService.selectIsWatch(1,movie_id,user_id);
+			System.out.println("보는중?"+isWatching);
+		}
+		model.addAttribute("isWishWatch",isWishWatch);
+		model.addAttribute("isWatching",isWatching);
+		/*보고싶어요 && 보는중 끝*/
+		
 
 		return "/contents/contents_SH";
 	}
