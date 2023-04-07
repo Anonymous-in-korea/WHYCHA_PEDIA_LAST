@@ -9,26 +9,23 @@
 		
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		
-		<link href="/css/admin/styles.css" rel="stylesheet" />
+		<link defer href="/css/admin/styles.css" rel="stylesheet" />
+		<link defer href="/css/admin/5_character/character_manage.css" rel="stylesheet" />
+		<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet"/>
 		
-		<!-- 테이블 정렬하는 css임 -->
-		<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-		<!-- 테이블 정렬하는 css임 -->
+		<script defer src="/js/admin/scripts.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 		
 		<!-- 이거 side_nav 작동하는 script임 -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 		<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 		<!-- 이거 side_nav 작동하는 script임 -->
-        <script src="/js/admin/scripts.js"></script>
-		<script src="/js/admin_logout.js"></script>
 		
-		<style>
-		    a { text-decoration: none; }
-		</style>
+		<script src="/js/admin_logout.js"></script>
 	</head>
 	<body class="sb-nav-fixed">
-	    <div id="layoutSidenav">
-	        <div id="layoutSidenav_nav">
+		<div id="layoutSidenav">
+	    	<div id="layoutSidenav_nav">
 				<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
 					<c:if test="${ adminSessionEmail != null }">
                 	<a href="/admin/admin_index"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
@@ -40,18 +37,18 @@
 					<%@ include file="../fragment/sidenav.jsp" %>
 				</nav>
 			</div>
-            <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid px-4">
-                        <h1 class="mt-4">회원관리</h1>
-                        <div class="row"></div>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i><!--이미지-->
-                                회원관리
-                            </div>
-                            <div class="card-body">
-                                <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
+
+			<div id="layoutSidenav_content">
+				<main>
+					<div class="container-fluid px-4">
+						<h1 class="mt-4">인물관리</h1>
+						<div class="card mb-4">
+							<div class="card-header">
+								<i class="fas fa-table me-1"></i>
+								인물관리
+							</div>
+							<div class="card-body">
+								<div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
 		                    		<div class="datatable-top">
 		                    			<div class="datatable-dropdown">
 		                    				<label>
@@ -65,7 +62,7 @@
 		                    				</label>
 		                    			</div>
 		                    			<div class="datatable-search">
-		                    				<input type="search" title="Search within table" class="datatable-input" placeholder="계정 or 닉네임을 입력하세요."
+		                    				<input type="search" title="Search within table" class="datatable-input" placeholder="이름으로 검색"
 		                    					aria-controls="datatablesSimple">
 		                    			</div>
 		                    		</div>
@@ -73,10 +70,9 @@
 		                    			<table class="datatable-table" id="datatablesSimple">
 		                    				<colgroup>
 												<col width="10%">
-												<col width="22.5%">
-												<col width="22.5%">
-												<col width="22.5%">
-												<col width="22.5%">
+												<col width="30%">
+												<col width="30%">
+												<col width="30%">
 											</colgroup>
 		                    				<thead>
 		                    					<tr>
@@ -87,51 +83,37 @@
 		                    						</th>
 		                    						<th data-sortable="true" style="text-align:center;">
 		                    							<a href="" class="datatable-sorter">
+		                    								프로필사진
+		                    							</a>
+		                    						</th>
+		                    						<th data-sortable="true" style="text-align:center;">
+		                    							<a href="" class="datatable-sorter">
 		                    								이름
 		                    							</a>
 		                    						</th>
 		                    						<th data-sortable="true" style="text-align:center;">
 		                    							<a href="" class="datatable-sorter">
-		                    								회원등급
-		                    							</a>
-		                    						</th>
-		                    						<th data-sortable="true" style="text-align:center;">
-		                    							<a href="" class="datatable-sorter">
-		                    								계정상태
-		                    							</a>
-		                    						</th>
-		                    						<th data-sortable="true" style="text-align:center;">
-		                    							<a href="" class="datatable-sorter">
-		                    								회원등록날짜
+		                    								직업
 		                    							</a>
 		                    						</th>
 		                    					</tr>
 		                    				</thead>
 		                    				<!-- c:foreach로 반복 돌리기 -->
 		                    				<tbody>
-	                    					<c:forEach items="${ memberVo }" var="memberVo">
+		                    					<c:forEach items="${ directorVo }" var="director">
 		                    					<tr>
-		                    						<td>${ memberVo.id }</td>
+		                    						<td>${ director.id }</td>
 		                    						<td>
-		                    							<a href="/admin/6_member/member_detail?id=${ memberVo.id }">
-		                    								${ memberVo.user_name }
+		                    							<a href="/admin/5_character/character_detail">
+		                    								<img src="${ director.artist_post_url }">
 		                    							</a>
 		                    						</td>
-		                    						<c:if test="${ memberVo.user_pic_url != null }">
-		                    						<td>VIP회원</td>
+		                    						<td>${ director.director_name }</td>
+		                    						<c:if test="${ director.id != null }">
+		                    						<td>감독</td>
 		                    						</c:if>
-		                    						<c:if test="${ memberVo.user_pic_url == null }">
-		                    						<td>정회원</td>
-		                    						</c:if>
-		                    						<c:if test="${ memberVo.is_block == 1 }">
-		                    						<td>정상회원</td>
-		                    						</c:if>
-		                    						<c:if test="${ memberVo.is_block == 2 }">
-		                    						<td>정지회원</td>
-		                    						</c:if>
-		                    						<td>${ memberVo.regi_date }</td>
 		                    					</tr>
-	                    					</c:forEach>
+		                    					</c:forEach>
 		                    				</tbody>
 		                    				<!-- c:foreach로 반복 돌리기 -->
 		                    			</table>
@@ -140,11 +122,14 @@
 		                    			<div class="datatable-info">Showing 1 to 7 of 7 entries</div>
 		                    		</div>
 		                    	</div>
-                            </div>
-                        </div>
-                    </div>
-                </main>
-            </div>
-        </div>
-    </body>
+							</div>
+							<div id="MBox">
+								<button id="btn1" onclick="location.href='/admin/5_character/character_input'">인물등록</button>
+							</div>
+						</div>
+					</div>
+				</main>
+			</div>
+		</div>
+	</body>
 </html>

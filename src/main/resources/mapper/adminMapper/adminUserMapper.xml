@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whychapedia.mapper.AdminUserMapper">
+
+	<!-- admin Member List query구문 -->
+	<select id="userMemberSelectAll" resultType="com.whychapedia.vo.MemberVo">
+		select * from ( select rownum rnum, a.* from wuser a order by regi_date desc ) where rnum between 1 and 50
+	</select>
+
+	<!-- admin Member SelectOne query구문 -->
+	<select id="userMemberSelectOne" resultType="com.whychapedia.vo.MemberVo">
+		select * from wuser where id = #{id}
+	</select>
+
+	<!-- admin Member Block query구문 -->
+	<update id="userMemberSelectBlock">
+		update wuser set is_block = 2 where id = #{block_id}
+	</update>
+
+	<!-- admin Member Normal query구문 -->
+	<update id="userMemberSelectNormal">
+		update wuser set is_block = 1 where id = #{block_id}
+	</update>
+
+</mapper>

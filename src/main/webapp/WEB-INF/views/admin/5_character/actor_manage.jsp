@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -26,7 +27,12 @@
 		<div id="layoutSidenav">
 	    	<div id="layoutSidenav_nav">
 				<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-					<a href="/admin/admin_index"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+					<c:if test="${ adminSessionEmail != null }">
+                	<a href="/admin/admin_index"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+                	</c:if>
+                	<c:if test="${ adminSessionEmail == null }">
+                	<a href="/admin/whycha_pedia_admin_login"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+                	</c:if>
 					<%@ include file="../fragment/sidefooter.jsp" %>
 					<%@ include file="../fragment/sidenav.jsp" %>
 				</nav>
@@ -94,36 +100,20 @@
 		                    				</thead>
 		                    				<!-- c:foreach로 반복 돌리기 -->
 		                    				<tbody>
+		                    					<c:forEach items="${ actorVo }" var="actor">
 		                    					<tr>
-		                    						<td>1</td>
+		                    						<td>${ actor.id }</td>
 		                    						<td>
 		                    							<a href="/admin/5_character/character_detail">
-		                    								<img src="/images/slamdunk.jpg">
+		                    								<img src="${ actor.artist_post_url }">
 		                    							</a>
 		                    						</td>
-		                    						<td>잘생긴오이</td>
-		                    						<td>도르마무</td>
+		                    						<td>${ actor.artist_name }</td>
+		                    						<c:if test="${ actor.id != null }">
+		                    						<td>배우</td>
+		                    						</c:if>
 		                    					</tr>
-		                    					<tr>
-		                    						<td>2</td>
-		                    						<td>
-		                    							<a href="/admin/3_contents/movie_view">
-		                    								<img src="/images/slamdunk.jpg">
-		                    							</a>
-		                    						</td>
-		                    						<td>잘생긴오이</td>
-		                    						<td>도르마무</td>
-		                    					</tr>
-		                    					<tr>
-		                    						<td>3</td>
-		                    						<td>
-		                    							<a href="/admin/3_contents/movie_view">
-		                    								<img src="/images/slamdunk.jpg">
-		                    							</a>
-		                    						</td>
-		                    						<td>잘생긴오이</td>
-		                    						<td>도르마무</td>
-		                    					</tr>
+		                    					</c:forEach>
 		                    				</tbody>
 		                    				<!-- c:foreach로 반복 돌리기 -->
 		                    			</table>

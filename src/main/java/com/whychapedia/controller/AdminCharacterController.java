@@ -1,15 +1,47 @@
 package com.whychapedia.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.whychapedia.service.AdminArtistService;
+import com.whychapedia.vo.ArtistVo;
 
 @Controller
 public class AdminCharacterController {
 
-	@GetMapping("admin/5_character/character_manage")
-	public String character_manage() {
-		return "admin/5_character/character_manage";
+	@Autowired
+	ArtistVo artistVo;
+	@Autowired
+	AdminArtistService adminArtistService;
+	
+	
+	
+	@GetMapping("admin/5_character/director_manage")
+	public String director_manage(Model model) {
+		
+		List<ArtistVo> directorVo = adminArtistService.directorSelectAll();
+		if ( directorVo != null ) {
+			model.addAttribute("directorVo", directorVo);
+		}
+		
+		return "admin/5_character/director_manage";
 	}
+	
+	@GetMapping("admin/5_character/actor_manage")
+	public String actor_manage(Model model) {
+		
+		List<ArtistVo> actorVo = adminArtistService.actorSelectAll();
+		if ( actorVo != null ) {
+			model.addAttribute("actorVo", actorVo);
+		}
+		
+		return "admin/5_character/actor_manage";
+	}
+	
 
 	@GetMapping("admin/5_character/character_input")
 	public String character_input() {
