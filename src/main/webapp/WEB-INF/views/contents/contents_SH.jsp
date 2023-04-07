@@ -86,8 +86,14 @@
 		                                                    <div class="css-5qj1gb-ContentActionSection e1svyhwg19">
 		                                                    	<!-- 별점 section start -->
 		                                                        <div class="css-1jlb6q">
-		                                                            <div class="css-yt2kjp">     
+		                                                            <div class="css-yt2kjp">  
+		                                                            	<c:if test="${ sessionId == null }">
 																		<select id="star_rating" style="border:none; text-align:center; item-align:center;">
+																			<option value="0" ${my_star_rate == 0 ? 'selected' : ''} selected>별점평가하기</option>
+																		</select>
+		                                                            	</c:if>
+		                                                            	<c:if test="${ sessionId != null }">
+																		<select id="star_rating_login" style="border:none; text-align:center; item-align:center;">
 																			<option value="0" ${my_star_rate == 0 ? 'selected' : ''}>별점평가하기</option>
 																			<option value="0.5" ${my_star_rate == 0.5 ? 'selected' : ''}>0.5점</option>
 																			<option value="1.0" ${my_star_rate == 1.0 ? 'selected' : ''}>1.0점</option>
@@ -100,7 +106,9 @@
 																			<option value="4.5" ${my_star_rate == 4.5 ? 'selected' : ''}>4.5점</option>
 																			<option value="5.0" ${my_star_rate == 5.0 ? 'selected' : ''}>5.0점</option>
 																		</select>
+		                                                            	</c:if>   
 		                                                            </div>
+		                                                            <c:if test="${ sessionId == null }">
 		                                                            <div id="star_container" class="css-1mbuso5" style="cursor:pointer; width:238px; position:relative;">
 		                                                            	<div style="width:100%; height:38px; margin:5px auto; position:absolute">
 		                                                            		<img src="/images/star.png" class="star_left">
@@ -109,7 +117,7 @@
 		                                                            		<img src="/images/star.png" class="star">
 		                                                            		<img src="/images/star.png" class="star_right">
 		                                                            	</div>
-		                                                            	<div style="width:100%; height:38px; margin:5px auto; position:absolute">
+		                                                            	<div style="width:100%; height:38px; margin:5px auto; position:absolute; display:none;">
 		                                                            		<img src="/images/orange_star_half.png" class="orange_half_left" id="star_rating1">
 		                                                            		<img src="/images/orange_star.png" class="orange_star_left" id="star_rating2">
 		                                                            		<img src="/images/orange_star_half.png" class="orange_half" id="star_rating3">
@@ -122,6 +130,30 @@
 		                                                            		<img src="/images/orange_star.png" class="orange_star_right" id="star_rating10">
 		                                                            	</div>
 		                                                            </div>
+		                                                            </c:if>
+		                                                            <c:if test="${ sessionId != null }">
+		                                                            <div id="star_container_login" class="css-1mbuso5" style="cursor:pointer; width:238px; position:relative;">
+		                                                            	<div style="width:100%; height:38px; margin:5px auto; position:absolute">
+		                                                            		<img src="/images/star.png" class="star_left">
+		                                                            		<img src="/images/star.png" class="star">
+		                                                            		<img src="/images/star.png" class="star">
+		                                                            		<img src="/images/star.png" class="star">
+		                                                            		<img src="/images/star.png" class="star_right">
+		                                                            	</div>
+		                                                            	<div style="width:100%; height:38px; margin:5px auto; position:absolute;">
+		                                                            		<img src="/images/orange_star_half.png" class="orange_half_left" id="star_rating1">
+		                                                            		<img src="/images/orange_star.png" class="orange_star_left" id="star_rating2">
+		                                                            		<img src="/images/orange_star_half.png" class="orange_half" id="star_rating3">
+		                                                            		<img src="/images/orange_star.png" class="orange_star" id="star_rating4">
+		                                                            		<img src="/images/orange_star_half.png" class="orange_half" id="star_rating5">
+		                                                            		<img src="/images/orange_star.png" class="orange_star" id="star_rating6">
+		                                                            		<img src="/images/orange_star_half.png" class="orange_half" id="star_rating7">
+		                                                            		<img src="/images/orange_star.png" class="orange_star" id="star_rating8">
+		                                                            		<img src="/images/orange_star_half.png" class="orange_half_right" id="star_rating9">
+		                                                            		<img src="/images/orange_star.png" class="orange_star_right" id="star_rating10">
+		                                                            	</div>
+		                                                            </div>
+		                                                            </c:if>
 		                                                        </div>
 		                                                        <!-- 별점 section end -->
 		                                                        
@@ -169,7 +201,7 @@
 		                                                                	<img src="/images/pen_icon.png" id="pen_icon" style="display:block;">
 		                                                                	<img src="/images/pen_icon_color.png" id="pen_icon_color" style="display:none;">
 		                                                                </div>
-	                                                                	<strong class="text" style="margin-right:15px; color:#FEAE27;">코멘트</strong>
+	                                                                	<strong class="text" style="margin-right:15px; color:;">코멘트</strong>
 	                                                            	</c:if>
 	                                                            	<c:if test="${ sessionId != null }">
 	                                                            		<button class="css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm e1svyhwg25" id="comment_btn_login">

@@ -5,13 +5,25 @@
 <mapper namespace="com.whychapedia.mapper.AdminArtistMapper">
 
 	<!-- admin Actor List query구문 -->
-	<select id="actorSelectAll" resultType="com.whychapedia.vo.ArtistVo">
-		select * from actor
+	<select id="actorSelectAll" resultType="com.whychapedia.vo.MovieActorVo">
+		select a.*, m.movie_post_url as actor_debut_url from actor a
+		join movie_actor ma ON a.id = ma.actor_id
+		join movie m ON ma.movie_id = m.id
+		where (a.id, m.movie_rating) in
+		( SELECT a.id, max(m.movie_rating) from actor a
+		join movie_actor ma on a.id = ma.actor_id join movie m on ma.movie_id = m.id
+		group by a.id ) order by a.id asc, m.movie_rating desc
 	</select>
 
 	<!-- admin Director List query구문 -->
-	<select id="directorSelectAll" resultType="com.whychapedia.vo.ArtistVo">
-		select * from director
+	<select id="directorSelectAll" resultType="com.whychapedia.vo.MovieDirectorVo">
+		select d.*, m.movie_post_url as director_debut_url from director d
+		join movie_director md on d.id = md.director_id
+		join movie m on md.movie_id = m.id
+		where (d.id, m.movie_rating) in
+		( SELECT d.id, max(m.movie_rating) from director d
+		join movie_director md on d.id = md.director_id join movie m on md.movie_id = m.id
+		group by d.id ) order by d.id, m.movie_rating desc
 	</select>
 
 </mapper>

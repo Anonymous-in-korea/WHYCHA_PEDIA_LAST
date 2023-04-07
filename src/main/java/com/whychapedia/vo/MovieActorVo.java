@@ -19,5 +19,5 @@ public class MovieActorVo {
 	private String actor_role;
 	private String actor_name;
 	private String actor_post_url;
-
+	private String actor_debut_url;
 }

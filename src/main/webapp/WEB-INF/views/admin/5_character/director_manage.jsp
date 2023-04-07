@@ -41,11 +41,11 @@
 			<div id="layoutSidenav_content">
 				<main>
 					<div class="container-fluid px-4">
-						<h1 class="mt-4">인물관리</h1>
+						<h1 class="mt-4">감독 정보관리</h1>
 						<div class="card mb-4">
 							<div class="card-header">
 								<i class="fas fa-table me-1"></i>
-								인물관리
+								감독 정보관리
 							</div>
 							<div class="card-body">
 								<div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
@@ -62,17 +62,18 @@
 		                    				</label>
 		                    			</div>
 		                    			<div class="datatable-search">
-		                    				<input type="search" title="Search within table" class="datatable-input" placeholder="이름으로 검색"
-		                    					aria-controls="datatablesSimple">
+		                    				<button id="btn1" style="width:200px; height:40px; margin-right:15px;" onclick="location.href='/admin/5_character/character_input'">감독정보 등록하기</button>
+		                    				<input type="search" title="Search within table" id="director_search" class="datatable-input" placeholder="이름으로 검색" aria-controls="datatablesSimple">
 		                    			</div>
 		                    		</div>
 		                    		<div class="datatable-container">
 		                    			<table class="datatable-table" id="datatablesSimple">
 		                    				<colgroup>
 												<col width="10%">
-												<col width="30%">
-												<col width="30%">
-												<col width="30%">
+												<col width="25%">
+												<col width="20%">
+												<col width="20%">
+												<col width="25%">
 											</colgroup>
 		                    				<thead>
 		                    					<tr>
@@ -96,6 +97,11 @@
 		                    								직업
 		                    							</a>
 		                    						</th>
+		                    						<th data-sortable="true" style="text-align:center;">
+		                    							<a href="" class="datatable-sorter">
+		                    								평점이 높은 작품
+		                    							</a>
+		                    						</th>
 		                    					</tr>
 		                    				</thead>
 		                    				<!-- c:foreach로 반복 돌리기 -->
@@ -104,14 +110,19 @@
 		                    					<tr>
 		                    						<td>${ director.id }</td>
 		                    						<td>
-		                    							<a href="/admin/5_character/character_detail">
-		                    								<img src="${ director.artist_post_url }">
+		                    							<a href="/admin/5_character/character_detail?id=${ director.id }">
+		                    								<img src="${ director.director_post_url }">
 		                    							</a>
 		                    						</td>
 		                    						<td>${ director.director_name }</td>
 		                    						<c:if test="${ director.id != null }">
 		                    						<td>감독</td>
 		                    						</c:if>
+		                    						<td>
+		                    							<a href="">
+		                    								<img src="${ director.director_debut_url }">
+		                    							</a>
+		                    						</td>
 		                    					</tr>
 		                    					</c:forEach>
 		                    				</tbody>
@@ -122,9 +133,6 @@
 		                    			<div class="datatable-info">Showing 1 to 7 of 7 entries</div>
 		                    		</div>
 		                    	</div>
-							</div>
-							<div id="MBox">
-								<button id="btn1" onclick="location.href='/admin/5_character/character_input'">인물등록</button>
 							</div>
 						</div>
 					</div>
