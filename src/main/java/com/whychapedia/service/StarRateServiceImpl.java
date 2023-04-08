@@ -7,13 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.whychapedia.mapper.StarRateMapper;
+import com.whychapedia.vo.MovieCollectionVo;
+import com.whychapedia.vo.MovieVo;
 import com.whychapedia.vo.StarRateVo;
 
 @Service
 public class StarRateServiceImpl implements StarRateService {
 	
 	@Autowired
-	StarRateVo starRateVO;
+	StarRateVo starRateVo;
 
 	@Autowired
 	StarRateMapper starRateMapper;
@@ -96,6 +98,31 @@ public class StarRateServiceImpl implements StarRateService {
 		        totalStarRateNumber += rate;
 		    }
 		return totalStarRateNumber;
+	}
+
+ 	
+	@Override
+	public List<StarRateVo> selectAllOfIsRated(int loginId, List<MovieVo> movieInCollectionVoList) {
+		List<StarRateVo> starRateList = new ArrayList<>();
+		for (MovieVo movieVo : movieInCollectionVoList) {
+		    // Check if the given user has watched this movie
+		    if (selectIsRating(loginId,movieVo.getId())==1) {
+		    	int userScore = selectMyStarRate(loginId,movieVo.getId());
+		    	starRateVo = new StarRateVo();
+		    	starRateVo.setScore(userScore);
+		    	starRateVo.setMovie_id(movieVo.getId());
+		    	starRateVo.setUser_id(loginId);
+		    	starRateVo.setIsRated(1);
+		    	starRateList.add(starRateVo);
+		    }else {
+		    	starRateVo = new StarRateVo();
+		    	starRateVo.setMovie_id(movieVo.getId());
+		    	starRateVo.setUser_id(loginId);
+		    	starRateVo.setIsRated(0);
+		    	starRateList.add(starRateVo);
+		    }
+		    }
+		return starRateList;
 	}
 
 

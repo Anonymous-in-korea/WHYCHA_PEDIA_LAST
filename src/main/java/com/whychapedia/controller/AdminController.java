@@ -115,14 +115,9 @@ public class AdminController {
 	
 	//admin page (my_admin)
 	@GetMapping("admin/8_admin/admin/my_admin_info")
-	public String my_admin_info() {
-		return "admin/8_admin/admin/my_admin_info";
-	}
-	@RequestMapping("admin/8_admin/admin/my_admin_info")
-	public String my_admin_info(Model model, @RequestParam String adminSessionId) {
+	public String my_admin_info(Model model) {
 		
-		System.out.println(adminSessionId);
-		int id = Integer.parseInt(adminSessionId);
+		int id = (Integer)session.getAttribute("adminSessionId");
 		adminVo = adminMemberService.adminMemberSelectOne(id);
 		if ( adminVo != null ) {
 			model.addAttribute("adminVo", adminVo);
@@ -133,8 +128,20 @@ public class AdminController {
 
 	
 	@GetMapping("admin/8_admin/admin/my_admin_modify")
-	public String my_admin_modify() {
+	public String my_admin_modify(Model model, @RequestParam String id) {
+		model.addAttribute("id", id);
 		return "admin/8_admin/admin/my_admin_modify";
+	}
+	@RequestMapping("admin/8_admin/admin/my_admin_modify")
+	public String my_admin_modify(Model model, @RequestParam String admin_pw, @RequestParam String adminSessionId) {
+		
+		int id = Integer.parseInt(adminSessionId);
+		System.out.println("id : " + id);
+		int result = adminMemberService.adminMemberPwUpdate(id, admin_pw);
+		System.out.println("result : " + result);
+		if ( result == 1 ) { return "admin/0_login/admin_login"; }
+		else { return "admin/8_admin/admin/my_admin_modify"; }
+		
 	}
 	
 	//------------------------------------------------------------- 접속한 관리자 계정관련 end -------------------------------------------------------------------------

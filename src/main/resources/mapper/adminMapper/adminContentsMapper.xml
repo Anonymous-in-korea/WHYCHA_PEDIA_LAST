@@ -5,13 +5,30 @@
 <mapper namespace="com.whychapedia.mapper.AdminContentsMapper">
 
 	<!-- admin contents list query구문 -->
-	<select id="adminContentsList" resultType="com.whychapedia.vo.MovieVo">
+	<select id="adminContents" resultType="com.whychapedia.vo.MovieVo">
 		select * from movie
 	</select>
 
-	<!-- admin artist list query구문 -->
-	<select id="adminArtistList" resultType="com.whychapedia.vo.ArtistVo">
-		select * from movie
+
+
+	<!-- admin director list query구문 -->
+	<select id="adminDirector" resultType="com.whychapedia.vo.MovieDirectorVo">
+		select director_id from movie_director where movie_id = #{id}
 	</select>
-	
+	<!-- admin director_name 가져오기 query구문 -->
+	<select id="adminDirectorName" resultType="com.whychapedia.vo.MovieDirectorVo">
+		select director_name from director where id = #{id}
+	</select>
+
+
+
+	<!-- admin actor list query구문 -->
+	<select id="adminActor" resultType="com.whychapedia.vo.MovieActorVo">
+		select actor_id from movie_actor where actor_id = #{id}
+	</select>
+	<!-- admin actor_name 가져오기 query구문 -->
+	<select id="adminActorName" resultType="com.whychapedia.vo.MovieActorVo">
+		select actor_name from actor where id = #{id}
+	</select>
+
 </mapper>

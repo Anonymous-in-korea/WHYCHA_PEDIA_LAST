@@ -19,5 +19,5 @@ public class MovieDirectorVo {
 	private String director_name;
 	private String director_post_url;
 	private String director_role;
-	
+	private String director_debut_url;
 }

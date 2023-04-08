@@ -39,4 +39,9 @@
 		update admin set admin_position=#{admin_position}, admin_name=#{admin_name}, admin_email=#{admin_email}, admin_pw=#{admin_pw} where id=#{id}
 	</update>
 
+	<!-- my_admin 비밀번호 수정 query구문 -->
+	<update id="adminMemberPwUpdate">
+		update admin set admin_pw=#{admin_pw} where id=#{id}
+	</update>
+
 </mapper>

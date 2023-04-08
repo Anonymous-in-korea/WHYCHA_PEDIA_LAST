@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -26,7 +27,12 @@
 		<div id="layoutSidenav">
 	    	<div id="layoutSidenav_nav">
 				<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-					<a href="/admin/admin_index"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+					<c:if test="${ adminSessionEmail != null }">
+                	<a href="/admin/admin_index"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+                	</c:if>
+                	<c:if test="${ adminSessionEmail == null }">
+                	<a href="/admin/whycha_pedia_admin_login"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+                	</c:if>
 					<%@ include file="../fragment/sidefooter.jsp" %>
 					<%@ include file="../fragment/sidenav.jsp" %>
 				</nav>
@@ -35,11 +41,11 @@
 			<div id="layoutSidenav_content">
 				<main>
 					<div class="container-fluid px-4">
-						<h1 class="mt-4">인물관리</h1>
+						<h1 class="mt-4">배우 정보관리</h1>
 						<div class="card mb-4">
 							<div class="card-header">
 								<i class="fas fa-table me-1"></i>
-								인물관리
+								배우 정보관리
 							</div>
 							<div class="card-body">
 								<div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
@@ -56,17 +62,18 @@
 		                    				</label>
 		                    			</div>
 		                    			<div class="datatable-search">
-		                    				<input type="search" title="Search within table" class="datatable-input" placeholder="이름으로 검색"
-		                    					aria-controls="datatablesSimple">
+											<button id="btn1" style="width:200px; height:40px; margin-right:15px;" onclick="location.href='/admin/5_character/character_input'">배우정보 등록하기</button>
+		                    				<input type="search" title="Search within table" id="actor_search" class="datatable-input" placeholder="이름으로 검색" aria-controls="datatablesSimple">
 		                    			</div>
 		                    		</div>
 		                    		<div class="datatable-container">
 		                    			<table class="datatable-table" id="datatablesSimple">
 		                    				<colgroup>
 												<col width="10%">
-												<col width="30%">
-												<col width="30%">
-												<col width="30%">
+												<col width="25%">
+												<col width="20%">
+												<col width="20%">
+												<col width="25%">
 											</colgroup>
 		                    				<thead>
 		                    					<tr>
@@ -90,40 +97,34 @@
 		                    								직업
 		                    							</a>
 		                    						</th>
+		                    						<th data-sortable="true" style="text-align:center;">
+		                    							<a href="" class="datatable-sorter">
+		                    								평점이 높은 작품
+		                    							</a>
+		                    						</th>
 		                    					</tr>
 		                    				</thead>
 		                    				<!-- c:foreach로 반복 돌리기 -->
 		                    				<tbody>
+		                    					<c:forEach items="${ actorVo }" var="actor">
 		                    					<tr>
-		                    						<td>1</td>
+		                    						<td>${ actor.id }</td>
 		                    						<td>
-		                    							<a href="/admin/5_character/character_detail">
-		                    								<img src="/images/slamdunk.jpg">
+		                    							<a href="/admin/5_character/character_detail?id=${ actor.id }">
+		                    								<img src="${ actor.actor_post_url }">
 		                    							</a>
 		                    						</td>
-		                    						<td>잘생긴오이</td>
-		                    						<td>도르마무</td>
-		                    					</tr>
-		                    					<tr>
-		                    						<td>2</td>
+		                    						<td>${ actor.actor_name }</td>
+		                    						<c:if test="${ actor.id != null }">
+		                    						<td>배우</td>
+		                    						</c:if>
 		                    						<td>
-		                    							<a href="/admin/3_contents/movie_view">
-		                    								<img src="/images/slamdunk.jpg">
+		                    							<a href="">
+		                    								<img src="${ actor.actor_debut_url }">
 		                    							</a>
 		                    						</td>
-		                    						<td>잘생긴오이</td>
-		                    						<td>도르마무</td>
 		                    					</tr>
-		                    					<tr>
-		                    						<td>3</td>
-		                    						<td>
-		                    							<a href="/admin/3_contents/movie_view">
-		                    								<img src="/images/slamdunk.jpg">
-		                    							</a>
-		                    						</td>
-		                    						<td>잘생긴오이</td>
-		                    						<td>도르마무</td>
-		                    					</tr>
+		                    					</c:forEach>
 		                    				</tbody>
 		                    				<!-- c:foreach로 반복 돌리기 -->
 		                    			</table>
@@ -133,9 +134,7 @@
 		                    		</div>
 		                    	</div>
 							</div>
-							<div id="MBox">
-								<button id="btn1" onclick="location.href='/admin/5_character/character_input'">인물등록</button>
-							</div>
+							
 						</div>
 					</div>
 				</main>

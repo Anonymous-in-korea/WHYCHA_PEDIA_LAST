@@ -20,7 +20,7 @@ public class MovieCollectionServiceImpl implements MovieCollectionService {
 	@Autowired
 	CollectionVo collectionVO;
 
-	// 와이챠 피디아 무비_컬레션 각각의 vo 데리고 오기 즉, 각 컬렉션마다 영화 아이디 불러오기
+	// 무비_컬레션 각각의 vo 데리고 오기 즉, 각 컬렉션마다 영화 아이디 불러오기
 	@Override
 	public List<MovieCollectionVo> selectCollectionVoList(List<CollectionVo> CollectionVoList) {
 		List<MovieCollectionVo> collectionVoList = movieCollectionMapper.selectCollectionVoList(CollectionVoList);
@@ -82,6 +82,13 @@ public class MovieCollectionServiceImpl implements MovieCollectionService {
 		System.out.println("selectCollectionVoPartList" + selectCollectionVoPartList.toString());
 
 		return selectCollectionVoPartList;
+	}
+
+	//해당 컬렉션 영화 모두 가져오기 
+	@Override
+	public List<MovieCollectionVo> selectOneCollectionVoList(int collection_id) {
+		List<MovieCollectionVo> selectOneCollectionVoList=movieCollectionMapper.selectOneCollectionVoList(collection_id);
+		return selectOneCollectionVoList;
 	}
 
 }

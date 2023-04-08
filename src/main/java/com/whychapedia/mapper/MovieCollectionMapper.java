@@ -10,7 +10,9 @@ import com.whychapedia.vo.MovieCollectionVo;
 @Mapper
 public interface MovieCollectionMapper {
 
-	//와이챠 피디아 무비_컬레션 각각의 vo 데리고 오기 즉, 각 컬렉션마다 영화 아이디 불러오기
+	//컬렉션 list에 담긴 영화 list 가져오기 
 	List<MovieCollectionVo> selectCollectionVoList(List<CollectionVo> collectionVoList);
+	//컬렉션에 담긴 영화 list 가져오기
+	List<MovieCollectionVo> selectOneCollectionVoList(int collection_id);
 
 }

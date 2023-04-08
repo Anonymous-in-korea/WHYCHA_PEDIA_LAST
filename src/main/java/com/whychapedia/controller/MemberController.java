@@ -20,7 +20,7 @@ public class MemberController {
 	HttpSession session;
 
 	@RequestMapping("/")
-	public String login(Model model, @RequestParam String user_email, @RequestParam String user_pw) {
+	public String login(Model model, @RequestParam String user_email, @RequestParam String user_pw, @RequestParam String redirectUrl) {
 		int result = 0;
 		MemberVo memberVo = memberService.memberSelectOne(user_email, user_pw);
 		if ( memberVo != null ) {
@@ -34,15 +34,8 @@ public class MemberController {
 		}
 		model.addAttribute("result", result);
 		
-		/*
-		 * , @RequestParam(value = "redirectUrl", required = false) String redirectUrl
-		 */
-		/*
-		 * if (redirectUrl != null && !redirectUrl.isEmpty()) { return "redirect:" +
-		 * redirectUrl; } else { return "redirect:/"; }
-		 */
-		
-		return "index_SH";
+		if (redirectUrl != null && !redirectUrl.isEmpty()) { return "redirect:" + redirectUrl; }
+		else { return "redirect:index_SH"; }
 	}
 	
 	@RequestMapping("join")

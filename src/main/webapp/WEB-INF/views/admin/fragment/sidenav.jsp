@@ -62,7 +62,8 @@
 		
 		<div class="collapse" id="collapseLayouts_character" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 			<nav class="sb-sidenav-menu-nested nav">
-				<a class="nav-link" href="/admin/5_character/character_manage">감독/배우 관리</a>
+				<a class="nav-link" href="/admin/5_character/director_manage">감독 정보관리</a>
+				<a class="nav-link" href="/admin/5_character/actor_manage">배우 정보관리</a>
 			</nav>
 		</div>
 

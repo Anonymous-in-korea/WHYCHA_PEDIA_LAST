@@ -17,5 +17,7 @@ public class CollectionVo {
 	private int user_id;
 	private String collection_name;
 	private String collection_desc;
+	private int like_count;
+	private int comment_count;
 
 }

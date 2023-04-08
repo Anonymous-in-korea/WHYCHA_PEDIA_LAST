@@ -90,6 +90,28 @@ public class MovieServiceImpl implements MovieService {
 		List<MovieVo> selectMovieWithSameGenre=movieMapper.selectMovieWithSameGenre(num,genre_id);
 		return selectMovieWithSameGenre;
 	}
+
+	//영화에 개인 평가 점수와 평가했는지 안했는지 넣기
+	@Override
+	public List<MovieVo> insertStarRateInfo(List<MovieVo> movieInCollectionVoList, List<StarRateVo> ratedList) {
+		List<MovieVo> updatedMovieList = new ArrayList<>();
+		 for (MovieVo movie : movieInCollectionVoList) {
+		        updatedMovieList.add(movie);
+		    }
+		 for (StarRateVo rating : ratedList) {
+			 for(MovieVo movie : updatedMovieList) {
+				 if(movie.getId()==rating.getMovie_id()) {
+					 movie.setScoreOfUser(rating.getScore());
+					 movie.setIs_rated(rating.getIsRated());
+					 break;
+				 }
+			 }
+		 }
+		return updatedMovieList;
+	}
+	
+	
+
 	
 
 

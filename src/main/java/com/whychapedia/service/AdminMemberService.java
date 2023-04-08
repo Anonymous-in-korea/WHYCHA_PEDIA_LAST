@@ -20,4 +20,6 @@ public interface AdminMemberService {
 
 	public int adminMemberModify(int id, String admin_email, String admin_pw, String admin_name, int admin_position); // admin 계정수정 메서드
 
+	public int adminMemberPwUpdate(int id, String admin_pw); // my_admin 비밀번호 수정 메서드
+
 }

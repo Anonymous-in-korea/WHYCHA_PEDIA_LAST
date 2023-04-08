@@ -105,7 +105,7 @@ public class FrontController {
 		//와이챠피디아 컬렉션
 		System.out.println("-------------------Start_와이챠피디아 컬렉션 평점-controller--------------------------------");
 		//user3번의 collectionVList 가져오기
-		List<CollectionVo> WhychaCollectionVoList=collectionService.collectionList(3);
+		List<CollectionVo> WhychaCollectionVoList=collectionService.selectCollectionList(3);
 		System.out.println("index(controller):WhychaCollectionVoList size()"+WhychaCollectionVoList.size());
 		model.addAttribute("WhychaCollectionVoList", WhychaCollectionVoList);
 		List<MovieCollectionVo> WhychaMovieCollectionVoList=movieCollectionService.selectCollectionVoList(WhychaCollectionVoList);

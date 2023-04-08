@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -50,8 +49,10 @@
 												<div color="#9A7D69" class="css-mainn9-LeftBackground e1svyhwg6"></div>
 												<div class="css-92c08v-BlurPoster e1svyhwg4">
 													<img id="background-poster-image" src="${movieVo.background_post_url}" alt="Poster Image">
-													<!--<div color="#9A7D69" class="css-16kdtrk-LeftGradient e1svyhwg8"></div> -->
-													<!--<div color="#D1B99F" class="css-1x8lfzg-RightGradient e1svyhwg9"></div> -->
+													<!-- 포스터 백그라운드 그라데이션부분 -->
+													<div color="#9A7D69" class="css-16kdtrk-LeftGradient e1svyhwg8"></div>
+													<div color="#D1B99F" class="css-1x8lfzg-RightGradient e1svyhwg9"></div>
+													<!-- 포스터 백그라운드 그라데이션부분 -->
 												</div>
 												<div color="#D1B99F" class="css-194pp5q-RightBackground e1svyhwg7"></div>
 												<div class="css-1ubeqqm-DimmedLayer e1svyhwg3"></div>
@@ -85,8 +86,14 @@
 		                                                    <div class="css-5qj1gb-ContentActionSection e1svyhwg19">
 		                                                    	<!-- 별점 section start -->
 		                                                        <div class="css-1jlb6q">
-		                                                            <div class="css-yt2kjp">     
+		                                                            <div class="css-yt2kjp">  
+		                                                            	<c:if test="${ sessionId == null }">
 																		<select id="star_rating" style="border:none; text-align:center; item-align:center;">
+																			<option value="0" ${my_star_rate == 0 ? 'selected' : ''} selected>별점평가하기</option>
+																		</select>
+		                                                            	</c:if>
+		                                                            	<c:if test="${ sessionId != null }">
+																		<select id="star_rating_login" style="border:none; text-align:center; item-align:center;">
 																			<option value="0" ${my_star_rate == 0 ? 'selected' : ''}>별점평가하기</option>
 																			<option value="0.5" ${my_star_rate == 0.5 ? 'selected' : ''}>0.5점</option>
 																			<option value="1.0" ${my_star_rate == 1.0 ? 'selected' : ''}>1.0점</option>
@@ -99,7 +106,9 @@
 																			<option value="4.5" ${my_star_rate == 4.5 ? 'selected' : ''}>4.5점</option>
 																			<option value="5.0" ${my_star_rate == 5.0 ? 'selected' : ''}>5.0점</option>
 																		</select>
+		                                                            	</c:if>   
 		                                                            </div>
+		                                                            <c:if test="${ sessionId == null }">
 		                                                            <div id="star_container" class="css-1mbuso5" style="cursor:pointer; width:238px; position:relative;">
 		                                                            	<div style="width:100%; height:38px; margin:5px auto; position:absolute">
 		                                                            		<img src="/images/star.png" class="star_left">
@@ -108,7 +117,7 @@
 		                                                            		<img src="/images/star.png" class="star">
 		                                                            		<img src="/images/star.png" class="star_right">
 		                                                            	</div>
-		                                                            	<div style="width:100%; height:38px; margin:5px auto; position:absolute">
+		                                                            	<div style="width:100%; height:38px; margin:5px auto; position:absolute; display:none;">
 		                                                            		<img src="/images/orange_star_half.png" class="orange_half_left" id="star_rating1">
 		                                                            		<img src="/images/orange_star.png" class="orange_star_left" id="star_rating2">
 		                                                            		<img src="/images/orange_star_half.png" class="orange_half" id="star_rating3">
@@ -121,6 +130,30 @@
 		                                                            		<img src="/images/orange_star.png" class="orange_star_right" id="star_rating10">
 		                                                            	</div>
 		                                                            </div>
+		                                                            </c:if>
+		                                                            <c:if test="${ sessionId != null }">
+		                                                            <div id="star_container_login" class="css-1mbuso5" style="cursor:pointer; width:238px; position:relative;">
+		                                                            	<div style="width:100%; height:38px; margin:5px auto; position:absolute">
+		                                                            		<img src="/images/star.png" class="star_left">
+		                                                            		<img src="/images/star.png" class="star">
+		                                                            		<img src="/images/star.png" class="star">
+		                                                            		<img src="/images/star.png" class="star">
+		                                                            		<img src="/images/star.png" class="star_right">
+		                                                            	</div>
+		                                                            	<div style="width:100%; height:38px; margin:5px auto; position:absolute;">
+		                                                            		<img src="/images/orange_star_half.png" class="orange_half_left" id="star_rating1">
+		                                                            		<img src="/images/orange_star.png" class="orange_star_left" id="star_rating2">
+		                                                            		<img src="/images/orange_star_half.png" class="orange_half" id="star_rating3">
+		                                                            		<img src="/images/orange_star.png" class="orange_star" id="star_rating4">
+		                                                            		<img src="/images/orange_star_half.png" class="orange_half" id="star_rating5">
+		                                                            		<img src="/images/orange_star.png" class="orange_star" id="star_rating6">
+		                                                            		<img src="/images/orange_star_half.png" class="orange_half" id="star_rating7">
+		                                                            		<img src="/images/orange_star.png" class="orange_star" id="star_rating8">
+		                                                            		<img src="/images/orange_star_half.png" class="orange_half_right" id="star_rating9">
+		                                                            		<img src="/images/orange_star.png" class="orange_star_right" id="star_rating10">
+		                                                            	</div>
+		                                                            </div>
+		                                                            </c:if>
 		                                                        </div>
 		                                                        <!-- 별점 section end -->
 		                                                        
@@ -128,66 +161,111 @@
 	                                                        	<div class="css-s5x9hn-ContentActionDivider e1svyhwg21"></div>
 	                                                        	<!-- 별점 오른쪽 section start -->
 																<div class="css-1xki7ez-ButtonBlock e1svyhwg22">
-																	<!--보고싶어요 시작-->
+																
+																
+																	<!-- 보고싶어요 start -->
 																	<c:if test="${ sessionId == null }">
-																			<button class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23" id="wish_btn">
-																	</c:if>
-																	<c:if test="${ sessionId != null }">
-																	<button class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23" id="wish_btn_login">
-																	</c:if>
+																		<button class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23" id="wish_btn">
                                                                 		<div class="select_image">
                                                                 			<img src="/images/plus_icon.png" id="plus_icon" style="display:block;">
                                                                 			<img src="/images/wish_flag_icon.png" id="wish_flag_icon" style="display:none;">
                                                                 		</div>
-	                                                                	<strong class="text" style="margin-right:15px;">보고싶어요</strong>
-	                                                            	</button>
-	                                                            	<c:if test="${ sessionId == null }">
-	                                                            		<c:if test="${ isWishWatch == 1 }"> <!-- 1: 보고싶어요 체크  -->
-	                                                            			<button class="css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm e1svyhwg25" id="comment_btn">
+	                                                                	<strong id="wish_text" style="margin-right:15px;">보고싶어요</strong>
+																	</c:if>
+																	<c:if test="${ sessionId != null }">
+																		<c:if test="${ isWishWatch == 1 }"> <!-- 1: 보고싶어요 체크  -->
+	                                                            			<button class="css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm e1svyhwg25 active" id="wish_btn_login">
+	                                                                		<div class="select_image">
+	                                                                			<img src="/images/plus_icon.png" id="plus_icon" style="display:none;">
+	                                                                			<img src="/images/wish_flag_icon.png" id="wish_flag_icon" style="display:block;">
+	                                                                		</div>
+		                                                                	<strong id="wish_text" style="margin-right:15px; color:#FEAE27;">보고싶어요</strong>
 	                                                            		</c:if>
 	                                                            		<c:if test="${ isWishWatch == 0 }"> <!-- 0: 보고싶어요 안 체크  -->
-	                                                            			<button class="css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm e1svyhwg25" id="comment_btn">
+	                                                            			<button class="css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm e1svyhwg25" id="wish_btn_login">
+	                                                                		<div class="select_image">
+	                                                                			<img src="/images/plus_icon.png" id="plus_icon" style="display:block;">
+	                                                                			<img src="/images/wish_flag_icon.png" id="wish_flag_icon" style="display:none;">
+	                                                                		</div>
+		                                                                	<strong id="wish_text" style="margin-right:15px; color:;">보고싶어요</strong>
 	                                                            		</c:if>
-	                                                            	</c:if>
-	                                                            	<c:if test="${ sessionId != null }">
-	                                                            	<button class="css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm e1svyhwg25" id="comment_btn_login">
-	                                                            	</c:if>
+																	</c:if>
+	                                                            	</button>
+	                                                            	
+	                                                            	
+	                                                            	
+	                                                            	<!-- 코멘트 start -->
+	                                                            	<c:if test="${ sessionId == null }">
+	                                                            		<button class="css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm e1svyhwg25" id="comment_btn">
 		                                                                <div class="select_image">
 		                                                                	<img src="/images/pen_icon.png" id="pen_icon" style="display:block;">
 		                                                                	<img src="/images/pen_icon_color.png" id="pen_icon_color" style="display:none;">
 		                                                                </div>
-	                                                                	<strong class="text" style="margin-right:15px;">코멘트</strong>
+	                                                                	<strong class="text" style="margin-right:15px; color:;">코멘트</strong>
+	                                                            	</c:if>
+	                                                            	<c:if test="${ sessionId != null }">
+	                                                            		<button class="css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm e1svyhwg25" id="comment_btn_login">
+		                                                                <div class="select_image">
+		                                                                	<img src="/images/pen_icon.png" id="pen_icon" style="display:block;">
+		                                                                	<img src="/images/pen_icon_color.png" id="pen_icon_color" style="display:none;">
+		                                                                </div>
+	                                                                	<strong id="comment_text" style="margin-right:15px; color:;">코멘트</strong>
+	                                                            	</c:if>
 																	</button>
-																	<!--보는중 시작-->
+																	
+																	
+																	
+																	<!-- 보는중 start -->
 																	<c:if test="${ sessionId == null }">
-		                                                            		<button class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23" id="watch_btn">
-																	</c:if>
-																	<c:if test="${ sessionId != null }"> 
-																		<c:if test="${ isWatching == 1 }"> <!-- 1: 보는중 체크  -->
-		                                                            		<button class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23" id="watch_btn_login">
-		                                                            	</c:if>
-		                                                            	<c:if test="${ isWatching == 0 }"> <!-- 0: 보는중 안체크  -->
-		                                                            		<button class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23" id="watch_btn_login">
-		                                                            	</c:if>
-																	</c:if>
+	                                                            		<button class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23" id="watch_btn">
 		                                                                <div class="select_image">
 		                                                                    <img src="/images/eye_icon.png" id="eye_icon" style="display:block;">
 		                                                                    <img src="/images/eye_icon_color.png" id="eye_icon_color" style="display:none;">
 		                                                                </div>
 		                                                                <strong class="text" style="margin-right:15px;">보는중</strong>
+																	</c:if>
+																	<c:if test="${ sessionId != null }"> 
+																		<c:if test="${ isWatching == 1 }"> <!-- 1: 보는중 체크  -->
+		                                                            		<button class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23 active" id="watch_btn_login">
+			                                                                <div class="select_image">
+			                                                                    <img src="/images/eye_icon.png" id="eye_icon" style="display:block;">
+			                                                                    <img src="/images/eye_icon_color.png" id="eye_icon_color" style="display:none;">
+			                                                                </div>
+			                                                                <strong id="watch_text" style="margin-right:15px; color:#FEAE27;">보는중</strong>
+		                                                            	</c:if>
+		                                                            	<c:if test="${ isWatching == 0 }"> <!-- 0: 보는중 안체크  -->
+		                                                            		<button class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23" id="watch_btn_login">
+			                                                                <div class="select_image">
+			                                                                    <img src="/images/eye_icon.png" id="eye_icon" style="display:block;">
+			                                                                    <img src="/images/eye_icon_color.png" id="eye_icon_color" style="display:none;">
+			                                                                </div>
+			                                                                <strong id="watch_text" style="margin-right:15px; color:;">보는중</strong>
+		                                                            	</c:if>
+																	</c:if>
 		                                                            </button>
+		                                                            
+		                                                            
+		                                                            
+		                                                            <!-- 콜렉션 start -->
 		                                                            <c:if test="${ sessionId == null }">
-	                                                            	<button class="css-1u6iefh-StylelessButton-ContentActionButton-ContentMoreButtonOnSm e1svyhwg27" id="collection_btn">
-		                                                            </c:if>
-		                                                            <c:if test="${ sessionId != null }">
-	                                                            	<button class="css-1u6iefh-StylelessButton-ContentActionButton-ContentMoreButtonOnSm e1svyhwg27" id="collection_btn_login">
-		                                                            </c:if>
+		                                                            	<button class="css-1u6iefh-StylelessButton-ContentActionButton-ContentMoreButtonOnSm e1svyhwg27" id="collection_btn">
 	                                                                	<div class="select_image">
 		                                                                    <img src="/images/collection_icon.png" id="collection_icon" style="display:block;">
 		                                                                    <img src="/images/collection_icon_color.png" id="collection_icon_color" style="display:none;">
 		                                                                </div>
-		                                                                <strong class="text">콜렉션</strong>
+		                                                                <strong id="collection_text" style="color:;">콜렉션</strong>
+		                                                            </c:if>
+		                                                            <c:if test="${ sessionId != null }">
+		                                                            	<button class="css-1u6iefh-StylelessButton-ContentActionButton-ContentMoreButtonOnSm e1svyhwg27" id="collection_btn_login">
+	                                                                	<div class="select_image">
+		                                                                    <img src="/images/collection_icon.png" id="collection_icon" style="display:block;">
+		                                                                    <img src="/images/collection_icon_color.png" id="collection_icon_color" style="display:none;">
+		                                                                </div>
+		                                                                <strong id="collection_text" style="color:;">콜렉션</strong>
+		                                                            </c:if>
 		                                                            </button>
+		                                                            
+		                                                            
 		                                                        </div>
 		                                                        <!-- 별점 오른쪽 section end -->
 		                                                    </div>
@@ -203,29 +281,29 @@
 		                                        <div class="css-uvsgck">
 		                                        	
 		                                        	<!-- 보고싶어요 or 보는중 버튼 클릭 시 (로그인 후) start -->
-		                                            <div data-rowindex="1" class="w_exposed_cell css-sd2jre-SectionBlock eue8w0j0" style="display:none;">
+		                                            <div data-rowindex="1" class="w_exposed_cell css-sd2jre-SectionBlock eue8w0j0">
 		                                            	<div class="css-12ru3m0">
 		                                            		<!-- 코멘트 안달았을 때 나타나는 div start -->
-		                                            		<c:if test="코멘트 불러오는게 null일 때">
-		                                                	<section class="css-1v9og64-LeaveCommentSection eue8w0j1">
-		                                                		<div class="css-1gkas1x-Grid e1689zdh0">
-		                                                			<div class="css-1y901al-Row emmoxnt0">
-		                                                				<div class="css-vshgrn-LeaveCommentBlock eue8w0j2">
-		                                                					<h3 class="css-1p0zhfu-Title eue8w0j11">[ sessionName ]님의 생각을 글로 적어보세요.</h3>
-		                                                					<div class="css-1jbrsnx-ButtonBlock eue8w0j12">
-		                                                						<button class="css-2gm869-StylelessButton-MediumButton-LeaveCommentButton eue8w0j10">
-		                                                							코멘트 남기기
-		                                                						</button>
-		                                                					</div>
-		                                                				</div>
-		                                                			</div>
-		                                                		</div>
-		                                                	</section>
+		                                            		<c:if test="${ isWishWatch == 1 || isWatching == 1 }"><!-- 이거 밑에 코멘트 null일때 작동하도록 el태그 걸기 -->
+			                                                	<section class="css-1v9og64-LeaveCommentSection eue8w0j1">
+			                                                		<div class="css-1gkas1x-Grid e1689zdh0">
+			                                                			<div class="css-1y901al-Row emmoxnt0">
+			                                                				<div class="css-vshgrn-LeaveCommentBlock eue8w0j2">
+			                                                					<h3 class="css-1p0zhfu-Title eue8w0j11">[ sessionName ]님의 생각을 글로 적어보세요.</h3>
+			                                                					<div class="css-1jbrsnx-ButtonBlock eue8w0j12">
+			                                                						<button id="comment_write" class="css-2gm869-StylelessButton-MediumButton-LeaveCommentButton eue8w0j10">
+			                                                							코멘트 남기기
+			                                                						</button>
+			                                                					</div>
+			                                                				</div>
+			                                                			</div>
+			                                                		</div>
+			                                                	</section>
 		                                            		</c:if>
 		                                                	<!-- 코멘트 안달았을 때 나타나는 div end -->
 		                                                	
 		                                                	<!-- 코멘트 달았을 때 나타나는 div start -->
-		                                                	<c:if test="코멘트 불러오는게 null이 아닐 때">
+		                                                	<c:if test="${ isWishWatch == 1 || isWatching == 1 }">
 															<div class="css-1gkas1x-Grid e1689zdh0 hasComm">
 																<div class="css-1y901al-Row emmoxnt0">
 																	<section class="css-10tfsfb-MyCommentSection eue8w0j3">

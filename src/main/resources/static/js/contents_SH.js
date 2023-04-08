@@ -1,8 +1,8 @@
 $(function(){	
 /*별점 추가 script start*/ 
-   $("#ajaxMovieId").change(function() {
+   $("#star_rating").change(function() {
     	var star_rate = $("#star_rating option:selected").val();
-    	var movieVoId = $("#ajaxMyRate").text();
+    	var movieVoId = $("#ajaxMovieId").text();
         alert(movieVoId); 
     	alert("selected_star_rate : " + star_rate);
     	$.ajax({

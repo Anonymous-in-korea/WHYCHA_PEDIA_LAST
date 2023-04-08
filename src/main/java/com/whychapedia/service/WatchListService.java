@@ -1,7 +1,14 @@
 package com.whychapedia.service;
 
-public interface WatchListService {
+import java.util.List;
 
+import com.whychapedia.vo.MovieCollectionVo;
+import com.whychapedia.vo.WatchListVo;
+
+public interface WatchListService {
+	
 	int selectIsWatch(int watch_list_type,int movie_id, int user_id);
+
+	
 
 }

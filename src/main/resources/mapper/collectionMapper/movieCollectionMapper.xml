@@ -11,4 +11,11 @@
             </foreach>
         )
 	</select>
+	
+	<!--해당 컬렉션-영화 vo 가져오기 (좋아요/코멘트 # 가져옴)-->
+	<select id="selectOneCollectionVoList" resultType="com.whychapedia.vo.MovieCollectionVo">
+	 	select * from movie_collection where collection_id=#{collection_id} 
+	</select>
+	
+	
 </mapper>

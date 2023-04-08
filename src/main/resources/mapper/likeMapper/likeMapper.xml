@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.whychapedia.mapper.LikeMapper">
-	<!--좋아요 많이 받은 사람 "theNum"만큼 가져오기 -->
+	<!--좋아요 많이 받은 감독 "theNum"만큼 가져오기 -->
 	<select id="selectTopLikeList" resultType="java.lang.Integer">
 				select director_id fROM
 				(SELECT director_id, COUNT(*) as num_likes 
@@ -12,10 +12,12 @@
 				ORDER BY num_likes DESC
 				FETCH FIRST #{theNum} ROWS ONLY)
 	</select>
-		
+	<!-- ##주석 추가 sessionID->USER_ID로 바꿔주세요  -->	
 	<select id="selectActor_like_id" resultType="com.whychapedia.vo.LikeVo">
 		select actor_id from actor_like where user_id=#{sessionId}
 	</select>
+	
+	<!-- ##주석 추가 sessionID->USER_ID로 바꿔주세요  -->
 	<select id="selectDirector_like_id" resultType="com.whychapedia.vo.LikeVo">
 		select director_id from director_like where user_id=#{sessionId}
 	</select>
@@ -33,8 +35,12 @@
 	<insert id="insertLikeOne">
 		insert into comment_like(id, comment_id, user_id) values((select coalesce(max(id),0)+1 from comment_like), #{comment_id}, #{user_id})
 	</insert>
+	
 	<!-- 코멘트 좋아요 삭제 -->
 	<delete id="deleteLikeOne">
 		delete from comment_like where comment_id=#{comment_id} and user_id=#{user_id}
 	</delete>
+	
+
+
 </mapper>

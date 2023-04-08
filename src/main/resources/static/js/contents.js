@@ -30,37 +30,49 @@ $(function() {
 	
 	/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	
+	/* 로그인 전에 별점평가를 누를 때 */
+	$("#star_rating").click(function() {
+		$(".login_button").click();
+	});
+	$("#star_container").click(function() {
+		$(".login_button").click();
+	});
+	
+	$( window ).on(function() {
+		$("#star_rating1").hide(); $("#star_rating2").hide(); $("#star_rating3").hide(); $("#star_rating4").hide(); $("#star_rating5").hide(); $("#star_rating6").hide();
+		$("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
+	});
 	
 	/* 별점 색깔변경 */
-	$("#star_rating").change(function() {
-		if ( $("#star_rating").val() == "" ) { $("#star_rating1").hide(); $("#star_rating2").hide(); $("#star_rating3").hide(); $("#star_rating4").hide();
+	$("#star_rating_login").change(function() {
+		if ( $("#star_rating_login").val() == "0" ) { $("#star_rating1").hide(); $("#star_rating2").hide(); $("#star_rating3").hide(); $("#star_rating4").hide();
         	$("#star_rating5").hide(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
         	
-		} else if ( $("#star_rating").val() == "0.5" ) { $("#star_rating1").show(); $("#star_rating2").hide(); $("#star_rating3").hide(); $("#star_rating4").hide();
+		} else if ( $("#star_rating_login").val() == "0.5" ) { $("#star_rating1").show(); $("#star_rating2").hide(); $("#star_rating3").hide(); $("#star_rating4").hide();
         	$("#star_rating5").hide(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
         	
-        } else if ( $("#star_rating").val() == "1.0" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").hide();
+        } else if ( $("#star_rating_login").val() == "1.0" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").hide();
         	$("#star_rating5").hide(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
         	
-        } else if ( $("#star_rating").val() == "1.5" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").show(); $("#star_rating4").hide();
+        } else if ( $("#star_rating_login").val() == "1.5" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").show(); $("#star_rating4").hide();
         	$("#star_rating5").hide(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
         	
-        } else if ( $("#star_rating").val() == "2.0" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
+        } else if ( $("#star_rating_login").val() == "2.0" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
         	$("#star_rating5").hide(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
         	
-        } else if ( $("#star_rating").val() == "2.5" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
+        } else if ( $("#star_rating_login").val() == "2.5" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
         	$("#star_rating5").show(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
         	
-        } else if ( $("#star_rating").val() == "3.0" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
+        } else if ( $("#star_rating_login").val() == "3.0" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
         	$("#star_rating5").hide(); $("#star_rating6").show(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
         	
-        } else if ( $("#star_rating").val() == "3.5" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
+        } else if ( $("#star_rating_login").val() == "3.5" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
         	$("#star_rating5").hide(); $("#star_rating6").show(); $("#star_rating7").show(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
         	
-        } else if ( $("#star_rating").val() == "4.0" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
+        } else if ( $("#star_rating_login").val() == "4.0" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
         	$("#star_rating5").hide(); $("#star_rating6").show(); $("#star_rating7").hide(); $("#star_rating8").show(); $("#star_rating9").hide(); $("#star_rating10").hide();
         	
-        } else if ( $("#star_rating").val() == "4.5" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
+        } else if ( $("#star_rating_login").val() == "4.5" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
         	$("#star_rating5").hide(); $("#star_rating6").show(); $("#star_rating7").hide(); $("#star_rating8").show(); $("#star_rating9").show(); $("#star_rating10").hide();
         	
         } else { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show(); $("#star_rating5").hide();
@@ -71,41 +83,39 @@ $(function() {
 
 
 	/* 별점 색깔변경 (로그인 후 저장된 별점 불러올 때) */
-	$("#star_rating").change(function() {
-		if ( $("#star_rating").val() == "" ) { $("#star_rating1").hide(); $("#star_rating2").hide(); $("#star_rating3").hide(); $("#star_rating4").hide();
-        	$("#star_rating5").hide(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
-        	
-		} else if ( $("#star_rating").val() == "0.5" ) { $("#star_rating1").show(); $("#star_rating2").hide(); $("#star_rating3").hide(); $("#star_rating4").hide();
-        	$("#star_rating5").hide(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
-        	
-        } else if ( $("#star_rating").val() == "1.0" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").hide();
-        	$("#star_rating5").hide(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
-        	
-        } else if ( $("#star_rating").val() == "1.5" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").show(); $("#star_rating4").hide();
-        	$("#star_rating5").hide(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
-        	
-        } else if ( $("#star_rating").val() == "2.0" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
-        	$("#star_rating5").hide(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
-        	
-        } else if ( $("#star_rating").val() == "2.5" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
-        	$("#star_rating5").show(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
-        	
-        } else if ( $("#star_rating").val() == "3.0" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
-        	$("#star_rating5").hide(); $("#star_rating6").show(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
-        	
-        } else if ( $("#star_rating").val() == "3.5" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
-        	$("#star_rating5").hide(); $("#star_rating6").show(); $("#star_rating7").show(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
-        	
-        } else if ( $("#star_rating").val() == "4.0" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
-        	$("#star_rating5").hide(); $("#star_rating6").show(); $("#star_rating7").hide(); $("#star_rating8").show(); $("#star_rating9").hide(); $("#star_rating10").hide();
-        	
-        } else if ( $("#star_rating").val() == "4.5" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
-        	$("#star_rating5").hide(); $("#star_rating6").show(); $("#star_rating7").hide(); $("#star_rating8").show(); $("#star_rating9").show(); $("#star_rating10").hide();
-        	
-        } else { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show(); $("#star_rating5").hide();
-        	$("#star_rating6").show(); $("#star_rating7").hide(); $("#star_rating8").show(); $("#star_rating9").hide(); $("#star_rating10").show();
-        }
-    });
+	if ( $("#star_rating_login").val() == "0" ) { $("#star_rating1").hide(); $("#star_rating2").hide(); $("#star_rating3").hide(); $("#star_rating4").hide();
+    	$("#star_rating5").hide(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
+    	
+	} else if ( $("#star_rating_login").val() == "0.5" ) { $("#star_rating1").show(); $("#star_rating2").hide(); $("#star_rating3").hide(); $("#star_rating4").hide();
+    	$("#star_rating5").hide(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
+    	
+    } else if ( $("#star_rating_login").val() == "1.0" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").hide();
+    	$("#star_rating5").hide(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
+    	
+    } else if ( $("#star_rating_login").val() == "1.5" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").show(); $("#star_rating4").hide();
+    	$("#star_rating5").hide(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
+    	
+    } else if ( $("#star_rating_login").val() == "2.0" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
+    	$("#star_rating5").hide(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
+    	
+    } else if ( $("#star_rating_login").val() == "2.5" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
+    	$("#star_rating5").show(); $("#star_rating6").hide(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
+    	
+    } else if ( $("#star_rating_login").val() == "3.0" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
+    	$("#star_rating5").hide(); $("#star_rating6").show(); $("#star_rating7").hide(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
+    	
+    } else if ( $("#star_rating_login").val() == "3.5" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
+    	$("#star_rating5").hide(); $("#star_rating6").show(); $("#star_rating7").show(); $("#star_rating8").hide(); $("#star_rating9").hide(); $("#star_rating10").hide();
+    	
+    } else if ( $("#star_rating_login").val() == "4.0" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
+    	$("#star_rating5").hide(); $("#star_rating6").show(); $("#star_rating7").hide(); $("#star_rating8").show(); $("#star_rating9").hide(); $("#star_rating10").hide();
+    	
+    } else if ( $("#star_rating_login").val() == "4.5" ) { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show();
+    	$("#star_rating5").hide(); $("#star_rating6").show(); $("#star_rating7").hide(); $("#star_rating8").show(); $("#star_rating9").show(); $("#star_rating10").hide();
+    	
+    } else { $("#star_rating1").hide(); $("#star_rating2").show(); $("#star_rating3").hide(); $("#star_rating4").show(); $("#star_rating5").hide();
+    	$("#star_rating6").show(); $("#star_rating7").hide(); $("#star_rating8").show(); $("#star_rating9").hide(); $("#star_rating10").show();
+    }
 	/* 별점 색깔변경 */
 	
 	
@@ -235,14 +245,11 @@ $(function() {
 				$(this).removeClass("active");
 				$("#eye_icon").css({"display":"block"});
 				$("#eye_icon_color").css({"display":"none"});
-				IsWatching=0; /*보지 않는 중으로 바뀜*/
-				
 			} else {
 				$(this).addClass("active");
 				$("#eye_icon").css({"display":"none"});
 				$("#eye_icon_color").css({"display":"block"});
 				if ( $(".watch_pop_up_background").css("display") == "none" ) { $(".watch_pop_up_background").show(); }
-				IsWatching=1; /*보는중으로 바뀜*/
 			}
 		});
 		
@@ -323,42 +330,43 @@ $(function() {
 			$(".collection_pop_up_background").css("display", "block");
 		});
     	/* 콜렉션 section end */
-	/* 마우스로 클릭하면 색깔변화 (로그인 전) */
+	/* 마우스로 클릭하면 색깔변화 (로그인 전) ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 		
 		
-	/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+	
 		
 		
-	/* 마우스로 클릭하면 색깔변화 (로그인 후) */
-    	/* 보고싶어요_box start */
+	/* 마우스로 클릭하면 색깔변화 (로그인 후) ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+    	/* 보고싶어요_box start ----------------------------------------------------------------------------------------------------------------- */
     	$("#wish_btn_login").on("click", function() {
 			if ( $(this).hasClass("active") ) {
 				$(this).removeClass("active");
 				$("#plus_icon").css({"display":"block"});
 				$("#wish_flag_icon").css({"display":"none"});
+				$("#wish_text").css({"color":""});
 				$(".css-sd2jre-SectionBlock").hide();
 			} else {
 				$(this).addClass("active");
 				$("#plus_icon").css({"display":"none"});
 				$("#wish_flag_icon").css({"display":"block"});
+				$("#wish_text").css({"color":"#FEAE27"});
+				if ( $("#watch_btn_login").hasClass("active") ) {
+					$("#watch_btn_login").removeClass("active");
+					$("#eye_icon").css({"display":"block"});
+					$("#eye_icon_color").css({"display":"none"});
+					$("#watch_text").css({"color":""});
+				}
 				if ( $(".css-sd2jre-SectionBlock").css("display") == "none" ) { $(".css-sd2jre-SectionBlock").show(); }
 			}
 		});
-		/* 보고싶어요_box end */
+		/* 보고싶어요_box end ----------------------------------------------------------------------------------------------------------------- */
 		
 		
-		/* 코멘트_box start */
-		$("#comment_btn_login").on("click", function() {
-			if ($(this).hasClass("active")) {
-				$(this).removeClass("active");
-				$("#pen_icon").css({"display":"block"});
-				$("#pen_icon_color").css({"display":"none"});
-			} else {
-				$(this).addClass("active");
-				$("#pen_icon").css({"display":"none"});
-				$("#pen_icon_color").css({"display":"block"});
-				if ( $(".comment_pop_up2_background").css("display") == "none" ) { $(".comment_pop_up2_background").show(); }
-			}
+		
+		
+		/* 코멘트_box start ----------------------------------------------------------------------------------------------------------------- */
+		$("#comment_write").click(function() {
+			if ( $(".comment_pop_up2_background").css("display") == "none" ) { $(".comment_pop_up2_background").show(); }
 		});
 		
 		/* 코멘트_box 창 내리기 */
@@ -372,40 +380,54 @@ $(function() {
 		});
 		
 		/* 창 내리기 방지 */
-    	$(".comment_content_box2").click(function(e) {
+    	$(".comment_write_pop_up2, .comment_content_box2").click(function(e) {
 			e.stopPropagation();
 			$(".comment_pop_up2_background").css("display", "block");
 		});
-		/* 코멘트_box end */
+		/* 코멘트_box end ----------------------------------------------------------------------------------------------------------------- */
 		
 		
-		/* 보는중_box start */
+		
+		
+		/* 보는중_box start ----------------------------------------------------------------------------------------------------------------- */
 		$("#watch_btn_login").on("click", function() {
 			if ( $(this).hasClass("active") ) {
 				$(this).removeClass("active");
 				$("#eye_icon").css({"display":"block"});
 				$("#eye_icon_color").css({"display":"none"});
+				$("#watch_text").css({"color":""});
 				$(".css-sd2jre-SectionBlock").hide();
 			} else {
 				$(this).addClass("active");
 				$("#eye_icon").css({"display":"none"});
 				$("#eye_icon_color").css({"display":"block"});
+				$("#watch_text").css({"color":"#FEAE27"});
+				if ( $("#wish_btn_login").hasClass("active") ) {
+					$("#wish_btn_login").removeClass("active");
+					$("#plus_icon").css({"display":"block"});
+					$("#wish_flag_icon").css({"display":"none"});
+					$("#wish_text").css({"color":""});
+				}
 				if ( $(".css-sd2jre-SectionBlock").css("display") == "none" ) { $(".css-sd2jre-SectionBlock").show(); }
 			}
 		});
-		/* 보는중_box end */
+		/* 보는중_box end ----------------------------------------------------------------------------------------------------------------- */
 		
 		
-		/* 콜렉션_box start */
+		
+		
+		/* 콜렉션_box start ----------------------------------------------------------------------------------------------------------------- */
 		$("#collection_btn_login").on("click", function() {
 			if ($("#collection_btn_login").hasClass("active")) {
 				$("#collection_btn_login").removeClass("active");
 				$("#collection_icon").css({"display":"block"});
 				$("#collection_icon_color").css({"display":"none"});
+				$("#collection_text").css({"color":""});
 			} else {
 				$("#collection_btn_login").addClass("active");
 				$("#collection_icon").css({"display":"none"});
 				$("#collection_icon_color").css({"display":"block"});
+				$("#collection_text").css({"color":"#FEAE27"});
 				if ( $(".collection_pop_up2_background").css("display") == "none" ) { $(".collection_pop_up2_background").show(); }
 			}
 		});
@@ -417,6 +439,7 @@ $(function() {
 				$("#collection_btn").removeClass("active");
 				$("#collection_icon").css({"display":"block"});
 				$("#collection_icon_color").css({"display":"none"});
+				$("#collection_text").css({"color":""});
 			}
 		});
 		
@@ -425,14 +448,8 @@ $(function() {
 			e.stopPropagation();
 			$(".collection_pop_up2_background").css("display", "block");
 		});
-		/* 콜렉션_box end */
+		/* 콜렉션_box end ----------------------------------------------------------------------------------------------------------------- */
 		
-	/* 마우스로 클릭하면 색깔변화 (로그인 후) */
+	/* 마우스로 클릭하면 색깔변화 (로그인 후) --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 	
-	/* 페이지 URL 넘겨주는 스크립트 start */
-	let url = window.location.href;
-	let pageName = url.substring( url.indexOf("/", 7) + 1 );
-	$( "#redirectUrl" ).val( pageName );
-	console.log( pageName );
-	/* 페이지 URL 넘겨주는 스크립트 end */
 });

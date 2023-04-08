@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -29,7 +30,12 @@
 	    <div id="layoutSidenav">
 	        <div id="layoutSidenav_nav">
 				<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-					<a href="/admin/admin_index"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+					<c:if test="${ adminSessionEmail != null }">
+                	<a href="/admin/admin_index"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+                	</c:if>
+                	<c:if test="${ adminSessionEmail == null }">
+                	<a href="/admin/whycha_pedia_admin_login"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+                	</c:if>
 					<%@ include file="../fragment/sidefooter.jsp" %>
 					<%@ include file="../fragment/sidenav.jsp" %>
 				</nav>
@@ -38,8 +44,7 @@
                 <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">회원관리</h1>
-                        <div class="row">
-                        </div>
+                        <div class="row"></div>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i><!--이미지-->
@@ -68,11 +73,10 @@
 		                    			<table class="datatable-table" id="datatablesSimple">
 		                    				<colgroup>
 												<col width="10%">
-												<col width="30%">
-												<col width="20%">
-												<col width="10%">
-												<col width="10%">
-												<col width="20%">
+												<col width="22.5%">
+												<col width="22.5%">
+												<col width="22.5%">
+												<col width="22.5%">
 											</colgroup>
 		                    				<thead>
 		                    					<tr>
@@ -88,64 +92,46 @@
 		                    						</th>
 		                    						<th data-sortable="true" style="text-align:center;">
 		                    							<a href="" class="datatable-sorter">
+		                    								회원등급
+		                    							</a>
+		                    						</th>
+		                    						<th data-sortable="true" style="text-align:center;">
+		                    							<a href="" class="datatable-sorter">
 		                    								계정상태
 		                    							</a>
 		                    						</th>
 		                    						<th data-sortable="true" style="text-align:center;">
 		                    							<a href="" class="datatable-sorter">
-		                    								경고횟수
-		                    							</a>
-		                    						</th>
-		                    						<th data-sortable="true" style="text-align:center;">
-		                    							<a href="" class="datatable-sorter">
-		                    								정지횟수
-		                    							</a>
-		                    						</th>
-		                    						<th data-sortable="true" style="text-align:center;">
-		                    							<a href="" class="datatable-sorter">
-		                    								정지해제날짜
+		                    								회원등록날짜
 		                    							</a>
 		                    						</th>
 		                    					</tr>
 		                    				</thead>
 		                    				<!-- c:foreach로 반복 돌리기 -->
 		                    				<tbody>
+	                    					<c:forEach items="${ memberVo }" var="memberVo">
 		                    					<tr>
-		                    						<td>1</td>
+		                    						<td>${ memberVo.id }</td>
 		                    						<td>
-		                    							<a href="/admin/6_member/member_detail">
-		                    								잘생긴 오이
+		                    							<a href="/admin/6_member/member_detail?id=${ memberVo.id }">
+		                    								${ memberVo.user_name }
 		                    							</a>
 		                    						</td>
+		                    						<c:if test="${ memberVo.user_pic_url != null }">
+		                    						<td>VIP회원</td>
+		                    						</c:if>
+		                    						<c:if test="${ memberVo.user_pic_url == null }">
 		                    						<td>정회원</td>
-		                    						<td>2</td>
-		                    						<td>1</td>
-		                    						<td>2023-03-10</td>
+		                    						</c:if>
+		                    						<c:if test="${ memberVo.is_block == 1 }">
+		                    						<td>정상회원</td>
+		                    						</c:if>
+		                    						<c:if test="${ memberVo.is_block == 2 }">
+		                    						<td>정지회원</td>
+		                    						</c:if>
+		                    						<td>${ memberVo.regi_date }</td>
 		                    					</tr>
-		                    					<tr>
-		                    						<td>2</td>
-		                    						<td>
-		                    							<a href="/admin/6_member/member_detail">
-		                    								잘생긴 오이
-		                    							</a>
-		                    						</td>
-		                    						<td>정회원</td>
-		                    						<td>2</td>
-		                    						<td>1</td>
-		                    						<td>2023-03-10</td>
-		                    					</tr>
-		                    					<tr>
-		                    						<td>3</td>
-		                    						<td>
-		                    							<a href="/admin/6_member/member_detail">
-		                    								잘생긴 오이
-		                    							</a>
-		                    						</td>
-		                    						<td>정회원</td>
-		                    						<td>2</td>
-		                    						<td>1</td>
-		                    						<td>2023-03-10</td>
-		                    					</tr>
+	                    					</c:forEach>
 		                    				</tbody>
 		                    				<!-- c:foreach로 반복 돌리기 -->
 		                    			</table>

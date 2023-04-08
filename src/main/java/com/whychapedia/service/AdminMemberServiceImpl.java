@@ -58,4 +58,11 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 		return result;
 	}
 
+	@Override
+	public int adminMemberPwUpdate(int id, String admin_pw) {
+		int result = adminMemberMapper.adminMemberPwUpdate(id, admin_pw);
+		return result;
+	}
+
+
 }

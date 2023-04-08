@@ -111,20 +111,20 @@
 		                    				</thead>
 		                    				<!-- c:foreach로 반복 돌리기 -->
 		                    				<tbody>
-		                    					<c:if test="${result == 1}">
-												<c:forEach items="${adminContentsList}" var="movieList" varStatus="status">
+												<c:forEach items="${adminContents}" var="movieList">
 		                    					<tr>
 		                    						<td>${ movieList.id }</td>
 		                    						<td>
 		                    							<a href="/admin/3_contents/movie_view">${ movieList.movie_kor_title }</a>
 		                    						</td>
-		                    						<td>깐데또까상</td>
+		                    						<c:forEach items="${ adminDirectorName }" var="director">
+		                    						<td>${ director.director_name }</td>
+		                    						</c:forEach>
 		                    						<td>2023-03-10</td>
 		                    						<td>스포츠</td>
 		                    						<td>니뽄</td>
 		                    					</tr>
 		                    					</c:forEach>
-												</c:if>
 		                    				</tbody>
 		                    				<!-- c:foreach로 반복 돌리기 -->
 		                    			</table>
