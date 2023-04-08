@@ -109,7 +109,19 @@ public class MovieServiceImpl implements MovieService {
 		 }
 		return updatedMovieList;
 	}
-	
+	//검색해서 관련 영화 리스트 가져오기
+	@Override
+	public List<MovieVo> selectSearchMovieAll(String searchKeyword) {
+		List<MovieVo> movieSearchlist = movieMapper.selectSearchMovieAll(searchKeyword);
+		return movieSearchlist;
+	}
+	//해당 배우 정보 가져오기
+	@Override
+	public List<MovieVo> selectActorPersonMovieAll(int id) {
+		List<MovieVo> actorPersonMovieList= movieMapper.selectActorPersonMovieAll(id);
+		
+		return actorPersonMovieList;
+	}
 	
 
 	

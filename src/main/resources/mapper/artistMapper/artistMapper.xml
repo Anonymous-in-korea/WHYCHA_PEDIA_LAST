@@ -28,13 +28,16 @@
 	<!-- 해당검색어를 가지고 관련 배우 가져오기 -->
 	<select id="selectSearchActorAll" resultType="com.whychapedia.vo.ArtistVo">
 			select * from actor where replace (actor_name,' ','')like '%' || #{searchKeyword} || '%'
-<!-- 		select * from actor where replace (actor_name,' ','')like '%팀버튼%' -->
 	</select>
 	
 	<!-- 해당검색어를 가지고 관련 감독 가져오기 -->
 	<select id="selectSearchDirectorAll" resultType="com.whychapedia.vo.ArtistVo">
 	select * from director where replace (director_name,' ','')like '%' || #{searchKeyword} || '%'
-<!-- 		select * from director where replace (director_name,' ','')like '%팀버튼%' -->
 	</select>
+		<!--해당id의 배우정보 가져오기  -->
+	<select id="selectActorOnelist" resultType="com.whychapedia.vo.ArtistVo">
+		select * from actor where id=#{id}
+	</select>
+	
   
   </mapper>

@@ -1,5 +1,7 @@
 package com.whychapedia.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.whychapedia.vo.MemberVo;
@@ -15,4 +17,5 @@ public interface MemberMapper {
 
 	public MemberVo selectOneMember(int user_id);
 	
+	public List<MemberVo> memberSelectAll();//멤버정보 모두 가져오기
 }

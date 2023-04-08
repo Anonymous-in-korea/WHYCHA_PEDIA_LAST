@@ -25,13 +25,12 @@ public class MovieActorServiceImpl implements MovieActorService {
 		List<MovieActorVo> selectTheActor=movieActorMapper.selectAllActor(movie_id);
 		return selectTheActor;
 	}
-
-	//해당검색어를 가지고 관련 배우 가져오기
+	//해당 배우 아이디로 영화역할 가져오기
 	@Override
-	public List<MovieActorVo> selectSearchActorAll(String searchKeyword) {
-		List<MovieActorVo> actorSearchlist= movieActorMapper.selectSearchActorAll(searchKeyword);
-		System.err.println("selectSearchActorAll_list_size : "+actorSearchlist.size());
-		System.out.println(actorSearchlist);
-		return actorSearchlist;
+	public List<MovieActorVo> selectActorPersonMovieRolelist(int id) {
+		List<MovieActorVo> actorPersonMovieRolelist = movieActorMapper.selectActorPersonMovieRolelist(id);
+		
+		return actorPersonMovieRolelist;
 	}
+
 }

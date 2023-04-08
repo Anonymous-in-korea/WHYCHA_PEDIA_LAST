@@ -33,4 +33,18 @@ public class CollectionServiceImpl implements CollectionService {
 		return collectionVo;
 	}
 
+
+	//#해당 user_id 컬렉션 정보 가져오기 
+	@Override
+	public List<CollectionVo> collectionList(int user_id) {
+		List<CollectionVo> collectionList =collectionMapper.collectionList(user_id);
+		return collectionList;
+	}
+
+	//검색어로 관련 컬렉션 리스트 가져오기
+	@Override
+	public List<CollectionVo> selectSearchCollectionList(String searchKeyword) {
+		List<CollectionVo> collectionSearchlist= collectionMapper.collectionSearchlist(searchKeyword);
+		return collectionSearchlist;
+	}
 }

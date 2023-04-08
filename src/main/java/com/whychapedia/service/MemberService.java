@@ -1,5 +1,7 @@
 package com.whychapedia.service;
 
+import java.util.List;
+
 import com.whychapedia.vo.MemberVo;
 
 public interface MemberService {
@@ -12,4 +14,5 @@ public interface MemberService {
 
 	public MemberVo selectOneMember(int user_id);
 
+	public List<MemberVo> selectSearchMemberList();//검색된 멤버 정보가져오기
 }

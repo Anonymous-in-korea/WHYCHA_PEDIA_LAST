@@ -45,5 +45,8 @@
 				</foreach>
 			end
 	</select> -->
+	<select id="memberSelectAll" resultType="com.whychapedia.vo.MemberVo">
+	 select * from wuser
+	</select>
 	
 </mapper>

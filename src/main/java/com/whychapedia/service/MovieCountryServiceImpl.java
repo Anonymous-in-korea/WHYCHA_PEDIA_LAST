@@ -40,4 +40,12 @@ public class MovieCountryServiceImpl implements MovieCountryService {
 		return countryListToString;
 	}
 
+	//검색된 영화의 영화 국가 리스트 가져오기
+	@Override
+	public List<MovieCountryVo> selectSearchMovieCountryAll() {
+		List<MovieCountryVo> movieSearchCountrylist= movieCountryMapper.selectSearchMovieCountryAll();
+		
+		return movieSearchCountrylist;
+	}
+
 }

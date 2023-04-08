@@ -15,4 +15,20 @@
 	from collection co
 	where id=#{collection_id}
 	</select>
+	
+		<!--해당 user_id 컬렉션 vo 가져오기 -->
+	<select id="collectionList" resultType="com.whychapedia.vo.CollectionVo">
+	select * from collection where user_id=#{user_id} 
+	</select>
+	
+	<!-- 검색어로 관련 컬렉션 리스트 가져오기 -->
+	<select id="collectionSearchlist" resultType="com.whychapedia.vo.CollectionVo">
+		SELECT c.*, wu.*
+		FROM collection c
+		INNER JOIN wuser wu ON c.user_ID = wu.ID
+		WHERE REPLACE(c.collection_name, ' ', '') LIKE '%' || REPLACE(#{searchKeyword}, ' ', '%') || '%'
+		 OR REPLACE(wu.user_name, ' ', '') LIKE '%' || REPLACE(#{searchKeyword}, ' ', '%') || '%'
+	</select>
+	
+	
 </mapper>

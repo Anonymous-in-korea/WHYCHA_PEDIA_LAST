@@ -60,6 +60,28 @@
             
  
   </select>
+   <!--검색해서 관련 영화 리스트 가져오기 한글 제목&영어제목&감독이름&배우이름과 연관된 영화들-->
+  <select id="selectSearchMovieAll" resultType="com.whychapedia.vo.MovieVo">
+	SELECT DISTINCT m.*
+	FROM movie m
+	INNER JOIN movie_director md ON m.ID = md.MOVIE_ID
+	INNER JOIN director d ON md.DIRECTOR_ID = d.ID
+	INNER JOIN movie_actor ma ON m.ID = ma.MOVIE_ID
+	INNER JOIN actor a ON ma.ACTOR_ID = a.ID
+	WHERE d.DIRECTOR_NAME LIKE '%' || #{searchKeyword} || '%'
+	OR a.ACTOR_NAME LIKE '%' || #{searchKeyword} || '%'
+	OR (REPLACE(MOVIE_KOR_TITLE, ' ', '') LIKE '%' || #{searchKeyword} || '%'
+	OR REPLACE(MOVIE_ORIGINAL_TITLE, ' ', '') LIKE '%' || #{searchKeyword} || '%')
+  </select>
+  
+  <!--해당 id의 출연영화 정보 모두 가져오기  -->
+  <select id="selectActorPersonMovieAll" resultType="com.whychapedia.vo.MovieVo">
+    SELECT m.*
+	FROM actor a
+	INNER JOIN movie_actor ma ON a.ID = ma.ACTOR_ID
+	INNER JOIN movie m ON ma.MOVIE_ID = m.ID
+	WHERE a.ID = #{id}
+  </select>
   
   
   

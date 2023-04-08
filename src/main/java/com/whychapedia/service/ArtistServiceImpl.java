@@ -43,7 +43,7 @@ public class ArtistServiceImpl implements ArtistService {
 	//해당검색어를 가지고 관련 배우 가져오기
 	@Override
 	public List<ArtistVo> selectSearchActorAll(String searchKeyword) {
-		List<ArtistVo> actorSearchlist= artistMapper.selectSearchActorAll();
+		List<ArtistVo> actorSearchlist= artistMapper.selectSearchActorAll(searchKeyword);
 		System.err.println("selectSearchActorAll_list_size : "+actorSearchlist.size());
 		System.out.println(actorSearchlist);
 		return actorSearchlist;
@@ -51,10 +51,18 @@ public class ArtistServiceImpl implements ArtistService {
 	//해당검색어를 가지고 관련 감독 가져오기
 	@Override
 	public List<ArtistVo> selectSearchDirectorAll(String searchKeyword) {
-		List<ArtistVo> directorSearchlist= artistMapper.selectSearchDirectorAll();
+		List<ArtistVo> directorSearchlist= artistMapper.selectSearchDirectorAll(searchKeyword);
 		System.err.println("selectSearchDirectorAll_list_size : "+directorSearchlist.size());
 		System.out.println(directorSearchlist);
 		return directorSearchlist;
 	}
 
+	//해당 아이디의 인물 정보 가져오기
+	@Override
+	public List<ArtistVo> selectActorOnelist(int id) {
+		List<ArtistVo> actorPersonlist = artistMapper.selectActorOnelist(id);
+		
+		
+		return actorPersonlist;
+	}
 }

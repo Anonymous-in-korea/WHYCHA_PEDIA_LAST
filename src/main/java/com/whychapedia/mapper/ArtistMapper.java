@@ -19,10 +19,14 @@ public interface ArtistMapper {
 	List<ArtistVo> selectDirectorAll(List<LikeVo> directorLike_list);
 
 	//해당검색어를 가지고 관련 배우 가져오기
-	List<ArtistVo> selectSearchActorAll();
+	List<ArtistVo> selectSearchActorAll(String searchKeyword);
 
 	//해당검색어를 가지고 관련 감독 가져오기
-	List<ArtistVo> selectSearchDirectorAll();
+	List<ArtistVo> selectSearchDirectorAll(String searchKeyword);
+
+	//해당 id를 가지고 해당인물 정보 가져오기
+	List<ArtistVo> selectActorOnelist(int id);
+    
 	
 
 }

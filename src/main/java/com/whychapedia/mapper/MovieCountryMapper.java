@@ -10,5 +10,5 @@ import com.whychapedia.vo.MovieCountryVo;
 public interface MovieCountryMapper {
 
 	List<MovieCountryVo> selectAllCountry(int movie_id);
-
+	List<MovieCountryVo> selectSearchMovieCountryAll();
 }

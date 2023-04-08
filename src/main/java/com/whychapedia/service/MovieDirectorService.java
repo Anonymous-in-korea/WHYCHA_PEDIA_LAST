@@ -8,6 +8,5 @@ public interface MovieDirectorService {
 
 	List<MovieDirectorVo> selectTheDirector(int movie_id);
 	
-	List<MovieDirectorVo> selectSearchDirectorAll(String searchKeyword);
 
 }

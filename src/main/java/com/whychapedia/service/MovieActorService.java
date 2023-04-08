@@ -8,6 +8,7 @@ import com.whychapedia.vo.MovieActorVo;
 public interface MovieActorService {
 
 	List<MovieActorVo> selectTheActor(int movie_id);
-	
-	List<MovieActorVo> selectSearchActorAll(String searchKeyword);
+	//해당 movie 의 actor_role받아오기
+	List<MovieActorVo> selectActorPersonMovieRolelist(int id);
+
 }

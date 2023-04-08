@@ -3362,7 +3362,7 @@ input {
         height: 100%;
         margin: 0 auto;
     }
-    .css-4tchbd-StyledTab {
+    #contents {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -3376,7 +3376,7 @@ input {
         -ms-flex-align: center;
         align-items: center;
         background-color: #fff;
-        color: #74747B;
+        color: #feae27;
         font-size: 15px;
         font-weight: 400;
         -webkit-letter-spacing: -0.3px;
@@ -3396,7 +3396,7 @@ input {
         -ms-user-select: none;
         user-select: none;
     }
-    .css-s8lqsd-StyledTab {
+   #person{
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -3410,7 +3410,7 @@ input {
         -ms-flex-align: center;
         align-items: center;
         background-color: #fff;
-        color: #292a32;
+        color: #ff7f27;
         font-size: 15px;
         font-weight: 400;
         -webkit-letter-spacing: -0.3px;
@@ -3423,7 +3423,41 @@ input {
         padding-top: 3px;
         padding-right: 17.5px;
         padding-left: 17.5px;
-        border-bottom: 2px solid #292a32;
+        border-bottom: 2px solid #ff7f27;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+   #collection{
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        background-color: #fff;
+        color: #feae27;
+        font-size: 15px;
+        font-weight: 400;
+        -webkit-letter-spacing: -0.3px;
+        -moz-letter-spacing: -0.3px;
+        -ms-letter-spacing: -0.3px;
+        letter-spacing: -0.3px;
+        line-height: 22.2px;
+        box-sizing: border-box;
+        height: 100%;
+        padding-top: 3px;
+        padding-right: 17.5px;
+        padding-left: 17.5px;
+        border-bottom: 2px solid rgba(255, 255, 255, 0);
         cursor: pointer;
         -webkit-user-select: none;
         -moz-user-select: none;

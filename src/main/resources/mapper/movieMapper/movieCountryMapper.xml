@@ -12,4 +12,8 @@
 		WHERE mc.movie_id = #{movie_id}
  		 
  </select>	 
+  <select id="selectSearchMovieCountryAll" resultType="com.whychapedia.vo.MovieCountryVo">
+		SELECT * FROM movie_country mc
+		JOIN country c ON mc.country_id = c.id
+ </select>	
  </mapper>

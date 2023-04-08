@@ -22,6 +22,10 @@ public interface MovieService {
 	List<MovieVo> selectMovieWithSameGenre(int num,int genre_id);
 
 	List<MovieVo> insertStarRateInfo(List<MovieVo> movieInCollectionVoList, List<StarRateVo> ratedList);
+	
+	List<MovieVo> selectSearchMovieAll(String searchKeyword);
+
+	List<MovieVo> selectActorPersonMovieAll(int id);
 
 	
 

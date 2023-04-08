@@ -12,12 +12,12 @@
   		WHERE ma.movie_id = #{movie_id}
  		 
  </select>	
- <!-- 해당검색어를 가지고 관련 배우 가져오기 -->
-<select id="selectSearchActorAll" resultType="com.whychapedia.vo.MovieActorVo">
-	SELECT DISTINCT actor.id, actor.actor_name, actor.actor_post_url, movie_actor.actor_role
-	FROM actor
-	INNER JOIN movie_actor
-	ON actor.id = movie_actor.actor_id
-	WHERE REPLACE(actor.actor_name, ' ', '') LIKE '%' || #{searchKeyword} || '%'
+
+<select id="selectActorPersonMovieRolelist" resultType="com.whychapedia.vo.MovieActorVo">
+	 SELECT m.id,ma.actor_role,a.actor_name
+	FROM actor a
+	INNER JOIN movie_actor ma ON a.ID = ma.ACTOR_ID
+	INNER JOIN movie m ON ma.MOVIE_ID = m.ID
+	WHERE a.ID = #{id}
 </select>
  </mapper>

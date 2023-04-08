@@ -12,7 +12,20 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 	<link href="/css/header.css" rel="stylesheet" type="text/css">
-	<link rel="shortcut icon" type="image/x-icon" href="/images/whycha_small_logo1.png">
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script>
+	 $(function(){
+		 
+		 $("#contents").click(function(){
+			// alert("contents");
+			 location.href = "/search/searchContents_GC?searchKeyword=" + encodeURIComponent("${param.searchKeyword}") + "&category=contents";
+		 });
+		 $("#collection").click(function(){
+			 //alert("collection");
+			 location.href = "/search/searchCollection_HY?searchKeyword=" + encodeURIComponent("${param.searchKeyword}") + "&category=collection";
+		 });
+	 });
+	</script>
     
 </head>
 <body>
@@ -48,10 +61,9 @@
                         </div>
                         <div class="css-15qcwbn-StyledTabBarContainer e1szkzar1">
                             <ul class="css-1gwdxtz-VisualUl-StyledTabBarUl e1szkzar2">
-                                <li class="css-4tchbd-StyledTab e1szkzar0">콘텐츠</li>
-                                <li class="css-s8lqsd-StyledTab e1szkzar0">인물</li>
-                                <li class="css-4tchbd-StyledTab e1szkzar0">컬렉션</li>
-                                <li class="css-4tchbd-StyledTab e1szkzar0">유저</li>
+                                <li class="css-4tchbd-StyledTab e1szkzar0" id="contents">콘텐츠</li>
+                                <li class="css-s8lqsd-StyledTab e1szkzar0" id="person">인물</li>
+                                <li class="css-4tchbd-StyledTab e1szkzar0" id="collection">컬렉션</li>
                             </ul>
                         </div>
                         <div class="css-ipmqep-StyledTabContentContainer e1szkzar3">
@@ -60,7 +72,7 @@
                                     <ul class="css-paz4zm-VisualUl">
                                     	<c:forEach items= "${actorSearchlist}" var ="avo" >
 	                                        <li class="css-1tmgvat">
-	                                        	<a title="${avo.actor_name}" class="css-1aaqvgs-InnerPartOfListWithImage" href="/ko-KR/people/XV4mY3G946">
+	                                        	<a title="${avo.actor_name}" class="css-1aaqvgs-InnerPartOfListWithImage" href="/person/person_detail_HY?actor_name=${avo.actor_name}&id=${avo.id}&role=배우">
 	                                                <div class="css-cssveg">
 	                                                    <div class="css-17ob1ac">
 	                                                        <div class="css-1e8dv1-ProfilePhotoImage"></div>
@@ -76,14 +88,14 @@
 	                                                        </div>
 	                                                        <div class="css-1evnpxk-StyledSubtitle">
 	                                                            <div class="css-qzyxgk">
-		                                                            <span class="css-htvp8y">${avo.actor_role}</span>
+		                                                            <span class="css-htvp8y">배우</span>
 		                                                            <span class="css-1jpatke"> ・ </span>
-		                                                            <span class="personContents css-yn5nfu" title="${avo.actor_name}">수영이는 이쁘니까</span>
+		                                                            <span class="personContents css-yn5nfu" title="${avo.actor_name}"></span>
 	                                                            </div>
 	                                                        </div>
 	                                                        <div class="css-v9psum">
-	                                                            <div title="${avo.actor_name}" class="css-txztjz">
-	                                                            	<span class="css-mudjgk">배우</span>
+	                                                            <div title="다바타 신타로" class="css-txztjz">
+	                                                            	<span class="css-mudjgk"></span>
 	                                                            </div>
 	                                                        </div>
 	                                                    </div>
@@ -110,14 +122,14 @@
 	                                                        </div>
 	                                                        <div class="css-1evnpxk-StyledSubtitle">
 	                                                            <div class="css-qzyxgk">
-		                                                            <span class="css-htvp8y">${dvo.director_role}</span>
+		                                                            <span class="css-htvp8y">감독</span>
 		                                                            <span class="css-1jpatke"> ・ </span>
-		                                                            <span class="personContents css-yn5nfu" title="다바타 신타로">광고하지 마라</span>
+		                                                            <span class="personContents css-yn5nfu" title="다바타 신타로"></span>
 	                                                            </div>
 	                                                        </div>
 	                                                        <div class="css-v9psum">
 	                                                            <div title="다바타 신타로" class="css-txztjz">
-	                                                            	<span class="css-mudjgk">감독</span>
+	                                                            	<span class="css-mudjgk"></span>
 	                                                            </div>
 	                                                        </div>
 	                                                    </div>

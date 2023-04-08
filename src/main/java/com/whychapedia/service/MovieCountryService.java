@@ -10,4 +10,5 @@ public interface MovieCountryService {
 
 	String countryListToString(List<MovieCountryVo> movieCountryVoList);
 
+	List<MovieCountryVo> selectSearchMovieCountryAll();
 }
