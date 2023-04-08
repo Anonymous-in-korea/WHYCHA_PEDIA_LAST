@@ -30,8 +30,8 @@
 				$("#logout_open_Btn").click(function() {
 					if ( $(".css-14gy7wr").css("display") == "none" ) {
 						$(".css-14gy7wr").show();
-						$(".css-14gy7wr").css({"z-index":"100"});
 						$(".css-15gy7wr").css({"z-index":"99"});
+						$(".css-14gy7wr").css({"z-index":"100"});
 					}
 				});
 				
@@ -90,16 +90,16 @@
 													<header class="css-1hjjbcz-ProfileHeader e19zkogf4">
 														<div class="css-1gry5r7">
 														<!--유저 프로필 이미지 -->
-														<c:if test="${sessionUserPic != '0' }">
-															<div class="css-h6h0rq-ProfilePhotoImage" style="background-image:url('${sessionUserPic}')"></div>
+														<c:if test="${memberVo.user_pic_url != '0' }">
+															<div class="css-h6h0rq-ProfilePhotoImage" style="background-image:url('${memberVo.user_pic_url}')"></div>
 														</c:if>
-														<c:if test="${sessionUserPic == '0' }">
-															<div class="css-h6h0rq-ProfilePhotoImage""></div>
+														<c:if test="${memberVo.user_pic_url == '0' }">
+															<div class="css-h6h0rq-ProfilePhotoImage"></div>
 														</c:if>
 														</div>
 														<div class="css-5inudd-NameBlock e19zkogf5">
 															<!--유저이름 -->
-															<h1 class="css-aizam7-Name e19zkogf6">${sessionName}</h1>
+															<h1 class="css-aizam7-Name e19zkogf6">${memberVo.user_name}</h1>
 															<!--유저이름 -->
 														</div>
 														<div class="css-7w44b1-AboutMe e19zkogf9">
@@ -112,7 +112,7 @@
 													<ul class="css-10n5vg9-VisualUl ep5cwgq0">
 														<li class="css-4ip9lp-AnalysisListItem e19zkogf10">
 															<a target="_blank" rel="noopener noreferrer" title="취향분석"
-														   	   href="/myPage/my_analysis_HY?id=${sessionId}">
+														   	   href="/myPage/my_analysis_HY?id=${memberVo.id}">
 														   		<span
 																   src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNFRjY5MkUiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTEuMTggMTEuOTZoMy43NHY4LjM2SDEuMTh6TTE1Ljc1IDE2LjgzaDMuNzR2My40OWgtMy43NHpNNi4wNCA5LjEyaDMuNzR2MTEuMkg2LjA0ek0xMC45IDEzLjg0aDMuNzR2Ni40OEgxMC45eiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNGRkNBMjIiIGQ9Ik0xNy40NCAxLjM3bDEuNjYgNCA0LjMxLjM0LTMuMjggMi44MSAxIDQuMjEtMy42OS0yLjI2LTMuNjkgMi4yNiAxLjAxLTQuMjEtMy4yOS0yLjgxIDQuMzItLjM0eiIvPgogICAgPC9nPgo8L3N2Zz4K"
 																   height="24px" width="24px"
@@ -133,29 +133,29 @@
 																	<ul class="e19zkogf12 css-i1bo8u-VisualUl-CategoryArchivesUl">
 																		<!--MOVIE 버튼 시작  -->
 																		<li class="css-1u4jvye-CategoryArchivesListItem e19zkogf13">
-																			<a background="[object Object]" class="css-h3f67w-CategoryArchivesLink e19zkogf14" href="/ko-KR/users/djaxbJPMVAxLw/contents/movies">
+																			<a background="[object Object]" class="css-h3f67w-CategoryArchivesLink e19zkogf14" href="/ko-KR/users/djaxbJPMVAxLw/contents/movies?user_id=${memberVo.id}">
 																				<ul class="css-reeb92-VisualUl-CategoryArchives e19zkogf15">
 																					<li class="css-r3hbc5-CategoryArchivesName e19zkogf16">MOVIE</li>
 																					<li class="css-7xoi89-CategoryArchivesRatedCount e19zkogf17">★0</li>
-																					<li class="css-kcevqh-CategoryArchivesWishedCount e19zkogf18">보고싶어요<strong>0</strong></li>
+<!-- 																					<li class="css-kcevqh-CategoryArchivesWishedCount e19zkogf18">보고싶어요<strong>0</strong></li> -->
 																				</ul>
 																			</a>
 																		</li>
 																		<!--MOVIE 버튼  끝  -->
 																		<!--COLLECTION 버튼 시작 -->
 																		<li class="css-1u4jvye-CategoryArchivesListItem e19zkogf13">
-																			<a background="[object Object]" class="css-1gw6y00-CategoryArchivesLink e19zkogf14" href="/ko-KR/users/djaxbJPMVAxLw/contents/tv_seasons">
+																			<a background="[object Object]" class="css-1gw6y00-CategoryArchivesLink e19zkogf14" href="/ko-KR/users/djaxbJPMVAxLw/contents/tv_seasons?user_id=${memberVo.id}">
 																				<ul class="css-1x0nmo-VisualUl-CategoryArchives e19zkogf15">
 																					<li class="css-r3hbc5-CategoryArchivesName e19zkogf16">COLLECTION</li>
 																					<li class="css-7xoi89-CategoryArchivesRatedCount e19zkogf17">★0</li>
-																					<li class="css-kcevqh-CategoryArchivesWishedCount e19zkogf18">보고싶어요<strong>0</strong></li>
+<!-- 																					<li class="css-kcevqh-CategoryArchivesWishedCount e19zkogf18"><strong>0</strong></li> -->
 																				</ul>
 																			</a>
 																		</li>
 																		<!--COLLECTION 버튼 끝  -->
 																		<!--ACTOR&DIRECTOR 시작  -->
 																		<li class="css-1u4jvye-CategoryArchivesListItem e19zkogf13">
-																			<a background="[object Object]" class="css-1e839ay-CategoryArchivesLink e19zkogf14" href="/myPage/actor_director_like_SY">
+																			<a background="[object Object]" class="css-1e839ay-CategoryArchivesLink e19zkogf14" href="/myPage/actor_director_like_SY?id=${memberVo.id }">
 																				<ul class="css-1qiuf48-VisualUl-CategoryArchives e19zkogf15">
 																					<li class="css-r3hbc5-CategoryArchivesName e19zkogf16">ACTOR & DIRECTOR</li>
 																					<li class="css-7xoi89-CategoryArchivesRatedCount e19zkogf17">★0</li>

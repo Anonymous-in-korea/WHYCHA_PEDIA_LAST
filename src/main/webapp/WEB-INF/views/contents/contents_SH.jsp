@@ -565,7 +565,7 @@
 		                                                                	<span class="css-wzn7fp">10+</span>
 		                                                                    <div class="css-s289sk">
 		                                                                        <div class="css-1ugqy9j">
-		                                                                        	<a href="">더보기</a>
+		                                                                        	<a href="/comment/comment_SY?movie_id=${movieVo.id}">더보기</a>
 		                                                                        </div>
 		                                                                    </div>
 		                                                                </header>

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.whychapedia.mapper.LikeMapper;
 import com.whychapedia.vo.CollectionVo;
+import com.whychapedia.vo.CommentVo;
 import com.whychapedia.vo.LikeVo;
 import com.whychapedia.vo.MovieVo;
 
@@ -55,7 +56,25 @@ public class LikeServiceImpl implements LikeService {
 		return directorLike_list;
 	}
 
-	
-	
+	@Override
+	public int insertCommentLike(int user_id, int comment_id) {
+		int insertLike = likeMapper.insertLikeOne(comment_id, user_id);
+		System.out.println("likeservice insertLikeOne: "+ insertLike);
+		return insertLike;
+	}
+
+	@Override
+	public int deleteCommentLike(int comment_id, int user_id) {
+		int deleteLike = likeMapper.deleteLikeOne(comment_id, user_id);
+		System.out.println("likeservice deleteLikeOne: "+ deleteLike);
+		return deleteLike;
+	}
+
+	@Override
+	public int selectCommentOneLike(int comment_id) {
+		int likeList = likeMapper.selectCommentOneLike(comment_id);
+		return likeList;
+	}
+
 
 }

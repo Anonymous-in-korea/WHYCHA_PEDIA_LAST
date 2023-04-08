@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 	
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,7 +13,7 @@
 	<!-- Google Tag Manager -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 	<meta charset="utf-8">
-	<title>&lt;어벤져스 : 엔드게임&gt; 보기 전, 마블 영화 정주행 순서! by WATCHA - 왓챠피디아</title>
+	<title>collection_detail_page</title>
 	<style>
 		.like1{width:14px; height:14px;}
 		.like2{width:14px; height:14px;}
@@ -36,30 +37,29 @@
 												<div class="css-nylf5i">
 													<div class=" css-12eknxq-StyledSelf e1q5rx9q0">
 														<span class="css-bhgne5-StyledBackground e1q5rx9q1"
-															style="background-image: url(&quot;https://an2-img.amz.wtchn.net/image/v2/PbGjOReUA4jz1qjRZujAPQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qZ3dlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMmgyYTNkdlltNXZOVzlxY0RadVlXOXBkRzA0SW4wLk0za2xhdDBDQzJndUN2Q2R0WUJwb1JQTEZYLWtZb21WSnU0emxiZHRGa1k&quot;);"></span>
+															style="background-image: url(${movieInCollectionVoList[0].movie_post_url});"></span>
 													</div>
 													<div class=" css-15h4ccu-StyledSelf e1q5rx9q0">
 														<span class="css-bhgne5-StyledBackground e1q5rx9q1"
-															style="background-image: url(&quot;https://an2-img.amz.wtchn.net/image/v2/3r9nTDlfNuTDbN7WDQzaTw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qZ3dlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMjlsWjNKcVpHeDBabWwzWldGeGFtWnJNRE51SW4wLl82ckxiOVdmWkZScHVnSE10WFBkbkJKNHNYT2xXX0hIaWtNeFNFbnFQR00&quot;);"></span>
+															style="background-image: url(${movieInCollectionVoList[1].movie_post_url});"></span>
 													</div>
 													<div class=" css-1le5r8o-StyledSelf e1q5rx9q0">
 														<span class="css-bhgne5-StyledBackground e1q5rx9q1"
-															style="background-image: url(&quot;https://an2-img.amz.wtchn.net/image/v2/33_i1Zncd6Id_rR0lVHvYg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qZ3dlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM0puZEdoeWVHRjZhM1JyZW5Sck9IZHZaemw2SW4wLi14Nmhxd1BpdDd4VkNiSm5raGhlRERPcDdsQXFCZnROd2JhMXZWa1NTczQ&quot;);"></span>
+															style="background-image: url(${movieInCollectionVoList[2].movie_post_url});"></span>
 													</div>
 													<div class=" css-vuowyq-StyledSelf e1q5rx9q0">
 														<span class="css-bhgne5-StyledBackground e1q5rx9q1"
-															style="background-image: url(&quot;https://an2-img.amz.wtchn.net/image/v2/2FnGK1QKKNSIkT1NsBveYA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qZ3dlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM1JxYUdkbGNqaDVkSEIwZGpSNFkzZGhaWFJtSW4wLm9lYWdxWnljeHhBTDk2SFBPWG52eHFIbzQxRHM2andkSUVLZndwSk52dGs&quot;);"></span>
+															style="background-image: url(${movieInCollectionVoList[3].movie_post_url});"></span>
 													</div>
 													<div class=" css-1i7u3mu-StyledSelf e1q5rx9q0">
 														<span class="css-bhgne5-StyledBackground e1q5rx9q1"
-															style="background-image: url(&quot;https://an2-img.amz.wtchn.net/image/v2/cMsb_0-HKv1BMnjkb-kDDA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qZ3dlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM0ZxZURSbWIzUnpaR1p1Y0dsMmIzbzViV053SW4wLmg4V1M3VjJPZmE5VkJCamNtX1pvczZTX3FWdDAtQnNsMVhpNFBjcFJBOW8&quot;);"></span>
+															style="background-image: url(${movieInCollectionVoList[4].movie_post_url});"></span>
 													</div>
 													<div class=" css-1ubsymx-StyledSelf e1q5rx9q0">
 														<span class="css-bhgne5-StyledBackground e1q5rx9q1"
-															style="background-image: url(&quot;https://an2-img.amz.wtchn.net/image/v2/2jnfN1s7DjW5apDEoy0pqg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qZ3dlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMkp4YVhsNU1tdGxiSEJsY3paa1pubDVhbk42SW4wLkNJcTVwX1JVWUhRZ0l5bGRmNHFDRG5SVUstUzFmNjY2VGFQR0Y0M2NKdE0&quot;);"></span>
-													</div>
+															style="background-image: url(${movieInCollectionVoList[5].movie_post_url});"></span>
+													</div>					
 												</div>
-												<!-- 볼 수 있는 ott -->
 												<section class="css-5q4g58">
 													<div class="css-1gkas1x-Grid e1689zdh0">
 														<div class="css-1y901al-Row emmoxnt0">
@@ -70,45 +70,38 @@
 																	</div>
 																	<div class="css-17nfp2s">
 																		<div class="css-180704h">
-																			WATCHA
-																			<span src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTQuNzcwNDYgMC41NjI0NTlDNS4yNDMyOCAtMC4xNTY0MzIgNi4zMTE0NyAtMC4xOTMwNyA2LjgzNTM1IDAuNDkyMTU1QzcuMTczMzcgMC45MzM3ODggNy43NzM4NSAxLjEwMTEzIDguMzAxODEgMC45MDAxMjFDOS4xMTk4IDAuNTg4MjA1IDEwLjAwNjIgMS4xNjc0OCAxMC4wMTQ0IDIuMDIxMDRDMTAuMDE5NSAyLjU2OTYxIDEwLjQwNTUgMy4wNDc4OCAxMC45NTM5IDMuMTg1NTJDMTEuODA0NiAzLjM5OTQxIDEyLjE3MDIgNC4zNzQ3NiAxMS42NjA2IDUuMDY4OUMxMS4zMzE4IDUuNTE2NDggMTEuMzUzMiA2LjEyMTQ5IDExLjcxMzcgNi41NDYyOUMxMi4yNzIzIDcuMjA0NzggMTEuOTc3MiA4LjIwMTkyIDExLjE0MzggOC40NzIyNUMxMC42MDY3IDguNjQ3NTIgMTAuMjU3NCA5LjE1MDU0IDEwLjI5MTEgOS42OTkxMkMxMC4zNDQyIDEwLjU0OTcgOS41MDE3NCAxMS4xODc0IDguNjYzMzIgMTAuOTMxOUM4LjEyMjA4IDEwLjc2NzYgNy41MzQ4OCAxMC45NzQ1IDcuMjI5NTQgMTEuNDM3OUM2Ljc1NjcyIDEyLjE1NjggNS42ODc1MSAxMi4xOTI1IDUuMTY0NjUgMTEuNTA4MkM0LjgyNjYzIDExLjA2NTYgNC4yMjYxNSAxMC44OTgzIDMuNjk4MTkgMTEuMTAwM0MyLjg4MDIgMTEuNDEyMiAxLjk5Mzc4IDEwLjgzMTkgMS45ODQ1OSA5Ljk4MDM0QzEuOTgwNTEgOS40Mjk3OCAxLjU5NTUxIDguOTUyNSAxLjA0NjEgOC44MTM4N0MwLjE5NTQyOCA4LjU5OTk5IC0wLjE3MDE2NiA3LjYyNjYxIDAuMzM5NDE5IDYuOTMyNDdDMC42NjgyNDkgNi40ODM5MSAwLjY0NjgwNCA1Ljg3NzkgMC4yODYzMTYgNS40NTMxQy0wLjI3MjI4NyA0Ljc5NDYxIDAuMDIyODQzIDMuNzk5NDUgMC44NTYxNTIgMy41MjcxNUMxLjM5MzMxIDMuMzUyODcgMS43NDM1OSAyLjg1MDgzIDEuNzA4ODYgMi4zMDEyN0MxLjY1NTc2IDEuNDUwNjggMi40OTgyNiAwLjgxMTk5MiAzLjMzNjY4IDEuMDY4NDZDMy44Nzc5MiAxLjIzMjgzIDQuNDY1MTIgMS4wMjU4OCA0Ljc3MDQ2IDAuNTYyNDU5WiIgZmlsbD0iI0Y3MTc1QSIvPgogIDxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNNS4xNjA2MSA4LjMyODk1QzUuMDM5ODcgOC4zMjg5NSA0LjkyNDU4IDguMjgwODMgNC44MzkyNCA4LjE5NjRMMy4xMzM0NSA2LjQ4ODhDMi45NTU1MiA2LjMxMDg2IDIuOTU1NTIgNi4wMjM5OSAzLjEzMzQ1IDUuODQ2OTdDMy4zMTA0NyA1LjY2OTA0IDMuNTk3MzQgNS42NjkwNCAzLjc3NTI4IDUuODQ2OTdMNS4xNjA2MSA3LjIzMzIxTDguMjI0NSA0LjE2ODQxQzguNDAyNDMgMy45OTEzOSA4LjY4OTMgMy45OTEzOSA4Ljg2NzIzIDQuMTY4NDFDOS4wNDQyNiA0LjM0NTQ0IDkuMDQ0MjYgNC42MzMyMiA4Ljg2NzIzIDQuODEwMjRMNS40ODE5OCA4LjE5NjRDNS4zOTY2NCA4LjI4MDgzIDUuMjgxMzUgOC4zMjg5NSA1LjE2MDYxIDguMzI4OTVaIiBmaWxsPSJ3aGl0ZSIvPgogIDxwYXRoIGQ9Ik01LjE2MDYxIDguMzI4OTVWOC4zMjg5NUM1LjAzOTg3IDguMzI4OTUgNC45MjQ1OCA4LjI4MDgzIDQuODM5MjQgOC4xOTY0TDMuMTMzNDUgNi40ODg4QzIuOTU1NTIgNi4zMTA4NiAyLjk1NTUyIDYuMDIzOTkgMy4xMzM0NSA1Ljg0Njk3QzMuMzEwNDcgNS42NjkwNCAzLjU5NzM0IDUuNjY5MDQgMy43NzUyOCA1Ljg0Njk3TDUuMTYwNjEgNy4yMzMyMUw4LjIyNDUgNC4xNjg0MUM4LjQwMjQzIDMuOTkxMzkgOC42ODkzIDMuOTkxMzkgOC44NjcyMyA0LjE2ODQxQzkuMDQ0MjYgNC4zNDU0NCA5LjA0NDI2IDQuNjMzMjIgOC44NjcyMyA0LjgxMDI0TDUuNDgxOTggOC4xOTY0QzUuMzk2NjQgOC4yODA4MyA1LjI4MTM1IDguMzI4OTUgNS4xNjA2MSA4LjMyODk1IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjAuMjUiLz4KPC9zdmc+Cg=="
-																				class="css-so7tcx">
-																			</span>
-																			<span src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTQuNzcwNDYgMC41NjI0NTlDNS4yNDMyOCAtMC4xNTY0MzIgNi4zMTE0NyAtMC4xOTMwNyA2LjgzNTM1IDAuNDkyMTU1QzcuMTczMzcgMC45MzM3ODggNy43NzM4NSAxLjEwMTEzIDguMzAxODEgMC45MDAxMjFDOS4xMTk4IDAuNTg4MjA1IDEwLjAwNjIgMS4xNjc0OCAxMC4wMTQ0IDIuMDIxMDRDMTAuMDE5NSAyLjU2OTYxIDEwLjQwNTUgMy4wNDc4OCAxMC45NTM5IDMuMTg1NTJDMTEuODA0NiAzLjM5OTQxIDEyLjE3MDIgNC4zNzQ3NiAxMS42NjA2IDUuMDY4OUMxMS4zMzE4IDUuNTE2NDggMTEuMzUzMiA2LjEyMTQ5IDExLjcxMzcgNi41NDYyOUMxMi4yNzIzIDcuMjA0NzggMTEuOTc3MiA4LjIwMTkyIDExLjE0MzggOC40NzIyNUMxMC42MDY3IDguNjQ3NTIgMTAuMjU3NCA5LjE1MDU0IDEwLjI5MTEgOS42OTkxMkMxMC4zNDQyIDEwLjU0OTcgOS41MDE3NCAxMS4xODc0IDguNjYzMzIgMTAuOTMxOUM4LjEyMjA4IDEwLjc2NzYgNy41MzQ4OCAxMC45NzQ1IDcuMjI5NTQgMTEuNDM3OUM2Ljc1NjcyIDEyLjE1NjggNS42ODc1MSAxMi4xOTI1IDUuMTY0NjUgMTEuNTA4MkM0LjgyNjYzIDExLjA2NTYgNC4yMjYxNSAxMC44OTgzIDMuNjk4MTkgMTEuMTAwM0MyLjg4MDIgMTEuNDEyMiAxLjk5Mzc4IDEwLjgzMTkgMS45ODQ1OSA5Ljk4MDM0QzEuOTgwNTEgOS40Mjk3OCAxLjU5NTUxIDguOTUyNSAxLjA0NjEgOC44MTM4N0MwLjE5NTQyOCA4LjU5OTk5IC0wLjE3MDE2NiA3LjYyNjYxIDAuMzM5NDE5IDYuOTMyNDdDMC42NjgyNDkgNi40ODM5MSAwLjY0NjgwNCA1Ljg3NzkgMC4yODYzMTYgNS40NTMxQy0wLjI3MjI4NyA0Ljc5NDYxIDAuMDIyODQzIDMuNzk5NDUgMC44NTYxNTIgMy41MjcxNUMxLjM5MzMxIDMuMzUyODcgMS43NDM1OSAyLjg1MDgzIDEuNzA4ODYgMi4zMDEyN0MxLjY1NTc2IDEuNDUwNjggMi40OTgyNiAwLjgxMTk5MiAzLjMzNjY4IDEuMDY4NDZDMy44Nzc5MiAxLjIzMjgzIDQuNDY1MTIgMS4wMjU4OCA0Ljc3MDQ2IDAuNTYyNDU5WiIgZmlsbD0iIzBFMEYxMCIvPgogIDxwYXRoIGQ9Ik03LjY5NzMzIDIuNDUwMkw3LjI4NjEyIDcuNzkzOTJMNy4xNzc3NCA3Ljc5ODI4TDYuNDUyMjYgMy45Nzk3NUg1LjI2MTIzTDQuNjY1NTggNy44OTE1N0w0LjUzNTc1IDcuODk2OEwzLjk1MDk2IDMuOTc5NzVIMi41TDMuODEwMjcgOS43MTU4Mkw1LjMxNTI4IDkuNjE0MzlMNS44NDU3NCA1Ljk3MTdINS45NjQ5OEw2LjU2MDM1IDkuNTMwMTFMOC4wNzY1MSA5LjQyNzIzTDkuMTA1MTEgMi40NTAySDcuNjk3MzNaIiBmaWxsPSIjRkYwNTU4Ii8+Cjwvc3ZnPgo="
-																				class="css-8pf0x7">
-																			</span>
+																			${collectionVo.collection_name}
 																		</div>
 																	</div>
 																</div>
 															</a>
 														</div>
 													</div>
-												</section>
+												</section>	
 											</header>
 											<!-- 컨텐츠 헤더 -->
 											<!-- 제목, 내용  -->
 											<section class="css-vewrfq">
 												<div class="css-1gkas1x-Grid e1689zdh0">
 													<div class="css-1y901al-Row emmoxnt0">
-														<h1 class="css-b5myd9">&lt;어벤져스 : 엔드게임&gt; 보기 전, 마블 영화 정주행 순서!</h1>
+														<h1 class="css-b5myd9">${collectionVo.collection_name}</h1>
 														<article class="css-1ck5l7q">
 															<div class="css-ztq0uc-StyledTruncateBox e1nbfgav0">
 																<article class="deckDescription css-17q4u22-StyledTextBox e1nbfgav1" style="white-space: normal;">
-																	<span>잘 모른다면 꼭 보시고 🙆🏻‍♂️ 다 보셨어도 또 보세요! 🙆🏻‍♀️</span>
+																	<span>${collectionVo.collection_desc}</span>
 																</article>
 																<button class="css-xugx5s-StyledMoreButton e1nbfgav2">더보기</button>
 															</div>
 														</article>
 														<ul class="css-h121hu-VisualUl">
-															<li class="css-tfe1ln">좋아요 
-																<em>824</em>
-																<spanclass="css-9tbcrq"></span>
-															</li>
-															<li class="css-tfe1ln">댓글 
-																<em>10</em>
+															<li class="css-tfe1ln">좋아요
+																<em>${collectionVo.like_count}</em>
 																<span class="css-9tbcrq"></span>
 															</li>
-															<li class="css-tfe1ln">4년 전 업데이트</li>
+															<li class="css-tfe1ln">댓글 
+																<em>${collectionVo.comment_count}</em>
+																<!-- <span class="css-9tbcrq"></span> -->
+															</li>
 														</ul>
 														<hr class="css-1c12nsi">
 													</div>
@@ -156,56 +149,6 @@
 															</button>
 															<div class="css-tn8wck">
 																<div class="css-ve4kut">
-																	<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fpedia.watcha.com%2Fko-KR%2Fdecks%2FgcdkwxgZJb&amp;text=%3C%EC%96%B4%EB%B2%A4%EC%A0%B8%EC%8A%A4+%3A+%EC%97%94%EB%93%9C%EA%B2%8C%EC%9E%84%3E+%EB%B3%B4%EA%B8%B0+%EC%A0%84%2C+%EB%A7%88%EB%B8%94+%EC%98%81%ED%99%94+%EC%A0%95%EC%A3%BC%ED%96%89+%EC%88%9C%EC%84%9C%21+&amp;browser_open_type=external"
-																		target="_blank" class="css-1cqdd33-StylelessHref">
-																		<div class="css-3wahtm">
-																			<div class="Icon twitter icon css-ormu9t-SVG e1282e850" color="#292a32">
-																				<div>
-																					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik04LjQ3NTM1IDE5LjdDMTUuNjQ1NSAxOS43IDE5LjU2NjUgMTMuODUyNyAxOS41NjY1IDguNzgyMzVDMTkuNTY2NSA4LjYxNjE5IDE5LjU2MzEgOC40NTA3OCAxOS41NTUzIDguMjg2MjdDMjAuMzE2NCA3Ljc0NDcxIDIwLjk3OCA3LjA2ODk0IDIxLjUgNi4yOTk1MUMyMC44MDE1IDYuNjA0ODkgMjAuMDQ5OCA2LjgxMDc3IDE5LjI2MTMgNi45MDM1NEMyMC4wNjYyIDYuNDI4NjMgMjAuNjg0MSA1LjY3NjkzIDIwLjk3NTQgNC43ODA5OUMyMC4yMjIxIDUuMjIwNTEgMTkuMzg4MiA1LjU0MDE4IDE4LjUwMDMgNS43MTIzMkMxNy43ODkgNC45NjY1MiAxNi43NzU5IDQuNSAxNS42NTQ5IDQuNUMxMy41MDIgNC41IDExLjc1NjIgNi4yMTg0OSAxMS43NTYyIDguMzM2OTJDMTEuNzU2MiA4LjYzODExIDExLjc5MDUgOC45MzA4NSAxMS44NTczIDkuMjExODRDOC42MTc2MiA5LjA1MTUyIDUuNzQ0ODIgNy41MjQ1NCAzLjgyMjQgNS4yMDI3OEMzLjQ4NzMyIDUuNzY5NyAzLjI5NDUgNi40Mjg2MyAzLjI5NDUgNy4xMzEzNEMzLjI5NDUgOC40NjI2OCAzLjk4MjY4IDkuNjM3ODkgNS4wMjkxMyAxMC4zMjU0QzQuMzg5ODIgMTAuMzA2IDMuNzg5MDQgMTAuMTMzMSAzLjI2MzY1IDkuODQ1MzRDMy4yNjI3NCA5Ljg2MTM1IDMuMjYyNzQgOS44Nzc0MyAzLjI2Mjc0IDkuODk0MjdDMy4yNjI3NCAxMS43NTI5IDQuNjA2NjQgMTMuMzA0MyA2LjM5MDE0IDEzLjY1NjFDNi4wNjI4IDEzLjc0MzggNS43MTgyMiAxMy43OTExIDUuMzYyNTQgMTMuNzkxMUM1LjExMTQ0IDEzLjc5MTEgNC44NjcxNyAxMy43NjY2IDQuNjI5NzUgMTMuNzIxOUM1LjEyNjAzIDE1LjI0NjQgNi41NjUwMSAxNi4zNTU4IDguMjcxMzYgMTYuMzg3MUM2LjkzNjk2IDE3LjQxNjIgNS4yNTYyOSAxOC4wMjk1IDMuNDI5OTQgMTguMDI5NUMzLjExNTM3IDE4LjAyOTUgMi44MDUxNCAxOC4wMTE5IDIuNSAxNy45NzY0QzQuMjI1MjggMTkuMDY0NyA2LjI3MzYzIDE5LjcgOC40NzUzNSAxOS43WiIgZmlsbD0iY3VycmVudENvbG9yIi8+Cjwvc3ZnPgo="
-																						xmlns:xlink="http://www.w3.org/1999/xlink">
-																						<path fill-rule="evenodd" clip-rule="evenodd" d="M8.47535 19.7C15.6455 19.7 19.5665 13.8527 19.5665 8.78235C19.5665 8.61619 19.5631 8.45078 19.5553 8.28627C20.3164 7.74471 20.978 7.06894 21.5 6.29951C20.8015 6.60489 20.0498 6.81077 19.2613 6.90354C20.0662 6.42863 20.6841 5.67693 20.9754 4.78099C20.2221 5.22051 19.3882 5.54018 18.5003 5.71232C17.789 4.96652 16.7759 4.5 15.6549 4.5C13.502 4.5 11.7562 6.21849 11.7562 8.33692C11.7562 8.63811 11.7905 8.93085 11.8573 9.21184C8.61762 9.05152 5.74482 7.52454 3.8224 5.20278C3.48732 5.7697 3.2945 6.42863 3.2945 7.13134C3.2945 8.46268 3.98268 9.63789 5.02913 10.3254C4.38982 10.306 3.78904 10.1331 3.26365 9.84534C3.26274 9.86135 3.26274 9.87743 3.26274 9.89427C3.26274 11.7529 4.60664 13.3043 6.39014 13.6561C6.0628 13.7438 5.71822 13.7911 5.36254 13.7911C5.11144 13.7911 4.86717 13.7666 4.62975 13.7219C5.12603 15.2464 6.56501 16.3558 8.27136 16.3871C6.93696 17.4162 5.25629 18.0295 3.42994 18.0295C3.11537 18.0295 2.80514 18.0119 2.5 17.9764C4.22528 19.0647 6.27363 19.7 8.47535 19.7Z"
-																							fill="currentColor">
-																						</path>
-																					</svg>
-																				</div>
-																			</div>
-																			트위터
-																		</div>
-																	</a>
-																	<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpedia.watcha.com%2Fko-KR%2Fdecks%2FgcdkwxgZJb&amp;browser_open_type=external"
-																		target="_blank" class="css-1cqdd33-StylelessHref">
-																		<div class="css-3wahtm">
-																			<div class="Icon facebook icon css-ormu9t-SVG e1282e850" color="#292a32">
-																				<div>
-																					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yMS41IDEyLjA1ODFDMjEuNSA2Ljc3OTMgMTcuMjQ2NyAyLjUgMTIgMi41QzYuNzUzMjkgMi41IDIuNSA2Ljc3OTMgMi41IDEyLjA1ODFDMi41IDE2LjgyODggNS45NzQwMSAyMC43ODMgMTAuNTE1NiAyMS41VjE0LjgyMUg4LjEwMzUyVjEyLjA1ODFIMTAuNTE1NlY5Ljk1MjMyQzEwLjUxNTYgNy41NTY4MiAxMS45MzM5IDYuMjMzNjMgMTQuMTAzOSA2LjIzMzYzQzE1LjE0MzMgNi4yMzM2MyAxNi4yMzA1IDYuNDIwMzEgMTYuMjMwNSA2LjQyMDMxVjguNzcyNDlIMTUuMDMyNUMxMy44NTI0IDguNzcyNDkgMTMuNDg0NCA5LjUwOTI3IDEzLjQ4NDQgMTAuMjY1MVYxMi4wNTgxSDE2LjExOTFMMTUuNjk3OSAxNC44MjFIMTMuNDg0NFYyMS41QzE4LjAyNiAyMC43ODMgMjEuNSAxNi44Mjg4IDIxLjUgMTIuMDU4MVoiIGZpbGw9ImN1cnJlbnRDb2xvciIvPgo8L3N2Zz4K"
-																						xmlns:xlink="http://www.w3.org/1999/xlink">
-																						<path fill-rule="evenodd" clip-rule="evenodd" d="M21.5 12.0581C21.5 6.7793 17.2467 2.5 12 2.5C6.75329 2.5 2.5 6.7793 2.5 12.0581C2.5 16.8288 5.97401 20.783 10.5156 21.5V14.821H8.10352V12.0581H10.5156V9.95232C10.5156 7.55682 11.9339 6.23363 14.1039 6.23363C15.1433 6.23363 16.2305 6.42031 16.2305 6.42031V8.77249H15.0325C13.8524 8.77249 13.4844 9.50927 13.4844 10.2651V12.0581H16.1191L15.6979 14.821H13.4844V21.5C18.026 20.783 21.5 16.8288 21.5 12.0581Z"
-																							fill="currentColor">
-																						</path>
-																					</svg>
-																				</div>
-																			</div>
-																			페이스북
-																		</div>
-																	</a>
-																	<a id="shareDeckForKakao" target="_blank" class="css-1cqdd33-StylelessHref">
-																		<div class="css-3wahtm">
-																			<div class="Icon kakaotalk icon css-ormu9t-SVG e1282e850" color="#292a32">
-																				<div>
-																					<svg xmlns="http://www.w3.org/2000/svg" width="24"
-																						height="24" viewBox="0 0 24 24" fill="none"
-																						class="injected-svg"
-																						data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMi4wMzk0IDE4LjNDMTcuMDMxOCAxOC4zIDIxLjA3ODkgMTUuMDk4OCAyMS4wNzg5IDExLjE1QzIxLjA3ODkgNy4yMDExNiAxNy4wMzE4IDQgMTIuMDM5NCA0QzcuMDQ3MDkgNCAzIDcuMjAxMTYgMyAxMS4xNUMzIDEzLjcyNDkgNC43MjA3NSAxNS45ODE5IDcuMzAyMjkgMTcuMjQwN0M3LjAzNjA3IDE4LjM1NTQgNi41Njg1NSAyMC4zMTk4IDYuNTUxNDcgMjAuNDM4NUM2LjUyNzU0IDIwLjYwNDggNi43MTkyNSAyMC43NDA2IDYuODg3NTggMjAuNjI1MUM3LjAxMDUgMjAuNTQwOCA5LjI1Mjk1IDE5LjAxMDIgMTAuNDU0MSAxOC4xOTA0QzEwLjk2ODggMTguMjYyNCAxMS40OTg2IDE4LjMgMTIuMDM5NCAxOC4zWiIgZmlsbD0iY3VycmVudENvbG9yIi8+Cjwvc3ZnPgo="
-																						xmlns:xlink="http://www.w3.org/1999/xlink">
-																						<path fill-rule="evenodd" clip-rule="evenodd" d="M12.0394 18.3C17.0318 18.3 21.0789 15.0988 21.0789 11.15C21.0789 7.20116 17.0318 4 12.0394 4C7.04709 4 3 7.20116 3 11.15C3 13.7249 4.72075 15.9819 7.30229 17.2407C7.03607 18.3554 6.56855 20.3198 6.55147 20.4385C6.52754 20.6048 6.71925 20.7406 6.88758 20.6251C7.0105 20.5408 9.25295 19.0102 10.4541 18.1904C10.9688 18.2624 11.4986 18.3 12.0394 18.3Z"
-																							fill="currentColor">
-																						</path>
-																					</svg>
-																				</div>
-																			</div>
-																			카카오톡
-																		</div>
-																	</a>
 																	<div class="css-3wahtm">
 																		<div class="Icon link icon css-ormu9t-SVG e1282e850" color="#292a32">
 																			<div>
@@ -240,212 +183,36 @@
 												<div class="css-1gkas1x-Grid e1689zdh0">
 													<div class="css-1y901al-Row emmoxnt0">
 														<ul class="css-27z1qm-VisualUl-ContentGrid">
-															<!-- 영화 1개 -->
+											<!-- 영화 foreach -->
+														<c:forEach items="${movieInCollectionVoList}" var="movieVo" >
 															<li class="css-1hp6p72">
-																<a title="아이언맨" href="/ko-KR/contents/m5XMeBW">
+																<a title="${movieVo.movie_kor_title}" href="/contents/contents_SH?movie_id=${movieVo.id}">
 																	<div class="css-1qmeemv">
 																		<div class=" css-unzuzl-StyledLazyLoadingImage ezcopuc0">
-																			<img src="https://an2-img.amz.wtchn.net/image/v2/_rfDpc4dqHPFk24c1J1FoA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMmgyYTNkdlltNXZOVzlxY0RadVlXOXBkRzA0SW4wLjUyeWhrc2wwQUthSEVnR1duRDZralV5REg2R2NCNFZpTHRHeHRobmZOTkU"
+																			<img src="${movieVo.movie_post_url}"
 																				class="css-qhzw1o-StyledImg ezcopuc1">
 																		</div>
 																	</div>
 																	<div class="css-vb2pv5">
-																		<div class="css-niy0za">아이언맨</div>
+																		<div class="css-niy0za">${movieVo.movie_kor_title}</div>
 																		<div>
-																			<div class="css-1kcd80z">평가함 ★ 5.0</div>
-																			<div class="css-1vvt4am">영화</div>
+																			<c:if test="${ sessionId == null }"> <!--로그인 전 -->
+																			<div class="css-1kcd80z">평점 ${movieVo.movie_rating}</div>
+																				</c:if>
+																			<c:if test="${ sessionId != null }">
+																				<c:if test="${ movieVo.is_rated != 0 }">
+																					<div class="css-1kcd80z">평가함 ★ ${movieVo.scoreOfUser}</div>
+																				</c:if>
+																				<c:if test="${ movieVo.is_rated == 0 }">
+																					<div class="css-1kcd80z">평점 ${movieVo.movie_rating}</div>
+																				</c:if>
+																			</c:if>
 																		</div>
 																	</div>
 																</a>
 															</li>
-															<!-- 영화 1개 -->
-															<li class="css-1hp6p72">
-																<a title="인크레더블 헐크" href="/ko-KR/contents/mWpmnxO">
-																	<div class="css-1qmeemv">
-																		<div class=" css-unzuzl-StyledLazyLoadingImage ezcopuc0">
-																			<img src="https://an2-img.amz.wtchn.net/image/v2/cEQTtN8ibB_ODNwwqf4b-Q.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMjlsWjNKcVpHeDBabWwzWldGeGFtWnJNRE51SW4wLlBsX0NBRld0ejRXbXRJZ3FCeDgtVC1IVlhBSTJyVHItRTZfbTA3c3g2QWc"
-																					class="css-qhzw1o-StyledImg ezcopuc1">
-																		</div>
-																	</div>
-																	<div class="css-vb2pv5">
-																		<div class="css-niy0za">인크레더블 헐크</div>
-																		<div>
-																			<div class="css-or38u3">예상 ★ 4.0</div>
-																			<div class="css-1vvt4am">영화</div>
-																		</div>
-																	</div>
-																</a>
-															</li>
-															<li class="css-1hp6p72">
-																<a title="아이언맨 2" href="/ko-KR/contents/m5eQyz5">
-																	<div class="css-1qmeemv">
-																		<div class=" css-unzuzl-StyledLazyLoadingImage ezcopuc0">
-																			<img src="https://an2-img.amz.wtchn.net/image/v2/Hr_lcCFlMGgmckYNC07_xw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM0puZEdoeWVHRjZhM1JyZW5Sck9IZHZaemw2SW4wLnZxdEdTdnVreGhGdDUwNzBDbldrYzdIR2VZX05wcUd6NkwzZ04teXRTb3M"
-																				class="css-qhzw1o-StyledImg ezcopuc1">
-																		</div>
-																	</div>
-																	<div class="css-vb2pv5">
-																		<div class="css-niy0za">아이언맨 2</div>
-																		<div>
-																			<div class="css-or38u3">예상 ★ 4.6</div>
-																			<div class="css-1vvt4am">영화</div>
-																		</div>
-																	</div>
-																</a>
-															</li>
-															<li class="css-1hp6p72">
-																<a title="토르: 천둥의 신" href="/ko-KR/contents/mWpJoad">
-																	<div class="css-1qmeemv">
-																		<div class=" css-unzuzl-StyledLazyLoadingImage ezcopuc0">
-																			<img src="https://an2-img.amz.wtchn.net/image/v2/2y7aMKFCUcFIEy0JfU92hA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM1JxYUdkbGNqaDVkSEIwZGpSNFkzZGhaWFJtSW4wLkxzOXJSaVgxbXhybExEVzZoNGltU19kaUtzbm9oMFkzYnZ4NmxpSXlWajQ"
-																				class="css-qhzw1o-StyledImg ezcopuc1">
-																		</div>
-																	</div>
-																	<div class="css-vb2pv5">
-																		<div class="css-niy0za">토르: 천둥의 신</div>
-																		<div>
-																			<div class="css-or38u3">예상 ★ 4.3</div>
-																			<div class="css-1vvt4am">영화</div>
-																		</div>
-																	</div>
-																</a>
-															</li>
-															<li class="css-1hp6p72">
-																<a title="퍼스트 어벤져" href="/ko-KR/contents/m5Gk725">
-																	<div class="css-1qmeemv">
-																		<div class=" css-unzuzl-StyledLazyLoadingImage ezcopuc0">
-																			<img src="https://an2-img.amz.wtchn.net/image/v2/F6WJIOZp6AOw2pYB9g6y2A.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM0ZxZURSbWIzUnpaR1p1Y0dsMmIzbzViV053SW4wLnFoV2t6RVRvb0NQU08wNEE0WXFRWFJHb3BJVGRMaDdrWUQ4WEhDdzRLUFk"
-																				class="css-qhzw1o-StyledImg ezcopuc1">
-																		</div>
-																	</div>
-																	<div class="css-vb2pv5">
-																		<div class="css-niy0za">퍼스트 어벤져</div>
-																		<div>
-																			<div class="css-or38u3">예상 ★ 4.4</div>
-																			<div class="css-1vvt4am">영화</div>
-																		</div>
-																	</div>
-																</a>
-															</li>
-															<li class="css-1hp6p72">
-																<a title="어벤져스" href="/ko-KR/contents/mOVgp1d">
-																	<div class="css-1qmeemv">
-																		<div class=" css-unzuzl-StyledLazyLoadingImage ezcopuc0">
-																			<img src="https://an2-img.amz.wtchn.net/image/v2/EXwjz9rzTSmbV3e3CdBEtg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMkp4YVhsNU1tdGxiSEJsY3paa1pubDVhbk42SW4wLjY1RU0tRVdOcWZEenNuQ1p2X2lvTmJncWFKR2ZhWTV5aHdMZS1vT2c1eU0"
-																				class="css-qhzw1o-StyledImg ezcopuc1">
-																		</div>
-																	</div>
-																	<div class="css-vb2pv5">
-																		<div class="css-niy0za">어벤져스</div>
-																		<div>
-																			<div class="css-1kcd80z">평가함 ★ 5.0</div>
-																			<div class="css-1vvt4am">영화</div>
-																		</div>
-																	</div>
-																</a>
-															</li>
-															<li class="css-1hp6p72">
-																<a title="아이언맨 3" href="/ko-KR/contents/mdKmrJW">
-																	<div class="css-1qmeemv">
-																		<div class=" css-unzuzl-StyledLazyLoadingImage ezcopuc0">
-																			<img src="https://an2-img.amz.wtchn.net/image/v2/cLDe5AMGnHs4NeX0C4BQCw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMnBzWVhVM05uQjJNVGgwYTJRNGVYRjJaM0ZpSW4wLmpMamdtZW52ZXprSEQ5Z3FRYTkxdUYtTzFaV3FKYndELU53aE1wV1ZuRFE"
-																				class="css-qhzw1o-StyledImg ezcopuc1">
-																		</div>
-																	</div>
-																	<div class="css-vb2pv5">
-																		<div class="css-niy0za">아이언맨 3</div>
-																		<div>
-																			<div class="css-or38u3">예상 ★ 4.6</div>
-																			<div class="css-1vvt4am">영화</div>
-																		</div>
-																	</div>
-																</a>
-															</li>
-															<li class="css-1hp6p72">
-																<a title="토르: 다크 월드" href="/ko-KR/contents/m5ejMyW">
-																	<div class="css-1qmeemv">
-																		<div class=" css-unzuzl-StyledLazyLoadingImage ezcopuc0">
-																			<img src="https://an2-img.amz.wtchn.net/image/v2/zulQQvOFzbyfUQqXnR71xQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM0IxZEdkdGVXUXplbkJwYTJ4aWMydG1aV2RxSW4wLmpFWmtPZWhJRWN6VktjSERRMXFRUURPYng0NGxrZkxRRXI4cF80b0I3NG8"
-																				class="css-qhzw1o-StyledImg ezcopuc1">
-																		</div>
-																	</div>
-																	<div class="css-vb2pv5">
-																		<div class="css-niy0za">토르: 다크 월드</div>
-																		<div>
-																			<div class="css-or38u3">예상 ★ 4.3</div>
-																			<div class="css-1vvt4am">영화</div>
-																		</div>
-																	</div>
-																</a>
-															</li>
-															<li class="css-1hp6p72">
-																<a title="캡틴 아메리카: 윈터 솔져" href="/ko-KR/contents/mWpkJw5">
-																	<div class="css-1qmeemv">
-																		<div class=" css-unzuzl-StyledLazyLoadingImage ezcopuc0">
-																			<img src="https://an2-img.amz.wtchn.net/image/v2/snotTH5jPvaaXbY-Sl-UVA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM3B0T1RkMWNXWjVOM2R3YVhsc2R6aHJhREJ3SW4wLkUwbG1DZldqUW1pNDZza0JPM0Z4YkJLZENYTlZuN2VNUzhCdXZreXl1Mkk"
-																				class="css-qhzw1o-StyledImg ezcopuc1">
-																		</div>
-																	</div>
-																	<div class="css-vb2pv5">
-																		<div class="css-niy0za">캡틴 아메리카: 윈터 솔져</div>
-																		<div>
-																			<div class="css-or38u3">예상 ★ 4.5</div>
-																			<div class="css-1vvt4am">영화</div>
-																		</div>
-																	</div>
-																</a>
-															</li>
-															<li class="css-1hp6p72">
-																<a title="가디언즈 오브 갤럭시" href="/ko-KR/contents/mW9xB85">
-																	<div class="css-1qmeemv">
-																		<div class=" css-unzuzl-StyledLazyLoadingImage ezcopuc0">
-																			<img src="https://an2-img.amz.wtchn.net/image/v2/9ZYocIigzJs9-vuXF89vrw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM05zYkdzM01ta3pjakUyYmpob01XZHVZekZwSW4wLlVIVjJfT3Etak51ZHNqQzJPOUJyU1kyUkNLbkQ3aUk5QXpiZGhEajNmaVE"
-																				class="css-qhzw1o-StyledImg ezcopuc1">
-																		</div>
-																	</div>
-																	<div class="css-vb2pv5">
-																		<div class="css-niy0za">가디언즈 오브 갤럭시</div>
-																		<div>
-																			<div class="css-1kcd80z">평가함 ★ 5.0</div>
-																			<div class="css-1vvt4am">영화</div>
-																		</div>
-																	</div>
-																</a>
-															</li>
-															<li class="css-1hp6p72">
-																<a title="어벤져스: 에이지 오브 울트론" href="/ko-KR/contents/m5xYKqW">
-																	<div class="css-1qmeemv">
-																		<div class=" css-unzuzl-StyledLazyLoadingImage ezcopuc0">
-																			<img src="https://an2-img.amz.wtchn.net/image/v2/RSTx4FfhNdTzpEXuPEga8A.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM05zZERsMVlXZHlPV0UyZUdsaWRXTnhNMlk0SW4wLjVVVjNVLTNBLWFVWGpTVVJFSmcxZV9MYVhERUkwMGpwYml0b1lMcDM0dmc"
-																				class="css-qhzw1o-StyledImg ezcopuc1">
-																		</div>
-																	</div>
-																	<div class="css-vb2pv5">
-																		<div class="css-niy0za">어벤져스: 에이지 오브 울트론</div>
-																		<div>
-																			<div class="css-1kcd80z">평가함 ★ 5.0</div>
-																			<div class="css-1vvt4am">영화</div>
-																		</div>
-																	</div>
-																</a>
-															</li>
-															<li class="css-1hp6p72">
-																<a title="앤트맨" href="/ko-KR/contents/mOANbld">
-																	<div class="css-1qmeemv">
-																		<div class=" css-unzuzl-StyledLazyLoadingImage ezcopuc0">
-																			<img src="https://an2-img.amz.wtchn.net/image/v2/HBOMjJfTFHOIq28nHn4XnA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM3AxY21WellUZDNjR1pyZG5jd04zbDFZMkYzSW4wLm9NaldVTk5kQzdpZldlMVFpS1VYeDJtTjdZbHJkV05lRlVaZkhDNlZ3aGs"
-																				class="css-qhzw1o-StyledImg ezcopuc1">
-																		</div>
-																	</div>
-																	<div class="css-vb2pv5">
-																		<div class="css-niy0za">앤트맨</div>
-																		<div>
-																			<div class="css-1kcd80z">평가함 ★ 4.0</div>
-																			<div class="css-1vvt4am">영화</div>
-																		</div>
-																	</div>
-																</a>
-															</li>
+														</c:forEach>	
+											<!-- 영화 foreach -->											
 														</ul>
 														<div class="css-tf1605">
 															<button class="css-1d4r906-StylelessButton">
@@ -465,12 +232,11 @@
 														<div class="css-1evo7eb">
 															<!-- 총 댓글 수 -->
 															<div id="comm" class="css-a0bj5z">
-																댓글<span>10</span>
+																댓글<span>${collectionVo.like_count}</span>
 															</div>
 															<!-- 이전 댓글 불러오기 버튼 -->
 															<div class="css-5hpf69">
 																<button class="css-16halel">이전 댓글 보기</button>
-																<div class="css-1f20jes">10개 중 9개</div>
 															</div>
 															<!-- 댓글 1개 시작-->
 															<div class="css-1pov5mm">

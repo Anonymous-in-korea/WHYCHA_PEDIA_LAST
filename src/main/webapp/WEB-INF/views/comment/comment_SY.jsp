@@ -11,72 +11,141 @@
 		<link href="/css/footer.css" rel="stylesheet" type="text/css">
 		<link href="/css/comment_SY.css" rel="stylesheet" type="text/css">
 		<link rel="shortcut icon" type="image/x-icon" href="/images/whycha_small_logo1.png">
-	
-	    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 	    <script defer src="/js/commentScript.js"></script>
-	    <script>
+	     <script>
 		    $(function() {
 		    	/* 좋아요 클릭시 색변하기 */
 		   		$(".css-1h18l7j-StylelessButton").click(function() {
 	   		        var id = $(this).attr("id");
-// 	   		        var user_id = $("#user_id").val();
 	   		        alert(id);
-	   		        alert(user_id);
+	   		        var result = $(this).siblings("#result").val();
+	   		        alert(result);
 	   		        var $button = $(this);
-		   		    if ($(this).hasClass("css-jj4q3s-StylelessButton-UserActionButton")) {
-		   		        $(this).removeClass("css-jj4q3s-StylelessButton-UserActionButton");
-		   		        $(this).addClass("css-1h18l7j-StylelessButton");
-		   		        $.ajax({
-		   		        	url:"/comment/comment_like_remove",
-		   		        	type:"post",
-		   		        	dataType:"json",
-		   		        	data:{
-		   		        		"user_id":"300",
-		   		        		"comment_id":id
-		   		        		},
-		   		        	success:function(data){
-		   		        		alert("성공");
-				   		       	console.log(data);
-				   		     	$(this).parent().parent().find(".comment_like").text(data);
-		   		        	},
-		   		        	error:function(){
-		   		        		alert("실패");
-		   		        	}
-		   		        });
-		   		    } else {
-		   		        $(this).removeClass("css-1h18l7j-StylelessButton");
-		   		        $(this).addClass("css-jj4q3s-StylelessButton-UserActionButton").attr("id",id);
-			   		    $.ajax({
-			   		       	url:"/comment/comment_like",
-			   		       	type:"post",
-			   		       	dataType:"json",
-			   		       	data:{
-			   		       		"user_id":"300",
-			   		       		"comment_id":id
-			   		       		},
-			   		       	success:function(data){
-			   		       		alert("성공");
-					   	       	console.log(data);
-					   	     	$(this).parent().parent().find(".comment_like").text(data);
-			   		       	},
-			   		       	error:function(){
-			   		       		alert("실패");
-			   		       	}
-			   		   });
-		   		    }
+	   		        if(result != 1){
+	   		        	$(".comment_pop_up_background").show();
+	   		        }else{
+	   		        	if ($(this).hasClass("css-jj4q3s-StylelessButton-UserActionButton")) {
+			   		        $(this).removeClass("css-jj4q3s-StylelessButton-UserActionButton");
+			   		        $(this).addClass("css-1h18l7j-StylelessButton");
+			   		        $.ajax({
+			   		        	url:"/comment/comment_like_remove",
+			   		        	type:"post",
+			   		        	dataType:"json",
+			   		        	data:{
+			   		        		"user_id":"${sessionId}",
+			   		        		"comment_id":id
+			   		        		},
+			   		        	success:function(data){
+			   		        		alert("성공");
+			   		        		$(".comment_like").text(data);
+			   		        	},
+			   		        	error:function(){
+			   		        		alert("실패");
+			   		        	}
+			   		        });
+			   		    } else {
+			   		        $(this).removeClass("css-1h18l7j-StylelessButton");
+			   		        $(this).addClass("css-jj4q3s-StylelessButton-UserActionButton").attr("id",id);
+				   		    $.ajax({
+				   		       	url:"/comment/comment_like",
+				   		       	type:"post",
+				   		       	dataType:"json",
+				   		       	data:{
+				   		       		"user_id":"${sessionId}",
+				   		       		"comment_id":id
+				   		       		},
+				   		       	success:function(data){
+				   		       		alert("성공");
+				   		       		$(".comment_like").text(data);
+				   		       	},
+				   		       	error:function(){
+				   		       		alert("실패");
+				   		       	}
+				   		   });
+			   		    }
+	   		        }
 		   		});
-		    });
+		    	
+		   		/* 코멘트 창 내리기 */
+				$(".css-1d7tft4-StylelessButton-HeaderCloseButtonSelf, .comment_pop_up_background").click(function() {
+					if ( $(".comment_pop_up_background").css("display") != "none" ) {
+						$(".comment_pop_up_background").hide();
+						$("#comment_btn").removeClass("active");
+						$("#pen_icon").css({"display":"block"});
+						$("#pen_icon_color").css({"display":"none"});
+					}
+				});
+	   		    
+		   		/* 코멘트 창에서 회원가입 버튼 클릭 시 */
+				$("#comment_join_btn").click(function() {
+					$(".join_button").css("z-index", "100");
+					$(".join_button").click();
+					$(".comment_pop_up_background").css("z-index", "10");
+				});
+
+				/* 코멘트 창에서 로그인 버튼 클릭 시 */
+				$("#comment_login_btn").click(function() {
+					$(".login_button").css("z-index", "100");
+					$(".login_button").click();
+					$(".comment_pop_up_background").css("z-index", "10");
+				});
+				
+		    	/* 창 내리기 방지 */
+		    	$(".comment_content_box").click(function(e) {
+					e.stopPropagation();
+					$(".comment_pop_up_background").css("display", "block");
+				});
+		    	/* 코멘트 section end */
+		   		});
 	    </script>
 	</head>
 	<body>
 		<div id="root">
 		    <div class="css-5jq76">
 		        <div class="css-1xm32e0">
-		            <div th:replace="fragment/header::header">
+		        	<div th:replace="fragment/header::header">
 		          	<!-- header start -->
 					<%@ include file="../head_foot/header.jsp" %>
 					<!-- header end -->
+		        	<!-- 코멘트 팝업창 시작 --> 
+					<div class="comment_pop_up_background" style="display:none;">
+						<div id="modal-container-_UXspPLNadvpHIg80kJol" class="css-rpyl6s">
+							<div class="css-ikkedy">
+								<header title="" class="css-155l1de-HeaderBarPrimitive">
+									<div class="css-19pxr9t">
+										<button aria-label="close" class="css-1d7tft4-StylelessButton-HeaderCloseButtonSelf e1k34u8y0" id="close_button">
+											<strong><img src="/images/close_button.png" style="width:100%; height:100%;"></strong>
+										</button>
+									</div>
+									<div class="css-19pxr9t"></div>
+								</header>
+								<div class="css-1s8we4x">
+									<div class="comment_content_box">
+										<div class="css-blhbko">
+											<div class="css-1gkas1x-Grid e1689zdh0">
+												<div class="css-1y901al-Row emmoxnt0">
+													<div class="css-l84u8">
+														<img src="/images/comment.svg" class="css-ntv7u">
+													</div>
+													<div class="css-1q1aaw9">지금 회원가입 혹은 로그인하시고,<br>경험한 감동을 기록해보세요.</div>
+												</div>
+											</div>
+										</div>
+										<div class="css-y06mto">
+											<div class="css-1gkas1x-Grid e1689zdh0">
+												<div class="css-1y901al-Row emmoxnt0">
+													<button type="button" id="comment_join_btn" class="css-ayvrdp-StylelessButton">회원가입</button>
+													<button type="button" id="comment_login_btn" class="css-1828y09-StylelessButton">로그인</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 코멘트 팝업창 끝 -->
 		            </div>
 		            <section class="css-18gwkcr">
 		                <section class="css-9v5p4g-StyledSectionWithShrinkHeaderBar e1ntr3260">
@@ -102,7 +171,7 @@
 		                                    <div class="css-bawlbm" >
 		                                        <div class="css-4obf01">
 		                                            <div class="css-1cvf9dk">
-		                                            	<a title="Emma S" class="css-1f9m1s4-StylelessLocalLink eovgsd01" href="/ko-KR/users/DgwxAMa03axrM">
+		                                            	<a title="${memberVolist[i].user_name}" class="css-1f9m1s4-StylelessLocalLink eovgsd01" href="/myPage/userPage_SY?user_id=${memberVolist[i].id}">
 			                                                <div class="css-107z6xc">
 			                                                <c:if test="${memberVolist[i].user_pic_url != '0' }">
 			                                                    <div class="css-7n996g-ProfilePhotoImage" style="background-image: url('${memberVolist[i].user_pic_url}');"></div>
@@ -148,8 +217,9 @@
 		                                            <em>${replyCount[i]}</em>
 		                                        </div>
 			                                        <div class="css-hy68ty" >
-			                                            <input type="hidden" name="user_id" id="user_id" value="${commentVolist[i].user_id}">
-			                                            <button id="${commentVolist[i].id}" class="css-1h18l7j-StylelessButton">좋아요</button>
+			                                            <input type="hidden" name="user_id" id="result" value="${result}">
+                                                       	<button type="button" class="css-1h18l7j-StylelessButton" id="${commentVolist[i].id}">좋아요</button>
+<%-- 			                                            <button id="${commentVolist[i].id}" class="css-1h18l7j-StylelessButton" onclikc="commentlikeBtn()">좋아요</button> --%>
 <%-- 			                                        <c:set var="hasLike" value="false"/> --%>
 <%-- 			                                        <c:forEach var="j"  begin="0" end="${likeList.size()-1}"> --%>
 <%-- 			                                            <c:if test="${commentVolist[i].id == likeList[j].comment_id}"> --%>

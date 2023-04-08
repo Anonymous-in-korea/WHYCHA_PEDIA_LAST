@@ -41,6 +41,11 @@
 		delete from comment_like where comment_id=#{comment_id} and user_id=#{user_id}
 	</delete>
 	
+	<!-- 코멘트 1개에 대한 좋아요 카운트 -->
+	<select id="selectCommentOneLike" resultType="int">
+		select count(*) like_count fROM comment_like 
+			where comment_id=#{comment.id}
+	</select>
 
 
 </mapper>

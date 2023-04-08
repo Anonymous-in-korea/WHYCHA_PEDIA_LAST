@@ -20,6 +20,8 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 		<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 		<!-- 이거 side_nav 작동하는 script임 -->
+		
+		<script src="/js/admin_logout.js"></script>
 	</head>
 	<body class="sb-nav-fixed">
 		<div id="layoutSidenav">
@@ -109,20 +111,20 @@
 		                    				</thead>
 		                    				<!-- c:foreach로 반복 돌리기 -->
 		                    				<tbody>
-		                    					<c:if test="${result == 1}">
-												<c:forEach items="${adminContentsList}" var="movieList" varStatus="status">
+												<c:forEach items="${adminContents}" var="movieList">
 		                    					<tr>
 		                    						<td>${ movieList.id }</td>
 		                    						<td>
 		                    							<a href="/admin/3_contents/movie_view">${ movieList.movie_kor_title }</a>
 		                    						</td>
-		                    						<td>깐데또까상</td>
+		                    						<c:forEach items="${ adminDirectorName }" var="director">
+		                    						<td>${ director.director_name }</td>
+		                    						</c:forEach>
 		                    						<td>2023-03-10</td>
 		                    						<td>스포츠</td>
 		                    						<td>니뽄</td>
 		                    					</tr>
 		                    					</c:forEach>
-												</c:if>
 		                    				</tbody>
 		                    				<!-- c:foreach로 반복 돌리기 -->
 		                    			</table>

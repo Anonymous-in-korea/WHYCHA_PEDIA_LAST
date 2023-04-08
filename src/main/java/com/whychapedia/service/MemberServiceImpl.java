@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.whychapedia.mapper.MemberMapper;
+import com.whychapedia.vo.CommentReplyVo;
+import com.whychapedia.vo.CommentVo;
 import com.whychapedia.vo.MemberVo;
 
 @Service
@@ -38,12 +40,25 @@ public class MemberServiceImpl implements MemberService {
 		memberVo=memberMapper.selectOneMember(user_id);
 		return memberVo;
 	}
+	
+	
+	@Override //불러온 코멘트에 해당하는 userlist가져오기
+	public List<MemberVo> commentUserList(List<CommentVo> commentVolist) {
+		List<MemberVo> mvoList = memberMapper.commentUserList(commentVolist);
+//		System.out.println("memberService commentUserList : "+ mvoList);
+		return mvoList;
+	}
 
+	@Override //댓글 userlist가져오기
+	public List<MemberVo> selectReplyuserList(List<CommentReplyVo> replyList) {
+		List<MemberVo> mvoReplyList = memberMapper.selectReplyuserList(replyList);
+		return mvoReplyList;
+	}
 
-	//검색된 유저의 정보가져오기
 	@Override
 	public List<MemberVo> selectSearchMemberList() {
-		List<MemberVo> memberVolist= memberMapper.memberSelectAll();
-		return memberVolist;
+		// TODO Auto-generated method stub
+		return null;
 	}
+	
 }

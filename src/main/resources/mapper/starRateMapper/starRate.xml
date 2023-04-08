@@ -50,5 +50,33 @@
 		 select count(*) from star_rate where movie_id=#{movie_id} and (score=#{score1} or score=#{score2})
 	</select>
   
+  
+  	<!-- 코멘트 영화 별점 가져오기 -->
+	<select id="starRateList" resultType="com.whychapedia.vo.StarRateVo">
+		select * from star_rate 
+		where user_id in  (
+		<foreach collection="commentVolist" item="id" separator=",">
+			#{id.user_id}
+		</foreach>
+		)
+	 	and movie_id in (
+	 		<foreach collection="commentVolist" item="id" separator=",">
+				#{id.movie_id}
+			</foreach>
+		) 
+		ORDER BY 
+			case 
+				<foreach collection="commentVolist" item="comment" index="index">
+					when id = #{comment.user_id} then #{index}
+				</foreach>
+			end
+	</select>
+	
+	<!-- 코멘트 1개에 대한 영화 별점 가져오기 -->
+	<select id="selectStarRateOne" resultType="com.whychapedia.vo.StarRateVo">
+		select * from star_rate 
+		where user_id =	#{user_id}
+	 	and movie_id = #{movie_id}
+	</select>
 	
   </mapper>

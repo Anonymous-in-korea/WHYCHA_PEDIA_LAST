@@ -1,13 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    	<!--검색창 스크립트  -->
+		<script>
+			$(document).ready(function() {
+				  $("form").on("submit", function(event) {
+				    event.preventDefault();
+				    var searchKeyword = $("input[name='searchKeyword']").val();
+				    window.location.href = "/search/searchContents_GC?searchKeyword=" + searchKeyword+"&category=contents";
+				  });
+			});
+		</script>
 <header class="header">
 	<nav>
 		<div class="css-1gkas1x-Grid e1689zdh0">
 			<div class="header_footer_div">
 				<ul class="header_ul">
 					<li class="header_li">
-						<a href="/"><img src="/images/no1_WHYCHA_NONBACK.png" id="logo_change" style="width: 210px;"></a>
+						<a href="/"><img src="/images/no1_WHYCHA_orange.png" id="logo_change" style="width: 210px;"></a>
 					</li>
 					<li class="header_li_searchBox">
 						<div class="header_li_searchBox_div">
@@ -152,7 +163,7 @@
 						</a>
 					</li>
 					<li  class="header_li_button">
-						<a href="" title="${ sessionName }'s page">
+						<a href="/myPage/userPage_SY" title="${ sessionName }'s page">
 							<div class="user_picture_div">
 								<img src="${ sessionUserPic }" class="user_picture">
 							</div>

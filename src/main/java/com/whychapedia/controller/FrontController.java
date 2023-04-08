@@ -137,4 +137,9 @@ public class FrontController {
 		return "index_SH";
 	}
 	
+	@GetMapping("/rate_page_HY")
+	public String rate_page() {
+		return "rate_page_HY";
+	}
+	
 }

@@ -1,6 +1,7 @@
 package com.whychapedia.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -8,11 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.whychapedia.service.AnnouncementService;
 import com.whychapedia.service.ArtistService;
 import com.whychapedia.service.LikeService;
+import com.whychapedia.service.MemberService;
 import com.whychapedia.vo.ArtistVo;
 import com.whychapedia.vo.LikeVo;
+import com.whychapedia.vo.MemberVo;
 
 @Controller
 public class MyPageController {
@@ -23,20 +28,54 @@ public class MyPageController {
 	ArtistService artistService;
 	@Autowired
 	HttpSession session;
-
+	@Autowired
+	AnnouncementService announcementService;
+	@Autowired
+	MemberService memberService;
 	
-	@GetMapping("myPage/userPage_SY")
-	public String userPage_SY(Model model) {
+	//로그인 한 후 내 페이지 들어오기
+	@GetMapping("myPage/myPage_SY")
+	public String myPage_SY(Model model) {
+		int user_id = (int)session.getAttribute("sessionId");
+		//sessionId로 user1명 가져오기
+		MemberVo memberVo = memberService.selectOneMember(user_id);
+		model.addAttribute("memberVo",memberVo);
 		//actor_id를 가지고오기
-		List<LikeVo> actorLike_list = likeService.selectActor_like_id(6);
-		System.out.println("selectActor_like_id_list_size :"+actorLike_list.size());
+		List<LikeVo> actorLike_list = likeService.selectActor_like_id(user_id);
+//			System.out.println("selectActor_like_id_list_size :"+actorLike_list.size());
 		model.addAttribute("actorLike_list",actorLike_list);
 		
 		//director_id 가지고오기
-		List<LikeVo> directorLike_list = likeService.selectDirector_like_id(6);
-		System.out.println("selectDirector_like_id_list_size :"+directorLike_list.size());
+		List<LikeVo> directorLike_list = likeService.selectDirector_like_id(user_id);
+//			System.out.println("selectDirector_like_id_list_size :"+directorLike_list.size());
 		model.addAttribute("directorLike_list",directorLike_list);
-				
+		
+		//공지사항 가져오기
+		Map<String, Object> map = announcementService.selectAnnouncementList();
+		model.addAttribute("map",map);
+		
+		return "myPage/userPage_SY";
+	}
+	
+	//다른 사람 클릭해서 들어오기
+	@GetMapping("myPage/userPage_SY")
+	public String userPage_SY(Model model, @RequestParam int user_id) {
+		MemberVo memberVo = memberService.selectOneMember(user_id);
+		model.addAttribute("memberVo",memberVo);
+		//actor_id를 가지고오기
+		List<LikeVo> actorLike_list = likeService.selectActor_like_id(user_id);
+//			System.out.println("selectActor_like_id_list_size :"+actorLike_list.size());
+		model.addAttribute("actorLike_list",actorLike_list);
+		
+		//director_id 가지고오기
+		List<LikeVo> directorLike_list = likeService.selectDirector_like_id(user_id);
+//			System.out.println("selectDirector_like_id_list_size :"+directorLike_list.size());
+		model.addAttribute("directorLike_list",directorLike_list);
+		
+		//공지사항 가져오기
+		Map<String, Object> map = announcementService.selectAnnouncementList();
+		model.addAttribute("map",map);
+		
 		return "myPage/userPage_SY";
 	}
 	
@@ -46,26 +85,26 @@ public class MyPageController {
 	}
 	
 	@GetMapping("myPage/actor_director_like_SY")
-	public String actor_director_like(Model model) {
+	public String actor_director_like(Model model, @RequestParam int user_id) {
 		//actor_id를 가지고오기
-		List<LikeVo> actorLike_list = likeService.selectActor_like_id(6);
-		System.out.println("selectActor_like_id_list_size :"+actorLike_list.size());
+		List<LikeVo> actorLike_list = likeService.selectActor_like_id(user_id);
+//		System.out.println("selectActor_like_id_list_size :"+actorLike_list.size());
 		model.addAttribute("actorLike_list",actorLike_list);
 		
 		//해당 actor_id의 actor_name과 actor_post_url가져오기
 		List<ArtistVo> actor_list = artistService.selectActorAll(actorLike_list);
-		System.out.println("selectActor_list_size"+actor_list.size());
+//		System.out.println("selectActor_list_size"+actor_list.size());
 		model.addAttribute("actor_list",actor_list);
 		
 		
 		//director_id 가지고오기
-		List<LikeVo> directorLike_list = likeService.selectDirector_like_id(6);
-		System.out.println("selectDirector_like_id_list_size :"+directorLike_list.size());
+		List<LikeVo> directorLike_list = likeService.selectDirector_like_id(user_id);
+//		System.out.println("selectDirector_like_id_list_size :"+directorLike_list.size());
 		model.addAttribute("directorLike_list",directorLike_list);
 		
 		//해당 director_id의 director_name과 director_post_url가져오기
 		List<ArtistVo> director_list = artistService.selectDirectorAll(directorLike_list);
-		System.out.println("selectDirector_list_size"+director_list.size());
+//		System.out.println("selectDirector_list_size"+director_list.size());
 		model.addAttribute("director_list",director_list);
 
 		

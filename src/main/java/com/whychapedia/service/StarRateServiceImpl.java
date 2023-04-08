@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.whychapedia.mapper.StarRateMapper;
+import com.whychapedia.vo.CommentVo;
 import com.whychapedia.vo.MovieCollectionVo;
 import com.whychapedia.vo.MovieVo;
 import com.whychapedia.vo.StarRateVo;
@@ -123,6 +124,20 @@ public class StarRateServiceImpl implements StarRateService {
 		    }
 		    }
 		return starRateList;
+	}
+
+	
+	//코멘트 1개 클릭시 페이지에 들어갈 별점 1개
+	@Override
+	public StarRateVo selectStarRateOne(CommentVo cvo) {
+		StarRateVo starOne = starRateMapper.selectStarRateOne(cvo);
+		return starOne;
+	}
+
+	@Override
+	public List<StarRateVo> starRatelist(List<CommentVo> commentVolist) {
+		List<StarRateVo> starRatelist = starRateMapper.starRateList(commentVolist);
+		return starRatelist;
 	}
 
 

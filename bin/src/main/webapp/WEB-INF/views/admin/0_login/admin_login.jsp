@@ -13,6 +13,53 @@
 		<link rel="stylesheet" href="/css/admin/0_login/Login.css" />
 		
 		<script defer src="/js/admin/Login.js"></script>
+		
+		<script>
+			$(function() {
+				let email_flag = 0; let pw_flag = 0;
+				let emailPattern = /^[\w\.-]{2,}@[\w\.-]+\.(com|net)$/;
+        		let pwPattern = /^(?=.*[A-Za-z])[A-Za-z\d\S]{6,}$/;
+
+        		$("#admin_email").on("keyup", function() {
+        			if ( $("#admin_email").val() == "" ) {
+        				$("#error_text").css({"display":"none"});
+        				email_flag = 0;
+        			} else if ( !emailPattern.test( $("#admin_email").val() ) ) {
+        				$("#error_text").css({"display":"block"});
+        				email_flag = 0;
+        			} else {
+        				$("#error_text").css({"display":"none"});
+        				email_flag = 1;
+        			}
+        		});
+        		
+        		$("#admin_pw").on("keyup", function() {
+        			if ( $("#admin_pw").val() == "" ) {
+        				$("#error_text").css({"display":"none"});
+        				pw_flag = 0;
+        			} else if ( !pwPattern.test( $("#admin_pw").val() ) ) {
+        				$("#error_text").css({"display":"block"});
+        				pw_flag = 0;
+        			} else {
+        				$("#error_text").css({"display":"none"});
+        				pw_flag = 1;
+        			}
+        		});
+        		
+        		
+        		
+        		/* 엔터키를 누르면 로그인 실행 스크립트 */
+				$("#admin_pw").on("keypress", function(event) {
+					if ( event.keyCode == 13 ) {
+						if ( email_flag == 0 || pw_flag == 0 ) {
+							$("#error_text").show();
+						} else {
+							$("#loginBtn").click();
+						}
+					}
+				});
+			});
+		</script>
 	</head>
 	<body>
 		
@@ -56,7 +103,7 @@
 								</div>
 							</div>
 							<c:if test="${ adminSessionId == null }">
-							<p style="display: none; margin: 0 auto; text-align: center; color: red;">아이디 또는 비밀번호를 잘못입력했습니다</p>
+							<p id="error_text" style="display: none; margin: 0 auto; text-align: center; color: red;">아이디 또는 비밀번호를 잘못입력했습니다</p>
 							</c:if>
 							<div id="bor5">
 								<button type="button" id="loginBtn">관리자 로그인</button>

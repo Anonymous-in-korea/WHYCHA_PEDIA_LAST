@@ -308,7 +308,7 @@
 		                                        <c:forEach var="i" begin="0" end="${replyList.size()-1}">
 		                                            <div class="css-1m1whp6">
 		                                                <div class="css-ov1ktg">
-		                                                	<a class="css-255jr8" href="/ko-KR/users/WwRqo1nZy5lzB">
+		                                                	<a class="css-255jr8" href="/myPage/userPage_SY?id=${replyuserList[i].id}">
 		                                                		<c:if test="${replyuserList[i].user_pic_url != '0' }">
 			                                                    	<div class="css-293y94" style="background-image:url('${replyuserList[i].user_pic_url}');"></div><!-- css-bnsanu -->
 		                                                		</c:if>
@@ -318,7 +318,7 @@
 		                                                	</a>
 		                                                    <div class="css-199ku80">
 		                                                        <div class="css-1sg2lsz">
-		                                                        	<a class="css-255jr8" href="/ko-KR/users/WwRqo1nZy5lzB">
+		                                                        	<a class="css-255jr8" href="/myPage/userPage_SY?id=${replyuserList[i].id}">
 		                                                            	<div class="css-72k174">${replyuserList[i].user_name}</div>
 		                                                        	</a>
 		                                                            <div class="css-maxfbg">${replyList[i].regi_date}</div>

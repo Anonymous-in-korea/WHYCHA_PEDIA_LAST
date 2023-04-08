@@ -151,7 +151,7 @@
 					<!-- 로그인 한 후 -->
 					<c:if test="${ sessionId != null }">
 					<li class="header_li_button">
-						<a href="">
+						<a href="/rate_page_HY?id=${sessionId }">
 							<span class="evaluate_button active">평가하기</span>
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" width="22" height="22" class="evaluate_svg">
 								<g fill="none">
@@ -163,7 +163,7 @@
 						</a>
 					</li>
 					<li class="header_li_button">
-						<a href="/myPage/userPage_SY" title="${ sessionName }'s page">
+						<a href="/myPage/myPage_SY" title="${ sessionName }'s page">
 							<div class="user_picture_div">
 								<img src="${ sessionUserPic }" class="user_picture">
 							</div>

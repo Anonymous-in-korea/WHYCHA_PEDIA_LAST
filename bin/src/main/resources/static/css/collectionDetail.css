@@ -593,7 +593,7 @@
 	    line-height: 18px;
 	    border-radius: 5px;
 	    margin: 3px;
-	    color: rgb(255, 47, 110);
+	    color:#FEAE27;
 	}
 	
 	
@@ -607,7 +607,7 @@
 	}
 	
 	.css-1jbpd60 .fillTarget {
-	    fill: rgb(255, 47, 110);
+	    fill:#FEAE27;
 	}
 	
 	.css-3w1nnz-StylelessButton-StyledActionButton.boing [class*="StyledIconContainer"] {
@@ -638,17 +638,6 @@
 	    right: calc((33% - 176px) / 2);
 	    z-index: 10;
 	    visibility: hidden;
-	}
-	
-	.css-ve4kut {
-	    display: flex;
-	    flex-direction: column;
-	    background: rgb(255, 255, 255);
-	    box-sizing: border-box;
-	    width: 176px;
-	    padding: 5px;
-	    border-radius: 7px;
-	    box-shadow: rgba(0, 0, 0, 0.17) 0px 1px 6px;
 	}
 	
 	.css-1cqdd33-StylelessHref {
@@ -836,7 +825,7 @@
 	}
 	
 	.css-or38u3 {
-	    color: rgb(255, 47, 110);
+	    color:#FEAE27;
 	    font-size: 13px;
 	    font-weight: 400;
 	    letter-spacing: -0.2px;
@@ -891,7 +880,7 @@
 	
 	.css-16halel {
 	    background: none;
-	    color: rgb(255, 47, 110);
+	    color: #FEAE27;
 	    font-size: 14px;
 	    font-weight: 500;
 	    letter-spacing: -0.5px;
@@ -1054,7 +1043,7 @@
 	    display: flex;
 	    -webkit-box-align: center;
 	    align-items: center;
-	    color: rgb(255, 47, 110);
+	    color:#FEAE27;
 	    font-size: 14px;
 	    font-weight: 400;
 	    letter-spacing: -0.3px;
@@ -1066,28 +1055,33 @@
 	    margin-left: -8px;
 	}
 	
+	.css-jpkqok [class*="Icon"] {
+	    margin-right: 6px;
+	}
+	
 	.css-jpkqok:hover {
-	    background: rgba(255, 47, 110, 0.08);
+	    background:#FEAE27;
 	    cursor: pointer;
 	    margin-right: 6px;
 	}
 	
-	.css-jpkqok svg:nth(1){
+	.css-jpkqok > .injected-svg:nth(1){
 	    fill-rule: evenodd;
 	    clip-rule: evenodd;
 	    d: path("M 1.75 12.5417 H 4.66667 V 5.54175 H 1.75 V 12.5417 Z");
-	    fill: rgb(255, 47, 110);
+	    fill:#FEAE27;
 	}
 	
 	.css-jpkqok svg:nth(2){
 	    fill-rule: evenodd;
 	    clip-rule: evenodd;
 	    d: path("M 12.1945 5.00536 C 11.9313 4.70284 11.552 4.52907 11.1539 4.52907 H 9.81942 C 9.98857 4.11339 10.0586 3.67058 10.0586 3.08112 C 10.0586 1.96053 9.25499 1.45825 8.45762 1.45825 C 8.20018 1.45825 8.00482 1.53273 7.87667 1.67995 C 7.75593 1.81851 7.70922 2.00325 7.73485 2.19204 V 2.86405 C 7.73485 2.92582 7.71036 2.98702 7.66651 3.0309 L 6.06378 4.65608 C 5.7175 5.00652 5.5415 5.37428 5.5415 5.74896 V 11.6666 H 10.3161 C 11.0132 11.6666 11.605 11.1383 11.6893 10.4565 L 12.5305 6.1121 C 12.5806 5.71201 12.4582 5.30846 12.1945 5.00536 Z");
-	    fill: rgb(255, 47, 110);
+	    fill:#FEAE27;
 	}
 	
 	.css-4ygot5 {
 	    position: relative;
+	    cursor:pointer;
 	}
 	
 	.css-1b4hoch-SVG {
@@ -1112,6 +1106,25 @@
 	    visibility: hidden;
 	}
 	
+	.css-1pfl1eu {
+	    position: absolute;
+	    top: 100%;
+	    right: 0px;
+	    z-index: 10;
+	    visibility: visible;
+	}
+	
+	.css-ve4kut {
+	    display: flex;
+	    flex-direction: column;
+	    background: rgb(255, 255, 255);
+	    box-sizing: border-box;
+	    width: 176px;
+	    padding: 5px;
+	    border-radius: 7px;
+	    box-shadow: rgba(0, 0, 0, 0.17) 0px 1px 6px;
+	}
+	
 	.css-19hkid5 {
 	    display: flex;
 	    -webkit-box-align: center;
@@ -1124,6 +1137,10 @@
 	    border-radius: 5px;
 	    cursor: pointer;
 	    padding-left: 7px;
+	}
+	
+	.css-19hkid5:hover {
+	    background: rgba(41, 42, 50, 0.08);
 	}
 	
 	.css-9c6fhv {
@@ -1218,7 +1235,7 @@
 	    -webkit-box-align: center;
 	    align-items: center;
 	    background: rgb(255, 238, 243);
-	    color: rgb(255, 47, 110);
+	    color:#FEAE27;
 	    font-size: 14px;
 	    font-weight: 500;
 	    letter-spacing: -0.3px;
@@ -1247,7 +1264,7 @@
 	    -webkit-box-align: center;
 	    align-items: center;
 	    background: rgb(255, 238, 243);
-	    color: rgb(255, 47, 110);
+	    color: #FEAE27;
 	    font-size: 14px;
 	    font-weight: 500;
 	    letter-spacing: -0.3px;
@@ -3054,4 +3071,125 @@
 		padding-bottom: env(safe-area-inset-bottom);
 	}
 	
-	.css-comm{color:rgb(255, 47, 110); font-size:13px;}
+	.css-comm{color:#FEAE27; font-size:13px;}
+	
+	.declaration {
+	    display: block;
+	    position: fixed;
+	    inset: 0px;
+	    z-index: 100;
+	    background: rgba(0, 0, 0, 0.56);
+	    overflow: hidden scroll;
+	}
+	
+	.css-rpyl6s {
+	    position: absolute;
+	    inset: 0px;
+	    z-index: 101;
+	}
+	@media(min-width:719px){
+		.css-rpyl6s {
+		    text-align: center;
+		    padding: 20px 0px;
+		    overflow: auto;
+		}
+	}
+	
+	.css-1yszxv0 {
+	    display: flex;
+	    position: absolute;
+	    inset: 0px;
+	    z-index: 102;
+	    -webkit-box-pack: center;
+	    justify-content: center;
+	    -webkit-box-align: center;
+	    align-items: center;
+	}
+	
+	.css-f35o9y {
+	    background: rgb(255, 255, 255);
+	    text-align: center;
+	    width: 280px;
+	    padding: 20px 0px 0px;
+	    border-radius: 8px;
+	}
+	
+	.css-1y901al-Row {
+	    margin: 0 20px;
+	}
+	
+	.css-2djw8f {
+	    display: inline-block;
+	    color: rgb(0, 0, 0);
+	    white-space: pre-wrap;
+	    font-size: 17px;
+	    font-weight: 700;
+	    letter-spacing: -0.5px;
+	    line-height: 22px;
+	}
+	
+	.css-148qwic {
+	    color: rgb(0, 0, 0);
+	    font-size: 15px;
+	    font-weight: 400;
+	    letter-spacing: -0.5px;
+	    line-height: 20px;
+	    white-space: pre-wrap;
+	    padding: 0px 0px 24px;
+	    border-bottom: 1px solid rgb(210, 210, 210);
+	    margin: 8px 0px 0px;
+	    word-break: break-all;
+	}
+	
+	.css-gy4ioq {
+	    display: flex;
+	}
+	
+	.css-gy4ioq > button {
+	    margin: 11px 0px;
+	}
+	
+	.css-1gdw77k-StylelessButton {
+	    background: none;
+	    padding: 0px;
+	    border-top-width: initial;
+	    border-bottom-width: initial;
+	    border-left-width: initial;
+	    border-style: none solid none none;
+	    border-image: initial;
+	    margin: 0px;
+	    cursor: pointer;
+	    flex: 1 1 0%;
+	    color:#FEAE27;
+	    font-size: 17px;
+	    font-weight: 400;
+	    letter-spacing: -0.7px;
+	    line-height: 22px;
+	    border-right-width: 1px;
+	    border-color: rgb(210, 210, 210) !important;
+	}
+	
+	.css-sfhtz9-StylelessButton {
+	    background: none;
+	    padding: 0px;
+	    border-width: initial;
+	    border-style: none;
+	    border-image: initial;
+	    margin: 0px;
+	    cursor: pointer;
+	    flex: 1 1 0%;
+	    color:#FEAE27;
+	    font-size: 17px;
+	    font-weight: 400;
+	    letter-spacing: -0.7px;
+	    line-height: 22px;
+	    border-color: rgb(210, 210, 210) !important;
+	}
+	
+	.css-rpyl6s::after {
+	    content: "";
+	    display: inline-block;
+	    vertical-align: middle;
+	    height: 100%;
+	    margin-left: -0.25em;
+	}

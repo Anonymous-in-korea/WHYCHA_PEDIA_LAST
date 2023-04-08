@@ -19,6 +19,15 @@ public interface LikeMapper {
 
 	List<LikeVo> selectDirector_like_id(int sessionId);
 
+
+	int insertLikeOne(int comment_id, int user_id);
+
+
+	int deleteLikeOne(int comment_id, int user_id);
+
+
+	int selectCommentOneLike(int comment_id);
+
 	
 
 	
