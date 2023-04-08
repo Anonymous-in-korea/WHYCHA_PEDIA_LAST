@@ -21,5 +21,6 @@ public class CommentReplyVo {
 	private String reply_content;
 	private Date regi_date;
 	private int is_block; // 1-block(x)
+	private int like_count;
 	
 }

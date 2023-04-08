@@ -11,6 +11,8 @@ public interface MovieCollectionService {
 
 	List<MovieCollectionVo> selectCollectionVoPartList(List<MovieCollectionVo> CollectionVoList, int the_num);
 
+	List<MovieCollectionVo> selectOneCollectionVoList(int collection_id);
+
 
 
 }

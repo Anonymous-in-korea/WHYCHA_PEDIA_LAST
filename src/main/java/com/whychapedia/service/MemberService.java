@@ -10,4 +10,6 @@ public interface MemberService {
 
 	public void memberInsertOne(String user_name, String user_email, String user_pw); // 회원가입 메서드
 
+	public MemberVo selectOneMember(int user_id);
+
 }

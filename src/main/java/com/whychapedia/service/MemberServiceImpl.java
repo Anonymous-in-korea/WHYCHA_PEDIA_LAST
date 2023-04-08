@@ -31,4 +31,10 @@ public class MemberServiceImpl implements MemberService {
 		memberMapper.memberInsertOne(user_name, user_email, user_pw);
 	}
 
+	@Override // 해당 user의 id를 가지고 memberVo가져오기
+	public MemberVo selectOneMember(int user_id) {
+		memberVo=memberMapper.selectOneMember(user_id);
+		return memberVo;
+	}
+
 }

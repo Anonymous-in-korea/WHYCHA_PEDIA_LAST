@@ -1,13 +1,18 @@
 package com.whychapedia.service;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.whychapedia.mapper.LikeMapper;
+import com.whychapedia.vo.CollectionVo;
 import com.whychapedia.vo.LikeVo;
+import com.whychapedia.vo.MovieVo;
 
 @Service
 public class LikeServiceImpl implements LikeService {
@@ -27,7 +32,7 @@ public class LikeServiceImpl implements LikeService {
 		return directorLikeTopList;
 	}
 
-	@Override
+	@Override//director 무작위로 뽑기 (index page : 랜덤하게 감독 선택하기 위해서)
 	public int theLike(List<Integer> directorLikeTop) {
 	       Random random = new Random();
 	       int randomIndex = random.nextInt(directorLikeTop.size()); // 무작위로 인덱스를 선택
@@ -49,5 +54,8 @@ public class LikeServiceImpl implements LikeService {
 		System.out.println("selectDirector_like_id_list_size : "+directorLike_list.size());
 		return directorLike_list;
 	}
+
+	
+	
 
 }

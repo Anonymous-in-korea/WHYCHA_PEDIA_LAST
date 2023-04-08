@@ -13,13 +13,24 @@ public class CollectionServiceImpl implements CollectionService {
 	@Autowired
 	CollectionMapper collectionMapper;
 	
+	@Autowired
+	CollectionVo collectionVo;
+	
 	
 
 	//#해당 user_id 컬렉션 정보 가져오기 
 	@Override
-	public List<CollectionVo> collectionList(int user_id) {
-		List<CollectionVo> collectionList =collectionMapper.collectionList(user_id);
+	public List<CollectionVo> selectCollectionList(int user_id) {
+		List<CollectionVo> collectionList = collectionMapper.selectCollectionList(user_id);
 		return collectionList;
+	}
+
+
+	//해당 컬렉션_id의 컬렉션 정보 가져오기
+	@Override
+	public CollectionVo selectOneCollection(int collection_id) {
+		collectionVo = collectionMapper.selectOneCollection(collection_id);
+		return collectionVo;
 	}
 
 }

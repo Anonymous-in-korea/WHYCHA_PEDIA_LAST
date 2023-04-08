@@ -2,6 +2,8 @@ package com.whychapedia.service;
 
 import java.util.List;
 
+import com.whychapedia.vo.MovieCollectionVo;
+import com.whychapedia.vo.MovieVo;
 import com.whychapedia.vo.StarRateVo;
 
 public interface StarRateService {
@@ -23,6 +25,9 @@ public interface StarRateService {
 	List<Integer> StarRateGraph(int movie_id);
 
 	int totalStarRateNumber(List<Integer> movieStarRateGraph);
+
+
+	List<StarRateVo> selectAllOfIsRated(int loginId, List<MovieVo> movieInCollectionVoList);
 
 
 

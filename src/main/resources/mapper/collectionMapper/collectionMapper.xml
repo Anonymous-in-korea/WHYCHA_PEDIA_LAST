@@ -3,8 +3,16 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.whychapedia.mapper.CollectionMapper">
-	<!--해당 user_id 컬렉션 vo 가져오기 -->
-	<select id="collectionList" resultType="com.whychapedia.vo.CollectionVo">
-	select * from collection where user_id=#{user_id} 
+	<!--해당 user_id 컬렉션 vo 가져오기 (좋아요/코멘트 # 가져옴)-->
+	<select id="selectCollectionList" resultType="com.whychapedia.vo.CollectionVo">
+	select co.*,(select count(*) from collection_like where collection_id=co.id) as like_count,(select count(*) from collection_comment where collection_id=co.id) as comment_count 
+	from collection co
+	where user_id=#{user_id}
+	</select>
+	<!--해당 collection_id의 컬렉션 vo 가져오기 (좋아요/코멘트 # 가져옴)-->
+	<select id="selectOneCollection" resultType="com.whychapedia.vo.CollectionVo">
+	select co.*,(select count(*) from collection_like where collection_id=co.id) as like_count,(select count(*) from collection_comment where collection_id=co.id) as comment_count 
+	from collection co
+	where id=#{collection_id}
 	</select>
 </mapper>

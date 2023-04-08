@@ -2,6 +2,7 @@ package com.whychapedia.service;
 
 import java.util.List;
 
+import com.whychapedia.vo.CollectionVo;
 import com.whychapedia.vo.LikeVo;
 
 public interface LikeService {
@@ -15,5 +16,7 @@ public interface LikeService {
 
 	//해당 유저가 좋아하는 감독 id 전체 가져오기
 	List<LikeVo> selectDirector_like_id(int sessionId);
+	
+	
 
 }
