@@ -97,7 +97,7 @@
 														<!-- 별점 section start -->
                                                         <div class="css-1jlb6q">
                                                             <div class="css-yt2kjp">     
-																<select id="star_rating" style="border:none; text-align:center; item-align:center;">
+																<select class="star_rating" style="border:none; text-align:center; item-align:center;">
 																	<option value="0" ${my_star_rate == 0 ? 'selected' : ''}>별점평가하기</option>
 																	<option value="0.5" ${my_star_rate == 0.5 ? 'selected' : ''}>0.5점</option>
 																	<option value="1.0" ${my_star_rate == 1.0 ? 'selected' : ''}>1.0점</option>
@@ -111,7 +111,7 @@
 																	<option value="5.0" ${my_star_rate == 5.0 ? 'selected' : ''}>5.0점</option>
 																</select>
                                                             </div>
-	                                                        <div id="star_container" class="css-1mbuso5" style="cursor:pointer; width:240px; position:relative;">
+	                                                        <div class="star_container" class="css-1mbuso5" style="cursor:pointer; width:240px; position:relative;">
                                                             	<div style="width:100%; height:38px; margin:5px auto; position:absolute">
                                                             		<img src="/images/star.png" class="star_left">
                                                             		<img src="/images/star.png" class="star">
@@ -120,16 +120,73 @@
                                                             		<img src="/images/star.png" class="star_right">
                                                             	</div>
                                                             	<div style="width:100%; height:38px; margin:5px auto; position:absolute">
-                                                            		<img src="/images/orange_star_half.png" class="orange_half_left" id="star_rating1">
-                                                            		<img src="/images/orange_star.png" class="orange_star_left" id="star_rating2">
-                                                            		<img src="/images/orange_star_half.png" class="orange_half" id="star_rating3">
-                                                            		<img src="/images/orange_star.png" class="orange_star" id="star_rating4">
-                                                            		<img src="/images/orange_star_half.png" class="orange_half" id="star_rating5">
-                                                            		<img src="/images/orange_star.png" class="orange_star" id="star_rating6">
-                                                            		<img src="/images/orange_star_half.png" class="orange_half" id="star_rating7">
-                                                            		<img src="/images/orange_star.png" class="orange_star" id="star_rating8">
-                                                            		<img src="/images/orange_star_half.png" class="orange_half_right" id="star_rating9">
-                                                            		<img src="/images/orange_star.png" class="orange_star_right" id="star_rating10">
+                                                            		<img src="/images/orange_star_half.png" class="orange_half_left star_rating1">
+                                                            		<img src="/images/orange_star.png" class="orange_star_left star_rating2" >
+                                                            		<img src="/images/orange_star_half.png" class="orange_half star_rating3" >
+                                                            		<img src="/images/orange_star.png" class="orange_star star_rating4" >
+                                                            		<img src="/images/orange_star_half.png" class="orange_half star_rating5" >
+                                                            		<img src="/images/orange_star.png" class="orange_star star_rating6" >
+                                                            		<img src="/images/orange_star_half.png" class="orange_half star_rating7" >
+                                                            		<img src="/images/orange_star.png" class="orange_star star_rating8" >
+                                                            		<img src="/images/orange_star_half.png" class="orange_half_right star_rating9" >
+                                                            		<img src="/images/orange_star.png" class="orange_star_right star_rating10" >
+                                                            	</div>
+                                                            </div>
+                                                        </div>
+													</div>
+												</li>
+												<!-- 평가할 영화 1개 -->
+												<!-- 평가할 영화 1개 -->
+												<li class="css-1pa5min">
+													<div class="css-jy9y9j">
+														<div class=" css-1ajznjz-StyledLazyLoadingImage ezcopuc0">
+															<img src="https://an2-img.amz.wtchn.net/image/v2/DMd-1-kGEEODPfL4EjND6w.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qZ3dlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMnhvWW10dGVXUjBlV3cxTXpWeE1YbGxNMnBqSW4wLlFkQlhwUXFiM2g4U2hWeUo5b0hwbjRmemwzaVJnT1F3TEtQeGh2Y1BNVEk" class="css-qhzw1o-StyledImg ezcopuc1">
+														</div>
+													</div>
+													<div class="css-1frtrxg">
+														<h3 class="css-1a7e2fr">성난황소
+															<div class="css-rrfi5z">
+																<button class="css-dayhfn-StylelessButton-MoreButton e1hc1f3f0"></button>
+															</div>
+														</h3>
+														<div class="css-tr3vhx">2018 ・ 한국</div>
+														<!-- 별점 -->
+														<!-- 별점 section start -->
+                                                        <div class="css-1jlb6q">
+                                                            <div class="css-yt2kjp">     
+																<select class="star_rating" style="border:none; text-align:center; item-align:center;">
+																	<option value="0" ${my_star_rate == 0 ? 'selected' : ''}>별점평가하기</option>
+																	<option value="0.5" ${my_star_rate == 0.5 ? 'selected' : ''}>0.5점</option>
+																	<option value="1.0" ${my_star_rate == 1.0 ? 'selected' : ''}>1.0점</option>
+																	<option value="1.5" ${my_star_rate == 1.5 ? 'selected' : ''}>1.5점</option>
+																	<option value="2.0" ${my_star_rate == 2.0 ? 'selected' : ''}>2.0점</option>
+																	<option value="2.5" ${my_star_rate == 2.5 ? 'selected' : ''}>2.5점</option>
+																	<option value="3.0" ${my_star_rate == 3.0 ? 'selected' : ''}>3.0점</option>
+																	<option value="3.5" ${my_star_rate == 3.5 ? 'selected' : ''}>3.5점</option>
+																	<option value="4.0" ${my_star_rate == 4.0 ? 'selected' : ''}>4.0점</option>
+																	<option value="4.5" ${my_star_rate == 4.5 ? 'selected' : ''}>4.5점</option>
+																	<option value="5.0" ${my_star_rate == 5.0 ? 'selected' : ''}>5.0점</option>
+																</select>
+                                                            </div>
+	                                                        <div class="star_container" class="css-1mbuso5" style="cursor:pointer; width:240px; position:relative;">
+                                                            	<div style="width:100%; height:38px; margin:5px auto; position:absolute">
+                                                            		<img src="/images/star.png" class="star_left">
+                                                            		<img src="/images/star.png" class="star">
+                                                            		<img src="/images/star.png" class="star">
+                                                            		<img src="/images/star.png" class="star">
+                                                            		<img src="/images/star.png" class="star_right">
+                                                            	</div>
+                                                            	<div style="width:100%; height:38px; margin:5px auto; position:absolute">
+                                                            		<img src="/images/orange_star_half.png" class="orange_half_left star_rating1">
+                                                            		<img src="/images/orange_star.png" class="orange_star_left star_rating2" >
+                                                            		<img src="/images/orange_star_half.png" class="orange_half star_rating3" >
+                                                            		<img src="/images/orange_star.png" class="orange_star star_rating4" >
+                                                            		<img src="/images/orange_star_half.png" class="orange_half star_rating5" >
+                                                            		<img src="/images/orange_star.png" class="orange_star star_rating6" >
+                                                            		<img src="/images/orange_star_half.png" class="orange_half star_rating7" >
+                                                            		<img src="/images/orange_star.png" class="orange_star star_rating8" >
+                                                            		<img src="/images/orange_star_half.png" class="orange_half_right star_rating9" >
+                                                            		<img src="/images/orange_star.png" class="orange_star_right star_rating10" >
                                                             	</div>
                                                             </div>
                                                         </div>
