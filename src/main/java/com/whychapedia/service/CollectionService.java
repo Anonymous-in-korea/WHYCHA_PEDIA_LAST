@@ -3,6 +3,7 @@ package com.whychapedia.service;
 import java.util.List;
 
 import com.whychapedia.vo.CollectionVo;
+import com.whychapedia.vo.MovieCollectionVo;
 
 public interface CollectionService {
 	//#해당 user_id 컬렉션 정보 가져오기 
@@ -13,4 +14,7 @@ public interface CollectionService {
 	public List<CollectionVo> selectSearchCollectionList(String searchKeyword);
 	//#해당 user_id 컬렉션 정보 가져오기 
 	public List<CollectionVo> collectionList(int user_id);
+	//collection_movie vo의 movie post url을 배열 값으로 collectionVoList에 넣음
+	public List<CollectionVo> insertMoviePostUrlArray(List<MovieCollectionVo> movieCollectionVoList,
+			List<CollectionVo> collectionVoList);
 }

@@ -13,6 +13,8 @@ public interface MovieCollectionService {
 
 	List<MovieCollectionVo> selectOneCollectionVoList(int collection_id);
 
+	List<MovieCollectionVo> selectCollectionVoWithMoviePostUrlList(List<CollectionVo> collectionVoList);
+
 
 
 }

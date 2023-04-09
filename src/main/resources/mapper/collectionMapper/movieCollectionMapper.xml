@@ -17,5 +17,16 @@
 	 	select * from movie_collection where collection_id=#{collection_id} 
 	</select>
 	
+	<!--컬렉션_movie vo 생성 ( collection_id,movie_id,movie_post_url 들어가 있음)-->
+	<select id="selectCollectionVoWithMoviePostUrlList" resultType="com.whychapedia.vo.MovieCollectionVo">
+		SELECT mc.collection_id, mc.movie_id, m.movie_post_url
+			FROM movie_collection mc
+			JOIN movie m ON mc.movie_id = m.id
+			WHERE mc.collection_id IN
+    		<foreach collection="collectionVoList" item="collectionVo" open="(" separator="," close=")">
+        	#{collectionVo.id}
+    		</foreach>
+	</select>
+	
 	
 </mapper>

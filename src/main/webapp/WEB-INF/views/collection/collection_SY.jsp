@@ -112,34 +112,32 @@
 								<section class="css-yykl48-pageMarginStyle">
 									<ul class="css-1ut4alo-VisualUl">
 									<!-- foreach문 돌릴 부분 컬렉션div -->
-									<c:forEach items="${collectionVoList}" var="CollectionVo" > 
+									<c:forEach items="${updateCollectionVoList}" var="collectionVo" > 
 										<li class="css-ovtvwa">
-											<a title="${CollectionVo.collection_name}" class="css-1f9m1s4-StylelessLocalLink eovgsd01" href="/collection/collection_detail_HY?collection_id=${CollectionVo.id}">
+											<a title="${collectionVo.collection_name}" class="css-1f9m1s4-StylelessLocalLink eovgsd01" href="/collection/collection_detail_HY?collection_id=${CollectionVo.id}">
 												<div class="css-m7az3s">
 													<div class="css-1sarkww">
 														<div class="css-vc4xb">
 															<div class="css-11gwmvo">
-																<div poster="https://an2-img.amz.wtchn.net/image/v2/Kh9MU2D6QKNnlyAiG38qYw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMM1JxYUdkbGNqaDVkSEIwZGpSNFkzZGhaWFJtSW4wLkxKXzlVZnNGOW56d1F1aU9WX2NZME9QNDVYdjFuSHVpZmNZSWFkbjQtXzQ" 
-																class="css-hdhlfe"></div>
-																<div poster="https://an2-img.amz.wtchn.net/image/v2/Kh9MU2D6QKNnlyAiG38qYw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMM1JxYUdkbGNqaDVkSEIwZGpSNFkzZGhaWFJtSW4wLkxKXzlVZnNGOW56d1F1aU9WX2NZME9QNDVYdjFuSHVpZmNZSWFkbjQtXzQ" class="css-hdhlfe"></div>
+																<div style="background: url(${collectionVo.movie_post_urls[0]})" class="css-hdhlfe"></div>
 															</div>
 															<div class="css-11gwmvo">
-																<div poster="https://an2-img.amz.wtchn.net/image/v2/KmQ2Y9px5vbdRhQJ1SuNrQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMMnBzWVhVM05uQjJNVGgwYTJRNGVYRjJaM0ZpSW4wLkpUeFNoYVhWMFAyZlN2d0EyV2lHRmR4Y2gzVDZBMjc4TW1KZVBueTlrZmM" class="css-3a1vh6"></div>
-																<div poster="https://an2-img.amz.wtchn.net/image/v2/NWMV3pDrbacNryQOOURhdQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMMjlsWjNKcVpHeDBabWwzWldGeGFtWnJNRE51SW4wLmprS2hIOGlxVzR0TU9GajRkVlExQ19KR20wX2p2WVRMNDlNeFBrSUotUnc" class="css-1lebkd8"></div>
+																<div style="background: url(${collectionVo.movie_post_urls[1]})" class="css-3a1vh6"></div>
+																<div style="background: url(${collectionVo.movie_post_urls[2]})" class="css-1lebkd8"></div>
 															</div>
 															<div class="css-11gwmvo">
-																<div poster="https://an2-img.amz.wtchn.net/image/v2/VJvO958gZusxd3hUwDWSOA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMMkp4YVhsNU1tdGxiSEJsY3paa1pubDVhbk42SW4wLjNnV2tTeHRBMzREWUNCNjhobElwa2d2UHo3R2ZPUW53cmkxMW9JZkRySGc" class="css-qpso0m"></div>
-																<div poster="https://an2-img.amz.wtchn.net/image/v2/Ht3b1vCvRnS6phBm4DpgOQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMMmgyYTNkdlltNXZOVzlxY0RadVlXOXBkRzA0SW4wLlpSRHJGR3dBMjhsNzNabGdvRXNfYzM0ZEhFOEphQ2tkM3NKX3pDazNIbHc" class="css-uifub2"></div>
-																<div poster="https://an2-img.amz.wtchn.net/image/v2/rQwrHoyzK6rv2t1cjbqIwA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMM0IxZEdkdGVXUXplbkJwYTJ4aWMydG1aV2RxSW4wLks3Ulg5Z1ZiRDJaU1ZTM3UtRkZvRnVzeVhxbExGYnR3X0xxZ3BaOVRYYVU" class="css-1c7wnm0"></div>
+																<div style="background: url(${collectionVo.movie_post_urls[3]})" class="css-qpso0m"></div>
+																<div style="background: url(${collectionVo.movie_post_urls[4]})" class="css-uifub2"></div>
+																<div style="background: url(${collectionVo.movie_post_urls[5]})" class="css-1c7wnm0"></div>
 															</div>
 															<div class="css-11gwmvo">
-																<div poster="https://an2-img.amz.wtchn.net/image/v2/mOfjGIfQUfR9spFR54MQmA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMM0ZxZURSbWIzUnpaR1p1Y0dsMmIzbzViV053SW4wLlVNUHNiSkdmVkVPUGN6VTV4TUN2M01YSWRGT09mSUNDQVZJeUNmbVRVdDg" class="css-1ltg06n"></div>
-																<div poster="https://an2-img.amz.wtchn.net/image/v2/0REDPggrDaqRTzwKkqXhTw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMM0puZEdoeWVHRjZhM1JyZW5Sck9IZHZaemw2SW4wLlJWWnp2bnVEbzNVNWg5Sm9IQlpRWHoxYXVSRnJiUmhTWVdxdGRNY0JSQXM" class="css-1pw0ykk"></div>
+																<div style="background: url(${collectionVo.movie_post_urls[6]})" class="css-1ltg06n"></div>
+																<div style="background: url(${collectionVo.movie_post_urls[7]})" class="css-1pw0ykk"></div>
 															</div>
 														</div>
 													</div>
-													<div class="css-11riikv">${CollectionVo.collection_name}</div>
-													<div class="css-1on8oyq">${CollectionVo.collection_desc}</div>
+													<div class="css-11riikv">${collectionVo.collection_name}</div>
+													<div class="css-1on8oyq">${collectionVo.collection_desc}</div>
 													<div class="css-hsecj5">
 														<div class="css-1j0k1vy">
 															<div class="css-q29adr-ProfilePhotoImage"></div>
@@ -147,9 +145,9 @@
 														${memberVo.user_name}
 													</div>
 													<div class="css-znoruf">
-														좋아요 ${CollectionVo.like_count}
+														좋아요 ${collectionVo.like_count}
 														<span class="css-1roze2l"></span>
-														댓글 ${CollectionVo.comment_count}
+														댓글 ${collectionVo.comment_count}
 													</div>
 												</div>
 											</a>

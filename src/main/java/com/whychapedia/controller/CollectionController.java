@@ -1,6 +1,7 @@
 package com.whychapedia.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -85,30 +86,33 @@ public class CollectionController {
 		
 
 		List<MovieCollectionVo> movieCollectionVoList = new ArrayList<MovieCollectionVo>();
-		List<MovieVo> movieInCollectionVoList=new ArrayList<MovieVo>();
+		List<CollectionVo>updateCollectionVoList=new ArrayList<CollectionVo>();
 		
 		
 		//컬렉션이 존재 할 때 
 		if(collectionVoList!=null) {
-			//무비 컬렉션 리스트
-			movieCollectionVoList=movieCollectionService.selectCollectionVoList(collectionVoList);
+			//컬렉션_movie vo 생성 ( collection_id,movie_id,movie_post_url 들어가 있음)
+			movieCollectionVoList=movieCollectionService.selectCollectionVoWithMoviePostUrlList(collectionVoList);
 			System.out.println("collection(controller):MovieCollectionVoList size()"+movieCollectionVoList.size());				
+			
+			//collection_movie vo의 movie post url을 배열 값으로 collectionVoList에 넣음
+			updateCollectionVoList=collectionService.insertMoviePostUrlArray(movieCollectionVoList,collectionVoList);
+			System.out.println("collection(controller):updateCollectionVoList size()"+updateCollectionVoList.size());	
+			System.out.println("collection(controller):updateCollectionVoList "+updateCollectionVoList.get(0).getMovie_post_urls());
+			
+			
+			
 			//컬렉션 존재함
 			isInCollection=1;				
-			//무비리스트
-			if(movieCollectionVoList!=null) {
-				//해당 컬렉션 무비리스트 담기
-				movieInCollectionVoList=movieService.selectMovieInCollectionList(movieCollectionVoList);
-				
-			}
+			
+			
 			
 		}
 		
 			model.addAttribute("memberVo", memberVo); //콜렉션 페이지 주인
-			model.addAttribute("collectionVoList", collectionVoList); // 콜렉션 리스트
+			model.addAttribute("updateCollectionVoList", updateCollectionVoList); // 콜렉션 리스트
 			model.addAttribute("isInCollection",isInCollection); // 콜렉션 있는지 유무
-			model.addAttribute("movieCollectionVoList", movieCollectionVoList);//콜렉션-영화 연결
-			model.addAttribute("movieInCollectionVoList", movieInCollectionVoList);//영화 
+			
 			
 		return "/collection/collection_SY";
 	}

@@ -91,4 +91,11 @@ public class MovieCollectionServiceImpl implements MovieCollectionService {
 		return selectOneCollectionVoList;
 	}
 
+	//컬렉션_movie vo 생성 ( collection_id,movie_id,movie_post_url 들어가 있음)
+	@Override
+	public List<MovieCollectionVo> selectCollectionVoWithMoviePostUrlList(List<CollectionVo> collectionVoList) {
+		List<MovieCollectionVo> selectCollectionVoWithMoviePostUrlList=movieCollectionMapper.selectCollectionVoWithMoviePostUrlList(collectionVoList);
+		return selectCollectionVoWithMoviePostUrlList;
+	}
+
 }

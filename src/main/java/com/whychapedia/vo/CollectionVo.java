@@ -1,5 +1,7 @@
 package com.whychapedia.vo;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import lombok.AllArgsConstructor;
@@ -19,5 +21,6 @@ public class CollectionVo {
 	private String collection_desc;
 	private int like_count;
 	private int comment_count;
+	private List<String> movie_post_urls;
 
 }
