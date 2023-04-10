@@ -534,19 +534,19 @@
 		                                                                <div class="css-wqfuxa">
 		                                                                    <div class="css-g1q7ln"> 
 		                                                                        <div class="css-hugi8h">
-		                                                                        	<span prefix="1" class="css-111q860-Bar" style="height:${movieStarRateGraph[0]}px"></span>
+		                                                                        	<span prefix="1" class="css-111q860-Bar" style="height:${movieStarRateGraphScale[0]*300}px"></span>
 		                                                                        </div>
 		                                                                        <div class="css-hugi8h">
-		                                                                        	<span prefix="2" class="css-5vyahd-Bar" style="height:${movieStarRateGraph[1]}px"></span>
+		                                                                        	<span prefix="2" class="css-5vyahd-Bar" style="height:${movieStarRateGraphScale[1]*300}px"></span>
 		                                                                        </div>
 		                                                                        <div class="css-hugi8h">
-		                                                                        	<span prefix="3" class="css-himw0d-Bar" style="height:${movieStarRateGraph[2]}px"></span>
+		                                                                        	<span prefix="3" class="css-himw0d-Bar" style="height:${movieStarRateGraphScale[2]*300}px"></span>
 		                                                                        </div>
 		                                                                        <div class="css-hugi8h">
-		                                                                        	<span prefix="4" class="css-3zcnds-Bar" style="height:${movieStarRateGraph[3]}px"></span>
+		                                                                        	<span prefix="4" class="css-3zcnds-Bar" style="height:${movieStarRateGraphScale[3]*300}px"></span>
 		                                                                        </div>
 		                                                                        <div class="css-hugi8h">
-		                                                                        	<span prefix="5" class="css-mr14ik-Bar" style="height:${movieStarRateGraph[4]}px"></span>
+		                                                                        	<span prefix="5" class="css-mr14ik-Bar" style="height:${movieStarRateGraphScale[4]*300}px"></span>
 		                                                                        </div>
 		                                                                    </div>
 		                                                                </div>

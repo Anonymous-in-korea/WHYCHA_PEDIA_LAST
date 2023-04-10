@@ -84,14 +84,15 @@ public class StarRateServiceImpl implements StarRateService {
 	//해당 영화 모든 유저의 별점 그래프 가져오기 
 	@Override
 	public List<Integer> starRateGraph(int movie_id) {
-		List<Integer> StarRateGraph=new ArrayList<>();
+		List<Integer> starRateGraph=new ArrayList<>();
 		for(int i=0;i<5;i++) {
-			StarRateGraph.add(starRateMapper.selectStarRateGraph(i+0.5,i+1,movie_id));
+			starRateGraph.add(starRateMapper.selectStarRateGraph(i+0.5,i+1,movie_id));
 		};
-		return StarRateGraph;
+		
+		return starRateGraph;
 	}
 	
-	//해당 영화 별점 매긴 횟수
+	//별점 전체 개수 구하기
 	@Override
 	public int totalStarRateNumber(List<Integer> movieStarRateGraph) {
 		int totalStarRateNumber=0;
@@ -100,8 +101,17 @@ public class StarRateServiceImpl implements StarRateService {
 		    }
 		return totalStarRateNumber;
 	}
+	
+	//별점 백분율
+	@Override
+	public List<Double> movieStarRateGraphScale(List<Integer> movieStarRateGraph, int totalStarRateNumber) {
+		List<Double> movieStarRateGraphScale=new ArrayList<>();
+		for(int i=0;i<5;i++) {
+			movieStarRateGraphScale.add((double)movieStarRateGraph.get(i)/totalStarRateNumber);
+		};
+		return movieStarRateGraphScale;
+	}
 
- 	
 	@Override
 	public List<StarRateVo> selectAllOfIsRated(int loginId, List<MovieVo> movieInCollectionVoList) {
 		List<StarRateVo> starRateList = new ArrayList<>();
@@ -184,6 +194,9 @@ public class StarRateServiceImpl implements StarRateService {
 		starRateVo.setWatched_time_hr(hour);
 		return starRateVo;
 	}
+
+
+
 
 
 

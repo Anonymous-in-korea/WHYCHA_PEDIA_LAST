@@ -169,17 +169,17 @@ public class ContentsController {
 		/*     해당 영화 정보 END       */
 		
 		
-		/*    해당 영화 별점 정보 START     */
+		/*    해당 영화 별점 정보 START     * ---------------여기 고치는 중*/  
 		List<Integer> movieStarRateGraph=new ArrayList<>();
 		movieStarRateGraph=starRateService.starRateGraph(movie_id);
+		List<Double> movieStarRateGraphScale=new ArrayList<>();
 		int totalStarRateNumber=0;
 		if(movieStarRateGraph.size()!=0) {
 			totalStarRateNumber=starRateService.totalStarRateNumber(movieStarRateGraph);
-			System.out.println("해당 영화 별점 정보:"+movieStarRateGraph.get(0));
+			movieStarRateGraphScale=starRateService.movieStarRateGraphScale(movieStarRateGraph,totalStarRateNumber);
 		}
-		if(totalStarRateNumber!=0) System.out.println("해당 영화 별점 정보:"+totalStarRateNumber);
 		model.addAttribute("totalStarRateNumber",totalStarRateNumber);
-		model.addAttribute("movieStarRateGraph",movieStarRateGraph);
+		model.addAttribute("movieStarRateGraphScale",movieStarRateGraphScale);
 		/*     해당 영화 별점 정보 END      */
 		
 		

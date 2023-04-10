@@ -26,8 +26,6 @@ public interface StarRateService {
 
 	List<Integer> starRateGraph(int movie_id);
 
-	int totalStarRateNumber(List<Integer> movieStarRateGraph);
-
 
 	List<StarRateVo> selectAllOfIsRated(int loginId, List<MovieVo> movieInCollectionVoList);
 
@@ -44,6 +42,10 @@ public interface StarRateService {
 	List<StarRateVo> starGraphOfUser(StarRateVo starRateVo, int user_id);
 	
 	StarRateVo totalWatchedTime(int user_id);
+
+	List<Double> movieStarRateGraphScale(List<Integer> movieStarRateGraph, int totalStarRateNumber);
+
+	int totalStarRateNumber(List<Integer> movieStarRateGraph);
 
 
 
