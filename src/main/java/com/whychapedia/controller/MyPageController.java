@@ -192,34 +192,28 @@ public class MyPageController {
 		
 		return "myPage/my_analysis_HY";
 	}
-	
+
 	@GetMapping("myPage/actor_director_like_SY")
 	public String actor_director_like(Model model, @RequestParam int user_id) {
-		//actor_id를 가지고오기
-		List<CollectionArtistVo> actorLike_list = collectionArtistService.selectActor_like_id(user_id);
-		//System.out.println("selectActor_like_id_list_size :"+actorLike_list.size());
-		model.addAttribute("actorLike_list",actorLike_list);
-		
-		//해당 actor_id의 actor_name과 actor_post_url가져오기
-		List<ArtistVo> actor_list = artistService.selectActorAll(actorLike_list);
-		//System.out.println("selectActor_list_size"+actor_list.size());
-		model.addAttribute("actor_list",actor_list);
-		
-		
-		//director_id 가지고오기
-		List<CollectionArtistVo> directorLike_list = collectionArtistService.selectDirector_like_id(user_id);
-		//System.out.println("selectDirector_like_id_list_size :"+directorLike_list.size());
-		model.addAttribute("directorLike_list",directorLike_list);
-		
-		//해당 director_id의 director_name과 director_post_url가져오기
-		List<ArtistVo> director_list = artistService.selectDirectorAll(directorLike_list);
-		//System.out.println("selectDirector_list_size"+director_list.size());
-		model.addAttribute("director_list",director_list);
+	    List<CollectionArtistVo> actorLike_list = collectionArtistService.selectActor_like_id(user_id);
+	    if (actorLike_list.size() > 0) {
+	        List<ArtistVo> actor_list = artistService.selectActorAll(actorLike_list);
+	        model.addAttribute("actor_list", actor_list);
+	    }
 
-		
-		return "myPage/actor_director_like_SY";
+	    List<CollectionArtistVo> directorLike_list = collectionArtistService.selectDirector_like_id(user_id);
+	    if (directorLike_list.size() > 0) {
+	        List<ArtistVo> director_list = artistService.selectDirectorAll(directorLike_list);
+	        model.addAttribute("director_list", director_list);
+	    }
+
+	    return "myPage/actor_director_like_SY";
 	}
-
+	
+	
+	
+	
+	
 	@GetMapping("myPage/logout_confirm_Btn")
 	public String logout() {
 		session.invalidate();

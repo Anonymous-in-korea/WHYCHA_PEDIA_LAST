@@ -122,18 +122,6 @@ public class FrontController {
 		 
 		
 		
-
-		
-			
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		return "index_SH";
 	}
 	

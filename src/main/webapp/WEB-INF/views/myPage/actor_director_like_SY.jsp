@@ -78,75 +78,79 @@
 						<!-- 배우 list  -->
 							<ul class="css-paz4zm-VisualUl">
 							<!--list반복 1 시작 -->
-							<c:forEach items="${actor_list}" var ="avo" >
-								<li class="css-1tmgvat actor">
-									<a title="다바타 신타로" class="css-1aaqvgs-InnerPartOfListWithImage" href="/ko-KR/people/XV4mY3G946">
-										<div class="css-cssveg">
-											<div class="css-17ob1ac">
-												<div class="css-1e8dv1-ProfilePhotoImage"></div>
-												<div class="css-1dtdviq">
-													<img src="${avo.actor_post_url}"
-														 alt="${avo.actor_name}의 사진" class="css-ssea8o">
-												</div>
-											</div>
-										</div>
-										<div class="css-zoy7di">
-											<div class="css-qkf9j">
-												<div class="css-17vuhtq">
-													<div class="css-515bkd">${avo.actor_name}</div>
-												</div>
-												<div class="css-1evnpxk-StyledSubtitle">
-													<div class="css-qzyxgk">
-														<span class="css-htvp8y">배우</span>
-														<span class="css-1jpatke">・ </span>
-														<span class="personContents css-yn5nfu" title="다바타 신타로"></span>
-													</div>
-												</div>
-												<div class="css-v9psum">
-													<div title="다바타 신타로" class="css-txztjz">
-														<span class="css-mudjgk"></span>
+							<c:if test="${not empty actor_list}">
+								<c:forEach items="${actor_list}" var ="avo" >
+									<li class="css-1tmgvat actor">
+										<a title="다바타 신타로" class="css-1aaqvgs-InnerPartOfListWithImage" href="/ko-KR/people/XV4mY3G946">
+											<div class="css-cssveg">
+												<div class="css-17ob1ac">
+													<div class="css-1e8dv1-ProfilePhotoImage"></div>
+													<div class="css-1dtdviq">
+														<img src="${avo.actor_post_url}"
+															 alt="${avo.actor_name}의 사진" class="css-ssea8o">
 													</div>
 												</div>
 											</div>
-										</div>
-									</a>
-								</li>
+											<div class="css-zoy7di">
+												<div class="css-qkf9j">
+													<div class="css-17vuhtq">
+														<div class="css-515bkd">${avo.actor_name}</div>
+													</div>
+													<div class="css-1evnpxk-StyledSubtitle">
+														<div class="css-qzyxgk">
+															<span class="css-htvp8y">배우</span>
+															<span class="css-1jpatke">・ </span>
+															<span class="personContents css-yn5nfu" title="다바타 신타로"></span>
+														</div>
+													</div>
+													<div class="css-v9psum">
+														<div title="다바타 신타로" class="css-txztjz">
+															<span class="css-mudjgk"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</a>
+									</li>
 								</c:forEach>
+							</c:if>
 							<!-- 감독 list -->
-							<c:forEach items="${director_list}" var ="avo">
-								<li class="css-1tmgvat director" style="display:none">
-									<a title="다바타 신타로" class="css-1aaqvgs-InnerPartOfListWithImage" href="/ko-KR/people/XV4mY3G946">
-										<div class="css-cssveg">
-											<div class="css-17ob1ac">
-												<div class="css-1e8dv1-ProfilePhotoImage"></div>
-												<div class="css-1dtdviq">
-													<img src="${avo.director_post_url}"
-														 alt="다바타 신타로의 사진" class="css-ssea8o">
-												</div>
-											</div>
-										</div>
-										<div class="css-zoy7di">
-											<div class="css-qkf9j">
-												<div class="css-17vuhtq">
-													<div class="css-515bkd">${avo.director_name}</div>
-												</div>
-												<div class="css-1evnpxk-StyledSubtitle">
-													<div class="css-qzyxgk">
-														<span class="css-htvp8y">감독</span>
-														<span class="css-1jpatke">・ </span>
-														<span class="personContents css-yn5nfu" title="다바타 신타로"></span>
-													</div>
-												</div>
-												<div class="css-v9psum">
-													<div title="다바타 신타로" class="css-txztjz">
-														<span class="css-mudjgk"></span>
+							<c:if test="${not empty director_list}">
+								<c:forEach items="${director_list}" var ="avo">
+									<li class="css-1tmgvat director" style="display:none">
+										<a title="다바타 신타로" class="css-1aaqvgs-InnerPartOfListWithImage" href="/ko-KR/people/XV4mY3G946">
+											<div class="css-cssveg">
+												<div class="css-17ob1ac">
+													<div class="css-1e8dv1-ProfilePhotoImage"></div>
+													<div class="css-1dtdviq">
+														<img src="${avo.director_post_url}"
+															 alt="다바타 신타로의 사진" class="css-ssea8o">
 													</div>
 												</div>
 											</div>
-										</div>
-									</a>
-								</li>
-								</c:forEach>
+											<div class="css-zoy7di">
+												<div class="css-qkf9j">
+													<div class="css-17vuhtq">
+														<div class="css-515bkd">${avo.director_name}</div>
+													</div>
+													<div class="css-1evnpxk-StyledSubtitle">
+														<div class="css-qzyxgk">
+															<span class="css-htvp8y">감독</span>
+															<span class="css-1jpatke">・ </span>
+															<span class="personContents css-yn5nfu" title="다바타 신타로"></span>
+														</div>
+													</div>
+													<div class="css-v9psum">
+														<div title="다바타 신타로" class="css-txztjz">
+															<span class="css-mudjgk"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</a>
+									</li>
+									</c:forEach>
+								</c:if>
 							</ul>
 						</div>
 					</div>
