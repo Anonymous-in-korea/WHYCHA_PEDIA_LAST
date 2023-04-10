@@ -8,7 +8,6 @@
 	<select id="selectIsWatch" resultType="int">
  		select count(*) from watch_list where watch_list_type=#{watch_list_type} and movie_id=#{movie_id} and user_id=#{user_id}
 	</select>
-	
-	
+
 	
   </mapper>

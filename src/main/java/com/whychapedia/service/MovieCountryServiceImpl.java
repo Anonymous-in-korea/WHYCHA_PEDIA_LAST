@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.whychapedia.mapper.MovieCountryMapper;
+import com.whychapedia.vo.ArtistVo;
 import com.whychapedia.vo.MovieCountryVo;
 import com.whychapedia.vo.MovieGenreVo;
 
@@ -44,8 +45,15 @@ public class MovieCountryServiceImpl implements MovieCountryService {
 	@Override
 	public List<MovieCountryVo> selectSearchMovieCountryAll() {
 		List<MovieCountryVo> movieSearchCountrylist= movieCountryMapper.selectSearchMovieCountryAll();
-		
 		return movieSearchCountrylist;
+	}
+
+	//유저가 선호하는 나라 3개 가져오기
+	@Override
+	public List<MovieCountryVo> selectPreferenceCountry(int user_id) {
+		List<MovieCountryVo> selectPreferenceCountry=movieCountryMapper.selectPreferenceCountry(user_id);
+		System.out.println("여기:"+selectPreferenceCountry);
+		return selectPreferenceCountry;
 	}
 
 }

@@ -969,7 +969,7 @@
 		                                                        <div class="css-1gkas1x-Grid e1689zdh0">
 		                                                            <div class="css-1y901al-Row emmoxnt0">
 		                                                                <ul class="css-27z1qm-VisualUl-ContentGrid e14whxmg0">
-		                                                                <c:forEach items="${MovieWithSameGenreList}" var="movieSameGenreVo">
+		                                                                <c:forEach items="${movieWithSameGenreList}" var="movieSameGenreVo">
 		                                                                    <li class="css-1hp6p72">
 		                                                                    	<a title="${movieSameGenreVo.movie_kor_title}" href="/contents/contents_SH?movie_id=${movieSameGenreVo.id}">
 			                                                                        <div class="css-1qmeemv">

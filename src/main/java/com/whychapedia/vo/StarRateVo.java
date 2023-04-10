@@ -16,9 +16,16 @@ import lombok.NoArgsConstructor;
 @Data
 public class StarRateVo {
 	private int id; //고유번호
-	private int score; //별점
+	private double score; //별점
 	private int movie_id;
 	private int user_id;
 	private Date regi_date; //별점 등록일 
 	private int isRated; //별점 등록했는지 안했는지 
+	private int avg_score; //평균 별점
+	private int frequency; //해당 별점 개수
+	private double mostFreq;//많이 준 별점
+	private int total_count;// 총 별점 개수
+	private double frequencyScale; //많이 준 별점 비율
+	private int watched_time_min;//분
+	private int watched_time_hr;//시간
 }

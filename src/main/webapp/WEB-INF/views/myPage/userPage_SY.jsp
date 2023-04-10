@@ -81,9 +81,11 @@
 										<section class="css-q4evg3-MyPage e19zkogf2">
 											<!--content header 시작  -->
 											<div class="css-17iws0v-WallPaper" id="settingBtn">
+											<c:if test="${sessionId!=null} && ${sessionId!=memberVo.id}">
 											<!-- 톱니바퀴 버튼시작-->
 												<button aria-label="setting"  class="css-vmz9k0-StylelessButton-WallPaperTopRightButton e19zkogf20"></button>
 											<!-- 톱니바퀴 버튼 끝 -->
+											</c:if>
 											</div>
 											<div class="css-1gkas1x-Grid e1689zdh0">
 												<div class="css-1y901al-Row emmoxnt0">
@@ -112,7 +114,7 @@
 													<ul class="css-10n5vg9-VisualUl ep5cwgq0">
 														<li class="css-4ip9lp-AnalysisListItem e19zkogf10">
 															<a target="_blank" rel="noopener noreferrer" title="취향분석"
-														   	   href="/myPage/my_analysis_HY?id=${memberVo.id}">
+														   	   href="/myPage/my_analysis_HY?user_id=${memberVo.id}">
 														   		<span
 																   src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNFRjY5MkUiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTEuMTggMTEuOTZoMy43NHY4LjM2SDEuMTh6TTE1Ljc1IDE2LjgzaDMuNzR2My40OWgtMy43NHpNNi4wNCA5LjEyaDMuNzR2MTEuMkg2LjA0ek0xMC45IDEzLjg0aDMuNzR2Ni40OEgxMC45eiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNGRkNBMjIiIGQ9Ik0xNy40NCAxLjM3bDEuNjYgNCA0LjMxLjM0LTMuMjggMi44MSAxIDQuMjEtMy42OS0yLjI2LTMuNjkgMi4yNiAxLjAxLTQuMjEtMy4yOS0yLjgxIDQuMzItLjM0eiIvPgogICAgPC9nPgo8L3N2Zz4K"
 																   height="24px" width="24px"
@@ -133,7 +135,7 @@
 																	<ul class="e19zkogf12 css-i1bo8u-VisualUl-CategoryArchivesUl">
 																		<!--MOVIE 버튼 시작  -->
 																		<li class="css-1u4jvye-CategoryArchivesListItem e19zkogf13">
-																			<a background="[object Object]" class="css-h3f67w-CategoryArchivesLink e19zkogf14" href="/ko-KR/users/djaxbJPMVAxLw/contents/movies?user_id=${memberVo.id}">
+																			<a background="[object Object]" class="css-h3f67w-CategoryArchivesLink e19zkogf14" href="?user_id=${memberVo.id}">
 																				<ul class="css-reeb92-VisualUl-CategoryArchives e19zkogf15">
 																					<li class="css-r3hbc5-CategoryArchivesName e19zkogf16">MOVIE</li>
 																					<li class="css-7xoi89-CategoryArchivesRatedCount e19zkogf17">★0</li>
@@ -144,7 +146,7 @@
 																		<!--MOVIE 버튼  끝  -->
 																		<!--COLLECTION 버튼 시작 -->
 																		<li class="css-1u4jvye-CategoryArchivesListItem e19zkogf13">
-																			<a background="[object Object]" class="css-1gw6y00-CategoryArchivesLink e19zkogf14" href="/ko-KR/users/djaxbJPMVAxLw/contents/tv_seasons?user_id=${memberVo.id}">
+																			<a background="[object Object]" class="css-1gw6y00-CategoryArchivesLink e19zkogf14" href="/collection/collection_SY?user_id=${memberVo.id}">
 																				<ul class="css-1x0nmo-VisualUl-CategoryArchives e19zkogf15">
 																					<li class="css-r3hbc5-CategoryArchivesName e19zkogf16">COLLECTION</li>
 																					<li class="css-7xoi89-CategoryArchivesRatedCount e19zkogf17">★0</li>

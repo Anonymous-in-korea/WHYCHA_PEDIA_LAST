@@ -75,8 +75,46 @@
 	<!-- 코멘트 1개에 대한 영화 별점 가져오기 -->
 	<select id="selectStarRateOne" resultType="com.whychapedia.vo.StarRateVo">
 		select * from star_rate 
-		where user_id =	#{user_id}
-	 	and movie_id = #{movie_id}
+		where user_id =	#{user_id} and movie_id = #{movie_id}
+	</select>
+	
+	<!-- 해당 유저의 영화 별점 가져오기 -->
+	<select id="selectStarRateOnePerson" resultType="com.whychapedia.vo.StarRateVo">
+		select * from star_rate where user_id =	#{user_id}
+	</select>
+	
+	<!-- 해당 유저의 총 별점 개수/평균 별점 -->
+	<select id="selectOnePersonAvgAndTotalCount" resultType="com.whychapedia.vo.StarRateVo">
+		SELECT AVG(score) as avg_score, COUNT(*) as total_count
+		FROM star_rate
+		WHERE user_id = #{user_id}
+	</select>
+	
+		<!-- 해당 유저의 많이 준 별점 반환  -->
+	<select id="selectFrequencyScore" resultType="com.whychapedia.vo.StarRateVo">
+		SELECT score,COUNT(*) as frequency
+			FROM star_rate
+			WHERE user_id = #{user_id}
+			GROUP BY score
+			ORDER BY frequency DESC
+			FETCH FIRST 1 ROWS ONLY
+	</select>
+	
+			<!-- 해당 유저의 별점 반환  -->
+	<select id="starGraphOfUser" resultType="com.whychapedia.vo.StarRateVo">
+		SELECT score,COUNT(*) as frequency
+			FROM star_rate
+			WHERE user_id = #{user_id}
+			GROUP BY score
+			ORDER BY frequency DESC
+	</select>
+	
+		    <!--해당 유저 유저의 총 감상 시간-->
+	<select id="selectTotalWatchedTime" resultType="com.whychapedia.vo.StarRateVo">
+ 		SELECT SUM(m.movie_running_time) as watched_time_min
+			FROM star_rate sr
+			JOIN Movie m ON sr.movie_id = m.id
+			WHERE sr.user_id =#{user_id} 
 	</select>
 	
   </mapper>

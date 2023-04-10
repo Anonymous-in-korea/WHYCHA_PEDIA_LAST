@@ -8,7 +8,7 @@
 	  <link href="../css/my_taste_HY.css" rel="stylesheet" type="text/css">	
 	  <!-- Google Tag Manager -->
 	  <meta charset="utf-8">
-	  <title>왓챠가 분석한 영's님의 취향보고서</title>
+	  <title>와이챠가 분석한 영's님의 취향보고서</title>
 	</head>
 	<body>
 	  <div id="root">
@@ -39,7 +39,7 @@
 	                            <div class="css-fom973-ProfilePhotoImage"></div>
 	                          </div>
 	                          <!-- 누구의 취향분석 -->
-	                          <div class="css-mp2a8y">영's</div>
+	                          <div class="css-mp2a8y">${memberVo.user_name}</div>
 	                        </div>
 	                      </h1>
 	                    </div>
@@ -49,40 +49,6 @@
 	              <!-- 취향분석 헤더 -->
 	              <!-- 평가수 & 별점 분포 그래프 -->
 	              <div class="css-q1hgmq-RoundedCornerBlock-RoundedCornerBlock">
-	                <section class="css-1f4aos9">
-	                  <div class="css-1gkas1x-Grid e1689zdh0">
-	                    <div class="css-1y901al-Row emmoxnt0">
-	                      <header class="css-1ue9xs6">
-	                        <h2 class="css-1wtjsst">평가수</h2>
-	                      </header>
-	                    </div>
-	                  </div>
-	                  <div class="css-1gkas1x-Grid e1689zdh0">
-	                    <div class="css-1y901al-Row emmoxnt0">
-	                      <div class="css-17y9cpn">
-	                        <ul class="css-1ai3iwk-VisualUl">
-	                          <li class="css-1666h6g">
-	                            <div class="css-1caz78i">37</div>
-	                            <div class="css-1fak39c">영화</div>
-	                          </li>
-<!-- 	                          <li class="css-1666h6g"> -->
-<!-- 	                            <div class="css-1caz78i">21</div> -->
-<!-- 	                            <div class="css-1fak39c">TV 프로그램</div> -->
-<!-- 	                          </li> -->
-<!-- 	                          <li class="css-1666h6g"> -->
-<!-- 	                            <div class="css-1caz78i">11</div> -->
-<!-- 	                            <div class="css-1fak39c">책</div> -->
-<!-- 	                          </li> -->
-<!-- 	                          <li class="css-1666h6g"> -->
-<!-- 	                            <div class="css-1caz78i">20</div> -->
-<!-- 	                            <div class="css-1fak39c">웹툰</div> -->
-<!-- 	                          </li> -->
-	                        </ul>
-	                      </div>
-	                      <hr class="css-1iutxjm">
-	                    </div>
-	                  </div>
-	                </section>
 	                <section class="css-e9w2vw">
 	                  <div class="css-1gkas1x-Grid e1689zdh0">
 	                    <div class="css-1y901al-Row emmoxnt0">
@@ -97,49 +63,89 @@
 	                      <div class="css-baz663">
 	                        <div class="css-g1q7ln">
 	                          <div class="css-hugi8h">
-	                          	<span class="css-1n3dn6t"></span>
+	                          <c:forEach items="${starGraphOfUserList}" var="starRateVo"> 
+		                        <c:if test="${starRateVo.score==0.5}">
+	                          		<span class="css-1n3dn6t" style="height:${starRateVo.frequencyScale*500}px"></span>
+	                            </c:if>
+	                          </c:forEach>	
                           	  </div>
 	                          <div class="css-hugi8h">
-	                          	<span prefix="1" class="css-111q860-Bar"></span>
+                          	  <c:forEach items="${starGraphOfUserList}" var="starRateVo"> 
+		                         <c:if test="${starRateVo.score==1}">
+		                         	<span prefix="1" class="css-111q860-Bar" style="height:${starRateVo.frequencyScale*500}px"></span>
+		                         </c:if>
+	                          </c:forEach>
 	                          </div>
 	                          <div class="css-hugi8h">
-	                          	<span class="css-1n3dn6t"></span>
+	                          <c:forEach items="${starGraphOfUserList}" var="starRateVo"> 
+		                        <c:if test="${starRateVo.score==1.5}">
+	                          		<span class="css-1n3dn6t" style="height:${starRateVo.frequencyScale*500}px"></span>
+	                            </c:if>
+	                          </c:forEach>
 	                          </div>
 	                          <div class="css-hugi8h">
-	                          	<span prefix="2" class="css-r41bl-Bar"></span>
+	                          <c:forEach items="${starGraphOfUserList}" var="starRateVo"> 
+		                        <c:if test="${starRateVo.score==2}">
+	                          		<span prefix="2" class="css-r41bl-Bar" style="height:${starRateVo.frequencyScale*500}px"></span>
+	                          	</c:if>
+	                          </c:forEach>
 	                          </div>
 	                          <div class="css-hugi8h">
-	                          	<span class="css-r1x3ay"></span>
+	                          <c:forEach items="${starGraphOfUserList}" var="starRateVo"> 
+		                        <c:if test="${starRateVo.score==2.5}">
+	                          		<span class="css-r1x3ay" style="height:${starRateVo.frequencyScale*500}px"></span>
+                          	  	</c:if>
+	                          </c:forEach>
                           	  </div>
 	                          <div class="css-hugi8h">
-	                          	<span prefix="3" class="css-z5uyqq-Bar"></span>
+	                          <c:forEach items="${starGraphOfUserList}" var="starRateVo"> 
+		                        <c:if test="${starRateVo.score==3}">
+	                          		<span prefix="3" class="css-z5uyqq-Bar" style="height:${starRateVo.frequencyScale*500}px"></span>
+	                            </c:if>
+	                          </c:forEach>
 	                          </div>
 	                          <div class="css-hugi8h">
-	                          	<span class="css-10zyi34"></span>
+	                          <c:forEach items="${starGraphOfUserList}" var="starRateVo"> 
+		                        <c:if test="${starRateVo.score==3.5}">
+	                          		<span class="css-10zyi34" style="height:${starRateVo.frequencyScale*500}px"></span>
+	                            </c:if>
+	                          </c:forEach>	                          
 	                          </div>
 	                          <div class="css-hugi8h">
-	                          	<span prefix="4" class="css-1hp04q9-Bar"></span>
+	                          <c:forEach items="${starGraphOfUserList}" var="starRateVo"> 
+		                        <c:if test="${starRateVo.score==4}">	                          
+	                          		<span prefix="4" class="css-1hp04q9-Bar" style="height:${starRateVo.frequencyScale*500}px"></span>
+	                            </c:if>
+	                          </c:forEach>		                          
 	                          </div>
 	                          <div class="css-hugi8h">
-	                          	<span class="css-15egokh"></span>
+	                          <c:forEach items="${starGraphOfUserList}" var="starRateVo"> 
+		                        <c:if test="${starRateVo.score==4.5}">	                          	
+	                          		<span class="css-15egokh" style="height:${starRateVo.frequencyScale*500}px"></span>
+	                            </c:if>
+	                          </c:forEach>
 	                          </div>
 	                          <div class="css-hugi8h">
-	                          	<span prefix="5" class="css-fa6pmb-Bar"></span>
+	                          <c:forEach items="${starGraphOfUserList}" var="starRateVo"> 
+		                        <c:if test="${starRateVo.score==5}">	 	                          
+	                          		<span prefix="5" class="css-fa6pmb-Bar" style="height:${starRateVo.frequencyScale*500}px"></span>
+	                            </c:if>
+	                          </c:forEach>	                          
 	                          </div>
 	                        </div>
 	                      </div>
 	                      <div class="css-1s4ow07">
 	                        <ul class="css-1ai3iwk-VisualUl">
 	                          <li class="css-poewkh">
-	                            <div class="css-1caz78i">3.6</div>
+	                            <div class="css-1caz78i">${starRateVo.avg_score}</div>
 	                            <div class="css-1fak39c">별점 평균</div>
 	                          </li>
 	                          <li class="css-poewkh">
-	                            <div class="css-1caz78i">89</div>
+	                            <div class="css-1caz78i">${starRateVo.total_count}</div>
 	                            <div class="css-1fak39c">별점 개수</div>
 	                          </li>
 	                          <li class="css-poewkh">
-	                            <div class="css-1caz78i">3.0</div>
+	                            <div class="css-1caz78i">${starRateVo.mostFreq}</div>
 	                            <div class="css-1fak39c">많이 준 별점</div>
 	                          </li>
 	                        </ul>
@@ -168,68 +174,29 @@
 	                          	<!-- 배우 -->
 	                            <ul class="css-1m9zbc5-VisualUl">
 	                              <!-- 배우 1명 -->
-	                              <li class="css-wj6fn0">
-	                              	<a title="김태리" class="css-1aaqvgs-InnerPartOfListWithImage" href="/ko-KR/people/431877">
-	                                  <div class="css-cssveg">
-	                                    <div class="css-13zlig9">
-	                                      <div class="css-1q751em-ProfilePhotoImage"></div>
-	                                    </div>
-	                                  </div>
-	                                  <div class="css-zoy7di">
-	                                    <div class="css-qkf9j">
-	                                      <div class="css-17vuhtq">
-	                                        <div class="css-1pfpne2-PersonTitle e72a1w70">
-	                                        	<span class="css-1neatfa-PersonName e72a1w71">김태리</span>
-	                                        	<span class="css-104v25a-PersonDetail e72a1w72">100점 • 3편</span>
-	                                        </div>
-	                                      </div>
-	                                      <div class="css-1evnpxk-StyledSubtitle">리틀 포레스트</div>
-	                                    </div>
-	                                  </div>
-	                                </a>
-	                              </li>
+	                              <c:forEach items="${actorVoList}" var="actorVo">
+		                              <li class="css-wj6fn0">
+		                              	<a title="${actorVo.actor_name}" class="css-1aaqvgs-InnerPartOfListWithImage"  href="/ko-KR/people/actor_id?${actorVo.id}">
+		                                  <div class="css-cssveg">
+		                                    <div class="css-13zlig9">
+		                                      <div style="background: url(${actorVo.actor_post_url}) no-repeat center; background-size: contain;" class="css-1q751em-ProfilePhotoImage"></div>
+		                                    </div>
+		                                  </div>
+		                                  <div class="css-zoy7di">
+		                                    <div class="css-qkf9j">
+		                                      <div class="css-17vuhtq">
+		                                        <div class="css-1pfpne2-PersonTitle e72a1w70">
+		                                        	<span class="css-1neatfa-PersonName e72a1w71">${actorVo.actor_name}</span>
+		                                        	<span class="css-104v25a-PersonDetail e72a1w72">좋아요 ${actorVo.total_like}명 • ${actorVo.search_count}편</span>
+		                                        </div>
+		                                      </div>
+		                                      <div class="css-1evnpxk-StyledSubtitle" href="/contents/contents_SH?movie_id=${actorVo.represent_movie_id}">${actorVo.represent_movie}</div>
+		                                    </div>
+		                                  </div>
+		                                </a>
+		                              </li>
+	                              </c:forEach>
 	                              <!-- 배우 1명 -->
-	                              <li class="css-wj6fn0">
-	                              	<a title="박성웅" class="css-1aaqvgs-InnerPartOfListWithImage" href="/ko-KR/people/354574">
-	                                  <div class="css-cssveg">
-	                                    <div class="css-13zlig9">
-	                                      <div class="css-n9cdrx-ProfilePhotoImage"></div>
-	                                    </div>
-	                                  </div>
-	                                  <div class="css-zoy7di">
-	                                    <div class="css-qkf9j">
-	                                      <div class="css-17vuhtq">
-	                                        <div class="css-1pfpne2-PersonTitle e72a1w70">
-	                                        	<span class="css-1neatfa-PersonName e72a1w71">박성웅</span>
-	                                        	<span class="css-104v25a-PersonDetail e72a1w72">63점 • 3편</span>
-	                                        </div>
-	                                      </div>
-	                                      <div class="css-1evnpxk-StyledSubtitle">내안의 그놈</div>
-	                                    </div>
-	                                  </div>
-	                                </a>
-	                              </li>
-	                              <li class="css-wj6fn0">
-	                              	<a title="이성민" class="css-1aaqvgs-InnerPartOfListWithImage" href="/ko-KR/people/99003">
-	                                  <div class="css-cssveg">
-	                                    <div class="css-13zlig9">
-	                                      <div class="css-1ukr9uq-ProfilePhotoImage"></div>
-	                                    </div>
-	                                  </div>
-	                                  <div class="css-16n7af8">
-	                                    <div class="css-qkf9j">
-	                                      <div class="css-17vuhtq">
-	                                        <div class="css-1pfpne2-PersonTitle e72a1w70">
-	                                        	<span class="css-1neatfa-PersonName e72a1w71">이성민</span>
-	                                        	<span class="css-104v25a-PersonDetail e72a1w72">55점 • 3편</span>
-	                                        </div>
-	                                      </div>
-	                                      <div class="css-1evnpxk-StyledSubtitle">공작</div>
-	                                    </div>
-	                                  </div>
-	                                </a>
-	                              </li>
-	                              <div class="css-6qnjre"></div>
 	                            </ul>
 	                          </div>
 	                        </div>
@@ -254,6 +221,70 @@
 	                  </div>
 	                </section>
 	                <!-- 선호배우 탭 -->
+	                <!-- 선호감독 탭 -->
+	                <section class="css-1f4aos9">
+	                  <div class="css-1gkas1x-Grid e1689zdh0">
+	                    <div class="css-1y901al-Row emmoxnt0">
+	                      <header class="css-1ue9xs6">
+	                        <h2 class="css-1wtjsst">선호감독</h2>
+	                      </header>
+	                    </div>
+	                  </div>
+	                  <div class="css-usdi1z">
+	                    <div class="css-1rbc54i">
+	                      <div class="css-174lxc3">
+	                        <div class="css-1gkas1x-Grid e1689zdh0">
+	                          <div class="css-1y901al-Row emmoxnt0">
+	                          	<!-- 배우 -->
+	                            <ul class="css-1m9zbc5-VisualUl">
+	                              <!-- 배우 1명 -->
+	                              <c:forEach items="${directorVoList}" var="directorVo">
+		                              <li class="css-wj6fn0">
+		                              	<a title="${directorVo.director_name}" class="css-1aaqvgs-InnerPartOfListWithImage"  href="/ko-KR/people/director_id?${directorVo.id}">
+		                                  <div class="css-cssveg">
+		                                    <div class="css-13zlig9">
+		                                      <div style="background: url(${directorVo.director_post_url}) no-repeat center; background-size: contain;" class="css-1q751em-ProfilePhotoImage"></div>
+		                                    </div>
+		                                  </div>
+		                                  <div class="css-zoy7di">
+		                                    <div class="css-qkf9j">
+		                                      <div class="css-17vuhtq">
+		                                        <div class="css-1pfpne2-PersonTitle e72a1w70">
+		                                        	<span class="css-1neatfa-PersonName e72a1w71">${directorVo.director_name}</span>
+		                                        	<span class="css-104v25a-PersonDetail e72a1w72">좋아요 ${directorVo.total_like}명 • ${directorVo.search_count}편</span>
+		                                        </div>
+		                                      </div>
+		                                      <div class="css-1evnpxk-StyledSubtitle" href="/contents/contents_SH?movie_id=${directorVo.represent_movie_id}">${directorVo.represent_movie}</div>
+		                                    </div>
+		                                  </div>
+		                                </a>
+		                              </li>
+	                              </c:forEach>
+	                              <!-- 배우 1명 -->
+	                            </ul>
+	                          </div>
+	                        </div>
+	                      </div>
+	                    </div>
+	                    <div direction="left" class="css-a89h8a"></div>
+	                    <div direction="right" class="css-1qgb5vh"></div>
+	                    <div class="arrow_button css-38kpup" direction="left">
+	                      <div class="css-1hestod"></div>
+	                    </div>
+	                    <div class="arrow_button css-h5qs9h" direction="right">
+	                      <div class="css-vp7uyl">
+	                      	<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDEyIDE2Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMEgxMlYxNkgweiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiMyOTJBMzIiIHN0cm9rZT0iIzI5MkEzMiIgc3Ryb2tlLXdpZHRoPSIuMzUiIGQ9Ik0zLjQyOSAxMy40MDlMNC4zNTQgMTQuMjU4IDEwLjY4IDguNDYgMTEuMTQzIDguMDM2IDQuMzU0IDEuODEzIDMuNDI5IDIuNjYyIDkuMjkxIDguMDM2eiIvPgogICAgPC9nPgo8L3N2Zz4K"
+	                          alt="forward">
+	                      </div>
+	                    </div>
+	                  </div>
+	                  <div class="css-1gkas1x-Grid e1689zdh0">
+	                    <div class="css-1y901al-Row emmoxnt0">
+	                      <hr class="css-god8tc">
+	                    </div>
+	                  </div>
+	                </section>
+	                <!-- 선호 감독 탭 -->
 	                <!-- 영화 선호국가 -->
 	                <section class="css-1f4aos9">
 	                  <div class="css-1gkas1x-Grid e1689zdh0">
@@ -265,27 +296,16 @@
 	                  </div>
 	                  <div class="css-1gkas1x-Grid e1689zdh0">
 	                    <div class="css-1y901al-Row emmoxnt0">
+	                     <h3 class="css-klz1dn">당신의 무비나라는 ${bestCountry}!</h3>
 	                      <div class="css-fqg8by">
 	                        <ul class="css-1ai3iwk-VisualUl">
+	                        <c:forEach items="${movieCountryVoList}" var="movieCountryVo">
 	                          <li class="css-poewkh">
-	                            <div class="css-1caz78i">한국</div>
-	                            <div class="css-1fak39c">97점<!-- --> <!-- -->• <!-- -->25편</div>
+	                            <div class="css-1caz78i">${movieCountryVo.name_kor}</div>
+	                            <div class="css-1fak39c">${movieCountryVo.search_count}편</div>
 	                          </li>
-	                          <li class="css-poewkh">
-	                            <div class="css-1caz78i">미국</div>
-	                            <div class="css-1fak39c">93점<!-- --> <!-- -->• <!-- -->9편</div>
-	                          </li>
-	                          <li class="css-poewkh">
-	                            <div class="css-1caz78i">프랑스</div>
-	                            <div class="css-1fak39c">84점<!-- --> <!-- -->• <!-- -->3편</div>
-	                          </li>
-	                        </ul>
+	                       </c:forEach> 
 	                      </div>
-	                      <ul class="css-r60ppo-VisualUl">
-	                        <li class="css-1h25cxh">영국<span>80점<!-- --> <!-- -->• <!-- -->3편</span></li>
-	                        <li class="css-1h25cxh">아일랜드<span>76점<!-- --> <!-- -->• <!-- -->1편</span></li>
-	                        <li class="css-1h25cxh">캐나다<span>70점<!-- --> <!-- -->• <!-- -->2편</span></li>
-	                      </ul>
 	                      <hr class="css-1iutxjm">
 	                    </div>
 	                  </div>
@@ -302,33 +322,17 @@
 	                  </div>
 	                  <div class="css-1gkas1x-Grid e1689zdh0">
 	                    <div class="css-1y901al-Row emmoxnt0">
-	                      <h3 class="css-klz1dn">인생은 역시 한 편의 드라마!</h3>
+	                      <h3 class="css-klz1dn">인생은 역시 한 편의 ${bestGenre}!</h3>
 	                      <div class="css-fqg8by">
 	                        <ul class="css-1ai3iwk-VisualUl">
+	                        <c:forEach items="${movieGenreVoList}" var="movieGenreVo">
 	                          <li class="css-poewkh">
-	                            <div class="css-1caz78i">드라마</div>
-	                            <div class="css-1fak39c">96점<!-- --> <!-- -->• <!-- -->26편</div>
+	                            <div class="css-1caz78i">${movieGenreVo.genre_kor}</div>
+	                            <div class="css-1fak39c">${movieGenreVo.search_count}편</div>
 	                          </li>
-	                          <li class="css-poewkh">
-	                            <div class="css-1caz78i">코미디</div>
-	                            <div class="css-1fak39c">88점<!-- --> <!-- -->• <!-- -->7편</div>
-	                          </li>
-	                          <li class="css-poewkh">
-	                            <div class="css-1caz78i">범죄</div>
-	                            <div class="css-1fak39c">86점<!-- --> <!-- -->• <!-- -->6편</div>
-	                          </li>
+	                        </c:forEach> 
 	                        </ul>
 	                      </div>
-	                      <ul class="css-r60ppo-VisualUl">
-	                        <li class="css-1h25cxh">액션<span>85점<!-- --> <!-- -->• <!-- -->7편</span></li>
-	                        <li class="css-1h25cxh">공포<span>83점<!-- --> <!-- -->• <!-- -->5편</span></li>
-	                        <li class="css-1h25cxh">미스터리<span>82점<!-- --> <!-- -->• <!-- -->4편</span></li>
-	                      </ul>
-	<!--                       <button class="css-1d4r906-StylelessButton">더보기 -->
-	<!--                       	<span src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYuNSA5LjEwMDFMMTIgMTQuNjAwMUwxNy41IDkuMTAwMSIgc3Ryb2tlPSIjNzg3OTgyIiBzdHJva2Utd2lkdGg9IjEuNSIvPgo8L3N2Zz4K" -->
-	<!--                         width="24px" height="24px" class="css-cg0u6i"> -->
-	<!--                         </span> -->
-	<!--                        </button> -->
 	                      <hr class="css-1iutxjm">
 	                    </div>
 	                  </div>
@@ -345,8 +349,8 @@
 	                  </div>
 	                  <div class="css-1gkas1x-Grid e1689zdh0">
 	                    <div class="css-1y901al-Row emmoxnt0">
-	                      <h3 class="css-134vx88">70 시간</h3>
-	                      <h3 class="css-1qf8yzq">조금만 더 평가를 매겨 보셔요 :)</h3>
+	                      <h3 class="css-134vx88">${timeWateched.watched_time_min}분</h3>
+	                      <h3 class="css-1qf8yzq">총 ${timeWateched.watched_time_hr} 시간 감상 하셨습니다.</h3>
 	                    </div>
 	                  </div>
 	                </section>

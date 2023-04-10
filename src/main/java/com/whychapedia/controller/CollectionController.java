@@ -72,14 +72,18 @@ public class CollectionController {
 	
 	/*컬렉션 모음 페이지*/
 	@GetMapping("/collection/collection_SY")
-	public String collection_SY(Model model) {
-		int user_id=3;
+	public String collection_SY(@RequestParam int user_id,Model model) {
 		int isInCollection=0;
 		//컬렉션 주인 계정
 		memberVo=memberService.selectOneMember(user_id);
+		MemberVo loginVo=new MemberVo();
 		
-		
-		
+		Integer sessionId = (Integer) session.getAttribute("sessionId");
+
+		if(sessionId!=null) {
+			int loginId = sessionId.intValue();
+			loginVo=memberService.selectOneMember(loginId);			
+		}
 		//해당 유저의 컬렉션 list 가져오기 & 좋아요&코멘트 개수
 		List<CollectionVo>collectionVoList=collectionService.selectCollectionList(user_id);
 		System.out.println("collection(controller):collectionList size()"+collectionVoList.size());
@@ -90,16 +94,17 @@ public class CollectionController {
 		
 		
 		//컬렉션이 존재 할 때 
-		if(collectionVoList!=null) {
+		if(collectionVoList.size()!=0) {
 			//컬렉션_movie vo 생성 ( collection_id,movie_id,movie_post_url 들어가 있음)
 			movieCollectionVoList=movieCollectionService.selectCollectionVoWithMoviePostUrlList(collectionVoList);
 			System.out.println("collection(controller):MovieCollectionVoList size()"+movieCollectionVoList.size());				
 			
 			//collection_movie vo의 movie post url을 배열 값으로 collectionVoList에 넣음
-			updateCollectionVoList=collectionService.insertMoviePostUrlArray(movieCollectionVoList,collectionVoList);
-			System.out.println("collection(controller):updateCollectionVoList size()"+updateCollectionVoList.size());	
-			System.out.println("collection(controller):updateCollectionVoList "+updateCollectionVoList.get(0).getMovie_post_urls());
-			
+			if(movieCollectionVoList.size()!=0) {
+				updateCollectionVoList=collectionService.insertMoviePostUrlArray(movieCollectionVoList,collectionVoList);
+				System.out.println("collection(controller):updateCollectionVoList size()"+updateCollectionVoList.size());	
+				System.out.println("collection(controller):updateCollectionVoList "+updateCollectionVoList.get(0).getMovie_post_urls());
+			}
 			
 			
 			//컬렉션 존재함
@@ -108,7 +113,7 @@ public class CollectionController {
 			
 			
 		}
-		
+			model.addAttribute("loginVo", loginVo); //접속자 
 			model.addAttribute("memberVo", memberVo); //콜렉션 페이지 주인
 			model.addAttribute("updateCollectionVoList", updateCollectionVoList); // 콜렉션 리스트
 			model.addAttribute("isInCollection",isInCollection); // 콜렉션 있는지 유무

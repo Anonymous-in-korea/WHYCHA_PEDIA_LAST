@@ -345,7 +345,7 @@ div {
       display: none;
     }
     .css-d98475 {
-      color: #ff2f6e;
+      color:rgb(255, 90, 11);
       font-size: 13px;
       font-weight: 400;
       -webkit-letter-spacing: -0.2px;
@@ -384,7 +384,7 @@ div {
     .css-1n3dn6t {
       display: block;
       position: relative;
-      background: #ffdd63;
+      background: #ffa136;
       color: #a0a0a0;
       vertical-align: bottom;
       font-size: 12px;
@@ -395,7 +395,6 @@ div {
       letter-spacing: -0.2px;
       line-height: 16px;
       text-align: left;
-      height: 1px;
       margin: 0 0 22px;
     }
     .css-111q860-Bar {
@@ -412,7 +411,6 @@ div {
       letter-spacing: -0.2px;
       line-height: 16px;
       text-align: left;
-      height: 1px;
       margin: 0 0 22px;
     }
 
@@ -428,7 +426,7 @@ div {
     .css-r41bl-Bar {
       display: block;
       position: relative;
-      background: #ffdd63;
+      background: #ffa136;
       color: #a0a0a0;
       vertical-align: bottom;
       font-size: 12px;
@@ -439,7 +437,6 @@ div {
       letter-spacing: -0.2px;
       line-height: 16px;
       text-align: left;
-      height: 1px;
       margin: 0 0 22px;
     }
 
@@ -466,7 +463,6 @@ div {
       letter-spacing: -0.2px;
       line-height: 16px;
       text-align: left;
-      height: 15.751999999999999px;
       margin: 0 0 22px;
     }
     .css-z5uyqq-Bar {
@@ -483,7 +479,6 @@ div {
       letter-spacing: -0.2px;
       line-height: 16px;
       text-align: left;
-      height: 88px;
       margin: 0 0 22px;
     }
 
@@ -510,13 +505,12 @@ div {
       letter-spacing: -0.2px;
       line-height: 16px;
       text-align: left;
-      height: 78.584px;
       margin: 0 0 22px;
     }
     .css-1hp04q9-Bar {
       display: block;
       position: relative;
-      background: #ffdd63;
+      background: #ffa136;
       color: #a0a0a0;
       vertical-align: bottom;
       font-size: 12px;
@@ -527,7 +521,6 @@ div {
       letter-spacing: -0.2px;
       line-height: 16px;
       text-align: left;
-      height: 34.584px;
       margin: 0 0 22px;
     }
 
@@ -554,13 +547,12 @@ div {
       letter-spacing: -0.2px;
       line-height: 16px;
       text-align: left;
-      height: 47.168000000000006px;
       margin: 0 0 22px;
     }
     .css-fa6pmb-Bar {
       display: block;
       position: relative;
-      background: #ffdd63;
+      background: #ffa136;
       color: #a0a0a0;
       vertical-align: bottom;
       font-size: 12px;
@@ -571,7 +563,6 @@ div {
       letter-spacing: -0.2px;
       line-height: 16px;
       text-align: left;
-      height: 15.751999999999999px;
       margin: 0 0 22px;
     }
 
@@ -718,11 +709,12 @@ div {
     .css-1q751em-ProfilePhotoImage {
       position: relative;
       z-index: 1;
-      background: url(https://an2-img.amz.wtchn.net/image/v2/fMijQHfJkcOPs_UvAfULUg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qUXdlREkwTUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNCbGNuTnZiaTh4TmpRd056UTNNVEkxTmpBMk1UYzRORFE1SW4wLllCOEhIYzNXOS1SdF9TVlZMa3QxdC1KdUJUbjZramlDRjdKMkNVZFQxbXc) no-repeat center;
-      background-size: cover;
+/*       background: url(https://an2-img.amz.wtchn.net/image/v2/fMijQHfJkcOPs_UvAfULUg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qUXdlREkwTUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNCbGNuTnZiaTh4TmpRd056UTNNVEkxTmpBMk1UYzRORFE1SW4wLllCOEhIYzNXOS1SdF9TVlZMa3QxdC1KdUJUbjZramlDRjdKMkNVZFQxbXc) no-repeat center; */
       width: 100%;
       height: 100%;
     }
+    
+    
     .css-zoy7di {
       display: -webkit-box;
       display: -webkit-flex;
@@ -1009,7 +1001,7 @@ div {
       line-height: 19px;
     }
     .css-klz1dn {
-      color: #ff2f6e;
+      color: rgb(255, 90, 11);
       font-size: 13px;
       font-weight: 400;
       -webkit-letter-spacing: -0.2px;
@@ -1102,7 +1094,7 @@ div {
       height: 24px;
     }
     .css-134vx88 {
-      color: #ff2f6e;
+      color: rgb(255, 90, 11);
       font-size: 17px;
       font-weight: 700;
       -webkit-letter-spacing: -0.5px;
@@ -1115,7 +1107,7 @@ div {
       margin: 12px 0 4px;
     }
     .css-1qf8yzq {
-      color: #ff2f6e;
+      color: rgb(255, 90, 11);
       font-size: 13px;
       font-weight: 400;
       -webkit-letter-spacing: -0.2px;

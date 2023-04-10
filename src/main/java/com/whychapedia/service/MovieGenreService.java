@@ -13,6 +13,8 @@ public interface MovieGenreService {
 
 	String genreListToString(List<MovieGenreVo> movieGenreVoList);
 
-	//영화 10개 장르 가져오기
-	//List<MovieGenreVo> selectTop10Genre(List<Integer> Movie10IDList);
+	//선호 장르 3개 가져오기
+	List<MovieGenreVo> selectPreferenceGenre(int user_id);
+
+	
 }

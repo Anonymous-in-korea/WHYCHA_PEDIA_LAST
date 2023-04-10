@@ -54,23 +54,16 @@
 							<header class="css-4g5dyy">
 								<div class="css-uf1ume">
 									<div class="css-0" style="float:left;">
-									    <c:if test="${sessionId != null }">
 										<button class="e1t9gclr0 css-a6n3jw-StylelessButton-HeaderCloseButtonSelf-TopLeftButton e1k34u8y0" onclick="location.href='/myPage/myPage_SY">
 											<img src="/images/arrow_btn.png" style="width:100%;">
 										</button>
-										</c:if>
-										 <c:if test="${sessionId == null }">
-										<button class="e1t9gclr0 css-a6n3jw-StylelessButton-HeaderCloseButtonSelf-TopLeftButton e1k34u8y0" onclick="location.href='/myPage/userPage_SY?user_id=${memberVo.id}'">
-											<img src="/images/arrow_btn.png" style="width:100%;">
-										</button>
-										</c:if>
 									</div>
 								</div>
 								<div class="css-1d4ojes">
 									<div class="css-1bvesam">
 										<span class="css-collection_user">${memberVo.user_name}</span>님의 [영화]컬렉션
 										<span class="css-addcollectionBox_span">
-											<c:if test="${sessionId != null }">
+											<c:if test="${sessionId != null && memberVo.id==loginVo.id}">
 											 <button class="css-1d4r906-StylelessButton" id="collection_box" >
 	                                   			 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 23" width="512" height="512"
 	                                                   fill="none" class="injected-svg css-vkoibk"
@@ -96,7 +89,7 @@
 											</span>
 											<div class="css-1qytvfb-Message">
 												<div class="css-collection_Error_word">작성한 컬렉션이 없어요.</div>
-												<c:if test="${sessionId != null }">
+												<c:if test="${sessionId != null && memberVo.id==loginVo.id}">
 												<div class="css-collection_Error_word">나만의 컬렉션을 새로 만들어 주세요.</div>
 												</c:if>
 											</div>

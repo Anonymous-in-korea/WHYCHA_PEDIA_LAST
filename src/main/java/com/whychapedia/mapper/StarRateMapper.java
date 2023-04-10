@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.whychapedia.vo.CommentVo;
 import com.whychapedia.vo.StarRateVo;
+import com.whychapedia.vo.WatchListVo;
 
 @Mapper
 public interface StarRateMapper {
@@ -30,5 +31,15 @@ public interface StarRateMapper {
 	public StarRateVo selectStarRateOne(CommentVo cvo);
 	//코멘트 별점 리스트
 	public List<StarRateVo> starRateList(List<CommentVo> commentVolist);
+	//해당 유저의 별점 정보 LIST
+	public List<StarRateVo> selectStarRateOnePerson(int user_id);
+	//해당 유저의 총 별점 개수/평균 별점
+	public StarRateVo selectOnePersonAvgAndTotalCount(int user_id);
+	//해당 유저의 많이 준 별점 반환 
+	public StarRateVo selectFrequencyScore(int user_id);
+	//해당 유저의 별점 그래프 가져오기 
+	public List<StarRateVo> starGraphOfUser(int user_id);
+	//유저의 총 감상 시간
+	StarRateVo selectTotalWatchedTime(int user_id);
 
 }

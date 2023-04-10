@@ -83,7 +83,7 @@ public class StarRateServiceImpl implements StarRateService {
 
 	//해당 영화 모든 유저의 별점 그래프 가져오기 
 	@Override
-	public List<Integer> StarRateGraph(int movie_id) {
+	public List<Integer> starRateGraph(int movie_id) {
 		List<Integer> StarRateGraph=new ArrayList<>();
 		for(int i=0;i<5;i++) {
 			StarRateGraph.add(starRateMapper.selectStarRateGraph(i+0.5,i+1,movie_id));
@@ -133,11 +133,56 @@ public class StarRateServiceImpl implements StarRateService {
 		StarRateVo starOne = starRateMapper.selectStarRateOne(cvo);
 		return starOne;
 	}
-
+	
+	//코멘트 list에 대한 별점LIST
 	@Override
 	public List<StarRateVo> starRatelist(List<CommentVo> commentVolist) {
 		List<StarRateVo> starRatelist = starRateMapper.starRateList(commentVolist);
 		return starRatelist;
+	}
+
+	//해당 유저의 별점 정보 LIST
+	@Override
+	public List<StarRateVo> selectStarRateOnePerson(int user_id) {
+		List<StarRateVo> selectStarRateOnePerson=starRateMapper.selectStarRateOnePerson(user_id);
+		return selectStarRateOnePerson;
+	}
+
+	//해당 유저의 많이 준 별점/평균 별점/총 별점 개수 반환 
+	@Override
+	public StarRateVo selectOnePersonStarRateInfo(int user_id) {
+		//해당 유저의 총 별점 개수/평균 별점
+		starRateVo=starRateMapper.selectOnePersonAvgAndTotalCount(user_id);
+		//해당 유저의 많이 준 별점 반환 
+		StarRateVo freScoreVo=starRateMapper.selectFrequencyScore(user_id);
+		//Vo에 넣어주기
+		starRateVo.setMostFreq(freScoreVo.getScore());
+		
+		return starRateVo;
+	}
+
+	//해당 유저의 별점 그래프 가져오기 
+	@Override
+	public List<StarRateVo> starGraphOfUser(StarRateVo starRateVo,int user_id) {
+		List<StarRateVo> starGraphOfUser=starRateMapper.starGraphOfUser(user_id);
+		int total=starRateVo.getTotal_count();
+		System.out.println("total"+total);
+		for (StarRateVo starRate : starGraphOfUser) {
+			System.out.println(starRate.getFrequency());
+			double frequencyScale=(double)starRate.getFrequency()/total;
+			System.out.println("frequencyScale"+frequencyScale);
+			starRate.setFrequencyScale(frequencyScale);
+		}
+		return starGraphOfUser;
+	}
+
+	//유저의 총 감상 시간
+	@Override
+	public StarRateVo totalWatchedTime(int user_id) {
+		starRateVo=starRateMapper.selectTotalWatchedTime(user_id);
+		int hour=(int)((starRateVo.getWatched_time_min())/60);
+		starRateVo.setWatched_time_hr(hour);
+		return starRateVo;
 	}
 
 

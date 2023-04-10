@@ -3,6 +3,7 @@ package com.whychapedia.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.whychapedia.vo.ArtistVo;
 import com.whychapedia.vo.LikeVo;
@@ -26,6 +27,28 @@ public interface ArtistMapper {
 
 	//해당 id를 가지고 해당인물 정보 가져오기
 	List<ArtistVo> selectActorOnelist(int id);
+
+	//선호 배우 3명 인물 포스터,이름,출현 횟수
+	List<ArtistVo> selectPreferenceActor(int user_id);
+	
+	//해당 배우 흥행작 영화 관련 정보
+	ArtistVo selectMovieOfActor(int id);
+
+	//해당 배우 좋아요 개수 가져오기
+	ArtistVo selectLikeForActor(int id);
+
+	//선호 감독 3명 인물 포스터,이름,출현 횟수
+	List<ArtistVo> selectPreferenceDirector(int user_id);
+
+	//해당 감독 흥행작 영화 관련 정보
+	ArtistVo selectMovieOfDirector(int id);
+
+	//해당 배우 좋아요 개수 가져오기
+	ArtistVo selectLikeForDirector(int id);
+
+	
+
+
     
 	
 

@@ -6,6 +6,7 @@ import com.whychapedia.vo.CommentVo;
 import com.whychapedia.vo.MovieCollectionVo;
 import com.whychapedia.vo.MovieVo;
 import com.whychapedia.vo.StarRateVo;
+import com.whychapedia.vo.WatchListVo;
 
 public interface StarRateService {
 
@@ -23,7 +24,7 @@ public interface StarRateService {
 
 	int updateStarRate(double star_rate, int movie_id, int user_id);
 
-	List<Integer> StarRateGraph(int movie_id);
+	List<Integer> starRateGraph(int movie_id);
 
 	int totalStarRateNumber(List<Integer> movieStarRateGraph);
 
@@ -35,6 +36,14 @@ public interface StarRateService {
 
 	//코멘트 해당하는 별점 리스트
 	List<StarRateVo> starRatelist(List<CommentVo> commentVolist);
+
+	List<StarRateVo> selectStarRateOnePerson(int user_id);
+
+	StarRateVo selectOnePersonStarRateInfo(int user_id);
+
+	List<StarRateVo> starGraphOfUser(StarRateVo starRateVo, int user_id);
+	
+	StarRateVo totalWatchedTime(int user_id);
 
 
 

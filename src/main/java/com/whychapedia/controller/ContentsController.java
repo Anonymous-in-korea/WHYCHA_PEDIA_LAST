@@ -1,5 +1,6 @@
 package com.whychapedia.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +34,8 @@ import com.whychapedia.vo.MovieOttVo;
 import com.whychapedia.vo.MovieVo;
 import com.whychapedia.vo.StarRateVo;
 import com.whychapedia.vo.WatchListVo;
+
+import ch.qos.logback.core.joran.action.NewRuleAction;
 
 @Controller
 public class ContentsController {
@@ -112,41 +115,48 @@ public class ContentsController {
 		model.addAttribute("movieVo",movieVo);
 		
 		//movie_genre 정보(LIST<VO>)
-		List<MovieGenreVo> movieGenreVoList=movieGenreService.selectTheGenre(movie_id);
+		List<MovieGenreVo> movieGenreVoList=new ArrayList<>();
+		movieGenreVoList=movieGenreService.selectTheGenre(movie_id);
 		if(movieGenreVoList.size()!=0)System.out.println("해당 영화 장르 리스트 첫 번쨰:"+movieGenreVoList.get(0).getGenre_kor());
 		//장르 합쳐서 string으로 반환
 		String genre=movieGenreService.genreListToString(movieGenreVoList);
 		model.addAttribute("genre",genre);
 		
 		//movie_country 정보(LIST<VO>)
-		List<MovieCountryVo> movieCountryVoList=movieCountryService.selectTheCountry(movie_id);
+		List<MovieCountryVo> movieCountryVoList=new ArrayList<>();
+		movieCountryVoList=movieCountryService.selectTheCountry(movie_id);
 		if(movieCountryVoList.size()!=0)System.out.println("해당 영화 나라 리스트 첫 번쨰:"+movieCountryVoList.get(0).getName_kor());
 		//나라 합쳐서 string으로 반환
 		String country=movieCountryService.countryListToString(movieCountryVoList);
 		model.addAttribute("country",country);
 		
 		//movie_actor 정보(LIST<VO>)
-		List<MovieActorVo> movieActorVoList=movieActorService.selectTheActor(movie_id);
+		List<MovieActorVo> movieActorVoList=new ArrayList<>();
+		movieActorVoList=movieActorService.selectTheActor(movie_id);
 		if(movieActorVoList.size()!=0) System.out.println("해당 영화 배우 첫 번쨰:"+movieActorVoList.get(0).getActor_name());
 		model.addAttribute("movieCountryVoList",movieCountryVoList);
 		
 		//movie_director 정보(LIST<VO>)
-		List<MovieDirectorVo> movieDirectorVoList=movieDirectorService.selectTheDirector(movie_id);
+		List<MovieDirectorVo> movieDirectorVoList=new ArrayList<>();
+		movieDirectorVoList=movieDirectorService.selectTheDirector(movie_id);
 		if(movieDirectorVoList.size()!=0) System.out.println("해당 영화 감독 첫 번쨰:"+movieDirectorVoList.get(0).getDirector_name());
 		model.addAttribute("movieCountryVoList",movieCountryVoList);
 		
 		//movieGallery 정보(LIST<VO>)
-		List<MovieGalleryTrailerVo> movieGalleryVoList=movieGalleryTrailerService.selectTheGallery(movie_id);
+		List<MovieGalleryTrailerVo> movieGalleryVoList=new ArrayList<>();
+		movieGalleryVoList=movieGalleryTrailerService.selectTheGallery(movie_id);
 		if(movieGalleryVoList.size()!=0) System.out.println("해당 겔러리 첫 번쨰:"+movieGalleryVoList.get(0).getMovie_gallery_url());
 		model.addAttribute("movieGalleryVoList",movieGalleryVoList);
 		
 		//movieTrailer 정보(LIST<VO>) 
-		List<MovieGalleryTrailerVo> movieTrailerVoList=movieGalleryTrailerService.selectTheTrailer(movie_id);
+		List<MovieGalleryTrailerVo> movieTrailerVoList=new ArrayList<>();
+		movieTrailerVoList=movieGalleryTrailerService.selectTheTrailer(movie_id);
 		if(movieTrailerVoList.size()!=0) System.out.println("해당 트레일러 첫 번쨰:"+movieTrailerVoList.get(0).getMovie_gallery_url());
 		model.addAttribute("movieTrailerVoList",movieTrailerVoList);
 		
 		//movieOtt 정보(<LIST<VO>)
-		List<MovieOttVo> movieOttVoList=movieOttService.selectTheOtt(movie_id);
+		List<MovieOttVo> movieOttVoList=new ArrayList<>();
+		movieOttVoList=movieOttService.selectTheOtt(movie_id);
 		if(movieOttVoList.size()!=0) System.out.println("해당 ott 첫 번쨰:"+movieOttVoList.get(0).getProvider_name());
 		model.addAttribute("movieOttVoList",movieOttVoList);
 		System.out.println("-------------------start_영화 정보-Controller--------------------------------");
@@ -154,7 +164,8 @@ public class ContentsController {
 		
 		
 		/*    해당 영화 별점 정보 START     */
-		List<Integer> movieStarRateGraph=starRateService.StarRateGraph(movie_id);
+		List<Integer> movieStarRateGraph=new ArrayList<>();
+		movieStarRateGraph=starRateService.starRateGraph(movie_id);
 		int totalStarRateNumber=starRateService.totalStarRateNumber(movieStarRateGraph);
 		if(movieOttVoList.size()!=0) System.out.println("해당 영화 별점 정보:"+movieStarRateGraph.get(0));
 		if(totalStarRateNumber!=0) System.out.println("해당 영화 별점 정보:"+totalStarRateNumber);
@@ -164,11 +175,12 @@ public class ContentsController {
 		
 		
 		/*    같은 장르 영화 4개 가져오기 START     */
+		List<MovieVo> movieWithSameGenreList=new ArrayList<>();
 		if(movieGenreVoList!=null) {
-		List<MovieVo> MovieWithSameGenreList=movieService.selectMovieWithSameGenre(4,movieGenreVoList.get(0).getGenre_id());
-		System.out.println(MovieWithSameGenreList.get(0).getMovie_kor_title());
-		model.addAttribute("MovieWithSameGenreList",MovieWithSameGenreList);
+		movieWithSameGenreList=movieService.selectMovieWithSameGenre(4,movieGenreVoList.get(0).getGenre_id());
+		System.out.println(movieWithSameGenreList.get(0).getMovie_kor_title());
 		}
+		model.addAttribute("MovieWithSameGenreList",movieWithSameGenreList);
 		/*    같은 장르 영화 4개 가져오기  END     */
 		
 		
@@ -262,14 +274,21 @@ public class ContentsController {
 		  movieVo=movieService.selectOneMovie(movieId);
 		  model.addAttribute("movieVo",movieVo);
 		  //장르정보
-		  List<MovieGenreVo> movieGenreVoList=movieGenreService.selectTheGenre(movieId);
-		  if(movieGenreVoList.size()!=0)System.out.println("해당 영화 장르 리스트 첫 번쨰:"+movieGenreVoList.get(0).getGenre_kor());
-		  String genre=movieGenreService.genreListToString(movieGenreVoList);
+		  List<MovieGenreVo> movieGenreVoList=new ArrayList<>();
+		  movieGenreVoList=movieGenreService.selectTheGenre(movieId);
+		  String genre="";
+		  if(movieGenreVoList.size()!=0) {
+			  System.out.println("해당 영화 장르 리스트 첫 번쨰:"+movieGenreVoList.get(0).getGenre_kor());
+			  genre=movieGenreService.genreListToString(movieGenreVoList);
+		  }
 		  model.addAttribute("genre",genre);
+		  
 		  //나라정보
-		  List<MovieCountryVo> movieCountryVoList=movieCountryService.selectTheCountry(movieId);
+		  List<MovieCountryVo> movieCountryVoList=new ArrayList<>();
+		  movieCountryVoList=movieCountryService.selectTheCountry(movieId);
+		  String country="";
 		  if(movieCountryVoList.size()!=0)System.out.println("해당 영화 나라 리스트 첫 번쨰:"+movieCountryVoList.get(0).getName_kor());
-		  String country=movieCountryService.countryListToString(movieCountryVoList);
+		  country=movieCountryService.countryListToString(movieCountryVoList);
 		  model.addAttribute("country",country);
 		  System.out.println("-------------------end_contents_info_pageController--------------------------------"); 
 		  return "/contents/contents_info_page";

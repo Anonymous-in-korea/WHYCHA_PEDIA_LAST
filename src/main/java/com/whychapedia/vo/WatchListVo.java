@@ -22,4 +22,5 @@ public class WatchListVo {
 	private Date regi_date; //별점 등록일 
 	private int is_check;
 
+
 }

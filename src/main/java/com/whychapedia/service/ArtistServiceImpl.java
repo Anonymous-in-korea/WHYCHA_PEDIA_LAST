@@ -1,5 +1,6 @@
 package com.whychapedia.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,8 +62,63 @@ public class ArtistServiceImpl implements ArtistService {
 	@Override
 	public List<ArtistVo> selectActorOnelist(int id) {
 		List<ArtistVo> actorPersonlist = artistMapper.selectActorOnelist(id);
-		
-		
 		return actorPersonlist;
+	}
+	
+	//선호 배우 3명 정보
+	@Override
+	public List<ArtistVo> selectPreferenceActor(int user_id) {
+		//선호 배우 3명 인물 포스터,이름,출현 횟수 - 우선 순위 1.출현 횟수 2.출현 영화 평점 높은 순
+		List<ArtistVo> selectPreferenceActor=artistMapper.selectPreferenceActor(user_id);
+		ArtistVo selectMovieOfActor=new ArtistVo();
+		ArtistVo selectLikeForActor=new ArtistVo();
+		if(selectPreferenceActor.size()!=0) {
+			//영화 정보 넣기
+			for(ArtistVo artistVo :selectPreferenceActor) {
+				selectMovieOfActor=artistMapper.selectMovieOfActor(artistVo.getId());
+				artistVo.setRepresent_movie(selectMovieOfActor.getRepresent_movie());
+				artistVo.setRepresent_movie_id(selectMovieOfActor.getRepresent_movie_id());
+				artistVo.setRepresent_movie_post(selectMovieOfActor.getRepresent_movie_post());
+			}
+			
+			//좋아요 넣기
+			for(ArtistVo artistVo :selectPreferenceActor) {
+				selectLikeForActor=artistMapper.selectLikeForActor(artistVo.getId());
+				artistVo.setTotal_like(selectLikeForActor.getTotal_like());
+			}//for문
+			
+		System.out.println(selectPreferenceActor);
+	}//if문
+		return selectPreferenceActor;
+}
+
+	//선호 감독 3명 정보
+	@Override
+	public List<ArtistVo> selectPreferenceDirector(int user_id) {
+		List<ArtistVo> selectPreferenceDirector=artistMapper.selectPreferenceDirector(user_id);
+		ArtistVo selectMovieOfDirector=new ArtistVo();
+		ArtistVo selectLikeForDirector=new ArtistVo();
+		if(selectPreferenceDirector.size()!=0) {
+			//영화 정보 넣기
+			for(ArtistVo artistVo :selectPreferenceDirector) {
+				selectMovieOfDirector=artistMapper.selectMovieOfDirector(artistVo.getId());
+				artistVo.setRepresent_movie(selectMovieOfDirector.getRepresent_movie());
+				artistVo.setRepresent_movie_id(selectMovieOfDirector.getRepresent_movie_id());
+				artistVo.setRepresent_movie_post(selectMovieOfDirector.getRepresent_movie_post());
+			}
+			
+			//좋아요 넣기
+			for(ArtistVo artistVo :selectPreferenceDirector) {
+				selectLikeForDirector=artistMapper.selectLikeForDirector(artistVo.getId());
+				artistVo.setTotal_like(selectLikeForDirector.getTotal_like());
+			}//for문
+			
+		System.out.println(selectLikeForDirector);
+	}//if문
+		
+		
+		
+		
+		return selectPreferenceDirector;
 	}
 }

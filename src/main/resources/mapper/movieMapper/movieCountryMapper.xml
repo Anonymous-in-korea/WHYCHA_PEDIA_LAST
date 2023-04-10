@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.whychapedia.mapper.MovieCountryMapper">
     
-
+<!--해당 영화 나라 정보 가져오기  -->
  <select id="selectAllCountry" resultType="com.whychapedia.vo.MovieCountryVo">
  	SELECT *
 		FROM movie_country mc
@@ -12,8 +12,28 @@
 		WHERE mc.movie_id = #{movie_id}
  		 
  </select>	 
-  <select id="selectSearchMovieCountryAll" resultType="com.whychapedia.vo.MovieCountryVo">
+ 
+ <select id="selectSearchMovieCountryAll" resultType="com.whychapedia.vo.MovieCountryVo">
 		SELECT * FROM movie_country mc
 		JOIN country c ON mc.country_id = c.id
  </select>	
+ 
+ 
+ <!--선호하는 나라 가져오기  -->
+  <select id="selectPreferenceCountry" resultType="com.whychapedia.vo.MovieCountryVo">
+        SELECT c.id as country_id,c.name_kor as name_kor,COUNT(*) as search_count
+		FROM country c
+		JOIN movie_country mc ON c.id = mc.country_id
+		JOIN (
+  			SELECT movie_id
+  			FROM star_rate
+  			WHERE user_id = #{user_id}
+		) sr ON sr.movie_id = mc.movie_id
+		GROUP BY c.id, c.name_kor
+		ORDER BY search_count DESC
+		FETCH FIRST 3 ROWS ONLY
+ </select>
+ 
+ 
+
  </mapper>

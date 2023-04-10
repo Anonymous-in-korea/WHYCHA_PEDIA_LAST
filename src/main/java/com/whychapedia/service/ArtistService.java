@@ -26,5 +26,11 @@ public interface ArtistService {
 	//해당 id를 가지고 해당인물 정보 가져오기
 	List<ArtistVo> selectActorOnelist(int id);
 
+	//선호 배우 3명 
+	List<ArtistVo> selectPreferenceActor(int user_id);
+
+	//선호 감독 3명 
+	List<ArtistVo> selectPreferenceDirector(int user_id);
+
 
 }

@@ -13,6 +13,9 @@ import com.whychapedia.vo.WatchListVo;
 public class WatchListServiceImpl implements WatchListService {
 	
 	@Autowired
+	WatchListVo watchListVo;
+	
+	@Autowired
 	WatchListMapper watchListMapper;
 	
 	//해당 영화 해당 유저 보고싶어요 check

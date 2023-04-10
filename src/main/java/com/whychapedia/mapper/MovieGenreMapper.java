@@ -11,13 +11,11 @@ public interface MovieGenreMapper {
 	
 	//해당 영화 장르 가져오기
 	List<MovieGenreVo> selectAllGenre(int movie_id);
+
+	//해당 유저 선호 장르 3개 가져오기
+	List<MovieGenreVo> selectPreferenceGenre(int user_id);
 	
 	
 	
-	
-	/*
-	 * //영화 10개 장르 가져오기 List<MovieGenreVo> selectTop10Genre(List<Integer>
-	 * Movie10IDList);
-	 */
 
 }

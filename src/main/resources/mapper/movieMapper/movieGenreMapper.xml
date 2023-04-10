@@ -15,18 +15,20 @@
  		 
  		 
  		 
-     <!--주어진 영화고유 아이디 10개로 영화 장르 정보 10개 가져오기 -->
-<!--  <select id="selectTop10Genre" resultType="com.whychapedia.vo.MovieGenreVo">
- 	SELECT mg.id, mg.movie_id, mg.genre_id, g.genre_kor
-  		FROM movie_genre mg
-  		JOIN genre g ON mg.genre_id = g.id
-  		WHERE mg.movie_id IN (
-    	<foreach collection="Movie10IDList" item="movieId" separator=",">
-    	  #{movieId}
-   	    </foreach>
- 		 )
-</select>
- -->
+ <!--선호하는 나라 가져오기  -->
+  <select id="selectPreferenceGenre" resultType="com.whychapedia.vo.MovieGenreVo">
+        SELECT g.id as genre_id,g.genre_kor as genre_kor,COUNT(*) as search_count
+		FROM genre g
+		JOIN movie_genre mg ON g.id = mg.genre_id
+		JOIN (
+  			SELECT movie_id
+  			FROM star_rate
+  			WHERE user_id = #{user_id}
+		) sr ON sr.movie_id = mg.movie_id
+		GROUP BY g.id, g.genre_kor
+		ORDER BY search_count DESC
+		FETCH FIRST 3 ROWS ONLY
+ </select>
 
  
  

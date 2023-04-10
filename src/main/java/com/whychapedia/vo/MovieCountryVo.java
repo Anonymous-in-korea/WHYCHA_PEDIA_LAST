@@ -18,6 +18,7 @@ public class MovieCountryVo {
 	private int movie_id;
 	private int country_id;
 	private String name_kor; // 나라 한국 이름 
+	private int search_count;//선호 횟수
 	
 
 }

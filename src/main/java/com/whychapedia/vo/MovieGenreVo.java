@@ -17,5 +17,6 @@ public class MovieGenreVo {
 	private int movie_id;
 	private int genre_id;
 	private String genre_kor;
+	private int search_count;
 
 }

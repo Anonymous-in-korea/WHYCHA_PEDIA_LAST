@@ -16,6 +16,7 @@
 	    </foreach>
 	    )
 	</select>
+	
 	<!-- 해당유저의 좋아하는 배우 정보 가져오기 -->
 	<select id="selectDirectorAll" resultType="com.whychapedia.vo.ArtistVo">
 		select * from director where id in (
@@ -25,6 +26,7 @@
 	    )
 	</select>
 	
+	<!-- 검색  -->
 	<!-- 해당검색어를 가지고 관련 배우 가져오기 -->
 	<select id="selectSearchActorAll" resultType="com.whychapedia.vo.ArtistVo">
 			select * from actor where replace (actor_name,' ','')like '%' || #{searchKeyword} || '%'
@@ -34,10 +36,82 @@
 	<select id="selectSearchDirectorAll" resultType="com.whychapedia.vo.ArtistVo">
 	select * from director where replace (director_name,' ','')like '%' || #{searchKeyword} || '%'
 	</select>
-		<!--해당id의 배우정보 가져오기  -->
+    <!-- 검색  -->
+	
+	<!--해당id의 배우정보 가져오기  -->
 	<select id="selectActorOnelist" resultType="com.whychapedia.vo.ArtistVo">
 		select * from actor where id=#{id}
 	</select>
+	
+	<!--선호 배우 3명 고유 아이디,인물 포스터,이름,출현 횟수-->
+	<select id="selectPreferenceActor" resultType="com.whychapedia.vo.ArtistVo">
+	SELECT a.id, a.actor_name, COUNT(*) as search_count,a.actor_post_url
+		FROM actor a
+		JOIN movie_actor ma ON a.id = ma.actor_id
+		JOIN (
+  			SELECT movie_id
+  			FROM star_rate
+  			WHERE user_id = #{user_id}
+		) sr ON sr.movie_id = ma.movie_id
+		GROUP BY a.id, a.actor_name,a.actor_post_url
+		ORDER BY search_count DESC
+		FETCH FIRST 3 ROWS ONLY
+	</select>
+	
+	<!--배우의 영화 정보 1개 가져오기 -->
+	<select id="selectMovieOfActor" resultType="com.whychapedia.vo.ArtistVo">
+		  SELECT m.movie_kor_title as represent_movie, a.id, m.movie_post_url as represent_movie_post, m.id as represent_movie_id
+		  FROM actor a
+		  JOIN movie_actor ma ON a.id = ma.actor_id
+		  JOIN movie m ON ma.movie_id = m.id
+		  WHERE a.id =#{id}
+		  ORDER BY m.movie_rating DESC
+		  FETCH FIRST 1 ROWS ONLY
+	</select>
+	
+		<!--해당 배우 좋아요 개수 가져오기 -->
+	<select id="selectLikeForActor" resultType="com.whychapedia.vo.ArtistVo">
+	SELECT COUNT(*) as total_like
+		FROM actor a
+		JOIN actor_like al ON a.id = al.actor_id
+		WHERE a.id=#{id}
+	</select>
+	
+	
+		<!--선호 감독 3명 고유 아이디,인물 포스터,이름,출현 횟수-->
+	<select id="selectPreferenceDirector" resultType="com.whychapedia.vo.ArtistVo">
+	SELECT d.id, d.director_name, COUNT(*) as search_count,d.director_post_url
+		FROM director d
+		JOIN movie_director md ON d.id = md.director_id
+		JOIN (
+  			SELECT movie_id
+  			FROM star_rate
+  			WHERE user_id = #{user_id}
+		) sr ON sr.movie_id = md.movie_id
+		GROUP BY d.id, d.director_name,d.director_post_url
+		ORDER BY search_count DESC
+		FETCH FIRST 3 ROWS ONLY
+	</select>
+	
+		<!--감독의 영화 정보 1개 가져오기 -->
+	<select id="selectMovieOfDirector" resultType="com.whychapedia.vo.ArtistVo">
+		  SELECT m.movie_kor_title as represent_movie, m.movie_post_url as represent_movie_post, m.id as represent_movie_id
+		  FROM director d
+		  JOIN movie_director md ON d.id = md.director_id
+		  JOIN movie m ON md.movie_id = m.id
+		  WHERE d.id =#{id}
+		  ORDER BY m.movie_rating DESC
+		  FETCH FIRST 1 ROWS ONLY
+	</select>
+	
+			<!--해당 감독 좋아요 개수 가져오기 -->
+	<select id="selectLikeForDirector" resultType="com.whychapedia.vo.ArtistVo">
+	SELECT COUNT(*) as total_like
+		FROM director d
+		JOIN director_like dl ON d.id = dl.director_id
+		WHERE d.id=#{id}
+	</select>
+	
 	
   
   </mapper>

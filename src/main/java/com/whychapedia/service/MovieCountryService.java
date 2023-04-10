@@ -11,4 +11,6 @@ public interface MovieCountryService {
 	String countryListToString(List<MovieCountryVo> movieCountryVoList);
 
 	List<MovieCountryVo> selectSearchMovieCountryAll();
+
+	List<MovieCountryVo> selectPreferenceCountry(int user_id);
 }
