@@ -28,7 +28,7 @@ public class MovieVo {
 	private String background_post_url;
 	private Date regi_date;
 	private int admin_id;
-	private int is_rated; // 0 no_check 1 평가함
+	private int is_checked; // 0 no_check 1 평가함
 	private double scoreOfUser; // 개인 평가 점수
 	//private int is_watching; // 0 no_check 1 보는중
 	//private int is_wishWatching; // 0 no_check 1 보고싶음

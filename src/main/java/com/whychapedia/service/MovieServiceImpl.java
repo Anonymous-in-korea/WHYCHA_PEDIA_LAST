@@ -78,9 +78,6 @@ public class MovieServiceImpl implements MovieService {
 		    }
 		}
 
-		
-		
-		
 		return NoRepeatselectMovieInCollectionList;
 	}
 
@@ -102,7 +99,7 @@ public class MovieServiceImpl implements MovieService {
 			 for(MovieVo movie : updatedMovieList) {
 				 if(movie.getId()==rating.getMovie_id()) {
 					 movie.setScoreOfUser(rating.getScore());
-					 movie.setIs_rated(rating.getIsRated());
+					 movie.setIs_checked(rating.getIsChecked());
 					 break;
 				 }
 			 }
@@ -125,7 +122,20 @@ public class MovieServiceImpl implements MovieService {
 	
 
 	
+	//유저가 평가한 영화 모두 들고오기 + 영화 정보까지 다 들고 오기
+	@Override
+	public List<MovieVo> selectMovieStarRate(int user_id) {
+		List<MovieVo> selectMovieStarRate=movieMapper.selectMovieStarRate(user_id);
 
+		return selectMovieStarRate;
+	}
+
+	//유저가 보는 중인 or 보고싶은 영화 모두 들고오기 + 영화 정보까지 다 들고 오기
+	@Override
+	public List<MovieVo> selectMovieWatchList(int type, int user_id) {
+		List<MovieVo> moviewatchList=movieMapper.selectmoviewatchList(type,user_id);
+		return moviewatchList;
+	}
 
 
 }

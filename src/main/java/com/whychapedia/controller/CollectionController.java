@@ -146,7 +146,7 @@ public class CollectionController {
 		List<MovieCollectionVo>oneMovieCollectionVoList=movieCollectionService.selectOneCollectionVoList(collectionVo.getId());
 		System.out.println("oneCollectionVoList"+oneMovieCollectionVoList.size());
 		List<MovieVo> movieInCollectionVoList=new ArrayList<MovieVo>();
-		List<StarRateVo> ratedList=new ArrayList<StarRateVo>();;
+		List<StarRateVo> ratedList=new ArrayList<StarRateVo>();
 		
 		if(oneMovieCollectionVoList!=null) {
 			//해당 컬렉션 영화 가져오기

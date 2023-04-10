@@ -20,7 +20,7 @@ public class StarRateVo {
 	private int movie_id;
 	private int user_id;
 	private Date regi_date; //별점 등록일 
-	private int isRated; //별점 등록했는지 안했는지 
+	private int isChecked; //별점 등록했는지 안했는지 
 	private int avg_score; //평균 별점
 	private int frequency; //해당 별점 개수
 	private double mostFreq;//많이 준 별점
@@ -28,4 +28,7 @@ public class StarRateVo {
 	private double frequencyScale; //많이 준 별점 비율
 	private int watched_time_min;//분
 	private int watched_time_hr;//시간
+	private String movie_post_url; 
+	private String movie_kor_title;
+	private float movie_rating;
 }

@@ -26,6 +26,10 @@ public interface MovieService {
 	List<MovieVo> selectSearchMovieAll(String searchKeyword);
 
 	List<MovieVo> selectActorPersonMovieAll(int id);
+	
+	List<MovieVo> selectMovieStarRate(int user_id);
+
+	List<MovieVo> selectMovieWatchList(int type, int user_id);
 
 	
 

@@ -84,7 +84,21 @@
   </select>
   
   
-  
+  <!--유저가 평가한 영화 모두 들고오기 + 영화 정보까지 다 들고 오기-->
+	<select id="selectMovieStarRate" resultType="com.whychapedia.vo.MovieVo">
+ 		SELECT m.movie_post_url,m.movie_kor_title,m.movie_rating,m.id
+			FROM star_rate sr
+			JOIN Movie m ON sr.movie_id = m.id
+			WHERE sr.user_id =#{user_id}
+	</select>
+	
+	  <!--유저가 평가한 영화 모두 들고오기 + 영화 정보까지 다 들고 오기-->
+	<select id="selectmoviewatchList" resultType="com.whychapedia.vo.MovieVo">
+           SELECT m.movie_post_url,m.movie_kor_title,m.movie_rating,m.id
+			FROM watch_list wl
+			JOIN Movie m ON wl.movie_id = m.id
+			WHERE wl.user_id =#{user_id} and wl.watch_list_type=#{type}
+	</select>
   
   
   

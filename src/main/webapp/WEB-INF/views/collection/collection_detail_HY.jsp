@@ -197,13 +197,13 @@
 																		<div class="css-niy0za">${movieVo.movie_kor_title}</div>
 																		<div>
 																			<c:if test="${ sessionId == null }"> <!--로그인 전 -->
-																			<div class="css-1kcd80z">평점 ${movieVo.movie_rating}</div>
-																				</c:if>
+																				<div class="css-1kcd80z">평점 ${movieVo.movie_rating}</div>
+																			</c:if>
 																			<c:if test="${ sessionId != null }">
-																				<c:if test="${ movieVo.is_rated != 0 }">
+																				<c:if test="${ movieVo.isChecked != 0 }">
 																					<div class="css-1kcd80z">평가함 ★ ${movieVo.scoreOfUser}</div>
 																				</c:if>
-																				<c:if test="${ movieVo.is_rated == 0 }">
+																				<c:if test="${ movieVo.isChecked == 0 }">
 																					<div class="css-1kcd80z">평점 ${movieVo.movie_rating}</div>
 																				</c:if>
 																			</c:if>

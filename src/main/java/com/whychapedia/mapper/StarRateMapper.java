@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.whychapedia.vo.CommentVo;
+import com.whychapedia.vo.MovieVo;
 import com.whychapedia.vo.StarRateVo;
 import com.whychapedia.vo.WatchListVo;
 
@@ -41,5 +42,6 @@ public interface StarRateMapper {
 	public List<StarRateVo> starGraphOfUser(int user_id);
 	//유저의 총 감상 시간
 	StarRateVo selectTotalWatchedTime(int user_id);
+
 
 }

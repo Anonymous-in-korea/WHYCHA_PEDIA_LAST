@@ -116,20 +116,20 @@ public class StarRateServiceImpl implements StarRateService {
 	public List<StarRateVo> selectAllOfIsRated(int loginId, List<MovieVo> movieInCollectionVoList) {
 		List<StarRateVo> starRateList = new ArrayList<>();
 		for (MovieVo movieVo : movieInCollectionVoList) {
-		    // Check if the given user has watched this movie
+		    //평가했는지 안했는지 check
 		    if (selectIsRating(loginId,movieVo.getId())==1) {
 		    	int userScore = selectMyStarRate(loginId,movieVo.getId());
 		    	starRateVo = new StarRateVo();
 		    	starRateVo.setScore(userScore);
 		    	starRateVo.setMovie_id(movieVo.getId());
 		    	starRateVo.setUser_id(loginId);
-		    	starRateVo.setIsRated(1);
+		    	starRateVo.setIsChecked(1);
 		    	starRateList.add(starRateVo);
 		    }else {
 		    	starRateVo = new StarRateVo();
 		    	starRateVo.setMovie_id(movieVo.getId());
 		    	starRateVo.setUser_id(loginId);
-		    	starRateVo.setIsRated(0);
+		    	starRateVo.setIsChecked(0);
 		    	starRateList.add(starRateVo);
 		    }
 		    }
@@ -194,6 +194,8 @@ public class StarRateServiceImpl implements StarRateService {
 		starRateVo.setWatched_time_hr(hour);
 		return starRateVo;
 	}
+
+
 
 
 

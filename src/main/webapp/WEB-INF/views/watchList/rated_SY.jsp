@@ -30,9 +30,9 @@
 										<div class="css-0"></div>
 									</div>
 									<div class="css-1d4ojes">
-										<div class="css-1bvesam">보고싶은 작품들</div>
+										<div class="css-1bvesam">평가한 작품들</div>
 									</div>
-									<div class="css-10bjf2k">보고싶은 작품들</div>
+									<div class="css-10bjf2k">평가한 작품들</div>
 								</header>
 								<ul class="css-1e0vaz3-VisualUl">
 									<li class="css-1qee6f7">전체</li>
@@ -54,7 +54,7 @@
 									<div class="css-1gkas1x-Grid e1689zdh0">
 										<div class="css-1y901al-Row emmoxnt0">
 											<ul class="css-w29x4j-VisualUl-ContentGrid-ContentGridUsedInArchive e14whxmg1">
-												<c:forEach items="${movieWishWatchList}" var="movieVo"> 
+												<c:forEach items="${movieStarRateList}" var="movieVo"> 
 												<!-- list 반복 30개 시작 -->
 													<li class="css-8y23cj">
 														<a title="${movieVo.movie_kor_title}" href="/contents/contents_SH?movie_id=${movieVo.id}">
@@ -71,7 +71,7 @@
 																</c:if>
 																<c:if test="${ sessionId != null }">
 																	<c:if test="${ movieVo.is_checked != 0 }">
-																		<div class="css-m9i0qw" >평가함 ★ ${movieVo.scoreOfUser}</div>
+																		<div class="css-m9i0qw" style="background-color:red">평가함 ★ ${movieVo.scoreOfUser}</div>
 																	</c:if>
 																	<c:if test="${ movieVo.is_checked == 0 }">
 																		<div class="css-m9i0qw">평점 ${movieVo.movie_rating}</div>

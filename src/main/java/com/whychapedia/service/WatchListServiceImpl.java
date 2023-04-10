@@ -1,5 +1,6 @@
 package com.whychapedia.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.whychapedia.mapper.WatchListMapper;
 import com.whychapedia.vo.MovieCollectionVo;
+import com.whychapedia.vo.MovieVo;
+import com.whychapedia.vo.StarRateVo;
 import com.whychapedia.vo.WatchListVo;
 
 @Service
@@ -24,6 +27,9 @@ public class WatchListServiceImpl implements WatchListService {
 		int isWatch=watchListMapper.selectIsWatch(watch_list_type,movie_id,user_id);
 		return isWatch;
 	}
+	
+
+
 
 
 

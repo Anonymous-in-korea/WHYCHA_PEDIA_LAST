@@ -45,7 +45,7 @@
 		delete star_rate where user_id=#{user_id} and movie_id=#{movie_id}  
 	</delete>
 	
-		<!-- 마지막 고유 번호 가져오기 -->
+	<!-- 마지막 고유 번호 가져오기 -->
 	<select id="selectStarRateGraph" resultType="int">
 		 select count(*) from star_rate where movie_id=#{movie_id} and (score=#{score1} or score=#{score2})
 	</select>
@@ -90,7 +90,7 @@
 		WHERE user_id = #{user_id}
 	</select>
 	
-		<!-- 해당 유저의 많이 준 별점 반환  -->
+	<!-- 해당 유저의 많이 준 별점 반환  -->
 	<select id="selectFrequencyScore" resultType="com.whychapedia.vo.StarRateVo">
 		SELECT score,COUNT(*) as frequency
 			FROM star_rate
@@ -100,7 +100,7 @@
 			FETCH FIRST 1 ROWS ONLY
 	</select>
 	
-			<!-- 해당 유저의 별점 반환  -->
+	<!-- 해당 유저의 별점 반환  -->
 	<select id="starGraphOfUser" resultType="com.whychapedia.vo.StarRateVo">
 		SELECT score,COUNT(*) as frequency
 			FROM star_rate
@@ -109,12 +109,14 @@
 			ORDER BY frequency DESC
 	</select>
 	
-		    <!--해당 유저 유저의 총 감상 시간-->
+	<!--해당 유저 유저의 총 감상 시간-->
 	<select id="selectTotalWatchedTime" resultType="com.whychapedia.vo.StarRateVo">
  		SELECT SUM(m.movie_running_time) as watched_time_min
 			FROM star_rate sr
 			JOIN Movie m ON sr.movie_id = m.id
 			WHERE sr.user_id =#{user_id} 
 	</select>
+	
+	
 	
   </mapper>

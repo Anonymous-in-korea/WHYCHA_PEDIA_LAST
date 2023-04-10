@@ -47,6 +47,8 @@ public interface StarRateService {
 
 	int totalStarRateNumber(List<Integer> movieStarRateGraph);
 
+	
+
 
 
 }

@@ -60,7 +60,6 @@ public class MyPageController {
 	@Autowired
 	MemberService memberService;
 	
-	
 	@Autowired
 	StarRateVo starRateVo;
 	
