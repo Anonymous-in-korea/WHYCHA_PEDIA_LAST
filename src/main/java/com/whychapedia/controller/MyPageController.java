@@ -193,6 +193,7 @@ public class MyPageController {
 		return "myPage/my_analysis_HY";
 	}
 
+	/*구독하는 인물컬렉션 */
 	@GetMapping("myPage/actor_director_like_SY")
 	public String actor_director_like(Model model, @RequestParam int user_id) {
 	    List<CollectionArtistVo> actorLike_list = collectionArtistService.selectActor_like_id(user_id);
