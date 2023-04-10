@@ -23,6 +23,14 @@ public class MovieDirectorServiceImpl implements MovieDirectorService {
 		return selectTheDirector;
 	}
 	
+	//해당 영화의 감독전체 가져오기 
+	@Override
+	public List<MovieDirectorVo> selectMovieDirectorList(int movie_id) {
+		
+		List<MovieDirectorVo> oneMovieDirectorList= movieDirectorMapper.selectMovieDirectorList(movie_id);
+		return oneMovieDirectorList;
+	}
+	
 
 	
 

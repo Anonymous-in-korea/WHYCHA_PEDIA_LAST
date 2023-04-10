@@ -11,11 +11,6 @@ public interface LikeService {
 
 	int theLike(List<Integer> directorLikeTop);
 
-	//해당 유저가 좋아하는 배우 id 전체 가져오기
-	List<LikeVo> selectActor_like_id(int sessionId);
-
-	//해당 유저가 좋아하는 감독 id 전체 가져오기
-	List<LikeVo> selectDirector_like_id(int sessionId);
 
 	//코멘트 좋아요 추가
 	int insertCommentLike(int user_id, int comment_id);

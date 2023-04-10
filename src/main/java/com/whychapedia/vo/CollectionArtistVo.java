@@ -16,6 +16,6 @@ public class CollectionArtistVo {
 	int id;
 	int user_id;
 	int director_id;
-	int actor_actor;
+	int actor_id;
 
 }

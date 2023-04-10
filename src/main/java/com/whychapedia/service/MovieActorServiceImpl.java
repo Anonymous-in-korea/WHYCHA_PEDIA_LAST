@@ -32,5 +32,12 @@ public class MovieActorServiceImpl implements MovieActorService {
 		
 		return actorPersonMovieRolelist;
 	}
+	
+	//해당 영화의 배우전체 가져오기
+		@Override
+		public List<MovieActorVo> selectoneMovieActorList(int movie_id) {
+			List<MovieActorVo> oneMovieActorList= movieActorMapper.selectoneMovieActorList(movie_id);
+			return oneMovieActorList;
+		}
 
 }

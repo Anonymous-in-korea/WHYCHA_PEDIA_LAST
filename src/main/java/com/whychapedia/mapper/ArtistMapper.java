@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.whychapedia.vo.ArtistVo;
+import com.whychapedia.vo.CollectionArtistVo;
 import com.whychapedia.vo.LikeVo;
 
 @Mapper
@@ -14,10 +15,10 @@ public interface ArtistMapper {
 	String selectOneDirectortName(int DirectorId);
 
 	//해당 유저가 좋아하는 actorid로 배우정보 가져오기
-	List<ArtistVo> selectActorAll(List<LikeVo> actorLike_list);
+	List<ArtistVo> selectActorAll(List<CollectionArtistVo> actorLike_list);
 	
 	//해당 유저가 좋아하는 directorid로 배우정보 가져오기
-	List<ArtistVo> selectDirectorAll(List<LikeVo> directorLike_list);
+	List<ArtistVo> selectDirectorAll(List<CollectionArtistVo> directorLike_list);
 
 	//해당검색어를 가지고 관련 배우 가져오기
 	List<ArtistVo> selectSearchActorAll(String searchKeyword);

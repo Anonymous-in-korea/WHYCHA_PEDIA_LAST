@@ -233,6 +233,24 @@ public class ContentsController {
 		model.addAttribute("isWishWatch",isWishWatch);
 		model.addAttribute("isWatching",isWatching);
 		/*보고싶어요 && 보는중 끝*/
+	     //----------------------------------------------------------------------------------------------------------//
+			 /*  출연 제작 인물 받아오기 시작*/
+			//해당 영화의 감독전체 가져오기 
+			List<MovieDirectorVo> oneMovieDirectorList = movieDirectorService.selectMovieDirectorList(movie_id);
+			model.addAttribute("oneMovieDirectorList",oneMovieDirectorList);
+			//해당 영화의 배우전체 가져오기 
+			List<MovieActorVo> oneMovieActorList = movieActorService.selectoneMovieActorList(movie_id);
+			model.addAttribute("oneMovieActorList",oneMovieActorList);
+			
+			
+			
+			
+			/*  출연 제작 인물 받아오기 끝*/
+		//------------------------------------------------------------------------------------------------------------//	
+		
+		
+		
+		
 		
 
 		return "/contents/contents_SH";

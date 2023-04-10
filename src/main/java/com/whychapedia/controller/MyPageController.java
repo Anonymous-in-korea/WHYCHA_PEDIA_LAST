@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.whychapedia.service.AnnouncementService;
 import com.whychapedia.service.ArtistService;
+import com.whychapedia.service.CollectionArtistService;
 import com.whychapedia.service.LikeService;
 import com.whychapedia.service.MemberService;
 import com.whychapedia.service.MovieCountryService;
@@ -23,6 +24,7 @@ import com.whychapedia.service.MovieGenreService;
 import com.whychapedia.service.StarRateService;
 import com.whychapedia.service.WatchListService;
 import com.whychapedia.vo.ArtistVo;
+import com.whychapedia.vo.CollectionArtistVo;
 import com.whychapedia.vo.LikeVo;
 import com.whychapedia.vo.MemberVo;
 import com.whychapedia.vo.MovieCountryVo;
@@ -61,6 +63,12 @@ public class MyPageController {
 	MemberService memberService;
 	
 	@Autowired
+	CollectionArtistService collectionArtistService;
+	
+	@Autowired
+	CollectionArtistVo collectionArtistVo;
+	
+	@Autowired
 	StarRateVo starRateVo;
 	
 	@Autowired
@@ -78,13 +86,13 @@ public class MyPageController {
 		//sessionId로 user1명 가져오기
 		MemberVo memberVo = memberService.selectOneMember(user_id);
 		model.addAttribute("memberVo",memberVo);
-		//actor_id를 가지고오기
-		List<LikeVo> actorLike_list = likeService.selectActor_like_id(user_id);
+		//해당 유저가 구독하는 배우 id 전체 가져오기
+		List<CollectionArtistVo> actorLike_list = collectionArtistService.selectActor_like_id(user_id);
 	 	//System.out.println("selectActor_like_id_list_size :"+actorLike_list.size());
 		model.addAttribute("actorLike_list",actorLike_list);
 		
-		//director_id 가지고오기
-		List<LikeVo> directorLike_list = likeService.selectDirector_like_id(user_id);
+		//해당 유저가 구독하는 감독 id 전체 가져오기
+		List<CollectionArtistVo> directorLike_list = collectionArtistService.selectDirector_like_id(user_id);
 		//System.out.println("selectDirector_like_id_list_size :"+directorLike_list.size());
 		model.addAttribute("directorLike_list",directorLike_list);
 		
@@ -101,12 +109,12 @@ public class MyPageController {
 		MemberVo memberVo = memberService.selectOneMember(user_id);
 		model.addAttribute("memberVo",memberVo);
 		//actor_id를 가지고오기
-		List<LikeVo> actorLike_list = likeService.selectActor_like_id(user_id);
+		List<CollectionArtistVo> actorLike_list = collectionArtistService.selectActor_like_id(user_id);
 		//System.out.println("selectActor_like_id_list_size :"+actorLike_list.size());
 		model.addAttribute("actorLike_list",actorLike_list);
 		
 		//director_id 가지고오기
-		List<LikeVo> directorLike_list = likeService.selectDirector_like_id(user_id);
+		List<CollectionArtistVo> directorLike_list = collectionArtistService.selectDirector_like_id(user_id);
 		//System.out.println("selectDirector_like_id_list_size :"+directorLike_list.size());
 		model.addAttribute("directorLike_list",directorLike_list);
 		
@@ -188,7 +196,7 @@ public class MyPageController {
 	@GetMapping("myPage/actor_director_like_SY")
 	public String actor_director_like(Model model, @RequestParam int user_id) {
 		//actor_id를 가지고오기
-		List<LikeVo> actorLike_list = likeService.selectActor_like_id(user_id);
+		List<CollectionArtistVo> actorLike_list = collectionArtistService.selectActor_like_id(user_id);
 		//System.out.println("selectActor_like_id_list_size :"+actorLike_list.size());
 		model.addAttribute("actorLike_list",actorLike_list);
 		
@@ -199,7 +207,7 @@ public class MyPageController {
 		
 		
 		//director_id 가지고오기
-		List<LikeVo> directorLike_list = likeService.selectDirector_like_id(user_id);
+		List<CollectionArtistVo> directorLike_list = collectionArtistService.selectDirector_like_id(user_id);
 		//System.out.println("selectDirector_like_id_list_size :"+directorLike_list.size());
 		model.addAttribute("directorLike_list",directorLike_list);
 		

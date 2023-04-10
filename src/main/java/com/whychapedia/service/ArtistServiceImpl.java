@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.whychapedia.mapper.ArtistMapper;
 import com.whychapedia.vo.ArtistVo;
+import com.whychapedia.vo.CollectionArtistVo;
 import com.whychapedia.vo.LikeVo;
 
 @Service
@@ -23,9 +24,10 @@ public class ArtistServiceImpl implements ArtistService {
 		return directorName;
 	}
 
+
 	//좋아하는 배우id리스트를 가지고 actor정보 전부 가져오기
 	@Override
-	public List<ArtistVo> selectActorAll(List<LikeVo> actorLike_list) {
+	public List<ArtistVo> selectActorAll(List<CollectionArtistVo> actorLike_list) {
 		List<ArtistVo> actor_list = artistMapper.selectActorAll(actorLike_list);
 		System.out.println("selectActorAll_list_size : "+actor_list.size());
 		System.out.println(actor_list);
@@ -34,13 +36,12 @@ public class ArtistServiceImpl implements ArtistService {
 
 	//좋아하는 감독id리스트를 가지고 director정보 전부 가져오기
 	@Override
-	public List<ArtistVo> selectDirectorAll(List<LikeVo> directorLike_list) {
+	public List<ArtistVo> selectDirectorAll(List<CollectionArtistVo> directorLike_list) {
 		List<ArtistVo> director_list = artistMapper.selectDirectorAll(directorLike_list);
 		System.out.println("selectDirectorAll_list_size : "+director_list.size());
 		System.out.println(director_list);
 		return director_list;
 	}
-
 	//해당검색어를 가지고 관련 배우 가져오기
 	@Override
 	public List<ArtistVo> selectSearchActorAll(String searchKeyword) {

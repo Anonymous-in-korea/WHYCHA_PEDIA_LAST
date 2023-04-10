@@ -401,96 +401,43 @@
 		                                                                    <div class="css-1gkas1x-Grid e1689zdh0">
 		                                                                        <div class="css-13avw3k-PeopleUlRow e5xrf7a1">
 		                                                                            <ul class="e5xrf7a0 css-1br354h-VisualUl-PeopleStackableUl">
+		                                                                                  <!--감독 리스트 시작  -->
+		                                                                            <c:forEach items= "${oneMovieDirectorList}" var ="dvo" >
 		                                                                                <li class="css-54rr1e" >
-		                                                                                	<a href="" class="css-1aaqvgs-InnerPartOfListWithImage">
+		                                                                                	<a href="/person/person_detail_DIRECTOR_HY?director_name=${dvo.director_name}&id=${dvo.id}&role=감독" class="css-1aaqvgs-InnerPartOfListWithImage" >
 		                                                                                    	<div class="css-cssveg">
 		                                                                                        	<div class="profilePhotoBlock css-13zlig9">
-		                                                                                            	<div class="css-1o7yycy-ProfilePhotoImage"></div>
+		                                                                                            	<div class="css-1o7yycy-ProfilePhotoImage" style="background: url('${dvo.director_post_url}')center center / cover no-repeat"></div>
 		                                                                                        	</div>
 		                                                                                    	</div>
 		                                                                                    	<div class="css-zoy7di">
 			                                                                                        <div class="css-qkf9j">
-			                                                                                            <div class="css-17vuhtq">제임스 카메론</div>
+			                                                                                            <div class="css-17vuhtq">${dvo.director_name }</div>
 			                                                                                            <div class="css-1evnpxk-StyledSubtitle">감독</div>
 			                                                                                        </div>
 		                                                                                    	</div>
 		                                                                                	</a>
 		                                                                                </li>
+		                                                                                </c:forEach>
+		                                                                               <!-- 배우 리스트 시작 -->
+		                                                                                <c:forEach items= "${oneMovieActorList}" var ="avo" >
 		                                                                                <li class="css-54rr1e">
-		                                                                                	<a href="" class="css-1aaqvgs-InnerPartOfListWithImage">
+		                                                                                	<a href="/person/person_detail_ACTOR_HY?actor_name=${avo.actor_name}&id=${avo.id}&role=배우" class="css-1aaqvgs-InnerPartOfListWithImage" >
 		                                                                                    	<div class="css-cssveg">
 		                                                                                        	<div class="profilePhotoBlock css-13zlig9">
-		                                                                                            	<div class="css-1h9orp8-ProfilePhotoImage"></div>
+		                                                                                            	<div class="css-1h9orp8-ProfilePhotoImage" style="background: url('${avo.actor_post_url}')center center / cover no-repeat"></div>
 		                                                                                        	</div>
 		                                                                                    	</div>
 		                                                                                    	<div class="css-zoy7di">
 		                                                                                        	<div class="css-qkf9j">
-		                                                                                            	<div class="css-17vuhtq">샘 워싱턴</div>
-			                                                                                            <div class="css-1evnpxk-StyledSubtitle">주연 | 제이크 설리</div>
+		                                                                                            	<div class="css-17vuhtq">${avo.actor_name }</div>
+			                                                                                            <div class="css-1evnpxk-StyledSubtitle">${avo.actor_role } | </div>
 		                                                                                        	</div>
 		                                                                                    	</div>
 		                                                                                	</a>
 		                                                                                </li>
-		                                                                                <li class="css-54rr1e">
-		                                                                                	<a href="" class="css-1aaqvgs-InnerPartOfListWithImage">
-			                                                                                    <div class="css-cssveg">
-			                                                                                        <div class="profilePhotoBlock css-13zlig9">
-			                                                                                            <div class="css-3zrsgm-ProfilePhotoImage"></div>
-			                                                                                        </div>
-			                                                                                    </div>
-			                                                                                    <div class="css-16n7af8">
-			                                                                                        <div class="css-qkf9j">
-			                                                                                            <div class="css-17vuhtq">조 샐다나</div>
-			                                                                                            <div class="css-1evnpxk-StyledSubtitle">주연 | 네이티리</div>
-			                                                                                        </div>
-			                                                                                    </div>
-			                                                                                </a>
-																						</li>
-		                                                                                <li class="css-54rr1e">
-		                                                                                	<a href="" class="css-1aaqvgs-InnerPartOfListWithImage">
-			                                                                                    <div class="css-cssveg">
-			                                                                                        <div class="profilePhotoBlock css-13zlig9">
-			                                                                                            <div class="css-19rtinw-ProfilePhotoImage"></div>
-			                                                                                        </div>
-			                                                                                    </div>
-			                                                                                    <div class="css-zoy7di">
-			                                                                                        <div class="css-qkf9j">
-			                                                                                            <div class="css-17vuhtq">시고니 위버</div>
-			                                                                                            <div class="css-1evnpxk-StyledSubtitle">주연 | 키리</div>
-			                                                                                        </div>
-			                                                                                    </div>
-		                                                                                	</a>
-																						</li>
-		                                                                                <li class="css-54rr1e">
-		                                                                                	<a href="" class="css-1aaqvgs-InnerPartOfListWithImage">
-			                                                                                    <div class="css-cssveg">
-			                                                                                        <div class="profilePhotoBlock css-13zlig9">
-			                                                                                            <div class="css-gmmbr4-ProfilePhotoImage"></div>
-			                                                                                        </div>
-			                                                                                    </div>
-			                                                                                    <div class="css-zoy7di">
-			                                                                                        <div class="css-qkf9j">
-			                                                                                            <div class="css-17vuhtq">스티븐 랭</div>
-			                                                                                            <div class="css-1evnpxk-StyledSubtitle">주연 | 쿼리치</div>
-			                                                                                        </div>
-			                                                                                    </div>
-			                                                                                </a>
-																						</li>
-		                                                                                <li class="css-54rr1e">
-		                                                                                	<a href="" class="css-1aaqvgs-InnerPartOfListWithImage">
-			                                                                                    <div class="css-cssveg">
-			                                                                                        <div class="profilePhotoBlock css-13zlig9">
-			                                                                                            <div class="css-y58fr8-ProfilePhotoImage"></div>
-			                                                                                        </div>
-			                                                                                    </div>
-			                                                                                    <div class="css-16n7af8">
-			                                                                                        <div class="css-qkf9j">
-			                                                                                            <div class="css-17vuhtq">케이트 윈슬렛</div>
-			                                                                                            <div class="css-1evnpxk-StyledSubtitle">주연 | 로날</div>
-			                                                                                        </div>
-			                                                                                    </div>
-			                                                                                </a>
-																						</li>
+		                                                                                </c:forEach>
+		                                                                                <!--  -->
 		                                                                            </ul>
 		                                                                        </div>
 		                                                                    </div>

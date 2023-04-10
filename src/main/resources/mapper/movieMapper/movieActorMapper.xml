@@ -20,4 +20,14 @@
 	INNER JOIN movie m ON ma.MOVIE_ID = m.ID
 	WHERE a.ID = #{id}
 </select>
+ <!-- 해당 영화의 배우전체 가져오기  -->
+ <select id="selectoneMovieActorList" resultType="com.whychapedia.vo.MovieActorVo">
+ 		SELECT *
+  		FROM movie_actor ma
+  		JOIN actor a ON ma.actor_id = a.id
+  		WHERE ma.movie_id = #{movie_id}
+ 		 
+ </select>	
+
+
  </mapper>

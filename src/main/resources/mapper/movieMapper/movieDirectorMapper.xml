@@ -9,6 +9,14 @@
   		JOIN director d ON md.director_id = d.id
   		WHERE md.movie_id = #{movie_id}		
  </select>	
+  <!-- 해당 영화의 감독전체 가져오기  -->
+ <select id="selectMovieDirectorList" resultType="com.whychapedia.vo.MovieDirectorVo">
+ 		SELECT *
+  		FROM movie_director md
+  		JOIN director d ON md.director_id = d.id
+  		WHERE md.movie_id = #{movie_id}		
+ 		 
+ </select>	
 
  
  </mapper>

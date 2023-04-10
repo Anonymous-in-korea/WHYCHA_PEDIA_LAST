@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whychapedia.mapper.CollectionArtistMapper">
+		<!-- 	해당 유저가 구독하는 배우 id 전체 가져오기 -->
+	<select id="selectActor_like_id" resultType="com.whychapedia.vo.CollectionArtistVo">
+		select ca.*,w.*,a.*
+		from collection_actor ca
+		inner join wuser w on ca.user_id=w.id
+		inner join actor a on ca.actor_id=a.id
+		where w.id=#{user_id}
+	</select>
+	
+	<!-- 해당 유저가 구독하는 감독 id 전체 가져오기  -->
+	<select id="selectDirector_like_id" resultType="com.whychapedia.vo.CollectionArtistVo">
+		select cd.*,w.*,d.*
+		from collection_director cd
+		inner join wuser w on cd.user_id=w.id
+		inner join director d on cd.director_id=d.id
+		where w.id=#{user_id}
+	</select>
+</mapper>
