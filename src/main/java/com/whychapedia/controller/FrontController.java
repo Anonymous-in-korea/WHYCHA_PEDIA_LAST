@@ -2,6 +2,8 @@ package com.whychapedia.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +20,7 @@ import com.whychapedia.service.MovieOttService;
 import com.whychapedia.service.MovieService;
 import com.whychapedia.service.StarRateService;
 import com.whychapedia.vo.CollectionVo;
+import com.whychapedia.vo.MemberVo;
 import com.whychapedia.vo.MovieCollectionVo;
 import com.whychapedia.vo.MovieDirectorVo;
 import com.whychapedia.vo.MovieGenreVo;
@@ -27,6 +30,12 @@ import com.whychapedia.vo.StarRateVo;
 
 @Controller
 public class FrontController {
+	
+	@Autowired
+	HttpSession session;
+	
+	@Autowired
+	MemberService memberService;
 	
 	@Autowired
 	MovieService movieService;
@@ -50,7 +59,13 @@ public class FrontController {
 	MovieCollectionService movieCollectionService;
 	
 	@Autowired
+	StarRateVo starRateVo;
+	
+	@Autowired
 	MovieVo movieVo;
+	
+	@Autowired
+	MemberVo memberVo;
 
 	@Autowired
 	StarRateVo starRateVO;
@@ -125,9 +140,6 @@ public class FrontController {
 		return "index_SH";
 	}
 	
-	@GetMapping("/rate_page_HY")
-	public String rate_page() {
-		return "rate_page_HY";
-	}
+
 	
 }

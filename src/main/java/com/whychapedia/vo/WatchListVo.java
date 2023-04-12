@@ -21,6 +21,6 @@ public class WatchListVo {
 	private int user_id;
 	private Date regi_date; //별점 등록일 
 	private int is_checked;
-
+	
 
 }

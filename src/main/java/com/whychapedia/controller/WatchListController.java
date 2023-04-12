@@ -54,7 +54,7 @@ public class WatchListController {
 	public String rated_SY(Model model) {
 		//페이지 주인 @RequestParam int user_id
 		int user_id=3;
-		MemberVo memberVo = memberService.selectOneMember(user_id);
+		memberVo = memberService.selectOneMember(user_id);
 		System.out.println(memberVo);
 		//로그인 한 사람
 		MemberVo loginVo=new MemberVo();
@@ -86,7 +86,7 @@ public class WatchListController {
 	public String watching_SY(Model model) {
 		//페이지 주인 @RequestParam int user_id
 		int user_id=6;
-		MemberVo memberVo = memberService.selectOneMember(user_id);
+		memberVo = memberService.selectOneMember(user_id);
 		//로그인 한 사람
 		MemberVo loginVo=new MemberVo();
 		Integer sessionId = (Integer) session.getAttribute("sessionId");
@@ -114,7 +114,7 @@ public class WatchListController {
 	public String wishWatch_SY(Model model) {
 		//페이지 주인 @RequestParam int user_id
 		int user_id=6;
-		MemberVo memberVo = memberService.selectOneMember(user_id);
+		memberVo = memberService.selectOneMember(user_id);
 		//로그인 한 사람
 		MemberVo loginVo=new MemberVo();
 		Integer sessionId = (Integer) session.getAttribute("sessionId");
@@ -139,9 +139,41 @@ public class WatchListController {
 	//영화 보관함 전체 페이지(평가&보는중&보고싶은)
 	@GetMapping("watchList/movieContainer_SY")
 	public String movieContainer_SY(Model model) {
+		//페이지 주인 @RequestParam int user_id
+		int user_id=3;
+		MemberVo memberVo = memberService.selectOneMember(user_id);
+		System.out.println(memberVo);
+		//로그인 한 사람
+		MemberVo loginVo=new MemberVo();
+		Integer sessionId = (Integer) session.getAttribute("sessionId");
+		//평가한거 7개만 가져오기
+		List<MovieVo> movieStarRateList=movieService.selectPartOfMovieStarRate(7,user_id);
+		int starRateListSize=movieStarRateList.size();
+		System.out.println("starRateListSize"+starRateListSize);
+		//로그인 유저의 평가점수 가져오기
+		List<StarRateVo> ratedList=new ArrayList<StarRateVo>();
+		if(sessionId!=null) {
+			int loginId = sessionId.intValue();
+			loginVo=memberService.selectOneMember(loginId);
+			if(movieStarRateList.size()!=0) {
+				ratedList=starRateService.selectAllOfIsRated(loginId,movieStarRateList);
+				movieStarRateList=movieService.insertStarRateInfo(movieStarRateList,ratedList);
+				System.out.println("movieStarRateList"+movieStarRateList);
+			}
+		}
+		//보는 중 개수 가져오기
+		int watchingListSize=watchListService.selectCountWatchList(1,user_id);
+		System.out.println("watchingListSize"+watchingListSize);
+		//보고싶어요 개수 가져오기
+		int wishWatchListSize=watchListService.selectCountWatchList(0,user_id);
+		System.out.println("wishWatchListSize"+wishWatchListSize);
 		
 		
-		
+		model.addAttribute("memberVo", memberVo); //페이지 주인 
+		model.addAttribute("starRateListSize", starRateListSize);//별점 개수
+		model.addAttribute("watchingListSize", watchingListSize); //보는 중 개수
+		model.addAttribute("wishWatchListSize", wishWatchListSize); //보고 싶은 개수
+		model.addAttribute("movieStarRateList",movieStarRateList);//영화 모든 정보 + 개인 평가까지
 		return "watchList/movieContainer_SY";
 	}
 

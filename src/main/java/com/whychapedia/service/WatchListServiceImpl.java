@@ -28,7 +28,13 @@ public class WatchListServiceImpl implements WatchListService {
 		return isWatch;
 	}
 	
-
+	//보는 중 개수&보고싶어요 개수 가져오기
+	@Override
+	public int selectCountWatchList(int type, int user_id) {
+		int selectCountWatchList=watchListMapper.selectCountWatchList(type,user_id);
+		return selectCountWatchList;
+	}
+	
 
 
 

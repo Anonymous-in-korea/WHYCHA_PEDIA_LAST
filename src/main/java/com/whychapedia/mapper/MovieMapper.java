@@ -28,6 +28,16 @@ public interface MovieMapper {
 	//유저가 평가한 영화 모두 들고오기 + 영화 정보까지 다 들고 오기
 	List<MovieVo> selectMovieStarRate(int user_id);
 	//유저가 보는 중인 영화 모두 들고오기 + 영화 정보까지 다 들고 오기
-	List<MovieVo> selectmoviewatchList(int type, int user_id);
+	List<MovieVo> selectMovieWatchList(int type, int user_id);
+	//유저가 보는 중인 or 보고싶은 영화 모두 들고오기 + 영화 정보까지 다 들고 오기 (부분 개수만 들고오기)
+	List<MovieVo> selectPartOfMovieStarRate(int theNum, int user_id);
+	//평가할 영화 (랜덤 기준으로) 들고 오기(10)개만
+	List<MovieVo> selectMovieRandomRate(int user_id);
+	//평가할 영화 (개봉일 기준으로) 들고 오기 (10개만)
+	List<MovieVo> selectMovieReleaseRate(int user_id);
+	//평가할 영화 (평점 높은 기준으로)들고 오기 (10개만)
+	List<MovieVo> selectMovieHighRate(int user_id);
+
+	
 
 }

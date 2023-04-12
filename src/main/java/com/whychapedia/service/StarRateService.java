@@ -47,6 +47,10 @@ public interface StarRateService {
 
 	int totalStarRateNumber(List<Integer> movieStarRateGraph);
 
+	int selectRatedCount(int sessionId);
+
+	
+
 	
 
 

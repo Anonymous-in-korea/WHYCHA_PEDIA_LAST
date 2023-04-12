@@ -112,6 +112,7 @@ public class StarRateServiceImpl implements StarRateService {
 		return movieStarRateGraphScale;
 	}
 
+	//평가했는지 안했는지 check & update
 	@Override
 	public List<StarRateVo> selectAllOfIsRated(int loginId, List<MovieVo> movieInCollectionVoList) {
 		List<StarRateVo> starRateList = new ArrayList<>();
@@ -194,6 +195,16 @@ public class StarRateServiceImpl implements StarRateService {
 		starRateVo.setWatched_time_hr(hour);
 		return starRateVo;
 	}
+
+	//유저가 평가한 영화 총 개수 들고오기
+	@Override
+	public int selectRatedCount(int sessionId) {
+		starRateVo=starRateMapper.selectOnePersonAvgAndTotalCount(sessionId);
+		int ratedCount=starRateVo.getTotal_count();
+		return ratedCount;
+	}
+
+
 
 
 

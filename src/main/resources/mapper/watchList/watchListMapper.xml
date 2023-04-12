@@ -8,6 +8,12 @@
 	<select id="selectIsWatch" resultType="int">
  		select count(*) from watch_list where watch_list_type=#{watch_list_type} and movie_id=#{movie_id} and user_id=#{user_id}
 	</select>
+	
+	   <!--해당 유저 보고 싶은 or 보는중 작품 개수 -->
+	<select id="selectCountWatchList" resultType="int">
+ 		select count(*) from watch_list where watch_list_type=#{type} and user_id=#{user_id}
+	</select>
+	
 
 	
   </mapper>

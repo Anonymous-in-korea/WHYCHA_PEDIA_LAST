@@ -63,15 +63,15 @@
    <!--검색해서 관련 영화 리스트 가져오기 한글 제목&영어제목&감독이름&배우이름과 연관된 영화들-->
   <select id="selectSearchMovieAll" resultType="com.whychapedia.vo.MovieVo">
 	SELECT DISTINCT m.*
-	FROM movie m
-	INNER JOIN movie_director md ON m.ID = md.MOVIE_ID
-	INNER JOIN director d ON md.DIRECTOR_ID = d.ID
-	INNER JOIN movie_actor ma ON m.ID = ma.MOVIE_ID
-	INNER JOIN actor a ON ma.ACTOR_ID = a.ID
-	WHERE d.DIRECTOR_NAME LIKE '%' || #{searchKeyword} || '%'
-	OR a.ACTOR_NAME LIKE '%' || #{searchKeyword} || '%'
-	OR (REPLACE(MOVIE_KOR_TITLE, ' ', '') LIKE '%' || #{searchKeyword} || '%'
-	OR REPLACE(MOVIE_ORIGINAL_TITLE, ' ', '') LIKE '%' || #{searchKeyword} || '%')
+		FROM movie m
+		INNER JOIN movie_director md ON m.ID = md.MOVIE_ID
+		INNER JOIN director d ON md.DIRECTOR_ID = d.ID
+		INNER JOIN movie_actor ma ON m.ID = ma.MOVIE_ID
+		INNER JOIN actor a ON ma.ACTOR_ID = a.ID
+		WHERE d.DIRECTOR_NAME LIKE '%' || #{searchKeyword} || '%'
+		OR a.ACTOR_NAME LIKE '%' || #{searchKeyword} || '%'
+		OR (REPLACE(MOVIE_KOR_TITLE, ' ', '') LIKE '%' || #{searchKeyword} || '%'
+		OR REPLACE(MOVIE_ORIGINAL_TITLE, ' ', '') LIKE '%' || #{searchKeyword} || '%')
   </select>
   
   <!--해당 id의 출연영화 정보 모두 가져오기  -->
@@ -92,14 +92,51 @@
 			WHERE sr.user_id =#{user_id}
 	</select>
 	
-	  <!--유저가 평가한 영화 모두 들고오기 + 영화 정보까지 다 들고 오기-->
-	<select id="selectmoviewatchList" resultType="com.whychapedia.vo.MovieVo">
+  <!--유저가 보고싶은/보는중 영화 모두 들고오기 + 영화 정보까지 다 들고 오기-->
+	<select id="selectMovieWatchList" resultType="com.whychapedia.vo.MovieVo">
            SELECT m.movie_post_url,m.movie_kor_title,m.movie_rating,m.id
 			FROM watch_list wl
 			JOIN Movie m ON wl.movie_id = m.id
 			WHERE wl.user_id =#{user_id} and wl.watch_list_type=#{type}
 	</select>
-  
+	
+  <!--유저가 보는 중인 or 보고싶은 영화 모두 들고오기 + 영화 정보까지 다 들고 오기 (부분 개수만 들고오기)-->
+	<select id="selectPartOfMovieStarRate" resultType="com.whychapedia.vo.MovieVo">
+ 		SELECT m.movie_post_url,m.movie_kor_title,m.movie_rating,m.id
+			FROM star_rate sr
+			JOIN Movie m ON sr.movie_id = m.id
+			WHERE sr.user_id =#{user_id}
+			FETCH FIRST #{theNum} ROWS ONLY
+	</select>
+	
+		
+	 <!--평가할 영화 (랜덤 기준으로) 다 들고 오기 (10)개만-->
+	<select id="selectMovieRandomRate" resultType="com.whychapedia.vo.MovieVo">
+		SELECT *
+			FROM movie
+			WHERE id NOT IN (SELECT movie_id FROM star_rate where user_id=#{user_id})
+	        FETCH FIRST 10 ROWS ONLY
+	</select>
+	
+		 <!--평가할 영화 (개봉일 기준으로) 다 들고 오기 (10)개만-->
+	<select id="selectMovieReleaseRate" resultType="com.whychapedia.vo.MovieVo">
+		SELECT *
+			FROM movie
+			WHERE id NOT IN (SELECT movie_id FROM star_rate where user_id=#{user_id})
+	        order by MOVIE_RELEASE_DATE DESC FETCH FIRST 10 ROWS ONLY 
+	</select>
+	
+	 <!--평가할 영화 (평점 높은 기준으로)들고 오기 (10개만)-->
+	<select id="selectMovieHighRate" resultType="com.whychapedia.vo.MovieVo">
+		SELECT *
+			FROM movie
+			WHERE id NOT IN (SELECT movie_id FROM star_rate where user_id=#{user_id})
+	        order by MOVIE_RATING DESC FETCH FIRST 10 ROWS ONLY 
+	</select>
+	
+	
+	
+	
   
   
   

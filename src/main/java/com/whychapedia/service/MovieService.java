@@ -31,6 +31,17 @@ public interface MovieService {
 
 	List<MovieVo> selectMovieWatchList(int type, int user_id);
 
+	List<MovieVo> selectPartOfMovieStarRate(int theNum, int user_id);
+
+	List<MovieVo> selectMovieRandomRate(int user_id);
+
+	List<MovieVo> selectMovieReleaseRate(int user_id);
+
+	List<MovieVo> selectMovieHighRate(int user_id);
+
+
+
+
 	
 
 }

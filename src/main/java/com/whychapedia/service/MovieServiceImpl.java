@@ -106,36 +106,64 @@ public class MovieServiceImpl implements MovieService {
 		 }
 		return updatedMovieList;
 	}
+	
 	//검색해서 관련 영화 리스트 가져오기
 	@Override
 	public List<MovieVo> selectSearchMovieAll(String searchKeyword) {
 		List<MovieVo> movieSearchlist = movieMapper.selectSearchMovieAll(searchKeyword);
 		return movieSearchlist;
 	}
+	
 	//해당 배우 정보 가져오기
 	@Override
 	public List<MovieVo> selectActorPersonMovieAll(int id) {
 		List<MovieVo> actorPersonMovieList= movieMapper.selectActorPersonMovieAll(id);
-		
 		return actorPersonMovieList;
 	}
-	
-
 	
 	//유저가 평가한 영화 모두 들고오기 + 영화 정보까지 다 들고 오기
 	@Override
 	public List<MovieVo> selectMovieStarRate(int user_id) {
 		List<MovieVo> selectMovieStarRate=movieMapper.selectMovieStarRate(user_id);
-
 		return selectMovieStarRate;
 	}
 
 	//유저가 보는 중인 or 보고싶은 영화 모두 들고오기 + 영화 정보까지 다 들고 오기
 	@Override
 	public List<MovieVo> selectMovieWatchList(int type, int user_id) {
-		List<MovieVo> moviewatchList=movieMapper.selectmoviewatchList(type,user_id);
-		return moviewatchList;
+		List<MovieVo> movieWatchList=movieMapper.selectMovieWatchList(type,user_id);
+		return movieWatchList;
+	}
+	
+	//유저가 보는 중인 or 보고싶은 영화 모두 들고오기 + 영화 정보까지 다 들고 오기 (부분 개수만 들고오기)
+	@Override
+	public List<MovieVo> selectPartOfMovieStarRate(int theNum, int user_id) {
+		List<MovieVo> selectPartOfMovieStarRate=movieMapper.selectPartOfMovieStarRate(theNum,user_id);
+		return selectPartOfMovieStarRate;
+	}
+	
+	//평가할 영화 (랜덤 기준으로)들고 오기(10)개만
+	@Override
+	public List<MovieVo> selectMovieRandomRate(int user_id) {
+		List<MovieVo> movieRandomRate=movieMapper.selectMovieRandomRate(user_id);
+		return movieRandomRate;
 	}
 
+	//평가할 영화 (개봉일 기준으로)들고 오기 (10개만)
+	@Override
+	public List<MovieVo> selectMovieReleaseRate(int user_id) {
+		List<MovieVo> movieReleaseRate=movieMapper.selectMovieReleaseRate(user_id);
+		return movieReleaseRate;
+	}
+
+	//평가할 영화 (평점 높은 기준으로)들고 오기 (10개만)
+	@Override
+	public List<MovieVo> selectMovieHighRate(int user_id) {
+		List<MovieVo> movieHighRate=movieMapper.selectMovieHighRate(user_id);
+		return movieHighRate;
+	}
+
+
+	
 
 }

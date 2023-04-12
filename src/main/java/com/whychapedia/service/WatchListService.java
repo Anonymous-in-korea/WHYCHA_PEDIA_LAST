@@ -10,7 +10,9 @@ public interface WatchListService {
 	
 	int selectIsWatch(int watch_list_type,int movie_id, int user_id);
 
+	int selectCountWatchList(int type, int user_id);
 
+	
 	
 
 	
