@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.whychapedia.service.AnnouncementService;
 import com.whychapedia.service.ArtistService;
 import com.whychapedia.service.CollectionArtistService;
+import com.whychapedia.service.CollectionService;
 import com.whychapedia.service.LikeService;
 import com.whychapedia.service.MemberService;
 import com.whychapedia.service.MovieCountryService;
 import com.whychapedia.service.MovieGenreService;
+import com.whychapedia.service.MovieService;
 import com.whychapedia.service.StarRateService;
 import com.whychapedia.service.WatchListService;
 import com.whychapedia.vo.ArtistVo;
@@ -29,6 +31,7 @@ import com.whychapedia.vo.LikeVo;
 import com.whychapedia.vo.MemberVo;
 import com.whychapedia.vo.MovieCountryVo;
 import com.whychapedia.vo.MovieGenreVo;
+import com.whychapedia.vo.MovieVo;
 import com.whychapedia.vo.StarRateVo;
 import com.whychapedia.vo.WatchListVo;
 
@@ -63,7 +66,13 @@ public class MyPageController {
 	MemberService memberService;
 	
 	@Autowired
+	MovieService movieService;
+	
+	@Autowired
 	CollectionArtistService collectionArtistService;
+	
+	@Autowired
+	CollectionService collectionService;
 	
 	@Autowired
 	CollectionArtistVo collectionArtistVo;
@@ -83,47 +92,58 @@ public class MyPageController {
 	@GetMapping("myPage/myPage_SY")
 	public String myPage_SY(Model model) {
 		int user_id = (int)session.getAttribute("sessionId");
-		//sessionId로 user1명 가져오기
+		//sessionId로 user 1명 가져오기
 		MemberVo memberVo = memberService.selectOneMember(user_id);
 		model.addAttribute("memberVo",memberVo);
-		//해당 유저가 구독하는 배우 id 전체 가져오기
-		List<CollectionArtistVo> actorLike_list = collectionArtistService.selectActor_like_id(user_id);
-	 	//System.out.println("selectActor_like_id_list_size :"+actorLike_list.size());
-		model.addAttribute("actorLike_list",actorLike_list);
-		
-		//해당 유저가 구독하는 감독 id 전체 가져오기
-		List<CollectionArtistVo> directorLike_list = collectionArtistService.selectDirector_like_id(user_id);
-		//System.out.println("selectDirector_like_id_list_size :"+directorLike_list.size());
-		model.addAttribute("directorLike_list",directorLike_list);
-		
-		//공지사항 가져오기
-		Map<String, Object> map = announcementService.selectAnnouncementList();
-		model.addAttribute("map",map);
+		//보관함 배우 #
+		int actorCount=collectionArtistService.selectActorCount(user_id);
+		//보관함 감독 #
+		int directorCount=collectionArtistService.selectDirectorCount(user_id);
+		//보관함 사람 #
+		int peopleCount=actorCount+directorCount;
+		model.addAttribute("peopleCount",peopleCount);
+		//영화 컬렉션 개수
+		int collectionCount=collectionService.selectCollectionCount(user_id);
+		model.addAttribute("collectionCount",collectionCount);
+		//평가한 영화 개수
+		int starRateCount=starRateService.selectRatedCount(user_id);
+		model.addAttribute("starRateCount",starRateCount);
+		//평가한 영화 중 높은 score top 6영화
+		List<StarRateVo> userMovieList=starRateService.selectTopRatedMovieOfUser(6,user_id);
+		model.addAttribute("userMovieList",userMovieList);
 		
 		return "myPage/userPage_SY";
 	}
+	
+	
 	
 	/*다른 사람 클릭해서 들어오기*/
 	@GetMapping("myPage/userPage_SY")
 	public String userPage_SY(Model model, @RequestParam int user_id) {
 		MemberVo memberVo = memberService.selectOneMember(user_id);
 		model.addAttribute("memberVo",memberVo);
-		//actor_id를 가지고오기
-		List<CollectionArtistVo> actorLike_list = collectionArtistService.selectActor_like_id(user_id);
-		//System.out.println("selectActor_like_id_list_size :"+actorLike_list.size());
-		model.addAttribute("actorLike_list",actorLike_list);
-		
-		//director_id 가지고오기
-		List<CollectionArtistVo> directorLike_list = collectionArtistService.selectDirector_like_id(user_id);
-		//System.out.println("selectDirector_like_id_list_size :"+directorLike_list.size());
-		model.addAttribute("directorLike_list",directorLike_list);
-		
-		//공지사항 가져오기
-		Map<String, Object> map = announcementService.selectAnnouncementList();
-		model.addAttribute("map",map);
+		//보관함 배우 #
+		int actorCount=collectionArtistService.selectActorCount(user_id);
+		//보관함 감독 #
+		int directorCount=collectionArtistService.selectDirectorCount(user_id);
+		//보관함 사람 #
+		int peopleCount=actorCount+directorCount;
+		model.addAttribute("peopleCount",peopleCount);
+		//영화 컬렉션 개수
+		int collectionCount=collectionService.selectCollectionCount(user_id);
+		model.addAttribute("collectionCount",collectionCount);
+		//평가한 영화 개수
+		int starRateCount=starRateService.selectRatedCount(user_id);
+		model.addAttribute("starRateCount",starRateCount);
+		//평가한 영화 중 높은 score top 6영화
+		List<StarRateVo> userMovieList=starRateService.selectTopRatedMovieOfUser(6,user_id);
+		model.addAttribute("userMovieList",userMovieList);
+				
 		
 		return "myPage/userPage_SY";
 	}
+	
+	
 	
 	@GetMapping("myPage/my_analysis_HY")
 	public String my_analysis_HY(@RequestParam int user_id,Model model) {
@@ -193,6 +213,8 @@ public class MyPageController {
 		return "myPage/my_analysis_HY";
 	}
 
+	
+	
 	/*구독하는 인물컬렉션 */
 	@GetMapping("myPage/actor_director_like_SY")
 	public String actor_director_like(Model model, @RequestParam int user_id) {

@@ -31,4 +31,5 @@ public class StarRateVo {
 	private String movie_post_url; 
 	private String movie_kor_title;
 	private float movie_rating;
+
 }

@@ -9,7 +9,10 @@ public interface CollectionArtistService {
 	
 	//해당 유저가 구독하는 배우 id 전체 가져오기
 	List<CollectionArtistVo> selectActor_like_id(int user_id);
-
 	//해당 유저가 구독하는 감독 id 전체 가져오기
 	List<CollectionArtistVo> selectDirector_like_id(int user_id);
+	//보관함 배우 #
+	int selectActorCount(int user_id);
+	//보관함 감독 #
+	int selectDirectorCount(int user_id);
 }

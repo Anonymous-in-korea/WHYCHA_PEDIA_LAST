@@ -138,9 +138,8 @@ public class WatchListController {
 	
 	//영화 보관함 전체 페이지(평가&보는중&보고싶은)
 	@GetMapping("watchList/movieContainer_SY")
-	public String movieContainer_SY(Model model) {
+	public String movieContainer_SY(@RequestParam int user_id,Model model) {
 		//페이지 주인 @RequestParam int user_id
-		int user_id=3;
 		MemberVo memberVo = memberService.selectOneMember(user_id);
 		System.out.println(memberVo);
 		//로그인 한 사람

@@ -42,6 +42,8 @@ public interface StarRateMapper {
 	public List<StarRateVo> starGraphOfUser(int user_id);
 	//유저의 총 감상 시간
 	StarRateVo selectTotalWatchedTime(int user_id);
+	//평가한 영화 중 높은 score top theNum만큼 가져오기
+	public List<StarRateVo> selectTopRatedMovieOfUser(int theNum, int user_id);
 
 
 }

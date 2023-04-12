@@ -117,6 +117,16 @@
 			WHERE sr.user_id =#{user_id} 
 	</select>
 	
+	<!--평가한 영화 중 높은 score top theNum만큼 가져오기-->
+	<select id="selectTopRatedMovieOfUser" resultType="com.whychapedia.vo.StarRateVo">
+ 		SELECT m.movie_post_url
+ 			FROM star_rate sr
+ 			JOIN Movie m ON sr.movie_id = m.id
+			WHERE sr.user_id =#{user_id}
+			order by sr.score desc
+			FETCH FIRST #{theNum} ROWS ONLY  
+	</select>
+	
 	
 	
   </mapper>

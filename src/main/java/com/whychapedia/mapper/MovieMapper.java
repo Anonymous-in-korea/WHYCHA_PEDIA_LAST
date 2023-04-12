@@ -38,6 +38,7 @@ public interface MovieMapper {
 	//평가할 영화 (평점 높은 기준으로)들고 오기 (10개만)
 	List<MovieVo> selectMovieHighRate(int user_id);
 
+
 	
 
 }

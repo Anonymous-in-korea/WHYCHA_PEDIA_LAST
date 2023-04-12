@@ -84,6 +84,7 @@ public class CollectionController {
 			int loginId = sessionId.intValue();
 			loginVo=memberService.selectOneMember(loginId);			
 		}
+		
 		//해당 유저의 컬렉션 list 가져오기 & 좋아요&코멘트 개수
 		List<CollectionVo>collectionVoList=collectionService.selectCollectionList(user_id);
 		System.out.println("collection(controller):collectionList size()"+collectionVoList.size());
@@ -127,8 +128,7 @@ public class CollectionController {
 	
     /*하나의 컬렉션 페이지*/
 	@GetMapping("/collection/collection_detail_HY")
-	public String collection_detail_HY(Model model) {
-		int collection_id=1;
+	public String collection_detail_HY(@RequestParam int collection_id,Model model) {
 		int user_id=3;
 		memberVo=memberService.selectOneMember(user_id);
 		System.out.println("memberVo"+memberVo.getUser_name());

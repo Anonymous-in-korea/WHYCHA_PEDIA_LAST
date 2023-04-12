@@ -1,6 +1,7 @@
 package com.whychapedia.controller;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,18 +88,43 @@ public class SearchController {
 		 return "search/searchPerson_SY";
 	}
 	
+	
+	
 	//검색어를 이용해 관련 컬렉션 검색하기
 	@RequestMapping(method = RequestMethod.GET, value = "search/searchCollection_HY")
 	public String searchCollection_HY(@RequestParam("searchKeyword") String searchKeyword, Model model) {
 		//검색어로 관련 컬렉션 리스트 가져오기 Wuser랑 collection 테이블 조인하기 받아올 정보: 
-		List<CollectionVo> collectionSearchlist = collectionService.selectSearchCollectionList(searchKeyword);
+		List<CollectionVo> collectionSearchList = collectionService.selectSearchCollectionList(searchKeyword);
 		System.out.println("=====================================================================================");
-		System.out.println("selectSearchCollectionList_size"+collectionSearchlist.size());
-		model.addAttribute("collectionSearchlist",collectionSearchlist);
-		List<MemberVo> memberVolist = memberService.selectSearchMemberList();
-		model.addAttribute("memberVolist",memberVolist);
-		System.out.println("selectSearchMemberList_size"+memberVolist.size());
-		System.out.println("=====================================================================================");
+		System.out.println("selectSearchCollectionList_size"+collectionSearchList.size());
+		model.addAttribute("collectionSearchlist",collectionSearchList);
+		
+		//컬렉션 있는지 없는지
+		int isInCollection=0;
+		List<MovieCollectionVo> movieCollectionVoList = new ArrayList<MovieCollectionVo>();
+		List<CollectionVo> updateCollectionVoList=new ArrayList<CollectionVo>();
+		
+		//컬렉션이 존재 할 때 
+		if(collectionSearchList.size()!=0) {
+			//컬렉션_movie vo 생성 ( collection_id,movie_id,movie_post_url 들어가 있음)
+			movieCollectionVoList=movieCollectionService.selectCollectionVoWithMoviePostUrlList(collectionSearchList);
+			System.out.println("collection(controller):MovieCollectionVoList size()"+movieCollectionVoList.size());				
+			
+			//collection_movie vo의 movie post url을 배열 값으로 collectionVoList에 넣음
+			if(movieCollectionVoList.size()!=0) {
+				updateCollectionVoList=collectionService.insertMoviePostUrlArray(movieCollectionVoList,collectionSearchList);
+				System.out.println("collection(controller):updateCollectionVoList size()"+updateCollectionVoList.size());	
+				System.out.println("collection(controller):updateCollectionVoList "+updateCollectionVoList.get(0).getMovie_post_urls());
+			}
+			//컬렉션 존재함
+			isInCollection=1;					
+		}
+		
+		
+		model.addAttribute("updateCollectionVoList", updateCollectionVoList); // 콜렉션 리스트
+		model.addAttribute("isInCollection",isInCollection); // 콜렉션 있는지 유무
+
+		
 		return "search/searchCollection_HY";
 	}
 

@@ -434,7 +434,8 @@ html{
 }
 
 .css-1kcd80z {
-	color: #ffa136;
+	background-color: orange;
+    color: white;
 	font-size: 13px;
 	font-weight: 400;
 	-webkit-letter-spacing: -0.2px;

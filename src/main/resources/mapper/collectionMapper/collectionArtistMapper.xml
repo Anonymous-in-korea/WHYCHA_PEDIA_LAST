@@ -20,4 +20,18 @@
 		inner join director d on cd.director_id=d.id
 		where w.id=#{user_id}
 	</select>
+	
+	<!-- 해당 유저가 구독하는 감독 개수 -->
+	<select id="selectDirectorCount" resultType="int">
+		select count(*)
+		from collection_director 
+		where user_id=#{user_id}
+	</select>
+	
+	<!-- 해당 유저가 구독하는 배우 개수 -->
+	<select id="selectActorCount" resultType="int">
+		select count(*)
+		from collection_actor
+		where user_id=#{user_id}
+	</select>
 </mapper>

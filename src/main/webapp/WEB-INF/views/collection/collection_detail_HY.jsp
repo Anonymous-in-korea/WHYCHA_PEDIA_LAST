@@ -200,10 +200,10 @@
 																				<div class="css-1kcd80z">평점 ${movieVo.movie_rating}</div>
 																			</c:if>
 																			<c:if test="${ sessionId != null }">
-																				<c:if test="${ movieVo.isChecked != 0 }">
+																				<c:if test="${ movieVo.is_checked != 0 }">
 																					<div class="css-1kcd80z">평가함 ★ ${movieVo.scoreOfUser}</div>
 																				</c:if>
-																				<c:if test="${ movieVo.isChecked == 0 }">
+																				<c:if test="${ movieVo.is_checked == 0 }">
 																					<div class="css-1kcd80z">평점 ${movieVo.movie_rating}</div>
 																				</c:if>
 																			</c:if>

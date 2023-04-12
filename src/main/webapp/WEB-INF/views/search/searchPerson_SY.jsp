@@ -93,11 +93,6 @@
 		                                                            <span class="personContents css-yn5nfu" title="${avo.actor_name}"></span>
 	                                                            </div>
 	                                                        </div>
-	                                                        <div class="css-v9psum">
-	                                                            <div title="다바타 신타로" class="css-txztjz">
-	                                                            	<span class="css-mudjgk"></span>
-	                                                            </div>
-	                                                        </div>
 	                                                    </div>
 	                                                    <div></div>
 	                                                </div>

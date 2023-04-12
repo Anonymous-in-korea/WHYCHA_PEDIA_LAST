@@ -9,6 +9,7 @@
 	from collection co
 	where user_id=#{user_id}
 	</select>
+	
 	<!--해당 collection_id의 컬렉션 vo 가져오기 (좋아요/코멘트 # 가져옴)-->
 	<select id="selectOneCollection" resultType="com.whychapedia.vo.CollectionVo">
 	select co.*,(select count(*) from collection_like where collection_id=co.id) as like_count,(select count(*) from collection_comment where collection_id=co.id) as comment_count 
@@ -22,12 +23,18 @@
 	</select>
 	
 	<!-- 검색어로 관련 컬렉션 리스트 가져오기 -->
-	<select id="collectionSearchlist" resultType="com.whychapedia.vo.CollectionVo">
-		SELECT c.*, wu.*
+	<select id="collectionSearchList" resultType="com.whychapedia.vo.CollectionVo">
+		SELECT c.*, wu.user_pic_url,wu.user_name,(select count(*) from collection_like where collection_id=c.id) as like_count,
+		(select count(*) from collection_comment where collection_id=c.id) as comment_count
 		FROM collection c
-		INNER JOIN wuser wu ON c.user_ID = wu.ID
+		INNER JOIN WUSER wu ON c.user_ID = wu.ID
 		WHERE REPLACE(c.collection_name, ' ', '') LIKE '%' || REPLACE(#{searchKeyword}, ' ', '%') || '%'
-		 OR REPLACE(wu.user_name, ' ', '') LIKE '%' || REPLACE(#{searchKeyword}, ' ', '%') || '%'
+		OR REPLACE(wu.user_name, ' ', '') LIKE '%' || REPLACE(#{searchKeyword}, ' ', '%') || '%'
+	</select>
+	
+	<!--해당 user_id 컬렉션 vo 가져오기 -->
+	<select id="selectCollectionCount" resultType="int">
+	select count(*) from collection where user_id=#{user_id} 
 	</select>
 	
 	

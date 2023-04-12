@@ -48,8 +48,8 @@ public class CollectionServiceImpl implements CollectionService {
 	//검색어로 관련 컬렉션 리스트 가져오기
 	@Override
 	public List<CollectionVo> selectSearchCollectionList(String searchKeyword) {
-		List<CollectionVo> collectionSearchlist= collectionMapper.collectionSearchlist(searchKeyword);
-		return collectionSearchlist;
+		List<CollectionVo> collectionSearchList= collectionMapper.collectionSearchList(searchKeyword);
+		return collectionSearchList;
 	}
 
 	//collection_movie vo의 movie post url을 배열 값으로 collectionVoList에 넣음
@@ -74,5 +74,12 @@ public class CollectionServiceImpl implements CollectionService {
 		}
 
 		return updateCollectionVoList;
+	}
+
+	//영화 컬렉션 개수
+	@Override
+	public int selectCollectionCount(int user_id) {
+		int collectionCount=collectionMapper.selectCollectionCount(user_id);
+		return collectionCount;
 	}
 }

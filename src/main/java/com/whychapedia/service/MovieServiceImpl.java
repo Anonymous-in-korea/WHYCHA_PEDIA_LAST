@@ -162,6 +162,7 @@ public class MovieServiceImpl implements MovieService {
 		List<MovieVo> movieHighRate=movieMapper.selectMovieHighRate(user_id);
 		return movieHighRate;
 	}
+	
 
 
 	

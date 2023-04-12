@@ -97,7 +97,7 @@
 																					</c:if>
 																					<c:if test="${ sessionId != null }"> <!--로그인 후-->
 																						<c:if test="${ movieVo.is_checked != 0 }">
-																							<div class="css-1kcd80z" style="background-color:red">평가함 ★ ${movieVo.scoreOfUser}</div>
+																							<div class="css-1kcd80z">평가함 ★ ${movieVo.scoreOfUser}</div>
 																						</c:if>
 																						<c:if test="${ movieVo.is_checked == 0 }">
 																							<div class="css-1kcd80z">평점 ${movieVo.movie_rating}</div>

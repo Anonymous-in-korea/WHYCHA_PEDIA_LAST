@@ -49,6 +49,9 @@ public interface StarRateService {
 
 	int selectRatedCount(int sessionId);
 
+	List<StarRateVo> selectTopRatedMovieOfUser(int theNum,int user_id);
+
+
 	
 
 	

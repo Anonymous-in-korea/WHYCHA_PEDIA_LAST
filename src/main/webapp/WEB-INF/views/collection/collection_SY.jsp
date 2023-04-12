@@ -107,7 +107,7 @@
 									<!-- foreach문 돌릴 부분 컬렉션div -->
 									<c:forEach items="${updateCollectionVoList}" var="collectionVo" > 
 										<li class="css-ovtvwa">
-											<a title="${collectionVo.collection_name}" class="css-1f9m1s4-StylelessLocalLink eovgsd01" href="/collection/collection_detail_HY?collection_id=${CollectionVo.id}">
+											<a title="${collectionVo.collection_name}" class="css-1f9m1s4-StylelessLocalLink eovgsd01" href="/collection/collection_detail_HY?collection_id=${collectionVo.id}">
 												<div class="css-m7az3s">
 													<div class="css-1sarkww">
 														<div class="css-vc4xb">
@@ -133,7 +133,7 @@
 													<div class="css-1on8oyq">${collectionVo.collection_desc}</div>
 													<div class="css-hsecj5">
 														<div class="css-1j0k1vy">
-															<div class="css-q29adr-ProfilePhotoImage"></div>
+															<div style="background: url(${collectionVo.user_pic_url}) center center / cover no-repeat;"  class="css-q29adr-ProfilePhotoImage"></div>
 														</div>
 														${memberVo.user_name}
 													</div>

@@ -12,6 +12,7 @@
 		<link href="../css/header.css" rel="stylesheet" type="text/css">
 		<link href="../css/footer.css" rel="stylesheet" type="text/css">
 		<link href="../css/userPage_SY.css" rel="stylesheet" type="text/css">
+		<link href="../css/collectionDetail.css" rel="stylesheet" type="text/css">
 		<link href="../css/logout_SH.css" rel="stylesheet" type="text/css">
 		<link rel="shortcut icon" type="image/x-icon" href="../images/whycha_small_logo1.png">
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -87,6 +88,32 @@
 												<button aria-label="setting"  class="css-vmz9k0-StylelessButton-WallPaperTopRightButton e19zkogf20"></button>
 											<!-- 톱니바퀴 버튼 끝 -->
 											</c:if>
+												<div class="css-nylf5i">
+													<div class=" css-12eknxq-StyledSelf e1q5rx9q0">
+														<span class="css-bhgne5-StyledBackground e1q5rx9q1"
+															style="background-image: url(${userMovieList[0].movie_post_url});"></span>
+													</div>
+													<div class=" css-15h4ccu-StyledSelf e1q5rx9q0">
+														<span class="css-bhgne5-StyledBackground e1q5rx9q1"
+															style="background-image: url(${userMovieList[1].movie_post_url});"></span>
+													</div>
+													<div class=" css-1le5r8o-StyledSelf e1q5rx9q0">
+														<span class="css-bhgne5-StyledBackground e1q5rx9q1"
+															style="background-image: url(${userMovieList[2].movie_post_url});"></span>
+													</div>
+													<div class=" css-vuowyq-StyledSelf e1q5rx9q0">
+														<span class="css-bhgne5-StyledBackground e1q5rx9q1"
+															style="background-image: url(${userMovieList[3].movie_post_url});"></span>
+													</div>
+													<div class=" css-1i7u3mu-StyledSelf e1q5rx9q0">
+														<span class="css-bhgne5-StyledBackground e1q5rx9q1"
+															style="background-image: url(${userMovieList[4].movie_post_url});"></span>
+													</div>
+													<div class=" css-1ubsymx-StyledSelf e1q5rx9q0">
+														<span class="css-bhgne5-StyledBackground e1q5rx9q1"
+															style="background-image: url(${userMovieList[5].movie_post_url});"></span>
+													</div>					
+												</div>
 											</div>
 											<div class="css-1gkas1x-Grid e1689zdh0">
 												<div class="css-1y901al-Row emmoxnt0">
@@ -136,10 +163,10 @@
 																	<ul class="e19zkogf12 css-i1bo8u-VisualUl-CategoryArchivesUl">
 																		<!--MOVIE 버튼 시작  -->
 																		<li class="css-1u4jvye-CategoryArchivesListItem e19zkogf13">
-																			<a background="[object Object]" class="css-h3f67w-CategoryArchivesLink e19zkogf14" href="?user_id=${memberVo.id}">
+																			<a background="[object Object]" class="css-h3f67w-CategoryArchivesLink e19zkogf14" href="/watchList/movieContainer_SY?user_id=${memberVo.id}">
 																				<ul class="css-reeb92-VisualUl-CategoryArchives e19zkogf15">
 																					<li class="css-r3hbc5-CategoryArchivesName e19zkogf16">MOVIE</li>
-																					<li class="css-7xoi89-CategoryArchivesRatedCount e19zkogf17">★0</li>
+																					<li class="css-7xoi89-CategoryArchivesRatedCount e19zkogf17">★${starRateCount}</li>
 <!-- 																					<li class="css-kcevqh-CategoryArchivesWishedCount e19zkogf18">보고싶어요<strong>0</strong></li> -->
 																				</ul>
 																			</a>
@@ -150,7 +177,7 @@
 																			<a background="[object Object]" class="css-1gw6y00-CategoryArchivesLink e19zkogf14" href="/collection/collection_SY?user_id=${memberVo.id}">
 																				<ul class="css-1x0nmo-VisualUl-CategoryArchives e19zkogf15">
 																					<li class="css-r3hbc5-CategoryArchivesName e19zkogf16">COLLECTION</li>
-																					<li class="css-7xoi89-CategoryArchivesRatedCount e19zkogf17">★0</li>
+																					<li class="css-7xoi89-CategoryArchivesRatedCount e19zkogf17">★${collectionCount}</li>
 <!-- 																					<li class="css-kcevqh-CategoryArchivesWishedCount e19zkogf18"><strong>0</strong></li> -->
 																				</ul>
 																			</a>
@@ -161,8 +188,7 @@
 																			<a background="[object Object]" class="css-1e839ay-CategoryArchivesLink e19zkogf14" href="/myPage/actor_director_like_SY?user_id=${memberVo.id }">
 																				<ul class="css-1qiuf48-VisualUl-CategoryArchives e19zkogf15">
 																					<li class="css-r3hbc5-CategoryArchivesName e19zkogf16">ACTOR & DIRECTOR</li>
-																					<li class="css-7xoi89-CategoryArchivesRatedCount e19zkogf17">★${actorLike_list.size()+directorLike_list.size()}</li>
-																					<li class="css-kcevqh-CategoryArchivesWishedCount e19zkogf18">내가구독하는인물<strong>${actorLike_list.size()+directorLike_list.size()}</strong></li>
+																					<li class="css-7xoi89-CategoryArchivesRatedCount e19zkogf17">★${peopleCount}</li>
 																				</ul>
 																			</a>
 																		</li>

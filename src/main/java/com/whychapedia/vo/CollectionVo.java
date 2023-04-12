@@ -17,10 +17,13 @@ import lombok.NoArgsConstructor;
 public class CollectionVo {
 	private int id;
 	private int user_id;
+	private String user_pic_url;
+	private String user_name;
 	private String collection_name;
 	private String collection_desc;
 	private int like_count;
 	private int comment_count;
 	private List<String> movie_post_urls;
+	
 
 }

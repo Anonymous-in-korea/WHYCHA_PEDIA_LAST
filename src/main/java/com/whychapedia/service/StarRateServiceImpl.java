@@ -204,6 +204,15 @@ public class StarRateServiceImpl implements StarRateService {
 		return ratedCount;
 	}
 
+	//평가한 영화 중 높은 score top theNum만큼 가져오기 영화
+	@Override
+	public List<StarRateVo> selectTopRatedMovieOfUser(int theNum,int user_id) {
+		List<StarRateVo> topRatedMovieOfUserList=starRateMapper.selectTopRatedMovieOfUser(theNum,user_id);	
+		return topRatedMovieOfUserList;
+	}
+	
+
+
 
 
 

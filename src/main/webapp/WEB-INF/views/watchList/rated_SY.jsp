@@ -72,7 +72,7 @@
 																</c:if>
 																<c:if test="${ sessionId != null }">
 																	<c:if test="${ movieVo.is_checked != 0 }">
-																		<div class="css-m9i0qw" style="background-color:red">평가함 ★ ${movieVo.scoreOfUser}</div>
+																		<div class="css-m9i0qw" >평가함 ★ ${movieVo.scoreOfUser}</div>
 																	</c:if>
 																	<c:if test="${ movieVo.is_checked == 0 }">
 																		<div class="css-m9i0qw">평점 ${movieVo.movie_rating}</div>

@@ -28,4 +28,18 @@ public class CollectionArtistServiceImpl implements CollectionArtistService {
 		System.out.println("selectDirector_like_id_list_size : "+directorLike_list.size());
 		return directorLike_list;
 	}
+	
+	//보관함 배우 #
+	@Override
+	public int selectActorCount(int user_id) {
+		int actorCount=collectionArtistMapper.selectActorCount(user_id);
+		return actorCount;
+	}
+
+	//보관함 감독 #
+	@Override
+	public int selectDirectorCount(int user_id) {
+		int directorCount=collectionArtistMapper.selectDirectorCount(user_id);
+		return directorCount;
+	}
 }
