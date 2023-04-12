@@ -51,9 +51,8 @@ public class WatchListController {
 
 	//평가한 페이지
 	@GetMapping("watchList/rated_SY")
-	public String rated_SY(Model model) {
-		//페이지 주인 @RequestParam int user_id
-		int user_id=3;
+	public String rated_SY(@RequestParam int user_id,Model model) {
+		//페이지 주인 
 		memberVo = memberService.selectOneMember(user_id);
 		System.out.println(memberVo);
 		//로그인 한 사람
@@ -78,14 +77,13 @@ public class WatchListController {
 		model.addAttribute("memberVo", memberVo); //페이지 주인 
 		model.addAttribute("movieStarRateList",movieStarRateList);//영화 모든 정보 + 개인 평가까지
 
-		return "watchList/rated_SY";
+		return "/watchList/rated_SY";
 	}
 	
 	//보는 중 페이지
 	@GetMapping("/watchList/watching_SY")
-	public String watching_SY(Model model) {
-		//페이지 주인 @RequestParam int user_id
-		int user_id=6;
+	public String watching_SY(@RequestParam int user_id,Model model) {
+		//페이지 주인 
 		memberVo = memberService.selectOneMember(user_id);
 		//로그인 한 사람
 		MemberVo loginVo=new MemberVo();
@@ -111,9 +109,8 @@ public class WatchListController {
 	
 	//보고싶은 페이지
 	@GetMapping("watchList/wishWatch_SY")
-	public String wishWatch_SY(Model model) {
-		//페이지 주인 @RequestParam int user_id
-		int user_id=6;
+	public String wishWatch_SY(@RequestParam int user_id,Model model) {
+		//페이지 주인 
 		memberVo = memberService.selectOneMember(user_id);
 		//로그인 한 사람
 		MemberVo loginVo=new MemberVo();
@@ -147,8 +144,6 @@ public class WatchListController {
 		Integer sessionId = (Integer) session.getAttribute("sessionId");
 		//평가한거 7개만 가져오기
 		List<MovieVo> movieStarRateList=movieService.selectPartOfMovieStarRate(7,user_id);
-		int starRateListSize=movieStarRateList.size();
-		System.out.println("starRateListSize"+starRateListSize);
 		//로그인 유저의 평가점수 가져오기
 		List<StarRateVo> ratedList=new ArrayList<StarRateVo>();
 		if(sessionId!=null) {
@@ -169,7 +164,6 @@ public class WatchListController {
 		
 		
 		model.addAttribute("memberVo", memberVo); //페이지 주인 
-		model.addAttribute("starRateListSize", starRateListSize);//별점 개수
 		model.addAttribute("watchingListSize", watchingListSize); //보는 중 개수
 		model.addAttribute("wishWatchListSize", wishWatchListSize); //보고 싶은 개수
 		model.addAttribute("movieStarRateList",movieStarRateList);//영화 모든 정보 + 개인 평가까지

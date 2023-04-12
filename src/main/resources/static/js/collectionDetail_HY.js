@@ -77,4 +77,8 @@ $(function(){
 		$("#declaration1").removeClass("declaration").addClass("css-pjxj5o");
 	});
 	
+	
+	
+	
+	
 });

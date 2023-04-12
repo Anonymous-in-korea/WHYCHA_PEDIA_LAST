@@ -43,6 +43,7 @@
 		</script>
 	</head>
 	<body>
+	<div id="ajaxMovieId" style="display:none;">${movieVo.id}</div>
 		<div id="root">
 			<div class="css-5jq76">
 				<div class="css-1xm32e0">
@@ -54,7 +55,7 @@
 							<header class="css-4g5dyy">
 								<div class="css-uf1ume">
 									<div class="css-0" style="float:left;">
-										<button class="e1t9gclr0 css-a6n3jw-StylelessButton-HeaderCloseButtonSelf-TopLeftButton e1k34u8y0" onclick="location.href='/myPage/myPage_SY">
+										<button class="e1t9gclr0 css-a6n3jw-StylelessButton-HeaderCloseButtonSelf-TopLeftButton e1k34u8y0" onclick="history.back()">
 											<img src="/images/arrow_btn.png" style="width:100%;">
 										</button>
 									</div>
@@ -173,7 +174,9 @@
 										<button aria-label="close" class="css-1d7tft4-StylelessButton-HeaderCloseButtonSelf e1k34u8y0"></button>
 									</div>
 									<div class="css-addMycollection">새 컬렉션</div>
-									<div class="css-collection_addcheck">확인</div>
+									<div class="css-collection_addcheck">
+										<button id="collectionRegister">확인</button>
+									</div>
 								</header>
 								<div class="css-1s8we4x">
 									<div class="css-oi2wld">
@@ -184,7 +187,7 @@
 														<div class="css-newcollection_input">
 															<label class="css-newcollection_label_first">
 																<div class="css-1smbjja">
-																	<input autocomplete="off" placeholder="컬렉션 제목" type="text" name="" id="" class="css-1oyrbwm" value="">
+																	<input autocomplete="off" placeholder="컬렉션 제목" type="text" id="collectionTile" class="css-1oyrbwm">
 																</div>
 															</label>
 														</div>
@@ -196,7 +199,7 @@
 																<div class="css-1smbjja">
 																	<!-- <input autocomplete="off" placeholder="설명입력하기.." type="text" name="" id="" class="css-1oyrbwm" value=""> -->
 															
-																	<textarea autocomplete="off" placeholder="설명 입력.." name="" id="" class="css-1oyrbwm" rows="4"></textarea>
+																	<textarea autocomplete="off" placeholder="설명 입력.."  id="collectionDesc" class="css-1oyrbwm" rows="4"></textarea>
 																</div>
 															</label>
 														</div>

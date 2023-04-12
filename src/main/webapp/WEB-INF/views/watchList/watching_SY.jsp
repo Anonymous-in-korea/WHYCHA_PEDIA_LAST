@@ -26,7 +26,7 @@
 								<header class="css-1mxbo8g-HeaderBarPrimitive">
 									<div class="css-uf1ume">
 										<div class="css-0">
-											<button class="e1t9gclr0 css-a6n3jw-StylelessButton-HeaderCloseButtonSelf-TopLeftButton e1k34u8y0" href="myPage/userPage_SY?user_id=${memberVo.id}"></button>
+											<button class="e1t9gclr0 css-a6n3jw-StylelessButton-HeaderCloseButtonSelf-TopLeftButton e1k34u8y0" onclick="history.back()"></button>
 										</div>
 										<div class="css-0"></div>
 									</div>

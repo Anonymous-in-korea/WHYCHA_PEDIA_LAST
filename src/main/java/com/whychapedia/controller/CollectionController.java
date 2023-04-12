@@ -2,15 +2,21 @@ package com.whychapedia.controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.whychapedia.service.CollectionCommentService;
 import com.whychapedia.service.CollectionService;
@@ -165,6 +171,21 @@ public class CollectionController {
 		model.addAttribute("collectionVo",collectionVo);//컬렉션 디테일
 		
 		return "/collection/collection_detail_HY";
+	}
+	
+	//랜덤기준
+	@RequestMapping("/collection/collectionInsert")
+	@ResponseBody 
+	public ResponseEntity<Map<String, Object>> collectionInsert(int user_id,String collection_name,String collection_desc,Model model) {
+		
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		//map.put("ratedCount", ratedCount);
+
+		
+		
+		return new ResponseEntity<>(map, HttpStatus.OK);
 	}
 	
 }
