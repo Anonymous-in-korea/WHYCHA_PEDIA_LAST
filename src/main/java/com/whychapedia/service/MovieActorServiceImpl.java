@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.whychapedia.mapper.MovieActorMapper;
 import com.whychapedia.vo.MovieActorVo;
+import com.whychapedia.vo.MovieVo;
 
 
 
@@ -27,8 +28,8 @@ public class MovieActorServiceImpl implements MovieActorService {
 	}
 	//해당 배우 아이디로 영화역할 가져오기
 	@Override
-	public List<MovieActorVo> selectActorPersonMovieRolelist(int id) {
-		List<MovieActorVo> actorPersonMovieRolelist = movieActorMapper.selectActorPersonMovieRolelist(id);
+	public List<MovieActorVo> selectActorPersonMovieRolelist(List<MovieVo> actorPersonMovieList,int id) {
+		List<MovieActorVo> actorPersonMovieRolelist = movieActorMapper.selectActorPersonMovieRolelist(actorPersonMovieList,id);
 		
 		return actorPersonMovieRolelist;
 	}

@@ -719,12 +719,12 @@
 		                                                                                <!-- foreach문 돌릴 부분 OTT start -->
 		                                                                                <c:forEach items="${movieOttVoList}" var="movieOttVo">
 		                                                                                <li class="css-wj6fn0">
-		                                                                                	<a href="${movieOttVo.provider_name}"
-																								target="_blank" title="카카오웹툰"
+		                                                                                	<a href="${movieOttVo.path_url}"
+																								target="_blank" title="${movieOttVo.provider_name}"
 		                                                                                        class="css-1wacncs-InnerPartOfListWithImage">
 			                                                                                    <div class="css-cssveg">
 			                                                                                        <div class="externalServiceOttIcon css-13zlig9">
-			                                                                                            <div class="css-1njml0y-ProfilePhotoImage"></div>
+			                                                                                            <div class="css-1njml0y-ProfilePhotoImage" style="background: url(${movieOttVo.logo_url})center center / cover no-repeat;"></div>
 			                                                                                        </div>
 			                                                                                    </div>
 			                                                                                    <div class="css-zoy7di">
@@ -740,25 +740,6 @@
 																						</li>
 																						</c:forEach>
 																						<!-- foreach문 돌릴 부분 OTT end-->	
-		                                                                                <li class="css-wj6fn0">
-		                                                                                	<a href="https://redirect.watcha.com/galaxy/aHR0cHM6Ly9saW5rLXBhZ2Uua2FrYW8uY29tL2dvdG9fdmlldz9zZXJpZXNfaWQ9NTA4NjY0ODEmcmVmZXJyZXI9dXRtX3NvdXJjZSUzRHdhdGNoX3BlZGlh"
-																								target="_blank" title="카카오페이지" class="css-1wacncs-InnerPartOfListWithImage">
-			                                                                                    <div class="css-cssveg">
-			                                                                                        <div class="externalServiceOttIcon css-13zlig9">
-			                                                                                            <div class="css-1oiaov4-ProfilePhotoImage"></div>
-			                                                                                        </div>
-			                                                                                    </div>
-			                                                                                    <div class="css-16n7af8">
-			                                                                                        <div class="externalServiceTitles css-qkf9j">
-			                                                                                            <div class="css-17vuhtq">카카오페이지</div>
-			                                                                                        </div>
-			                                                                                        <div>
-			                                                                                        	<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iOXB4IiBoZWlnaHQ9IjE0cHgiIHZpZXdCb3g9IjAgMCA5IDE0IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPHRpdGxlPkhvbWUvU2VjdGlvbi9IZWFkZXIvel9JdGVtcy9BcnJvdzwvdGl0bGU+CiAgICA8ZyBpZD0iSG9tZS9TZWN0aW9uL0hlYWRlci96X0l0ZW1zL0Fycm93IiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiBzdHJva2UtbGluZWNhcD0icm91bmQiPgogICAgICAgIDxwb2x5bGluZSBpZD0iUGF0aC1Db3B5LTYiIHN0cm9rZT0iI0E1QTVBQSIgc3Ryb2tlLXdpZHRoPSIyIiBwb2ludHM9IjEgMSA3IDcgMSAxMyI+PC9wb2x5bGluZT4KICAgIDwvZz4KPC9zdmc+"
-																											alt="Arrow">
-																									</div>
-			                                                                                    </div>
-			                                                                                </a>
-																						</li>
 		                                                                            </ul>
 		                                                                        </div>
 		                                                                    </div>

@@ -37,6 +37,48 @@
 		select count(*) like_count fROM comment_like 
 			where comment_id=#{comment.id}
 	</select>
+	<!-- 해당 감독 좋아요 추가 -->
+	<insert id="insertDirectorLike">
+		insert into director_like(id, director_id, user_id) values((select coalesce(max(id),0)+1 from director_like), #{director_id}, #{user_id})
+	</insert>
+	
+	<!-- 해당 감독 좋아요 삭제 -->
+	<delete id="deleteDirectorLike">
+		delete from director_like where director_id=#{director_id} and user_id=#{user_id}
+	</delete>
+	
+	<!-- 해당감독에 대한 좋아요 카운트 -->
+	<select id="selectDirectorLikeList" resultType="int">
+		select count(*) like_count fROM director_like 
+			where director_id=#{director_id}
+	</select>
+	
+	<!-- 해당배우에 대한 좋아요 총 카운트 -->
+	<select id="selectActorLikeList" resultType="int">
+		select count(*) like_count fROM actor_like 
+			where actor_id=#{actor_id}
+	</select>
+	
+	<!-- 	해당 유저가 해당 배우 좋아요 하는 갯수 가져오기  -->
+	<select id="selectActorLikeCount" parameterType="map" resultType="int">
+	    SELECT COUNT(*) FROM actor_like
+	    WHERE USER_ID = #{user_id} AND ACTOR_ID = #{actor_id}
+	</select>
+<!-- 	해당 유저가 해당 배우 좋아요 눌렀는지 체크 -->
+	<select id="checkActorLike" parameterType="map" resultType="int">
+	  SELECT COUNT(*) FROM collection_actor WHERE user_id = #{user_id} AND actor_id = #{actor_id}
+	</select>
+
+		<!-- 해당 배우 좋아요 추가 -->
+	<insert id="insertActorLike">
+		insert into actor_like(id, actor_id, user_id) values((select coalesce(max(id),0)+1 from actor_like), #{actor_id}, #{user_id})
+	</insert>
+	
+	<!-- 해당 배우 좋아요 삭제 -->
+	<delete id="deleteActorLike">
+		delete from actor_like where actor_id=#{actor_id} and user_id=#{user_id}
+	</delete>
+	
 
 
 </mapper>

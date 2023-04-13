@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.whychapedia.mapper.MovieOttMapper;
 import com.whychapedia.vo.MovieGenreVo;
 import com.whychapedia.vo.MovieOttVo;
+import com.whychapedia.vo.MovieVo;
 import com.whychapedia.vo.StarRateVo;
 
 @Service
@@ -40,4 +41,21 @@ public class MovieOttServiceImpl implements MovieOttService {
 		return movieOttVoList;
 	}
 
+
+	//해당 배우가 출연한 영화 리스트의 영화 ott가져오기
+	@Override
+	public List<MovieOttVo> selectActorPersonMovieOtt(List<MovieVo> actorPersonMovieList, int id) {
+		List<MovieOttVo> actorMovieOTTList= movieOttMapper.selectActorPersonMovieOtt(actorPersonMovieList,id);
+		return actorMovieOTTList;
+	}
+
+
+	//해당 감독이 출연한 영화 리스트의 영화 ott가져오기
+	@Override
+	public List<MovieOttVo> selectDirectorPersonMovieOtt(List<MovieVo> directorPersonMovieList, int id) {
+		List<MovieOttVo> directorMovieOTTList= movieOttMapper.selectDirectorPersonMovieOtt(directorPersonMovieList,id);
+		return directorMovieOTTList;
+	}
+
+	
 }

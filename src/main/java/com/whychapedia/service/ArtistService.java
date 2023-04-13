@@ -24,8 +24,11 @@ public interface ArtistService {
 	//해당검색어를 가지고 관련 감독 가져오기
 	List<ArtistVo> selectSearchDirectorAll(String searchKeyword);
 
-	//해당 id를 가지고 해당인물 정보 가져오기
-	List<ArtistVo> selectActorOnelist(int id);
+
+	//해당 배우id를 가지고 해당배우 정보 가져오기
+	ArtistVo selectActorOnelist(int id);
+	//해당 감독id를 가지고 해당감독 정보 가져오기
+	ArtistVo selectDirectorOnelist(int id);
 
 	//선호 배우 3명 
 	List<ArtistVo> selectPreferenceActor(int user_id);

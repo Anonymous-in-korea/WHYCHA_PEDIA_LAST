@@ -38,9 +38,14 @@
 	</select>
     <!-- 검색  -->
 	
+	
 	<!--해당id의 배우정보 가져오기  -->
 	<select id="selectActorOnelist" resultType="com.whychapedia.vo.ArtistVo">
 		select * from actor where id=#{id}
+	</select>
+	<!--해당id의 감독정보 가져오기  -->
+	<select id="selectDirectorOnelist" resultType="com.whychapedia.vo.ArtistVo">
+		select * from director where id=#{id}
 	</select>
 	
 	<!--선호 배우 3명 고유 아이디,인물 포스터,이름,출현 횟수-->
