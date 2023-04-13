@@ -21,6 +21,7 @@
 		
 		<script src="../js/login.js"></script>
 		<script src="../js/join.js"></script>
+		<script src="../js/collection.js"></script>
 		
 		<script>
 	    	$(function() {
@@ -43,7 +44,7 @@
 		</script>
 	</head>
 	<body>
-	<div id="ajaxMovieId" style="display:none;">${movieVo.id}</div>
+	<div id="ajaxMemberId" style="display:none;">${memberVo.id}</div>
 		<div id="root">
 			<div class="css-5jq76">
 				<div class="css-1xm32e0">
@@ -134,7 +135,7 @@
 													<div class="css-1on8oyq">${collectionVo.collection_desc}</div>
 													<div class="css-hsecj5">
 														<div class="css-1j0k1vy">
-															<div style="background: url(${collectionVo.user_pic_url}) center center / cover no-repeat;"  class="css-q29adr-ProfilePhotoImage"></div>
+															<div style="background: url(${memberVo.user_pic_url}) center center / cover no-repeat;"  class="css-q29adr-ProfilePhotoImage"></div>
 														</div>
 														${memberVo.user_name}
 													</div>
@@ -187,7 +188,7 @@
 														<div class="css-newcollection_input">
 															<label class="css-newcollection_label_first">
 																<div class="css-1smbjja">
-																	<input autocomplete="off" placeholder="컬렉션 제목" type="text" id="collectionTile" class="css-1oyrbwm">
+																	<input autocomplete="off" placeholder="📌컬렉션 제목을 입력해주세요" type="text" id="collectionTitle" class="css-1oyrbwm">
 																</div>
 															</label>
 														</div>
@@ -199,7 +200,7 @@
 																<div class="css-1smbjja">
 																	<!-- <input autocomplete="off" placeholder="설명입력하기.." type="text" name="" id="" class="css-1oyrbwm" value=""> -->
 															
-																	<textarea autocomplete="off" placeholder="설명 입력.."  id="collectionDesc" class="css-1oyrbwm" rows="4"></textarea>
+																	<textarea autocomplete="off" placeholder="🎬300자 이내로 컬렉션을 설명해주세요" id="collectionDesc" class="css-1oyrbwm" rows="4"></textarea>
 																</div>
 															</label>
 														</div>

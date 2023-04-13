@@ -18,4 +18,9 @@ public interface CollectionService {
 	public List<CollectionVo> insertMoviePostUrlArray(List<MovieCollectionVo> movieCollectionVoList,List<CollectionVo> collectionVoList);
 	//해당 유저 아이디의 콜렉션 개수
 	public int selectCollectionCount(int user_id);
+	//컬렉션 넣기
+	public int insertCollection(int user_id, String collection_name, String collection_desc);
+	//해당 유저의 가장 최근 업뎃한 컬렉션 가져오기
+	public CollectionVo selectLatestUpdate(int user_id);
+
 }

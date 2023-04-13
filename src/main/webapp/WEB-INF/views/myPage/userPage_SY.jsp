@@ -121,7 +121,7 @@
 														<div class="css-1gry5r7">
 														<!--유저 프로필 이미지 -->
 														<c:if test="${memberVo.user_pic_url != '0' }">
-															<div class="css-h6h0rq-ProfilePhotoImage" style="background-image:url('${memberVo.user_pic_url}')"></div>
+															<div class="css-h6h0rq-ProfilePhotoImage"  style="background-image:url('${memberVo.user_pic_url}')"></div>
 														</c:if>
 														<c:if test="${memberVo.user_pic_url == '0' }">
 															<div class="css-h6h0rq-ProfilePhotoImage"></div>

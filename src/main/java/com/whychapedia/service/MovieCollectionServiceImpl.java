@@ -98,4 +98,6 @@ public class MovieCollectionServiceImpl implements MovieCollectionService {
 		return selectCollectionVoWithMoviePostUrlList;
 	}
 
+
+
 }

@@ -15,6 +15,8 @@ public interface MovieCollectionService {
 
 	List<MovieCollectionVo> selectCollectionVoWithMoviePostUrlList(List<CollectionVo> collectionVoList);
 
+	
+
 
 
 }

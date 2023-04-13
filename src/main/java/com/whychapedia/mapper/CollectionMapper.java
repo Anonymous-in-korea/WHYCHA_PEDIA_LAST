@@ -25,5 +25,11 @@ public interface CollectionMapper {
 	
 	//영화 컬렉션 개수
 	int selectCollectionCount(int user_id);
+	
+	//콜렉션 넣기
+	int insertCollection(int user_id, String collection_name, String collection_desc);
+
+	//해당 유저의 가장 최근 업뎃한 컬렉션 가져오기
+	CollectionVo selectLatestUpdate(int user_id);
 
 }

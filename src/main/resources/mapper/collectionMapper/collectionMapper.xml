@@ -37,5 +37,16 @@
 	select count(*) from collection where user_id=#{user_id} 
 	</select>
 	
+	<!--해당 user_id 컬렉션 넣기 -->
+	<insert id="insertCollection">
+	insert into collection values((select coalesce(max(id),0)+1 from collection), #{user_id}, #{collection_name},#{collection_desc})
+	</insert>
+	
+	<!--해당 유저의 가장 최근 업뎃한 컬렉션 가져오기-->
+	<select id="selectLatestUpdate" resultType="com.whychapedia.vo.CollectionVo">
+	select * from collection where user_id=#{user_id}
+	order by id desc fetch first 1 rows only
+	</select>
+	
 	
 </mapper>

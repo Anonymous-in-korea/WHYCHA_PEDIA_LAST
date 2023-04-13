@@ -82,4 +82,21 @@ public class CollectionServiceImpl implements CollectionService {
 		int collectionCount=collectionMapper.selectCollectionCount(user_id);
 		return collectionCount;
 	}
+
+	//콜렉션 넣기
+	@Override
+	public int insertCollection(int user_id, String collection_name, String collection_desc) {
+		int result=collectionMapper.insertCollection(user_id,collection_name,collection_desc);
+		return result;
+	}
+
+	//해당 유저의 가장 최근 업뎃한 컬렉션 가져오기
+	@Override
+	public CollectionVo selectLatestUpdate(int user_id) {
+		collectionVo=collectionMapper.selectLatestUpdate(user_id);
+		return collectionVo;
+	}
+
+
+
 }

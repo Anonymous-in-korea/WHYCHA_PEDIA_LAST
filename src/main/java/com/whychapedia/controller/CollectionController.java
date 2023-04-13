@@ -173,17 +173,21 @@ public class CollectionController {
 		return "/collection/collection_detail_HY";
 	}
 	
-	//랜덤기준
+	//콜렉션 넣기 ajax
 	@RequestMapping("/collection/collectionInsert")
 	@ResponseBody 
 	public ResponseEntity<Map<String, Object>> collectionInsert(int user_id,String collection_name,String collection_desc,Model model) {
-		
-		
 		Map<String, Object> map = new HashMap<>();
-		
-		//map.put("ratedCount", ratedCount);
-
-		
+		//콜렉션 넣기
+		int result=collectionService.insertCollection(user_id,collection_name,collection_desc);
+		System.out.println("insertCollection"+result);
+		//유저정보
+		memberVo=memberService.selectOneMember(user_id);
+		//업뎃한거 가져오기
+		collectionVo=collectionService.selectLatestUpdate(user_id);
+			
+		map.put("memberVo", memberVo);
+		map.put("collectionVo", collectionVo);
 		
 		return new ResponseEntity<>(map, HttpStatus.OK);
 	}
