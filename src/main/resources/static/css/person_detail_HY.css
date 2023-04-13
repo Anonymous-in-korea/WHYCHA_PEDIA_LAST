@@ -348,9 +348,13 @@ hr {
 }
 
 #perLike{cursor:pointer;}
-.on{background-color:rgb(255, 47, 110); }
+.on{background-color:#ff7f27; }
 
 /*         좋아요 버튼 */
+
+#likeIcon{
+	max-width: 50%; max-height: 50%;
+}
 .css-1ski1qz-StylelessButton-StyledActionButton {
        background: none;
        padding: 0;
@@ -901,7 +905,7 @@ hr {
       }
       
       .css-1uf1oz6 {
-          background: url(https://an2-img.amz.wtchn.net/image/v1/updatable_images/2571/original/42e70f1bc34d7af54478a311983ecf6d3601eefa.png) no-repeat center;
+/*           background: url(https://an2-img.amz.wtchn.net/image/v1/updatable_images/2571/original/42e70f1bc34d7af54478a311983ecf6d3601eefa.png) no-repeat center; */
           background-size: 15.5px;
           box-sizing: border-box;
           width: 24px;
@@ -910,6 +914,7 @@ hr {
           border: 1px solid rgba(0, 0, 0, 0.07);
           border-radius: 50%;
           margin-right: 3px;
+          display: inline-block;
       }
       
       .css-1gh9vn6 {

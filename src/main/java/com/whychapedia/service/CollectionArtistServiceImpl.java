@@ -42,4 +42,44 @@ public class CollectionArtistServiceImpl implements CollectionArtistService {
 		int directorCount=collectionArtistMapper.selectDirectorCount(user_id);
 		return directorCount;
 	}
+	//해당 유저가 해당 감독 컬렉션에 넣었는지 확인
+		@Override
+		public boolean checkCollectionDirector(int user_id, int director_id) {
+			 int collectCount = collectionArtistMapper.checkCollectionDirector(user_id, director_id);
+			  return collectCount > 0;
+		}
+		
+
+		//해당 감독 구독컬렉션 추가하기 //ajax로 해당 유저의 감독컬레션 추가하기
+		@Override
+		public int insertCollectionDirector(int user_id, int director_id) {
+			int collectionDirectorResult= collectionArtistMapper.insertCollectionDirector(user_id,director_id);
+			
+			return collectionDirectorResult;
+		}
+
+		//해당 감독 구독 컬렉션 취소하기// //ajax로 해당 유저의 감독컬레션 취소하기
+		@Override
+		public int deleteCollectionDirector(int user_id, int director_id) {
+
+			int collectionDirectorDeleteResult= collectionArtistMapper.deleteCollectionDirector(user_id,director_id);
+			
+			return collectionDirectorDeleteResult;
+		}
+
+		//해당 배우 구독컬렉션 추가하기 //ajax로 해당 유저의 배우컬레션 추가하기
+		@Override
+		public int insertCollectionActor(int user_id, int actor_id) {
+			int collectionActorResult= collectionArtistMapper.insertCollectionActor(user_id,actor_id);
+			
+			return collectionActorResult;
+		}
+		//해당 배우 구독 컬렉션 취소하기// //ajax로 해당 유저의 배우컬레션 취소하기
+		@Override
+		public int deleteCollectionActor(int user_id, int actor_id) {
+			int collectionActorDeleteResult= collectionArtistMapper.deleteCollectionActor(user_id,actor_id);
+			
+			return collectionActorDeleteResult;
+		}
+	
 }

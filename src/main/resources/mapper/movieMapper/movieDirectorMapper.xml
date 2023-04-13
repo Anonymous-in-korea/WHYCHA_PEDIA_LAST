@@ -17,6 +17,18 @@
   		WHERE md.movie_id = #{movie_id}		
  		 
  </select>	
+   <!-- 해당 영화의 감독역할  가져오기  -->
+ <select id="selectDirectorPersonMovieRolelist" resultType="com.whychapedia.vo.MovieDirectorVo">
+	SELECT m.id, md.director_role, d.director_name,md.director_id
+	FROM director d
+	INNER JOIN movie_director md ON d.ID = md.DIRECTOR_ID
+	INNER JOIN movie m ON md.MOVIE_ID = m.ID
+	WHERE md.movie_id IN (
+		<foreach collection="directorPersonMovieList" item="movieVo" separator=",">
+			#{movieVo.id}
+		</foreach>
+	) AND md.director_id = #{id}
+</select>
 
  
  </mapper>

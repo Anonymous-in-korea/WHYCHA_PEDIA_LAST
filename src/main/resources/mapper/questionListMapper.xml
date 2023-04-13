@@ -6,7 +6,16 @@
 
 	<!--전체 질문게시판 가져오기  -->
 	<select id="selectQuestionListAll" resultType="com.whychapedia.vo.QuestionListVo">
-		select * from question_list where user_id=#{sessionId}
+<!-- 		select * from question_list where user_id=#{sessionId} -->
+		SELECT *
+		FROM (
+		  SELECT 
+		    ID, QUESTION_TITLE, QUESTION_CONTENT, QUESTION_FILE_URL, USER_ID, REGI_DATE, PROCESSING_STATU, 
+		    ROW_NUMBER() OVER (ORDER BY REGI_DATE DESC) AS RN
+		  FROM question_list
+		  WHERE USER_ID = #{sessionId}
+		)
+		WHERE RN BETWEEN 1 AND 5
 	</select>
 	<!--questionId에 해당하는 질문내용 가져오기  -->
 	<select id="selectQuestionOne" resultType="com.whychapedia.vo.QuestionListVo">
@@ -16,4 +25,10 @@
 	<insert id="insertQuestionList">
 		insert into question_list values (11,#{question_title},#{question_content},0,6,sysdate,1)
 	</insert>
+	<!-- 	전체 게시판 데이터 수를 가져오기 -->
+	<select id="getTotalCount" resultType="int">
+	  	SELECT COUNT(*)
+	 	 FROM question_list
+		 WHERE USER_ID = #{sessionId}
+	</select>
 </mapper>

@@ -18,11 +18,16 @@ public class QuestionListServiceImpl implements QuestionListService {
 	@Autowired
     AnswerListMapper answerListMapper;
 
+
+	
+	
 	@Override//게시글 전체 가져오기
-	public List<QuestionListVo> selectQuestionListAll(int sessionId) {
-		List<QuestionListVo> list = questionListMapper.selectQuestionListAll(sessionId);
-		System.out.println("selectQuestionListAll_list_size"+list.size());
-		return list;
+	public List<QuestionListVo> selectQuestionListAll(int page, int sessionId) {
+
+	
+	    int start = (page - 1) * 5;
+	    List<QuestionListVo> list = questionListMapper.selectQuestionListAll(sessionId, start, 5);
+	    return list;
 	}
 
 	@Override // question id 하나 가지고 해당하는 행 전체 가져오기
@@ -35,6 +40,12 @@ public class QuestionListServiceImpl implements QuestionListService {
 	public void insertQuestionList(QuestionListVo questionListVo) {
 		questionListMapper.insertQuestionList(questionListVo);
 		
+	}
+
+	//전체 게시판 데이터 수를 가져오기
+	@Override
+	public int getTotalCount(int sessionId) {
+		return questionListMapper.getTotalCount(sessionId);
 	}
 
 
