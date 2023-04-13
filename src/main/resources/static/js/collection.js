@@ -2,6 +2,7 @@ $(function(){
 /*                           컬렉션 등록 ajax                   */
 	
 	$("#collectionRegister").click(function(){
+		var popUpWindow = $(".css-collection_popUp2");
 		var user_id = $("#ajaxMemberId").text();
 		var collectionTitle = $('#collectionTitle').val();
 		var collectionDesc = $('#collectionDesc').val();
@@ -9,7 +10,7 @@ $(function(){
 		console.log("여기");
 		console.log($('#collectionTitle').val());
 		console.log($('#collectionDesc').val());
-		if(collectionTitle!=null && collectionDesc!=null){	
+		if(collectionTitle.length!=0 && collectionDesc.length!=0){	
 			$.ajax({
 			    url: url,
 				type: 'POST',
@@ -20,7 +21,7 @@ $(function(){
 		    		// 동적으로 생성하는 부분
 		    		let html = ''; 
 					html+='<li class="css-ovtvwa">'; 
-					html+='<a title="'+response.collectionVo.collection_name+'"class="css-1f9m1s4-StylelessLocalLink eovgsd01" href="/collection/collection_detail_HY?collection_id='+response.collectionVo.id+'">';
+					html+='<a title="'+response.collectionVo.collection_name+'"class="css-1f9m1s4-StylelessLocalLink eovgsd01" href="/collection/collection_detail_HY?collection_id='+response.collectionVo.id+'&user_id='+response.memberVo.id+'">';
 					html+='<div class="css-m7az3s">';						
 					html+='<div class="css-1sarkww">';								
 					html+='<div class="css-vc4xb">';
@@ -58,14 +59,24 @@ $(function(){
 					html+='</div>';
 					html+='</a>';
 					html+='</li>';
-					$('.css-1ut4alo-VisualUl').append(html);				   
+					$('.css-1ut4alo-VisualUl').append(html);
+					$('#collectionTitle').val('');
+  					$('#collectionDesc').val('');
+			  		popUpWindow.hide(); 
+									   
 			 	},//성공
 			 	error: function() {
 			    	alert("오류로 인해 확인이 되지 않았습니다. 다시 입력해주세요.");
-			  	}//실패
+			  	}
 			  });//ajax끝
 			 }else{//제목과 설명을 안적었을때
-					 alert("컬렉션 제목을 입력해주세요"); 
+			 	if(collectionTitle.length==0){
+					alert("컬렉션 제목을 입력해주세요"); 
+			 		$('#collectionTitle').focus();
+				 }else{
+					 alert("컬렉션 내용을 입력해주세요"); 
+					 $('#collectionDesc').focus();
+				 }
 			 }
 	
 		

@@ -15,6 +15,8 @@ public interface MovieCollectionService {
 
 	List<MovieCollectionVo> selectCollectionVoWithMoviePostUrlList(List<CollectionVo> collectionVoList);
 
+	int insertDefaultMovie(int collection_id);
+
 	
 
 

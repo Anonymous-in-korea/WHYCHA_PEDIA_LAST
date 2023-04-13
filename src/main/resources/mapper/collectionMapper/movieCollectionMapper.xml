@@ -29,4 +29,10 @@
 	</select>
 	
 	
+	<!--업뎃한 콜렉션에 디폴트로 영화 한개 넣기-->
+	<insert id="insertDefaultMovie">
+	 	INSERT INTO movie_collection values ((select coalesce(max(id),0)+1 from movie_collection), 0, #{collection_id})
+	</insert>
+	
+	
 </mapper>
