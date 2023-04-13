@@ -339,25 +339,55 @@ $(function() {
 	/* 마우스로 클릭하면 색깔변화 (로그인 후) ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
     	/* 보고싶어요_box start ----------------------------------------------------------------------------------------------------------------- */
     	$("#wish_btn_login").on("click", function() {
-			if ( $(this).hasClass("active") ) {
+			let button = $(this);
+			let wishWatch = button.hasClass("active") ? 0 : 1;
+    		let movieVoId = $("#ajaxMovieId").text();
+ 			let isWatching = $("#watch_btn_login").hasClass("active") ? 0 : 1;     
+			if ( $(this).hasClass("active") ) {//보고 싶지 않아요 
 				$(this).removeClass("active");
 				$("#plus_icon").css({"display":"block"});
 				$("#wish_flag_icon").css({"display":"none"});
 				$("#wish_text").css({"color":""});
 				$(".css-sd2jre-SectionBlock").hide();
+				wishWatch = 1; 
+				$.ajax({
+					type:"post",
+					url:"/contents/wishWatch",
+					data:{"movie_id":parseInt(movieVoId),"wishWatch":parseInt(wishWatch),"isWatching":parseInt(isWatching)},
+					dataType:"json",
+					success:function(response){
+						alert("성공");
+					},
+					error:function(){
+					}
+				}); //ajax
 			} else {
 				$(this).addClass("active");
 				$("#plus_icon").css({"display":"none"});
 				$("#wish_flag_icon").css({"display":"block"});
 				$("#wish_text").css({"color":"#FEAE27"});
+				wishWatch = 0; 
+				$.ajax({
+					type:"post",
+					url:"/contents/wishWatch",
+					data:{"movie_id":parseInt(movieVoId),"wishWatch":parseInt(wishWatch),"isWatching":parseInt(isWatching)},
+					dataType:"json",
+					success:function(response){
+						alert("성공");
+					},
+					error:function(){
+					}
+				}); //ajax
 				if ( $("#watch_btn_login").hasClass("active") ) {
 					$("#watch_btn_login").removeClass("active");
 					$("#eye_icon").css({"display":"block"});
 					$("#eye_icon_color").css({"display":"none"});
-					$("#watch_text").css({"color":""});
+					$("#watch_text").css({"color":""});	
 				}
 				if ( $(".css-sd2jre-SectionBlock").css("display") == "none" ) { $(".css-sd2jre-SectionBlock").show(); }
 			}
+			
+			
 		});
 		/* 보고싶어요_box end ----------------------------------------------------------------------------------------------------------------- */
 		
@@ -391,17 +421,45 @@ $(function() {
 		
 		/* 보는중_box start ----------------------------------------------------------------------------------------------------------------- */
 		$("#watch_btn_login").on("click", function() {
+			let button = $(this);
+			let isWatching = button.hasClass("active") ? 0 : 1;
+    		let movieVoId = $("#ajaxMovieId").text();
+ 			let wishWatch = $("#wish_btn_login").hasClass("active") ? 0 : 1;     
 			if ( $(this).hasClass("active") ) {
 				$(this).removeClass("active");
 				$("#eye_icon").css({"display":"block"});
 				$("#eye_icon_color").css({"display":"none"});
 				$("#watch_text").css({"color":""});
 				$(".css-sd2jre-SectionBlock").hide();
+				isWatching = 1; 
+				$.ajax({
+					type:"post",
+					url:"/contents/watching",
+					data:{"movie_id":parseInt(movieVoId),"wishWatch":parseInt(wishWatch),"isWatching":parseInt(isWatching)},
+					dataType:"json",
+					success:function(response){
+						alert("성공");
+					},
+					error:function(){
+					}
+				}); //ajax
 			} else {
 				$(this).addClass("active");
 				$("#eye_icon").css({"display":"none"});
 				$("#eye_icon_color").css({"display":"block"});
 				$("#watch_text").css({"color":"#FEAE27"});
+				isWatching = 0; 
+				$.ajax({
+					type:"post",
+					url:"/contents/watching",
+					data:{"movie_id":parseInt(movieVoId),"wishWatch":parseInt(wishWatch),"isWatching":parseInt(isWatching)},
+					dataType:"json",
+					success:function(response){
+						alert("성공");
+					},
+					error:function(){
+					}
+				}); //ajax
 				if ( $("#wish_btn_login").hasClass("active") ) {
 					$("#wish_btn_login").removeClass("active");
 					$("#plus_icon").css({"display":"block"});

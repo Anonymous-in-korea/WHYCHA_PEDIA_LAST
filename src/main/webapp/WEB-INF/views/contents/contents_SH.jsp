@@ -171,6 +171,7 @@
                                                                 			<img src="/images/wish_flag_icon.png" id="wish_flag_icon" style="display:none;">
                                                                 		</div>
 	                                                                	<strong id="wish_text" style="margin-right:15px;">보고싶어요</strong>
+	                                                                	</button>
 																	</c:if>
 																	<c:if test="${ sessionId != null }">
 																		<c:if test="${ isWishWatch == 1 }"> <!-- 1: 보고싶어요 체크  -->
@@ -180,6 +181,7 @@
 	                                                                			<img src="/images/wish_flag_icon.png" id="wish_flag_icon" style="display:block;">
 	                                                                		</div>
 		                                                                	<strong id="wish_text" style="margin-right:15px; color:#FEAE27;">보고싶어요</strong>
+		                                                                	</button>
 	                                                            		</c:if>
 	                                                            		<c:if test="${ isWishWatch == 0 }"> <!-- 0: 보고싶어요 안 체크  -->
 	                                                            			<button class="css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm e1svyhwg25" id="wish_btn_login">
@@ -188,9 +190,10 @@
 	                                                                			<img src="/images/wish_flag_icon.png" id="wish_flag_icon" style="display:none;">
 	                                                                		</div>
 		                                                                	<strong id="wish_text" style="margin-right:15px; color:;">보고싶어요</strong>
+		                                                                	</button>
 	                                                            		</c:if>
 																	</c:if>
-	                                                            	</button>
+	                                                            	
 	                                                            	
 	                                                            	
 	                                                            	
@@ -228,8 +231,8 @@
 																		<c:if test="${ isWatching == 1 }"> <!-- 1: 보는중 체크  -->
 		                                                            		<button class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23 active" id="watch_btn_login">
 			                                                                <div class="select_image">
-			                                                                    <img src="/images/eye_icon.png" id="eye_icon" style="display:block;">
-			                                                                    <img src="/images/eye_icon_color.png" id="eye_icon_color" style="display:none;">
+			                                                                    <img src="/images/eye_icon.png" id="eye_icon" style="display:none;">
+			                                                                    <img src="/images/eye_icon_color.png" id="eye_icon_color" style="display:block;">
 			                                                                </div>
 			                                                                <strong id="watch_text" style="margin-right:15px; color:#FEAE27;">보는중</strong>
 		                                                            	</c:if>

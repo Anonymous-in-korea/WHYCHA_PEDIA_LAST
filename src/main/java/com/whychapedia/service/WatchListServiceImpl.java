@@ -34,6 +34,20 @@ public class WatchListServiceImpl implements WatchListService {
 		int selectCountWatchList=watchListMapper.selectCountWatchList(type,user_id);
 		return selectCountWatchList;
 	}
+
+	//watch_list 삭제
+	@Override
+	public int deleteWatchList(int type, int user_id, int movie_id) {
+		int deleteWatchList=watchListMapper.deleteWatchList(type,user_id,movie_id);
+		return deleteWatchList;
+	}
+
+	//watch_list 등록
+	@Override
+	public int insertWatchList(int type, int user_id, int movie_id) {
+		int insertWatchList=watchListMapper.insertWatchList(type,user_id,movie_id);
+		return insertWatchList;
+	}
 	
 
 

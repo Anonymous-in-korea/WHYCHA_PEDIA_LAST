@@ -14,6 +14,12 @@
  		select count(*) from watch_list where watch_list_type=#{type} and user_id=#{user_id}
 	</select>
 	
-
+	<delete id="deleteWatchList">
+		delete watch_list where watch_list_type=#{type} and user_id=#{user_id} and movie_id=#{movie_id}
+	</delete>
+	
+	<insert id="insertWatchList">
+		insert into watch_list values((select coalesce(max(id),0)+1 from watch_list),#{type},#{movie_id},#{user_id},sysdate)
+	</insert>
 	
   </mapper>
