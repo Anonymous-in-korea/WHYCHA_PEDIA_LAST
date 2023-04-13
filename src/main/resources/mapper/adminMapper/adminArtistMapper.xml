@@ -25,5 +25,41 @@
 		join movie_director md on d.id = md.director_id join movie m on md.movie_id = m.id
 		group by d.id ) order by d.id, m.movie_rating desc
 	</select>
+	
+	
+	
+	<!-- 감독 인적사항 입력 -->
+	<insert id="directorInput">
+		insert into director values ( ( select coalesce ( max ( id ), 0 ) + 1 from director ), #{director_name}, #{director_post_url} )
+	</insert>
+
+	<!-- 배우 인적사항 입력 -->
+	<insert id="actorInput">
+		insert into actor values ( ( select coalesce ( max ( id ), 0 ) + 1 from actor ), #{actor_name}, #{actor_post_url} )
+	</insert>
+	
+	
+	
+	<!-- 감독정보 가져오기 -->
+	<select id="directorDetailView" resultType="com.whychapedia.vo.ArtistVo">
+		select id, director_name as artist_name, director_post_url as artist_post_url from director where id = #{director_id}
+	</select>
+	
+	<!-- 배우정보 가져오기 -->
+	<select id="actorDetailView" resultType="com.whychapedia.vo.ArtistVo">
+		select id, actor_name as artist_name, actor_post_url as artist_post_url from actor where id = #{actor_id}
+	</select>
+	
+	
+	
+	<!-- 감독정보 수정하기 -->
+	<update id="directorModify">
+		update director set director_name = #{artist_name}, director_post_url = #{artist_post_url} where id = #{director_id}
+	</update>
+	
+	<!-- 배우정보 수정하기 -->
+	<update id="actorModify">
+		update actor set actor_name = #{artist_name}, actor_post_url = #{artist_post_url} where id = #{actor_id}
+	</update>
 
 </mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whychapedia.mapper.AdminReportMapper">
+
+	<!-- admin 신고사항 list query구문 -->
+	<select id="adminReportList" resultType="com.whychapedia.vo.ReportVo">
+		select * from
+		( select rownum rnum, r.id, r.comment_id, w.user_name as user_name, r.regi_date, r.reported_reason, a.admin_name as admin_name, r.processing_date, r.report_result
+		from report r join wuser w on r.reported_by_user = w.id left join admin a on r.admin_id = a.id
+		order by r.regi_date desc )
+		where rnum between 1 and 5
+	</select>
+
+	<!-- admin 신고사항 list_All query구문 -->
+	<select id="adminReportListAll" resultType="com.whychapedia.vo.ReportVo">
+		select r.*, c.movie_id, c.user_id, c.comment_content, c.is_blind, c.is_spoil, c.user_name, c.movie_kor_title
+		from report r, ( select wc.*, wu.user_name, m.movie_kor_title from wcomment wc, wuser wu, movie m where wc.movie_id = m.id and wc.user_id = wu.id ) c
+		where r.reported_by_user = c.user_id
+	</select>
+
+	<!-- admin 신고사항 comment_list query구문 -->
+	<select id="adminCommentListAll" resultType="com.whychapedia.vo.CommentVo">
+		select * from
+		( select w.id, w.movie_id, w.user_id, u.user_name as user_name, w.comment_content, w.regi_date, w.is_blind, w.is_spoil from wcomment w, wuser u where w.user_id = u.id order by w.regi_date desc )
+	</select>
+	
+	
+	
+	
+	
+	<!-- admin 신고사항 list_All query구문 -->
+	<select id="adminReportSelectOne" resultType="com.whychapedia.vo.ReportVo">
+		select * from
+		( select r.id, r.comment_id, r.reported_by_user, w.user_name as user_name, r.regi_date, r.reported_reason, a.admin_name as admin_name, r.processing_date, r.report_result
+		from report r, wuser w, admin a where r.reported_by_user = w.id and r.admin_id = a.id ) where id = #{id}
+	</select>
+
+	<!-- admin 신고사항 comment_list query구문 -->
+	<select id="adminCommentSelectOne" resultType="com.whychapedia.vo.CommentVo">
+		select * from
+		( select w.id, w.movie_id, w.user_id, u.user_name as user_name, w.comment_content, w.regi_date, w.is_blind, w.is_spoil from wcomment w, wuser u where w.user_id = u.id )
+		where id = #{id}
+	</select>
+	
+</mapper>

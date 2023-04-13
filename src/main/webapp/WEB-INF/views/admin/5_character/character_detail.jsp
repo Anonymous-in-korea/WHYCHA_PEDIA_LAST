@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -17,14 +18,18 @@
 		<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 		<!-- 이거 side_nav 작동하는 script임 -->
 		<script src="/js/admin/scripts.js"></script>
-		
-		<script src="/js/admin_logout.js"></script>
+		<script src="/js/admin/admin_logout.js"></script>
 	</head>
 	<body class="sb-nav-fixed">
 	    <div id="layoutSidenav">
 	        <div id="layoutSidenav_nav">
 				<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-					<a href="/admin/admin_index"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+					<c:if test="${ adminSessionEmail != null }">
+                	<a href="/admin/admin_index"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+                	</c:if>
+                	<c:if test="${ adminSessionEmail == null }">
+                	<a href="/admin/whycha_pedia_admin_login"><img src="/images/no1_WHYCHA_NONBACK.png" class="logo"></a>
+                	</c:if>
 					<%@ include file="../fragment/sidefooter.jsp" %>
 					<%@ include file="../fragment/sidenav.jsp" %>
 				</nav>
@@ -41,14 +46,15 @@
                                 인물관리
                             </div>
                             <div class="card-body">
-                                <table id="">
+                                <table>
 									<tr>
-	                                    <img src="/images/slamdunk.jpg">
-	                                    <p style="font-size:25px; margin-left:50px;"><strong>[슬램덩크]</strong></p>
-									</tr>
-									<tr>
-	                                    <p id="biotitle" th:if="${character.perBiography} != null">바이오그래피</p>
-	                                    <p style="margin-left:50px;">바이오그래프 들어가는 공간인데 내가 지금 넣을게 없다 시부럴거 뭘 써서 맞춰야하는지도 모르것고 아~ 집에 가고싶다!!!</p>
+	                                    <img src="${ artistVo.artist_post_url }">
+	                                    <c:if test="${ director_id != null }">
+	                                    <p style="font-size:25px; margin-left:50px;"><strong>[ ${ artistVo.director_name } ]</strong></p>
+	                                    </c:if>
+	                                    <c:if test="${ director_id == null }">
+	                                    <p style="font-size:25px; margin-left:50px;"><strong>[ ${ artistVo.actor_name } ]</strong></p>
+	                                    </c:if>
 									</tr>
                                 </table>
                             </div>

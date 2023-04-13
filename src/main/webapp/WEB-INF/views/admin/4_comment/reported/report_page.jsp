@@ -18,7 +18,7 @@
 		<!-- 이거 side_nav 작동하는 script임 -->
     
 		<script src="/js/admin/scripts.js"></script>
-		<script src="/js/admin_logout.js"></script>
+		<script src="/js/admin/admin_logout.js"></script>
 		
 		<style>
 			.middle_word {
@@ -78,7 +78,8 @@
 		                    				<colgroup>
 												<col width="6%">
 												<col width="14%">
-												<col width="30%">
+												<col width="15%">
+												<col width="15%">
 												<col width="10%">
 												<col width="10%">
 												<col width="10%">
@@ -94,6 +95,11 @@
 		                    						<th data-sortable="true" style="text-align:center;">
 		                    							<a href="" class="datatable-sorter">
 		                    								신고자
+		                    							</a>
+		                    						</th>
+		                    						<th data-sortable="true" style="text-align:center;">
+		                    							<a href="" class="datatable-sorter">
+		                    								댓글이 작성된 영화
 		                    							</a>
 		                    						</th>
 		                    						<th data-sortable="true" style="text-align:center;">
@@ -125,19 +131,19 @@
 		                    				</thead>
 		                    				<!-- c:foreach로 반복 돌리기 -->
 		                    				<tbody>
-		                    					<c:if test="${ result == 1 }">
 		                    					<c:forEach items="${ adminReportListAll }" var="reportList">
 		                    					<tr>
 		                    						<td>${ reportList.id }</td>
 		                    						<td>${ reportList.user_name }</td>
-		                    						<td>
-		                    							<c:forEach items="${ adminCommentListAll }" var="commentList">
-		                    							<c:if test="${ reportList.reported_by_user == commentList.user_id }">
-		                    							<a href="/admin/4_comment/reported/report_reply?id=${ reportList.id }">
-		                    								${ commentList.comment_content }
+		                    						<td style="height:41px; overflow:hidden;">
+		                    							<a href="?id=${ reportList.id }">
+		                    								${ reportList.movie_kor_title }
 		                    							</a>
-		                    							</c:if>
-		                    							</c:forEach>
+		                    						</td>
+		                    						<td style="height:41px; overflow:hidden;">
+		                    							<a href="/admin/4_comment/reported/report_reply?id=${ reportList.id }">
+		                    								${ reportList.comment_content }
+		                    							</a>
 		                    						</td>
 		                    						<td>${ reportList.reported_reason }</td>
 		                    						<td>${ reportList.regi_date }</td>
@@ -161,7 +167,6 @@
 		                    						</c:if>
 		                    					</tr>
 		                    					</c:forEach>
-		                    					</c:if>
 		                    				</tbody>
 		                    				<!-- c:foreach로 반복 돌리기 -->
 		                    			</table>

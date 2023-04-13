@@ -4,31 +4,252 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.whychapedia.mapper.AdminContentsMapper">
 
+	<!-- MOVIE_LIST START >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+	
 	<!-- admin contents list query구문 -->
+	<select id="adminContents_searchWord" resultType="com.whychapedia.vo.MovieVo">
+		select * from ( select rownum rnum, m.* from movie m where movie_kor_title like '%' || #{searchWord} || '%' order by id ) where rnum between #{startRow} and #{endRow}
+	</select>
 	<select id="adminContents" resultType="com.whychapedia.vo.MovieVo">
-		select * from movie
+		select * from ( select rownum rnum, m.* from movie m order by id ) where rnum between #{startRow} and #{endRow}
+	</select>
+	<select id="selectCount" resultType="int">
+		select count(*) count from movie
 	</select>
 
 
-
-	<!-- admin director list query구문 -->
-	<select id="adminDirector" resultType="com.whychapedia.vo.MovieDirectorVo">
-		select director_id from movie_director where movie_id = #{id}
-	</select>
 	<!-- admin director_name 가져오기 query구문 -->
 	<select id="adminDirectorName" resultType="com.whychapedia.vo.MovieDirectorVo">
-		select director_name from director where id = #{id}
+		select * from movie_director md, director d where md.movie_id = #{id} and md.director_id = d.id
 	</select>
 
 
-
-	<!-- admin actor list query구문 -->
-	<select id="adminActor" resultType="com.whychapedia.vo.MovieActorVo">
-		select actor_id from movie_actor where actor_id = #{id}
-	</select>
 	<!-- admin actor_name 가져오기 query구문 -->
 	<select id="adminActorName" resultType="com.whychapedia.vo.MovieActorVo">
-		select actor_name from actor where id = #{id}
+		select * from movie_actor ma, actor a where ma.movie_id = #{id} and ma.actor_id = a.id
 	</select>
+
+
+	<!-- admin country_name 가져오기 query구문 -->
+	<select id="adminCountryName" resultType="com.whychapedia.vo.MovieCountryVo">
+		select * from movie_country mc, country c where mc.movie_id = #{id} and mc.country_id = c.id
+	</select>
+
+
+	<!-- admin genre_name 가져오기 query구문 -->
+	<select id="adminGenreName" resultType="com.whychapedia.vo.MovieGenreVo">
+		select * from movie_genre mg, genre g where mg.movie_id = #{id} and mg.genre_id = g.id
+	</select>
+	
+	<!-- MOVIE_LIST END >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+	
+	
+	
+	
+	
+	<!-- MOVIE_VIEW START >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+	
+	<!-- admin contents_view 가져오기 query구문 -->
+	<select id="adminContentsView" resultType="com.whychapedia.vo.MovieVo">
+		select * from movie where id = #{id}
+	</select>
+	<!-- admin director_name 가져오기 query구문 -->
+	<select id="adminDirectorView" resultType="com.whychapedia.vo.MovieDirectorVo">
+		select * from movie_director md, director d where md.movie_id = #{id} and md.director_id = d.id
+	</select>
+	<!-- admin actor_name 가져오기 query구문 -->
+	<select id="adminActorView" resultType="com.whychapedia.vo.MovieActorVo">
+		select * from movie_actor ma, actor a where ma.movie_id = #{id} and ma.actor_id = a.id
+	</select>
+	<!-- admin country_name 가져오기 query구문 -->
+	<select id="adminCountryView" resultType="com.whychapedia.vo.MovieCountryVo">
+		select * from movie_country mc, country c where mc.movie_id = #{id} and mc.country_id = c.id
+	</select>
+	<!-- admin genre_name 가져오기 query구문 -->
+	<select id="adminGenreView" resultType="com.whychapedia.vo.MovieGenreVo">
+		select * from movie_genre mg, genre g where mg.movie_id = #{id} and mg.genre_id = g.id
+	</select>
+	
+	<!-- MOVIE_VIEW END >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+	
+	
+	
+	
+	
+	<!-- MOVIE_INSERT START >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+	<!-- movieVo 마지막 movie_id 가져오기 -->
+	<select id="adminMovieId" resultType="com.whychapedia.vo.MovieVo">
+		select coalesce ( max ( id ), 0 ) + 1 as id from movie
+	</select>
+
+	<!-- movieVo insert -->
+	<insert id="adminMovieCreate">
+		insert into movie ( id, movie_kor_title, movie_original_title, movie_desc, movie_grade, movie_release_date, movie_running_time, movie_post_url, background_post_url, regi_date, admin_id )
+		values ( #{id}, #{movie_kor_title}, #{movie_original_title}, #{movie_desc}, #{movie_grade}, #{movie_release_date}, #{movie_running_time},
+		#{movie_post_url}, #{background_post_url}, sysdate, #{sessionId} )
+	</insert>
+
+	<!-- country insert -->
+	<insert id="adminMovieCreateCountryList">
+		insert into movie_country values ( ( select coalesce ( max ( id ), 0 ) + 1 from movie_country ), #{id}, #{name_kor} )
+	</insert>
+	
+	
+	<!-- genre insert -->
+	<insert id="adminMovieCreateGenreList">
+		insert into movie_genre values ( ( select coalesce ( max ( id ), 0 ) + 1 from movie_genre ), #{id}, #{genre_kor} )
+	</insert>
+	
+	
+	<!-- director insert -->
+	<insert id="adminMovieCreateDirectorList">
+		insert into movie_director values ( ( select coalesce ( max ( id ), 0 ) + 1 from movie_director ), #{id}, (select id from director where director_name like '%' || #{director_name} || '%'), '감독' )
+	</insert>
+	
+	
+	<!-- actor insert -->
+	<insert id="adminMovieCreateActorList">
+		insert into movie_actor values ( ( select coalesce ( max ( id ), 0 ) + 1 from movie_actor ), #{id}, (select id from actor where actor_name like '%' || #{actor_name} || '%'), '주연' )
+	</insert>
+	
+	
+	<!-- ott insert -->
+	<insert id="adminMovieCreateOTTList">
+		insert into movie_ott values ( ( select coalesce ( max ( id ), 0 ) + 1 from movie_ott ), #{id}, #{ott_id}, sysdate, 11 )
+	</insert>
+	
+	
+	<!-- gallery insert -->
+	<insert id="adminMovieCreateGalleryList">
+		insert into movie_gallery values ( ( select coalesce ( max ( id ), 0 ) + 1 from movie_gallery ), #{id}, #{movie_gallery_url} )
+	</insert>
+	
+	
+	<!-- trailer insert -->
+	<insert id="adminMovieCreateTrailerList">
+		insert into movie_trailer values ( ( select coalesce ( max ( id ), 0 ) + 1 from movie_trailer ), #{id}, #{movie_trailer_url} )
+	</insert>
+
+	<!-- MOVIE_INSERT END >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+
+
+
+
+
+	<!-- MOVIE_DELETE START >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+
+
+
+	<!-- MOVIE_DELETE END >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+
+
+
+
+
+	<!-- MOVIE_MODIFY START >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+	
+	<!-- admin gallery_url 가져오기 query구문 -->
+	<select id="adminGalleryView" resultType="com.whychapedia.vo.MovieGalleryTrailerVo">
+		select * from movie_gallery where movie_id = #{id}
+	</select>
+	<!-- admin trailer_url 가져오기 query구문 -->
+	<select id="adminTrailerView" resultType="com.whychapedia.vo.MovieGalleryTrailerVo">
+		select * from movie_trailer where movie_id = #{id}
+	</select>
+	<!-- admin gallery_url 가져오기 query구문 -->
+	<select id="adminOttView" resultType="com.whychapedia.vo.MovieOttVo">
+		select * from movie_ott mo, ott o where mo.movie_id = #{id} and mo.ott_id = o.id
+	</select>
+
+
+
+	<!-- ajax으로 감독 정보 가져오기 query구문 -->
+	<select id="adminDirectorPull" resultType="com.whychapedia.vo.MovieDirectorVo">
+		select * from director where director_name like '%' || #{artistName} || '%'
+	</select>
+	<!-- ajax으로 배우 정보 가져오기 query구문 -->
+	<select id="adminActorPull" resultType="com.whychapedia.vo.MovieActorVo">
+		select * from actor where actor_name like '%' || #{artistName} || '%'
+	</select>
+
+	
+	
+	<!-- 영화정보 UPDATE -->
+	<!-- movieVo UPDATE -->
+	<update id="adminMovieModify">
+		update movie set movie_kor_title=#{movie_kor_title}, movie_original_title=#{movie_original_title}, movie_release_date=#{movie_release_date}, movie_running_time=#{movie_running_time},
+		movie_grade=#{movie_grade}, movie_desc=#{movie_desc}, movie_post_url=#{movie_post_url}, background_post_url=#{background_post_url} where id=#{id}
+	</update>
+	
+	<!-- MOVIE_TABLE제외 데이터 지우고 등록하기(지우기) -->
+	<delete id="adminCountryDelete"> <!-- movie_country -->
+		delete from movie_country where movie_id = #{id}
+	</delete>
+	<delete id="adminGenreDelete"> <!-- movie_genre -->
+		delete from movie_genre where movie_id = #{id}
+	</delete>
+	<delete id="adminDirectorDelete"> <!-- movie_director -->
+		delete from movie_director where movie_id = #{id}
+	</delete>
+	<delete id="adminActorDelete"> <!-- movie_actor -->
+		delete from movie_actor where movie_id = #{id}
+	</delete>
+	<delete id="adminOttDelete"> <!-- movie_ott -->
+		delete from movie_ott where movie_id = #{id}
+	</delete>
+	<delete id="adminGalleryDelete"> <!-- movie_gallery -->
+		delete from movie_gallery where movie_id = #{id}
+	</delete>
+	<delete id="adminTrailerDelete"> <!-- movie_trailer -->
+		delete from movie_trailer where movie_id = #{id}
+	</delete>
+	<!-- MOVIE_TABLE제외 데이터 지우고 등록하기(지우기) -->
+	
+	
+	<!-- MOVIE_TABLE제외 데이터 지우고 등록하기(등록하기) -->
+	
+	<!-- country insert -->
+	<insert id="adminMovieModifyCountryList">
+		insert into movie_country values ( ( select coalesce ( max ( id ), 0 ) + 1 from movie_country ), #{id}, #{name_kor} )
+	</insert>
+	
+	
+	<!-- genre insert -->
+	<insert id="adminMovieModifyGenreList">
+		insert into movie_genre values ( ( select coalesce ( max ( id ), 0 ) + 1 from movie_genre ), #{id}, #{genre_kor} )
+	</insert>
+	
+	
+	<!-- director insert -->
+	<insert id="adminMovieModifyDirectorList">
+		insert into movie_director values ( ( select coalesce ( max ( id ), 0 ) + 1 from movie_director ), #{id}, (select id from director where director_name like '%' || #{director_name} || '%'), '감독' )
+	</insert>
+	
+	
+	<!-- actor insert -->
+	<insert id="adminMovieModifyActorList">
+		insert into movie_actor values ( ( select coalesce ( max ( id ), 0 ) + 1 from movie_actor ), #{id}, (select id from actor where actor_name like '%' || #{actor_name} || '%'), '주연' )
+	</insert>
+	
+	
+	<!-- ott insert -->
+	<insert id="adminMovieModifyOTTList">
+		insert into movie_ott values ( ( select coalesce ( max ( id ), 0 ) + 1 from movie_ott ), #{id}, #{ott_id}, sysdate, 11 )
+	</insert>
+	
+	
+	<!-- gallery insert -->
+	<insert id="adminMovieModifyGalleryList">
+		insert into movie_gallery values ( ( select coalesce ( max ( id ), 0 ) + 1 from movie_gallery ), #{id}, #{movie_gallery_url} )
+	</insert>
+	
+	
+	<!-- trailer insert -->
+	<insert id="adminMovieModifyTrailerList">
+		insert into movie_trailer values ( ( select coalesce ( max ( id ), 0 ) + 1 from movie_trailer ), #{id}, #{movie_trailer_url} )
+	</insert>
+	<!-- MOVIE_TABLE제외 데이터 지우고 등록하기(등록하기) -->
+	
+	<!-- MOVIE_MODIFY END >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 
 </mapper>

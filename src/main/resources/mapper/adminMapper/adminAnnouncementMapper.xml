@@ -23,4 +23,50 @@
 		order by a.announcement_important desc, a.id asc )
 	</select>
 	
+	
+	
+	<!-- admin 공지사항 view query구문 -->
+	<select id="adminAnnouncementSelectOne" resultType="com.whychapedia.vo.AnnouncementVo">
+		select * from announcement where id = #{id}
+	</select>
+	
+	
+	
+	<!-- admin 공지사항 삭제 query구문 -->
+	<delete id="adminAnnouncementDeleteOne">
+		delete from announcement where id = #{id}
+	</delete>
+	
+	
+	
+	<!-- admin 공지사항 일반등록하기 query구문 -->
+	<insert id="adminAnnouncementInputOne">
+		insert into announcement ( id, announcement_title, announcement_content, announcement_url, admin_id, announcement_date, announcement_important, is_regi )
+		values ( 5, #{announcement_title}, #{announcement_content}, #{announcement_url}, #{admin_id}, sysdate, #{important}, #{is_regi} )
+	</insert>
+
+	<!-- admin 공지사항 바로등록하기 query구문 -->
+	<insert id="adminAnnouncementDirectInputOne">
+		insert into announcement values ( 5, #{announcement_title}, #{announcement_content}, #{announcement_url}, #{admin_id}, sysdate, #{important}, sysdate, #{is_regi} )
+	</insert>
+	
+	
+	
+	<!-- admin 공지사항 일반등록하기 query구문 -->
+	<select id="adminAnnouncementModifyOne" resultType="com.whychapedia.vo.AnnouncementVo">
+		update announcement set announcement_title=#{ announcement_title }, announcement_content=#{ announcement_content }, announcement_url=#{ announcement_url }, admin_id=#{ admin_id },
+		announcement_date=sysdate, announcement_important=#{ announcement_important }, update_date=null, is_regi=#{ is_regi } where id=#{ id }
+	</select>
+
+	<!-- admin 공지사항 바로등록하기 query구문 -->
+	<select id="adminAnnouncementDirectModifyOne" resultType="com.whychapedia.vo.AnnouncementVo">
+		update announcement set announcement_title=#{ announcement_title }, announcement_content=#{ announcement_content }, announcement_url=#{ announcement_url }, admin_id=#{ admin_id },
+		announcement_date=sysdate, announcement_important=#{ announcement_important }, update_date=sysdate, is_regi=#{ is_regi } where id=#{ id }
+	</select>
+
+	<!-- admin 공지사항 List에서 미등록 버튼처리 query구문 -->
+	<select id="adminAnnouncementUpdateOne" resultType="com.whychapedia.vo.AnnouncementVo">
+		update announcement set is_regi=#{ is_regi } where id=#{ id }
+	</select>
+	
 </mapper>

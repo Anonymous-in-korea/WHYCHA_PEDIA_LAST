@@ -25,6 +25,31 @@
 		<style>
 		    a { text-decoration: none; }
 		</style>
+		
+		<script>
+			$(function() {
+				$("#send_email").click(function() {
+			    	alert("입력한 이메일로 발송됩니다.");
+			    	//alert($("#userName").val());
+			    	
+			    	$.ajax({
+			    		url:"/sendEmail",
+			    		type:"post",
+			    		data:{"userEmail":$("#userEmail").val(),"userName":$("#userName").val()},
+			    		success:function(data){
+			    			alert("입력한 이메일로 인증번호가 \n 발송되었습니다.");
+			    			//alert("이메일 인증 비밀번호 : "+data);
+			    			$("#userEmail").val("");
+			    			$("#userName").val("");
+			    			$("#pwCheck").focus();
+			    		},
+			    		error:function(){
+			    			alert("실패");
+			    		}
+			    	});
+				});
+			});
+		</script>
 	</head>
 	<body class="sb-nav-fixed">
 	    <div id="layoutSidenav">
@@ -43,12 +68,12 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">회원관리</h1>
+                        <h1 class="mt-4">알림관리</h1>
                         <div class="row"></div>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i><!--이미지-->
-                                회원관리
+                                알림관리
                             </div>
                             <div class="card-body">
                                 <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
@@ -65,6 +90,7 @@
 		                    				</label>
 		                    			</div>
 		                    			<div class="datatable-search">
+		                    				<button type="button" id="send_email" style="width:100px; height:40px;">메일 발송</button>
 		                    				<input type="search" title="Search within table" class="datatable-input" placeholder="계정 or 닉네임을 입력하세요."
 		                    					aria-controls="datatablesSimple">
 		                    			</div>
@@ -114,7 +140,8 @@
 		                    						<td>${ memberVo.id }</td>
 		                    						<td>
 		                    							<a href="/admin/6_member/member_detail?id=${ memberVo.id }">
-		                    								${ memberVo.user_name }
+		                    								<input type="checkbox" name="user_name" id="${ memberVo.user_name }" value="${ memberVo.user_name }">
+		                    								<label for="${ memberVo.user_name }">${ memberVo.user_name }</label>
 		                    							</a>
 		                    						</td>
 		                    						<c:if test="${ memberVo.user_pic_url != null }">

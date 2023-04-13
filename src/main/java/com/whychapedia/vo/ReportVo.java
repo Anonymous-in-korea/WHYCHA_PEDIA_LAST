@@ -25,5 +25,12 @@ public class ReportVo {
 	private String admin_name;
 	private Date processing_date; // 처리일
 	private int report_result; // 처리전:0 블라인드:1 문제없음:2 스포일러:3 
+	
+	private int movie_id;
+	private int user_id;
+	private int is_blind;
+	private int is_spoil;
+	private String movie_kor_title;
+	private String comment_content;
 
 }

@@ -9,11 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.whychapedia.service.AdminAnnouncementDelService;
-import com.whychapedia.service.AdminAnnouncementInputService;
-import com.whychapedia.service.AdminAnnouncementModifyService;
 import com.whychapedia.service.AdminAnnouncementService;
-import com.whychapedia.service.AdminAnnouncementViewService;
 import com.whychapedia.vo.AnnouncementVo;
 
 @Controller
@@ -23,14 +19,6 @@ public class AdminAnnouncementController {
 	AnnouncementVo announcementVo;
 	@Autowired
 	AdminAnnouncementService adminAnnouncementService;
-	@Autowired
-	AdminAnnouncementViewService adminAnnouncementViewService;
-	@Autowired
-	AdminAnnouncementDelService adminAnnouncementDelService;
-	@Autowired
-	AdminAnnouncementInputService adminAnnouncementInputService;
-	@Autowired
-	AdminAnnouncementModifyService adminAnnouncementModifyService;
 	
 	
 	@GetMapping("admin/1_notice/notice_list")
@@ -53,7 +41,7 @@ public class AdminAnnouncementController {
 	public String notice_view(Model model, @RequestParam int id) {
 		
 		int result = 0;
-		announcementVo = adminAnnouncementViewService.adminAnnouncementSelectOne(id);
+		announcementVo = adminAnnouncementService.adminAnnouncementSelectOne(id);
 		if ( announcementVo != null ) {
 			model.addAttribute("announcementVo", announcementVo);
 			result = 1;
@@ -79,9 +67,9 @@ public class AdminAnnouncementController {
 		System.out.println("important : " + important);
 		
 		if ( important == 1 ) {
-			adminAnnouncementInputService.adminAnnouncementInputOne(admin_id, announcement_title, announcement_content, announcement_url, important, is_regi);
+			adminAnnouncementService.adminAnnouncementInputOne(admin_id, announcement_title, announcement_content, announcement_url, important, is_regi);
 		} else {
-			adminAnnouncementInputService.adminAnnouncementDirectInputOne(admin_id, announcement_title, announcement_content, announcement_url, important, is_regi);
+			adminAnnouncementService.adminAnnouncementDirectInputOne(admin_id, announcement_title, announcement_content, announcement_url, important, is_regi);
 		}
 		
 		return "redirect:/admin/1_notice/notice_list";
@@ -92,7 +80,7 @@ public class AdminAnnouncementController {
 	@GetMapping("admin/1_notice/notice_view_delete")
 	public String notice_view_delete(Model model, @RequestParam int id) {
 		
-		adminAnnouncementDelService.adminAnnouncementDeleteOne(id);
+		adminAnnouncementService.adminAnnouncementDeleteOne(id);
 		
 		return "redirect:/admin/1_notice/notice_list";
 	}
@@ -103,7 +91,7 @@ public class AdminAnnouncementController {
 	public String notice_modify(Model model, @RequestParam int id) {
 		
 		int result = 0;
-		announcementVo = adminAnnouncementViewService.adminAnnouncementSelectOne(id);
+		announcementVo = adminAnnouncementService.adminAnnouncementSelectOne(id);
 		if ( announcementVo != null ) {
 			model.addAttribute("announcementVo", announcementVo);
 			result = 1;
@@ -122,9 +110,9 @@ public class AdminAnnouncementController {
 		System.out.println("important : " + announcement_important);
 		
 		if ( announcement_important == 1 ) {
-			adminAnnouncementModifyService.adminAnnouncementModifyOne(id, announcement_title, announcement_content, announcement_url, admin_id, announcement_important, is_regi);
+			adminAnnouncementService.adminAnnouncementModifyOne(id, announcement_title, announcement_content, announcement_url, admin_id, announcement_important, is_regi);
 		} else {
-			adminAnnouncementModifyService.adminAnnouncementDirectModifyOne(id, announcement_title, announcement_content, announcement_url, admin_id, announcement_important, is_regi);
+			adminAnnouncementService.adminAnnouncementDirectModifyOne(id, announcement_title, announcement_content, announcement_url, admin_id, announcement_important, is_regi);
 		}
 		
 		return "redirect:/admin/1_notice/notice_list";
@@ -135,7 +123,7 @@ public class AdminAnnouncementController {
 		System.out.println("id : " + id);
 		System.out.println("is_regi : " + is_regi);
 		
-		 adminAnnouncementModifyService.adminAnnouncementUpdateOne(id, is_regi); 
+		 adminAnnouncementService.adminAnnouncementUpdateOne(id, is_regi); 
 		
 		return "redirect:/admin/1_notice/notice_list";
 	}

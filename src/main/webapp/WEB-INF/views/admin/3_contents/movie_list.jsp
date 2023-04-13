@@ -21,7 +21,24 @@
 		<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 		<!-- 이거 side_nav 작동하는 script임 -->
 		
-		<script src="/js/admin_logout.js"></script>
+		<script src="/js/admin/admin_logout.js"></script>
+		
+		<style>
+			.numbering { width:460px; height:40px; margin:20px auto 7px; text-align:center; }
+			.numbering span { width:40px; height:40px; display:inline-block; border:1px solid black; box-sizing:border-box; text-align:center; font-size:15; }
+			#on { background:#e56e00; color:#fff; }
+		</style>
+		
+		<script>
+			$(function() {
+				$(".datatable-input").on("keypress", function(key) {
+					if ( event.keyCode == 13 ) {
+						if ( $("#searchWord").val().length > 0 ) { movieSearch.submit(); }
+						else { alert("글자를 입력하셔야 검색이 가능합니다"); $("#searchWord").focus(); return false; }
+					}
+				});
+			});
+		</script>
 	</head>
 	<body class="sb-nav-fixed">
 		<div id="layoutSidenav">
@@ -60,10 +77,11 @@
 		                    					</select>
 		                    				</label>
 		                    			</div>
-		                    			<div class="datatable-search">
-		                    				<input type="search" title="Search within table" class="datatable-input" placeholder="영화제목 or 감독 검색"
-		                    					aria-controls="datatablesSimple">
-		                    			</div>
+		                    			<form action="/admin/3_contents/movie_list" method="get" name="movieSearch">
+			                    			<div class="datatable-search">
+			                    				<input type="search" title="Search within table" id="searchWord" class="datatable-input" placeholder="영화제목으로 검색" aria-controls="datatablesSimple" style="float:right;">
+			                    			</div>
+		                    			</form>
 		                    		</div>
 		                    		<div class="datatable-container">
 		                    			<table class="datatable-table" id="datatablesSimple">
@@ -111,26 +129,78 @@
 		                    				</thead>
 		                    				<!-- c:foreach로 반복 돌리기 -->
 		                    				<tbody>
-												<c:forEach items="${adminContents}" var="movieList">
+												<c:forEach items="${ adminContentsList }" var="movieList">
 		                    					<tr>
 		                    						<td>${ movieList.id }</td>
 		                    						<td>
-		                    							<a href="/admin/3_contents/movie_view">${ movieList.movie_kor_title }</a>
+		                    							<a href="/admin/3_contents/movie_view?id=${ movieList.id }">${ movieList.movie_kor_title }</a>
 		                    						</td>
-		                    						<c:forEach items="${ adminDirectorName }" var="director">
-		                    						<td>${ director.director_name }</td>
-		                    						</c:forEach>
-		                    						<td>2023-03-10</td>
-		                    						<td>스포츠</td>
-		                    						<td>니뽄</td>
+		                    						<td>
+			                    						<c:forEach items="${ adminDirectorName }" var="director">
+			                    						<c:if test="${ movieList.id == director.movie_id }">
+		                    							${ director.director_name }
+			                    						</c:if>
+			                    						</c:forEach>
+		                    						</td>
+		                    						<td>
+		                    							${ movieList.movie_release_date }
+		                    						</td>
+		                    						<td>
+		                    							<c:forEach items="${ adminGenreName }" var="genre">
+		                    							<c:if test="${ movieList.id == genre.movie_id }">
+		                    							${ genre.genre_kor }
+		                    							</c:if>
+		                    							</c:forEach>
+		                    						</td>
+		                    						<td>
+														<c:forEach items="${ adminCountryName }" var="country">
+		                    							<c:if test="${ movieList.id == country.movie_id }">
+		                    							${ country.name_kor }
+		                    							</c:if>
+		                    							</c:forEach>
+													</td>
 		                    					</tr>
 		                    					</c:forEach>
 		                    				</tbody>
 		                    				<!-- c:foreach로 반복 돌리기 -->
 		                    			</table>
 		                    		</div>
-		                    		<div class="datatable-bottom">
-		                    			<div class="datatable-info">Showing 1 to 7 of 7 entries</div>
+		                    		<div>
+			                    		<div class="numbering">
+											<!-- 처음페이지로 이동하기 -->
+											<c:if test="${now_page > 1}">
+												<a href="/admin/3_contents/movie_list?page=1&searchTitle=${searchTitle}&searchWord=${searchWord}"><span>&#171;</span></a>
+											</c:if>
+											<c:if test="${now_page == 1}"><span>&#171;</span></c:if>
+											
+											<!-- 이전페이지로 이동하기 -->
+											<c:if test="${now_page > 1}">
+												<a href="/admin/3_contents/movie_list?page=${now_page-1}&searchTitle=${searchTitle}&searchWord=${searchWord}"><span>&#60;</span></a>
+											</c:if>
+											<c:if test="${now_page == 1}"><span>&#60;</span></c:if>
+											
+											<!-- 페이지 넘버링 -->
+											<c:forEach begin="${startPage}" end="${endPage}" step="1" var="num">
+												<c:if test="${now_page == num}">
+													<span id="on">${num}</span>
+												</c:if>
+												<c:if test="${now_page != num}">
+													<a href="/admin/3_contents/movie_list?page=${num}&searchTitle=${searchTitle}&searchWord=${searchWord}"><span>${num}</span></a>
+												</c:if>
+											</c:forEach>
+											
+											<!-- 다음페이지로 이동하기 -->
+											<c:if test="${now_page < maxPage}">
+												<a href="/admin/3_contents/movie_list?page=${now_page + 1}&searchTitle=${searchTitle}&searchWord=${searchWord}"><span>&#62;</span></a>
+											</c:if>
+											<c:if test="${now_page == maxPage}"><span>&#62;</span></c:if>
+											
+											<!-- 마지막페이지로 이동하기 -->
+											<c:if test="${now_page < maxPage}">
+												<a href="/admin/3_contents/movie_list?page=${maxPage}&searchTitle=${searchTitle}&searchWord=${searchWord}"><span>&#187;</span></a>
+											</c:if>
+											<c:if test="${now_page == maxPage}"><span>&#187;</span></c:if>
+										</div>
 		                    		</div>
 		                    	</div>
 		                    </div>

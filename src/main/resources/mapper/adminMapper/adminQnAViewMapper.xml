@@ -4,16 +4,6 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.whychapedia.mapper.AdminQnAViewMapper">
 
-	<!-- admin QnA view query구문 -->
-	<select id="adminQnASelectOne" resultType="com.whychapedia.vo.QuestionListVo">
-		select * from ( select a.id, a.question_title, a.question_content, a.question_file_url, b.user_name as user_name, a.regi_date, a.processing_statu from question_list a, wuser b
-		where a.user_id = b.id and a.id = #{id} )
-	</select>
 	
-	<!-- admin answer_list view query구문 -->
-	<select id="adminAnswerSelectOne" resultType="com.whychapedia.vo.AnswerListVo">
-		select * from ( select a.id, a.question_id, a.answer_content, a.answer_file_url, a.regi_date, b.admin_name as admin_name from answer_list a, admin b
-		where a.admin_id = b.id and a.question_id = #{id} )
-	</select>
 	
 </mapper>

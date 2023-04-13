@@ -10,7 +10,7 @@
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		
 		<link href="/css/admin/styles.css" rel="stylesheet" />
-		<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+		<link href="/css/admin/simple_data_table.css" rel="stylesheet" />
 		
 		<!-- 이거 side_nav 작동하는 script임 -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
@@ -18,7 +18,7 @@
 		<!-- 이거 side_nav 작동하는 script임 -->
 		
 		<script src="/js/admin/scripts.js"></script>
-		<script src="/js/admin_logout.js"></script>
+		<script src="/js/admin/admin_logout.js"></script>
 		
 		<style>
 			a { text-decoration:none; }
@@ -101,7 +101,7 @@
 		                                    	<c:forEach items="${adminAnnouncementList}" var="noticeList" varStatus="status">
 		                                        <tr>
 		                                            <td>${ noticeList.id }</td>
-		                                            <td><a href="">${ noticeList.announcement_title }</a></td>
+		                                            <td><a href="/admin/1_notice/notice_view?id=${ noticeList.id }">${ noticeList.announcement_title }</a></td>
 		                                            <td>${ noticeList.admin_name }</td>
 		                                            <td>${ noticeList.announcement_date }</td>
 		                                        </tr>
@@ -141,7 +141,7 @@
 		                                    	<c:forEach items="${adminQnAList}" var="QnAList" varStatus="status">
 		                                        <tr>
 		                                            <td>${ QnAList.id }</td>
-		                                            <td><a href="">${ QnAList.question_title }</a></td>
+		                                            <td><a href="/admin/2_qna/QnA_view??id=${ QnAList.id }">${ QnAList.question_title }</a></td>
 		                                            <td>${ QnAList.user_name }</td>
 		                                            <td>${ QnAList.regi_date }</td>
 		                                        </tr>
@@ -186,10 +186,15 @@
 		                                        <tr>
 		                                            <td>${ ReportList.id }</td>
 		                                            <td>${ ReportList.user_name }</td>
-		                                            <td><a href="">${ ReportList.reported_reason }</a></td>
+		                                            <td><a href="/admin/4_comment/reported/report_reply?id=${ ReportList.id }">${ ReportList.reported_reason }</a></td>
 		                                            <td>${ ReportList.regi_date }</td>
 		                                            <td>${ ReportList.admin_name }</td>
+		                                            <c:if test="${ ReportList.report_result != 0 }">
 		                                            <td>${ ReportList.processing_date }</td>
+		                    						</c:if>
+		                                            <c:if test="${ ReportList.report_result == 0 }">
+		                                            <td>처리대기중</td>
+		                    						</c:if>
 		                                        </tr>
 		                                        </c:forEach>
 		                                    </tbody>

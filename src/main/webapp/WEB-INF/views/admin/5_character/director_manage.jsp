@@ -21,7 +21,7 @@
 		<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 		<!-- 이거 side_nav 작동하는 script임 -->
 		
-		<script src="/js/admin_logout.js"></script>
+		<script src="/js/admin/admin_logout.js"></script>
 	</head>
 	<body class="sb-nav-fixed">
 		<div id="layoutSidenav">
@@ -110,7 +110,7 @@
 		                    					<tr>
 		                    						<td>${ director.id }</td>
 		                    						<td>
-		                    							<a href="/admin/5_character/character_detail?id=${ director.id }">
+		                    							<a href="/admin/5_character/character_modify?director_id=${ director.id }">
 		                    								<img src="${ director.director_post_url }">
 		                    							</a>
 		                    						</td>

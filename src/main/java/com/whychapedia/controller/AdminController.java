@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.whychapedia.service.AdminAnnouncementService;
 import com.whychapedia.service.AdminMemberService;
-import com.whychapedia.service.AdminQnAListService;
-import com.whychapedia.service.AdminReportListService;
+import com.whychapedia.service.AdminQnAService;
+import com.whychapedia.service.AdminReportService;
 import com.whychapedia.vo.AdminVo;
 import com.whychapedia.vo.AnnouncementVo;
 import com.whychapedia.vo.QuestionListVo;
@@ -38,12 +38,12 @@ public class AdminController {
 	@Autowired
 	QuestionListVo queationListVo;
 	@Autowired
-	AdminQnAListService adminQnAListService;
+	AdminQnAService adminQnAService;
 	
 	@Autowired
 	ReportVo reportVo;
 	@Autowired
-	AdminReportListService adminReportListService;
+	AdminReportService adminReportService;
 
 	@Autowired
 	HttpSession session;
@@ -65,11 +65,11 @@ public class AdminController {
 		model.addAttribute("adminAnnouncementList", adminAnnouncementList);
 
 		// admin 페이지 QnA 리스트 메서드
-		List<QuestionListVo> adminQnAList = adminQnAListService.adminQnAList();
+		List<QuestionListVo> adminQnAList = adminQnAService.adminQnAList();
 		model.addAttribute("adminQnAList", adminQnAList);
 
 		// admin 페이지 신고사항 리스트 메서드
-		List<ReportVo> adminReportList = adminReportListService.adminReportList();
+		List<ReportVo> adminReportList = adminReportService.adminReportList();
 		model.addAttribute("adminReportList", adminReportList);
 		
 		return "admin/admin_index";
@@ -99,11 +99,11 @@ public class AdminController {
 			model.addAttribute("adminAnnouncementList", adminAnnouncementList);
 
 			// admin 페이지 QnA 리스트 메서드
-			List<QuestionListVo> adminQnAList = adminQnAListService.adminQnAList();
+			List<QuestionListVo> adminQnAList = adminQnAService.adminQnAList();
 			model.addAttribute("adminQnAList", adminQnAList);
 
 			// admin 페이지 신고사항 리스트 메서드
-			List<ReportVo> adminReportList = adminReportListService.adminReportList();
+			List<ReportVo> adminReportList = adminReportService.adminReportList();
 			model.addAttribute("adminReportList", adminReportList);
 		}
 		
