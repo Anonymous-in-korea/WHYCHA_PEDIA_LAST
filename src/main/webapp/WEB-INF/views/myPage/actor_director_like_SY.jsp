@@ -81,7 +81,7 @@
 							<c:if test="${not empty actor_list}">
 								<c:forEach items="${actor_list}" var ="avo" >
 									<li class="css-1tmgvat actor">
-										<a title="${avo.actor_name}" class="css-1aaqvgs-InnerPartOfListWithImage" href="/person/person_detail_ACTOR_HY?actor_name=${avo.actor_name}&id=${avo.id}&role=배우">
+										<a title="${avo.actor_name}" class="css-1aaqvgs-InnerPartOfListWithImage" href="/person/person_detail_ACTOR_HY?actor_name=${avo.actor_name}&actor_id=${avo.id}&role=배우">
 											<div class="css-cssveg">
 												<div class="css-17ob1ac">
 													<div class="css-1e8dv1-ProfilePhotoImage"></div>
@@ -118,7 +118,7 @@
 							<c:if test="${not empty director_list}">
 								<c:forEach items="${director_list}" var ="dvo">
 									<li class="css-1tmgvat director" style="display:none">
-										<a title="${dvo.director_name}" class="css-1aaqvgs-InnerPartOfListWithImage" href="/person/person_detail_DIRECTOR_HY?director_name=${dvo.director_name}&id=${dvo.id}&role=감독">
+										<a title="${dvo.director_name}" class="css-1aaqvgs-InnerPartOfListWithImage" href="/person/person_detail_DIRECTOR_HY?director_name=${dvo.director_name}&director_id=${dvo.id}&role=감독">
 											<div class="css-cssveg">
 												<div class="css-17ob1ac">
 													<div class="css-1e8dv1-ProfilePhotoImage"></div>
