@@ -83,27 +83,27 @@
 								<section class="css-vozok1-ContentsSection e1omr9iu2">
 									<div class="css-1gkas1x-Grid e1689zdh0">
 										<div class="css-1y901al-Row emmoxnt0">
-											<ul class="css-1nukiuq-VisualUl-ReviewUl e1omr9iu4">
 											<form action="/changeCategoryStarRate" method="get" name="categoryOptionStarRate">
-												<input type="hidden" name="category" value="${category}"> 
+											<input type="hidden" name="category" value="${category}"> 
+											<ul class="css-1nukiuq-VisualUl-ReviewUl e1omr9iu4">
 													<!-- 평가할 영화 1개 -->
 												 <c:forEach items="${movieList}" var="movieVo" varStatus="status" >
 													<input type="hidden" name="movie_id_${status.index}" value="${movieVo.id}">
 													<li class="css-1pa5min">
-														<div class="css-jy9y9j"> <!--1번 -->
-															<div class=" css-1ajznjz-StyledLazyLoadingImage ezcopuc0"> <!--2번-->
+														<div class="css-jy9y9j"> 
+															<div class=" css-1ajznjz-StyledLazyLoadingImage ezcopuc0"> 
 																<a href="/contents/contents_SH?movie_id=${movieVo.id}">
 																	<img src="${movieVo.movie_post_url}" class="css-qhzw1o-StyledImg ezcopuc1" >
 																</a>
 															</div>
 														</div>
-														<div class="css-1frtrxg"><!--3번 추가 전-->
+														<div class="css-1frtrxg">
 															<h3 class="css-1a7e2fr">${movieVo.movie_kor_title}</h3>
-															<div class="css-tr3vhx"><fmt:formatDate value="${movieVo.movie_release_date}" pattern="yyyy"/></div><!--4번  추가 -->
+															<div class="css-tr3vhx"><fmt:formatDate value="${movieVo.movie_release_date}" pattern="yyyy"/></div>
 															<!-- 별점 -->
 															<!-- 별점 section start -->
-	                                                        <div class="css-1jlb6q"> <!--5번 아직 추가   -->
-	                                                            <div class="css-yt2kjp"> <!-- 6번 여긴 추가  -->
+	                                                        <div class="css-1jlb6q"> 
+	                                                            <div class="css-yt2kjp"> 
 																	<select class="star_rating" id="${movieVo.id}" style="border:none; text-align:center; item-align:center;">
 																		<option value="0" ${my_star_rate == 0 ? 'selected' : ''}>별점평가하기</option>
 																		<option value="0.5" ${my_star_rate == 0.5 ? 'selected' : ''} >0.5점</option>
@@ -118,15 +118,15 @@
 																		<option value="5.0" ${my_star_rate == 5 ? 'selected' : ''}>5.0점</option>
 																	</select>
 	                                                            </div>
-		                                                        <div class="star_container" class="css-1mbuso5" style="cursor:pointer; width:240px; position:relative;"> <!--7번 추가  -->
-	                                                            	<div style="width:100%; height:38px; margin:5px auto; position:absolute"><!--8번 추가  -->
+		                                                        <div class="star_container" class="css-1mbuso5" style="cursor:pointer; width:240px; position:relative;"> 
+	                                                            	<div style="width:100%; height:38px; margin:5px auto; position:absolute">
 	                                                            		<img src="/images/star.png" class="star_left">
 	                                                            		<img src="/images/star.png" class="star">
 	                                                            		<img src="/images/star.png" class="star">
 	                                                            		<img src="/images/star.png" class="star">
 	                                                            		<img src="/images/star.png" class="star_right">
 	                                                            	</div>
-	                                                            	<div style="width:100%; height:38px; margin:5px auto; position:absolute"><!--9번 추가  -->
+	                                                            	<div style="width:100%; height:38px; margin:5px auto; position:absolute">
 	                                                            		<img src="/images/orange_star_half.png" class="orange_half_left star_rating1">
 	                                                            		<img src="/images/orange_star.png" class="orange_star_left star_rating2" >
 	                                                            		<img src="/images/orange_star_half.png" class="orange_half star_rating3" >
@@ -144,8 +144,8 @@
 													</li>
 													<!-- 평가할 영화 1개 -->
 												</c:forEach>
-											</form>	
 											</ul>
+											</form>	
 											<div class="e1omr9iu0 css-z4jx26-StyledInfinityScroll-InfinityScroll eu826xw0">
 											</div>
 											<div id="newMovie">

@@ -126,6 +126,21 @@
 	        FETCH FIRST 10 ROWS ONLY
 	</select>
 	
+	
+	<!--평가할 영화 (랜덤 기준으로) 들고 오기 (리스트에 없는)-->
+	<select id="selectMovieRandomRateNotInList" resultType="com.whychapedia.vo.MovieVo">
+		SELECT *
+			FROM movie
+			WHERE id NOT IN (SELECT movie_id FROM star_rate where user_id=#{user_id})
+			AND id NOT IN (
+        	<foreach item="movieId" collection="movieIdList" separator="," >
+          	  #{movieId}
+        	</foreach>
+   			 )
+	        FETCH FIRST 10 ROWS ONLY
+	</select>
+	
+	
 		 <!--평가할 영화 (개봉일 기준으로) 다 들고 오기 (10)개만-->
 	<select id="selectMovieReleaseRate" resultType="com.whychapedia.vo.MovieVo">
 		SELECT *
@@ -134,6 +149,21 @@
 	        order by MOVIE_RELEASE_DATE DESC FETCH FIRST 10 ROWS ONLY 
 	</select>
 	
+		<!--평가할 영화 (개봉순) 들고 오기 (리스트에 없는)-->
+	<select id="selectMovieReleaseRateNotInList" resultType="com.whychapedia.vo.MovieVo">
+		SELECT *
+			FROM movie
+			WHERE id NOT IN (SELECT movie_id FROM star_rate where user_id=#{user_id})
+			AND id NOT IN (
+        	<foreach item="movieId" collection="movieIdList"  separator="," >
+          	  #{movieId}
+        	</foreach>
+   			 )
+	        order by MOVIE_RELEASE_DATE DESC FETCH FIRST 10 ROWS ONLY 
+	</select>
+	
+	
+	
 	 <!--평가할 영화 (평점 높은 기준으로)들고 오기 (10개만)-->
 	<select id="selectMovieHighRate" resultType="com.whychapedia.vo.MovieVo">
 		SELECT *
@@ -141,6 +171,25 @@
 			WHERE id NOT IN (SELECT movie_id FROM star_rate where user_id=#{user_id})
 	        order by MOVIE_RATING DESC FETCH FIRST 10 ROWS ONLY 
 	</select>
+	
+	
+		 <!--평가할 영화 (평점 높은 기준으로)들고 오기 (리스트에 없는)-->
+	<select id="selectMovieHighRateNotInList" resultType="com.whychapedia.vo.MovieVo">
+		SELECT *
+			FROM movie
+			WHERE id NOT IN (SELECT movie_id FROM star_rate where user_id=#{user_id})
+			AND id NOT IN (
+        	<foreach item="movieId" collection="movieIdList"  separator=",">
+          	  #{movieId}
+        	</foreach>
+   			 )
+	        order by MOVIE_RATING DESC FETCH FIRST 10 ROWS ONLY 
+	</select>
+	
+
+	
+	
+	
 	
 	<!--두 사람이 모두 높게 평가한 영화 가져오기-->
 	<select id="selectHighScoreForBothUser" resultType="com.whychapedia.vo.MovieVo">

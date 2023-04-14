@@ -17,7 +17,7 @@ $(function(){
 				data: {"user_id": parseInt(user_id),"collection_name":collectionTitle,"collection_desc":collectionDesc},
 				dataType: 'json',
 		 		success: function(response) {
-					 console.log("왔다!");
+					// console.log("왔다!");
 		    		// 동적으로 생성하는 부분
 		    		let html = ''; 
 					html+='<li class="css-ovtvwa">'; 

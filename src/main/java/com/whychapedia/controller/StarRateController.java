@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -162,25 +163,65 @@ public class StarRateController {
 	}
 	
 	
-		//영화 더 불러오기 ajax
-		@RequestMapping("/bringMoreMovie")
-		@ResponseBody 
-		public ResponseEntity<Map<String, Object>> bringMoreMovie(@RequestParam String category,HttpServletRequest request) {
-			Map<String, Object> map = new HashMap<>();
-			System.out.println("category: " + category);
-			List<Integer> movieIds = new ArrayList<>();
-			Enumeration<String> parameterNames = request.getParameterNames();
-			while (parameterNames.hasMoreElements()) {
-			    String parameterName = parameterNames.nextElement();
-			    if (parameterName.startsWith("movie_id_")) {
-			        int movieId = Integer.parseInt(request.getParameter(parameterName));
-			        movieIds.add(movieId);
-			    }
-			}
-		    System.out.println("movieIds: " + movieIds);
-			
-			return new ResponseEntity<>(map, HttpStatus.OK);
+	//영화 더 불러오기 ajax
+	@RequestMapping("/bringMoreMovie")
+	@ResponseBody 
+	public ResponseEntity<Map<String, Object>> bringMoreMovie(@RequestBody Map<String, Object> formData) {
+		
+		 /*            프론트에서 category+movie_id가져오기 시작           */
+		
+		Map<String, Object> map = new HashMap<>();
+		List<Integer> movieIdList = new ArrayList<>();
+		String category = "";
+		int status;
+		// formData에서 "movie_id_"로 시작하는 키를 찾아서 List<Integer>에 추가
+	    List<Map<String, String>> formDataList = (List<Map<String, String>>) formData.get("formData");
+	    for (Map<String, String> data : formDataList) {
+	        String name = data.get("name");
+	        String value = data.get("value");
+	        if (name.startsWith("movie_id_")) {
+	            Integer movieId = Integer.parseInt(value);
+	            System.out.println("movieId : " + movieId);
+	            movieIdList.add(movieId);
+	        }
+	    }
+	    category =  formDataList.get(8).get("value");
+	    status= movieIdList.size();
+	    /*            프론트에서 category+movie_id가져오기 끝 	          */
+	    
+	   
+		
+	    
+	    
+	    int user_id = (int) session.getAttribute("sessionId");
+		// 로그인한 계정 vo
+		memberVo = memberService.selectOneMember(user_id);
+		int my_star_rate = 0;
+		
+		 /*            추가할 영화 10개 가져오기  시작          */
+		List<MovieVo> movieList=new ArrayList<>();
+		if (category.equals("rate")) {// 평점 순
+			//평가할 영화 (평점 높은 순 ) 들고 오기 (리스트에 없는)
+			movieList=movieService.selectMovieHighRateNotInList(user_id,movieIdList);
+			System.out.println(movieList);
+		} else if (category.equals("release")) {// 개봉 순
+			// 평가할 영화 (개봉순) 들고 오기 (리스트에 없는)
+			movieList = movieService.selectMovieReleaseRateNotInList(user_id,movieIdList);
+			System.out.println(movieList);
+		} else {// 랜덤 순
+			// 평가할 영화 (랜덤 기준으로) 들고 오기 (리스트에 없는)
+			movieList = movieService.selectMovieRandomRateNotInList(user_id,movieIdList);
+			System.out.println(movieList);
 		}
+		
+		
+		/*            추가할 영화 10개 가져오기    끝        */
+		map.put("my_star_rate", my_star_rate);
+		map.put("movieList", movieList);
+		map.put("status", status);
+		
+		return new ResponseEntity<>(map, HttpStatus.OK);
+	}
 
 	  
 	 

@@ -43,6 +43,14 @@ public interface MovieService {
 
 	List<MovieVo> selectHighScoreForBothUser(int user_id, int loginId);
 
+	List<MovieVo> selectMovieHighRateNotInList(int user_id, List<Integer> movieIdList);
+
+	List<MovieVo> selectMovieReleaseRateNotInList(int user_id, List<Integer> movieIdList);
+
+	List<MovieVo> selectMovieRandomRateNotInList(int user_id, List<Integer> movieIdList);
+
+
+
 
 
 

@@ -178,7 +178,29 @@ public class MovieServiceImpl implements MovieService {
 		List<MovieVo> highScoreForBothUser=movieMapper.selectHighScoreForBothUser(user_id,loginId);
 		return highScoreForBothUser;
 	}
+
+	//평가할 영화 (평점 높은 순 ) 들고 오기 (리스트에 없는)
+	@Override
+	public List<MovieVo> selectMovieHighRateNotInList(int user_id, List<Integer> movieIdList) {
+		List<MovieVo> movieHighRateNotInList=movieMapper.selectMovieHighRateNotInList(user_id,movieIdList);
+		return movieHighRateNotInList;
+	}
+
+	// 평가할 영화 (개봉순) 들고 오기 (리스트에 없는)
+	@Override
+	public List<MovieVo> selectMovieReleaseRateNotInList(int user_id, List<Integer> movieIdList) {
+		List<MovieVo> movieReleaseRateNotInList=movieMapper.selectMovieReleaseRateNotInList(user_id,movieIdList);
+		return movieReleaseRateNotInList;
+	}
 	
+	// 평가할 영화 (랜덤 기준으로) 들고 오기 (리스트에 없는)
+	@Override
+	public List<MovieVo> selectMovieRandomRateNotInList(int user_id, List<Integer> movieIdList) {
+		List<MovieVo> movieRandomRateNotInList=movieMapper.selectMovieRandomRateNotInList(user_id,movieIdList);
+		return movieRandomRateNotInList;
+	}
+
+
 
 
 	

@@ -19,8 +19,7 @@ $(function(){
 		c_div.after("<span class='css-3cslbb'></span>");
 	});
 	
-	/* 별점 색깔변경 */
-	$(".star_rating").change(function() {
+	$('body').on('change', '.star_rating', function() {
 		if ( $(this).val() == "0" ) { $(this).parent().siblings(".star_container").find(".star_rating1").hide(); 
 			$(this).parent().siblings(".star_container").find(".star_rating2").hide(); 
 			$(this).parent().siblings(".star_container").find(".star_rating3").hide(); 
@@ -141,9 +140,11 @@ $(function(){
         	$(this).parent().siblings(".star_container").find(".star_rating8").show(); 
         	$(this).parent().siblings(".star_container").find(".star_rating9").hide(); 
         	$(this).parent().siblings(".star_container").find(".star_rating10").show();
-        }
-    });
-	/* 별점 색깔변경 */
+     }
+    
+	
+	})
+	
 	
 		
 });
