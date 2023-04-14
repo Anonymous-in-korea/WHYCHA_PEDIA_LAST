@@ -434,7 +434,7 @@
 		                                                                                    	<div class="css-zoy7di">
 		                                                                                        	<div class="css-qkf9j">
 		                                                                                            	<div class="css-17vuhtq">${avo.actor_name }</div>
-			                                                                                            <div class="css-1evnpxk-StyledSubtitle">${avo.actor_role } | </div>
+			                                                                                            <div class="css-1evnpxk-StyledSubtitle">배우 | ${avo.actor_role } </div>
 		                                                                                        	</div>
 		                                                                                    	</div>
 		                                                                                	</a>
