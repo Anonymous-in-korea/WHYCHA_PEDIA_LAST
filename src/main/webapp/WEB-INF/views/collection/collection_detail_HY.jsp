@@ -185,6 +185,7 @@
 														<ul class="css-27z1qm-VisualUl-ContentGrid">
 											<!-- 영화 foreach -->
 														<c:forEach items="${movieInCollectionVoList}" var="movieVo" >
+															<c:if test="${movieVo.id!=0}">
 															<li class="css-1hp6p72">
 																<a title="${movieVo.movie_kor_title}" href="/contents/contents_SH?movie_id=${movieVo.id}">
 																	<div class="css-1qmeemv">
@@ -211,6 +212,7 @@
 																	</div>
 																</a>
 															</li>
+														  </c:if>
 														</c:forEach>	
 											<!-- 영화 foreach -->											
 														</ul>

@@ -916,6 +916,7 @@
 #newMovie {
     display: flex;
     justify-content: center;
+    margin-button: -10px;
 }
 
 #submit {

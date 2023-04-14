@@ -164,7 +164,7 @@ public class CollectionController {
 				movieInCollectionVoList=movieService.insertStarRateInfo(movieInCollectionVoList,ratedList);
 			}
 		}
-		int sizeCollection=movieInCollectionVoList.size();
+		int sizeCollection=movieInCollectionVoList.size()-1;
 		model.addAttribute("movieInCollectionVoList", movieInCollectionVoList); //영화
 		model.addAttribute("memberVo",memberVo);//페이지 주인
 		model.addAttribute("collectionVo",collectionVo);//컬렉션 디테일
@@ -172,6 +172,9 @@ public class CollectionController {
 		
 		return "/collection/collection_detail_HY";
 	}
+	
+	
+	
 	
 	//콜렉션 넣기 ajax
 	@RequestMapping("/collection/collectionInsert")
