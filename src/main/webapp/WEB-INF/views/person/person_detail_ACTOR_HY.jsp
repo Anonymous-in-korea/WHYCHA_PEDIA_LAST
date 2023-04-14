@@ -200,58 +200,57 @@ $("#like").click(function() {
 		                                                    <div class="css-10ggmzf">평가</div>
 		                                                    <div class="css-10ggmzf">감상 가능 서비스</div>
 		                                                </div>
-		                                                <!-- 출연작 불러오기 1개 -->
+		                                                <!-- 출연작 불러오기 1개 시작-->
+		                                                  <!-- 리스트 반복 시작 -->
+				                                           <c:if test="${actorPersonMovieList.size() > 0}">
+					                                         <c:forEach var="i" begin="0" end="${actorPersonMovieList.size()-1}" varStatus="status">
+				                                                <a class="w_exposed_cell css-11g9kr1" data-rowindex="6" href="/contents/contents_SH?movie_id=${actorPersonMovieList[i].id}" id="tvList">
+				                                      
+				                                                    <div type="tv_seasons" class="css-1726275">
+				                                                        <div class="css-1vjd65c" id="tvdata"><fmt:formatDate value="${actorPersonMovieList[i].movie_release_date}" pattern="yyyy"/></div>
+				                                                        <div type="tv_seasons" class="css-1fqhpd6">
+				                                                            <div class=" css-eyiymt-StyledLazyLoadingImage ezcopuc0">
+				                                                                <img src="${actorPersonMovieList[i].movie_post_url }"
+				                                                                     class="css-qhzw1o-StyledImg ezcopuc1" id="tvpos">
+				                                                            </div>
+				                                                        </div>
+				                                                        <div class="css-1huturz" id="tvTitle">${actorPersonMovieList[i].movie_kor_title }</div>
+				                                                        
+				                                                        <div class="css-uideuz" id="tvRole">
+		<%-- 		                                                         							<c:forEach var="movieActorRole" items="${actorPersonMovieRolelist}"> --%>
+		<%-- 																								<c:if test="${actorPersonMovieList.id[i] == movieActorRole.id}"> --%>
+		<%-- 																									<c:out value="${movieActorRole.actor_role}"/> --%>
+		<%-- 																								</c:if> --%>
+		<%-- 																							</c:forEach> --%>
+				                                                        </div>
+				                                                        <div class="css-1fk9ffn">
+				                                                            <div class="css-bql08h">평균
+				                                                                <svg width="12" height="10" viewBox="0 0 12 10" xmlns="http://www.w3.org/2000/svg" fill="#787878" class="css-ebm5wj">
+				                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6 8.02L3.14233 9.91131C2.91094 10.0644 2.61352 9.84836 2.68767 9.58097L3.60334 6.27872L0.921531 4.14536C0.704379 3.97262 0.817982 3.62299 1.0952 3.61087L4.51878 3.46128L5.719 0.251483C5.81619 -0.00842059 6.18381 -0.00842094 6.281 0.251483L7.48122 3.46128L10.9048 3.61087C11.182 3.62299 11.2956 3.97262 11.0785 4.14536L8.39666 6.27872L9.31233 9.58097C9.38648 9.84836 9.08906 10.0644 8.85767 9.91131L6 8.02Z">
+				                                                                    </path>
+				                                                                </svg>
+				                                                                <span id="tvPoint"></span>
+				                                                            </div>
+				                                                        </div>
+				                                                        <div class="css-13lviui">
+					                                                            <div class="isWatcha" id="tvWatcha" >
+					                                                                <div src=""></div>
+					                                                            </div>
+				                                                          	 <div class="isNetflix" id="tvNetflix">
+						                                                        <c:forEach var="ott" items="${actorMovieOTTList}">
+							                                                        <c:if test="${actorPersonMovieList[i].id == ott.movie_id}">
+							                                                                <div src="${ott.logo_url}" class="css-1uf1oz6"
+							                                                               		 style="background: url('${ott.logo_url}')center center / cover no-repeat"></div>
+						                                                           </c:if>
+						                                                        </c:forEach>
+						                                                     </div>
+				                                                        </div>
+				                                                    </div>
+				                                                </a>
+															  </c:forEach>
+															</c:if>
 		                                              
-		                                                <a class="w_exposed_cell css-11g9kr1" data-rowindex="6" href="/ko-KR/contents/tl9g0BW" id="tvList">
-		                                      
-		                                                  <!-- 리스트 반복 끝 -->
-		                                                <c:if test="${actorPersonMovieList.size() > 0}">
-			                                                <c:forEach var="i" begin="0" end="${actorPersonMovieList.size()-1}" varStatus="status">
-		                                                    <div type="tv_seasons" class="css-1726275">
-		                                                        <div class="css-1vjd65c" id="tvdata"><fmt:formatDate value="${actorPersonMovieList[i].movie_release_date}" pattern="yyyy"/></div>
-		                                                        <div type="tv_seasons" class="css-1fqhpd6">
-		                                                            <div class=" css-eyiymt-StyledLazyLoadingImage ezcopuc0">
-		                                                                <img src="${actorPersonMovieList[i].movie_post_url }"
-		                                                                     class="css-qhzw1o-StyledImg ezcopuc1" id="tvpos">
-		                                                            </div>
-		                                                        </div>
-		                                                        <div class="css-1huturz" id="tvTitle">${actorPersonMovieList[i].movie_kor_title }</div>
-		                                                        
-		                                                        <div class="css-uideuz" id="tvRole">
-<%-- 		                                                         							<c:forEach var="movieActorRole" items="${actorPersonMovieRolelist}"> --%>
-<%-- 																								<c:if test="${actorPersonMovieList.id[i] == movieActorRole.id}"> --%>
-<%-- 																									<c:out value="${movieActorRole.actor_role}"/> --%>
-<%-- 																								</c:if> --%>
-<%-- 																							</c:forEach> --%>
-		                                                        </div>
-		                                                        <div class="css-1fk9ffn">
-		                                                            <div class="css-bql08h">평균
-		                                                                <svg width="12" height="10" viewBox="0 0 12 10" xmlns="http://www.w3.org/2000/svg" fill="#787878" class="css-ebm5wj">
-		                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6 8.02L3.14233 9.91131C2.91094 10.0644 2.61352 9.84836 2.68767 9.58097L3.60334 6.27872L0.921531 4.14536C0.704379 3.97262 0.817982 3.62299 1.0952 3.61087L4.51878 3.46128L5.719 0.251483C5.81619 -0.00842059 6.18381 -0.00842094 6.281 0.251483L7.48122 3.46128L10.9048 3.61087C11.182 3.62299 11.2956 3.97262 11.0785 4.14536L8.39666 6.27872L9.31233 9.58097C9.38648 9.84836 9.08906 10.0644 8.85767 9.91131L6 8.02Z">
-		                                                                    </path>
-		                                                                </svg>
-		                                                                <span id="tvPoint"></span>
-		                                                            </div>
-		                                                        </div>
-		                                                        <div class="css-13lviui">
-			                                                            <div class="isWatcha" id="tvWatcha" >
-			                                                                <div src=""></div>
-			                                                            </div>
-		                                                          	 <div class="isNetflix" id="tvNetflix">
-				                                                        <c:forEach var="ott" items="${actorMovieOTTList}">
-					                                                        <c:if test="${actorPersonMovieList[i].id == ott.movie_id}">
-					                                                                <div src="${ott.logo_url}" class="css-1uf1oz6"
-					                                                               		 style="background: url('${ott.logo_url}')center center / cover no-repeat"></div>
-				                                                           </c:if>
-				                                                        </c:forEach>
-				                                                     </div>
-		                                                        </div>
-		                                                    </div>
-														</c:forEach>
-														</c:if>
-		                                                </a>
-		                                              
-		                                                <!-- 출연작 불러오기 1개 -->
+		                                                <!-- 출연작 불러오기 1개 끝-->
 		                                                
 		
 		                                                <div class="css-1gh9vn6" id="tvmorebtn">
