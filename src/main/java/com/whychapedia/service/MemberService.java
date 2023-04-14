@@ -22,8 +22,6 @@ public interface MemberService {
 	//해당 코멘트의 reply가져오기
 	public List<MemberVo> selectReplyuserList(List<CommentReplyVo> replyList);
 
-	//해당 아이디의 유저이름 가져오기
-	public List<MemberVo> getOneUserName( int sessionId);
 
 	
 }

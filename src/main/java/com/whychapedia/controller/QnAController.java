@@ -29,6 +29,8 @@ public class QnAController {
 	QuestionListVo questionListVo;
 	@Autowired
 	AnswerListVo answerListVo;
+	@Autowired
+	MemberVo memberVo;
 	@Autowired 
 	MemberService memberService;
 	@Autowired 
@@ -42,11 +44,6 @@ public class QnAController {
 	          return "redirect:/"; // 로그인 페이지로 이동하도록 처리
 	      }
 		  Integer sessionId = (Integer) session.getAttribute("sessionId");
-		  //sessionId에 해당하는 userName 가져오기
-		  List<MemberVo> memberVo = memberService.getOneUserName(id);
-		  model.addAttribute("sessionId", id);
-	      model.addAttribute("memberVo", memberVo);
-	      System.out.println("memberVo : "+memberVo);
 	      return "QnA/QnA_SY";
 	  }
 	  

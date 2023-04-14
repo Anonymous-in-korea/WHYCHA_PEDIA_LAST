@@ -44,9 +44,7 @@
 				<nav class="user-nav" id="user-nav"></nav>
 				<div class="user-info dropdown">
 					<button class="dropdown-toggle" aria-haspopup="true">
-						<c:forEach items="${memberVo}" var="mvo">
-							<span data-user-name="true">${mvo.user_name }</span> 
-						</c:forEach>
+							<span data-user-name="true">원수영</span> 
 							<img src="https://i.ibb.co/TRFJCXr/2020-08-26-1-31-03.png" class="dropdown-chevron-icon" width="15" height="20" focusable="false" viewbox="0 0 12 12"  aria-hidden="true">
 					</button>
 					<div class="dropdown-menu" role="menu" aria-expanded="false">

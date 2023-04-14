@@ -54,14 +54,5 @@ public class MemberServiceImpl implements MemberService {
 		List<MemberVo> mvoReplyList = memberMapper.selectReplyuserList(replyList);
 		return mvoReplyList;
 	}
-
-
-	//해당 아이디의 유저이름 가져오기
-	@Override
-	public List<MemberVo> getOneUserName(int sessionId) {
-		
-		List<MemberVo>  memberVo = memberMapper.getOneUserName(sessionId);
-		return memberVo;
-	}
 	
 }

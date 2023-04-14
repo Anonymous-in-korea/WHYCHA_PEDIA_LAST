@@ -27,6 +27,4 @@ public interface MemberMapper {
 	public List<MemberVo> commentUserList(List<CommentVo> commentVolist);
 
 	public List<MemberVo> selectReplyuserList(List<CommentReplyVo> replyList);
-
-	public List<MemberVo> getOneUserName(int sessionId);//해당 id로 해당 유저 이름 가져오기
 }
