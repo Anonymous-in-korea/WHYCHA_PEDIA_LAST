@@ -377,10 +377,10 @@
                                             <div class="css-1y901al-Row emmoxnt0">
                                                 <ul class="css-27z1qm-VisualUl-ContentGrid e14whxmg0">
                                                 <c:forEach items="${highScoreForBothUser}" var="movieVo">
-                                                    <li class="css-1hp6p72">
+                                                    <li class="css-1hp6p72" style="width:151px;">
                                                     	<a title="${movieVo.movie_kor_title}" href="/contents/contents_SH?movie_id=${movieVo.id}">
-                                                         <div class="css-1qmeemv">
-                                                             <div class=" css-unzuzl-StyledLazyLoadingImage ezcopuc0">
+                                                         <div class="css-1qmeemv" >
+                                                             <div class=" css-unzuzl-StyledLazyLoadingImage ezcopuc0 " >
                                                                  <img src="${movieVo.movie_post_url}"
                                                                       class="css-qhzw1o-StyledImg ezcopuc1">
                                                              </div>

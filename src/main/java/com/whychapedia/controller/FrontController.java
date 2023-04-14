@@ -134,6 +134,7 @@ public class FrontController {
 		model.addAttribute("WhychamovieInCollectionVoList", WhychamovieInCollectionVoList);
 		System.out.println("index(controller):WhychaMovieCollectionVoList size()"+WhychamovieInCollectionVoList.size());
 		System.out.println("-------------------end_와이챠피디아 컬렉션 평점-controller--------------------------------");
+		model.addAttribute("user_id", 3);
 		 
 		
 		
