@@ -64,7 +64,7 @@
 			</div>
 			<section class="css-le8j8b">
 				<div class="css-1jehmiq">
-					<div class="css-10zg79x-pageMarginStyle">내가 좋아하는 영화인</div>
+					<div class="css-10zg79x-pageMarginStyle">내가 구독하는 영화인</div>
 				</div>
 				<div class="css-15qcwbn-StyledTabBarContainer e1szkzar1">
 					<ul class="css-1gwdxtz-VisualUl-StyledTabBarUl e1szkzar2">
@@ -81,7 +81,7 @@
 							<c:if test="${not empty actor_list}">
 								<c:forEach items="${actor_list}" var ="avo" >
 									<li class="css-1tmgvat actor">
-										<a title="다바타 신타로" class="css-1aaqvgs-InnerPartOfListWithImage" href="/ko-KR/people/XV4mY3G946">
+										<a title="${avo.actor_name}" class="css-1aaqvgs-InnerPartOfListWithImage" href="/person/person_detail_ACTOR_HY?actor_name=${avo.actor_name}&id=${avo.id}&role=배우">
 											<div class="css-cssveg">
 												<div class="css-17ob1ac">
 													<div class="css-1e8dv1-ProfilePhotoImage"></div>
@@ -116,22 +116,22 @@
 							</c:if>
 							<!-- 감독 list -->
 							<c:if test="${not empty director_list}">
-								<c:forEach items="${director_list}" var ="avo">
+								<c:forEach items="${director_list}" var ="dvo">
 									<li class="css-1tmgvat director" style="display:none">
-										<a title="다바타 신타로" class="css-1aaqvgs-InnerPartOfListWithImage" href="/ko-KR/people/XV4mY3G946">
+										<a title="${dvo.director_name}" class="css-1aaqvgs-InnerPartOfListWithImage" href="/person/person_detail_DIRECTOR_HY?director_name=${dvo.director_name}&id=${dvo.id}&role=감독">
 											<div class="css-cssveg">
 												<div class="css-17ob1ac">
 													<div class="css-1e8dv1-ProfilePhotoImage"></div>
 													<div class="css-1dtdviq">
-														<img src="${avo.director_post_url}"
-															 alt="다바타 신타로의 사진" class="css-ssea8o">
+														<img src="${dvo.director_post_url}"
+															 alt="${dvo.director_name}" class="css-ssea8o">
 													</div>
 												</div>
 											</div>
 											<div class="css-zoy7di">
 												<div class="css-qkf9j">
 													<div class="css-17vuhtq">
-														<div class="css-515bkd">${avo.director_name}</div>
+														<div class="css-515bkd">${dvo.director_name}</div>
 													</div>
 													<div class="css-1evnpxk-StyledSubtitle">
 														<div class="css-qzyxgk">
