@@ -134,8 +134,7 @@ public class CollectionController {
 	
     /*하나의 컬렉션 페이지*/
 	@GetMapping("/collection/collection_detail_HY")
-	public String collection_detail_HY(@RequestParam int collection_id,Model model) {
-		int user_id=3;
+	public String collection_detail_HY(@RequestParam int user_id,@RequestParam int collection_id,Model model) {
 		memberVo=memberService.selectOneMember(user_id);
 		System.out.println("memberVo"+memberVo.getUser_name());
 		
@@ -165,10 +164,11 @@ public class CollectionController {
 				movieInCollectionVoList=movieService.insertStarRateInfo(movieInCollectionVoList,ratedList);
 			}
 		}
-		
+		int sizeCollection=movieInCollectionVoList.size();
 		model.addAttribute("movieInCollectionVoList", movieInCollectionVoList); //영화
 		model.addAttribute("memberVo",memberVo);//페이지 주인
 		model.addAttribute("collectionVo",collectionVo);//컬렉션 디테일
+		model.addAttribute("sizeCollection",sizeCollection);//컬렉션 사이즈
 		
 		return "/collection/collection_detail_HY";
 	}
@@ -180,12 +180,14 @@ public class CollectionController {
 		Map<String, Object> map = new HashMap<>();
 		//콜렉션 넣기
 		int result=collectionService.insertCollection(user_id,collection_name,collection_desc);
-		System.out.println("insertCollection"+result);
+		System.out.println("insertCollection result:"+result);
 		//유저정보
 		memberVo=memberService.selectOneMember(user_id);
 		//업뎃한거 가져오기
 		collectionVo=collectionService.selectLatestUpdate(user_id);
-			
+		//업뎃한 콜렉션에 디폴트로 영화 한개 넣기
+		int update=movieCollectionService.insertDefaultMovie(collectionVo.getId());
+		System.out.println("insertCollection update:"+update);
 		map.put("memberVo", memberVo);
 		map.put("collectionVo", collectionVo);
 		

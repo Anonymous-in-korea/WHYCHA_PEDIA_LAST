@@ -114,12 +114,21 @@ public class MovieServiceImpl implements MovieService {
 		return movieSearchlist;
 	}
 	
-	//해당 배우 정보 가져오기
+	//해당 배우 id로 배우 정보 가져오기
 	@Override
 	public List<MovieVo> selectActorPersonMovieAll(int id) {
 		List<MovieVo> actorPersonMovieList= movieMapper.selectActorPersonMovieAll(id);
+		
 		return actorPersonMovieList;
 	}
+	///해당 감독 id로 감독 정보 가져오기
+	@Override
+	public List<MovieVo> selectDirectorPersonMovieAll(int id) {
+		List<MovieVo> directorPersonMovieList= movieMapper.selectDirectorPersonMovieAll(id);
+		
+		return directorPersonMovieList;
+	}
+
 	
 	//유저가 평가한 영화 모두 들고오기 + 영화 정보까지 다 들고 오기
 	@Override
@@ -161,6 +170,13 @@ public class MovieServiceImpl implements MovieService {
 	public List<MovieVo> selectMovieHighRate(int user_id) {
 		List<MovieVo> movieHighRate=movieMapper.selectMovieHighRate(user_id);
 		return movieHighRate;
+	}
+
+	//두 사람이 모두 높게 평가한 영화 가져오기
+	@Override
+	public List<MovieVo> selectHighScoreForBothUser(int user_id, int loginId) {
+		List<MovieVo> highScoreForBothUser=movieMapper.selectHighScoreForBothUser(user_id,loginId);
+		return highScoreForBothUser;
 	}
 	
 

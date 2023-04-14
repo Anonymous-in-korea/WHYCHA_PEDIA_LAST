@@ -16,5 +16,7 @@ public interface MovieCollectionMapper {
 	List<MovieCollectionVo> selectOneCollectionVoList(int collection_id);
 	//컬렉션_movie vo 생성 ( collection_id,movie_id,movie_post_url 들어가 있음)
 	List<MovieCollectionVo> selectCollectionVoWithMoviePostUrlList(List<CollectionVo> collectionVoList);
+	//업뎃한 콜렉션에 디폴트로 영화 한개 넣기
+	int insertDefaultMovie(int collection_id);
 
 }

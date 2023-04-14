@@ -109,7 +109,7 @@
 									<!-- foreach문 돌릴 부분 컬렉션div -->
 									<c:forEach items="${updateCollectionVoList}" var="collectionVo" > 
 										<li class="css-ovtvwa">
-											<a title="${collectionVo.collection_name}" class="css-1f9m1s4-StylelessLocalLink eovgsd01" href="/collection/collection_detail_HY?collection_id=${collectionVo.id}">
+											<a title="${collectionVo.collection_name}" class="css-1f9m1s4-StylelessLocalLink eovgsd01" href="/collection/collection_detail_HY?collection_id=${collectionVo.id}&user_id=${memberVo.id}">
 												<div class="css-m7az3s">
 													<div class="css-1sarkww">
 														<div class="css-vc4xb">

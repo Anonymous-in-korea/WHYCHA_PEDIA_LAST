@@ -16,7 +16,7 @@
 	</select>
   
     <!--해당 영화 해당 user의 별점 가져오기 -->
-	<select id="selectMyStarRate" resultType="int">
+	<select id="selectMyStarRate" resultType="double">
  		SELECT score from star_rate where user_id=#{user_id} and movie_id=#{movie_id}
 	</select>
   
@@ -45,7 +45,7 @@
 		delete star_rate where user_id=#{user_id} and movie_id=#{movie_id}  
 	</delete>
 	
-	<!-- 마지막 고유 번호 가져오기 -->
+	<!-- 그래프 가져오기 -->
 	<select id="selectStarRateGraph" resultType="int">
 		 select count(*) from star_rate where movie_id=#{movie_id} and (score=#{score1} or score=#{score2})
 	</select>

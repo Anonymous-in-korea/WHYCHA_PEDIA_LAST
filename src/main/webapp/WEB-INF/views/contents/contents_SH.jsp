@@ -171,6 +171,7 @@
                                                                 			<img src="/images/wish_flag_icon.png" id="wish_flag_icon" style="display:none;">
                                                                 		</div>
 	                                                                	<strong id="wish_text" style="margin-right:15px;">보고싶어요</strong>
+	                                                                	</button>
 																	</c:if>
 																	<c:if test="${ sessionId != null }">
 																		<c:if test="${ isWishWatch == 1 }"> <!-- 1: 보고싶어요 체크  -->
@@ -180,6 +181,7 @@
 	                                                                			<img src="/images/wish_flag_icon.png" id="wish_flag_icon" style="display:block;">
 	                                                                		</div>
 		                                                                	<strong id="wish_text" style="margin-right:15px; color:#FEAE27;">보고싶어요</strong>
+		                                                                	</button>
 	                                                            		</c:if>
 	                                                            		<c:if test="${ isWishWatch == 0 }"> <!-- 0: 보고싶어요 안 체크  -->
 	                                                            			<button class="css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm e1svyhwg25" id="wish_btn_login">
@@ -188,9 +190,10 @@
 	                                                                			<img src="/images/wish_flag_icon.png" id="wish_flag_icon" style="display:none;">
 	                                                                		</div>
 		                                                                	<strong id="wish_text" style="margin-right:15px; color:;">보고싶어요</strong>
+		                                                                	</button>
 	                                                            		</c:if>
 																	</c:if>
-	                                                            	</button>
+	                                                            	
 	                                                            	
 	                                                            	
 	                                                            	
@@ -228,8 +231,8 @@
 																		<c:if test="${ isWatching == 1 }"> <!-- 1: 보는중 체크  -->
 		                                                            		<button class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23 active" id="watch_btn_login">
 			                                                                <div class="select_image">
-			                                                                    <img src="/images/eye_icon.png" id="eye_icon" style="display:block;">
-			                                                                    <img src="/images/eye_icon_color.png" id="eye_icon_color" style="display:none;">
+			                                                                    <img src="/images/eye_icon.png" id="eye_icon" style="display:none;">
+			                                                                    <img src="/images/eye_icon_color.png" id="eye_icon_color" style="display:block;">
 			                                                                </div>
 			                                                                <strong id="watch_text" style="margin-right:15px; color:#FEAE27;">보는중</strong>
 		                                                            	</c:if>
@@ -404,7 +407,7 @@
 		                                                                                  <!--감독 리스트 시작  -->
 		                                                                            <c:forEach items= "${oneMovieDirectorList}" var ="dvo" >
 		                                                                                <li class="css-54rr1e" >
-		                                                                                	<a href="/person/person_detail_DIRECTOR_HY?director_name=${dvo.director_name}&id=${dvo.id}&role=감독" class="css-1aaqvgs-InnerPartOfListWithImage" >
+		                                                                                	<a href="/person/person_detail_DIRECTOR_HY?director_name=${dvo.director_name}&id=${dvo.director_id}&role=감독" class="css-1aaqvgs-InnerPartOfListWithImage" >
 		                                                                                    	<div class="css-cssveg">
 		                                                                                        	<div class="profilePhotoBlock css-13zlig9">
 		                                                                                            	<div class="css-1o7yycy-ProfilePhotoImage" style="background: url('${dvo.director_post_url}')center center / cover no-repeat"></div>
@@ -422,7 +425,7 @@
 		                                                                               <!-- 배우 리스트 시작 -->
 		                                                                                <c:forEach items= "${oneMovieActorList}" var ="avo" >
 		                                                                                <li class="css-54rr1e">
-		                                                                                	<a href="/person/person_detail_ACTOR_HY?actor_name=${avo.actor_name}&id=${avo.id}&role=배우" class="css-1aaqvgs-InnerPartOfListWithImage" >
+		                                                                                	<a href="/person/person_detail_ACTOR_HY?actor_name=${avo.actor_name}&id=${avo.actor_id}&role=배우" class="css-1aaqvgs-InnerPartOfListWithImage" >
 		                                                                                    	<div class="css-cssveg">
 		                                                                                        	<div class="profilePhotoBlock css-13zlig9">
 		                                                                                            	<div class="css-1h9orp8-ProfilePhotoImage" style="background: url('${avo.actor_post_url}')center center / cover no-repeat"></div>
@@ -719,12 +722,12 @@
 		                                                                                <!-- foreach문 돌릴 부분 OTT start -->
 		                                                                                <c:forEach items="${movieOttVoList}" var="movieOttVo">
 		                                                                                <li class="css-wj6fn0">
-		                                                                                	<a href="${movieOttVo.provider_name}"
-																								target="_blank" title="카카오웹툰"
+		                                                                                	<a href="${movieOttVo.path_url}"
+																								target="_blank" title="${movieOttVo.provider_name}"
 		                                                                                        class="css-1wacncs-InnerPartOfListWithImage">
 			                                                                                    <div class="css-cssveg">
 			                                                                                        <div class="externalServiceOttIcon css-13zlig9">
-			                                                                                            <div class="css-1njml0y-ProfilePhotoImage"></div>
+			                                                                                            <div class="css-1njml0y-ProfilePhotoImage" style="background: url(${movieOttVo.logo_url})center center / cover no-repeat;"></div>
 			                                                                                        </div>
 			                                                                                    </div>
 			                                                                                    <div class="css-zoy7di">
@@ -740,25 +743,6 @@
 																						</li>
 																						</c:forEach>
 																						<!-- foreach문 돌릴 부분 OTT end-->	
-		                                                                                <li class="css-wj6fn0">
-		                                                                                	<a href="https://redirect.watcha.com/galaxy/aHR0cHM6Ly9saW5rLXBhZ2Uua2FrYW8uY29tL2dvdG9fdmlldz9zZXJpZXNfaWQ9NTA4NjY0ODEmcmVmZXJyZXI9dXRtX3NvdXJjZSUzRHdhdGNoX3BlZGlh"
-																								target="_blank" title="카카오페이지" class="css-1wacncs-InnerPartOfListWithImage">
-			                                                                                    <div class="css-cssveg">
-			                                                                                        <div class="externalServiceOttIcon css-13zlig9">
-			                                                                                            <div class="css-1oiaov4-ProfilePhotoImage"></div>
-			                                                                                        </div>
-			                                                                                    </div>
-			                                                                                    <div class="css-16n7af8">
-			                                                                                        <div class="externalServiceTitles css-qkf9j">
-			                                                                                            <div class="css-17vuhtq">카카오페이지</div>
-			                                                                                        </div>
-			                                                                                        <div>
-			                                                                                        	<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iOXB4IiBoZWlnaHQ9IjE0cHgiIHZpZXdCb3g9IjAgMCA5IDE0IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPHRpdGxlPkhvbWUvU2VjdGlvbi9IZWFkZXIvel9JdGVtcy9BcnJvdzwvdGl0bGU+CiAgICA8ZyBpZD0iSG9tZS9TZWN0aW9uL0hlYWRlci96X0l0ZW1zL0Fycm93IiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiBzdHJva2UtbGluZWNhcD0icm91bmQiPgogICAgICAgIDxwb2x5bGluZSBpZD0iUGF0aC1Db3B5LTYiIHN0cm9rZT0iI0E1QTVBQSIgc3Ryb2tlLXdpZHRoPSIyIiBwb2ludHM9IjEgMSA3IDcgMSAxMyI+PC9wb2x5bGluZT4KICAgIDwvZz4KPC9zdmc+"
-																											alt="Arrow">
-																									</div>
-			                                                                                    </div>
-			                                                                                </a>
-																						</li>
 		                                                                            </ul>
 		                                                                        </div>
 		                                                                    </div>

@@ -11,6 +11,7 @@
 	</select>
 	
 	<!--해당 collection_id의 컬렉션 vo 가져오기 (좋아요/코멘트 # 가져옴)-->
+
 	<select id="selectOneCollection" resultType="com.whychapedia.vo.CollectionVo">
 	select co.*,(select count(*) from collection_like where collection_id=co.id) as like_count,(select count(*) from collection_comment where collection_id=co.id) as comment_count 
 	from collection co

@@ -98,6 +98,13 @@ public class MovieCollectionServiceImpl implements MovieCollectionService {
 		return selectCollectionVoWithMoviePostUrlList;
 	}
 
+	//업뎃한 콜렉션에 디폴트로 영화 한개 넣기
+	@Override
+	public int insertDefaultMovie(int collection_id) {
+		int result=movieCollectionMapper.insertDefaultMovie(collection_id);
+		return result;
+	}
+
 
 
 }

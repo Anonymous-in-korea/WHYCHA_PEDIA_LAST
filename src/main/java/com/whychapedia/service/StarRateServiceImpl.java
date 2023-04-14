@@ -60,8 +60,8 @@ public class StarRateServiceImpl implements StarRateService {
 
 	//한명 별점 들고오기
 	@Override
-	public int selectMyStarRate(int user_id,int movie_id) {
-		int star_rate=starRateMapper.selectMyStarRate(user_id,movie_id);
+	public double selectMyStarRate(int user_id,int movie_id) {
+		double star_rate=starRateMapper.selectMyStarRate(user_id,movie_id);
 		return star_rate;
 	}
 	
@@ -119,7 +119,7 @@ public class StarRateServiceImpl implements StarRateService {
 		for (MovieVo movieVo : movieInCollectionVoList) {
 		    //평가했는지 안했는지 check
 		    if (selectIsRating(loginId,movieVo.getId())==1) {
-		    	int userScore = selectMyStarRate(loginId,movieVo.getId());
+		    	double userScore = selectMyStarRate(loginId,movieVo.getId());
 		    	starRateVo = new StarRateVo();
 		    	starRateVo.setScore(userScore);
 		    	starRateVo.setMovie_id(movieVo.getId());

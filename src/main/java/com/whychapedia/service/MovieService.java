@@ -27,6 +27,8 @@ public interface MovieService {
 
 	List<MovieVo> selectActorPersonMovieAll(int id);
 	
+	List<MovieVo> selectDirectorPersonMovieAll(int id);
+	
 	List<MovieVo> selectMovieStarRate(int user_id);
 
 	List<MovieVo> selectMovieWatchList(int type, int user_id);
@@ -38,6 +40,8 @@ public interface MovieService {
 	List<MovieVo> selectMovieReleaseRate(int user_id);
 
 	List<MovieVo> selectMovieHighRate(int user_id);
+
+	List<MovieVo> selectHighScoreForBothUser(int user_id, int loginId);
 
 
 

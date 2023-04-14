@@ -13,4 +13,10 @@ public interface WatchListMapper {
 	//해당 유저 보고 싶은 or 보는중 작품 개수
 	int selectCountWatchList(int type, int user_id);
 
+	//삭제
+	int deleteWatchList(int type, int user_id, int movie_id);
+	
+	//등록
+	int insertWatchList(int type, int user_id, int movie_id);
+
 }

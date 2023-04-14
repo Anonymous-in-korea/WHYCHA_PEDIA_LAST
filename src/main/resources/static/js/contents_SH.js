@@ -1,26 +1,25 @@
 $(function(){	
-/*별점 추가 script start*/ 
-   $("#star_rating").change(function() {
-    	var star_rate = $("#star_rating option:selected").val();
+	/*별점 추가 script start*/ 
+   $("#star_rating_login").change(function() {
+    	var star_rate = $("#star_rating_login option:selected").val();
     	var movieVoId = $("#ajaxMovieId").text();
-        alert(movieVoId); 
-    	alert("selected_star_rate : " + star_rate);
+      
     	$.ajax({
 			type:"post",
 			url:"/contents/MyStarRateChange",
-			data:{"movie_id":parseInt(movieVoId),"star_rate":parseInt(star_rate)},
+			data:{"movie_id":parseInt(movieVoId),"star_rate":parseFloat(star_rate)},
 			dataType:"json",
-			//contentType:'application/json',
-			success:function(data){
-				alert("성공");
+			success:function(response){
 			},
 			error:function(){
-				alert("오류로 인해 확인이 되지 않았습니다. 다시 입력해주세요.");
 			}
 		}); //ajax
 	});
 		
- /*별점 추가  script end*/ 
+	/*별점 추가  script end*/ 
+	
+   
+	
 /*--------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 });                                 

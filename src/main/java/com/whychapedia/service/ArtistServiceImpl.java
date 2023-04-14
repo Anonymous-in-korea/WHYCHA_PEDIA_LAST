@@ -59,11 +59,23 @@ public class ArtistServiceImpl implements ArtistService {
 		return directorSearchlist;
 	}
 
-	//해당 아이디의 인물 정보 가져오기
+	//해당 배우아이디의 배우 정보 가져오기
 	@Override
-	public List<ArtistVo> selectActorOnelist(int id) {
-		List<ArtistVo> actorPersonlist = artistMapper.selectActorOnelist(id);
+	public ArtistVo selectActorOnelist(int id) {
+		ArtistVo actorPersonlist = artistMapper.selectActorOnelist(id);
+		
+		
 		return actorPersonlist;
+	}
+
+	
+	//해당 감독 아이디의 감독 정보 가져오기
+	@Override
+	public ArtistVo selectDirectorOnelist(int id) {
+		ArtistVo directorPersonlist = artistMapper.selectDirectorOnelist(id);
+		
+		
+		return directorPersonlist;
 	}
 	
 	//선호 배우 3명 정보

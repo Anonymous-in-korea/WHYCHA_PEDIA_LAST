@@ -12,6 +12,10 @@ public interface WatchListService {
 
 	int selectCountWatchList(int type, int user_id);
 
+	int deleteWatchList(int type,int user_id, int movie_id);
+
+	int insertWatchList(int type, int user_id, int movie_id);
+
 	
 	
 

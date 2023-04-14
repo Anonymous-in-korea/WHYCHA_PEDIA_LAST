@@ -19,7 +19,7 @@ public interface StarRateMapper {
 	//영화 별점 삭제
 	public int deleteStarRate(int user_id, int movie_id);
 	//한명 별점 들고오기
-	public int selectMyStarRate(int user_id, int movie_id);
+	public double selectMyStarRate(int user_id, int movie_id);
 	//평가했는지 안했는지 확인하기
 	public int selectIsRating(int user_id, int movie_id);
 	//마지막 별점 고유번호 가져오기

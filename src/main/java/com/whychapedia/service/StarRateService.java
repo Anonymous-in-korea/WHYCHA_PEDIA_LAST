@@ -16,7 +16,7 @@ public interface StarRateService {
 
 	int deleteStarRate(int user_id, int movie_id);
 
-	int selectMyStarRate(int user_id, int movie_id);
+	double selectMyStarRate(int user_id, int movie_id);
 
 	int selectIsRating(int user_id, int movie_id);
 

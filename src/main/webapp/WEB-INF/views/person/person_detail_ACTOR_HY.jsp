@@ -13,10 +13,125 @@
 	    <meta charset="utf-8">
 	    <link rel="icon" href="/image/favicon.png" />
 	    <script defer src="/js/artist_page_young.js"></script>
-	    <title id="titleName">왓챠피디아</title>
+	    <title id="titleName">와이챠피디아</title>
 	    <!-- 필요한 CSS, JS 로드 -->
-	    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	    <script>
+	    $(function(){
+			 /*=====================================인물컬렉션 추가삭제 시작======================================================================  */
+$("#perLike").click(function() {
+	  var id = $("#actorPersonId").val();
+	  if (!${empty sessionId}) {
+	    	$(this).toggleClass('collected');
+	    	if ($(this).hasClass("collected")) {
+	    		$(this).css("background-color", "#ff7f27");
+		    	$(this).css("color", "#ffffff");
+		    	$(this).css("border-radius","5px");
+		    	$(this).html("+🙆‍♂️ Add ARTIST Collection");
+			  /*컬렉션 추가 ajax 시작  */
+			  $.ajax({
+			    url: "/person/insertCollectionActor",
+			    type: "POST",
+			    dataType: "json",
+			    data: {
+			      user_id: "${sessionId}",
+			      actor_id: id
+			    },
+			    success: function(data) {
+			      //alert("Success: " + data);
+			  
+			    },
+			    error: function() {
+			      alert("Failure: ");
+			    }
+			  }); 
+			  /*컬렉션 추가 ajax 끝  */
+	    	 
+   	  } else {
+	    		  
+   		 $(this).css("background-color", "");
+	    	 $(this).css("color", "#959595");
+	    	 $(this).html("+🙆 Add ARTIST Collection");
+	    	 
+	    	 /*컬렉션 삭제 ajax 시작  */
+		      $.ajax({
+		        url: "/person/deleteCollectionActor",
+		        type: "POST",
+		        dataType: "json",
+		        data: {
+		          user_id: "${sessionId}",
+		          actor_id: id
+		        },
+		        success: function(data) {
+		          //alert("Success: " + data);
+		         // 
+		        },
+		        error: function() {
+		          alert("Failure: ");
+		        }
+		      }); 
+			  /*컬렉션 삭제 ajax 끝 */
+	    	}//if 
+	  }//if 세션아이디가 있을때 좋아요 가능하게
+	}); //컬렉션 추가 버튼 클릭시
+/*==========================================인물컬렉션 추가 삭제 끝========================================================  */
+/*=========================================좋아요 추가 삭제 시작==============================================================  */
+$("#like").click(function() {
+ var id = $("#actorPersonId").val();
+ $("#like-Count-before").hide();
+ if (!${empty sessionId}) {
+   	$(this).toggleClass('liked');
+	    if ($(this).hasClass('liked')) {
+		      $('#likeIcon').attr('src', '/images/orange_like_fill.png');
+		      $('.css-mr5mym-StyledButtonText').css('color', '#ff7f27');
+		      /*좋아요 ajax 시작  */
+		      $.ajax({
+		        url: "/person/insertActorLike",
+		        type: "POST",
+		        dataType: "json",
+		        data: {
+		          user_id: "${sessionId}",
+		          actor_id: id
+		        },
+		        success: function(data) {
+		          //alert("data: " + data);
+		          console.log(data);
+		          document.getElementById("like-count-value").innerText = data;
+		         // $("#like-count").text(data.directorlikeCount);
+		          
+		        },
+		        error: function() {
+		          alert("Failure: ");
+		        }
+		      }); 
+				      /*좋아요 ajax 끝  */
+	    } else {
+	      $('#likeIcon').attr('src', '/images/orange_like.png');
+	      $('.css-mr5mym-StyledButtonText').css('color', '');
+	      /*좋아요 삭제 ajax 시작  */
+		      $.ajax({
+		        url: "/person/deleteActorLike",
+		        type: "POST",
+		        dataType: "json",
+		        data: {
+		          user_id: "${sessionId}",
+		          actor_id: id
+		        },
+		        success: function(data) {
+		         // alert("Success: " + data);
+		          document.getElementById("like-count-value").innerText = data;
+		        },
+		        error: function() {
+		          alert("Failure: ");
+		        }
+		      }); 
+		  /*좋아요 삭제 ajax 끝 */
+   	}//if 
+	  }//if 세션아이디가 있을때 좋아요 가능하게
+	}); //좋아요 버튼 클릭시
+/* ========================================좋아요 추가 삭제 끝============================================================================== */
+});//function
+		</script>
 	    <!--jquery + javascript-->
 	</head>
 	<body>
@@ -30,7 +145,7 @@
 							<!-- header end -->
 		                </div>
 		            </header>
-		            <input type="hidden" id="personIdx">
+		             <input type="hidden" id="actorPersonId" value="${actorPersonlist.id}">
 		            <section class="css-18gwkcr">
 		                <section class="css-ohiqjz">
 		                    <section class="css-tq98he-Self e1555cob0">
@@ -44,38 +159,27 @@
 		                        <div class="css-13khe4v">
 		                            <section class="css-1jbeghx">
 		                                <div class="css-1gkas1x-Grid e1689zdh0">
-		                                      <c:forEach items= "${actorPersonlist}" var ="ArtistVo" > 
 			                                    <div class="css-1kc9ha1">
 			                                        <div class="css-5krpk4">
 			                                            <div class="css-c2ylax">
 			                                                <div class="css-ir3bkd-ProfilePhotoImage" id="personPhoto" 
-			                                                style='background: url("${ArtistVo.actor_post_url}")center center / cover no-repeat'
+			                                                style='background: url("${actorPersonlist.actor_post_url}")center center / cover no-repeat'
 			                                                >
 			                                                </div>
 			                                            </div>
 			                                        </div>
 			                                        <div class="css-n52eyj">
-			                                            <h1 id="personName">${ArtistVo.actor_name}</h1>
+			                                            <h1 id="personName">${actorPersonlist.actor_name}</h1>
 			                                            <p id="perRole">${role}</p>
-			                                            <p id="perLike">🙆🏻‍♀️PEOPLE</p>
+			                                            <p id="perLike">🙆 Add ARTIST Collection</p>
 			                                        </div>
 			                                    </div>
-                                            </c:forEach>
 		                                    <hr class="css-god8tc">
 											<!-- 좋아요 버튼 -->
 		                                    <button id="like" class="css-1ski1qz-StylelessButton-StyledActionButton e150ls9t0">
-		                                        <div class="css-1umclh2-StyledIconContainer e150ls9t1">
-		                                            <svg viewBox="0 0 20 20" class="css-vkoibk">
-		                                                <path class="fillTarget" fill-rule="evenodd" clip-rule="evenodd"
-		                                                      d="M5.6252 7.9043H3.1252C2.6652 7.9043 2.29187 8.27763 2.29187 8.73763V17.071C2.29187 17.531 2.6652 17.9043 3.1252 17.9043H5.6252C6.08604 17.9043 6.45854 17.531 6.45854 17.071V8.73763C6.45854 8.27763 6.08604 7.9043 5.6252 7.9043Z"
-		                                                      fill="#87898B"></path>
-		                                                <path class="fillTarget" fill-rule="evenodd" clip-rule="evenodd"
-		                                                      d="M11.71 4.34525L11.7017 3.99359L11.6825 3.14525L11.6809 3.09692L11.6759 3.04942C11.6684 2.96942 11.6792 2.93442 11.6775 2.93275C11.6917 2.92442 11.7534 2.90442 11.8725 2.90442C12.115 2.90442 13.3225 2.97609 13.3225 4.38692C13.3225 4.93359 13.2775 5.35859 13.1809 5.72692L12.8375 7.03275C12.8034 7.16525 12.9025 7.29442 13.0392 7.29442H14.3892H15.7317C16.0575 7.29442 16.3684 7.43692 16.585 7.68442C16.7975 7.93025 16.9009 8.25609 16.87 8.58275L15.6717 14.7703L15.6634 14.8119L15.6584 14.8536C15.59 15.3961 15.0959 15.8211 14.5334 15.8211H8.54169V8.19942C8.54169 7.89109 8.71169 7.56275 9.04835 7.22359L11.3417 4.90025L11.5775 4.66109C11.71 4.52359 11.71 4.34525 11.71 4.34525ZM17.5275 6.86525C17.0734 6.34275 16.4184 6.04442 15.7317 6.04442H14.3892C14.5167 5.56025 14.5725 5.02942 14.5725 4.38692C14.5725 2.50942 13.1734 1.65442 11.8725 1.65442C11.3825 1.65442 11 1.80775 10.7367 2.11025C10.5667 2.30359 10.3792 2.64442 10.4325 3.17359L10.4517 4.02192L8.15835 6.34525C7.58335 6.92692 7.29169 7.55109 7.29169 8.19942V16.2378C7.29169 16.6978 7.66502 17.0711 8.12502 17.0711H14.5334C15.7342 17.0711 16.7559 16.1603 16.8992 15.0078L18.1067 8.77192C18.1925 8.08109 17.9809 7.38692 17.5275 6.86525Z"
-		                                                      fill="#87898B"></path>
-		                                            </svg>
-		                                        </div>
-		                                        <span type="mobile" class="css-1uf9j27-StyledButtonText e150ls9t2">좋아요 262</span>
-		                                        <span type="desktop" class="css-mr5mym-StyledButtonText e150ls9t2">좋아요 262명이 이 인물을 좋아합니다</span>
+		                                        <img src="/images/orange_like.png" id="likeIcon">
+		                                        <div class="css-1umclh2-StyledIconContainer e150ls9t1"></div>
+		                                        <span type="desktop" class="css-mr5mym-StyledButtonText e150ls9t2">좋아요 <span id="like-Count-before">${actorlikeCount }</span><span id="like-count-value"></span>명이 이 인물을 좋아합니다</span>
 		                                    </button>
 		                                </div>
 		                            </section>
@@ -101,7 +205,7 @@
 		                                                <a class="w_exposed_cell css-11g9kr1" data-rowindex="6" href="/ko-KR/contents/tl9g0BW" id="tvList">
 		                                      
 		                                                  <!-- 리스트 반복 끝 -->
-		                                                   <c:if test="${actorPersonMovieList.size() > 0}">
+		                                                <c:if test="${actorPersonMovieList.size() > 0}">
 			                                                <c:forEach var="i" begin="0" end="${actorPersonMovieList.size()-1}" varStatus="status">
 		                                                    <div type="tv_seasons" class="css-1726275">
 		                                                        <div class="css-1vjd65c" id="tvdata"><fmt:formatDate value="${actorPersonMovieList[i].movie_release_date}" pattern="yyyy"/></div>
@@ -114,13 +218,11 @@
 		                                                        <div class="css-1huturz" id="tvTitle">${actorPersonMovieList[i].movie_kor_title }</div>
 		                                                        
 		                                                        <div class="css-uideuz" id="tvRole">
-		                                                        	<c:if test="${not empty actorPersonMovieRolelist}">
-		                                                        			<c:forEach var="avo" items="${actorPersonMovieRolelist}">
-																						<c:if test="${actorPersonMovieList[i].id == avo.movie_id}">
-																							<c:out value="${avo.actor_role}"/>
-																						</c:if>
-																			</c:forEach>
-																	</c:if>
+<%-- 		                                                         							<c:forEach var="movieActorRole" items="${actorPersonMovieRolelist}"> --%>
+<%-- 																								<c:if test="${actorPersonMovieList.id[i] == movieActorRole.id}"> --%>
+<%-- 																									<c:out value="${movieActorRole.actor_role}"/> --%>
+<%-- 																								</c:if> --%>
+<%-- 																							</c:forEach> --%>
 		                                                        </div>
 		                                                        <div class="css-1fk9ffn">
 		                                                            <div class="css-bql08h">평균
@@ -132,12 +234,17 @@
 		                                                            </div>
 		                                                        </div>
 		                                                        <div class="css-13lviui">
-		                                                            <div class="isWatcha" id="tvWatcha">
-		                                                                <div src="https://an2-img.amz.wtchn.net/image/v2/33c15d90f101414a351372f19172859f.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKd1lYUm9Jam9pTDNZeUwzTjBiM0psTDNWcGJXRm5aUzh4TmpFeE1qQXdNVGN3T1RZd05qWTVNRE0xSW4wLlFwWFc3MERPaF9GR3ZMWVVzSUFCOFdLNWhLRjE3Ym5za1Z1bVFEN0lsSkU" class="css-vvy31y"></div>
-		                                                            </div>
-		                                                            <div class="isNetflix" id="tvNetflix">
-		                                                                <div src="https://an2-img.amz.wtchn.net/image/v1/updatable_images/2571/original/42e70f1bc34d7af54478a311983ecf6d3601eefa.png" class="css-1uf1oz6"></div>
-		                                                            </div>
+			                                                            <div class="isWatcha" id="tvWatcha" >
+			                                                                <div src=""></div>
+			                                                            </div>
+		                                                          	 <div class="isNetflix" id="tvNetflix">
+				                                                        <c:forEach var="ott" items="${actorMovieOTTList}">
+					                                                        <c:if test="${actorPersonMovieList[i].id == ott.movie_id}">
+					                                                                <div src="${ott.logo_url}" class="css-1uf1oz6"
+					                                                               		 style="background: url('${ott.logo_url}')center center / cover no-repeat"></div>
+				                                                           </c:if>
+				                                                        </c:forEach>
+				                                                     </div>
 		                                                        </div>
 		                                                    </div>
 														</c:forEach>

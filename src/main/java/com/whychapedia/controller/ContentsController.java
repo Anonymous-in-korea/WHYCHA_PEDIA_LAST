@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.whychapedia.mapper.StarRateMapper;
+import com.whychapedia.service.CollectionService;
 import com.whychapedia.service.MovieActorService;
 import com.whychapedia.service.MovieCountryService;
 import com.whychapedia.service.MovieDirectorService;
@@ -25,6 +26,7 @@ import com.whychapedia.service.MovieOttService;
 import com.whychapedia.service.MovieService;
 import com.whychapedia.service.StarRateService;
 import com.whychapedia.service.WatchListService;
+import com.whychapedia.vo.CollectionVo;
 import com.whychapedia.vo.MovieActorVo;
 import com.whychapedia.vo.MovieCountryVo;
 import com.whychapedia.vo.MovieDirectorVo;
@@ -69,6 +71,9 @@ public class ContentsController {
 	
 	@Autowired
 	WatchListService watchListService;
+	
+	@Autowired
+	CollectionService collectionService;
 	
 	
 	@Autowired
@@ -116,9 +121,10 @@ public class ContentsController {
 		
 		//movie_genre 정보(LIST<VO>)
 		List<MovieGenreVo> movieGenreVoList=new ArrayList<>();
-		String genre="";
+		String genre="정보 등록중";
+		movieGenreVoList=movieGenreService.selectTheGenre(movie_id);			
 		if(movieGenreVoList.size()!=0) {
-			movieGenreVoList=movieGenreService.selectTheGenre(movie_id);			
+			genre="";
 			System.out.println("해당 영화 장르 리스트 첫 번쨰:"+movieGenreVoList.get(0).getGenre_kor());
 			genre=movieGenreService.genreListToString(movieGenreVoList);
 		}
@@ -127,10 +133,11 @@ public class ContentsController {
 		
 		//movie_country 정보(LIST<VO>)
 		List<MovieCountryVo> movieCountryVoList=new ArrayList<>();
-		String country="";
+		String country="정보 등록중";
+		movieCountryVoList=movieCountryService.selectTheCountry(movie_id);
 		if(movieCountryVoList.size()!=0) {
+			country="";
 			System.out.println("해당 영화 나라 리스트 첫 번쨰:"+movieCountryVoList.get(0).getName_kor());
-			movieCountryVoList=movieCountryService.selectTheCountry(movie_id);
 			country=movieCountryService.countryListToString(movieCountryVoList);
 		}
 		//나라 합쳐서 string으로 반환
@@ -199,7 +206,7 @@ public class ContentsController {
 		/*-------------------------------로그인 전/후 따로-------------------------------------------------*/
 		/*별점 정보 시작*/
 		System.out.println("-------------------start_나의 별점정보-Controller--------------------------------");
-		int my_star_rate=0;/* 로그인 전 0으로 default :별점 평가 하기 */		
+		double my_star_rate=0;/* 로그인 전 0으로 default :별점 평가 하기 */		
 		/*로그인 후*/
 		if(session.getAttribute("sessionId")!=null) {
 			Integer sessionId = (Integer) session.getAttribute("sessionId");
@@ -247,11 +254,6 @@ public class ContentsController {
 			
 			/*  출연 제작 인물 받아오기 끝*/
 		//------------------------------------------------------------------------------------------------------------//	
-		
-		
-		
-		
-		
 
 		return "/contents/contents_SH";
 	}
@@ -259,7 +261,7 @@ public class ContentsController {
 	
 	
 	
-	/*  영화 페이지 나의 별점 ajax  */	
+	/*                         영화 페이지 나의 별점 ajax                    */	
 	@RequestMapping("/contents/MyStarRateChange")
 	@ResponseBody 
 	public Map<String, Integer> movieStarRate(int movie_id, double star_rate, Model model ){ 
@@ -279,12 +281,12 @@ public class ContentsController {
 			result=starRateService.insertStarRate(id+1,user_id,movie_id,star_rate);
 			id=starRateService.selectLastId(); System.out.println("업데이트 후 마지막 번호:"+id);
 			System.out.println("insert:"+result); response.put("result",result);		 
-		}else if(star_rate!=0 && IsRating!=0) {
+		}else if(star_rate!=0 && IsRating!=0) {//별점 업데이트
 			System.out.println("update:"+result); 
 			result=starRateService.updateStarRate(star_rate,movie_id,user_id);
 			response.put("result",result);
 			System.out.println("response:"+response); 
-		}else { 
+		}else { //별점 삭제
 			result=starRateService.deleteStarRate(user_id,movie_id);
 			System.out.println("delete:"+result); 
 			response.put("result",result);
@@ -293,7 +295,127 @@ public class ContentsController {
 		return response;}
 	
 	
-		/*  영화 "더보기" 페이지  */
+	
+	
+	
+	 /*                         영화 페이지 보고싶어요 ajax                    */		
+	
+	
+	@RequestMapping("/contents/wishWatch")
+	@ResponseBody 
+	public Map<String, Integer> wishWatch(int movie_id, int wishWatch,int isWatching,Model model ){ 
+		Map<String, Integer>response = new HashMap<>();
+		Integer sessionId = (Integer) session.getAttribute("sessionId");
+		int user_id = sessionId.intValue();
+		System.out.println("user_id:"+user_id);
+		System.out.println("movie_id:"+movie_id);
+		System.out.println("보고싶어요:"+wishWatch); 
+		System.out.println("보는중:"+isWatching); 
+		int insert;//안넣기 디폴트
+		int delete;//안삭제 디폴트
+		
+		if(isWatching==0 && wishWatch==0) {//보는중일때 보고싶어요 등록
+				System.out.println("보는중일때 보고싶어요 등록");
+				//보는중 삭제
+				delete=watchListService.deleteWatchList(1,user_id,movie_id);
+				response.put("delete",delete);
+				//보고싶어요 등록
+				insert=watchListService.insertWatchList(0,user_id,movie_id);	
+				response.put("insert",insert);
+		}else if(isWatching==1 && wishWatch==1) {//보는중이 아닐때 보고싶어요 삭제
+				System.out.println("보는중이 아닐때 보고싶어요 삭제");
+				//보고싶어요 삭제
+				delete=watchListService.deleteWatchList(0,user_id,movie_id);
+				response.put("delete",delete);
+		}else if(isWatching==1 && wishWatch==0) {//보는중이 아닐때 보고싶어요 등록
+				System.out.println("보는중이 아닐때 보고싶어요 등록");
+				//보고싶어요 등록
+				insert=watchListService.insertWatchList(0,user_id,movie_id);
+				response.put("insert",insert);
+		}
+		
+		
+		return response;}
+	
+	
+	
+	
+/*                         영화 페이지 보는중 ajax                    */		
+	
+	
+	@RequestMapping("/contents/watching")
+	@ResponseBody 
+	public Map<String, Integer> watching(int movie_id, int wishWatch,int isWatching,Model model ){ 
+		Map<String, Integer>response = new HashMap<>();
+		Integer sessionId = (Integer) session.getAttribute("sessionId");
+		int user_id = sessionId.intValue();
+		System.out.println("user_id:"+user_id);
+		System.out.println("movie_id:"+movie_id);
+		System.out.println("보고싶어요:"+wishWatch); 
+		System.out.println("보는중:"+isWatching); 
+		int insert;//안넣기 디폴트
+		int delete;//안삭제 디폴트
+		
+		if(wishWatch==0 && isWatching==0) {//보고싶어요인데 보는중 등록
+				System.out.println("보고싶어요인데 보는중 등록");
+				//보고싶어요 삭제
+				delete=watchListService.deleteWatchList(0,user_id,movie_id);
+				response.put("delete",delete);
+				//보는중 등록
+				insert=watchListService.insertWatchList(1,user_id,movie_id);	
+				response.put("insert",insert);
+		}else if(wishWatch==1 && isWatching==1) {//보고싶어요 아닐때 보는중 삭제
+				System.out.println("보고싶어요 아닐때 보는중 삭제");
+				//보는중 삭제
+				delete=watchListService.deleteWatchList(1,user_id,movie_id);
+				response.put("delete",delete);
+		}else if(wishWatch==1 && isWatching==0) {//보고싶어요 아닐때 보는중 등록
+				System.out.println("보고싶어요 아닐때 보는중 등록");
+				//보는중 등록
+				insert=watchListService.insertWatchList(1,user_id,movie_id);
+				response.put("insert",insert);
+		}
+		
+		
+		return response;}
+	
+	
+	
+
+	
+/*                         영화 콜렉션 ajax                    */		
+	
+	
+	@RequestMapping("/contents/collection")
+	@ResponseBody 
+	public Map<String, Integer> collection(int movie_id,Model model ){ 
+		Map<String, Integer>response = new HashMap<>();
+		Integer sessionId = (Integer) session.getAttribute("sessionId");
+		int user_id = sessionId.intValue();
+		System.out.println("user_id:"+user_id);
+
+		System.out.println("movie_id:"+movie_id);
+		/*해당 영화 해당 유저의 collectionVo 전체 가져오기 총 개수 까지*/
+		List<CollectionVo>collectionVoList=collectionService.selectCollectionList(user_id);
+		/*해당 영화 포함되어있는지 check*/
+		
+		/*해당 영화 */
+		
+		/**/
+		
+		/**/
+		
+		return response;}	
+	
+	
+/*                         영화 콜렉션 ajax                    */	
+	
+	
+	
+	
+	
+	
+/*                    영화 "더보기" 페이지                       */
 	  @GetMapping("/contents/contents_info_page")
 	  public String contents_info_page(@RequestParam int movieId, Model model ) {
 		  System.out.println("-------------------start_contents_info_pageController--------------------------------");

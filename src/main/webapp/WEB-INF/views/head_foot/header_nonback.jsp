@@ -151,7 +151,7 @@
 					<!-- 로그인 한 후 -->
 					<c:if test="${ sessionId != null }">
 					<li class="header_li_button">
-						<a href="">
+						<a href="/rate_page_HY">
 							<span class="evaluate_button">평가하기</span>
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" width="22" height="22" class="evaluate_svg">
 								<g fill="none">

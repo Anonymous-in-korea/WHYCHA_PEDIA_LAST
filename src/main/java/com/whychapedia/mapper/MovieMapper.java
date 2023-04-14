@@ -23,8 +23,10 @@ public interface MovieMapper {
 	List<MovieVo> selectMovieWithSameGenre(int num, int genre_id);
 	//검색해서 관련 영화 리스트 가져오기
 	List<MovieVo> selectSearchMovieAll(String searchKeyword);
-	//해당 id 의 출연영화 정보 가져오기
+	//해당 배우 id 의 출연영화 정보 가져오기
 	List<MovieVo> selectActorPersonMovieAll(int id);
+	//해당 감독 id 의 출연영화 정보 가져오기
+	List<MovieVo> selectDirectorPersonMovieAll(int id);
 	//유저가 평가한 영화 모두 들고오기 + 영화 정보까지 다 들고 오기
 	List<MovieVo> selectMovieStarRate(int user_id);
 	//유저가 보는 중인 영화 모두 들고오기 + 영화 정보까지 다 들고 오기
@@ -37,6 +39,8 @@ public interface MovieMapper {
 	List<MovieVo> selectMovieReleaseRate(int user_id);
 	//평가할 영화 (평점 높은 기준으로)들고 오기 (10개만)
 	List<MovieVo> selectMovieHighRate(int user_id);
+	//두 사람이 모두 높게 평가한 영화 가져오기
+	List<MovieVo> selectHighScoreForBothUser(int user_id, int loginId);
 
 
 	

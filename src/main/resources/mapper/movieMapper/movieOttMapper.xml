@@ -19,5 +19,32 @@
 	  		WHERE mo.movie_id = #{movie_id}
  		 
  </select>	
+ <!--해당 배우가 출연한 영화 리스트로 영화 ott가져오기  -->
+   <select id="selectActorPersonMovieOtt" resultType="com.whychapedia.vo.MovieOttVo">
+ 		SELECT *
+	  		FROM movie_ott mo
+	  		JOIN ott o ON mo.ott_id = o.id
+	  		WHERE mo.movie_id in(
+	  		 <foreach collection="actorPersonMovieList" item="movieVo" separator=",">
+                    #{movieVo.id}
+            </foreach>
+	  		)
+ 		 
+ </select>	
+ 
+ <!--해당 감독이 출연한 영화 리스트로 영화 ott가져오기  -->
+   <select id="selectDirectorPersonMovieOtt" resultType="com.whychapedia.vo.MovieOttVo">
+ 		 SELECT *
+		FROM movie_ott mo
+		JOIN ott o ON mo.ott_id = o.id
+		JOIN movie_director md ON md.movie_id = mo.movie_id
+		WHERE md.director_id = #{id}
+		AND mo.movie_id IN (
+		<foreach collection="directorPersonMovieList" item="movieVo" separator=",">
+		#{movieVo.id}
+		</foreach>
+		)
+ </select>	
+ 
 
   </mapper>

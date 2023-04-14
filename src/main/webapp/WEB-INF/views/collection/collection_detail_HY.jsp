@@ -63,14 +63,14 @@
 												<section class="css-5q4g58">
 													<div class="css-1gkas1x-Grid e1689zdh0">
 														<div class="css-1y901al-Row emmoxnt0">
-															<a title="WATCHA's page" class="css-1f9m1s4-StylelessLocalLink eovgsd01" href="/ko-KR/users/36lvXM3p35Xdn">
+															<a title="WATCHA's page" class="css-1f9m1s4-StylelessLocalLink eovgsd01" href="myPage/userPage_SY?user_id=${memberVo.id}">
 																<div class="css-bmael7">
 																	<div class="css-1hffj5n">
-																		<div class="css-q29adr-ProfilePhotoImage"></div>
+																		<div style="background: url(${memberVo.user_pic_url}) center center / cover no-repeat; " class="css-q29adr-ProfilePhotoImage"></div>
 																	</div>
 																	<div class="css-17nfp2s">
 																		<div class="css-180704h">
-																			${collectionVo.collection_name}
+																			${memberVo.user_name}
 																		</div>
 																	</div>
 																</div>
@@ -176,7 +176,7 @@
 													<div class="css-1y901al-Row emmoxnt0">
 														<header class="css-1ue9xs6">
 															<h2 class="css-1wtjsst">작품들</h2>
-															<span class="css-wzn7fp">22</span>
+															<span class="css-wzn7fp">${sizeCollection}</span>
 														</header>
 													</div>
 												</div>
