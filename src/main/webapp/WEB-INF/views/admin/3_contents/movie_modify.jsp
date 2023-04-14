@@ -12,11 +12,11 @@
 	    
 	    <link href="/css/admin/styles.css" rel="stylesheet" />
 	    <link href="/css/admin/3_contents/movie/movie_write.css" rel="stylesheet" />
+	    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" rel="stylesheet"/>
 	    
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
 	    <script src="https://unpkg.com/vue@3"></script>
-	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css"/>
 	    
 	    <!-- 이거 side_nav 작동하는 script임 -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
@@ -730,7 +730,7 @@
 		                                <div class="wgo2">
 		                                    <div class="wBox_1" style="width:95%;">
 		                                        <div class="wBox2">
-		                                            <div class="container" style="padding-right: 0px; padding-left: 0px; width: 95%; margin: 0 0 0 10px;">
+		                                            <div class="container">
 		                                				<select multiple="multiple" name="ott_id" id="ott_id" class="country" style=" width: 100%; height: 50px; border: 1px solid rgb(255, 255, 255);">
 		                                                    <option value="">OTT플랫폼 선택</option>
 		                                                    <c:forEach items="${ adminOttView }" var="OTT">

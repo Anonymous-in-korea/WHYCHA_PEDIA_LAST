@@ -17,8 +17,8 @@ import com.whychapedia.vo.MovieVo;
 public interface AdminContentsService {
 
 	// List ------------------------------------------------------------------------------------------------------
-	public Map<String, Object> adminContents(int page);
-	public Map<String, Object> adminContents_searchWord(int page, String searchWord);
+	public Map<String, Object> adminContents(int page, int datatableSelector);
+	public Map<String, Object> adminContents_searchWord(int page, String searchWord, int datatableSelector);
 	
 	public List<MovieDirectorVo> adminDirectorName(int director_id);
 	public List<MovieActorVo> adminActorName(int actor_id);

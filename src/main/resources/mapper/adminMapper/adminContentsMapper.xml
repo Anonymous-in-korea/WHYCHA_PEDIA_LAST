@@ -7,14 +7,18 @@
 	<!-- MOVIE_LIST START >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 	
 	<!-- admin contents list query구문 -->
-	<select id="adminContents_searchWord" resultType="com.whychapedia.vo.MovieVo">
-		select * from ( select rownum rnum, m.* from movie m where movie_kor_title like '%' || #{searchWord} || '%' order by id ) where rnum between #{startRow} and #{endRow}
-	</select>
 	<select id="adminContents" resultType="com.whychapedia.vo.MovieVo">
-		select * from ( select rownum rnum, m.* from movie m order by id ) where rnum between #{startRow} and #{endRow}
+		select * from ( select rownum rnum, m.* from movie m where id &lt;&gt; 0  order by id ) where rnum between #{startRow} and #{endRow}
 	</select>
 	<select id="selectCount" resultType="int">
-		select count(*) count from movie
+		select count(*) count from movie where id &lt;&gt; 0
+	</select>
+	
+	<select id="adminContents_searchWord" resultType="com.whychapedia.vo.MovieVo">
+		select * from movie where movie_kor_title like '%' || #{searchWord} || '%' and id &lt;&gt; 0 order by id
+	</select>
+	<select id="selectCount_searchWord" resultType="int">
+		select count(*) count from movie where movie_kor_title like '%' || #{searchWord} || '%'
 	</select>
 
 

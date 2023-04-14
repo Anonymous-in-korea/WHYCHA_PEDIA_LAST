@@ -30,6 +30,7 @@ public class ReportVo {
 	private int user_id;
 	private int is_blind;
 	private int is_spoil;
+	private int is_block;
 	private String movie_kor_title;
 	private String comment_content;
 

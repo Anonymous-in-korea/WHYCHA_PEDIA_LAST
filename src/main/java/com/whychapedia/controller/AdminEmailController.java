@@ -21,6 +21,12 @@ public class AdminEmailController {
 	@PostMapping("sendEmail")
 	@ResponseBody
 	public String sendEmail(String userEmail,String userName) {
+		
+		
+		
+		
+		
+		
 		System.out.println("EmailController userEmail : "+userEmail);
 		System.out.println("EmailController userName : "+userName);
 		//텍스트 이메일발송

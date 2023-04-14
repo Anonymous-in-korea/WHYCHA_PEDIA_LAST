@@ -11,6 +11,7 @@
 		
 		<link href="/css/admin/styles.css" rel="stylesheet" />
 		<link href="/css/admin/5_character/character_look.css" rel="stylesheet" />
+		<link href="/css/admin/5_character/character_enroll.css" rel="stylesheet" />
 		<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 		
 		<!-- 이거 side_nav 작동하는 script임 -->
@@ -36,33 +37,41 @@
 			</div>
             <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid px-4">
-                        <h1 class="mt-4">인물관리</h1>
-                        <div class="row">
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                인물관리
-                            </div>
-                            <div class="card-body">
-                                <table>
-									<tr>
-	                                    <img src="${ artistVo.artist_post_url }">
+                    <div class="card mb-4">
+						<div class="card-header">
+							<i class="fas fa-table me-1"></i>
+							인물관리_수정페이지
+						</div>
+						<div class="card-body">
+							프로필사진(240x240)
+							<div class="conBox2">
+								<div id="po">
+									<div id="poBox">
+										<c:if test="${ director_id != null }">
+	                                    <img src="${ artistVo.director_post_url }">
+										</c:if>
 	                                    <c:if test="${ director_id != null }">
-	                                    <p style="font-size:25px; margin-left:50px;"><strong>[ ${ artistVo.director_name } ]</strong></p>
-	                                    </c:if>
-	                                    <c:if test="${ director_id == null }">
-	                                    <p style="font-size:25px; margin-left:50px;"><strong>[ ${ artistVo.actor_name } ]</strong></p>
-	                                    </c:if>
-									</tr>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="push">
-                            <button id="ch_fix" onclick="location.href='/admin/5_character/character_modify'">수정하기</button>
-                            <button id="ch_list" onclick="location.href='/admin/5_character/character_manage'">목록으로</button>
-                        </div>
+	                                    <img src="${ artistVo.actor_post_url }">
+										</c:if>
+									</div>
+								</div>
+							</div>
+								
+							<div>
+								이름
+								<br>
+								<c:if test="${ director_id != null }">
+								<p style="font-size:25px; margin-left:50px;"><strong>[ ${ artistVo.director_name } ]</strong></p>
+								</c:if>
+								<c:if test="${ director_id == null }">
+								<p style="font-size:25px; margin-left:50px;"><strong>[ ${ artistVo.actor_name } ]</strong></p>
+								</c:if>
+							</div>
+						</div>
+				    </div>
+					<div class="push">
+						<button id="ch_fix" onclick="location.href='/admin/5_character/character_modify'">수정하기</button>
+						<button id="ch_list" onclick="location.href='/admin/5_character/character_manage'">목록으로</button>
 					</div>
 				</main>
 			</div>

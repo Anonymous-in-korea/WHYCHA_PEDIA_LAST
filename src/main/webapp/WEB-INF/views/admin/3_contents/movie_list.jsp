@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -32,10 +33,26 @@
 		<script>
 			$(function() {
 				$(".datatable-input").on("keypress", function(key) {
-					if ( event.keyCode == 13 ) {
-						if ( $("#searchWord").val().length > 0 ) { movieSearch.submit(); }
-						else { alert("글자를 입력하셔야 검색이 가능합니다"); $("#searchWord").focus(); return false; }
+					if ( key.keyCode == 13 ) {
+						if ( $("#searchWord").val().length > 0 ) {
+							reportSearch.submit();
+						} else {
+							alert("글자를 입력하셔야 검색이 가능합니다");
+							$("#searchWord").focus();
+							return false;
+						}
 					}
+				});
+				
+				$(".datatable-selector").on("change", function() {
+					datatableOption.submit();
+				});
+				
+				$("#searchAll").click(function() {
+					$("#datatableSelector").val("30");
+					$("#searchWord").val("");
+					datatableOption.submit();
+					searchWord.submit();
 				});
 			});
 		</script>
@@ -67,21 +84,25 @@
 		                    	<div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
 		                    		<div class="datatable-top">
 		                    			<div class="datatable-dropdown">
-		                    				<label>
-		                    					<select class="datatable-selector">
-		                    						<option value="5">5</option>
-		                    						<option value="10" selected>10</option>
-		                    						<option value="15">15</option>
-		                    						<option value="20">20</option>
-		                    						<option value="25">25</option>
-		                    					</select>
-		                    				</label>
+		                    				<form action="/admin/3_contents/movie_list" method="get" name="datatableOption">
+			                    				<label>
+			                    					<select name="datatableSelector" id="datatableSelector" class="datatable-selector">
+			                    						<option value="30" selected>선택</option>
+			                    						<option value="5" <c:if test="${fn:contains( datatableSelector, '5' )}">selected</c:if> >5</option>
+			                    						<option value="10" <c:if test="${fn:contains( datatableSelector, '10' )}">selected</c:if> >10</option>
+			                    						<option value="15" <c:if test="${fn:contains( datatableSelector, '15' )}">selected</c:if> >15</option>
+			                    						<option value="20" <c:if test="${fn:contains( datatableSelector, '20' )}">selected</c:if> >20</option>
+			                    						<option value="25" <c:if test="${fn:contains( datatableSelector, '25' )}">selected</c:if> >25</option>
+			                    					</select>
+			                    				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 게시글 출력갯수 : ${ datatableSelector }개
+		                    				</form>
 		                    			</div>
-		                    			<form action="/admin/3_contents/movie_list" method="get" name="movieSearch">
+		                    			<form action="/admin/3_contents/movie_list" method="get" name="reportSearch">
 			                    			<div class="datatable-search">
-			                    				<input type="search" title="Search within table" id="searchWord" class="datatable-input" placeholder="영화제목으로 검색" aria-controls="datatablesSimple" style="float:right;">
+			                    				<input type="search" name="searchWord" id="searchWord" class="datatable-input" placeholder="영화제목으로 검색" aria-controls="datatablesSimple" style="float:right;">
 			                    			</div>
 		                    			</form>
+		                    			<button type="button" id="searchAll" style="float:right; height:40px; margin-right:20px; border-radius:5px;">전체검색</button>
 		                    		</div>
 		                    		<div class="datatable-container">
 		                    			<table class="datatable-table" id="datatablesSimple">
@@ -168,38 +189,38 @@
 		                    		<div>
 			                    		<div class="numbering">
 											<!-- 처음페이지로 이동하기 -->
-											<c:if test="${now_page > 1}">
-												<a href="/admin/3_contents/movie_list?page=1&searchTitle=${searchTitle}&searchWord=${searchWord}"><span>&#171;</span></a>
+											<c:if test="${ now_page > 1 }">
+												<a href="/admin/3_contents/movie_list?page=1&searchWord=${ searchWord }&datatableSelector=${ datatableSelector }"><span>&#171;</span></a>
 											</c:if>
-											<c:if test="${now_page == 1}"><span>&#171;</span></c:if>
+											<c:if test="${ now_page == 1 }"><span>&#171;</span></c:if>
 											
 											<!-- 이전페이지로 이동하기 -->
-											<c:if test="${now_page > 1}">
-												<a href="/admin/3_contents/movie_list?page=${now_page-1}&searchTitle=${searchTitle}&searchWord=${searchWord}"><span>&#60;</span></a>
+											<c:if test="${ now_page > 1 }">
+												<a href="/admin/3_contents/movie_list?page=${ now_page - 1 }&searchWord=${ searchWord }&datatableSelector=${ datatableSelector }"><span>&#60;</span></a>
 											</c:if>
-											<c:if test="${now_page == 1}"><span>&#60;</span></c:if>
+											<c:if test="${ now_page == 1 }"><span>&#60;</span></c:if>
 											
 											<!-- 페이지 넘버링 -->
-											<c:forEach begin="${startPage}" end="${endPage}" step="1" var="num">
-												<c:if test="${now_page == num}">
-													<span id="on">${num}</span>
+											<c:forEach begin="${ startPage }" end="${ endPage }" step="1" var="num">
+												<c:if test="${ now_page == num }">
+													<span id="on">${ num }</span>
 												</c:if>
-												<c:if test="${now_page != num}">
-													<a href="/admin/3_contents/movie_list?page=${num}&searchTitle=${searchTitle}&searchWord=${searchWord}"><span>${num}</span></a>
+												<c:if test="${ now_page != num }">
+													<a href="/admin/3_contents/movie_list?page=${ num }&searchWord=${ searchWord }&datatableSelector=${ datatableSelector }"><span>${ num }</span></a>
 												</c:if>
 											</c:forEach>
 											
 											<!-- 다음페이지로 이동하기 -->
-											<c:if test="${now_page < maxPage}">
-												<a href="/admin/3_contents/movie_list?page=${now_page + 1}&searchTitle=${searchTitle}&searchWord=${searchWord}"><span>&#62;</span></a>
+											<c:if test="${ now_page < maxPage }">
+												<a href="/admin/3_contents/movie_list?page=${ now_page + 1 }&searchWord=${ searchWord }&datatableSelector=${ datatableSelector }"><span>&#62;</span></a>
 											</c:if>
-											<c:if test="${now_page == maxPage}"><span>&#62;</span></c:if>
+											<c:if test="${ now_page == maxPage }"><span>&#62;</span></c:if>
 											
 											<!-- 마지막페이지로 이동하기 -->
-											<c:if test="${now_page < maxPage}">
-												<a href="/admin/3_contents/movie_list?page=${maxPage}&searchTitle=${searchTitle}&searchWord=${searchWord}"><span>&#187;</span></a>
+											<c:if test="${ now_page < maxPage }">
+												<a href="/admin/3_contents/movie_list?page=${ maxPage }&searchWord=${ searchWord }&datatableSelector=${ datatableSelector }"><span>&#187;</span></a>
 											</c:if>
-											<c:if test="${now_page == maxPage}"><span>&#187;</span></c:if>
+											<c:if test="${ now_page == maxPage }"><span>&#187;</span></c:if>
 										</div>
 		                    		</div>
 		                    	</div>

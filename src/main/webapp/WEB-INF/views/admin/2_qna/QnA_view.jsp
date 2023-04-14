@@ -54,13 +54,13 @@
 		                                <div><p class="qna-atext">[ 문의 내용 ]</p></div>
 		                                <div class="QBox" style="width: 100%; height: 230px; padding: 10px 10px;">
 		                                	${ questionListVo.question_content }
-		                                	<br>
+		                                	<br><br>
 		                                	<!-- 첨부파일 -->
-			                                <c:if test="${ questionListVo.question_file_url != null }">
+			                                <c:if test="${ questionListVo.question_file_url != 0 }">
 												<img src="${ questionListVo.question_file_url }" style="height:80%;">
 			                                </c:if>
 
-			                                <c:if test="${ questionListVo.question_file_url == null }">첨부파일이 없습니다</c:if>
+			                                <c:if test="${ questionListVo.question_file_url == 0 }"> [ 첨부파일이 없습니다 ]</c:if>
 		                                	<!-- 첨부파일 -->
 		                                </div>
 		                                <div>

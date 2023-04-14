@@ -21,5 +21,6 @@ public class AnswerListVo {
 	private String answer_file_url;
 	private Date regi_date;
 	private int admin_id;
+	private String admin_name;
 
 }

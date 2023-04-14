@@ -14,13 +14,12 @@
 		<link href="/css/admin/2_qna/QnA_View.css" rel="stylesheet">
 		
 		<script src="/js/admin/QnA_Edit.js"></script>
+		<script src="/js/admin/admin_logout.js"></script>
 		
 		<!-- 이거 side_nav 작동하는 script임 -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 		<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 		<!-- 이거 side_nav 작동하는 script임 -->
-		
-		<script src="/js/admin/admin_logout.js"></script>
 	</head>
 	<body class="sb-nav-fixed">
 		<div id="layoutSidenav">
@@ -54,13 +53,13 @@
 	                                <div><p class="qna-atext">[ 문의 내용 ]</p></div>
 	                                <div class="QBox" style="width: 100%; height: 230px; padding: 10px 10px;">
 	                                	${ questionListVo.question_content }
-	                                	<br>
+	                                	<br><br>
 	                                	<!-- 첨부파일 -->
-		                                <c:if test="${ questionListVo.question_file_url != null }">
+		                                <c:if test="${ questionListVo.question_file_url != 0 }">
 											<img src="${ questionListVo.question_file_url }" style="height:80%;">
 		                                </c:if>
 
-		                                <c:if test="${ questionListVo.question_file_url == null }">첨부파일이 없습니다</c:if>
+		                                <c:if test="${ questionListVo.question_file_url == 0 }">[ 첨부파일이 없습니다 ]</c:if>
 	                                	<!-- 첨부파일 -->
 	                                </div>
 	                                <div>

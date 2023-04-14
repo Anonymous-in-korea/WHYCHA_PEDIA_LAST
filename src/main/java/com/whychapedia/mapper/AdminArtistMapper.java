@@ -19,12 +19,12 @@ public interface AdminArtistMapper {
 
 	public void actorInput(String actor_post_url, String actor_name); //배우 입력
 
-	public ArtistVo directorDetailView(String director_id); //감독정보 가져오기
+	public ArtistVo directorDetailView(int director_id); //감독정보 가져오기
 
-	public ArtistVo actorDetailView(String actor_id); //배우정보 가져오기
+	public ArtistVo actorDetailView(int actor_id); //배우정보 가져오기
 
-	public void directorModify(String director_id, String artist_post_url, String artist_name); //감독정보 수정하기
+	public void directorModify(int director_id, String artist_post_url, String artist_name); //감독정보 수정하기
 
-	public void actorModify(String actor_id, String artist_post_url, String artist_name); //배우정보 수정하기
+	public void actorModify(int actor_id, String artist_post_url, String artist_name); //배우정보 수정하기
 
 }

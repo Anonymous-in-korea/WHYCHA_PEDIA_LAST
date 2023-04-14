@@ -34,17 +34,31 @@
 	        			$("#blind").show();
 	        		}
 	        		$("#blind_ok").click(function() {
+	        			$("#report_result").val("1");
 	        			$(".processResult").text("블라인드 처리");
 	        			$("#pop_up").hide();
 	        		});
 	        	});
 	        	
+	        	$("#spoilerBtn").click(function() {
+	        		if ( $("#pop_up").css("display") == "none" && $("#no_problem").css("display") == "none" ) {
+	        			$("#pop_up").css({"display":"flex"});
+	        			$("#spoiler").show();
+	        		}
+	        		$("#noproblem_ok").click(function() {
+	        			$("#report_result").val("3");
+	        			$(".processResult").text("스포일러 처리");
+	        			$("#pop_up").hide();
+	        		});
+	        	});
+
 	        	$("#noprobBtn").click(function() {
 	        		if ( $("#pop_up").css("display") == "none" && $("#no_problem").css("display") == "none" ) {
 	        			$("#pop_up").css({"display":"flex"});
 	        			$("#no_problem").show();
 	        		}
 	        		$("#noproblem_ok").click(function() {
+	        			$("#report_result").val("2");
 	        			$(".processResult").text("문제없음 처리");
 	        			$("#pop_up").hide();
 	        		});
@@ -82,6 +96,17 @@
 					<div class="comment">해당 코멘트를 블라인드 처리 하시겠습니까?</div>
 					<div class="button-wrap">
 						<button id="blind_ok">확인</button>
+						<button class="cancel">취소</button>
+					</div>
+				</div>
+			</div>
+			<!-- 모달 스포일러 -->
+			<div class="modal-wrap" id="spoiler" style="display:none;">
+				<div class="modal1">
+					<div class="head_notice">알림</div>
+					<div class="comment">해당 코멘트를 블라인드 처리 하시겠습니까?</div>
+					<div class="button-wrap">
+						<button id="spoiler_ok">확인</button>
 						<button class="cancel">취소</button>
 					</div>
 				</div>
@@ -135,37 +160,56 @@
 								<i class="fas fa-table me-1"></i>
 								신고함
 							</div>
-							<form action="" method="post" name="comment_reply">
+							<form action="/admin/4_comment/reported/report_reply" method="post" name="comment_reply">
+								<input type="hidden" name="id" value="${ reportVo.id }">
 								<div class="card-body">
 									<div class = "reported_comment">
 										<p id="userinformation">
 											<span id="profilepic">
 												<img class="profilepic" src="data:image/jpeg;base64,/9j/4QC8RXhpZgAASUkqAAgAAAAGABIBAwABAAAAAQAAABoBBQABAAAAVgAAABsBBQABAAAAXgAAACgBAwABAAAAAgAAABMCAwABAAAAAQAAAGmHBAABAAAAZgAAAAAAAAAvGQEA6AMAAC8ZAQDoAwAABgAAkAcABAAAADAyMTABkQcABAAAAAECAwAAoAcABAAAADAxMDABoAMAAQAAAP//AAACoAQAAQAAAGQAAAADoAQAAQAAAGQAAAAAAAAA/+ICHElDQ19QUk9GSUxFAAEBAAACDGxjbXMCEAAAbW50clJHQiBYWVogB9wAAQAZAAMAKQA5YWNzcEFQUEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPbWAAEAAAAA0y1sY21zAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKZGVzYwAAAPwAAABeY3BydAAAAVwAAAALd3RwdAAAAWgAAAAUYmtwdAAAAXwAAAAUclhZWgAAAZAAAAAUZ1hZWgAAAaQAAAAUYlhZWgAAAbgAAAAUclRSQwAAAcwAAABAZ1RSQwAAAcwAAABAYlRSQwAAAcwAAABAZGVzYwAAAAAAAAADYzIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAdGV4dAAAAABGQgAAWFlaIAAAAAAAAPbWAAEAAAAA0y1YWVogAAAAAAAAAxYAAAMzAAACpFhZWiAAAAAAAABvogAAOPUAAAOQWFlaIAAAAAAAAGKZAAC3hQAAGNpYWVogAAAAAAAAJKAAAA+EAAC2z2N1cnYAAAAAAAAAGgAAAMsByQNjBZIIawv2ED8VURs0IfEpkDIYO5JGBVF3Xe1rcHoFibGafKxpv33Tw+kw////2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAGQDASIAAhEBAxEB/8QAGwABAQADAQEBAAAAAAAAAAAAAAUCAwQGAQf/xAAvEAACAgECAwUGBwAAAAAAAAAAAQIDBAUREiExIkFCUVITMmFxgaEUIzRykZLh/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAIB/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAER/9oADAMBAAIRAxEAPwD9WABaQAAAdmPpt18VNtQi+m/Xb5FOnT8epLsKb85czNbiAD0jx6WtnVD+qOa/S6LE3WvZy+HT+BpiIDO2qdFjrsW0l9zA1gAAAAAAAAZVR47oQ9UkjE2436un96A9IlstgAQoAAE/VaVPHVqXag/syMXNTuVeI4NNuzsr4EMqMoADWAAAAAAbcaMpZNfDFyaknyXduaju0majluL8UeRgtgAlQAAJusKTrqaTcU3u/IkF7UpqODZv4tkiCVGUABrAAAAAAM6rJU2xsj70XuYAD0tFquohYvEtzYTNJv3hKh+HtR+RTIUAGM5quuU30it2BI1XIc7vYL3Yc/myeZWWO2yVkusnuYlJAAaAAAAAAAbKaLL5cNUHLzfcvqB3aPHe22fckkVzmwsX8LRwt7zb3k0dJNUGNkeKqcfNNGQMHlunJgoZun2QslZVHig3vsuqJ5SQAGgAABnVVZdPhri5P4dxsxMaWVdwJ7RXOT8kX6qa6IKFcVFIy1qfj6TFbSvlxP0roUowjCKjGKil3JH0EtAAAAAA58jCpyOco7S9UeTOgAQsnTrqN5R/Mh5pc19DjPUk7PwI2RlbUtrFzaXi/wBNlZiOACmLOkRSxZS73N7lAAiqAAAAAAAAAAAAAHm8mKhlWxXRTewAKS//2Q==" alt="기본프로필이미지">
 											</span>
-											<span id="username">신고자 이름</span>
-											<span id="date">[ 신고일자 : 2023-03-23 ]</span>
+											<span id="username">신고자 : ${ reportVo.user_name }</span>
+											<span id="date">[ 신고일자 : ${ reportVo.regi_date } ]</span>
 										</p>
 										<div id="comment_main" style="border:2px solid gray; border-radius:2px; padding-left:5px;">
-											<p>[ 신고된 코멘트 작성자 : ${ reportVo.user_name } ]</p>
+											<p>[ 신고된 코멘트 작성자 : ${ replyWriter.user_name } ]</p>
 											<p>[ 신고된 코멘트 내용 ]</p>
-											<p style="padding-left:15px;">${ commentVo.comment_content }</p>
+											<p style="padding-left:15px;">${ reportVo.comment_content }</p>
 										</div>
 										<p id="users_cautionCnt" style="border:2px solid gray; border-radius:2px; padding-left:5px;">
-											유저의 제제현황 : [ 경고 0회 ], [ 정지 0회 ]
+											유저의 제재현황 : [ 정지 ${ replyWriter.is_block }회 ]
 										</p>
 									</div>
 									<hr>
 									<p>
 										<span>처리내용 : </span>
-										<span class="processResult">문제없음 처리</span>
+										<input type="hidden" name="reportResult" id="report_result" value="">
+										<c:if test="${ reportVo.report_result == 0 }">
+                   						<span class="processResult">처리 대기중</span>
+                   						</c:if>
+                   						<c:if test="${ reportVo.report_result == 1 }">
+                   						<span class="processResult">블라인드 처리</span>
+                   						</c:if>
+                   						<c:if test="${ reportVo.report_result == 2 }">
+                   						<span class="processResult">문제없음 처리</span>
+                   						</c:if>
+                   						<c:if test="${ reportVo.report_result == 3 }">
+                   						<span class="processResult">스포일러 처리</span>
+                   						</c:if>
 									</p>
 									<p>
 										<span>처리일시 : </span>
-										<span class="processDate">2022-05-26 오후 11:24</span>
+										<c:if test="${ reportVo.report_result != 0 }">
+                  						<span class="processDate">${ reportVo.processing_date }</span>
+                  						</c:if>
+                  						<c:if test="${ reportVo.report_result == 0 }">
+                  						<span class="processDate"> </span>
+                  						</c:if>
 									</p>
 									<p>
-										<span>관리자 : </span>
-										<span class="adminId">이재원</span>
+										<span>처리진행 관리자 : </span>
+										<span class="adminId">${ adminName.admin_name }</span>
+										<input type="hidden" name="admin_name" id="admin_name" value="${ adminName.admin_name }">
 									</p>
 								</div>
 							</form>
@@ -173,6 +217,7 @@
 					</div>
 					<div class="btnBox">
 						<button type="button" class="button_box" id="blindBtn"> 블라인더 </button>
+						<button type="button" class="button_box" id="spoilerBtn"> 스포일러 </button>
 						<button type="button" class="button_box" id="noprobBtn"> 문제없음 </button>
 						<button type="button" class="button_box" id="replyBtn"> 답변완료하기 </button>
 						<button type="button" class="button_box" onclick="location.href='/admin/4_comment/reported/report_page'"> 뒤로가기 </button>

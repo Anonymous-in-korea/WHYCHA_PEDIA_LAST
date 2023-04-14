@@ -13,35 +13,77 @@
 		where rnum between 1 and 5
 	</select>
 
+
+
 	<!-- admin 신고사항 list_All query구문 -->
 	<select id="adminReportListAll" resultType="com.whychapedia.vo.ReportVo">
-		select r.*, c.movie_id, c.user_id, c.comment_content, c.is_blind, c.is_spoil, c.user_name, c.movie_kor_title
+		select * from (select rownum rnum, r.*, c.movie_id, c.user_id, c.comment_content, c.is_blind, c.is_spoil, c.user_name, c.movie_kor_title
 		from report r, ( select wc.*, wu.user_name, m.movie_kor_title from wcomment wc, wuser wu, movie m where wc.movie_id = m.id and wc.user_id = wu.id ) c
-		where r.reported_by_user = c.user_id
+		where r.reported_by_user = c.user_id order by r.regi_date desc) where rnum between #{startRow} and #{endRow}
 	</select>
 
-	<!-- admin 신고사항 comment_list query구문 -->
-	<select id="adminCommentListAll" resultType="com.whychapedia.vo.CommentVo">
-		select * from
-		( select w.id, w.movie_id, w.user_id, u.user_name as user_name, w.comment_content, w.regi_date, w.is_blind, w.is_spoil from wcomment w, wuser u where w.user_id = u.id order by w.regi_date desc )
+	<!-- admin 신고사항 list_All_searchWord query구문 -->
+	<select id="adminReportListAll_searchWord" resultType="com.whychapedia.vo.ReportVo">
+		select * from (select rownum rnum, r.*, c.movie_id, c.user_id, c.comment_content, c.is_blind, c.is_spoil, c.user_name, c.movie_kor_title
+		from report r, ( select wc.*, wu.user_name, m.movie_kor_title from wcomment wc, wuser wu, movie m where wc.movie_id = m.id and wc.user_id = wu.id and movie_kor_title like '%' || #{searchWord} || '%' ) c
+		where r.reported_by_user = c.user_id order by r.regi_date desc) where rnum between #{startRow} and #{endRow}
+	</select>
+
+	
+	<select id="selectCount" resultType="int"><!-- 검색어 없을 때 listCount -->
+		select count(*) count from
+		( select r.*, c.movie_id, c.user_id, c.comment_content, c.is_blind, c.is_spoil, c.user_name, c.movie_kor_title
+		from report r, ( select wc.*, wu.user_name, m.movie_kor_title from wcomment wc, wuser wu, movie m where wc.movie_id = m.id and wc.user_id = wu.id ) c
+		where r.reported_by_user = c.user_id )
+	</select>
+
+	<select id="selectCount_searchWord" resultType="int"><!-- 검색어 있을 때 listCount -->
+		select count(*) count from
+		( select r.*, c.movie_id, c.user_id, c.comment_content, c.is_blind, c.is_spoil, c.user_name, c.movie_kor_title
+		from report r, ( select wc.*, wu.user_name, m.movie_kor_title from wcomment wc, wuser wu, movie m where wc.movie_id = m.id and wc.user_id = wu.id and movie_kor_title like '%' || #{searchWord} || '%' ) c
+		where r.reported_by_user = c.user_id )
 	</select>
 	
+
+
+
 	
 	
 	
+	<!-- REPORT_REPLY >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 	
 	<!-- admin 신고사항 list_All query구문 -->
 	<select id="adminReportSelectOne" resultType="com.whychapedia.vo.ReportVo">
-		select * from
-		( select r.id, r.comment_id, r.reported_by_user, w.user_name as user_name, r.regi_date, r.reported_reason, a.admin_name as admin_name, r.processing_date, r.report_result
-		from report r, wuser w, admin a where r.reported_by_user = w.id and r.admin_id = a.id ) where id = #{id}
+		select * from (select rownum rnum, r.*, c.movie_id, c.user_id, c.comment_content, c.is_blind, c.is_spoil, c.user_name, c.movie_kor_title
+		from report r, ( select wc.*, wu.user_name, m.movie_kor_title from wcomment wc, wuser wu, movie m where wc.movie_id = m.id and wc.user_id = wu.id ) c
+		where r.reported_by_user = c.user_id order by r.regi_date desc) where id = #{id} and movie_id = #{movie_id}
 	</select>
 
-	<!-- admin 신고사항 comment_list query구문 -->
-	<select id="adminCommentSelectOne" resultType="com.whychapedia.vo.CommentVo">
-		select * from
-		( select w.id, w.movie_id, w.user_id, u.user_name as user_name, w.comment_content, w.regi_date, w.is_blind, w.is_spoil from wcomment w, wuser u where w.user_id = u.id )
+
+	<select id="adminReportReplyWriter" resultType="com.whychapedia.vo.ReportVo">
+		select user_name, is_block from
+		( select wu.user_name, wu.is_block, a.id, a.user_id from wuser wu, ( select r.id, wc.user_id from report r, wcomment wc where wc.id = r.comment_id ) a where wu.id = a.user_id )
 		where id = #{id}
 	</select>
+
+	
+	<!-- 처리한 관리자이름 -->
+	<select id="adminName" resultType="com.whychapedia.vo.ReportVo">
+		select a.admin_name from report r, admin a where a.id = #{admin_id} and r.id = #{id}
+	</select>
+
+
+	<!-- admin_id 가져오기 -->
+	<select id="adminIdSelectOne" resultType="com.whychapedia.vo.AdminVo">
+		select id from admin where admin_name = #{admin_name}
+	</select>
+	
+	
+	<!-- 신고사항 처리하기 -->
+	<update id="adminReportResult">
+		update report set report_result = #{report_result}, admin_id = #{admin_id}, processing_date = sysdate where id = #{id}
+	</update>
+
+	<!-- REPORT_REPLY >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 	
 </mapper>

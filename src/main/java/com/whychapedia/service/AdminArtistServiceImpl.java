@@ -65,13 +65,13 @@ public class AdminArtistServiceImpl implements AdminArtistService {
 	
 	
 	@Override //감독정보 가져오기
-	public ArtistVo directorDetailView(String director_id) {
+	public ArtistVo directorDetailView(int director_id) {
 		ArtistVo artistVo = adminArtistMapper.directorDetailView(director_id);
 		return artistVo;
 	}
 
 	@Override //배우정보 가져오기
-	public ArtistVo actorDetailView(String actor_id) {
+	public ArtistVo actorDetailView(int actor_id) {
 		ArtistVo artistVo = adminArtistMapper.actorDetailView(actor_id);
 		return artistVo;
 	}
@@ -79,12 +79,12 @@ public class AdminArtistServiceImpl implements AdminArtistService {
 	
 	
 	@Override //감독정보 수정하기
-	public void directorModify(String director_id, String artist_post_url, String artist_name) {
+	public void directorModify(int director_id, String artist_post_url, String artist_name) {
 		adminArtistMapper.directorModify(director_id, artist_post_url, artist_name);
 	}
 
 	@Override //배우정보 수정하기
-	public void actorModify(String actor_id, String artist_post_url, String artist_name) {
+	public void actorModify(int actor_id, String artist_post_url, String artist_name) {
 		adminArtistMapper.actorModify(actor_id, artist_post_url, artist_name);
 	}
 

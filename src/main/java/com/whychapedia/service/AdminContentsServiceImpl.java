@@ -37,10 +37,42 @@ public class AdminContentsServiceImpl implements AdminContentsService {
 	
 	// MOVIE_LIST START -------------------------------------------------------------------------------------------------------------------------------------------
 	
-	@Override //검색어가 있을 때 MOVIE_LIST 메서드 ---------------------------------------------
-	public Map<String, Object> adminContents_searchWord(int page, String searchWord) {
+	@Override //검색어가 없을 때 MOVIE_LIST 메서드 ---------------------------------------------
+	public Map<String, Object> adminContents(int page, int datatableSelector) {
 		
-		HashMap<String, Object> map = pageMethod(page);
+		HashMap<String, Object> map = new HashMap<>();
+		
+		int listCount = adminContentsMapper.selectCount();
+		int rowPerPage = datatableSelector; //한 페이지당 게시물 갯수
+		int pageList = 5; //페이지 넘버 표시할 갯수 1-2-3-4-5 또는 1-2-3 또는 1-2-3-4-5-6-7-8-9-10 이런 식
+		int maxPage = (int)( Math.ceil ( ( double ) listCount / rowPerPage ) );
+		int startPage = ( ( page - 1 ) / pageList ) * pageList + 1; //pageList가 5번까지면 1~5를 1로 빼서 5로 나누면 0이고 0에 5를 곱하면 0, 거기에 1을 더하면 1페이지에 다 표시됨
+		int endPage = maxPage;
+		if ( endPage > startPage + pageList - 1 ) { endPage = startPage + pageList - 1; }
+		
+		int startRow = (page - 1) * rowPerPage + 1;
+		int endRow = startRow + rowPerPage - 1;
+		
+		List<MovieVo> adminContentsList = adminContentsMapper.adminContents(startRow, endRow);
+		
+		map.put("adminContentsList", adminContentsList);
+		map.put("page", page);
+		map.put("listCount", listCount);
+		map.put("maxPage", maxPage);
+		map.put("startPage", startPage);
+		map.put("endPage", endPage);
+		map.put("startRow", startRow);
+		map.put("endRow", endRow);
+		
+		return map;
+	}//-----------------------------------------------------------------------------------
+
+	
+	
+	@Override //검색어가 있을 때 MOVIE_LIST 메서드 ---------------------------------------------
+	public Map<String, Object> adminContents_searchWord(int page, String searchWord, int datatableSelector) {
+		
+		HashMap<String, Object> map = pageMethod_searchWord(page, searchWord, datatableSelector);
 		
 		int startRow = (int)map.get("startRow");
 		int endRow = (int)map.get("endRow");
@@ -57,34 +89,14 @@ public class AdminContentsServiceImpl implements AdminContentsService {
 		return map;
 	}//-----------------------------------------------------------------------------------
 
-	@Override //검색어가 없을 때 MOVIE_LIST 메서드 ---------------------------------------------
-	public Map<String, Object> adminContents(int page) {
-		
-		HashMap<String, Object> map = pageMethod(page);
-		
-		int startRow = (int)map.get("startRow");
-		int endRow = (int)map.get("endRow");
-		
-		List<MovieVo> adminContentsList = adminContentsMapper.adminContents(startRow, endRow);
-		
-		map.put("adminContentsList", adminContentsList);
-		map.put("page", page);
-		map.put("listCount", map.get("listCount"));
-		map.put("maxPage", map.get("maxPage"));
-		map.put("startPage", map.get("startPage"));
-		map.put("endPage", map.get("endPage"));
-		
-		return map;
-	}//-----------------------------------------------------------------------------------
-	
-	// 페이지 처리 -------------------------------------------------------------------------
-	public HashMap<String, Object> pageMethod(int page) {
+	// 페이지 처리 (검색어) -------------------------------------------------------------------------
+	public HashMap<String, Object> pageMethod_searchWord(int page, String searchWord, int datatableSelector) {
 		HashMap<String, Object> map = new HashMap<>();
 		
 		System.out.println("pageMethod의 page : " + page);
 		
-		int listCount = adminContentsMapper.selectCount();
-		int rowPerPage = 10; //한 페이지당 게시물 갯수
+		int listCount = adminContentsMapper.selectCount_searchWord(searchWord);
+		int rowPerPage = datatableSelector; //한 페이지당 게시물 갯수
 		int pageList = 5; //페이지 넘버 표시할 갯수 1-2-3-4-5 또는 1-2-3 또는 1-2-3-4-5-6-7-8-9-10 이런 식
 		int maxPage = (int)( Math.ceil ( ( double ) listCount / rowPerPage ) );
 		int startPage = ( ( page - 1 ) / pageList ) * pageList + 1; //pageList가 5번까지면 1~5를 1로 빼서 5로 나누면 0이고 0에 5를 곱하면 0, 거기에 1을 더하면 1페이지에 다 표시됨
@@ -102,8 +114,10 @@ public class AdminContentsServiceImpl implements AdminContentsService {
 		map.put("endRow", endRow);
 		
 		return map;
-	}// 페이지 처리 -------------------------------------------------------------------------
+	}// 페이지 처리 (검색어) -------------------------------------------------------------------------
 
+	
+	
 	@Override
 	public List<MovieDirectorVo> adminDirectorName(int director_id) {
 		List<MovieDirectorVo> adminDirectorName = adminContentsMapper.adminDirectorName(director_id);
@@ -128,6 +142,8 @@ public class AdminContentsServiceImpl implements AdminContentsService {
 		return adminGenreName;
 	}
 	// MOVIE_LIST END -------------------------------------------------------------------------------------------------------------------------------------------
+	
+	
 	
 	
 	
@@ -182,6 +198,8 @@ public class AdminContentsServiceImpl implements AdminContentsService {
 		adminContentsMapper.adminMovieCreateTrailerList(id, movie_trailer_url);
 	}
 	// MOVIE_CREATE END -------------------------------------------------------------------------------------------------------------------------------------------
+	
+	
 	
 	
 	

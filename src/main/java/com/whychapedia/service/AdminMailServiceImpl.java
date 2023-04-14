@@ -27,7 +27,7 @@ public class AdminMailServiceImpl implements AdminMailService {
 		MimeMessage message = mailSender.createMimeMessage();
 		
 		//메일발송
-		String fromMailAddress = "admin@gmail.com";
+		String fromMailAddress = "admin@gmail.com"; //보내는 사람의 이메일
 		String subject = "[ 안내 ] "+userName+"님 회원가입 이메일인증 비밀번호 발송안내";
 		
 		String sendTxt = getSendTxt(userName);

@@ -47,6 +47,29 @@ public class AdminCharacterController {
 	
 	
 	
+	@GetMapping("admin/5_character/character_detail")
+	public String character_detail(Model model, @RequestParam(defaultValue = "0") String id) {
+		
+		int director_id = Integer.parseInt(id);
+		int actor_id = Integer.parseInt(id);
+		
+		ArtistVo artistVo;
+		if ( actor_id == 0 ) {
+			artistVo = adminArtistService.directorDetailView(director_id);
+			model.addAttribute("director_id", artistVo.getId());
+		} else {
+			artistVo = adminArtistService.actorDetailView(actor_id);
+			model.addAttribute("actor_id", artistVo.getId());
+		}
+		
+		if ( artistVo != null ) {
+			model.addAttribute("artistVo", artistVo);
+		}
+		
+		return "admin/5_character/character_detail";
+	}
+	
+	
 	
 
 	@GetMapping("admin/5_character/character_input")
@@ -81,12 +104,15 @@ public class AdminCharacterController {
 		System.out.println("director_id : " + director_id);
 		System.out.println("actor_id : " + actor_id);
 		
+		int directorId = Integer.parseInt(director_id);
+		int actorId = Integer.parseInt(actor_id);
+		
 		if ( actor_id == "0" ) {
-			artistVo = adminArtistService.directorDetailView(director_id);
+			artistVo = adminArtistService.directorDetailView(directorId);
 			model.addAttribute("D_id", director_id);
 			model.addAttribute("A_id", actor_id);
 		} else {
-			artistVo = adminArtistService.actorDetailView(actor_id);
+			artistVo = adminArtistService.actorDetailView(actorId);
 			model.addAttribute("D_id", director_id);
 			model.addAttribute("A_id", actor_id);
 		}
@@ -101,34 +127,16 @@ public class AdminCharacterController {
 	public String character_modify(Model model, @RequestParam(defaultValue = "0") String director_id, @RequestParam(defaultValue = "0") String actor_id,
 									@RequestParam String artist_post_url, @RequestParam String artist_name) {
 		
+		int directorId = Integer.parseInt(director_id);
+		int actorId = Integer.parseInt(actor_id);
+		
 		if ( actor_id == "0" ) {
-			adminArtistService.directorModify(director_id, artist_post_url, artist_name);
+			adminArtistService.directorModify(directorId, artist_post_url, artist_name);
 			return "redirect:/admin/5_character/director_manage";
 		} else {
-			adminArtistService.actorModify(actor_id, artist_post_url, artist_name);
+			adminArtistService.actorModify(actorId, artist_post_url, artist_name);
 			return "redirect:/admin/5_character/actor_manage";
 		}
 	}
-
-	
-//	@GetMapping("admin/5_character/character_detail")
-//	public String character_detail(Model model, @RequestParam int director_id, @RequestParam int actor_id) {
-//		
-//		ArtistVo artistVo;
-//		if ( actor_id == 0 ) {
-//			artistVo = adminArtistService.directorDetailView(director_id);
-//			model.addAttribute("director_id", director_id);
-//		} else {
-//			artistVo = adminArtistService.actorDetailView(actor_id);
-//			model.addAttribute("actor_id", actor_id);
-//		}
-//		
-//		if ( artistVo != null ) {
-//			model.addAttribute("artistVo", artistVo);
-//		}
-//		
-//		return "admin/5_character/character_detail";
-//	}
-
 	
 }

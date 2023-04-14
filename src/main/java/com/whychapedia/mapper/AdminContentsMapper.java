@@ -20,10 +20,11 @@ public interface AdminContentsMapper {
 	// MOVIE_LIST START ------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	// 페이지 처리 ------------------------------------------------------------------------------
-	public List<MovieVo> adminContents_searchWord(int startRow, int endRow, String searchWord);
 	public List<MovieVo> adminContents(int startRow, int endRow);
+	public List<MovieVo> adminContents_searchWord(int startRow, int endRow, String searchWord);
 
 	public int selectCount();
+	public int selectCount_searchWord(String searchWord);
 	// 페이지 처리 ------------------------------------------------------------------------------
 	
 	public List<MovieDirectorVo> adminDirectorName(int director_id);

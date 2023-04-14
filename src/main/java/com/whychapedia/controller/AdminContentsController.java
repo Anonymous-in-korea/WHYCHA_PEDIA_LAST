@@ -46,19 +46,48 @@ public class AdminContentsController {
 	
 	// 컨텐츠(영화) 목록 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	@GetMapping("admin/3_contents/movie_list")
-	public String movie(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "") String searchWord) {
+	public String movie(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "30") int datatableSelector, @RequestParam(defaultValue = "") String searchWord) {
+		
+		System.out.println("datatableSelector : " + datatableSelector);
+		System.out.println("searchWord : " + searchWord);
+		
+		int now_page = 0;
+		int listCount = 0;
+		int maxPage = 0;
+		int startPage = 0;
+		int endPage = 0;
+		int startRow = 0;
+		int endRow = 0;
 		
 		Map<String, Object> adminContents = new HashMap<>();
-		if ( searchWord.equals("영화제목으로 검색") ) { adminContents = adminContentsService.adminContents(page); }
-		else { adminContents = adminContentsService.adminContents_searchWord(page, searchWord); }
-		int now_page = (int) adminContents.get("page");
-		int listCount = (int) adminContents.get("listCount");
-		int maxPage = (int) adminContents.get("maxPage");
-		int startPage = (int) adminContents.get("startPage");
-		int endPage = (int) adminContents.get("endPage");
-		int startRow = (int) adminContents.get("startRow");
-		int endRow = (int) adminContents.get("endRow");
+		
+		if ( searchWord.equals("영화제목으로 검색") || searchWord.equals("") ) {
+			
+			adminContents = adminContentsService.adminContents(page, datatableSelector);
+
+			now_page = (int) adminContents.get("page");
+			listCount = (int) adminContents.get("listCount");
+			maxPage = (int) adminContents.get("maxPage");
+			startPage = (int) adminContents.get("startPage");
+			endPage = (int) adminContents.get("endPage");
+			startRow = (int) adminContents.get("startRow");
+			endRow = (int) adminContents.get("endRow");
+			
+		} else {
+			adminContents = adminContentsService.adminContents_searchWord(page, searchWord, datatableSelector);
+			System.out.println("입력된 영화검색어 : " + searchWord);
+
+			now_page = (int) adminContents.get("page");
+			listCount = (int) adminContents.get("listCount");
+			maxPage = (int) adminContents.get("maxPage");
+			startPage = (int) adminContents.get("startPage");
+			endPage = (int) adminContents.get("endPage");
+			startRow = (int) adminContents.get("startRow");
+			endRow = (int) adminContents.get("endRow");
+		}
+		
 		System.out.println("maxPage : " + maxPage);
+		
 		@SuppressWarnings("unchecked")
 		List<MovieVo> adminContentsList = (List<MovieVo>) adminContents.get("adminContentsList");
 		if ( adminContentsList != null ) {
@@ -73,6 +102,8 @@ public class AdminContentsController {
 		}
 		System.out.println("컨텐츠List size : " + adminContentsList.size());
 		System.out.println("컨텐츠ID : " + adminContentsList.get(0).getId());
+		
+		model.addAttribute("datatableSelector", datatableSelector);
 		
 		
 		// director_name 가져오기
