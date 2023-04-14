@@ -196,7 +196,7 @@ public class ContentsController {
 			movieWithSameGenreList=movieService.selectMovieWithSameGenre(4,movieGenreVoList.get(0).getGenre_id());
 			System.out.println(movieWithSameGenreList.get(0).getMovie_kor_title());
 		}
-		model.addAttribute("MovieWithSameGenreList",movieWithSameGenreList);
+		model.addAttribute("movieWithSameGenreList",movieWithSameGenreList);
 		/*    같은 장르 영화 4개 가져오기  END     */
 		
 		

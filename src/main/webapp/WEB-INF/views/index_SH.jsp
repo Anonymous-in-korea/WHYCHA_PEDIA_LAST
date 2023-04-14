@@ -299,7 +299,7 @@
 														<!-- 컬렉션 foreach문 돌릴 부분 영화컨텐츠부분  -->
 														<c:forEach items="${WhychaCollectionVoList}" var="CollectionVo"> 
 															<li class="list_box_li_collection">
-																<a title="${CollectionVo.collection_name}" href="/collection/collection_detail_HY?collection_id=${CollectionVo.id}">
+																<a title="${CollectionVo.collection_name}" href="/collection/collection_detail_HY?collection_id=${CollectionVo.id}&user_id=${user_id}">
 																	<div class="list_box_collection_poster">
 																		<div class="list_box_collection_poster2">
 																			<c:forEach items="${WhychaMovieCollectionVoPartList}" var="MovieCollectionVo">
