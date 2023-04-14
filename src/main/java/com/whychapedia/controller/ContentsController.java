@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.whychapedia.mapper.StarRateMapper;
+import com.whychapedia.service.CollectionService;
 import com.whychapedia.service.MovieActorService;
 import com.whychapedia.service.MovieCountryService;
 import com.whychapedia.service.MovieDirectorService;
@@ -25,6 +26,7 @@ import com.whychapedia.service.MovieOttService;
 import com.whychapedia.service.MovieService;
 import com.whychapedia.service.StarRateService;
 import com.whychapedia.service.WatchListService;
+import com.whychapedia.vo.CollectionVo;
 import com.whychapedia.vo.MovieActorVo;
 import com.whychapedia.vo.MovieCountryVo;
 import com.whychapedia.vo.MovieDirectorVo;
@@ -69,6 +71,9 @@ public class ContentsController {
 	
 	@Autowired
 	WatchListService watchListService;
+	
+	@Autowired
+	CollectionService collectionService;
 	
 	
 	@Autowired
@@ -376,10 +381,33 @@ public class ContentsController {
 	
 	
 	
+
+	
+/*                         영화 콜렉션 ajax                    */		
 	
 	
+	@RequestMapping("/contents/collection")
+	@ResponseBody 
+	public Map<String, Integer> collection(int movie_id,Model model ){ 
+		Map<String, Integer>response = new HashMap<>();
+		Integer sessionId = (Integer) session.getAttribute("sessionId");
+		int user_id = sessionId.intValue();
+		System.out.println("user_id:"+user_id);
+		System.out.println("movie_id:"+movie_id);
+		/*해당 영화 해당 유저의 collectionVo 전체 가져오기 총 개수 까지*/
+		List<CollectionVo>collectionVoList=collectionService.selectCollectionList(user_id);
+		/*해당 영화 포함되어있는지 check*/
+		
+		/*해당 영화 */
+		
+		/**/
+		
+		/**/
+		
+		return response;}	
 	
 	
+/*                         영화 콜렉션 ajax                    */	
 	
 	
 	
