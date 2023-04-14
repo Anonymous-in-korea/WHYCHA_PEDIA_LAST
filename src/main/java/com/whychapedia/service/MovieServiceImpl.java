@@ -116,15 +116,15 @@ public class MovieServiceImpl implements MovieService {
 	
 	//해당 배우 id로 배우 정보 가져오기
 	@Override
-	public List<MovieVo> selectActorPersonMovieAll(int id) {
-		List<MovieVo> actorPersonMovieList= movieMapper.selectActorPersonMovieAll(id);
+	public List<MovieVo> selectActorPersonMovieAll(int actor_id) {
+		List<MovieVo> actorPersonMovieList= movieMapper.selectActorPersonMovieAll(actor_id);
 		
 		return actorPersonMovieList;
 	}
 	///해당 감독 id로 감독 정보 가져오기
 	@Override
-	public List<MovieVo> selectDirectorPersonMovieAll(int id) {
-		List<MovieVo> directorPersonMovieList= movieMapper.selectDirectorPersonMovieAll(id);
+	public List<MovieVo> selectDirectorPersonMovieAll(int director_id) {
+		List<MovieVo> directorPersonMovieList= movieMapper.selectDirectorPersonMovieAll(director_id);
 		
 		return directorPersonMovieList;
 	}

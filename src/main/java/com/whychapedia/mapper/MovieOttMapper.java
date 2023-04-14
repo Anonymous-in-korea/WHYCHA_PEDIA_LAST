@@ -14,8 +14,8 @@ public interface MovieOttMapper {
 
 	List<MovieOttVo> selectAllOtt(int movie_id);
 	
-	List<MovieOttVo> selectActorPersonMovieOtt(List<MovieVo> actorPersonMovieList, int id);
+	List<MovieOttVo> selectActorPersonMovieOtt(List<MovieVo> actorPersonMovieList, int actor_id);
 
-	List<MovieOttVo> selectDirectorPersonMovieOtt(List<MovieVo> directorPersonMovieList, int id);
+	List<MovieOttVo> selectDirectorPersonMovieOtt(List<MovieVo> directorPersonMovieList, int director_id);
 
 }

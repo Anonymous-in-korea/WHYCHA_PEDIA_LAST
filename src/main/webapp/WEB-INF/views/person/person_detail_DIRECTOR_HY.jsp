@@ -280,7 +280,7 @@ $("#like").click(function() {
 		                                                  <!-- 리스트 반복 시작 -->
 			                                                <c:if test="${directorPersonMovieList.size() > 0}">
 				                                                <c:forEach var="i" begin="0" end="${directorPersonMovieList.size()-1}" varStatus="status">
-					                                                <a class="w_exposed_cell css-11g9kr1" data-rowindex="6" href="/contents/contents_SH?movie_id=${directorPersonMovieList[i].id} id="tvList">
+					                                                <a class="w_exposed_cell css-11g9kr1" data-rowindex="6" href="/contents/contents_SH?movie_id=${directorPersonMovieList[i].id}" id="tvList">
 					                                                    <div type="tv_seasons" class="css-1726275">
 					                                                        <div class="css-1vjd65c" id="tvdata"><fmt:formatDate value="${directorPersonMovieList[i].movie_release_date}" pattern="yyyy"/></div>
 					                                                        <div type="tv_seasons" class="css-1fqhpd6">

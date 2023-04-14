@@ -14,7 +14,7 @@ public interface MovieDirectorMapper {
 	//해당 영화의 감독전체 가져오기 
 	List<MovieDirectorVo> selectMovieDirectorList(int movie_id);
 	//해당 감독영화 리스트로 감독의 역할 가져오기
-	List<MovieDirectorVo> selectDirectorPersonMovieRolelist(List<MovieVo> directorPersonMovieList, int id);
+	List<MovieDirectorVo> selectDirectorPersonMovieRolelist(List<MovieVo> directorPersonMovieList, int director_id);
 
 
 

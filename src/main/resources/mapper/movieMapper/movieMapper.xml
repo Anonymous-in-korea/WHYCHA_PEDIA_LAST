@@ -80,7 +80,7 @@
 	FROM actor a
 	INNER JOIN movie_actor ma ON a.ID = ma.ACTOR_ID
 	INNER JOIN movie m ON ma.MOVIE_ID = m.ID
-	WHERE a.ID = #{id}
+	WHERE a.ID = #{actor_id}
   </select>
   <!--해당 감독 id의 출연영화 정보 모두 가져오기  -->
   <select id="selectDirectorPersonMovieAll" resultType="com.whychapedia.vo.MovieVo">
@@ -88,7 +88,7 @@
 	FROM director d
 	INNER JOIN movie_director md ON d.ID = md.DIRECTOR_ID
 	INNER JOIN movie m ON md.MOVIE_ID = m.ID
-	WHERE d.ID = #{id}
+	WHERE d.ID = #{director_id}
   </select>
   
   

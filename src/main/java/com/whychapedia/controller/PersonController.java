@@ -61,29 +61,29 @@ public class PersonController {
 	
 	//해당 배우id로 배우 정보 가져오기
 	@RequestMapping(method = RequestMethod.GET, value = "person/person_detail_ACTOR_HY")
-	public String person_detail_HY( @RequestParam("actor_name") String actor_name,@RequestParam("id")int  id,
+	public String person_detail_HY( @RequestParam("actor_name") String actor_name,@RequestParam("actor_id")int  actor_id,
             					   @RequestParam("role") String role, Model model) {
 		model.addAttribute("actor_name", actor_name);
-	    model.addAttribute("id", id);
+	    model.addAttribute("actor_id", actor_id);
 	    model.addAttribute("role", role);
-	    ArtistVo actorPersonlist = artistService.selectActorOnelist(id);
+	    ArtistVo actorPersonlist = artistService.selectActorOnelist(actor_id);
 	    model.addAttribute("actorPersonlist",actorPersonlist);
 	    
-	    List<MovieVo> actorPersonMovieList = movieService.selectActorPersonMovieAll(id);
+	    List<MovieVo> actorPersonMovieList = movieService.selectActorPersonMovieAll(actor_id);
 	    model.addAttribute("actorPersonMovieList",actorPersonMovieList);
 	    System.out.println("actorPersonMovieList_size : "+actorPersonMovieList.size());
 	    System.out.println("actorPersonMovieList_movie_id : "+actorPersonMovieList.get(0).getId());
 	    //해당 movie 의 actor_role받아오기
-	    List<MovieActorVo> actorPersonMovieRolelist = movieActorService.selectActorPersonMovieRolelist(actorPersonMovieList,id);
+	    List<MovieActorVo> actorPersonMovieRolelist = movieActorService.selectActorPersonMovieRolelist(actorPersonMovieList,actor_id);
 	    model.addAttribute("actorPersonMovieRolelist : ",actorPersonMovieRolelist);
 	    System.out.println("actorPersonMovieRolelist_size : "+actorPersonMovieRolelist.size());
 	    
 	    //해당배우가 출연한 영화리스트로 ott불러오기
-	    List<MovieOttVo> actorMovieOTTList = movieOttService.selectActorPersonMovieOtt(actorPersonMovieList,id);
+	    List<MovieOttVo> actorMovieOTTList = movieOttService.selectActorPersonMovieOtt(actorPersonMovieList,actor_id);
 	    model.addAttribute("actorMovieOTTList",actorMovieOTTList);
 	    
 	    //해당 배우 좋아요 수  가져오기
-  		int actorlikeCount = likeService.selectActorLikeList(id);
+  		int actorlikeCount = likeService.selectActorLikeList(actor_id);
   		System.out.println("actorlikeCount : "+actorlikeCount);
   		model.addAttribute("actorlikeCount",actorlikeCount);
 	    
@@ -93,29 +93,29 @@ public class PersonController {
 	
 	//해당 감독id로 감독 정보 가져오기
 	@RequestMapping(method = RequestMethod.GET, value = "person/person_detail_DIRECTOR_HY")
-	public String person_detail_HY2( @RequestParam("director_name") String director_name,@RequestParam("id")int  id,
+	public String person_detail_HY2( @RequestParam("director_name") String director_name,@RequestParam("director_id")int  director_id,
 			@RequestParam("role") String role, Model model) {
 		model.addAttribute("director_name", director_name);
-		model.addAttribute("id", id);
+		model.addAttribute("director_id", director_id);
 		model.addAttribute("role", role);
-		ArtistVo directorPersonlist = artistService.selectDirectorOnelist(id);
+		ArtistVo directorPersonlist = artistService.selectDirectorOnelist(director_id);
 		model.addAttribute("directorPersonlist",directorPersonlist);
 		
-		List<MovieVo> directorPersonMovieList = movieService.selectDirectorPersonMovieAll(id);
+		List<MovieVo> directorPersonMovieList = movieService.selectDirectorPersonMovieAll(director_id);
 		model.addAttribute("directorPersonMovieList",directorPersonMovieList);
 		System.out.println("directorPersonMovieListt_size : "+directorPersonMovieList.size());
 		System.out.println("directorPersonMovieList_movie_id : "+directorPersonMovieList.get(0).getId());
 		//해당 movie 의 actor_role받아오기
-		List<MovieDirectorVo> directorPersonMovieRolelist = movieDirectorService.selectDirectorPersonMovieRolelist(directorPersonMovieList,id);
+		List<MovieDirectorVo> directorPersonMovieRolelist = movieDirectorService.selectDirectorPersonMovieRolelist(directorPersonMovieList,director_id);
 		model.addAttribute("directorPersonMovieRolelist : ",directorPersonMovieRolelist);
 		System.out.println("directorPersonMovieRolelist_size : "+directorPersonMovieRolelist.size());
 		
 		//해당배우가 출연한 영화리스트로 ott불러오기
-		List<MovieOttVo> directorMovieOTTList = movieOttService.selectDirectorPersonMovieOtt(directorPersonMovieList,id);
+		List<MovieOttVo> directorMovieOTTList = movieOttService.selectDirectorPersonMovieOtt(directorPersonMovieList,director_id);
 		model.addAttribute("directorMovieOTTList",directorMovieOTTList);
 		System.out.println("directorMovieOTTList : "+directorMovieOTTList);
 		//해당 감독 좋아요 수  가져오기
-		int directorlikeCount = likeService.selectDirectorLikeList(id);
+		int directorlikeCount = likeService.selectDirectorLikeList(director_id);
 		System.out.println("directorlikeCount : "+directorlikeCount);
 		model.addAttribute("directorlikeCount",directorlikeCount);
 

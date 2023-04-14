@@ -13,7 +13,7 @@ public interface MovieDirectorService {
 	List<MovieDirectorVo> selectMovieDirectorList(int movie_id);
 	
 	//해당 movie의 director_role받아오기
-	List<MovieDirectorVo> selectDirectorPersonMovieRolelist(List<MovieVo> directorPersonMovieList, int id);
+	List<MovieDirectorVo> selectDirectorPersonMovieRolelist(List<MovieVo> directorPersonMovieList, int director_id);
 	
 
 }

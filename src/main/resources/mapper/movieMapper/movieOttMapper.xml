@@ -38,7 +38,7 @@
 		FROM movie_ott mo
 		JOIN ott o ON mo.ott_id = o.id
 		JOIN movie_director md ON md.movie_id = mo.movie_id
-		WHERE md.director_id = #{id}
+		WHERE md.director_id = #{director_id}
 		AND mo.movie_id IN (
 		<foreach collection="directorPersonMovieList" item="movieVo" separator=",">
 		#{movieVo.id}

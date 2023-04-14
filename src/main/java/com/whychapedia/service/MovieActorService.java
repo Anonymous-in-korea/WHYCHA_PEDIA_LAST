@@ -10,7 +10,7 @@ public interface MovieActorService {
 
 	List<MovieActorVo> selectTheActor(int movie_id);
 	//해당 movie 의 actor_role받아오기
-	List<MovieActorVo> selectActorPersonMovieRolelist(List<MovieVo> actorPersonMovieList,int id);
+	List<MovieActorVo> selectActorPersonMovieRolelist(List<MovieVo> actorPersonMovieList,int actor_idd);
 	////해당 영화의 배우전체 가져오기 
 	List<MovieActorVo> selectoneMovieActorList(int movie_id);
 

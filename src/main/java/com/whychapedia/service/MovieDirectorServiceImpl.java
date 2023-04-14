@@ -27,8 +27,8 @@ public class MovieDirectorServiceImpl implements MovieDirectorService {
 	
 	//해당 감독 아이디로 영화 역할 가져오기
 	@Override
-	public List<MovieDirectorVo> selectDirectorPersonMovieRolelist(List<MovieVo> directorPersonMovieList, int id) {
-		List<MovieDirectorVo> directorPersonMovieRolelist = movieDirectorMapper.selectDirectorPersonMovieRolelist(directorPersonMovieList,id);
+	public List<MovieDirectorVo> selectDirectorPersonMovieRolelist(List<MovieVo> directorPersonMovieList, int director_id) {
+		List<MovieDirectorVo> directorPersonMovieRolelist = movieDirectorMapper.selectDirectorPersonMovieRolelist(directorPersonMovieList,director_id);
 		
 		return directorPersonMovieRolelist;
 	}

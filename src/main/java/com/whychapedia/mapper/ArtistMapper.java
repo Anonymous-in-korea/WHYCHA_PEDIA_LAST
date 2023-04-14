@@ -27,9 +27,9 @@ public interface ArtistMapper {
 	List<ArtistVo> selectSearchDirectorAll(String searchKeyword);
 
 	//해당 배우id를 가지고 해당배우 정보 가져오기
-	ArtistVo selectActorOnelist(int id);
+	ArtistVo selectActorOnelist(int actor_id);
 	//해당 감독id를 가지고 해당감독 정보 가져오기
-	ArtistVo selectDirectorOnelist(int id);
+	ArtistVo selectDirectorOnelist(int director_id);
 
 	//선호 배우 3명 인물 포스터,이름,출현 횟수
 	List<ArtistVo> selectPreferenceActor(int user_id);

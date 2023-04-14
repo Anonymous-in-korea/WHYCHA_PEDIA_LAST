@@ -407,7 +407,7 @@
 		                                                                                  <!--감독 리스트 시작  -->
 		                                                                            <c:forEach items= "${oneMovieDirectorList}" var ="dvo" >
 		                                                                                <li class="css-54rr1e" >
-		                                                                                	<a href="/person/person_detail_DIRECTOR_HY?director_name=${dvo.director_name}&id=${dvo.director_id}&role=감독" class="css-1aaqvgs-InnerPartOfListWithImage" >
+		                                                                                	<a href="/person/person_detail_DIRECTOR_HY?director_name=${dvo.director_name}&director_id=${dvo.director_id}&role=감독" class="css-1aaqvgs-InnerPartOfListWithImage" >
 		                                                                                    	<div class="css-cssveg">
 		                                                                                        	<div class="profilePhotoBlock css-13zlig9">
 		                                                                                            	<div class="css-1o7yycy-ProfilePhotoImage" style="background: url('${dvo.director_post_url}')center center / cover no-repeat"></div>
@@ -425,7 +425,7 @@
 		                                                                               <!-- 배우 리스트 시작 -->
 		                                                                                <c:forEach items= "${oneMovieActorList}" var ="avo" >
 		                                                                                <li class="css-54rr1e">
-		                                                                                	<a href="/person/person_detail_ACTOR_HY?actor_name=${avo.actor_name}&id=${avo.actor_id}&role=배우" class="css-1aaqvgs-InnerPartOfListWithImage" >
+		                                                                                	<a href="/person/person_detail_ACTOR_HY?actor_name=${avo.actor_name}&actor_id=${avo.actor_id}&role=배우" class="css-1aaqvgs-InnerPartOfListWithImage" >
 		                                                                                    	<div class="css-cssveg">
 		                                                                                        	<div class="profilePhotoBlock css-13zlig9">
 		                                                                                            	<div class="css-1h9orp8-ProfilePhotoImage" style="background: url('${avo.actor_post_url}')center center / cover no-repeat"></div>

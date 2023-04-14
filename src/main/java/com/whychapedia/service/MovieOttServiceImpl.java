@@ -44,16 +44,16 @@ public class MovieOttServiceImpl implements MovieOttService {
 
 	//해당 배우가 출연한 영화 리스트의 영화 ott가져오기
 	@Override
-	public List<MovieOttVo> selectActorPersonMovieOtt(List<MovieVo> actorPersonMovieList, int id) {
-		List<MovieOttVo> actorMovieOTTList= movieOttMapper.selectActorPersonMovieOtt(actorPersonMovieList,id);
+	public List<MovieOttVo> selectActorPersonMovieOtt(List<MovieVo> actorPersonMovieList, int actor_id) {
+		List<MovieOttVo> actorMovieOTTList= movieOttMapper.selectActorPersonMovieOtt(actorPersonMovieList,actor_id);
 		return actorMovieOTTList;
 	}
 
 
 	//해당 감독이 출연한 영화 리스트의 영화 ott가져오기
 	@Override
-	public List<MovieOttVo> selectDirectorPersonMovieOtt(List<MovieVo> directorPersonMovieList, int id) {
-		List<MovieOttVo> directorMovieOTTList= movieOttMapper.selectDirectorPersonMovieOtt(directorPersonMovieList,id);
+	public List<MovieOttVo> selectDirectorPersonMovieOtt(List<MovieVo> directorPersonMovieList, int director_id) {
+		List<MovieOttVo> directorMovieOTTList= movieOttMapper.selectDirectorPersonMovieOtt(directorPersonMovieList,director_id);
 		return directorMovieOTTList;
 	}
 

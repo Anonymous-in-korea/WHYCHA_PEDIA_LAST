@@ -27,7 +27,7 @@
 		<foreach collection="directorPersonMovieList" item="movieVo" separator=",">
 			#{movieVo.id}
 		</foreach>
-	) AND md.director_id = #{id}
+	) AND md.director_id = #{director_id}
 </select>
 
  
