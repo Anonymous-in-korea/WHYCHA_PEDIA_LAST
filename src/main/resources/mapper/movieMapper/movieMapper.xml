@@ -142,6 +142,28 @@
 	        order by MOVIE_RATING DESC FETCH FIRST 10 ROWS ONLY 
 	</select>
 	
+	<!--두 사람이 모두 높게 평가한 영화 가져오기-->
+	<select id="selectHighScoreForBothUser" resultType="com.whychapedia.vo.MovieVo">
+		SELECT * FROM (
+		    SELECT
+		        M.ID,
+		        M.movie_kor_title,
+		        M.movie_POST_URL,
+		        M.movie_rating
+		    FROM
+		        MOVIE M
+		        JOIN STAR_RATE SR1 ON M.ID = SR1.MOVIE_ID
+		        JOIN STAR_RATE SR2 ON M.ID = SR2.MOVIE_ID
+		    WHERE
+		        SR1.USER_ID = #{user_id}
+		        AND SR1.SCORE >= 4
+		        AND SR2.USER_ID = #{loginId}
+		        AND SR2.SCORE >= 4
+		    ORDER BY
+		        M.ID
+		   ) WHERE ROWNUM <![CDATA[<=]]> 3
+	</select>
+	
 	
 	
 	

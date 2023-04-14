@@ -39,6 +39,8 @@ public interface MovieMapper {
 	List<MovieVo> selectMovieReleaseRate(int user_id);
 	//평가할 영화 (평점 높은 기준으로)들고 오기 (10개만)
 	List<MovieVo> selectMovieHighRate(int user_id);
+	//두 사람이 모두 높게 평가한 영화 가져오기
+	List<MovieVo> selectHighScoreForBothUser(int user_id, int loginId);
 
 
 	

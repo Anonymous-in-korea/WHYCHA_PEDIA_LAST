@@ -171,6 +171,13 @@ public class MovieServiceImpl implements MovieService {
 		List<MovieVo> movieHighRate=movieMapper.selectMovieHighRate(user_id);
 		return movieHighRate;
 	}
+
+	//두 사람이 모두 높게 평가한 영화 가져오기
+	@Override
+	public List<MovieVo> selectHighScoreForBothUser(int user_id, int loginId) {
+		List<MovieVo> highScoreForBothUser=movieMapper.selectHighScoreForBothUser(user_id,loginId);
+		return highScoreForBothUser;
+	}
 	
 
 

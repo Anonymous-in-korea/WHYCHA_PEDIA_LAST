@@ -210,6 +210,22 @@ public class MyPageController {
 		}
 		model.addAttribute("timeWateched",timeWateched);
 		
+		
+		/*--------------    나와 타인의 취향 비교 시작   ------------------*/ 
+		
+		/*    로그인 한 사람 계정   */ 
+		MemberVo loginVo=new MemberVo();
+		Integer sessionId = (Integer) session.getAttribute("sessionId");
+		
+		/*    로그인 한 사람 과 페이지 주인 비교 시작   */ 
+		List<MovieVo> highScoreForBothUser=new ArrayList<>();
+		if(sessionId!=null) {
+			int loginId = sessionId.intValue();
+			loginVo=memberService.selectOneMember(loginId);			
+			highScoreForBothUser=movieService.selectHighScoreForBothUser(user_id,loginId);
+		}
+		model.addAttribute("highScoreForBothUser",highScoreForBothUser);
+		
 		return "myPage/my_analysis_HY";
 	}
 

@@ -66,7 +66,7 @@
 															<a title="WATCHA's page" class="css-1f9m1s4-StylelessLocalLink eovgsd01" href="myPage/userPage_SY?user_id=${memberVo.id}">
 																<div class="css-bmael7">
 																	<div class="css-1hffj5n">
-																		<div style="background: url(${memberVo.user_pic_url}) center center / cover no-repeat;" class="css-q29adr-ProfilePhotoImage"></div>
+																		<div style="background: url(${memberVo.user_pic_url}) center center / cover no-repeat; " class="css-q29adr-ProfilePhotoImage"></div>
 																	</div>
 																	<div class="css-17nfp2s">
 																		<div class="css-180704h">

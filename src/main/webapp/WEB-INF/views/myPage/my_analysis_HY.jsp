@@ -6,7 +6,8 @@
 	<head>
 	  <link rel="icon" href="/image/favicon.png">
 	  <link href="../css/header.css" rel="stylesheet" type="text/css">
-	  <link href="../css/my_taste_HY.css" rel="stylesheet" type="text/css">	
+	  <link href="../css/my_taste_HY.css" rel="stylesheet" type="text/css">
+	  <link href="../css/contents.css" rel="stylesheet" type="text/css">	
 	  <!-- Google Tag Manager -->
 	  <meta charset="utf-8">
 	  <title>와이챠가 분석한 영's님의 취향보고서</title>
@@ -29,15 +30,14 @@
 	                  <div class="css-1gkas1x-Grid e1689zdh0">
 	                    <div class="css-1y901al-Row emmoxnt0">
 	                      <div class="css-1d7gqmp">
-	                      	<span src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTgxIiBoZWlnaHQ9IjM1IiB2aWV3Qm94PSIwIDAgMTgxIDM1IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxwYXRoIGQ9Ik04OC4wMTE4IDE3LjU0NzZIODMuNjY5N1Y3LjM1NDExSDc4LjAzNTNWMzMuMjI5OEg4My42Njk3VjIyLjkzMThIODguMDExOFYzMy4yMjk4SDkzLjY0NjJWNy4zNTQxMUg4OC4wMTE4VjE3LjU0NzZaIiBmaWxsPSJ3aGl0ZSIvPgogIDxwYXRoIGQ9Ik00NS4zNjYgMTIuNzM4M0g0OS45MTQ5VjMzLjIyOThINTUuNTQ5M1YxMi43MzgzSDU5LjgzOTdWNy4zNTQxMUg0NS4zNjZWMTIuNzM4M1oiIGZpbGw9IndoaXRlIi8+CiAgPHBhdGggZD0iTTM0LjA0NTYgNy4zNTQxMUwyOS40OTY3IDMzLjIyOThIMzQuOTc2TDM1LjU5MTIgMjkuMDQ3OUg0MC43ODFMNDEuMzg1OCAzMy4yMjk4SDQ2LjkxNjhMNDIuMzE2MiA3LjM1NDExSDM0LjA0NTZaTTM2LjI4MzggMjQuMzQzMkwzNy44NzA4IDEzLjU3NDdIMzguNTQyOEw0MC4xMDEzIDI0LjM0MzJIMzYuMjgzOFoiIGZpbGw9IndoaXRlIi8+CiAgPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yNC4zNDM5IDBMMjIuNjU3NiAyNC43NTI5TDIyLjIwNDQgMjQuNzc2N0wxOC4xOTM3IDcuMjY0NThIMTMuMjM3OUwxMC4yMzc2IDI1LjQxTDkuNTk0NTQgMjUuNDQzOUw2LjkwODI3IDcuMjY0NThIMEw2LjI4NTAyIDM0LjMyNzZMMTMuMzEwNyAzMy44NTk0TDE1LjU5NjUgMTcuMDYxMUwxNi4yNjY5IDE3LjAyNDNMMTkuMzI3NyAzMy40NTM1TDI2LjA1MiAzMy4wMDIzTDMxLjM5MiAwSDI0LjM0MzlaIiBmaWxsPSJ3aGl0ZSIvPgogIDxwYXRoIGQ9Ik02OC41MjQgNy4wOTI3MUM2My40NTgyIDcuMDkyNzEgNjEuMDI4NyA5Ljg2MzI0IDYxLjAyODcgMTQuMTQ5N1YyNi40MzQxQzYxLjAyODcgMzAuNzIwNiA2My40NTgyIDMzLjQ5MTIgNjguNTI0IDMzLjQ5MTJDNzMuNTg5OCAzMy40OTEyIDc2LjAxOTMgMzAuNzIwNiA3Ni4wMTkzIDI2LjQzNDFWMjEuOTkwOEg3MC4zODQ5VjI2Ljk1NjlDNzAuMzg0OSAyOC4zMTYgNjkuODY4IDI4Ljc4NjUgNjguNTI0IDI4Ljc4NjVDNjcuMTggMjguNzg2NSA2Ni42NjMxIDI4LjMxNiA2Ni42NjMxIDI2Ljk1NjlWMTMuNjI3QzY2LjY2MzEgMTIuMjY3OCA2Ny4xOCAxMS43OTc0IDY4LjUyNCAxMS43OTc0QzY5Ljg2OCAxMS43OTc0IDcwLjM4NDkgMTIuMjY3OCA3MC4zODQ5IDEzLjYyN1YxNi41NTQzSDc2LjAxOTNWMTQuMTQ5N0M3Ni4wMTkzIDkuODYzMjQgNzMuNTg5OCA3LjA5MjcxIDY4LjUyNCA3LjA5MjcxWiIgZmlsbD0id2hpdGUiLz4KICA8cGF0aCBkPSJNOTkuNTM5IDcuMzU0MTFMOTQuOTkwMSAzMy4yMjk4SDEwMC40NjlMMTAxLjA4NSAyOS4wNDc5SDEwNi4yNzRMMTA2Ljg3OSAzMy4yMjk4SDExMi40MUwxMDcuODEgNy4zNTQxMUg5OS41MzlaTTEwMS43NzcgMjQuMzQzMkwxMDMuMzY0IDEzLjU3NDdIMTA0LjAzNkwxMDUuNTk1IDI0LjM0MzJIMTAxLjc3N1oiIGZpbGw9IndoaXRlIi8+CiAgPHBhdGggZD0iTTE1MC42NTYgNy4zNTQxM0gxNDQuOTdWMzMuMjI5OEgxNTAuNjU2QzE1My44NjEgMzMuMjI5OCAxNTUuOTggMzEuOTc1MiAxNTcuMDE0IDI5LjY3NTJDMTU3LjYzNSAyOC4zMTYxIDE1Ny43OSAyNy4wNjE1IDE1Ny43OSAyMC4yNjU4QzE1Ny43OSAxMy41MjI1IDE1Ny42MzUgMTIuMjY3OSAxNTcuMDE0IDEwLjkwODhDMTU1Ljk4IDguNjA4NzEgMTUzLjg2MSA3LjM1NDEzIDE1MC42NTYgNy4zNTQxM1pNMTUzLjg2MSAyOC4yMTE1QzE1My4zNDQgMjkuNDY2MSAxNTIuMjU5IDMwLjE0NTcgMTUwLjM0NiAzMC4xNDU3SDE0OC4zM1YxMC40MzgzSDE1MC4zNDZDMTUyLjI1OSAxMC40MzgzIDE1My4zNDQgMTEuMTE3OSAxNTMuODYxIDEyLjM3MjRDMTU0LjI3NSAxMy4yNjExIDE1NC4zNzggMTQuMDQ1MiAxNTQuMzc4IDIwLjMxODFDMTU0LjM3OCAyNi41Mzg3IDE1NC4yNzUgMjcuMzIyOSAxNTMuODYxIDI4LjIxMTVaIiBmaWxsPSJ3aGl0ZSIvPgogIDxwYXRoIGQ9Ik0xNzYuMjk1IDcuMzU0MTNIMTcxLjE3OEwxNjYuNDIyIDMzLjIyOThIMTY5Ljc4MkwxNzAuNjA5IDI4LjAwMjRIMTc2LjgxMkwxNzcuNjkxIDMzLjIyOThIMTgwLjk5OUwxNzYuMjk1IDcuMzU0MTNaTTE3MS4xMjYgMjUuMDc1MUwxNzMuNjU5IDEwLjA3MjRIMTczLjc2MkwxNzYuMjk1IDI1LjA3NTFIMTcxLjEyNloiIGZpbGw9IndoaXRlIi8+CiAgPHBhdGggZD0iTTE2My45OTMgNy4zNTQxM0gxNjAuNjMzVjMzLjIyOThIMTYzLjk5M1Y3LjM1NDEzWiIgZmlsbD0id2hpdGUiLz4KICA8cGF0aCBkPSJNMTI0LjYwNCA3LjM1NDEzSDExOC41MDRWMzMuMjI5OEgxMjEuODEyVjIxLjE1NDVIMTI0LjYwNEMxMjcuMTg4IDIxLjE1NDUgMTI4Ljg0MiAyMC40MjI3IDEyOS41NjYgMTguODAyMkMxMjkuOTI4IDE3Ljg2MTIgMTMwLjAzMSAxNy4xMjk0IDEzMC4wMzEgMTQuMjU0M0MxMzAuMDMxIDExLjM3OTIgMTI5LjkyOCAxMC41OTUxIDEyOS41NjYgOS43NTg3NEMxMjguODQyIDguMDg1OTYgMTI3LjE4OCA3LjM1NDEzIDEyNC42MDQgNy4zNTQxM1pNMTI2LjQxMyAxNi45MjAzQzEyNi4wNTEgMTcuODYxMiAxMjUuMTcyIDE4LjA3MDMgMTIzLjc3NiAxOC4wNzAzSDEyMS44MTJWMTAuMjI5MkgxMjMuNzc2QzEyNS4xNzIgMTAuMjI5MiAxMjYuMDUxIDEwLjQ5MDYgMTI2LjQxMyAxMS4zNzkyQzEyNi42MiAxMS44NDk3IDEyNi42NzEgMTIuMTExMSAxMjYuNjcxIDE0LjE0OThDMTI2LjY3MSAxNi4xMzYyIDEyNi42MiAxNi41MDIxIDEyNi40MTMgMTYuOTIwM1oiIGZpbGw9IndoaXRlIi8+CiAgPHBhdGggZD0iTTEzMi40NjEgMzMuMjI5OEgxNDEuODY5VjMwLjE0NTdIMTM1LjgyMVYyMS4wNUgxNDEuNzEzVjE3Ljk2NThIMTM1LjgyMVYxMC40MzgzSDE0MS44NjlWNy4zNTQxM0gxMzIuNDYxVjMzLjIyOThaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K"
-	                          width="181px" height="34.76px" class="css-1cubea9">
+	                      	<span class="css-1cubea9">
 	                        </span>
 	                      </div>
 	                      <h1 class="css-1bmxwx8">
 	                      <span class="css-1haseg">취향분석</span>
 	                        <div class="css-1yyol1o">
 	                          <div class="css-170kft5">
-	                            <div class="css-fom973-ProfilePhotoImage"></div>
+	                            <div style="background: url(${memberVo.user_pic_url}) center center / cover no-repeat; " class="css-fom973-ProfilePhotoImage"></div>
 	                          </div>
 	                          <!-- 누구의 취향분석 -->
 	                          <div class="css-mp2a8y">${memberVo.user_name}</div>
@@ -177,7 +177,7 @@
 	                              <!-- 배우 1명 -->
 	                              <c:forEach items="${actorVoList}" var="actorVo">
 		                              <li class="css-wj6fn0">
-		                              	<a title="${actorVo.actor_name}" class="css-1aaqvgs-InnerPartOfListWithImage"  href="/ko-KR/people/actor_id?${actorVo.id}">
+		                              	<a title="${actorVo.actor_name}" class="css-1aaqvgs-InnerPartOfListWithImage"  href="/person/person_detail_ACTOR_HY?actor_name=${actorVo.actor_name}&id=${actorVo.id}&role=${actorVo.actor_role}">
 		                                  <div class="css-cssveg">
 		                                    <div class="css-13zlig9">
 		                                      <div style="background: url(${actorVo.actor_post_url}) no-repeat center; background-size: contain;" class="css-1q751em-ProfilePhotoImage"></div>
@@ -241,7 +241,7 @@
 	                              <!-- 배우 1명 -->
 	                              <c:forEach items="${directorVoList}" var="directorVo">
 		                              <li class="css-wj6fn0">
-		                              	<a title="${directorVo.director_name}" class="css-1aaqvgs-InnerPartOfListWithImage"  href="/ko-KR/people/director_id?${directorVo.id}">
+		                              	<a title="${directorVo.director_name}" class="css-1aaqvgs-InnerPartOfListWithImage"  href="/person/person_detail_DIRECTOR_HY?director_name=${directorVo.director_name}&id=${directorVo.id}&role=${directorVo.diretor_role}">
 		                                  <div class="css-cssveg">
 		                                    <div class="css-13zlig9">
 		                                      <div style="background: url(${directorVo.director_post_url}) no-repeat center; background-size: contain;" class="css-1q751em-ProfilePhotoImage"></div>
@@ -359,6 +359,63 @@
 	              </div>
 <!-- 	              <div class="css-q1hgmq-RoundedCornerBlock-RoundedCornerBlock"></div> -->
 <!-- 	              <div class="css-q1hgmq-RoundedCornerBlock-RoundedCornerBlock"></div> -->
+                    <!-- 비슷한 작품 section start -->
+                    <c:if test="${sessionId != memberVo.id and sessionId != null}">
+                    <div class="css-1po9d5k">
+                        <div class="css-uvsgck">
+                            <div class="css-1gfvga7-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock">
+                                <div style="min-height: 1px;">
+                                    <section class="w_exposed_cell css-rwltgb" data-rowindex="13">
+                                        <div class="css-1gkas1x-Grid e1689zdh0">
+                                            <div class="css-1y901al-Row emmoxnt0">
+                                                <header class="css-1ue9xs6">
+                                                	<h2 class="css-1wtjsst">둘 다 재밌게 본 작품</h2>
+                                                </header>
+                                            </div>
+                                        </div>
+                                        <div class="css-1gkas1x-Grid e1689zdh0">
+                                            <div class="css-1y901al-Row emmoxnt0">
+                                                <ul class="css-27z1qm-VisualUl-ContentGrid e14whxmg0">
+                                                <c:forEach items="${highScoreForBothUser}" var="movieVo">
+                                                    <li class="css-1hp6p72">
+                                                    	<a title="${movieVo.movie_kor_title}" href="/contents/contents_SH?movie_id=${movieVo.id}">
+                                                         <div class="css-1qmeemv">
+                                                             <div class=" css-unzuzl-StyledLazyLoadingImage ezcopuc0">
+                                                                 <img src="${movieVo.movie_post_url}"
+                                                                      class="css-qhzw1o-StyledImg ezcopuc1">
+                                                             </div>
+                                                     <!--         <div class="ottBadge css-5o7sb2"
+                                                                  src="https://an2-img.amz.wtchn.net/image/v1/updatable_images/2571/original/42e70f1bc34d7af54478a311983ecf6d3601eefa.png"></div>
+                                                             <div class="ottBadge css-oobk33"
+                                                                  src="https://an2-img.amz.wtchn.net/image/v2/33c15d90f101414a351372f19172859f.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKd1lYUm9Jam9pTDNZeUwzTjBiM0psTDNWcGJXRm5aUzh4TmpFeE1qQXdNVGN3T1RZd05qWTVNRE0xSW4wLlFwWFc3MERPaF9GR3ZMWVVzSUFCOFdLNWhLRjE3Ym5za1Z1bVFEN0lsSkU"></div>
+                                                      -->    </div>
+                                                         <div class="css-ixy093">
+                                                             <div class="css-niy0za">${movieVo.movie_kor_title}</div>
+                                                             <div>
+                                                                 <div class="css-m9i0qw">평점 ${movieVo.movie_rating}</div>                                                          
+                                                             </div>
+                                                         </div>
+                                                    	</a>
+                                                    </li>
+                                                 </c:forEach>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <div class="css-1712rt5"></div>
+                                    <div class="css-1e9niz8">
+                                        <div class="css-1gkas1x-Grid e1689zdh0">
+                                            <div class="css-1y901al-Row emmoxnt0">
+                                                <div class="css-1thiwcu-StyledInfinityScroll eu826xw0"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 비슷한 작품 section end -->
+                 </c:if>   
 	            </div>
 	          </div>
 	        </section>

@@ -41,6 +41,8 @@ public interface MovieService {
 
 	List<MovieVo> selectMovieHighRate(int user_id);
 
+	List<MovieVo> selectHighScoreForBothUser(int user_id, int loginId);
+
 
 
 
