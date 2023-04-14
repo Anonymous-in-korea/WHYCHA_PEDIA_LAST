@@ -17,7 +17,7 @@ public interface QuestionListMapper {
 	public QuestionListVo selectQuestionOne(int questionId);
 
 	//questionList저장
-	public void insertQuestionList(QuestionListVo questionListVo);
+	public QuestionListVo insertQuestionList(QuestionListVo questionListVo, int sessionId);
 	
 	//	전체 게시판 데이터 수를 가져오기
 	public int getTotalCount(int sessionId);

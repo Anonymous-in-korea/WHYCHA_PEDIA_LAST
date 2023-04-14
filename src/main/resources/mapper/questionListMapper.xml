@@ -22,9 +22,9 @@
 	<select id="selectQuestionOne" resultType="com.whychapedia.vo.QuestionListVo">
 		select * from question_list where id=#{questionId}
 	</select>
-	<!--새 질문 등록하기  -->
+		<!--새 질문 등록하기  -->
 	<insert id="insertQuestionList">
-		insert into question_list values (11,#{question_title},#{question_content},0,6,sysdate,1)
+		insert into question_list values ((select coalesce(max(id),0)+1 from question_list),#{question_title},#{question_content},0,#{sessionId},sysdate,2)
 	</insert>
 	<!-- 	전체 게시판 데이터 수를 가져오기 -->
 	<select id="getTotalCount" resultType="int">

@@ -133,11 +133,11 @@
 		<footer style="top: 170px; padding-left: 20px;" class="css-wvwa3p">
 			<div class="foo">
 				<ul class="css-1wn0ztv">
-					<li class="css-1w1gghd"><a href="https://watcha.com/legals/play_agreement" target="_blank" rel="noopener noreferrer" class="css-1q0miqa">와이챠 서비스 이용약관</a></li>
-					<li class="css-1w1gghd"><a href="https://watcha.com/legals/agreement" target="_blank" rel="noopener noreferrer" class="css-1q0miqa">와이챠피디아 서비스 이용약관</a></li>
-					<li class="css-1czlaix"><a href="https://watcha.com/legals/privacy" target="_blank" rel="noopener noreferrer" class="css-1q0miqa">개인정보 처리 방침</a></li>
-					<li class="css-1w1gghd"><a href="https://team.watcha.com" target="_blank" rel="noreferrer noopener" class="css-1q0miqa">회사소개</a></li>
-					<li class="css-1w1gghd"><a href="https://watcha.team/81b8ab72-1a44-4d6c-a418-bbaed702c429" target="_blank" rel="noreferrer noopener" class="css-1q0miqa">채용정보</a></li>
+					<li class="css-1w1gghd">와이챠 서비스 이용약관</a></li>
+					<li class="css-1w1gghd">와이챠피디아 서비스 이용약관</a></li>
+					<li class="css-1czlaix">개인정보 처리 방침</a></li>
+					<li class="css-1w1gghd">회사소개</a></li>
+					<li class="css-1w1gghd">채용정보</a></li>
 				</ul>
 				<ul class="css-37p0v">
 					<li class="css-thfupn"><span class="css-uw7vnf">와이챠피디아 광고 문의</span> <span class="css-92plnc">ad@watcha.com</span></li>

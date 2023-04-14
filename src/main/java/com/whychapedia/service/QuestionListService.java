@@ -12,7 +12,7 @@ public interface QuestionListService {
 	public QuestionListVo selectQuestionOne(int questionId);
 
 	//게시글 저장
-	public void insertQuestionList(QuestionListVo questionListVo);
+	public QuestionListVo insertQuestionList(QuestionListVo questionListVo, int sessionId);
 
 	//전체 데이터 수를 가져오기
 	public int getTotalCount(int sessionId);

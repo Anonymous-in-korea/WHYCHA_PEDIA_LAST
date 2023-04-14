@@ -55,7 +55,7 @@
 	                            </a>
 	                        </li>
 	                        <li class="blocks-item">
-	                            <a href="/QnA/QnA_Write_SY" class="blocks-item-link">
+	                            <a href="/QnA/QnA_Write_SY?id=${sessionId}" class="blocks-item-link">
 	                                <span class="blocks-item-title">문의 등록</span>
 	                                <span class="blocks-item-description"></span>
 	                            </a>

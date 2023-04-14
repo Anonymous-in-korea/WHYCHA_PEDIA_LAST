@@ -33,11 +33,12 @@ public class QuestionListServiceImpl implements QuestionListService {
 		return questionListVo;
 	}
 
-	//@Override //새 질문 등록 
-	public void insertQuestionList(QuestionListVo questionListVo) {
-		questionListMapper.insertQuestionList(questionListVo);
-		
+	@Override//새 질문 등록 
+	public QuestionListVo insertQuestionList(QuestionListVo questionListVo, int sessionId) {
+		questionListVo=questionListMapper.insertQuestionList(questionListVo,sessionId);
+		return questionListVo;
 	}
+
 
 	//전체 게시판 데이터 수를 가져오기
 	@Override

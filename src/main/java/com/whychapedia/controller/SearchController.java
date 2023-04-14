@@ -27,12 +27,8 @@ import com.whychapedia.vo.MovieCollectionVo;
 import com.whychapedia.vo.MovieCountryVo;
 import com.whychapedia.vo.MovieVo;
 
-
-
 @Controller
 public class SearchController {
-	
-
 
 	@Autowired 
 	ArtistService artistService;
