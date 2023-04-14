@@ -393,6 +393,7 @@ public class ContentsController {
 		Integer sessionId = (Integer) session.getAttribute("sessionId");
 		int user_id = sessionId.intValue();
 		System.out.println("user_id:"+user_id);
+
 		System.out.println("movie_id:"+movie_id);
 		/*해당 영화 해당 유저의 collectionVo 전체 가져오기 총 개수 까지*/
 		List<CollectionVo>collectionVoList=collectionService.selectCollectionList(user_id);
