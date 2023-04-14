@@ -19,16 +19,13 @@ public class QuestionListServiceImpl implements QuestionListService {
     AnswerListMapper answerListMapper;
 
 
-	
-	
-	@Override//게시글 전체 가져오기
-	public List<QuestionListVo> selectQuestionListAll(int page, int sessionId) {
-
-	
-	    int start = (page - 1) * 5;
-	    List<QuestionListVo> list = questionListMapper.selectQuestionListAll(sessionId, start, 5);
-	    return list;
+	//해당 페이지 넘버에 대한 게시글 가져오기
+	@Override
+	public List<QuestionListVo> getQnaListByPage(int sessionId, int page,Integer start, Integer end) {
+		List<QuestionListVo> qnaListByPage = questionListMapper.getQnaListByPage(sessionId,page,start,end);
+		return qnaListByPage;
 	}
+  
 
 	@Override // question id 하나 가지고 해당하는 행 전체 가져오기
 	public QuestionListVo selectQuestionOne(int questionId) {
@@ -47,6 +44,8 @@ public class QuestionListServiceImpl implements QuestionListService {
 	public int getTotalCount(int sessionId) {
 		return questionListMapper.getTotalCount(sessionId);
 	}
+
+
 
 
 

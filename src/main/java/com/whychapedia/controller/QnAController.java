@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.whychapedia.service.AnswerListService;
+import com.whychapedia.service.MemberService;
 import com.whychapedia.service.QuestionListService;
 import com.whychapedia.vo.AnswerListVo;
+import com.whychapedia.vo.MemberVo;
 import com.whychapedia.vo.QuestionListVo;
 
 @Controller
@@ -28,9 +30,11 @@ public class QnAController {
 	@Autowired
 	AnswerListVo answerListVo;
 	@Autowired 
+	MemberService memberService;
+	@Autowired 
 	HttpSession session;
 
-	  
+	  //qna메인페이지
 	  @RequestMapping(value = "QnA/QnA_SY", method = RequestMethod.GET)
 	  public String QnA_SY(@RequestParam(required = false) Integer id , Model model) {
 		  if (id == null) {
@@ -38,44 +42,61 @@ public class QnAController {
 	          return "redirect:/"; // 로그인 페이지로 이동하도록 처리
 	      }
 		  Integer sessionId = (Integer) session.getAttribute("sessionId");
-	      model.addAttribute("sessionId", id);
+		  //sessionId에 해당하는 userName 가져오기
+		  List<MemberVo> memberVo = memberService.getOneUserName(id);
+		  model.addAttribute("sessionId", id);
+	      model.addAttribute("memberVo", memberVo);
+	      System.out.println("memberVo : "+memberVo);
 	      return "QnA/QnA_SY";
 	  }
+	  
+	  //qna 해당sessionId의 문의내역페이지 
 	  @RequestMapping(value = "QnA/QnA_Mylist_SY", method = RequestMethod.GET)
-	  public String QnA_Mylist_SY(@RequestParam(required = false) Integer id, @RequestParam(defaultValue = "1") int page, Model model) {
-	      if (id == null) {
-	          // id가 null인 경우 처리
-	          return "redirect:/"; // 로그인 페이지로 이동하도록 처리
+	  public String getQnaListByPage(@RequestParam(required = false) Integer id, @RequestParam(defaultValue = "1") int page, @RequestParam(required = false) Integer start,
+              @RequestParam(required = false) Integer end,Model model) {
+		  if (id == null) {
+			  // id가 null인 경우 처리
+			  return "redirect:/"; // 로그인 페이지로 이동하도록 처리
+		  }
+		  if (start == null || end == null) {
+	          start = (page - 1) * 5;
+	          end = start + 5 - 1;
 	      }
-		  List<QuestionListVo> list = questionlistService.selectQuestionListAll(page, id);// 해당 id로 전체 게시글 가져오기
-		  int totalCount = questionlistService.getTotalCount(id);//전체 데이터 수를 가져오기
-		  int maxPage = (int) Math.ceil((double) totalCount / 5);
-		  int startPage = (int) Math.floor((double) (page - 1) / 5) * 5 + 1;
-		  int endPage = startPage + 4;
+		 
+		  List<QuestionListVo> qnaListByPage = questionlistService.getQnaListByPage(id,page,start,end);// 해당 id로 전체 게시글 가져오기
+		  int totalCount = questionlistService.getTotalCount(id);//전체 게시글 수 
+		  int maxPage = (int) Math.ceil((double) totalCount / 5);//최대 페이지수
+		  int startPage = (int) Math.floor((double) (page - 1) / 5) * 5 + 1;//시작페이지
+		  int endPage = startPage + 4;//끝페이지
 		  if (endPage > maxPage) {
 			  endPage = maxPage;
 		  }
 		  model.addAttribute("sessionId", id);
-		  model.addAttribute("list", list);
-		  model.addAttribute("page", page);
 		  model.addAttribute("startPage", startPage);
 		  model.addAttribute("endPage", endPage);
 		  model.addAttribute("maxPage", maxPage);
 		  model.addAttribute("totalCount", totalCount);
-		  System.out.println("list : "+list);
-		  System.out.println("page : "+page);
+		  model.addAttribute("sessionId", id);
+		  model.addAttribute("qnaListByPage", qnaListByPage);
+		  model.addAttribute("page", page);
+		  model.addAttribute("start", start);
+		  model.addAttribute("end", end);
 		  System.out.println("startPage : "+startPage);
 		  System.out.println("endPage : "+endPage);
 		  System.out.println("maxPage : "+maxPage);
 		  System.out.println("totalCount : "+totalCount);
+		  System.out.println("qnaListByPage : "+qnaListByPage);
+		  System.out.println("page : "+page);
+		  System.out.println("start : "+start);
+		  System.out.println("end : "+end);
 		  return "QnA/QnA_Mylist_SY";
 	  }
 	  
+	  //문의글쓰기
 	  @GetMapping("QnA/QnA_Write_SY") 
 	  public String QnA_Write_SY() { 
 		  return "QnA/QnA_Write_SY"; 
 		 }
-	  
 	  
 	  //문의/답변
 	  @GetMapping("/QnA/QnA_Answer_SY")
