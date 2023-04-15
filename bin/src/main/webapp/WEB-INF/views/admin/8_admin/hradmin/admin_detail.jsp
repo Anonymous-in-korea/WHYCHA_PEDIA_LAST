@@ -22,7 +22,7 @@
 		<!-- 이거 side_nav 작동하는 script임 -->
 
         <script src="/js/admin/scripts.js"></script>
-        <script src="/js/admin_logout.js"></script>
+        <script src="/js/admin/admin_logout.js"></script>
 		
 		<script>
 			$(function() {

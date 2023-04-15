@@ -34,37 +34,6 @@
 				}
 			});
 		});
-
-// 		let modalList = createApp({
-// 			data() {
-// 				return {
-// 					main_modal: false,
-// 					notice_signal: false,
-// 				};
-// 			},
-// 			methods: {
-// 				main_modal_change() {
-// 					this.main_modal = !this.main_modal;
-// 				},
-// 				notice_change() {
-// 					this.notice_signal = !this.notice_signal;
-// 				}
-// 			},
-// 		}).mount("#app");
-
-// 		document.addEventListener("click",(e)=>{
-// 			if(document.querySelector("#modal-container-gaaIcctt8e6Uqo5nHzT52") && modalList.notice_signal == false){
-// 				if(!document.querySelector("div.css-ikkedy").contains(e.target)){
-// 					modalList.main_modal = false;
-// 				}
-// 			}
-
-// 			if(modalList.notice_signal == true) {
-// 				if(!document.querySelector(".css-8kej5s").contains(e.target)){
-// 					modalList.notice_signal = false;
-// 				}
-// 			}
-// 		},true)
 	</script>
 	<!-- 공지사항 팝업 열림! -->
 	<div class="announcement">
@@ -83,12 +52,12 @@
 					<ul class="css-10n5vg9-VisualUl ep5cwgq0">
 						<div class="css-1gkas1x-Grid e1689zdh0">
 							<div class="css-1y901al-Row emmoxnt0">
-							<c:forEach items="${map.list }" var="map" >
+							<c:forEach items="${announcementList}" var="list" >
 								<li class="css-15gurup-StyledCollapseListItem">
 									<button class="css-10c763p-StylelessButton">
 										<div class="css-16n7opc">
-											<div class="css-17yc0sg">${map.announcement_title}</div>
-											<div class="css-189e8d8"><fmt:formatDate value="${map.announcement_date}" pattern="yyyy-MM-dd"/></div>
+											<div class="css-17yc0sg">${list.announcement_title}</div>
+											<div class="css-189e8d8"><fmt:formatDate value="${list.announcement_date}" pattern="yyyy-MM-dd"/></div>
 										</div>
 										<div class="css-0">
 											<span
@@ -98,12 +67,12 @@
 									</button>
 									<div class="css-xrw3e9">
 										<article class="css-1u4x0ui">
-										<c:if test="${map.announcement_url}!=null">
+										<c:if test="${list.announcement_url}!=null">
 											<a>
-												<img src="${map.announcement_url}" style="max-width: 600px" />
+												<img src="${list.announcement_url}" style="max-width: 600px" />
 											</a> 
 										</c:if>
-										${map.announcement_content}
+										${list.announcement_content}
 										</article>
 									</div>
 								</li>

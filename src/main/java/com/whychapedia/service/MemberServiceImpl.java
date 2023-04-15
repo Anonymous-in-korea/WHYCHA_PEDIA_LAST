@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.whychapedia.mapper.MemberMapper;
+import com.whychapedia.vo.CollectionCommentVo;
 import com.whychapedia.vo.CommentReplyVo;
 import com.whychapedia.vo.CommentVo;
 import com.whychapedia.vo.MemberVo;
@@ -42,7 +43,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	
-	@Override //불러온 코멘트에 해당하는 userlist가져오기
+	@Override //불러온 코멘트에 해당하는 userlist가져오기/영화 상세보기 페이지 comment userList
 	public List<MemberVo> commentUserList(List<CommentVo> commentVolist) {
 		List<MemberVo> mvoList = memberMapper.commentUserList(commentVolist);
 //		System.out.println("memberService commentUserList : "+ mvoList);
@@ -53,6 +54,13 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemberVo> selectReplyuserList(List<CommentReplyVo> replyList) {
 		List<MemberVo> mvoReplyList = memberMapper.selectReplyuserList(replyList);
 		return mvoReplyList;
+	}
+	
+	//콜렉션 코멘트 List에 대한 user List
+	@Override
+	public List<MemberVo> selectCollectionCommentMember(List<CollectionCommentVo> collectionCommentList) {
+		List<MemberVo> colCommentUserList = memberMapper.selectCollectionCommentMember(collectionCommentList);
+		return colCommentUserList;
 	}
 	
 }

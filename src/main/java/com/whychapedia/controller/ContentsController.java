@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.whychapedia.mapper.StarRateMapper;
 import com.whychapedia.service.CollectionService;
+import com.whychapedia.service.CommentService;
+import com.whychapedia.service.MemberService;
 import com.whychapedia.service.MovieActorService;
 import com.whychapedia.service.MovieCountryService;
 import com.whychapedia.service.MovieDirectorService;
@@ -27,6 +29,8 @@ import com.whychapedia.service.MovieService;
 import com.whychapedia.service.StarRateService;
 import com.whychapedia.service.WatchListService;
 import com.whychapedia.vo.CollectionVo;
+import com.whychapedia.vo.CommentVo;
+import com.whychapedia.vo.MemberVo;
 import com.whychapedia.vo.MovieActorVo;
 import com.whychapedia.vo.MovieCountryVo;
 import com.whychapedia.vo.MovieDirectorVo;
@@ -75,6 +79,11 @@ public class ContentsController {
 	@Autowired
 	CollectionService collectionService;
 	
+	@Autowired
+	CommentService commentService;
+	
+	@Autowired
+	MemberService memberService;
 	
 	@Autowired
 	MovieVo movieVo;
@@ -255,6 +264,20 @@ public class ContentsController {
 			/*  출연 제작 인물 받아오기 끝*/
 		//------------------------------------------------------------------------------------------------------------//	
 
+		//해당 영화 코멘트 2개 받아오기
+		List<CommentVo> commentVo2 = commentService.selectCommentList2(movie_id);
+		List<MemberVo> commentUserList2 = memberService.commentUserList(commentVo2);
+		//해당 영화의 코멘트 총 개수(content page)
+		int commentCount = commentService.selectCommentAll(movie_id);
+		List<StarRateVo> starRatelist = starRateService.starRatelist(commentVo2);
+		//코멘트 1개에 해당하는 replylis개수 가져오기
+		List<Integer> replyCount = commentService.replyCount(commentVo2);
+		model.addAttribute("commentVo2", commentVo2);		
+		model.addAttribute("commentUserList2",commentUserList2);
+		model.addAttribute("commentCount",commentCount);
+		model.addAttribute("starRatelist",starRatelist);
+		model.addAttribute("replyCount",replyCount);
+			
 		return "/contents/contents_SH";
 	}
 	

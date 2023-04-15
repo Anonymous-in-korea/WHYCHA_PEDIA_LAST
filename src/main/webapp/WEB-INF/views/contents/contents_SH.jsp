@@ -512,7 +512,7 @@
 		                                                            <div class="css-1y901al-Row emmoxnt0">
 		                                                                <header class="css-1ue9xs6">
 		                                                                	<h2 class="css-1wtjsst">코멘트</h2>
-		                                                                	<span class="css-wzn7fp">10+</span>
+		                                                                	<span class="css-wzn7fp">${commentCount}</span>
 		                                                                    <div class="css-s289sk">
 		                                                                        <div class="css-1ugqy9j">
 		                                                                        	<a href="/comment/comment_SY?movie_id=${movieVo.id}">더보기</a>
@@ -527,86 +527,87 @@
 		                                                                    <div class="css-1gkas1x-Grid e1689zdh0">
 		                                                                        <div class="css-1y901al-Row emmoxnt0">
 		                                                                            <ul class="ew8mnl61 css-nh9j5x-VisualUl-CommentHorizontalUl">
-		                                                                            	<!-- 첫 번째 코멘트 start -->
-		                                                                                <li class="css-1fryc54">
-		                                                                                    <div class="css-17dwc6k">
+		                                                                            	<!-- 첫 번째 코멘트 start 스포일러 기능 있는 코멘트-->
+<!-- 		                                                                                <li class="css-1fryc54"> -->
+<!-- 		                                                                                    <div class="css-17dwc6k"> -->
 		                                                                                    	<!-- 코멘트 사용자 프로필사진 & 아이디표시 start -->
-		                                                                                        <div class="css-4obf01">
-		                                                                                            <div class="css-1cvf9dk">
-		                                                                                            	<a class="css-1f9m1s4-StylelessLocalLink eovgsd01"
-																											href="/ko-KR/users/87Gv7epbGxE6o">
-			                                                                                                <div class="css-107z6xc">
-			                                                                                                    <div class="css-1uteztb-ProfilePhotoImage"></div>
-			                                                                                                </div>
-			                                                                                                <div class="css-1agoci2">여신</div>
-			                                                                                            </a>
-																									</div>
-		                                                                                        </div>
+<!-- 		                                                                                        <div class="css-4obf01"> -->
+<!-- 		                                                                                            <div class="css-1cvf9dk"> -->
+<!-- 		                                                                                            	<a class="css-1f9m1s4-StylelessLocalLink eovgsd01" -->
+<!-- 																											href="/ko-KR/users/87Gv7epbGxE6o"> -->
+<!-- 			                                                                                                <div class="css-107z6xc"> -->
+<!-- 			                                                                                                    <div class="css-1uteztb-ProfilePhotoImage"></div> -->
+<!-- 			                                                                                                </div> -->
+<!-- 			                                                                                                <div class="css-1agoci2">여신</div> -->
+<!-- 			                                                                                            </a> -->
+<!-- 																									</div> -->
+<!-- 		                                                                                        </div> -->
 		                                                                                        <!-- 코멘트 사용자 프로필사진 & 아이디표시 end -->
-		                                                                                        <div class="css-ob93md">
-		                                                                                        	<a class="css-1f9m1s4-StylelessLocalLink eovgsd01"
-																										href="/ko-KR/comments/3kNEpNBeNMOgK">
-			                                                                                            <div class=" css-12rbc09-StyledSelf eb5y16b0">
-			                                                                                                <div class="css-1yrlzf9-StyledText eb5y16b1">
-			                                                                                                    이 영화가 많은 이들에게 설원의
-			                                                                                                    안부인사로 기억되겠지만 진정한
-			                                                                                                    명장면은 마지막에 있다. 도서대출카드
-			                                                                                                    뒷편의 스케치는 처음 맛본
-			                                                                                                    원두커피처럼 향기롭고 진하고
-			                                                                                                    쌉쌀하다...
-			                                                                                                </div>
-			                                                                                            </div>
-			                                                                                        </a>
-			                                                                                        <span class="css-xstsdj">스포일러가 있어요!!
-			                                                                                        	<button aria-label="Accept Spoiler" class="css-13mdv8k-StylelessButton">
-			                                                                                        		&nbsp;보기
-			                                                                                        	</button>
-			                                                                                        </span>
-		                                                                                        </div>
-		                                                                                        <div class="css-1jm9uak">
-		                                                                                        	<span src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9IiNkNGQ0ZDQiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTMgMjFoNVY5SDN6TTE0LjkwMiA3Ljk5NGg0LjkzOGMuODggMCAxLjU5MS43IDEuNTkxIDEuNTY2IDAgLjg2Ni0uNzEyIDEuNTY3LTEuNTkgMS41NjdoLTQuOTM5Yy0uMzk4IDAtLjYxNS0uMDU1LS44MTItLjE1OGExLjA4NSAxLjA4NSAwIDAgMS0uNDUzLS40NDdjLS4xMDQtLjE5Mi0uMTYtLjQwNS0uMTYtLjc5OHYtLjMyN2MwLS4zOTMuMDU2LS42MDYuMTYtLjguMTA1LS4xOTEuMjU4LS4zNDIuNDUzLS40NDUuMTk3LS4xMDMuNDE0LS4xNTguODEyLS4xNTgiLz4KICAgICAgICA8cGF0aCBkPSJNMTQuMDYgMTFIMTlhMS41OCAxLjU4IDAgMCAxIDEuNTkgMS41NjhjMCAuODY1LS43MTIgMS41NjYtMS41OSAxLjU2NmgtNC45NGMtLjM5OCAwLS42MTUtLjA1NS0uODEtLjE1N2ExLjA4MSAxLjA4MSAwIDAgMS0uNDU0LS40NDhjLS4xMDUtLjE5Mi0uMTYtLjQwNS0uMTYtLjc5OHYtLjMyN2MwLS4zOTIuMDU1LS42MDYuMTYtLjguMTA0LS4xOTEuMjU4LS4zNDIuNDUzLS40NDUuMTk2LS4xMDMuNDEzLS4xNTguODExLS4xNTgiLz4KICAgICAgICA8cGF0aCBkPSJNMTMuMjIgMTQuMDA5aDQuOTM4Yy44NzkgMCAxLjU5LjcgMS41OSAxLjU2NiAwIC44NjYtLjcxMSAxLjU2Ny0xLjU5IDEuNTY3SDEzLjIyYy0uMzk4IDAtLjYxNS0uMDU1LS44MTEtLjE1N2ExLjA5NSAxLjA5NSAwIDAgMS0uNDU0LS40NDhjLS4xMDQtLjE5Mi0uMTYtLjQwNi0uMTYtLjc5OHYtLjMyOGMwLS4zOTEuMDU2LS42MDUuMTYtLjc5OGExLjA5IDEuMDkgMCAwIDEgLjQ1NC0uNDQ2Yy4xOTYtLjEwMy40MTMtLjE1OC44MS0uMTU4Ii8+CiAgICAgICAgPHBhdGggZD0iTTEyLjM3OCAxNy4wMTdoNC45NGMuODc4IDAgMS41OS42NjggMS41OSAxLjQ5IDAgLjgyNC0uNzEyIDEuNDkyLTEuNTkgMS40OTJoLTQuOTRjLS4zOTggMC0uNjE1LS4wNS0uODEtLjE1YTEuMDU4IDEuMDU4IDAgMCAxLS40NTQtLjQyNWMtLjEwNS0uMTgzLS4xNi0uMzg2LS4xNi0uNzZ2LS4zMTJjMC0uMzczLjA1NS0uNTc3LjE2LS43Ni4xMDQtLjE4My4yNTgtLjMyNy40NTMtLjQyNS4xOTYtLjA5OS40MTMtLjE1LjgxMS0uMTUiLz4KICAgICAgICA8cGF0aCBkPSJNMTMuMjAyIDUuMTYyYS45NC45NCAwIDAgMCAuMjc1LS42NjVWMy4yOTZjLS4wNjYtLjUzLjItLjc5Ni43OTUtLjc5Ni44OTYgMCAyLjM4Ny40NzcgMi4zODcgMi4zODcgMCAxLjI3My0uMjY2IDIuMzMzLS43OTYgMy4xODJ2MTEuOTNIOS41VjkuNjZjMC0uNTMxLjI2NS0xLjA2MS43OTUtMS41OTFsMi45MDctMi45MDd6Ii8+CiAgICA8L2c+Cjwvc3ZnPgo="
-																										width="18px" height="18px" class="css-zoh368">
-																									</span>
-																									<em class="like-sum">1520</em>
-																									<span src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGZpbGw9IiNkNGQ0ZDQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTkuODcgMTguMDE5bC0zLjMxNCAzLjMxNHYtNC41N2MtMi4zNTYtMS40MTItMy44OS0zLjcxNi0zLjg5LTYuMzE5IDAtNC4yOTUgNC4xOC03Ljc3NyA5LjMzNC03Ljc3NyA1LjE1NSAwIDkuMzMzIDMuNDgyIDkuMzMzIDcuNzc3IDAgNC4yOTYtNC4xNzggNy43NzgtOS4zMzMgNy43NzgtLjczMyAwLTEuNDQ2LS4wNy0yLjEzLS4yMDN6Ii8+Cjwvc3ZnPgo="
-																										width="18px" height="18px" class="css-43cye7">
-																									</span>
-																									<em class="recomm-sum">13</em>
-		                                                                                        </div>
-		                                                                                        <div class="css-hy68ty">
-		                                                                                            <button class="css-1jrmj77-StylelessButton">
-		                                                                                                좋아요
-		                                                                                            </button>
-		                                                                                        </div>
-		                                                                                    </div>
-		                                                                                </li>
+<!-- 		                                                                                        <div class="css-ob93md"> -->
+<!-- 		                                                                                        	<a class="css-1f9m1s4-StylelessLocalLink eovgsd01" -->
+<!-- 																										href="/ko-KR/comments/3kNEpNBeNMOgK"> -->
+<!-- 			                                                                                            <div class=" css-12rbc09-StyledSelf eb5y16b0"> -->
+<!-- 			                                                                                                <div class="css-1yrlzf9-StyledText eb5y16b1"> -->
+<!-- 			                                                                                                    이 영화가 많은 이들에게 설원의 -->
+<!-- 			                                                                                                    안부인사로 기억되겠지만 진정한 -->
+<!-- 			                                                                                                    명장면은 마지막에 있다. 도서대출카드 -->
+<!-- 			                                                                                                    뒷편의 스케치는 처음 맛본 -->
+<!-- 			                                                                                                    원두커피처럼 향기롭고 진하고 -->
+<!-- 			                                                                                                    쌉쌀하다... -->
+<!-- 			                                                                                                </div> -->
+<!-- 			                                                                                            </div> -->
+<!-- 			                                                                                        </a> -->
+<!-- 			                                                                                        <span class="css-xstsdj">스포일러가 있어요!! -->
+<!-- 			                                                                                        	<button aria-label="Accept Spoiler" class="css-13mdv8k-StylelessButton"> -->
+<!-- 			                                                                                        		&nbsp;보기 -->
+<!-- 			                                                                                        	</button> -->
+<!-- 			                                                                                        </span> -->
+<!-- 		                                                                                        </div> -->
+<!-- 		                                                                                        <div class="css-1jm9uak"> -->
+<!-- 		                                                                                        	<span src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9IiNkNGQ0ZDQiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTMgMjFoNVY5SDN6TTE0LjkwMiA3Ljk5NGg0LjkzOGMuODggMCAxLjU5MS43IDEuNTkxIDEuNTY2IDAgLjg2Ni0uNzEyIDEuNTY3LTEuNTkgMS41NjdoLTQuOTM5Yy0uMzk4IDAtLjYxNS0uMDU1LS44MTItLjE1OGExLjA4NSAxLjA4NSAwIDAgMS0uNDUzLS40NDdjLS4xMDQtLjE5Mi0uMTYtLjQwNS0uMTYtLjc5OHYtLjMyN2MwLS4zOTMuMDU2LS42MDYuMTYtLjguMTA1LS4xOTEuMjU4LS4zNDIuNDUzLS40NDUuMTk3LS4xMDMuNDE0LS4xNTguODEyLS4xNTgiLz4KICAgICAgICA8cGF0aCBkPSJNMTQuMDYgMTFIMTlhMS41OCAxLjU4IDAgMCAxIDEuNTkgMS41NjhjMCAuODY1LS43MTIgMS41NjYtMS41OSAxLjU2NmgtNC45NGMtLjM5OCAwLS42MTUtLjA1NS0uODEtLjE1N2ExLjA4MSAxLjA4MSAwIDAgMS0uNDU0LS40NDhjLS4xMDUtLjE5Mi0uMTYtLjQwNS0uMTYtLjc5OHYtLjMyN2MwLS4zOTIuMDU1LS42MDYuMTYtLjguMTA0LS4xOTEuMjU4LS4zNDIuNDUzLS40NDUuMTk2LS4xMDMuNDEzLS4xNTguODExLS4xNTgiLz4KICAgICAgICA8cGF0aCBkPSJNMTMuMjIgMTQuMDA5aDQuOTM4Yy44NzkgMCAxLjU5LjcgMS41OSAxLjU2NiAwIC44NjYtLjcxMSAxLjU2Ny0xLjU5IDEuNTY3SDEzLjIyYy0uMzk4IDAtLjYxNS0uMDU1LS44MTEtLjE1N2ExLjA5NSAxLjA5NSAwIDAgMS0uNDU0LS40NDhjLS4xMDQtLjE5Mi0uMTYtLjQwNi0uMTYtLjc5OHYtLjMyOGMwLS4zOTEuMDU2LS42MDUuMTYtLjc5OGExLjA5IDEuMDkgMCAwIDEgLjQ1NC0uNDQ2Yy4xOTYtLjEwMy40MTMtLjE1OC44MS0uMTU4Ii8+CiAgICAgICAgPHBhdGggZD0iTTEyLjM3OCAxNy4wMTdoNC45NGMuODc4IDAgMS41OS42NjggMS41OSAxLjQ5IDAgLjgyNC0uNzEyIDEuNDkyLTEuNTkgMS40OTJoLTQuOTRjLS4zOTggMC0uNjE1LS4wNS0uODEtLjE1YTEuMDU4IDEuMDU4IDAgMCAxLS40NTQtLjQyNWMtLjEwNS0uMTgzLS4xNi0uMzg2LS4xNi0uNzZ2LS4zMTJjMC0uMzczLjA1NS0uNTc3LjE2LS43Ni4xMDQtLjE4My4yNTgtLjMyNy40NTMtLjQyNS4xOTYtLjA5OS40MTMtLjE1LjgxMS0uMTUiLz4KICAgICAgICA8cGF0aCBkPSJNMTMuMjAyIDUuMTYyYS45NC45NCAwIDAgMCAuMjc1LS42NjVWMy4yOTZjLS4wNjYtLjUzLjItLjc5Ni43OTUtLjc5Ni44OTYgMCAyLjM4Ny40NzcgMi4zODcgMi4zODcgMCAxLjI3My0uMjY2IDIuMzMzLS43OTYgMy4xODJ2MTEuOTNIOS41VjkuNjZjMC0uNTMxLjI2NS0xLjA2MS43OTUtMS41OTFsMi45MDctMi45MDd6Ii8+CiAgICA8L2c+Cjwvc3ZnPgo=" -->
+<!-- 																										width="18px" height="18px" class="css-zoh368"> -->
+<!-- 																									</span> -->
+<!-- 																									<em class="like-sum">1520</em> -->
+<!-- 																									<span src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGZpbGw9IiNkNGQ0ZDQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTkuODcgMTguMDE5bC0zLjMxNCAzLjMxNHYtNC41N2MtMi4zNTYtMS40MTItMy44OS0zLjcxNi0zLjg5LTYuMzE5IDAtNC4yOTUgNC4xOC03Ljc3NyA5LjMzNC03Ljc3NyA1LjE1NSAwIDkuMzMzIDMuNDgyIDkuMzMzIDcuNzc3IDAgNC4yOTYtNC4xNzggNy43NzgtOS4zMzMgNy43NzgtLjczMyAwLTEuNDQ2LS4wNy0yLjEzLS4yMDN6Ii8+Cjwvc3ZnPgo=" -->
+<!-- 																										width="18px" height="18px" class="css-43cye7"> -->
+<!-- 																									</span> -->
+<!-- 																									<em class="recomm-sum">13</em> -->
+<!-- 		                                                                                        </div> -->
+<!-- 		                                                                                        <div class="css-hy68ty"> -->
+<!-- 		                                                                                            <button class="css-1jrmj77-StylelessButton"> -->
+<!-- 		                                                                                                좋아요 -->
+<!-- 		                                                                                            </button> -->
+<!-- 		                                                                                        </div> -->
+<!-- 		                                                                                    </div> -->
+<!-- 		                                                                                </li> -->
 		                                                                                <!-- 첫 번째 코멘트 end -->
 		                                                                                <!-- 두 번째 코멘트 start -->
+		                                                                                <c:forEach var="i" begin="0" end="${commentVo2.size()-1}" varStatus="status" >
 		                                                                                <li class="css-1fryc54">
 		                                                                                    <div class="css-17dwc6k">
 		                                                                                        <div class="css-4obf01">
 		                                                                                            <div class="css-1cvf9dk">
-		                                                                                            	<a title="un🏳️🏴" class="css-1f9m1s4-StylelessLocalLink eovgsd01"
-																											href="/ko-KR/users/4WLxZAplMb5ro">
+		                                                                                            	<a title="${commentUserList2[i].user_name}" class="css-1f9m1s4-StylelessLocalLink eovgsd01"
+																											href="/myPage/userPage_SY?user_id=${commentUserList2[i].id}">
 			                                                                                                <div class="css-107z6xc">
-			                                                                                                    <div class="css-1uteztb-ProfilePhotoImage"></div>
+			                                                                                                    <div class="css-1uteztb-ProfilePhotoImage" style="background-image:url('${commentUserList2[i].user_pic_url}');"></div>
 			                                                                                                </div>
-			                                                                                                <div class="css-1agoci2">un🏳️🏴</div>
+			                                                                                                <div class="css-1agoci2">${commentUserList2[i].user_name}</div>
 			                                                                                            </a>
 																									</div>
 																									<!-- 이게 별점표시하는건가?? -->
 		                                                                                            <div class="css-yqs4xl">
 		                                                                                            	<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGZpbGw9IiM0QTRBNEEiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEyIDE3Ljk4bC02LjAxNSA0LjM5MmMtLjUwOC4zNzItMS4xOTQtLjEyNi0uOTk4LS43MjVsMi4zMTctNy4wODEtNi4wMzUtNC4zNjdjLS41MS0uMzY5LS4yNDctMS4xNzUuMzgyLTEuMTc0bDcuNDQ3LjAxNiAyLjI4Ni03LjA5MWMuMTkyLS42IDEuMDQtLjYgMS4yMzMgMGwyLjI4NiA3LjA5IDcuNDQ3LS4wMTVjLjYyOS0uMDAxLjg5LjgwNS4zOCAxLjE3NGwtNi4wMzMgNC4zNjcgMi4zMTYgNy4wOGMuMTk2LjYtLjQ5IDEuMDk4LS45OTkuNzI2TDEyIDE3Ljk4eiIvPgo8L3N2Zz4K"
 																											width="16px" height="16px" alt="star">
-																										<span>5.0</span>
+																										<span>${starRatelist[i].score}</span>
 		                                                                                            </div>
 																									<!-- 이게 별점표시하는건가?? -->
 		                                                                                        </div>
 		                                                                                        <div class="css-ob93md">
-		                                                                                        	<a class="css-1f9m1s4-StylelessLocalLink eovgsd01">
+		                                                                                        	<a class="css-1f9m1s4-StylelessLocalLink eovgsd01" href="/comment/comment_reply_GC?comment_id=${commentVo2[i].id}&movie_id=${commentVo2[i].movie_id}">
 			                                                                                            <div class=" css-12rbc09-StyledSelf eb5y16b0">
 			                                                                                                <div class="css-qxbzku-StyledText eb5y16b1">
-			                                                                                                	왓챠 정기기부를 막아준 그 신화
+			                                                                                                	${commentVo2[i].comment_content}
 			                                                                                                </div>
 			                                                                                            </div>
 			                                                                                        </a>
@@ -615,11 +616,11 @@
 		                                                                                        	<span src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgZmlsbD0iIzc4Nzg3OCI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik02Ljc1IDkuNDg1aC0zYTEgMSAwIDAgMC0xIDF2MTBhMSAxIDAgMCAwIDEgMWgzYTEgMSAwIDAgMCAxLTF2LTEwYTEgMSAwIDAgMC0xLTFNMjAuNjU3IDguNTY2YTIuMzYzIDIuMzYzIDAgMCAwLTEuNzc5LS44MTNIMTYuNjJsLjE2NC0uNjI3Yy4xMzctLjUyOC4yMDEtMS4xMi4yMDEtMS44NjMgMC0xLjkxOS0xLjM3NS0yLjc3OC0yLjczOC0yLjc3OC0uNDQ0IDAtLjc2Ni4xMjMtLjk4Ni4zNzYtLjIuMjI3LS4yODIuNTMtLjI0My45MzVsLjAzIDEuMjMtMi45MDMgMi45NGMtLjU5My42LS44OTQgMS4yMy0uODk0IDEuODcydjkuNjQ3YS41LjUgMCAwIDAgLjUuNWg3LjY4N2EyLjM4OCAyLjM4OCAwIDAgMCAyLjM0OC0yLjA3bDEuNDQ1LTcuNDUyYTIuNDQgMi40NCAwIDAgMC0uNTc0LTEuODk3Ii8+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K"
 																										width="18px" height="18px" class="css-64x8kr">
 																									</span>
-																									<em id="like">14</em>
+																									<em id="like">${commentVo2[i].like_count}</em>
 																									<span src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGZpbGw9IiM3ODc4NzgiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTkuODU3IDE3Ljc4Nkw2IDIxdi00LjkxYy0xLjg0MS0xLjM3My0zLTMuMzY5LTMtNS41OUMzIDYuMzU4IDcuMDMgMyAxMiAzczkgMy4zNTggOSA3LjVjMCA0LjE0Mi00LjAzIDcuNS05IDcuNS0uNzM5IDAtMS40NTYtLjA3NC0yLjE0My0uMjE0eiIvPgo8L3N2Zz4K"
 																										width="18px" height="18px" class="css-q0vi8">
 																									</span>
-																									<em id="recomment">0</em>
+																									<em id="recomment">${ replyCount[i]}</em>
 		                                                                                        </div>
 		                                                                                        <div class="css-hy68ty">
 		                                                                                            <button class="css-1h18l7j-StylelessButton">
@@ -628,6 +629,7 @@
 		                                                                                        </div>
 		                                                                                    </div>
 		                                                                                </li>
+		                                                                                </c:forEach>
 		                                                                                <!-- 두 번째 코멘트 end -->
 		                                                                                <div class="css-ml096x"></div>
 		                                                                            </ul>

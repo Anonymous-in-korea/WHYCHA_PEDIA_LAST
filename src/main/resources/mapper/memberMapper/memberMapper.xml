@@ -46,6 +46,14 @@
 			</foreach>
 	</select>
 	
+	<!-- 콜렉션 코멘트에 해당하는 댓글 userList 가져오기 -->
+	<select id="selectCollectionCommentMember" resultType="com.whychapedia.vo.MemberVo">
+		select * from wuser where id in 
+			<foreach collection="collectionCommentList" item="list" open="(" close=")" separator=",">
+				#{list.user_id}
+			</foreach>
+			
+	</select>
 
 	
 	

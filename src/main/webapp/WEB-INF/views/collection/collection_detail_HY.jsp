@@ -8,7 +8,11 @@
 	<link href="../css/header.css" rel="stylesheet" type="text/css">
 	<link href="../css/footer.css" rel="stylesheet" type="text/css">
 	<link href="../css/collectionDetail.css" rel="stylesheet" type="text/css">
-	<script defer src="../js/collectionDetail_HY.js"></script>
+	<link href="/css/login.css" rel="stylesheet" type="text/css">
+    <link href="/css/join.css" rel="stylesheet" type="text/css">
+	<script src="../js/login.js"></script>
+	<script src="../js/join.js"></script>
+<!-- 	<script defer src="../js/collectionDetail_HY.js"></script> -->
 <!-- 	<link rel="icon" href="../image/favicon.png" /> -->
 	<!-- Google Tag Manager -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -18,6 +22,132 @@
 		.like1{width:14px; height:14px;}
 		.like2{width:14px; height:14px;}
 	</style>
+	<script>
+		$(function(){
+			var collection_id = ${collectionVo.id};
+			//좋아요 버튼 클릭 css변경
+			$("#deckLike").click(function(){
+				if("${sessionId}"==""){
+					$(".login_button").click();
+				}else{
+					if($("#deckLike").hasClass("css-135c2b4-StylelessButton-StyledActionButton")){
+						$.ajax({
+		   		        	url:"/collection_like",
+		   		        	type:"post",
+		   		        	dataType:"json",
+		   		        	data:{
+		   		        		"user_id":"${sessionId}",
+		   		        		"collection_id":collection_id
+		   		        		},
+		   		        	success:function(data){
+		   		        		$("#coll_like").text(data);
+		   		        		alert("성공");
+		   		        		$("#deckLike").removeClass("css-135c2b4-StylelessButton-StyledActionButton");
+								$("#deckLike").addClass("css-3w1nnz-StylelessButton-StyledActionButton boing");
+								$("#deckLike .fillTarget").attr("fill","#FEAE27");
+		   		        	},
+		   		        	error:function(){
+		   		        		alert("실패");
+		   		        	}
+		   		        }); //ajax
+					}else{
+						$.ajax({
+		   		        	url:"/collection_like_delete",
+		   		        	type:"post",
+		   		        	dataType:"json",
+		   		        	data:{
+		   		        		"user_id":"${sessionId}",
+		   		        		"collection_id":collection_id
+		   		        		},
+		   		        	success:function(data){
+		   		        		$("#coll_like").text(data);
+		   		        		alert("성공");
+		   		        		$("#deckLike").addClass("css-135c2b4-StylelessButton-StyledActionButton");
+								$("#deckLike").removeClass("css-3w1nnz-StylelessButton-StyledActionButton boing");
+								$("#deckLike .fillTarget").attr("fill","#67686a");
+		   		        	},
+		   		        	error:function(){
+		   		        		alert("실패");
+		   		        	}
+		   		        }); //ajax
+					}
+				}
+			});
+			
+			//댓글 클릭 스크롤 내리기
+		    $('#scrollButton').on('click', function() {
+		        // Calculate the offset top position of the target section
+		        const targetOffsetTop = $('#comm').offset().top;
+	
+		        // Smoothly scroll down to the target section
+		        $('html, body').animate({
+		            scrollTop: targetOffsetTop
+		        }, 1000); // The animation duration is 1000 milliseconds (1 second)
+		    });
+		    
+			//<span class='css-comm'> 적용 check
+			var already_check_empty = 0;
+		    // 댓글 입력 
+		    $(".css-1rllyvn").click(function(){
+		    	var collection_comment_content = $(".css-uv85g1").val();
+		    	if("${sessionId}"==""){
+					$(".login_button").click();
+				}else{
+			    	if($(".css-uv85g1").val().length == 0){
+			    		$(".css-uv85g1").focus();
+						if(already_check_empty == 0){
+							$(".css-uv85g1").after("<span class='css-comm'>한글자 이상 작성하셔야 댓글이 등록됩니다.</span>");
+							already_check_empty = 1;
+						}
+			    	} else	{
+						$(".css-comm").remove();
+						already_check_empty = 0;
+						$.ajax({
+							url:"/collection_comment_insert",
+		   		        	type:"post",
+		   		        	dataType:"json",
+		   		        	data:{
+		   		        		"user_id":"${sessionId}",
+		   		        		"collection_id":collection_id,
+								"collection_comment_content" : collection_comment_content
+		   		        		},
+		   		        	success:function(data){
+		   		        		alert("성공");
+		   		        	},
+		   		        	error:function(){
+		   		        		alert("실패");
+		   		        	}
+						});//ajax
+						$(".css-uv85g1").val("");
+					}	
+				}
+		    }); //댓글입력
+		    
+			//.. 클릭시 신고
+			$(".css-4ygot5").on("click", function(){
+			    if($(this).find(".css-aa3xw")) { 
+					$(this).find(".css-aa3xw").addClass("css-1pfl1eu").removeClass("css-aa3xw");
+			    }
+			});
+			
+			//부적절 신고 클릭시 알람
+			$(document).on("click",".css-1pfl1eu",function(){
+				$(this).addClass("css-aa3xw").removeClass("css-1pfl1eu"); 
+				$("#declaration1").removeClass("css-pjxj5o").addClass("declaration");
+			});
+			
+	
+			//알람 취소 클릭시    
+		    $(".css-1gdw77k-StylelessButton").click(function(){
+				$("#declaration1").removeClass("declaration").addClass("css-pjxj5o");
+			});
+			
+			//알람 확인 클릭시
+			$(".css-sfhtz9-StylelessButton").click(function(){
+				$("#declaration1").removeClass("declaration").addClass("css-pjxj5o");
+			});
+		});
+	</script>
 	</head>
 	<body>
 		<div id="root">
@@ -95,7 +225,7 @@
 														</article>
 														<ul class="css-h121hu-VisualUl">
 															<li class="css-tfe1ln">좋아요
-																<em>${collectionVo.like_count}</em>
+																<em id="coll_like">${collectionVo.like_count}</em>
 																<span class="css-9tbcrq"></span>
 															</li>
 															<li class="css-tfe1ln">댓글 
@@ -113,8 +243,15 @@
 													<div class="css-1y901al-Row emmoxnt0">
 														<div class="css-cxqjs3">
 															<!-- 좋아요 버튼 -->
-															<button id="deckLike" class="css-135c2b4-StylelessButton-StyledActionButton e19d4hrp0">
-																<div class="css-1umclh2-StyledIconContainer e19d4hrp1">
+															<c:set var="likedByUser" value="false" />
+															<c:forEach var="j" begin="0" end="${collectionLikeList.size()-1}">
+														    	<c:if test="${collectionLikeList[j].user_id == sessionId}">
+														      		<c:set var="likedByUser" value="true" />
+															 	 </c:if>
+															</c:forEach>
+															<c:if test="${likedByUser == true}">
+															  <button id="deckLike" type="button" class="css-3w1nnz-StylelessButton-StyledActionButton e19d4hrp0">
+																  <div  class="css-1umclh2-StyledIconContainer e19d4hrp1">
 																	<svg viewBox="0 0 20 20"  class="css-vkoibk">
 																		<path class="fillTarget" fill-rule="evenodd" clip-rule="evenodd" d="M5.6252 7.9043H3.1252C2.6652 7.9043 2.29187 8.27763 2.29187 8.73763V17.071C2.29187 17.531 2.6652 17.9043 3.1252 17.9043H5.6252C6.08604 17.9043 6.45854 17.531 6.45854 17.071V8.73763C6.45854 8.27763 6.08604 7.9043 5.6252 7.9043Z"
 																			fill="#87898B">
@@ -123,9 +260,25 @@
 																			fill="#87898B">
 																		</path>
 																	</svg>
-																</div>
-																좋아요
-															</button>
+																	</div>
+																	좋아요
+																</button>
+															</c:if>
+															<c:if test="${likedByUser == false}">
+															  <button id="deckLike" type="button" class="css-135c2b4-StylelessButton-StyledActionButton e19d4hrp0" >
+																  <div class="css-1umclh2-StyledIconContainer e19d4hrp1">
+																		<svg viewBox="0 0 20 20"  class="css-vkoibk">
+																			<path class="fillTarget" fill-rule="evenodd" clip-rule="evenodd" d="M5.6252 7.9043H3.1252C2.6652 7.9043 2.29187 8.27763 2.29187 8.73763V17.071C2.29187 17.531 2.6652 17.9043 3.1252 17.9043H5.6252C6.08604 17.9043 6.45854 17.531 6.45854 17.071V8.73763C6.45854 8.27763 6.08604 7.9043 5.6252 7.9043Z"
+																				fill="#87898B">
+																			</path>
+																			<path class="fillTarget" fill-rule="evenodd" clip-rule="evenodd" d="M11.71 4.34525L11.7017 3.99359L11.6825 3.14525L11.6809 3.09692L11.6759 3.04942C11.6684 2.96942 11.6792 2.93442 11.6775 2.93275C11.6917 2.92442 11.7534 2.90442 11.8725 2.90442C12.115 2.90442 13.3225 2.97609 13.3225 4.38692C13.3225 4.93359 13.2775 5.35859 13.1809 5.72692L12.8375 7.03275C12.8034 7.16525 12.9025 7.29442 13.0392 7.29442H14.3892H15.7317C16.0575 7.29442 16.3684 7.43692 16.585 7.68442C16.7975 7.93025 16.9009 8.25609 16.87 8.58275L15.6717 14.7703L15.6634 14.8119L15.6584 14.8536C15.59 15.3961 15.0959 15.8211 14.5334 15.8211H8.54169V8.19942C8.54169 7.89109 8.71169 7.56275 9.04835 7.22359L11.3417 4.90025L11.5775 4.66109C11.71 4.52359 11.71 4.34525 11.71 4.34525ZM17.5275 6.86525C17.0734 6.34275 16.4184 6.04442 15.7317 6.04442H14.3892C14.5167 5.56025 14.5725 5.02942 14.5725 4.38692C14.5725 2.50942 13.1734 1.65442 11.8725 1.65442C11.3825 1.65442 11 1.80775 10.7367 2.11025C10.5667 2.30359 10.3792 2.64442 10.4325 3.17359L10.4517 4.02192L8.15835 6.34525C7.58335 6.92692 7.29169 7.55109 7.29169 8.19942V16.2378C7.29169 16.6978 7.66502 17.0711 8.12502 17.0711H14.5334C15.7342 17.0711 16.7559 16.1603 16.8992 15.0078L18.1067 8.77192C18.1925 8.08109 17.9809 7.38692 17.5275 6.86525Z"
+																				fill="#87898B">
+																			</path>
+																		</svg>
+																	</div>
+																	좋아요
+																</button>
+															</c:if>
 															<!-- 댓글 버튼 -->
 															<button id="scrollButton" class="css-135c2b4-StylelessButton-StyledActionButton e19d4hrp0">
 																<div class="css-1umclh2-StyledIconContainer e19d4hrp1">
@@ -234,22 +387,23 @@
 														<div class="css-1evo7eb">
 															<!-- 총 댓글 수 -->
 															<div id="comm" class="css-a0bj5z">
-																댓글<span>${collectionVo.like_count}</span>
+																댓글<span>${collectionCommentList.size()}</span>
 															</div>
 															<!-- 이전 댓글 불러오기 버튼 -->
 															<div class="css-5hpf69">
 																<button class="css-16halel">이전 댓글 보기</button>
 															</div>
 															<!-- 댓글 1개 시작-->
+															<c:forEach var="i" begin="0" end="${collectionCommentList.size()-1}" >
 															<div class="css-1pov5mm">
 																<div class="css-ov1ktg">
-																	<a class="css-255jr8" href="/ko-KR/users/JgkqlJJez45X0">
-																		<div class="css-1kiwqkk"></div>
+																	<a class="css-255jr8" href="/myPage/userPage_SY?user_id=${memberList[i].id }">
+																		<div class="css-1kiwqkk" style="background-image: url('${memberList[i].user_pic_url}');"></div>
 																	</a>
 																	<div class="css-199ku80">
 																		<div class="css-1sg2lsz">
-																			<a class="css-255jr8" href="/ko-KR/users/JgkqlJJez45X0">
-																				<div class="css-72k174">필세호</div>
+																			<a class="css-255jr8" href="/myPage/userPage_SY?user_id=${memberList[i].id }">
+																				<div class="css-72k174">${memberList[i].user_name}</div>
 																				<div class="Icon playBadge css-13ebre0-SVG e1282e850">
 																					<div>
 																						<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"
@@ -265,27 +419,17 @@
 																					</div>
 																				</div>
 																			</a>
-																			<div class="css-maxfbg">3년 전</div>
+																			<div class="css-maxfbg">${collectionCommentList[i].regi_date}</div>
 																		</div>
-																		<div class="css-yb0jaq">언젠가는 정주행 해봐야지... 토르 닥터스트레인지 인피니티워 인드게임 빼고 본게없네</div>
+																		<div class="css-yb0jaq">${collectionCommentList[i].collection_comment_content}</div>
 																		<div class="css-ov1ktg">
 																			<div class="css-1d8juai">
 																				<div class="Icon like css-1tuvmpc-SVG e1282e850">
-																					<div>
-																						<img class="like1" src="../images/like1.png">
-<!-- 																						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" -->
-<!-- 																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjkzNzgzIDUuNTMzMkgyLjE4NzgzQzEuODY1ODMgNS41MzMyIDEuNjA0NDkgNS43OTQ1NCAxLjYwNDQ5IDYuMTE2NTRWMTEuOTQ5OUMxLjYwNDQ5IDEyLjI3MTkgMS44NjU4MyAxMi41MzMyIDIuMTg3ODMgMTIuNTMzMkgzLjkzNzgzQzQuMjYwNDEgMTIuNTMzMiA0LjUyMTE2IDEyLjI3MTkgNC41MjExNiAxMS45NDk5VjYuMTE2NTRDNC41MjExNiA1Ljc5NDU0IDQuMjYwNDEgNS41MzMyIDMuOTM3ODMgNS41MzMyWiIgZmlsbD0iIzg3ODk4QiIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTguMTk3MzMgMy4wNDE3OUw4LjE5MTQ5IDIuNzk1NjJMOC4xNzgwOCAyLjIwMTc5TDguMTc2OTEgMi4xNjc5NUw4LjE3MzQxIDIuMTM0N0M4LjE2ODE2IDIuMDc4NyA4LjE3NTc0IDIuMDU0MiA4LjE3NDU4IDIuMDUzMDRDOC4xODQ0OSAyLjA0NzIgOC4yMjc2NiAyLjAzMzIgOC4zMTEwOCAyLjAzMzJDOC40ODA4MyAyLjAzMzIgOS4zMjYwOCAyLjA4MzM3IDkuMzI2MDggMy4wNzA5NUM5LjMyNjA4IDMuNDUzNjIgOS4yOTQ1OCAzLjc1MTEyIDkuMjI2OTEgNC4wMDg5NUw4Ljk4NjU4IDQuOTIzMDRDOC45NjI2NiA1LjAxNTc5IDkuMDMyMDggNS4xMDYyIDkuMTI3NzQgNS4xMDYySDEwLjA3MjdIMTEuMDEyNUMxMS4yNDA2IDUuMTA2MiAxMS40NTgyIDUuMjA1OTUgMTEuNjA5OCA1LjM3OTJDMTEuNzU4NiA1LjU1MTI5IDExLjgzMDkgNS43NzkzNyAxMS44MDkzIDYuMDA4MDRMMTAuOTcwNSAxMC4zMzkzTDEwLjk2NDcgMTAuMzY4NUwxMC45NjEyIDEwLjM5NzZDMTAuOTEzMyAxMC43Nzc0IDEwLjU2NzQgMTEuMDc0OSAxMC4xNzM3IDExLjA3NDlINS45Nzk0OVY1LjczOTdDNS45Nzk0OSA1LjUyMzg3IDYuMDk4NDkgNS4yOTQwNCA2LjMzNDE2IDUuMDU2NjJMNy45Mzk0OSAzLjQzMDI5TDguMTA0NTggMy4yNjI4N0M4LjE5NzMzIDMuMTY2NjIgOC4xOTczMyAzLjA0MTc5IDguMTk3MzMgMy4wNDE3OVpNMTIuMjY5NiA0LjgwNTc5QzExLjk1MTcgNC40NDAwNCAxMS40OTMyIDQuMjMxMiAxMS4wMTI1IDQuMjMxMkgxMC4wNzI3QzEwLjE2MiAzLjg5MjI5IDEwLjIwMTEgMy41MjA3IDEwLjIwMTEgMy4wNzA5NUMxMC4yMDExIDEuNzU2NyA5LjIyMTY2IDEuMTU4MiA4LjMxMTA4IDEuMTU4MkM3Ljk2ODA4IDEuMTU4MiA3LjcwMDMzIDEuMjY1NTQgNy41MTU5OSAxLjQ3NzI5QzcuMzk2OTkgMS42MTI2MiA3LjI2NTc0IDEuODUxMiA3LjMwMzA4IDIuMjIxNjJMNy4zMTY0OSAyLjgxNTQ1TDUuNzExMTYgNC40NDE3OUM1LjMwODY2IDQuODQ4OTUgNS4xMDQ0OSA1LjI4NTg3IDUuMTA0NDkgNS43Mzk3VjExLjM2NjVDNS4xMDQ0OSAxMS42ODg1IDUuMzY1ODMgMTEuOTQ5OSA1LjY4NzgzIDExLjk0OTlIMTAuMTczN0MxMS4wMTQyIDExLjk0OTkgMTEuNzI5NCAxMS4zMTIzIDExLjgyOTcgMTAuNTA1NUwxMi42NzUgNi4xNDA0NUMxMi43MzUxIDUuNjU2ODcgMTIuNTg2OSA1LjE3MDk1IDEyLjI2OTYgNC44MDU3OVoiIGZpbGw9IiM4Nzg5OEIiLz4KPC9zdmc+Cg==" -->
-<!-- 																							xmlns:xlink="http://www.w3.org/1999/xlink"> -->
-<!-- 																							<path fill-rule="evenodd" clip-rule="evenodd" d="M3.93783 5.5332H2.18783C1.86583 5.5332 1.60449 5.79454 1.60449 6.11654V11.9499C1.60449 12.2719 1.86583 12.5332 2.18783 12.5332H3.93783C4.26041 12.5332 4.52116 12.2719 4.52116 11.9499V6.11654C4.52116 5.79454 4.26041 5.5332 3.93783 5.5332Z" -->
-<!-- 																								fill="#87898B"> -->
-<!-- 																							</path> -->
-<!-- 																							<path fill-rule="evenodd" clip-rule="evenodd" d="M8.19733 3.04179L8.19149 2.79562L8.17808 2.20179L8.17691 2.16795L8.17341 2.1347C8.16816 2.0787 8.17574 2.0542 8.17458 2.05304C8.18449 2.0472 8.22766 2.0332 8.31108 2.0332C8.48083 2.0332 9.32608 2.08337 9.32608 3.07095C9.32608 3.45362 9.29458 3.75112 9.22691 4.00895L8.98658 4.92304C8.96266 5.01579 9.03208 5.1062 9.12774 5.1062H10.0727H11.0125C11.2406 5.1062 11.4582 5.20595 11.6098 5.3792C11.7586 5.55129 11.8309 5.77937 11.8093 6.00804L10.9705 10.3393L10.9647 10.3685L10.9612 10.3976C10.9133 10.7774 10.5674 11.0749 10.1737 11.0749H5.97949V5.7397C5.97949 5.52387 6.09849 5.29404 6.33416 5.05662L7.93949 3.43029L8.10458 3.26287C8.19733 3.16662 8.19733 3.04179 8.19733 3.04179ZM12.2696 4.80579C11.9517 4.44004 11.4932 4.2312 11.0125 4.2312H10.0727C10.162 3.89229 10.2011 3.5207 10.2011 3.07095C10.2011 1.7567 9.22166 1.1582 8.31108 1.1582C7.96808 1.1582 7.70033 1.26554 7.51599 1.47729C7.39699 1.61262 7.26574 1.8512 7.30308 2.22162L7.31649 2.81545L5.71116 4.44179C5.30866 4.84895 5.10449 5.28587 5.10449 5.7397V11.3665C5.10449 11.6885 5.36583 11.9499 5.68783 11.9499H10.1737C11.0142 11.9499 11.7294 11.3123 11.8297 10.5055L12.675 6.14045C12.7351 5.65687 12.5869 5.17095 12.2696 4.80579Z" -->
-<!-- 																								fill="#87898B"> -->
-<!-- 																							</path> -->
-<!-- 																						</svg> -->
-																					</div>
+<!-- 																					<div> -->
+<!-- 																						<img class="like1" src="../images/like1.png"> -->
+<!-- 																					</div> -->
 																				</div>
-																				0
+<!-- 																				0 -->
 																			</div>
 																			<div class="css-4ygot5">
 																				<div class="Icon more css-1b4hoch-SVG e1282e850">
@@ -300,525 +444,27 @@
 																					</div>
 																				</div>
 																				<div class="css-aa3xw">
+																				<c:if test="${sessionId != memberList[i].id}">
 																					<div class="css-ve4kut">
 																						<div class="css-19hkid5">부적절 표현 신고</div>
 																					</div>
+																				</c:if>
+																				<c:if test="${sessionId == memberList[i].id}">
+																					<div class="css-ve4kut">
+			                                                                            <div class="css-19hkid5" id="commentUpdate">댓글 수정</div>
+			                                                                            <div class="css-19hkid5" id="commentDelete">댓글 삭제</div>
+			                                                                        </div>
+																				</c:if>
+																				
 																				</div>
 																			</div>
 																		</div>
 																	</div>
 																</div>
 															</div>
+														</c:forEach>
 															<!-- 댓글 1개 끝-->
-															<div class="css-1pov5mm">
-																<div class="css-ov1ktg">
-																	<a class="css-255jr8" href="/ko-KR/users/WRQxDMy0gVqdl">
-																		<div class="css-9c6fhv"></div>
-																	</a>
-																	<div class="css-199ku80">
-																		<div class="css-1sg2lsz">
-																			<a class="css-255jr8" href="/ko-KR/users/WRQxDMy0gVqdl">
-																				<div class="css-72k174">현주</div>
-																				<div class="Icon playBadge css-13ebre0-SVG e1282e850">
-																					<div>
-																						<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"
-																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00Ljc3MDQ2IDAuNTYyNDU5QzUuMjQzMjggLTAuMTU2NDMyIDYuMzExNDcgLTAuMTkzMDcgNi44MzUzNSAwLjQ5MjE1NUM3LjE3MzM3IDAuOTMzNzg4IDcuNzczODUgMS4xMDExMyA4LjMwMTgxIDAuOTAwMTIxQzkuMTE5OCAwLjU4ODIwNSAxMC4wMDYyIDEuMTY3NDggMTAuMDE0NCAyLjAyMTA0QzEwLjAxOTUgMi41Njk2MSAxMC40MDU1IDMuMDQ3ODggMTAuOTUzOSAzLjE4NTUyQzExLjgwNDYgMy4zOTk0MSAxMi4xNzAyIDQuMzc0NzYgMTEuNjYwNiA1LjA2ODlDMTEuMzMxOCA1LjUxNjQ4IDExLjM1MzIgNi4xMjE0OSAxMS43MTM3IDYuNTQ2MjlDMTIuMjcyMyA3LjIwNDc4IDExLjk3NzIgOC4yMDE5MiAxMS4xNDM4IDguNDcyMjVDMTAuNjA2NyA4LjY0NzUyIDEwLjI1NzQgOS4xNTA1NCAxMC4yOTExIDkuNjk5MTJDMTAuMzQ0MiAxMC41NDk3IDkuNTAxNzQgMTEuMTg3NCA4LjY2MzMyIDEwLjkzMTlDOC4xMjIwOCAxMC43Njc2IDcuNTM0ODggMTAuOTc0NSA3LjIyOTU0IDExLjQzNzlDNi43NTY3MiAxMi4xNTY4IDUuNjg3NTEgMTIuMTkyNSA1LjE2NDY1IDExLjUwODJDNC44MjY2MyAxMS4wNjU2IDQuMjI2MTUgMTAuODk4MyAzLjY5ODE5IDExLjEwMDNDMi44ODAyIDExLjQxMjIgMS45OTM3OCAxMC44MzE5IDEuOTg0NTkgOS45ODAzNEMxLjk4MDUxIDkuNDI5NzggMS41OTU1MSA4Ljk1MjUgMS4wNDYxIDguODEzODdDMC4xOTU0MjggOC41OTk5OSAtMC4xNzAxNjYgNy42MjY2MSAwLjMzOTQxOSA2LjkzMjQ3QzAuNjY4MjQ5IDYuNDgzOTEgMC42NDY4MDQgNS44Nzc5IDAuMjg2MzE2IDUuNDUzMUMtMC4yNzIyODcgNC43OTQ2MSAwLjAyMjg0MyAzLjc5OTQ1IDAuODU2MTUyIDMuNTI3MTVDMS4zOTMzMSAzLjM1Mjg3IDEuNzQzNTkgMi44NTA4MyAxLjcwODg2IDIuMzAxMjdDMS42NTU3NiAxLjQ1MDY4IDIuNDk4MjYgMC44MTE5OTIgMy4zMzY2OCAxLjA2ODQ2QzMuODc3OTIgMS4yMzI4MyA0LjQ2NTEyIDEuMDI1ODggNC43NzA0NiAwLjU2MjQ1OVoiIGZpbGw9IiMwRTBGMTAiLz4KPHBhdGggZD0iTTcuNjk3MzMgMi40NDk5NUw3LjI4NjEyIDcuNzkzNjdMNy4xNzc3NCA3Ljc5ODAzTDYuNDUyMjYgMy45Nzk1MUg1LjI2MTIzTDQuNjY1NTggNy44OTEzMkw0LjUzNTc1IDcuODk2NTVMMy45NTA5NiAzLjk3OTUxSDIuNUwzLjgxMDI3IDkuNzE1NThMNS4zMTUyOCA5LjYxNDE1TDUuODQ1NzQgNS45NzE0NUg1Ljk2NDk4TDYuNTYwMzUgOS41Mjk4N0w4LjA3NjUxIDkuNDI2OTlMOS4xMDUxMSAyLjQ0OTk1SDcuNjk3MzNaIiBmaWxsPSIjRkYwNTU4Ii8+Cjwvc3ZnPgo="
-																							xmlns:xlink="http://www.w3.org/1999/xlink">
-																							<path fill-rule="evenodd" clip-rule="evenodd" d="M4.77046 0.562459C5.24328 -0.156432 6.31147 -0.19307 6.83535 0.492155C7.17337 0.933788 7.77385 1.10113 8.30181 0.900121C9.1198 0.588205 10.0062 1.16748 10.0144 2.02104C10.0195 2.56961 10.4055 3.04788 10.9539 3.18552C11.8046 3.39941 12.1702 4.37476 11.6606 5.0689C11.3318 5.51648 11.3532 6.12149 11.7137 6.54629C12.2723 7.20478 11.9772 8.20192 11.1438 8.47225C10.6067 8.64752 10.2574 9.15054 10.2911 9.69912C10.3442 10.5497 9.50174 11.1874 8.66332 10.9319C8.12208 10.7676 7.53488 10.9745 7.22954 11.4379C6.75672 12.1568 5.68751 12.1925 5.16465 11.5082C4.82663 11.0656 4.22615 10.8983 3.69819 11.1003C2.8802 11.4122 1.99378 10.8319 1.98459 9.98034C1.98051 9.42978 1.59551 8.9525 1.0461 8.81387C0.195428 8.59999 -0.170166 7.62661 0.339419 6.93247C0.668249 6.48391 0.646804 5.8779 0.286316 5.4531C-0.272287 4.79461 0.022843 3.79945 0.856152 3.52715C1.39331 3.35287 1.74359 2.85083 1.70886 2.30127C1.65576 1.45068 2.49826 0.811992 3.33668 1.06846C3.87792 1.23283 4.46512 1.02588 4.77046 0.562459Z"
-																								fill="#0E0F10">
-																							</path>
-																							<path d="M7.69733 2.44995L7.28612 7.79367L7.17774 7.79803L6.45226 3.97951H5.26123L4.66558 7.89132L4.53575 7.89655L3.95096 3.97951H2.5L3.81027 9.71558L5.31528 9.61415L5.84574 5.97145H5.96498L6.56035 9.52987L8.07651 9.42699L9.10511 2.44995H7.69733Z"
-																								fill="#FF0558">
-																							</path>
-																						</svg>
-																					</div>
-																				</div>
-																			</a>
-																			<div class="css-maxfbg">4년 전</div>
-																		</div>
-																		<div class="css-yb0jaq">가오갤 엔트맨와스프 빼고 다봤네...</div>
-																		<div class="css-ov1ktg">
-																			<div class="css-1d8juai">
-																				<div class="Icon like css-1tuvmpc-SVG e1282e850">
-																					<div>
-																						<img class="like1" src="../images/like1.png">
-<!-- 																						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" -->
-<!-- 																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjkzNzgzIDUuNTMzMkgyLjE4NzgzQzEuODY1ODMgNS41MzMyIDEuNjA0NDkgNS43OTQ1NCAxLjYwNDQ5IDYuMTE2NTRWMTEuOTQ5OUMxLjYwNDQ5IDEyLjI3MTkgMS44NjU4MyAxMi41MzMyIDIuMTg3ODMgMTIuNTMzMkgzLjkzNzgzQzQuMjYwNDEgMTIuNTMzMiA0LjUyMTE2IDEyLjI3MTkgNC41MjExNiAxMS45NDk5VjYuMTE2NTRDNC41MjExNiA1Ljc5NDU0IDQuMjYwNDEgNS41MzMyIDMuOTM3ODMgNS41MzMyWiIgZmlsbD0iIzg3ODk4QiIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTguMTk3MzMgMy4wNDE3OUw4LjE5MTQ5IDIuNzk1NjJMOC4xNzgwOCAyLjIwMTc5TDguMTc2OTEgMi4xNjc5NUw4LjE3MzQxIDIuMTM0N0M4LjE2ODE2IDIuMDc4NyA4LjE3NTc0IDIuMDU0MiA4LjE3NDU4IDIuMDUzMDRDOC4xODQ0OSAyLjA0NzIgOC4yMjc2NiAyLjAzMzIgOC4zMTEwOCAyLjAzMzJDOC40ODA4MyAyLjAzMzIgOS4zMjYwOCAyLjA4MzM3IDkuMzI2MDggMy4wNzA5NUM5LjMyNjA4IDMuNDUzNjIgOS4yOTQ1OCAzLjc1MTEyIDkuMjI2OTEgNC4wMDg5NUw4Ljk4NjU4IDQuOTIzMDRDOC45NjI2NiA1LjAxNTc5IDkuMDMyMDggNS4xMDYyIDkuMTI3NzQgNS4xMDYySDEwLjA3MjdIMTEuMDEyNUMxMS4yNDA2IDUuMTA2MiAxMS40NTgyIDUuMjA1OTUgMTEuNjA5OCA1LjM3OTJDMTEuNzU4NiA1LjU1MTI5IDExLjgzMDkgNS43NzkzNyAxMS44MDkzIDYuMDA4MDRMMTAuOTcwNSAxMC4zMzkzTDEwLjk2NDcgMTAuMzY4NUwxMC45NjEyIDEwLjM5NzZDMTAuOTEzMyAxMC43Nzc0IDEwLjU2NzQgMTEuMDc0OSAxMC4xNzM3IDExLjA3NDlINS45Nzk0OVY1LjczOTdDNS45Nzk0OSA1LjUyMzg3IDYuMDk4NDkgNS4yOTQwNCA2LjMzNDE2IDUuMDU2NjJMNy45Mzk0OSAzLjQzMDI5TDguMTA0NTggMy4yNjI4N0M4LjE5NzMzIDMuMTY2NjIgOC4xOTczMyAzLjA0MTc5IDguMTk3MzMgMy4wNDE3OVpNMTIuMjY5NiA0LjgwNTc5QzExLjk1MTcgNC40NDAwNCAxMS40OTMyIDQuMjMxMiAxMS4wMTI1IDQuMjMxMkgxMC4wNzI3QzEwLjE2MiAzLjg5MjI5IDEwLjIwMTEgMy41MjA3IDEwLjIwMTEgMy4wNzA5NUMxMC4yMDExIDEuNzU2NyA5LjIyMTY2IDEuMTU4MiA4LjMxMTA4IDEuMTU4MkM3Ljk2ODA4IDEuMTU4MiA3LjcwMDMzIDEuMjY1NTQgNy41MTU5OSAxLjQ3NzI5QzcuMzk2OTkgMS42MTI2MiA3LjI2NTc0IDEuODUxMiA3LjMwMzA4IDIuMjIxNjJMNy4zMTY0OSAyLjgxNTQ1TDUuNzExMTYgNC40NDE3OUM1LjMwODY2IDQuODQ4OTUgNS4xMDQ0OSA1LjI4NTg3IDUuMTA0NDkgNS43Mzk3VjExLjM2NjVDNS4xMDQ0OSAxMS42ODg1IDUuMzY1ODMgMTEuOTQ5OSA1LjY4NzgzIDExLjk0OTlIMTAuMTczN0MxMS4wMTQyIDExLjk0OTkgMTEuNzI5NCAxMS4zMTIzIDExLjgyOTcgMTAuNTA1NUwxMi42NzUgNi4xNDA0NUMxMi43MzUxIDUuNjU2ODcgMTIuNTg2OSA1LjE3MDk1IDEyLjI2OTYgNC44MDU3OVoiIGZpbGw9IiM4Nzg5OEIiLz4KPC9zdmc+Cg==" -->
-<!-- 																							xmlns:xlink="http://www.w3.org/1999/xlink"> -->
-<!-- 																							<path fill-rule="evenodd" clip-rule="evenodd" -->
-<!-- 																								d="M3.93783 5.5332H2.18783C1.86583 5.5332 1.60449 5.79454 1.60449 6.11654V11.9499C1.60449 12.2719 1.86583 12.5332 2.18783 12.5332H3.93783C4.26041 12.5332 4.52116 12.2719 4.52116 11.9499V6.11654C4.52116 5.79454 4.26041 5.5332 3.93783 5.5332Z" -->
-<!-- 																								fill="#87898B"> -->
-<!-- 																							</path> -->
-<!-- 																							<path fill-rule="evenodd" clip-rule="evenodd" -->
-<!-- 																								d="M8.19733 3.04179L8.19149 2.79562L8.17808 2.20179L8.17691 2.16795L8.17341 2.1347C8.16816 2.0787 8.17574 2.0542 8.17458 2.05304C8.18449 2.0472 8.22766 2.0332 8.31108 2.0332C8.48083 2.0332 9.32608 2.08337 9.32608 3.07095C9.32608 3.45362 9.29458 3.75112 9.22691 4.00895L8.98658 4.92304C8.96266 5.01579 9.03208 5.1062 9.12774 5.1062H10.0727H11.0125C11.2406 5.1062 11.4582 5.20595 11.6098 5.3792C11.7586 5.55129 11.8309 5.77937 11.8093 6.00804L10.9705 10.3393L10.9647 10.3685L10.9612 10.3976C10.9133 10.7774 10.5674 11.0749 10.1737 11.0749H5.97949V5.7397C5.97949 5.52387 6.09849 5.29404 6.33416 5.05662L7.93949 3.43029L8.10458 3.26287C8.19733 3.16662 8.19733 3.04179 8.19733 3.04179ZM12.2696 4.80579C11.9517 4.44004 11.4932 4.2312 11.0125 4.2312H10.0727C10.162 3.89229 10.2011 3.5207 10.2011 3.07095C10.2011 1.7567 9.22166 1.1582 8.31108 1.1582C7.96808 1.1582 7.70033 1.26554 7.51599 1.47729C7.39699 1.61262 7.26574 1.8512 7.30308 2.22162L7.31649 2.81545L5.71116 4.44179C5.30866 4.84895 5.10449 5.28587 5.10449 5.7397V11.3665C5.10449 11.6885 5.36583 11.9499 5.68783 11.9499H10.1737C11.0142 11.9499 11.7294 11.3123 11.8297 10.5055L12.675 6.14045C12.7351 5.65687 12.5869 5.17095 12.2696 4.80579Z" -->
-<!-- 																								fill="#87898B"> -->
-<!-- 																							</path> -->
-<!-- 																						</svg> -->
-																					</div>
-																				</div>
-																				1
-																			</div>
-																			<div class="css-4ygot5">
-																				<div class="Icon more css-1b4hoch-SVG e1282e850">
-																					<div>
-																						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"
-																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMS4yNTEgNS40MjY3NkMxMS4yNTEgNi4xMTc1OSAxMC42OTEgNi42NzY3NiAxMC4wMDEgNi42NzY3NkM5LjMxMDE0IDYuNjc2NzYgOC43NTA5OCA2LjExNzU5IDguNzUwOTggNS40MjY3NkM4Ljc1MDk4IDQuNzM2NzYgOS4zMTAxNCA0LjE3Njc2IDEwLjAwMSA0LjE3Njc2QzEwLjY5MSA0LjE3Njc2IDExLjI1MSA0LjczNjc2IDExLjI1MSA1LjQyNjc2Wk0xMC4wMDEgOC43NDk5M0M5LjMxMDE0IDguNzQ5OTMgOC43NTA5OCA5LjMwOTkzIDguNzUwOTggOS45OTk5M0M4Ljc1MDk4IDEwLjY5MDggOS4zMTAxNCAxMS4yNDk5IDEwLjAwMSAxMS4yNDk5QzEwLjY5MSAxMS4yNDk5IDExLjI1MSAxMC42OTA4IDExLjI1MSA5Ljk5OTkzQzExLjI1MSA5LjMwOTkzIDEwLjY5MSA4Ljc0OTkzIDEwLjAwMSA4Ljc0OTkzWk0xMC4wMDEgMTMuMzIzMUM5LjMxMDE0IDEzLjMyMzEgOC43NTA5OCAxMy44ODIzIDguNzUwOTggMTQuNTczMUM4Ljc1MDk4IDE1LjI2MzkgOS4zMTAxNCAxNS44MjMxIDEwLjAwMSAxNS44MjMxQzEwLjY5MSAxNS44MjMxIDExLjI1MSAxNS4yNjM5IDExLjI1MSAxNC41NzMxQzExLjI1MSAxMy44ODIzIDEwLjY5MSAxMy4zMjMxIDEwLjAwMSAxMy4zMjMxWiIgZmlsbD0iI0EwQTBBMCIvPgo8L3N2Zz4K"
-																							xmlns:xlink="http://www.w3.org/1999/xlink">
-																							<path fill-rule="evenodd" clip-rule="evenodd" d="M11.251 5.42676C11.251 6.11759 10.691 6.67676 10.001 6.67676C9.31014 6.67676 8.75098 6.11759 8.75098 5.42676C8.75098 4.73676 9.31014 4.17676 10.001 4.17676C10.691 4.17676 11.251 4.73676 11.251 5.42676ZM10.001 8.74993C9.31014 8.74993 8.75098 9.30993 8.75098 9.99993C8.75098 10.6908 9.31014 11.2499 10.001 11.2499C10.691 11.2499 11.251 10.6908 11.251 9.99993C11.251 9.30993 10.691 8.74993 10.001 8.74993ZM10.001 13.3231C9.31014 13.3231 8.75098 13.8823 8.75098 14.5731C8.75098 15.2639 9.31014 15.8231 10.001 15.8231C10.691 15.8231 11.251 15.2639 11.251 14.5731C11.251 13.8823 10.691 13.3231 10.001 13.3231Z"
-																								fill="#A0A0A0">
-																							</path>
-																						</svg>
-																					</div>
-																				</div>
-																				<div class="css-aa3xw">
-																					<div class="css-ve4kut">
-																						<div class="css-19hkid5">부적절 표현 신고</div>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div class="css-1pov5mm">
-																<div class="css-ov1ktg">
-																	<a class="css-255jr8" href="/ko-KR/users/j4PxOe9mAvp0Q">
-																		<div class="css-1w3jnm5"></div>
-																	</a>
-																	<div class="css-199ku80">
-																		<div class="css-1sg2lsz">
-																			<a class="css-255jr8" href="/ko-KR/users/j4PxOe9mAvp0Q">
-																				<div class="css-72k174">ㅇwㅇ</div>
-																				<div class="Icon playBadge css-13ebre0-SVG e1282e850">
-																					<div>
-																						<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"
-																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00Ljc3MDQ2IDAuNTYyNDU5QzUuMjQzMjggLTAuMTU2NDMyIDYuMzExNDcgLTAuMTkzMDcgNi44MzUzNSAwLjQ5MjE1NUM3LjE3MzM3IDAuOTMzNzg4IDcuNzczODUgMS4xMDExMyA4LjMwMTgxIDAuOTAwMTIxQzkuMTE5OCAwLjU4ODIwNSAxMC4wMDYyIDEuMTY3NDggMTAuMDE0NCAyLjAyMTA0QzEwLjAxOTUgMi41Njk2MSAxMC40MDU1IDMuMDQ3ODggMTAuOTUzOSAzLjE4NTUyQzExLjgwNDYgMy4zOTk0MSAxMi4xNzAyIDQuMzc0NzYgMTEuNjYwNiA1LjA2ODlDMTEuMzMxOCA1LjUxNjQ4IDExLjM1MzIgNi4xMjE0OSAxMS43MTM3IDYuNTQ2MjlDMTIuMjcyMyA3LjIwNDc4IDExLjk3NzIgOC4yMDE5MiAxMS4xNDM4IDguNDcyMjVDMTAuNjA2NyA4LjY0NzUyIDEwLjI1NzQgOS4xNTA1NCAxMC4yOTExIDkuNjk5MTJDMTAuMzQ0MiAxMC41NDk3IDkuNTAxNzQgMTEuMTg3NCA4LjY2MzMyIDEwLjkzMTlDOC4xMjIwOCAxMC43Njc2IDcuNTM0ODggMTAuOTc0NSA3LjIyOTU0IDExLjQzNzlDNi43NTY3MiAxMi4xNTY4IDUuNjg3NTEgMTIuMTkyNSA1LjE2NDY1IDExLjUwODJDNC44MjY2MyAxMS4wNjU2IDQuMjI2MTUgMTAuODk4MyAzLjY5ODE5IDExLjEwMDNDMi44ODAyIDExLjQxMjIgMS45OTM3OCAxMC44MzE5IDEuOTg0NTkgOS45ODAzNEMxLjk4MDUxIDkuNDI5NzggMS41OTU1MSA4Ljk1MjUgMS4wNDYxIDguODEzODdDMC4xOTU0MjggOC41OTk5OSAtMC4xNzAxNjYgNy42MjY2MSAwLjMzOTQxOSA2LjkzMjQ3QzAuNjY4MjQ5IDYuNDgzOTEgMC42NDY4MDQgNS44Nzc5IDAuMjg2MzE2IDUuNDUzMUMtMC4yNzIyODcgNC43OTQ2MSAwLjAyMjg0MyAzLjc5OTQ1IDAuODU2MTUyIDMuNTI3MTVDMS4zOTMzMSAzLjM1Mjg3IDEuNzQzNTkgMi44NTA4MyAxLjcwODg2IDIuMzAxMjdDMS42NTU3NiAxLjQ1MDY4IDIuNDk4MjYgMC44MTE5OTIgMy4zMzY2OCAxLjA2ODQ2QzMuODc3OTIgMS4yMzI4MyA0LjQ2NTEyIDEuMDI1ODggNC43NzA0NiAwLjU2MjQ1OVoiIGZpbGw9IiMwRTBGMTAiLz4KPHBhdGggZD0iTTcuNjk3MzMgMi40NDk5NUw3LjI4NjEyIDcuNzkzNjdMNy4xNzc3NCA3Ljc5ODAzTDYuNDUyMjYgMy45Nzk1MUg1LjI2MTIzTDQuNjY1NTggNy44OTEzMkw0LjUzNTc1IDcuODk2NTVMMy45NTA5NiAzLjk3OTUxSDIuNUwzLjgxMDI3IDkuNzE1NThMNS4zMTUyOCA5LjYxNDE1TDUuODQ1NzQgNS45NzE0NUg1Ljk2NDk4TDYuNTYwMzUgOS41Mjk4N0w4LjA3NjUxIDkuNDI2OTlMOS4xMDUxMSAyLjQ0OTk1SDcuNjk3MzNaIiBmaWxsPSIjRkYwNTU4Ii8+Cjwvc3ZnPgo="
-																							xmlns:xlink="http://www.w3.org/1999/xlink">
-																							<path fill-rule="evenodd" clip-rule="evenodd" d="M4.77046 0.562459C5.24328 -0.156432 6.31147 -0.19307 6.83535 0.492155C7.17337 0.933788 7.77385 1.10113 8.30181 0.900121C9.1198 0.588205 10.0062 1.16748 10.0144 2.02104C10.0195 2.56961 10.4055 3.04788 10.9539 3.18552C11.8046 3.39941 12.1702 4.37476 11.6606 5.0689C11.3318 5.51648 11.3532 6.12149 11.7137 6.54629C12.2723 7.20478 11.9772 8.20192 11.1438 8.47225C10.6067 8.64752 10.2574 9.15054 10.2911 9.69912C10.3442 10.5497 9.50174 11.1874 8.66332 10.9319C8.12208 10.7676 7.53488 10.9745 7.22954 11.4379C6.75672 12.1568 5.68751 12.1925 5.16465 11.5082C4.82663 11.0656 4.22615 10.8983 3.69819 11.1003C2.8802 11.4122 1.99378 10.8319 1.98459 9.98034C1.98051 9.42978 1.59551 8.9525 1.0461 8.81387C0.195428 8.59999 -0.170166 7.62661 0.339419 6.93247C0.668249 6.48391 0.646804 5.8779 0.286316 5.4531C-0.272287 4.79461 0.022843 3.79945 0.856152 3.52715C1.39331 3.35287 1.74359 2.85083 1.70886 2.30127C1.65576 1.45068 2.49826 0.811992 3.33668 1.06846C3.87792 1.23283 4.46512 1.02588 4.77046 0.562459Z"
-																								fill="#0E0F10">
-																							</path>
-																							<path d="M7.69733 2.44995L7.28612 7.79367L7.17774 7.79803L6.45226 3.97951H5.26123L4.66558 7.89132L4.53575 7.89655L3.95096 3.97951H2.5L3.81027 9.71558L5.31528 9.61415L5.84574 5.97145H5.96498L6.56035 9.52987L8.07651 9.42699L9.10511 2.44995H7.69733Z"
-																								fill="#FF0558">
-																							</path>
-																						</svg>
-																					</div>
-																				</div>
-																			</a>
-																			<div class="css-maxfbg">4년 전</div>
-																		</div>
-																		<div class="css-yb0jaq">감사합니다 선생님</div>
-																		<div class="css-ov1ktg">
-																			<div class="css-1d8juai">
-																				<div class="Icon like css-1tuvmpc-SVG e1282e850">
-																					<div>
-																						<img class="like1" src="../images/like1.png">
-<!-- 																						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" -->
-<!-- 																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjkzNzgzIDUuNTMzMkgyLjE4NzgzQzEuODY1ODMgNS41MzMyIDEuNjA0NDkgNS43OTQ1NCAxLjYwNDQ5IDYuMTE2NTRWMTEuOTQ5OUMxLjYwNDQ5IDEyLjI3MTkgMS44NjU4MyAxMi41MzMyIDIuMTg3ODMgMTIuNTMzMkgzLjkzNzgzQzQuMjYwNDEgMTIuNTMzMiA0LjUyMTE2IDEyLjI3MTkgNC41MjExNiAxMS45NDk5VjYuMTE2NTRDNC41MjExNiA1Ljc5NDU0IDQuMjYwNDEgNS41MzMyIDMuOTM3ODMgNS41MzMyWiIgZmlsbD0iIzg3ODk4QiIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTguMTk3MzMgMy4wNDE3OUw4LjE5MTQ5IDIuNzk1NjJMOC4xNzgwOCAyLjIwMTc5TDguMTc2OTEgMi4xNjc5NUw4LjE3MzQxIDIuMTM0N0M4LjE2ODE2IDIuMDc4NyA4LjE3NTc0IDIuMDU0MiA4LjE3NDU4IDIuMDUzMDRDOC4xODQ0OSAyLjA0NzIgOC4yMjc2NiAyLjAzMzIgOC4zMTEwOCAyLjAzMzJDOC40ODA4MyAyLjAzMzIgOS4zMjYwOCAyLjA4MzM3IDkuMzI2MDggMy4wNzA5NUM5LjMyNjA4IDMuNDUzNjIgOS4yOTQ1OCAzLjc1MTEyIDkuMjI2OTEgNC4wMDg5NUw4Ljk4NjU4IDQuOTIzMDRDOC45NjI2NiA1LjAxNTc5IDkuMDMyMDggNS4xMDYyIDkuMTI3NzQgNS4xMDYySDEwLjA3MjdIMTEuMDEyNUMxMS4yNDA2IDUuMTA2MiAxMS40NTgyIDUuMjA1OTUgMTEuNjA5OCA1LjM3OTJDMTEuNzU4NiA1LjU1MTI5IDExLjgzMDkgNS43NzkzNyAxMS44MDkzIDYuMDA4MDRMMTAuOTcwNSAxMC4zMzkzTDEwLjk2NDcgMTAuMzY4NUwxMC45NjEyIDEwLjM5NzZDMTAuOTEzMyAxMC43Nzc0IDEwLjU2NzQgMTEuMDc0OSAxMC4xNzM3IDExLjA3NDlINS45Nzk0OVY1LjczOTdDNS45Nzk0OSA1LjUyMzg3IDYuMDk4NDkgNS4yOTQwNCA2LjMzNDE2IDUuMDU2NjJMNy45Mzk0OSAzLjQzMDI5TDguMTA0NTggMy4yNjI4N0M4LjE5NzMzIDMuMTY2NjIgOC4xOTczMyAzLjA0MTc5IDguMTk3MzMgMy4wNDE3OVpNMTIuMjY5NiA0LjgwNTc5QzExLjk1MTcgNC40NDAwNCAxMS40OTMyIDQuMjMxMiAxMS4wMTI1IDQuMjMxMkgxMC4wNzI3QzEwLjE2MiAzLjg5MjI5IDEwLjIwMTEgMy41MjA3IDEwLjIwMTEgMy4wNzA5NUMxMC4yMDExIDEuNzU2NyA5LjIyMTY2IDEuMTU4MiA4LjMxMTA4IDEuMTU4MkM3Ljk2ODA4IDEuMTU4MiA3LjcwMDMzIDEuMjY1NTQgNy41MTU5OSAxLjQ3NzI5QzcuMzk2OTkgMS42MTI2MiA3LjI2NTc0IDEuODUxMiA3LjMwMzA4IDIuMjIxNjJMNy4zMTY0OSAyLjgxNTQ1TDUuNzExMTYgNC40NDE3OUM1LjMwODY2IDQuODQ4OTUgNS4xMDQ0OSA1LjI4NTg3IDUuMTA0NDkgNS43Mzk3VjExLjM2NjVDNS4xMDQ0OSAxMS42ODg1IDUuMzY1ODMgMTEuOTQ5OSA1LjY4NzgzIDExLjk0OTlIMTAuMTczN0MxMS4wMTQyIDExLjk0OTkgMTEuNzI5NCAxMS4zMTIzIDExLjgyOTcgMTAuNTA1NUwxMi42NzUgNi4xNDA0NUMxMi43MzUxIDUuNjU2ODcgMTIuNTg2OSA1LjE3MDk1IDEyLjI2OTYgNC44MDU3OVoiIGZpbGw9IiM4Nzg5OEIiLz4KPC9zdmc+Cg==" -->
-<!-- 																							xmlns:xlink="http://www.w3.org/1999/xlink"> -->
-<!-- 																							<path fill-rule="evenodd" clip-rule="evenodd" d="M3.93783 5.5332H2.18783C1.86583 5.5332 1.60449 5.79454 1.60449 6.11654V11.9499C1.60449 12.2719 1.86583 12.5332 2.18783 12.5332H3.93783C4.26041 12.5332 4.52116 12.2719 4.52116 11.9499V6.11654C4.52116 5.79454 4.26041 5.5332 3.93783 5.5332Z" -->
-<!-- 																								fill="#87898B"> -->
-<!-- 																							</path> -->
-<!-- 																							<path fill-rule="evenodd" clip-rule="evenodd" d="M8.19733 3.04179L8.19149 2.79562L8.17808 2.20179L8.17691 2.16795L8.17341 2.1347C8.16816 2.0787 8.17574 2.0542 8.17458 2.05304C8.18449 2.0472 8.22766 2.0332 8.31108 2.0332C8.48083 2.0332 9.32608 2.08337 9.32608 3.07095C9.32608 3.45362 9.29458 3.75112 9.22691 4.00895L8.98658 4.92304C8.96266 5.01579 9.03208 5.1062 9.12774 5.1062H10.0727H11.0125C11.2406 5.1062 11.4582 5.20595 11.6098 5.3792C11.7586 5.55129 11.8309 5.77937 11.8093 6.00804L10.9705 10.3393L10.9647 10.3685L10.9612 10.3976C10.9133 10.7774 10.5674 11.0749 10.1737 11.0749H5.97949V5.7397C5.97949 5.52387 6.09849 5.29404 6.33416 5.05662L7.93949 3.43029L8.10458 3.26287C8.19733 3.16662 8.19733 3.04179 8.19733 3.04179ZM12.2696 4.80579C11.9517 4.44004 11.4932 4.2312 11.0125 4.2312H10.0727C10.162 3.89229 10.2011 3.5207 10.2011 3.07095C10.2011 1.7567 9.22166 1.1582 8.31108 1.1582C7.96808 1.1582 7.70033 1.26554 7.51599 1.47729C7.39699 1.61262 7.26574 1.8512 7.30308 2.22162L7.31649 2.81545L5.71116 4.44179C5.30866 4.84895 5.10449 5.28587 5.10449 5.7397V11.3665C5.10449 11.6885 5.36583 11.9499 5.68783 11.9499H10.1737C11.0142 11.9499 11.7294 11.3123 11.8297 10.5055L12.675 6.14045C12.7351 5.65687 12.5869 5.17095 12.2696 4.80579Z" -->
-<!-- 																								fill="#87898B"> -->
-<!-- 																							</path> -->
-<!-- 																						</svg> -->
-																					</div>
-																				</div>
-																				1
-																			</div>
-																			<div class="css-4ygot5">
-																				<div class="Icon more css-1b4hoch-SVG e1282e850">
-																					<div>
-																						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"
-																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMS4yNTEgNS40MjY3NkMxMS4yNTEgNi4xMTc1OSAxMC42OTEgNi42NzY3NiAxMC4wMDEgNi42NzY3NkM5LjMxMDE0IDYuNjc2NzYgOC43NTA5OCA2LjExNzU5IDguNzUwOTggNS40MjY3NkM4Ljc1MDk4IDQuNzM2NzYgOS4zMTAxNCA0LjE3Njc2IDEwLjAwMSA0LjE3Njc2QzEwLjY5MSA0LjE3Njc2IDExLjI1MSA0LjczNjc2IDExLjI1MSA1LjQyNjc2Wk0xMC4wMDEgOC43NDk5M0M5LjMxMDE0IDguNzQ5OTMgOC43NTA5OCA5LjMwOTkzIDguNzUwOTggOS45OTk5M0M4Ljc1MDk4IDEwLjY5MDggOS4zMTAxNCAxMS4yNDk5IDEwLjAwMSAxMS4yNDk5QzEwLjY5MSAxMS4yNDk5IDExLjI1MSAxMC42OTA4IDExLjI1MSA5Ljk5OTkzQzExLjI1MSA5LjMwOTkzIDEwLjY5MSA4Ljc0OTkzIDEwLjAwMSA4Ljc0OTkzWk0xMC4wMDEgMTMuMzIzMUM5LjMxMDE0IDEzLjMyMzEgOC43NTA5OCAxMy44ODIzIDguNzUwOTggMTQuNTczMUM4Ljc1MDk4IDE1LjI2MzkgOS4zMTAxNCAxNS44MjMxIDEwLjAwMSAxNS44MjMxQzEwLjY5MSAxNS44MjMxIDExLjI1MSAxNS4yNjM5IDExLjI1MSAxNC41NzMxQzExLjI1MSAxMy44ODIzIDEwLjY5MSAxMy4zMjMxIDEwLjAwMSAxMy4zMjMxWiIgZmlsbD0iI0EwQTBBMCIvPgo8L3N2Zz4K"
-																							xmlns:xlink="http://www.w3.org/1999/xlink">
-																							<path fill-rule="evenodd" clip-rule="evenodd" d="M11.251 5.42676C11.251 6.11759 10.691 6.67676 10.001 6.67676C9.31014 6.67676 8.75098 6.11759 8.75098 5.42676C8.75098 4.73676 9.31014 4.17676 10.001 4.17676C10.691 4.17676 11.251 4.73676 11.251 5.42676ZM10.001 8.74993C9.31014 8.74993 8.75098 9.30993 8.75098 9.99993C8.75098 10.6908 9.31014 11.2499 10.001 11.2499C10.691 11.2499 11.251 10.6908 11.251 9.99993C11.251 9.30993 10.691 8.74993 10.001 8.74993ZM10.001 13.3231C9.31014 13.3231 8.75098 13.8823 8.75098 14.5731C8.75098 15.2639 9.31014 15.8231 10.001 15.8231C10.691 15.8231 11.251 15.2639 11.251 14.5731C11.251 13.8823 10.691 13.3231 10.001 13.3231Z"
-																								fill="#A0A0A0">
-																							</path>
-																						</svg>
-																					</div>
-																				</div>
-																				<div class="css-aa3xw">
-																					<div class="css-ve4kut">
-																						<div class="css-19hkid5">부적절 표현 신고</div>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div class="css-1pov5mm">
-																<div class="css-ov1ktg">
-																	<a class="css-255jr8" href="/ko-KR/users/YaR5YwPWpqgX1">
-																		<div class="css-1yap8a9"></div>
-																	</a>
-																	<div class="css-199ku80">
-																		<div class="css-1sg2lsz">
-																			<a class="css-255jr8" href="/ko-KR/users/YaR5YwPWpqgX1">
-																				<div class="css-72k174">남규리</div>
-																			</a>
-																			<div class="css-maxfbg">4년 전</div>
-																		</div>
-																		<div class="css-yb0jaq">나 이중에 세편이나 봄ㅋㅋ 정주행 하려면 3박4일 걸릴듯</div>
-																		<div class="css-ov1ktg">
-																			<div class="css-1d8juai">
-																				<div class="Icon like css-1tuvmpc-SVG e1282e850">
-																					<div>
-																						<img class="like1" src="../images/like1.png">
-<!-- 																						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" -->
-<!-- 																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjkzNzgzIDUuNTMzMkgyLjE4NzgzQzEuODY1ODMgNS41MzMyIDEuNjA0NDkgNS43OTQ1NCAxLjYwNDQ5IDYuMTE2NTRWMTEuOTQ5OUMxLjYwNDQ5IDEyLjI3MTkgMS44NjU4MyAxMi41MzMyIDIuMTg3ODMgMTIuNTMzMkgzLjkzNzgzQzQuMjYwNDEgMTIuNTMzMiA0LjUyMTE2IDEyLjI3MTkgNC41MjExNiAxMS45NDk5VjYuMTE2NTRDNC41MjExNiA1Ljc5NDU0IDQuMjYwNDEgNS41MzMyIDMuOTM3ODMgNS41MzMyWiIgZmlsbD0iIzg3ODk4QiIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTguMTk3MzMgMy4wNDE3OUw4LjE5MTQ5IDIuNzk1NjJMOC4xNzgwOCAyLjIwMTc5TDguMTc2OTEgMi4xNjc5NUw4LjE3MzQxIDIuMTM0N0M4LjE2ODE2IDIuMDc4NyA4LjE3NTc0IDIuMDU0MiA4LjE3NDU4IDIuMDUzMDRDOC4xODQ0OSAyLjA0NzIgOC4yMjc2NiAyLjAzMzIgOC4zMTEwOCAyLjAzMzJDOC40ODA4MyAyLjAzMzIgOS4zMjYwOCAyLjA4MzM3IDkuMzI2MDggMy4wNzA5NUM5LjMyNjA4IDMuNDUzNjIgOS4yOTQ1OCAzLjc1MTEyIDkuMjI2OTEgNC4wMDg5NUw4Ljk4NjU4IDQuOTIzMDRDOC45NjI2NiA1LjAxNTc5IDkuMDMyMDggNS4xMDYyIDkuMTI3NzQgNS4xMDYySDEwLjA3MjdIMTEuMDEyNUMxMS4yNDA2IDUuMTA2MiAxMS40NTgyIDUuMjA1OTUgMTEuNjA5OCA1LjM3OTJDMTEuNzU4NiA1LjU1MTI5IDExLjgzMDkgNS43NzkzNyAxMS44MDkzIDYuMDA4MDRMMTAuOTcwNSAxMC4zMzkzTDEwLjk2NDcgMTAuMzY4NUwxMC45NjEyIDEwLjM5NzZDMTAuOTEzMyAxMC43Nzc0IDEwLjU2NzQgMTEuMDc0OSAxMC4xNzM3IDExLjA3NDlINS45Nzk0OVY1LjczOTdDNS45Nzk0OSA1LjUyMzg3IDYuMDk4NDkgNS4yOTQwNCA2LjMzNDE2IDUuMDU2NjJMNy45Mzk0OSAzLjQzMDI5TDguMTA0NTggMy4yNjI4N0M4LjE5NzMzIDMuMTY2NjIgOC4xOTczMyAzLjA0MTc5IDguMTk3MzMgMy4wNDE3OVpNMTIuMjY5NiA0LjgwNTc5QzExLjk1MTcgNC40NDAwNCAxMS40OTMyIDQuMjMxMiAxMS4wMTI1IDQuMjMxMkgxMC4wNzI3QzEwLjE2MiAzLjg5MjI5IDEwLjIwMTEgMy41MjA3IDEwLjIwMTEgMy4wNzA5NUMxMC4yMDExIDEuNzU2NyA5LjIyMTY2IDEuMTU4MiA4LjMxMTA4IDEuMTU4MkM3Ljk2ODA4IDEuMTU4MiA3LjcwMDMzIDEuMjY1NTQgNy41MTU5OSAxLjQ3NzI5QzcuMzk2OTkgMS42MTI2MiA3LjI2NTc0IDEuODUxMiA3LjMwMzA4IDIuMjIxNjJMNy4zMTY0OSAyLjgxNTQ1TDUuNzExMTYgNC40NDE3OUM1LjMwODY2IDQuODQ4OTUgNS4xMDQ0OSA1LjI4NTg3IDUuMTA0NDkgNS43Mzk3VjExLjM2NjVDNS4xMDQ0OSAxMS42ODg1IDUuMzY1ODMgMTEuOTQ5OSA1LjY4NzgzIDExLjk0OTlIMTAuMTczN0MxMS4wMTQyIDExLjk0OTkgMTEuNzI5NCAxMS4zMTIzIDExLjgyOTcgMTAuNTA1NUwxMi42NzUgNi4xNDA0NUMxMi43MzUxIDUuNjU2ODcgMTIuNTg2OSA1LjE3MDk1IDEyLjI2OTYgNC44MDU3OVoiIGZpbGw9IiM4Nzg5OEIiLz4KPC9zdmc+Cg==" -->
-<!-- 																							xmlns:xlink="http://www.w3.org/1999/xlink"> -->
-<!-- 																							<path fill-rule="evenodd" clip-rule="evenodd" d="M3.93783 5.5332H2.18783C1.86583 5.5332 1.60449 5.79454 1.60449 6.11654V11.9499C1.60449 12.2719 1.86583 12.5332 2.18783 12.5332H3.93783C4.26041 12.5332 4.52116 12.2719 4.52116 11.9499V6.11654C4.52116 5.79454 4.26041 5.5332 3.93783 5.5332Z" -->
-<!-- 																								fill="#87898B"> -->
-<!-- 																							</path> -->
-<!-- 																							<path fill-rule="evenodd" clip-rule="evenodd" d="M8.19733 3.04179L8.19149 2.79562L8.17808 2.20179L8.17691 2.16795L8.17341 2.1347C8.16816 2.0787 8.17574 2.0542 8.17458 2.05304C8.18449 2.0472 8.22766 2.0332 8.31108 2.0332C8.48083 2.0332 9.32608 2.08337 9.32608 3.07095C9.32608 3.45362 9.29458 3.75112 9.22691 4.00895L8.98658 4.92304C8.96266 5.01579 9.03208 5.1062 9.12774 5.1062H10.0727H11.0125C11.2406 5.1062 11.4582 5.20595 11.6098 5.3792C11.7586 5.55129 11.8309 5.77937 11.8093 6.00804L10.9705 10.3393L10.9647 10.3685L10.9612 10.3976C10.9133 10.7774 10.5674 11.0749 10.1737 11.0749H5.97949V5.7397C5.97949 5.52387 6.09849 5.29404 6.33416 5.05662L7.93949 3.43029L8.10458 3.26287C8.19733 3.16662 8.19733 3.04179 8.19733 3.04179ZM12.2696 4.80579C11.9517 4.44004 11.4932 4.2312 11.0125 4.2312H10.0727C10.162 3.89229 10.2011 3.5207 10.2011 3.07095C10.2011 1.7567 9.22166 1.1582 8.31108 1.1582C7.96808 1.1582 7.70033 1.26554 7.51599 1.47729C7.39699 1.61262 7.26574 1.8512 7.30308 2.22162L7.31649 2.81545L5.71116 4.44179C5.30866 4.84895 5.10449 5.28587 5.10449 5.7397V11.3665C5.10449 11.6885 5.36583 11.9499 5.68783 11.9499H10.1737C11.0142 11.9499 11.7294 11.3123 11.8297 10.5055L12.675 6.14045C12.7351 5.65687 12.5869 5.17095 12.2696 4.80579Z" -->
-<!-- 																								fill="#87898B"> -->
-<!-- 																							</path> -->
-<!-- 																						</svg> -->
-																					</div>
-																				</div>
-																				1
-																			</div>
-																			<div class="css-4ygot5">
-																				<div class="Icon more css-1b4hoch-SVG e1282e850">
-																					<div>
-																						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"
-																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMS4yNTEgNS40MjY3NkMxMS4yNTEgNi4xMTc1OSAxMC42OTEgNi42NzY3NiAxMC4wMDEgNi42NzY3NkM5LjMxMDE0IDYuNjc2NzYgOC43NTA5OCA2LjExNzU5IDguNzUwOTggNS40MjY3NkM4Ljc1MDk4IDQuNzM2NzYgOS4zMTAxNCA0LjE3Njc2IDEwLjAwMSA0LjE3Njc2QzEwLjY5MSA0LjE3Njc2IDExLjI1MSA0LjczNjc2IDExLjI1MSA1LjQyNjc2Wk0xMC4wMDEgOC43NDk5M0M5LjMxMDE0IDguNzQ5OTMgOC43NTA5OCA5LjMwOTkzIDguNzUwOTggOS45OTk5M0M4Ljc1MDk4IDEwLjY5MDggOS4zMTAxNCAxMS4yNDk5IDEwLjAwMSAxMS4yNDk5QzEwLjY5MSAxMS4yNDk5IDExLjI1MSAxMC42OTA4IDExLjI1MSA5Ljk5OTkzQzExLjI1MSA5LjMwOTkzIDEwLjY5MSA4Ljc0OTkzIDEwLjAwMSA4Ljc0OTkzWk0xMC4wMDEgMTMuMzIzMUM5LjMxMDE0IDEzLjMyMzEgOC43NTA5OCAxMy44ODIzIDguNzUwOTggMTQuNTczMUM4Ljc1MDk4IDE1LjI2MzkgOS4zMTAxNCAxNS44MjMxIDEwLjAwMSAxNS44MjMxQzEwLjY5MSAxNS44MjMxIDExLjI1MSAxNS4yNjM5IDExLjI1MSAxNC41NzMxQzExLjI1MSAxMy44ODIzIDEwLjY5MSAxMy4zMjMxIDEwLjAwMSAxMy4zMjMxWiIgZmlsbD0iI0EwQTBBMCIvPgo8L3N2Zz4K"
-																							xmlns:xlink="http://www.w3.org/1999/xlink">
-																							<path fill-rule="evenodd" clip-rule="evenodd" d="M11.251 5.42676C11.251 6.11759 10.691 6.67676 10.001 6.67676C9.31014 6.67676 8.75098 6.11759 8.75098 5.42676C8.75098 4.73676 9.31014 4.17676 10.001 4.17676C10.691 4.17676 11.251 4.73676 11.251 5.42676ZM10.001 8.74993C9.31014 8.74993 8.75098 9.30993 8.75098 9.99993C8.75098 10.6908 9.31014 11.2499 10.001 11.2499C10.691 11.2499 11.251 10.6908 11.251 9.99993C11.251 9.30993 10.691 8.74993 10.001 8.74993ZM10.001 13.3231C9.31014 13.3231 8.75098 13.8823 8.75098 14.5731C8.75098 15.2639 9.31014 15.8231 10.001 15.8231C10.691 15.8231 11.251 15.2639 11.251 14.5731C11.251 13.8823 10.691 13.3231 10.001 13.3231Z"
-																								fill="#A0A0A0">
-																							</path>
-																						</svg>
-																					</div>
-																				</div>
-																				<div class="css-aa3xw">
-																					<div class="css-ve4kut">
-																						<div class="css-19hkid5">부적절 표현 신고</div>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div class="css-1pov5mm">
-																<div class="css-ov1ktg">
-																	<a class="css-255jr8" href="/ko-KR/users/Jgkqly8RmvX0b">
-																		<div class="css-16i85nq"></div>
-																	</a>
-																	<div class="css-199ku80">
-																		<div class="css-1sg2lsz">
-																			<a class="css-255jr8" href="/ko-KR/users/Jgkqly8RmvX0b">
-																				<div class="css-72k174">강상우</div>
-																			</a>
-																			<div class="css-maxfbg">4년 전</div>
-																		</div>
-																		<div class="css-yb0jaq">인크레더블 헐크빼고 다봣구나 소름이다 진짜</div>
-																		<div class="css-ov1ktg">
-																			<div class="css-1d8juai">
-																				<div class="Icon like css-1tuvmpc-SVG e1282e850">
-																					<div>
-																						<img class="like1" src="../images/like1.png">
-<!-- 																						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" -->
-<!-- 																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjkzNzgzIDUuNTMzMkgyLjE4NzgzQzEuODY1ODMgNS41MzMyIDEuNjA0NDkgNS43OTQ1NCAxLjYwNDQ5IDYuMTE2NTRWMTEuOTQ5OUMxLjYwNDQ5IDEyLjI3MTkgMS44NjU4MyAxMi41MzMyIDIuMTg3ODMgMTIuNTMzMkgzLjkzNzgzQzQuMjYwNDEgMTIuNTMzMiA0LjUyMTE2IDEyLjI3MTkgNC41MjExNiAxMS45NDk5VjYuMTE2NTRDNC41MjExNiA1Ljc5NDU0IDQuMjYwNDEgNS41MzMyIDMuOTM3ODMgNS41MzMyWiIgZmlsbD0iIzg3ODk4QiIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTguMTk3MzMgMy4wNDE3OUw4LjE5MTQ5IDIuNzk1NjJMOC4xNzgwOCAyLjIwMTc5TDguMTc2OTEgMi4xNjc5NUw4LjE3MzQxIDIuMTM0N0M4LjE2ODE2IDIuMDc4NyA4LjE3NTc0IDIuMDU0MiA4LjE3NDU4IDIuMDUzMDRDOC4xODQ0OSAyLjA0NzIgOC4yMjc2NiAyLjAzMzIgOC4zMTEwOCAyLjAzMzJDOC40ODA4MyAyLjAzMzIgOS4zMjYwOCAyLjA4MzM3IDkuMzI2MDggMy4wNzA5NUM5LjMyNjA4IDMuNDUzNjIgOS4yOTQ1OCAzLjc1MTEyIDkuMjI2OTEgNC4wMDg5NUw4Ljk4NjU4IDQuOTIzMDRDOC45NjI2NiA1LjAxNTc5IDkuMDMyMDggNS4xMDYyIDkuMTI3NzQgNS4xMDYySDEwLjA3MjdIMTEuMDEyNUMxMS4yNDA2IDUuMTA2MiAxMS40NTgyIDUuMjA1OTUgMTEuNjA5OCA1LjM3OTJDMTEuNzU4NiA1LjU1MTI5IDExLjgzMDkgNS43NzkzNyAxMS44MDkzIDYuMDA4MDRMMTAuOTcwNSAxMC4zMzkzTDEwLjk2NDcgMTAuMzY4NUwxMC45NjEyIDEwLjM5NzZDMTAuOTEzMyAxMC43Nzc0IDEwLjU2NzQgMTEuMDc0OSAxMC4xNzM3IDExLjA3NDlINS45Nzk0OVY1LjczOTdDNS45Nzk0OSA1LjUyMzg3IDYuMDk4NDkgNS4yOTQwNCA2LjMzNDE2IDUuMDU2NjJMNy45Mzk0OSAzLjQzMDI5TDguMTA0NTggMy4yNjI4N0M4LjE5NzMzIDMuMTY2NjIgOC4xOTczMyAzLjA0MTc5IDguMTk3MzMgMy4wNDE3OVpNMTIuMjY5NiA0LjgwNTc5QzExLjk1MTcgNC40NDAwNCAxMS40OTMyIDQuMjMxMiAxMS4wMTI1IDQuMjMxMkgxMC4wNzI3QzEwLjE2MiAzLjg5MjI5IDEwLjIwMTEgMy41MjA3IDEwLjIwMTEgMy4wNzA5NUMxMC4yMDExIDEuNzU2NyA5LjIyMTY2IDEuMTU4MiA4LjMxMTA4IDEuMTU4MkM3Ljk2ODA4IDEuMTU4MiA3LjcwMDMzIDEuMjY1NTQgNy41MTU5OSAxLjQ3NzI5QzcuMzk2OTkgMS42MTI2MiA3LjI2NTc0IDEuODUxMiA3LjMwMzA4IDIuMjIxNjJMNy4zMTY0OSAyLjgxNTQ1TDUuNzExMTYgNC40NDE3OUM1LjMwODY2IDQuODQ4OTUgNS4xMDQ0OSA1LjI4NTg3IDUuMTA0NDkgNS43Mzk3VjExLjM2NjVDNS4xMDQ0OSAxMS42ODg1IDUuMzY1ODMgMTEuOTQ5OSA1LjY4NzgzIDExLjk0OTlIMTAuMTczN0MxMS4wMTQyIDExLjk0OTkgMTEuNzI5NCAxMS4zMTIzIDExLjgyOTcgMTAuNTA1NUwxMi42NzUgNi4xNDA0NUMxMi43MzUxIDUuNjU2ODcgMTIuNTg2OSA1LjE3MDk1IDEyLjI2OTYgNC44MDU3OVoiIGZpbGw9IiM4Nzg5OEIiLz4KPC9zdmc+Cg==" -->
-<!-- 																							xmlns:xlink="http://www.w3.org/1999/xlink"> -->
-<!-- 																							<path fill-rule="evenodd" clip-rule="evenodd" d="M3.93783 5.5332H2.18783C1.86583 5.5332 1.60449 5.79454 1.60449 6.11654V11.9499C1.60449 12.2719 1.86583 12.5332 2.18783 12.5332H3.93783C4.26041 12.5332 4.52116 12.2719 4.52116 11.9499V6.11654C4.52116 5.79454 4.26041 5.5332 3.93783 5.5332Z" -->
-<!-- 																								fill="#87898B"></path> -->
-<!-- 																							<path fill-rule="evenodd" clip-rule="evenodd" d="M8.19733 3.04179L8.19149 2.79562L8.17808 2.20179L8.17691 2.16795L8.17341 2.1347C8.16816 2.0787 8.17574 2.0542 8.17458 2.05304C8.18449 2.0472 8.22766 2.0332 8.31108 2.0332C8.48083 2.0332 9.32608 2.08337 9.32608 3.07095C9.32608 3.45362 9.29458 3.75112 9.22691 4.00895L8.98658 4.92304C8.96266 5.01579 9.03208 5.1062 9.12774 5.1062H10.0727H11.0125C11.2406 5.1062 11.4582 5.20595 11.6098 5.3792C11.7586 5.55129 11.8309 5.77937 11.8093 6.00804L10.9705 10.3393L10.9647 10.3685L10.9612 10.3976C10.9133 10.7774 10.5674 11.0749 10.1737 11.0749H5.97949V5.7397C5.97949 5.52387 6.09849 5.29404 6.33416 5.05662L7.93949 3.43029L8.10458 3.26287C8.19733 3.16662 8.19733 3.04179 8.19733 3.04179ZM12.2696 4.80579C11.9517 4.44004 11.4932 4.2312 11.0125 4.2312H10.0727C10.162 3.89229 10.2011 3.5207 10.2011 3.07095C10.2011 1.7567 9.22166 1.1582 8.31108 1.1582C7.96808 1.1582 7.70033 1.26554 7.51599 1.47729C7.39699 1.61262 7.26574 1.8512 7.30308 2.22162L7.31649 2.81545L5.71116 4.44179C5.30866 4.84895 5.10449 5.28587 5.10449 5.7397V11.3665C5.10449 11.6885 5.36583 11.9499 5.68783 11.9499H10.1737C11.0142 11.9499 11.7294 11.3123 11.8297 10.5055L12.675 6.14045C12.7351 5.65687 12.5869 5.17095 12.2696 4.80579Z" -->
-<!-- 																								fill="#87898B"></path> -->
-<!-- 																						</svg> -->
-																					</div>
-																				</div>
-																				2
-																			</div>
-																			<div class="css-4ygot5">
-																				<div class="Icon more css-1b4hoch-SVG e1282e850">
-																					<div>
-																						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"
-																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMS4yNTEgNS40MjY3NkMxMS4yNTEgNi4xMTc1OSAxMC42OTEgNi42NzY3NiAxMC4wMDEgNi42NzY3NkM5LjMxMDE0IDYuNjc2NzYgOC43NTA5OCA2LjExNzU5IDguNzUwOTggNS40MjY3NkM4Ljc1MDk4IDQuNzM2NzYgOS4zMTAxNCA0LjE3Njc2IDEwLjAwMSA0LjE3Njc2QzEwLjY5MSA0LjE3Njc2IDExLjI1MSA0LjczNjc2IDExLjI1MSA1LjQyNjc2Wk0xMC4wMDEgOC43NDk5M0M5LjMxMDE0IDguNzQ5OTMgOC43NTA5OCA5LjMwOTkzIDguNzUwOTggOS45OTk5M0M4Ljc1MDk4IDEwLjY5MDggOS4zMTAxNCAxMS4yNDk5IDEwLjAwMSAxMS4yNDk5QzEwLjY5MSAxMS4yNDk5IDExLjI1MSAxMC42OTA4IDExLjI1MSA5Ljk5OTkzQzExLjI1MSA5LjMwOTkzIDEwLjY5MSA4Ljc0OTkzIDEwLjAwMSA4Ljc0OTkzWk0xMC4wMDEgMTMuMzIzMUM5LjMxMDE0IDEzLjMyMzEgOC43NTA5OCAxMy44ODIzIDguNzUwOTggMTQuNTczMUM4Ljc1MDk4IDE1LjI2MzkgOS4zMTAxNCAxNS44MjMxIDEwLjAwMSAxNS44MjMxQzEwLjY5MSAxNS44MjMxIDExLjI1MSAxNS4yNjM5IDExLjI1MSAxNC41NzMxQzExLjI1MSAxMy44ODIzIDEwLjY5MSAxMy4zMjMxIDEwLjAwMSAxMy4zMjMxWiIgZmlsbD0iI0EwQTBBMCIvPgo8L3N2Zz4K"
-																							xmlns:xlink="http://www.w3.org/1999/xlink">
-																							<path fill-rule="evenodd" clip-rule="evenodd" d="M11.251 5.42676C11.251 6.11759 10.691 6.67676 10.001 6.67676C9.31014 6.67676 8.75098 6.11759 8.75098 5.42676C8.75098 4.73676 9.31014 4.17676 10.001 4.17676C10.691 4.17676 11.251 4.73676 11.251 5.42676ZM10.001 8.74993C9.31014 8.74993 8.75098 9.30993 8.75098 9.99993C8.75098 10.6908 9.31014 11.2499 10.001 11.2499C10.691 11.2499 11.251 10.6908 11.251 9.99993C11.251 9.30993 10.691 8.74993 10.001 8.74993ZM10.001 13.3231C9.31014 13.3231 8.75098 13.8823 8.75098 14.5731C8.75098 15.2639 9.31014 15.8231 10.001 15.8231C10.691 15.8231 11.251 15.2639 11.251 14.5731C11.251 13.8823 10.691 13.3231 10.001 13.3231Z"
-																								fill="#A0A0A0"></path>
-																						</svg>
-																					</div>
-																				</div>
-																				<div class="css-aa3xw">
-																					<div class="css-ve4kut">
-																						<div class="css-19hkid5">부적절 표현 신고</div>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div class="css-1pov5mm">
-																<div class="css-ov1ktg">
-																	<a class="css-255jr8" href="/ko-KR/users/djaxbkYlDqLw8">
-																		<div class="css-1jiusl2"></div>
-																	</a>
-																	<div class="css-199ku80">
-																		<div class="css-1sg2lsz">
-																			<a class="css-255jr8" href="/ko-KR/users/djaxbkYlDqLw8">
-																				<div class="css-72k174">윤지은</div>
-																				<div class="Icon playBadge css-13ebre0-SVG e1282e850">
-																					<div>
-																						<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"
-																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00Ljc3MDQ2IDAuNTYyNDU5QzUuMjQzMjggLTAuMTU2NDMyIDYuMzExNDcgLTAuMTkzMDcgNi44MzUzNSAwLjQ5MjE1NUM3LjE3MzM3IDAuOTMzNzg4IDcuNzczODUgMS4xMDExMyA4LjMwMTgxIDAuOTAwMTIxQzkuMTE5OCAwLjU4ODIwNSAxMC4wMDYyIDEuMTY3NDggMTAuMDE0NCAyLjAyMTA0QzEwLjAxOTUgMi41Njk2MSAxMC40MDU1IDMuMDQ3ODggMTAuOTUzOSAzLjE4NTUyQzExLjgwNDYgMy4zOTk0MSAxMi4xNzAyIDQuMzc0NzYgMTEuNjYwNiA1LjA2ODlDMTEuMzMxOCA1LjUxNjQ4IDExLjM1MzIgNi4xMjE0OSAxMS43MTM3IDYuNTQ2MjlDMTIuMjcyMyA3LjIwNDc4IDExLjk3NzIgOC4yMDE5MiAxMS4xNDM4IDguNDcyMjVDMTAuNjA2NyA4LjY0NzUyIDEwLjI1NzQgOS4xNTA1NCAxMC4yOTExIDkuNjk5MTJDMTAuMzQ0MiAxMC41NDk3IDkuNTAxNzQgMTEuMTg3NCA4LjY2MzMyIDEwLjkzMTlDOC4xMjIwOCAxMC43Njc2IDcuNTM0ODggMTAuOTc0NSA3LjIyOTU0IDExLjQzNzlDNi43NTY3MiAxMi4xNTY4IDUuNjg3NTEgMTIuMTkyNSA1LjE2NDY1IDExLjUwODJDNC44MjY2MyAxMS4wNjU2IDQuMjI2MTUgMTAuODk4MyAzLjY5ODE5IDExLjEwMDNDMi44ODAyIDExLjQxMjIgMS45OTM3OCAxMC44MzE5IDEuOTg0NTkgOS45ODAzNEMxLjk4MDUxIDkuNDI5NzggMS41OTU1MSA4Ljk1MjUgMS4wNDYxIDguODEzODdDMC4xOTU0MjggOC41OTk5OSAtMC4xNzAxNjYgNy42MjY2MSAwLjMzOTQxOSA2LjkzMjQ3QzAuNjY4MjQ5IDYuNDgzOTEgMC42NDY4MDQgNS44Nzc5IDAuMjg2MzE2IDUuNDUzMUMtMC4yNzIyODcgNC43OTQ2MSAwLjAyMjg0MyAzLjc5OTQ1IDAuODU2MTUyIDMuNTI3MTVDMS4zOTMzMSAzLjM1Mjg3IDEuNzQzNTkgMi44NTA4MyAxLjcwODg2IDIuMzAxMjdDMS42NTU3NiAxLjQ1MDY4IDIuNDk4MjYgMC44MTE5OTIgMy4zMzY2OCAxLjA2ODQ2QzMuODc3OTIgMS4yMzI4MyA0LjQ2NTEyIDEuMDI1ODggNC43NzA0NiAwLjU2MjQ1OVoiIGZpbGw9IiMwRTBGMTAiLz4KPHBhdGggZD0iTTcuNjk3MzMgMi40NDk5NUw3LjI4NjEyIDcuNzkzNjdMNy4xNzc3NCA3Ljc5ODAzTDYuNDUyMjYgMy45Nzk1MUg1LjI2MTIzTDQuNjY1NTggNy44OTEzMkw0LjUzNTc1IDcuODk2NTVMMy45NTA5NiAzLjk3OTUxSDIuNUwzLjgxMDI3IDkuNzE1NThMNS4zMTUyOCA5LjYxNDE1TDUuODQ1NzQgNS45NzE0NUg1Ljk2NDk4TDYuNTYwMzUgOS41Mjk4N0w4LjA3NjUxIDkuNDI2OTlMOS4xMDUxMSAyLjQ0OTk1SDcuNjk3MzNaIiBmaWxsPSIjRkYwNTU4Ii8+Cjwvc3ZnPgo="
-																							xmlns:xlink="http://www.w3.org/1999/xlink">
-																							<path fill-rule="evenodd" clip-rule="evenodd" d="M4.77046 0.562459C5.24328 -0.156432 6.31147 -0.19307 6.83535 0.492155C7.17337 0.933788 7.77385 1.10113 8.30181 0.900121C9.1198 0.588205 10.0062 1.16748 10.0144 2.02104C10.0195 2.56961 10.4055 3.04788 10.9539 3.18552C11.8046 3.39941 12.1702 4.37476 11.6606 5.0689C11.3318 5.51648 11.3532 6.12149 11.7137 6.54629C12.2723 7.20478 11.9772 8.20192 11.1438 8.47225C10.6067 8.64752 10.2574 9.15054 10.2911 9.69912C10.3442 10.5497 9.50174 11.1874 8.66332 10.9319C8.12208 10.7676 7.53488 10.9745 7.22954 11.4379C6.75672 12.1568 5.68751 12.1925 5.16465 11.5082C4.82663 11.0656 4.22615 10.8983 3.69819 11.1003C2.8802 11.4122 1.99378 10.8319 1.98459 9.98034C1.98051 9.42978 1.59551 8.9525 1.0461 8.81387C0.195428 8.59999 -0.170166 7.62661 0.339419 6.93247C0.668249 6.48391 0.646804 5.8779 0.286316 5.4531C-0.272287 4.79461 0.022843 3.79945 0.856152 3.52715C1.39331 3.35287 1.74359 2.85083 1.70886 2.30127C1.65576 1.45068 2.49826 0.811992 3.33668 1.06846C3.87792 1.23283 4.46512 1.02588 4.77046 0.562459Z"
-																								fill="#0E0F10"></path>
-																							<path d="M7.69733 2.44995L7.28612 7.79367L7.17774 7.79803L6.45226 3.97951H5.26123L4.66558 7.89132L4.53575 7.89655L3.95096 3.97951H2.5L3.81027 9.71558L5.31528 9.61415L5.84574 5.97145H5.96498L6.56035 9.52987L8.07651 9.42699L9.10511 2.44995H7.69733Z"
-																								fill="#FF0558"></path>
-																						</svg>
-																					</div>
-																				</div>
-																			</a>
-																			<div class="css-maxfbg">4년 전</div>
-																		</div>
-																		<div class="css-yb0jaq">지금 열심히 보고 있는데 다 보기전에 엔드게임 내릴것 같아요ㅠㅠ</div>
-																		<div class="css-ov1ktg">
-																			<div class="css-1d8juai">
-																				<div class="Icon like css-1tuvmpc-SVG e1282e850">
-																					<div>
-																						<img class="like1" src="../images/like1.png">
-<!-- 																						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" -->
-<!-- 																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjkzNzgzIDUuNTMzMkgyLjE4NzgzQzEuODY1ODMgNS41MzMyIDEuNjA0NDkgNS43OTQ1NCAxLjYwNDQ5IDYuMTE2NTRWMTEuOTQ5OUMxLjYwNDQ5IDEyLjI3MTkgMS44NjU4MyAxMi41MzMyIDIuMTg3ODMgMTIuNTMzMkgzLjkzNzgzQzQuMjYwNDEgMTIuNTMzMiA0LjUyMTE2IDEyLjI3MTkgNC41MjExNiAxMS45NDk5VjYuMTE2NTRDNC41MjExNiA1Ljc5NDU0IDQuMjYwNDEgNS41MzMyIDMuOTM3ODMgNS41MzMyWiIgZmlsbD0iIzg3ODk4QiIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTguMTk3MzMgMy4wNDE3OUw4LjE5MTQ5IDIuNzk1NjJMOC4xNzgwOCAyLjIwMTc5TDguMTc2OTEgMi4xNjc5NUw4LjE3MzQxIDIuMTM0N0M4LjE2ODE2IDIuMDc4NyA4LjE3NTc0IDIuMDU0MiA4LjE3NDU4IDIuMDUzMDRDOC4xODQ0OSAyLjA0NzIgOC4yMjc2NiAyLjAzMzIgOC4zMTEwOCAyLjAzMzJDOC40ODA4MyAyLjAzMzIgOS4zMjYwOCAyLjA4MzM3IDkuMzI2MDggMy4wNzA5NUM5LjMyNjA4IDMuNDUzNjIgOS4yOTQ1OCAzLjc1MTEyIDkuMjI2OTEgNC4wMDg5NUw4Ljk4NjU4IDQuOTIzMDRDOC45NjI2NiA1LjAxNTc5IDkuMDMyMDggNS4xMDYyIDkuMTI3NzQgNS4xMDYySDEwLjA3MjdIMTEuMDEyNUMxMS4yNDA2IDUuMTA2MiAxMS40NTgyIDUuMjA1OTUgMTEuNjA5OCA1LjM3OTJDMTEuNzU4NiA1LjU1MTI5IDExLjgzMDkgNS43NzkzNyAxMS44MDkzIDYuMDA4MDRMMTAuOTcwNSAxMC4zMzkzTDEwLjk2NDcgMTAuMzY4NUwxMC45NjEyIDEwLjM5NzZDMTAuOTEzMyAxMC43Nzc0IDEwLjU2NzQgMTEuMDc0OSAxMC4xNzM3IDExLjA3NDlINS45Nzk0OVY1LjczOTdDNS45Nzk0OSA1LjUyMzg3IDYuMDk4NDkgNS4yOTQwNCA2LjMzNDE2IDUuMDU2NjJMNy45Mzk0OSAzLjQzMDI5TDguMTA0NTggMy4yNjI4N0M4LjE5NzMzIDMuMTY2NjIgOC4xOTczMyAzLjA0MTc5IDguMTk3MzMgMy4wNDE3OVpNMTIuMjY5NiA0LjgwNTc5QzExLjk1MTcgNC40NDAwNCAxMS40OTMyIDQuMjMxMiAxMS4wMTI1IDQuMjMxMkgxMC4wNzI3QzEwLjE2MiAzLjg5MjI5IDEwLjIwMTEgMy41MjA3IDEwLjIwMTEgMy4wNzA5NUMxMC4yMDExIDEuNzU2NyA5LjIyMTY2IDEuMTU4MiA4LjMxMTA4IDEuMTU4MkM3Ljk2ODA4IDEuMTU4MiA3LjcwMDMzIDEuMjY1NTQgNy41MTU5OSAxLjQ3NzI5QzcuMzk2OTkgMS42MTI2MiA3LjI2NTc0IDEuODUxMiA3LjMwMzA4IDIuMjIxNjJMNy4zMTY0OSAyLjgxNTQ1TDUuNzExMTYgNC40NDE3OUM1LjMwODY2IDQuODQ4OTUgNS4xMDQ0OSA1LjI4NTg3IDUuMTA0NDkgNS43Mzk3VjExLjM2NjVDNS4xMDQ0OSAxMS42ODg1IDUuMzY1ODMgMTEuOTQ5OSA1LjY4NzgzIDExLjk0OTlIMTAuMTczN0MxMS4wMTQyIDExLjk0OTkgMTEuNzI5NCAxMS4zMTIzIDExLjgyOTcgMTAuNTA1NUwxMi42NzUgNi4xNDA0NUMxMi43MzUxIDUuNjU2ODcgMTIuNTg2OSA1LjE3MDk1IDEyLjI2OTYgNC44MDU3OVoiIGZpbGw9IiM4Nzg5OEIiLz4KPC9zdmc+Cg==" -->
-<!-- 																							xmlns:xlink="http://www.w3.org/1999/xlink"> -->
-<!-- 																							<path fill-rule="evenodd" clip-rule="evenodd" d="M3.93783 5.5332H2.18783C1.86583 5.5332 1.60449 5.79454 1.60449 6.11654V11.9499C1.60449 12.2719 1.86583 12.5332 2.18783 12.5332H3.93783C4.26041 12.5332 4.52116 12.2719 4.52116 11.9499V6.11654C4.52116 5.79454 4.26041 5.5332 3.93783 5.5332Z" -->
-<!-- 																								fill="#87898B"></path> -->
-<!-- 																							<path fill-rule="evenodd" clip-rule="evenodd" d="M8.19733 3.04179L8.19149 2.79562L8.17808 2.20179L8.17691 2.16795L8.17341 2.1347C8.16816 2.0787 8.17574 2.0542 8.17458 2.05304C8.18449 2.0472 8.22766 2.0332 8.31108 2.0332C8.48083 2.0332 9.32608 2.08337 9.32608 3.07095C9.32608 3.45362 9.29458 3.75112 9.22691 4.00895L8.98658 4.92304C8.96266 5.01579 9.03208 5.1062 9.12774 5.1062H10.0727H11.0125C11.2406 5.1062 11.4582 5.20595 11.6098 5.3792C11.7586 5.55129 11.8309 5.77937 11.8093 6.00804L10.9705 10.3393L10.9647 10.3685L10.9612 10.3976C10.9133 10.7774 10.5674 11.0749 10.1737 11.0749H5.97949V5.7397C5.97949 5.52387 6.09849 5.29404 6.33416 5.05662L7.93949 3.43029L8.10458 3.26287C8.19733 3.16662 8.19733 3.04179 8.19733 3.04179ZM12.2696 4.80579C11.9517 4.44004 11.4932 4.2312 11.0125 4.2312H10.0727C10.162 3.89229 10.2011 3.5207 10.2011 3.07095C10.2011 1.7567 9.22166 1.1582 8.31108 1.1582C7.96808 1.1582 7.70033 1.26554 7.51599 1.47729C7.39699 1.61262 7.26574 1.8512 7.30308 2.22162L7.31649 2.81545L5.71116 4.44179C5.30866 4.84895 5.10449 5.28587 5.10449 5.7397V11.3665C5.10449 11.6885 5.36583 11.9499 5.68783 11.9499H10.1737C11.0142 11.9499 11.7294 11.3123 11.8297 10.5055L12.675 6.14045C12.7351 5.65687 12.5869 5.17095 12.2696 4.80579Z" -->
-<!-- 																								fill="#87898B"></path> -->
-<!-- 																						</svg> -->
-																					</div>
-																				</div>
-																				3
-																			</div>
-																			<div class="css-4ygot5">
-																				<div class="Icon more css-1b4hoch-SVG e1282e850">
-																					<div>
-																						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"
-																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMS4yNTEgNS40MjY3NkMxMS4yNTEgNi4xMTc1OSAxMC42OTEgNi42NzY3NiAxMC4wMDEgNi42NzY3NkM5LjMxMDE0IDYuNjc2NzYgOC43NTA5OCA2LjExNzU5IDguNzUwOTggNS40MjY3NkM4Ljc1MDk4IDQuNzM2NzYgOS4zMTAxNCA0LjE3Njc2IDEwLjAwMSA0LjE3Njc2QzEwLjY5MSA0LjE3Njc2IDExLjI1MSA0LjczNjc2IDExLjI1MSA1LjQyNjc2Wk0xMC4wMDEgOC43NDk5M0M5LjMxMDE0IDguNzQ5OTMgOC43NTA5OCA5LjMwOTkzIDguNzUwOTggOS45OTk5M0M4Ljc1MDk4IDEwLjY5MDggOS4zMTAxNCAxMS4yNDk5IDEwLjAwMSAxMS4yNDk5QzEwLjY5MSAxMS4yNDk5IDExLjI1MSAxMC42OTA4IDExLjI1MSA5Ljk5OTkzQzExLjI1MSA5LjMwOTkzIDEwLjY5MSA4Ljc0OTkzIDEwLjAwMSA4Ljc0OTkzWk0xMC4wMDEgMTMuMzIzMUM5LjMxMDE0IDEzLjMyMzEgOC43NTA5OCAxMy44ODIzIDguNzUwOTggMTQuNTczMUM4Ljc1MDk4IDE1LjI2MzkgOS4zMTAxNCAxNS44MjMxIDEwLjAwMSAxNS44MjMxQzEwLjY5MSAxNS44MjMxIDExLjI1MSAxNS4yNjM5IDExLjI1MSAxNC41NzMxQzExLjI1MSAxMy44ODIzIDEwLjY5MSAxMy4zMjMxIDEwLjAwMSAxMy4zMjMxWiIgZmlsbD0iI0EwQTBBMCIvPgo8L3N2Zz4K"
-																							xmlns:xlink="http://www.w3.org/1999/xlink">
-																							<path fill-rule="evenodd" clip-rule="evenodd" d="M11.251 5.42676C11.251 6.11759 10.691 6.67676 10.001 6.67676C9.31014 6.67676 8.75098 6.11759 8.75098 5.42676C8.75098 4.73676 9.31014 4.17676 10.001 4.17676C10.691 4.17676 11.251 4.73676 11.251 5.42676ZM10.001 8.74993C9.31014 8.74993 8.75098 9.30993 8.75098 9.99993C8.75098 10.6908 9.31014 11.2499 10.001 11.2499C10.691 11.2499 11.251 10.6908 11.251 9.99993C11.251 9.30993 10.691 8.74993 10.001 8.74993ZM10.001 13.3231C9.31014 13.3231 8.75098 13.8823 8.75098 14.5731C8.75098 15.2639 9.31014 15.8231 10.001 15.8231C10.691 15.8231 11.251 15.2639 11.251 14.5731C11.251 13.8823 10.691 13.3231 10.001 13.3231Z"
-																								fill="#A0A0A0"></path>
-																						</svg>
-																					</div>
-																				</div>
-																				<div class="css-aa3xw">
-																					<div class="css-ve4kut">
-																						<div class="css-19hkid5">부적절 표현 신고</div>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div class="css-1pov5mm">
-																<div class="css-ov1ktg">
-																	<a class="css-255jr8" href="/ko-KR/users/87Gv7BrMVqE6o">
-																		<div class="css-10fosev"></div>
-																	</a>
-																	<div class="css-199ku80">
-																		<div class="css-1sg2lsz">
-																			<a class="css-255jr8" href="/ko-KR/users/87Gv7BrMVqE6o">
-																				<div class="css-72k174">Treumerei</div>
-																				<div class="Icon playBadge css-13ebre0-SVG e1282e850">
-																					<div>
-																						<img class="like1" src="../images/like1.png">
-<!-- 																						<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" -->
-<!-- 																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00Ljc3MDQ2IDAuNTYyNDU5QzUuMjQzMjggLTAuMTU2NDMyIDYuMzExNDcgLTAuMTkzMDcgNi44MzUzNSAwLjQ5MjE1NUM3LjE3MzM3IDAuOTMzNzg4IDcuNzczODUgMS4xMDExMyA4LjMwMTgxIDAuOTAwMTIxQzkuMTE5OCAwLjU4ODIwNSAxMC4wMDYyIDEuMTY3NDggMTAuMDE0NCAyLjAyMTA0QzEwLjAxOTUgMi41Njk2MSAxMC40MDU1IDMuMDQ3ODggMTAuOTUzOSAzLjE4NTUyQzExLjgwNDYgMy4zOTk0MSAxMi4xNzAyIDQuMzc0NzYgMTEuNjYwNiA1LjA2ODlDMTEuMzMxOCA1LjUxNjQ4IDExLjM1MzIgNi4xMjE0OSAxMS43MTM3IDYuNTQ2MjlDMTIuMjcyMyA3LjIwNDc4IDExLjk3NzIgOC4yMDE5MiAxMS4xNDM4IDguNDcyMjVDMTAuNjA2NyA4LjY0NzUyIDEwLjI1NzQgOS4xNTA1NCAxMC4yOTExIDkuNjk5MTJDMTAuMzQ0MiAxMC41NDk3IDkuNTAxNzQgMTEuMTg3NCA4LjY2MzMyIDEwLjkzMTlDOC4xMjIwOCAxMC43Njc2IDcuNTM0ODggMTAuOTc0NSA3LjIyOTU0IDExLjQzNzlDNi43NTY3MiAxMi4xNTY4IDUuNjg3NTEgMTIuMTkyNSA1LjE2NDY1IDExLjUwODJDNC44MjY2MyAxMS4wNjU2IDQuMjI2MTUgMTAuODk4MyAzLjY5ODE5IDExLjEwMDNDMi44ODAyIDExLjQxMjIgMS45OTM3OCAxMC44MzE5IDEuOTg0NTkgOS45ODAzNEMxLjk4MDUxIDkuNDI5NzggMS41OTU1MSA4Ljk1MjUgMS4wNDYxIDguODEzODdDMC4xOTU0MjggOC41OTk5OSAtMC4xNzAxNjYgNy42MjY2MSAwLjMzOTQxOSA2LjkzMjQ3QzAuNjY4MjQ5IDYuNDgzOTEgMC42NDY4MDQgNS44Nzc5IDAuMjg2MzE2IDUuNDUzMUMtMC4yNzIyODcgNC43OTQ2MSAwLjAyMjg0MyAzLjc5OTQ1IDAuODU2MTUyIDMuNTI3MTVDMS4zOTMzMSAzLjM1Mjg3IDEuNzQzNTkgMi44NTA4MyAxLjcwODg2IDIuMzAxMjdDMS42NTU3NiAxLjQ1MDY4IDIuNDk4MjYgMC44MTE5OTIgMy4zMzY2OCAxLjA2ODQ2QzMuODc3OTIgMS4yMzI4MyA0LjQ2NTEyIDEuMDI1ODggNC43NzA0NiAwLjU2MjQ1OVoiIGZpbGw9IiMwRTBGMTAiLz4KPHBhdGggZD0iTTcuNjk3MzMgMi40NDk5NUw3LjI4NjEyIDcuNzkzNjdMNy4xNzc3NCA3Ljc5ODAzTDYuNDUyMjYgMy45Nzk1MUg1LjI2MTIzTDQuNjY1NTggNy44OTEzMkw0LjUzNTc1IDcuODk2NTVMMy45NTA5NiAzLjk3OTUxSDIuNUwzLjgxMDI3IDkuNzE1NThMNS4zMTUyOCA5LjYxNDE1TDUuODQ1NzQgNS45NzE0NUg1Ljk2NDk4TDYuNTYwMzUgOS41Mjk4N0w4LjA3NjUxIDkuNDI2OTlMOS4xMDUxMSAyLjQ0OTk1SDcuNjk3MzNaIiBmaWxsPSIjRkYwNTU4Ii8+Cjwvc3ZnPgo=" -->
-<!-- 																							xmlns:xlink="http://www.w3.org/1999/xlink"> -->
-<!-- 																							<path fill-rule="evenodd" clip-rule="evenodd" d="M4.77046 0.562459C5.24328 -0.156432 6.31147 -0.19307 6.83535 0.492155C7.17337 0.933788 7.77385 1.10113 8.30181 0.900121C9.1198 0.588205 10.0062 1.16748 10.0144 2.02104C10.0195 2.56961 10.4055 3.04788 10.9539 3.18552C11.8046 3.39941 12.1702 4.37476 11.6606 5.0689C11.3318 5.51648 11.3532 6.12149 11.7137 6.54629C12.2723 7.20478 11.9772 8.20192 11.1438 8.47225C10.6067 8.64752 10.2574 9.15054 10.2911 9.69912C10.3442 10.5497 9.50174 11.1874 8.66332 10.9319C8.12208 10.7676 7.53488 10.9745 7.22954 11.4379C6.75672 12.1568 5.68751 12.1925 5.16465 11.5082C4.82663 11.0656 4.22615 10.8983 3.69819 11.1003C2.8802 11.4122 1.99378 10.8319 1.98459 9.98034C1.98051 9.42978 1.59551 8.9525 1.0461 8.81387C0.195428 8.59999 -0.170166 7.62661 0.339419 6.93247C0.668249 6.48391 0.646804 5.8779 0.286316 5.4531C-0.272287 4.79461 0.022843 3.79945 0.856152 3.52715C1.39331 3.35287 1.74359 2.85083 1.70886 2.30127C1.65576 1.45068 2.49826 0.811992 3.33668 1.06846C3.87792 1.23283 4.46512 1.02588 4.77046 0.562459Z" -->
-<!-- 																								fill="#0E0F10"></path> -->
-<!-- 																							<path d="M7.69733 2.44995L7.28612 7.79367L7.17774 7.79803L6.45226 3.97951H5.26123L4.66558 7.89132L4.53575 7.89655L3.95096 3.97951H2.5L3.81027 9.71558L5.31528 9.61415L5.84574 5.97145H5.96498L6.56035 9.52987L8.07651 9.42699L9.10511 2.44995H7.69733Z" -->
-<!-- 																								fill="#FF0558"></path> -->
-<!-- 																						</svg> -->
-																					</div>
-																				</div>
-																			</a>
-																			<div class="css-maxfbg">4년 전</div>
-																		</div>
-																		<div class="css-yb0jaq">이번 엔드게임까지 하나도 안빼고 다 봤다</div>
-																		<div class="css-ov1ktg">
-																			<div class="css-1d8juai">
-																				<div class="Icon like css-1tuvmpc-SVG e1282e850">
-																					<div>
-																						<img class="like1" src="../images/like1.png">
-<!-- 																						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" -->
-<!-- 																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjkzNzgzIDUuNTMzMkgyLjE4NzgzQzEuODY1ODMgNS41MzMyIDEuNjA0NDkgNS43OTQ1NCAxLjYwNDQ5IDYuMTE2NTRWMTEuOTQ5OUMxLjYwNDQ5IDEyLjI3MTkgMS44NjU4MyAxMi41MzMyIDIuMTg3ODMgMTIuNTMzMkgzLjkzNzgzQzQuMjYwNDEgMTIuNTMzMiA0LjUyMTE2IDEyLjI3MTkgNC41MjExNiAxMS45NDk5VjYuMTE2NTRDNC41MjExNiA1Ljc5NDU0IDQuMjYwNDEgNS41MzMyIDMuOTM3ODMgNS41MzMyWiIgZmlsbD0iIzg3ODk4QiIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTguMTk3MzMgMy4wNDE3OUw4LjE5MTQ5IDIuNzk1NjJMOC4xNzgwOCAyLjIwMTc5TDguMTc2OTEgMi4xNjc5NUw4LjE3MzQxIDIuMTM0N0M4LjE2ODE2IDIuMDc4NyA4LjE3NTc0IDIuMDU0MiA4LjE3NDU4IDIuMDUzMDRDOC4xODQ0OSAyLjA0NzIgOC4yMjc2NiAyLjAzMzIgOC4zMTEwOCAyLjAzMzJDOC40ODA4MyAyLjAzMzIgOS4zMjYwOCAyLjA4MzM3IDkuMzI2MDggMy4wNzA5NUM5LjMyNjA4IDMuNDUzNjIgOS4yOTQ1OCAzLjc1MTEyIDkuMjI2OTEgNC4wMDg5NUw4Ljk4NjU4IDQuOTIzMDRDOC45NjI2NiA1LjAxNTc5IDkuMDMyMDggNS4xMDYyIDkuMTI3NzQgNS4xMDYySDEwLjA3MjdIMTEuMDEyNUMxMS4yNDA2IDUuMTA2MiAxMS40NTgyIDUuMjA1OTUgMTEuNjA5OCA1LjM3OTJDMTEuNzU4NiA1LjU1MTI5IDExLjgzMDkgNS43NzkzNyAxMS44MDkzIDYuMDA4MDRMMTAuOTcwNSAxMC4zMzkzTDEwLjk2NDcgMTAuMzY4NUwxMC45NjEyIDEwLjM5NzZDMTAuOTEzMyAxMC43Nzc0IDEwLjU2NzQgMTEuMDc0OSAxMC4xNzM3IDExLjA3NDlINS45Nzk0OVY1LjczOTdDNS45Nzk0OSA1LjUyMzg3IDYuMDk4NDkgNS4yOTQwNCA2LjMzNDE2IDUuMDU2NjJMNy45Mzk0OSAzLjQzMDI5TDguMTA0NTggMy4yNjI4N0M4LjE5NzMzIDMuMTY2NjIgOC4xOTczMyAzLjA0MTc5IDguMTk3MzMgMy4wNDE3OVpNMTIuMjY5NiA0LjgwNTc5QzExLjk1MTcgNC40NDAwNCAxMS40OTMyIDQuMjMxMiAxMS4wMTI1IDQuMjMxMkgxMC4wNzI3QzEwLjE2MiAzLjg5MjI5IDEwLjIwMTEgMy41MjA3IDEwLjIwMTEgMy4wNzA5NUMxMC4yMDExIDEuNzU2NyA5LjIyMTY2IDEuMTU4MiA4LjMxMTA4IDEuMTU4MkM3Ljk2ODA4IDEuMTU4MiA3LjcwMDMzIDEuMjY1NTQgNy41MTU5OSAxLjQ3NzI5QzcuMzk2OTkgMS42MTI2MiA3LjI2NTc0IDEuODUxMiA3LjMwMzA4IDIuMjIxNjJMNy4zMTY0OSAyLjgxNTQ1TDUuNzExMTYgNC40NDE3OUM1LjMwODY2IDQuODQ4OTUgNS4xMDQ0OSA1LjI4NTg3IDUuMTA0NDkgNS43Mzk3VjExLjM2NjVDNS4xMDQ0OSAxMS42ODg1IDUuMzY1ODMgMTEuOTQ5OSA1LjY4NzgzIDExLjk0OTlIMTAuMTczN0MxMS4wMTQyIDExLjk0OTkgMTEuNzI5NCAxMS4zMTIzIDExLjgyOTcgMTAuNTA1NUwxMi42NzUgNi4xNDA0NUMxMi43MzUxIDUuNjU2ODcgMTIuNTg2OSA1LjE3MDk1IDEyLjI2OTYgNC44MDU3OVoiIGZpbGw9IiM4Nzg5OEIiLz4KPC9zdmc+Cg==" -->
-<!-- 																							xmlns:xlink="http://www.w3.org/1999/xlink"> -->
-<!-- 																							<path fill-rule="evenodd" clip-rule="evenodd" d="M3.93783 5.5332H2.18783C1.86583 5.5332 1.60449 5.79454 1.60449 6.11654V11.9499C1.60449 12.2719 1.86583 12.5332 2.18783 12.5332H3.93783C4.26041 12.5332 4.52116 12.2719 4.52116 11.9499V6.11654C4.52116 5.79454 4.26041 5.5332 3.93783 5.5332Z" -->
-<!-- 																								fill="#87898B"></path> -->
-<!-- 																							<path fill-rule="evenodd" clip-rule="evenodd" d="M8.19733 3.04179L8.19149 2.79562L8.17808 2.20179L8.17691 2.16795L8.17341 2.1347C8.16816 2.0787 8.17574 2.0542 8.17458 2.05304C8.18449 2.0472 8.22766 2.0332 8.31108 2.0332C8.48083 2.0332 9.32608 2.08337 9.32608 3.07095C9.32608 3.45362 9.29458 3.75112 9.22691 4.00895L8.98658 4.92304C8.96266 5.01579 9.03208 5.1062 9.12774 5.1062H10.0727H11.0125C11.2406 5.1062 11.4582 5.20595 11.6098 5.3792C11.7586 5.55129 11.8309 5.77937 11.8093 6.00804L10.9705 10.3393L10.9647 10.3685L10.9612 10.3976C10.9133 10.7774 10.5674 11.0749 10.1737 11.0749H5.97949V5.7397C5.97949 5.52387 6.09849 5.29404 6.33416 5.05662L7.93949 3.43029L8.10458 3.26287C8.19733 3.16662 8.19733 3.04179 8.19733 3.04179ZM12.2696 4.80579C11.9517 4.44004 11.4932 4.2312 11.0125 4.2312H10.0727C10.162 3.89229 10.2011 3.5207 10.2011 3.07095C10.2011 1.7567 9.22166 1.1582 8.31108 1.1582C7.96808 1.1582 7.70033 1.26554 7.51599 1.47729C7.39699 1.61262 7.26574 1.8512 7.30308 2.22162L7.31649 2.81545L5.71116 4.44179C5.30866 4.84895 5.10449 5.28587 5.10449 5.7397V11.3665C5.10449 11.6885 5.36583 11.9499 5.68783 11.9499H10.1737C11.0142 11.9499 11.7294 11.3123 11.8297 10.5055L12.675 6.14045C12.7351 5.65687 12.5869 5.17095 12.2696 4.80579Z" -->
-<!-- 																								fill="#87898B"></path> -->
-<!-- 																						</svg> -->
-																					</div>
-																				</div>
-																				3
-																			</div>
-																			<div class="css-4ygot5">
-																				<div class="Icon more css-1b4hoch-SVG e1282e850">
-																					<div>
-																						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"
-																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMS4yNTEgNS40MjY3NkMxMS4yNTEgNi4xMTc1OSAxMC42OTEgNi42NzY3NiAxMC4wMDEgNi42NzY3NkM5LjMxMDE0IDYuNjc2NzYgOC43NTA5OCA2LjExNzU5IDguNzUwOTggNS40MjY3NkM4Ljc1MDk4IDQuNzM2NzYgOS4zMTAxNCA0LjE3Njc2IDEwLjAwMSA0LjE3Njc2QzEwLjY5MSA0LjE3Njc2IDExLjI1MSA0LjczNjc2IDExLjI1MSA1LjQyNjc2Wk0xMC4wMDEgOC43NDk5M0M5LjMxMDE0IDguNzQ5OTMgOC43NTA5OCA5LjMwOTkzIDguNzUwOTggOS45OTk5M0M4Ljc1MDk4IDEwLjY5MDggOS4zMTAxNCAxMS4yNDk5IDEwLjAwMSAxMS4yNDk5QzEwLjY5MSAxMS4yNDk5IDExLjI1MSAxMC42OTA4IDExLjI1MSA5Ljk5OTkzQzExLjI1MSA5LjMwOTkzIDEwLjY5MSA4Ljc0OTkzIDEwLjAwMSA4Ljc0OTkzWk0xMC4wMDEgMTMuMzIzMUM5LjMxMDE0IDEzLjMyMzEgOC43NTA5OCAxMy44ODIzIDguNzUwOTggMTQuNTczMUM4Ljc1MDk4IDE1LjI2MzkgOS4zMTAxNCAxNS44MjMxIDEwLjAwMSAxNS44MjMxQzEwLjY5MSAxNS44MjMxIDExLjI1MSAxNS4yNjM5IDExLjI1MSAxNC41NzMxQzExLjI1MSAxMy44ODIzIDEwLjY5MSAxMy4zMjMxIDEwLjAwMSAxMy4zMjMxWiIgZmlsbD0iI0EwQTBBMCIvPgo8L3N2Zz4K"
-																							xmlns:xlink="http://www.w3.org/1999/xlink">
-																							<path fill-rule="evenodd" clip-rule="evenodd" d="M11.251 5.42676C11.251 6.11759 10.691 6.67676 10.001 6.67676C9.31014 6.67676 8.75098 6.11759 8.75098 5.42676C8.75098 4.73676 9.31014 4.17676 10.001 4.17676C10.691 4.17676 11.251 4.73676 11.251 5.42676ZM10.001 8.74993C9.31014 8.74993 8.75098 9.30993 8.75098 9.99993C8.75098 10.6908 9.31014 11.2499 10.001 11.2499C10.691 11.2499 11.251 10.6908 11.251 9.99993C11.251 9.30993 10.691 8.74993 10.001 8.74993ZM10.001 13.3231C9.31014 13.3231 8.75098 13.8823 8.75098 14.5731C8.75098 15.2639 9.31014 15.8231 10.001 15.8231C10.691 15.8231 11.251 15.2639 11.251 14.5731C11.251 13.8823 10.691 13.3231 10.001 13.3231Z"
-																								fill="#A0A0A0"></path>
-																						</svg>
-																					</div>
-																				</div>
-																				<div class="css-aa3xw">
-																					<div class="css-ve4kut">
-																						<div class="css-19hkid5">부적절 표현 신고</div>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div class="css-1pov5mm">
-																<div class="css-ov1ktg">
-																	<a class="css-255jr8" href="/ko-KR/users/YaR5YAm0E5gX1">
-																		<div class="css-172ycv5"></div>
-																	</a>
-																	<div class="css-199ku80">
-																		<div class="css-1sg2lsz">
-																			<a class="css-255jr8"href="/ko-KR/users/YaR5YAm0E5gX1">
-																				<div class="css-72k174">솔샘</div>
-																				<div class="Icon playBadge css-13ebre0-SVG e1282e850">
-																					<div>
-																						<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"
-																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00Ljc3MDQ2IDAuNTYyNDU5QzUuMjQzMjggLTAuMTU2NDMyIDYuMzExNDcgLTAuMTkzMDcgNi44MzUzNSAwLjQ5MjE1NUM3LjE3MzM3IDAuOTMzNzg4IDcuNzczODUgMS4xMDExMyA4LjMwMTgxIDAuOTAwMTIxQzkuMTE5OCAwLjU4ODIwNSAxMC4wMDYyIDEuMTY3NDggMTAuMDE0NCAyLjAyMTA0QzEwLjAxOTUgMi41Njk2MSAxMC40MDU1IDMuMDQ3ODggMTAuOTUzOSAzLjE4NTUyQzExLjgwNDYgMy4zOTk0MSAxMi4xNzAyIDQuMzc0NzYgMTEuNjYwNiA1LjA2ODlDMTEuMzMxOCA1LjUxNjQ4IDExLjM1MzIgNi4xMjE0OSAxMS43MTM3IDYuNTQ2MjlDMTIuMjcyMyA3LjIwNDc4IDExLjk3NzIgOC4yMDE5MiAxMS4xNDM4IDguNDcyMjVDMTAuNjA2NyA4LjY0NzUyIDEwLjI1NzQgOS4xNTA1NCAxMC4yOTExIDkuNjk5MTJDMTAuMzQ0MiAxMC41NDk3IDkuNTAxNzQgMTEuMTg3NCA4LjY2MzMyIDEwLjkzMTlDOC4xMjIwOCAxMC43Njc2IDcuNTM0ODggMTAuOTc0NSA3LjIyOTU0IDExLjQzNzlDNi43NTY3MiAxMi4xNTY4IDUuNjg3NTEgMTIuMTkyNSA1LjE2NDY1IDExLjUwODJDNC44MjY2MyAxMS4wNjU2IDQuMjI2MTUgMTAuODk4MyAzLjY5ODE5IDExLjEwMDNDMi44ODAyIDExLjQxMjIgMS45OTM3OCAxMC44MzE5IDEuOTg0NTkgOS45ODAzNEMxLjk4MDUxIDkuNDI5NzggMS41OTU1MSA4Ljk1MjUgMS4wNDYxIDguODEzODdDMC4xOTU0MjggOC41OTk5OSAtMC4xNzAxNjYgNy42MjY2MSAwLjMzOTQxOSA2LjkzMjQ3QzAuNjY4MjQ5IDYuNDgzOTEgMC42NDY4MDQgNS44Nzc5IDAuMjg2MzE2IDUuNDUzMUMtMC4yNzIyODcgNC43OTQ2MSAwLjAyMjg0MyAzLjc5OTQ1IDAuODU2MTUyIDMuNTI3MTVDMS4zOTMzMSAzLjM1Mjg3IDEuNzQzNTkgMi44NTA4MyAxLjcwODg2IDIuMzAxMjdDMS42NTU3NiAxLjQ1MDY4IDIuNDk4MjYgMC44MTE5OTIgMy4zMzY2OCAxLjA2ODQ2QzMuODc3OTIgMS4yMzI4MyA0LjQ2NTEyIDEuMDI1ODggNC43NzA0NiAwLjU2MjQ1OVoiIGZpbGw9IiMwRTBGMTAiLz4KPHBhdGggZD0iTTcuNjk3MzMgMi40NDk5NUw3LjI4NjEyIDcuNzkzNjdMNy4xNzc3NCA3Ljc5ODAzTDYuNDUyMjYgMy45Nzk1MUg1LjI2MTIzTDQuNjY1NTggNy44OTEzMkw0LjUzNTc1IDcuODk2NTVMMy45NTA5NiAzLjk3OTUxSDIuNUwzLjgxMDI3IDkuNzE1NThMNS4zMTUyOCA5LjYxNDE1TDUuODQ1NzQgNS45NzE0NUg1Ljk2NDk4TDYuNTYwMzUgOS41Mjk4N0w4LjA3NjUxIDkuNDI2OTlMOS4xMDUxMSAyLjQ0OTk1SDcuNjk3MzNaIiBmaWxsPSIjRkYwNTU4Ii8+Cjwvc3ZnPgo="
-																							xmlns:xlink="http://www.w3.org/1999/xlink">
-																							<path fill-rule="evenodd" clip-rule="evenodd" d="M4.77046 0.562459C5.24328 -0.156432 6.31147 -0.19307 6.83535 0.492155C7.17337 0.933788 7.77385 1.10113 8.30181 0.900121C9.1198 0.588205 10.0062 1.16748 10.0144 2.02104C10.0195 2.56961 10.4055 3.04788 10.9539 3.18552C11.8046 3.39941 12.1702 4.37476 11.6606 5.0689C11.3318 5.51648 11.3532 6.12149 11.7137 6.54629C12.2723 7.20478 11.9772 8.20192 11.1438 8.47225C10.6067 8.64752 10.2574 9.15054 10.2911 9.69912C10.3442 10.5497 9.50174 11.1874 8.66332 10.9319C8.12208 10.7676 7.53488 10.9745 7.22954 11.4379C6.75672 12.1568 5.68751 12.1925 5.16465 11.5082C4.82663 11.0656 4.22615 10.8983 3.69819 11.1003C2.8802 11.4122 1.99378 10.8319 1.98459 9.98034C1.98051 9.42978 1.59551 8.9525 1.0461 8.81387C0.195428 8.59999 -0.170166 7.62661 0.339419 6.93247C0.668249 6.48391 0.646804 5.8779 0.286316 5.4531C-0.272287 4.79461 0.022843 3.79945 0.856152 3.52715C1.39331 3.35287 1.74359 2.85083 1.70886 2.30127C1.65576 1.45068 2.49826 0.811992 3.33668 1.06846C3.87792 1.23283 4.46512 1.02588 4.77046 0.562459Z"
-																								fill="#0E0F10"></path>
-																							<path d="M7.69733 2.44995L7.28612 7.79367L7.17774 7.79803L6.45226 3.97951H5.26123L4.66558 7.89132L4.53575 7.89655L3.95096 3.97951H2.5L3.81027 9.71558L5.31528 9.61415L5.84574 5.97145H5.96498L6.56035 9.52987L8.07651 9.42699L9.10511 2.44995H7.69733Z"
-																								fill="#FF0558"></path>
-																						</svg>
-																					</div>
-																				</div>
-																			</a>
-																			<div class="css-maxfbg">4년 전</div>
-																		</div>
-																		<div class="css-yb0jaq">왓챠씨 영화 영어제목이랑 배우감독 영어이름 보여줘요.. 맨날 찾아보느라 다시 검색해요😢</div>
-																		<div class="css-ov1ktg">
-																			<div class="css-1d8juai">
-																				<div class="Icon like css-1tuvmpc-SVG e1282e850">
-																					<div>
-																						<img class="like1" src="../images/like1.png">
-<!-- 																						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" -->
-<!-- 																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjkzNzgzIDUuNTMzMkgyLjE4NzgzQzEuODY1ODMgNS41MzMyIDEuNjA0NDkgNS43OTQ1NCAxLjYwNDQ5IDYuMTE2NTRWMTEuOTQ5OUMxLjYwNDQ5IDEyLjI3MTkgMS44NjU4MyAxMi41MzMyIDIuMTg3ODMgMTIuNTMzMkgzLjkzNzgzQzQuMjYwNDEgMTIuNTMzMiA0LjUyMTE2IDEyLjI3MTkgNC41MjExNiAxMS45NDk5VjYuMTE2NTRDNC41MjExNiA1Ljc5NDU0IDQuMjYwNDEgNS41MzMyIDMuOTM3ODMgNS41MzMyWiIgZmlsbD0iIzg3ODk4QiIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTguMTk3MzMgMy4wNDE3OUw4LjE5MTQ5IDIuNzk1NjJMOC4xNzgwOCAyLjIwMTc5TDguMTc2OTEgMi4xNjc5NUw4LjE3MzQxIDIuMTM0N0M4LjE2ODE2IDIuMDc4NyA4LjE3NTc0IDIuMDU0MiA4LjE3NDU4IDIuMDUzMDRDOC4xODQ0OSAyLjA0NzIgOC4yMjc2NiAyLjAzMzIgOC4zMTEwOCAyLjAzMzJDOC40ODA4MyAyLjAzMzIgOS4zMjYwOCAyLjA4MzM3IDkuMzI2MDggMy4wNzA5NUM5LjMyNjA4IDMuNDUzNjIgOS4yOTQ1OCAzLjc1MTEyIDkuMjI2OTEgNC4wMDg5NUw4Ljk4NjU4IDQuOTIzMDRDOC45NjI2NiA1LjAxNTc5IDkuMDMyMDggNS4xMDYyIDkuMTI3NzQgNS4xMDYySDEwLjA3MjdIMTEuMDEyNUMxMS4yNDA2IDUuMTA2MiAxMS40NTgyIDUuMjA1OTUgMTEuNjA5OCA1LjM3OTJDMTEuNzU4NiA1LjU1MTI5IDExLjgzMDkgNS43NzkzNyAxMS44MDkzIDYuMDA4MDRMMTAuOTcwNSAxMC4zMzkzTDEwLjk2NDcgMTAuMzY4NUwxMC45NjEyIDEwLjM5NzZDMTAuOTEzMyAxMC43Nzc0IDEwLjU2NzQgMTEuMDc0OSAxMC4xNzM3IDExLjA3NDlINS45Nzk0OVY1LjczOTdDNS45Nzk0OSA1LjUyMzg3IDYuMDk4NDkgNS4yOTQwNCA2LjMzNDE2IDUuMDU2NjJMNy45Mzk0OSAzLjQzMDI5TDguMTA0NTggMy4yNjI4N0M4LjE5NzMzIDMuMTY2NjIgOC4xOTczMyAzLjA0MTc5IDguMTk3MzMgMy4wNDE3OVpNMTIuMjY5NiA0LjgwNTc5QzExLjk1MTcgNC40NDAwNCAxMS40OTMyIDQuMjMxMiAxMS4wMTI1IDQuMjMxMkgxMC4wNzI3QzEwLjE2MiAzLjg5MjI5IDEwLjIwMTEgMy41MjA3IDEwLjIwMTEgMy4wNzA5NUMxMC4yMDExIDEuNzU2NyA5LjIyMTY2IDEuMTU4MiA4LjMxMTA4IDEuMTU4MkM3Ljk2ODA4IDEuMTU4MiA3LjcwMDMzIDEuMjY1NTQgNy41MTU5OSAxLjQ3NzI5QzcuMzk2OTkgMS42MTI2MiA3LjI2NTc0IDEuODUxMiA3LjMwMzA4IDIuMjIxNjJMNy4zMTY0OSAyLjgxNTQ1TDUuNzExMTYgNC40NDE3OUM1LjMwODY2IDQuODQ4OTUgNS4xMDQ0OSA1LjI4NTg3IDUuMTA0NDkgNS43Mzk3VjExLjM2NjVDNS4xMDQ0OSAxMS42ODg1IDUuMzY1ODMgMTEuOTQ5OSA1LjY4NzgzIDExLjk0OTlIMTAuMTczN0MxMS4wMTQyIDExLjk0OTkgMTEuNzI5NCAxMS4zMTIzIDExLjgyOTcgMTAuNTA1NUwxMi42NzUgNi4xNDA0NUMxMi43MzUxIDUuNjU2ODcgMTIuNTg2OSA1LjE3MDk1IDEyLjI2OTYgNC44MDU3OVoiIGZpbGw9IiM4Nzg5OEIiLz4KPC9zdmc+Cg==" -->
-<!-- 																							xmlns:xlink="http://www.w3.org/1999/xlink"> -->
-<!-- 																							<path fill-rule="evenodd" clip-rule="evenodd" d="M3.93783 5.5332H2.18783C1.86583 5.5332 1.60449 5.79454 1.60449 6.11654V11.9499C1.60449 12.2719 1.86583 12.5332 2.18783 12.5332H3.93783C4.26041 12.5332 4.52116 12.2719 4.52116 11.9499V6.11654C4.52116 5.79454 4.26041 5.5332 3.93783 5.5332Z" -->
-<!-- 																								fill="#87898B"></path> -->
-<!-- 																							<path fill-rule="evenodd" clip-rule="evenodd" d="M8.19733 3.04179L8.19149 2.79562L8.17808 2.20179L8.17691 2.16795L8.17341 2.1347C8.16816 2.0787 8.17574 2.0542 8.17458 2.05304C8.18449 2.0472 8.22766 2.0332 8.31108 2.0332C8.48083 2.0332 9.32608 2.08337 9.32608 3.07095C9.32608 3.45362 9.29458 3.75112 9.22691 4.00895L8.98658 4.92304C8.96266 5.01579 9.03208 5.1062 9.12774 5.1062H10.0727H11.0125C11.2406 5.1062 11.4582 5.20595 11.6098 5.3792C11.7586 5.55129 11.8309 5.77937 11.8093 6.00804L10.9705 10.3393L10.9647 10.3685L10.9612 10.3976C10.9133 10.7774 10.5674 11.0749 10.1737 11.0749H5.97949V5.7397C5.97949 5.52387 6.09849 5.29404 6.33416 5.05662L7.93949 3.43029L8.10458 3.26287C8.19733 3.16662 8.19733 3.04179 8.19733 3.04179ZM12.2696 4.80579C11.9517 4.44004 11.4932 4.2312 11.0125 4.2312H10.0727C10.162 3.89229 10.2011 3.5207 10.2011 3.07095C10.2011 1.7567 9.22166 1.1582 8.31108 1.1582C7.96808 1.1582 7.70033 1.26554 7.51599 1.47729C7.39699 1.61262 7.26574 1.8512 7.30308 2.22162L7.31649 2.81545L5.71116 4.44179C5.30866 4.84895 5.10449 5.28587 5.10449 5.7397V11.3665C5.10449 11.6885 5.36583 11.9499 5.68783 11.9499H10.1737C11.0142 11.9499 11.7294 11.3123 11.8297 10.5055L12.675 6.14045C12.7351 5.65687 12.5869 5.17095 12.2696 4.80579Z" -->
-<!-- 																								fill="#87898B"></path> -->
-<!-- 																						</svg> -->
-																					</div>
-																				</div>
-																				10
-																			</div>
-																			<div class="css-4ygot5">
-																				<div class="Icon more css-1b4hoch-SVG e1282e850">
-																					<div>
-																						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"
-																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMS4yNTEgNS40MjY3NkMxMS4yNTEgNi4xMTc1OSAxMC42OTEgNi42NzY3NiAxMC4wMDEgNi42NzY3NkM5LjMxMDE0IDYuNjc2NzYgOC43NTA5OCA2LjExNzU5IDguNzUwOTggNS40MjY3NkM4Ljc1MDk4IDQuNzM2NzYgOS4zMTAxNCA0LjE3Njc2IDEwLjAwMSA0LjE3Njc2QzEwLjY5MSA0LjE3Njc2IDExLjI1MSA0LjczNjc2IDExLjI1MSA1LjQyNjc2Wk0xMC4wMDEgOC43NDk5M0M5LjMxMDE0IDguNzQ5OTMgOC43NTA5OCA5LjMwOTkzIDguNzUwOTggOS45OTk5M0M4Ljc1MDk4IDEwLjY5MDggOS4zMTAxNCAxMS4yNDk5IDEwLjAwMSAxMS4yNDk5QzEwLjY5MSAxMS4yNDk5IDExLjI1MSAxMC42OTA4IDExLjI1MSA5Ljk5OTkzQzExLjI1MSA5LjMwOTkzIDEwLjY5MSA4Ljc0OTkzIDEwLjAwMSA4Ljc0OTkzWk0xMC4wMDEgMTMuMzIzMUM5LjMxMDE0IDEzLjMyMzEgOC43NTA5OCAxMy44ODIzIDguNzUwOTggMTQuNTczMUM4Ljc1MDk4IDE1LjI2MzkgOS4zMTAxNCAxNS44MjMxIDEwLjAwMSAxNS44MjMxQzEwLjY5MSAxNS44MjMxIDExLjI1MSAxNS4yNjM5IDExLjI1MSAxNC41NzMxQzExLjI1MSAxMy44ODIzIDEwLjY5MSAxMy4zMjMxIDEwLjAwMSAxMy4zMjMxWiIgZmlsbD0iI0EwQTBBMCIvPgo8L3N2Zz4K"
-																							xmlns:xlink="http://www.w3.org/1999/xlink">
-																							<path fill-rule="evenodd" clip-rule="evenodd" d="M11.251 5.42676C11.251 6.11759 10.691 6.67676 10.001 6.67676C9.31014 6.67676 8.75098 6.11759 8.75098 5.42676C8.75098 4.73676 9.31014 4.17676 10.001 4.17676C10.691 4.17676 11.251 4.73676 11.251 5.42676ZM10.001 8.74993C9.31014 8.74993 8.75098 9.30993 8.75098 9.99993C8.75098 10.6908 9.31014 11.2499 10.001 11.2499C10.691 11.2499 11.251 10.6908 11.251 9.99993C11.251 9.30993 10.691 8.74993 10.001 8.74993ZM10.001 13.3231C9.31014 13.3231 8.75098 13.8823 8.75098 14.5731C8.75098 15.2639 9.31014 15.8231 10.001 15.8231C10.691 15.8231 11.251 15.2639 11.251 14.5731C11.251 13.8823 10.691 13.3231 10.001 13.3231Z"
-																								fill="#A0A0A0"></path>
-																						</svg>
-																					</div>
-																				</div>
-																				<div class="css-aa3xw">
-																					<div class="css-ve4kut">
-																						<div class="css-19hkid5">부적절 표현 신고</div>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div class="css-1pov5mm">
-																<div class="css-ov1ktg">
-																	<a class="css-255jr8" href="/ko-KR/users/36lvXM3p35Xdn">
-																		<div class="css-de38ex"></div>
-																	</a>
-																	<div class="css-199ku80">
-																		<div class="css-1sg2lsz">
-																			<a class="css-255jr8" href="/ko-KR/users/36lvXM3p35Xdn">
-																				<div class="css-72k174">WATCHA</div>
-																				<div class="Icon officlaiBadge css-13ebre0-SVG e1282e850">
-																					<div>
-																						<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"
-																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00Ljc3MDQ2IDAuNTYyNDU5QzUuMjQzMjggLTAuMTU2NDMyIDYuMzExNDcgLTAuMTkzMDcgNi44MzUzNSAwLjQ5MjE1NUM3LjE3MzM3IDAuOTMzNzg4IDcuNzczODUgMS4xMDExMyA4LjMwMTgxIDAuOTAwMTIxQzkuMTE5OCAwLjU4ODIwNSAxMC4wMDYyIDEuMTY3NDggMTAuMDE0NCAyLjAyMTA0QzEwLjAxOTUgMi41Njk2MSAxMC40MDU1IDMuMDQ3ODggMTAuOTUzOSAzLjE4NTUyQzExLjgwNDYgMy4zOTk0MSAxMi4xNzAyIDQuMzc0NzYgMTEuNjYwNiA1LjA2ODlDMTEuMzMxOCA1LjUxNjQ4IDExLjM1MzIgNi4xMjE0OSAxMS43MTM3IDYuNTQ2MjlDMTIuMjcyMyA3LjIwNDc4IDExLjk3NzIgOC4yMDE5MiAxMS4xNDM4IDguNDcyMjVDMTAuNjA2NyA4LjY0NzUyIDEwLjI1NzQgOS4xNTA1NCAxMC4yOTExIDkuNjk5MTJDMTAuMzQ0MiAxMC41NDk3IDkuNTAxNzQgMTEuMTg3NCA4LjY2MzMyIDEwLjkzMTlDOC4xMjIwOCAxMC43Njc2IDcuNTM0ODggMTAuOTc0NSA3LjIyOTU0IDExLjQzNzlDNi43NTY3MiAxMi4xNTY4IDUuNjg3NTEgMTIuMTkyNSA1LjE2NDY1IDExLjUwODJDNC44MjY2MyAxMS4wNjU2IDQuMjI2MTUgMTAuODk4MyAzLjY5ODE5IDExLjEwMDNDMi44ODAyIDExLjQxMjIgMS45OTM3OCAxMC44MzE5IDEuOTg0NTkgOS45ODAzNEMxLjk4MDUxIDkuNDI5NzggMS41OTU1MSA4Ljk1MjUgMS4wNDYxIDguODEzODdDMC4xOTU0MjggOC41OTk5OSAtMC4xNzAxNjYgNy42MjY2MSAwLjMzOTQxOSA2LjkzMjQ3QzAuNjY4MjQ5IDYuNDgzOTEgMC42NDY4MDQgNS44Nzc5IDAuMjg2MzE2IDUuNDUzMUMtMC4yNzIyODcgNC43OTQ2MSAwLjAyMjg0MyAzLjc5OTQ1IDAuODU2MTUyIDMuNTI3MTVDMS4zOTMzMSAzLjM1Mjg3IDEuNzQzNTkgMi44NTA4MyAxLjcwODg2IDIuMzAxMjdDMS42NTU3NiAxLjQ1MDY4IDIuNDk4MjYgMC44MTE5OTIgMy4zMzY2OCAxLjA2ODQ2QzMuODc3OTIgMS4yMzI4MyA0LjQ2NTEyIDEuMDI1ODggNC43NzA0NiAwLjU2MjQ1OVoiIGZpbGw9IiNGNzE3NUEiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik01LjE2MDYxIDguMzI4OTVDNS4wMzk4NyA4LjMyODk1IDQuOTI0NTggOC4yODA4MyA0LjgzOTI0IDguMTk2NEwzLjEzMzQ1IDYuNDg4OEMyLjk1NTUyIDYuMzEwODYgMi45NTU1MiA2LjAyMzk5IDMuMTMzNDUgNS44NDY5N0MzLjMxMDQ3IDUuNjY5MDQgMy41OTczNCA1LjY2OTA0IDMuNzc1MjggNS44NDY5N0w1LjE2MDYxIDcuMjMzMjFMOC4yMjQ1IDQuMTY4NDFDOC40MDI0MyAzLjk5MTM5IDguNjg5MyAzLjk5MTM5IDguODY3MjMgNC4xNjg0MUM5LjA0NDI2IDQuMzQ1NDQgOS4wNDQyNiA0LjYzMzIyIDguODY3MjMgNC44MTAyNEw1LjQ4MTk4IDguMTk2NEM1LjM5NjY0IDguMjgwODMgNS4yODEzNSA4LjMyODk1IDUuMTYwNjEgOC4zMjg5NVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik01LjE2MDYxIDguMzI4OTVWOC4zMjg5NUM1LjAzOTg3IDguMzI4OTUgNC45MjQ1OCA4LjI4MDgzIDQuODM5MjQgOC4xOTY0TDMuMTMzNDUgNi40ODg4QzIuOTU1NTIgNi4zMTA4NiAyLjk1NTUyIDYuMDIzOTkgMy4xMzM0NSA1Ljg0Njk3QzMuMzEwNDcgNS42NjkwNCAzLjU5NzM0IDUuNjY5MDQgMy43NzUyOCA1Ljg0Njk3TDUuMTYwNjEgNy4yMzMyMUw4LjIyNDUgNC4xNjg0MUM4LjQwMjQzIDMuOTkxMzkgOC42ODkzIDMuOTkxMzkgOC44NjcyMyA0LjE2ODQxQzkuMDQ0MjYgNC4zNDU0NCA5LjA0NDI2IDQuNjMzMjIgOC44NjcyMyA0LjgxMDI0TDUuNDgxOTggOC4xOTY0QzUuMzk2NjQgOC4yODA4MyA1LjI4MTM1IDguMzI4OTUgNS4xNjA2MSA4LjMyODk1IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjAuMjUiLz4KPC9zdmc+Cg=="
-																							xmlns:xlink="http://www.w3.org/1999/xlink">
-																							<path fill-rule="evenodd" clip-rule="evenodd" d="M4.77046 0.562459C5.24328 -0.156432 6.31147 -0.19307 6.83535 0.492155C7.17337 0.933788 7.77385 1.10113 8.30181 0.900121C9.1198 0.588205 10.0062 1.16748 10.0144 2.02104C10.0195 2.56961 10.4055 3.04788 10.9539 3.18552C11.8046 3.39941 12.1702 4.37476 11.6606 5.0689C11.3318 5.51648 11.3532 6.12149 11.7137 6.54629C12.2723 7.20478 11.9772 8.20192 11.1438 8.47225C10.6067 8.64752 10.2574 9.15054 10.2911 9.69912C10.3442 10.5497 9.50174 11.1874 8.66332 10.9319C8.12208 10.7676 7.53488 10.9745 7.22954 11.4379C6.75672 12.1568 5.68751 12.1925 5.16465 11.5082C4.82663 11.0656 4.22615 10.8983 3.69819 11.1003C2.8802 11.4122 1.99378 10.8319 1.98459 9.98034C1.98051 9.42978 1.59551 8.9525 1.0461 8.81387C0.195428 8.59999 -0.170166 7.62661 0.339419 6.93247C0.668249 6.48391 0.646804 5.8779 0.286316 5.4531C-0.272287 4.79461 0.022843 3.79945 0.856152 3.52715C1.39331 3.35287 1.74359 2.85083 1.70886 2.30127C1.65576 1.45068 2.49826 0.811992 3.33668 1.06846C3.87792 1.23283 4.46512 1.02588 4.77046 0.562459Z"
-																								fill="#F7175A"></path>
-																							<path fill-rule="evenodd" clip-rule="evenodd" d="M5.16061 8.32895C5.03987 8.32895 4.92458 8.28083 4.83924 8.1964L3.13345 6.4888C2.95552 6.31086 2.95552 6.02399 3.13345 5.84697C3.31047 5.66904 3.59734 5.66904 3.77528 5.84697L5.16061 7.23321L8.2245 4.16841C8.40243 3.99139 8.6893 3.99139 8.86723 4.16841C9.04426 4.34544 9.04426 4.63322 8.86723 4.81024L5.48198 8.1964C5.39664 8.28083 5.28135 8.32895 5.16061 8.32895Z"
-																								fill="white"></path>
-																							<path d="M5.16061 8.32895V8.32895C5.03987 8.32895 4.92458 8.28083 4.83924 8.1964L3.13345 6.4888C2.95552 6.31086 2.95552 6.02399 3.13345 5.84697C3.31047 5.66904 3.59734 5.66904 3.77528 5.84697L5.16061 7.23321L8.2245 4.16841C8.40243 3.99139 8.6893 3.99139 8.86723 4.16841C9.04426 4.34544 9.04426 4.63322 8.86723 4.81024L5.48198 8.1964C5.39664 8.28083 5.28135 8.32895 5.16061 8.32895"
-																								stroke="white" stroke-width="0.25"></path>
-																						</svg>
-																					</div>
-																				</div>
-																				<div class="Icon playBadge css-13ebre0-SVG e1282e850">
-																					<div>
-																						<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"
-																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00Ljc3MDQ2IDAuNTYyNDU5QzUuMjQzMjggLTAuMTU2NDMyIDYuMzExNDcgLTAuMTkzMDcgNi44MzUzNSAwLjQ5MjE1NUM3LjE3MzM3IDAuOTMzNzg4IDcuNzczODUgMS4xMDExMyA4LjMwMTgxIDAuOTAwMTIxQzkuMTE5OCAwLjU4ODIwNSAxMC4wMDYyIDEuMTY3NDggMTAuMDE0NCAyLjAyMTA0QzEwLjAxOTUgMi41Njk2MSAxMC40MDU1IDMuMDQ3ODggMTAuOTUzOSAzLjE4NTUyQzExLjgwNDYgMy4zOTk0MSAxMi4xNzAyIDQuMzc0NzYgMTEuNjYwNiA1LjA2ODlDMTEuMzMxOCA1LjUxNjQ4IDExLjM1MzIgNi4xMjE0OSAxMS43MTM3IDYuNTQ2MjlDMTIuMjcyMyA3LjIwNDc4IDExLjk3NzIgOC4yMDE5MiAxMS4xNDM4IDguNDcyMjVDMTAuNjA2NyA4LjY0NzUyIDEwLjI1NzQgOS4xNTA1NCAxMC4yOTExIDkuNjk5MTJDMTAuMzQ0MiAxMC41NDk3IDkuNTAxNzQgMTEuMTg3NCA4LjY2MzMyIDEwLjkzMTlDOC4xMjIwOCAxMC43Njc2IDcuNTM0ODggMTAuOTc0NSA3LjIyOTU0IDExLjQzNzlDNi43NTY3MiAxMi4xNTY4IDUuNjg3NTEgMTIuMTkyNSA1LjE2NDY1IDExLjUwODJDNC44MjY2MyAxMS4wNjU2IDQuMjI2MTUgMTAuODk4MyAzLjY5ODE5IDExLjEwMDNDMi44ODAyIDExLjQxMjIgMS45OTM3OCAxMC44MzE5IDEuOTg0NTkgOS45ODAzNEMxLjk4MDUxIDkuNDI5NzggMS41OTU1MSA4Ljk1MjUgMS4wNDYxIDguODEzODdDMC4xOTU0MjggOC41OTk5OSAtMC4xNzAxNjYgNy42MjY2MSAwLjMzOTQxOSA2LjkzMjQ3QzAuNjY4MjQ5IDYuNDgzOTEgMC42NDY4MDQgNS44Nzc5IDAuMjg2MzE2IDUuNDUzMUMtMC4yNzIyODcgNC43OTQ2MSAwLjAyMjg0MyAzLjc5OTQ1IDAuODU2MTUyIDMuNTI3MTVDMS4zOTMzMSAzLjM1Mjg3IDEuNzQzNTkgMi44NTA4MyAxLjcwODg2IDIuMzAxMjdDMS42NTU3NiAxLjQ1MDY4IDIuNDk4MjYgMC44MTE5OTIgMy4zMzY2OCAxLjA2ODQ2QzMuODc3OTIgMS4yMzI4MyA0LjQ2NTEyIDEuMDI1ODggNC43NzA0NiAwLjU2MjQ1OVoiIGZpbGw9IiMwRTBGMTAiLz4KPHBhdGggZD0iTTcuNjk3MzMgMi40NDk5NUw3LjI4NjEyIDcuNzkzNjdMNy4xNzc3NCA3Ljc5ODAzTDYuNDUyMjYgMy45Nzk1MUg1LjI2MTIzTDQuNjY1NTggNy44OTEzMkw0LjUzNTc1IDcuODk2NTVMMy45NTA5NiAzLjk3OTUxSDIuNUwzLjgxMDI3IDkuNzE1NThMNS4zMTUyOCA5LjYxNDE1TDUuODQ1NzQgNS45NzE0NUg1Ljk2NDk4TDYuNTYwMzUgOS41Mjk4N0w4LjA3NjUxIDkuNDI2OTlMOS4xMDUxMSAyLjQ0OTk1SDcuNjk3MzNaIiBmaWxsPSIjRkYwNTU4Ii8+Cjwvc3ZnPgo="
-																							xmlns:xlink="http://www.w3.org/1999/xlink">
-																							<path fill-rule="evenodd" clip-rule="evenodd" d="M4.77046 0.562459C5.24328 -0.156432 6.31147 -0.19307 6.83535 0.492155C7.17337 0.933788 7.77385 1.10113 8.30181 0.900121C9.1198 0.588205 10.0062 1.16748 10.0144 2.02104C10.0195 2.56961 10.4055 3.04788 10.9539 3.18552C11.8046 3.39941 12.1702 4.37476 11.6606 5.0689C11.3318 5.51648 11.3532 6.12149 11.7137 6.54629C12.2723 7.20478 11.9772 8.20192 11.1438 8.47225C10.6067 8.64752 10.2574 9.15054 10.2911 9.69912C10.3442 10.5497 9.50174 11.1874 8.66332 10.9319C8.12208 10.7676 7.53488 10.9745 7.22954 11.4379C6.75672 12.1568 5.68751 12.1925 5.16465 11.5082C4.82663 11.0656 4.22615 10.8983 3.69819 11.1003C2.8802 11.4122 1.99378 10.8319 1.98459 9.98034C1.98051 9.42978 1.59551 8.9525 1.0461 8.81387C0.195428 8.59999 -0.170166 7.62661 0.339419 6.93247C0.668249 6.48391 0.646804 5.8779 0.286316 5.4531C-0.272287 4.79461 0.022843 3.79945 0.856152 3.52715C1.39331 3.35287 1.74359 2.85083 1.70886 2.30127C1.65576 1.45068 2.49826 0.811992 3.33668 1.06846C3.87792 1.23283 4.46512 1.02588 4.77046 0.562459Z"
-																								fill="#0E0F10"></path>
-																							<path d="M7.69733 2.44995L7.28612 7.79367L7.17774 7.79803L6.45226 3.97951H5.26123L4.66558 7.89132L4.53575 7.89655L3.95096 3.97951H2.5L3.81027 9.71558L5.31528 9.61415L5.84574 5.97145H5.96498L6.56035 9.52987L8.07651 9.42699L9.10511 2.44995H7.69733Z"
-																								fill="#FF0558"></path>
-																						</svg>
-																					</div>
-																				</div></a>
-																			<div class="css-maxfbg">4년 전</div>
-																		</div>
-																		<div class="css-yb0jaq">댓글에서 신작 스포일러는 지양해주세요 :)</div>
-																		<div class="css-ov1ktg">
-																			<div class="css-1d8juai">
-																				<div class="Icon like css-1tuvmpc-SVG e1282e850">
-																					<div>
-																						<img class="like1" src="../images/like1.png">
-<!-- 																						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" -->
-<!-- 																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjkzNzgzIDUuNTMzMkgyLjE4NzgzQzEuODY1ODMgNS41MzMyIDEuNjA0NDkgNS43OTQ1NCAxLjYwNDQ5IDYuMTE2NTRWMTEuOTQ5OUMxLjYwNDQ5IDEyLjI3MTkgMS44NjU4MyAxMi41MzMyIDIuMTg3ODMgMTIuNTMzMkgzLjkzNzgzQzQuMjYwNDEgMTIuNTMzMiA0LjUyMTE2IDEyLjI3MTkgNC41MjExNiAxMS45NDk5VjYuMTE2NTRDNC41MjExNiA1Ljc5NDU0IDQuMjYwNDEgNS41MzMyIDMuOTM3ODMgNS41MzMyWiIgZmlsbD0iIzg3ODk4QiIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTguMTk3MzMgMy4wNDE3OUw4LjE5MTQ5IDIuNzk1NjJMOC4xNzgwOCAyLjIwMTc5TDguMTc2OTEgMi4xNjc5NUw4LjE3MzQxIDIuMTM0N0M4LjE2ODE2IDIuMDc4NyA4LjE3NTc0IDIuMDU0MiA4LjE3NDU4IDIuMDUzMDRDOC4xODQ0OSAyLjA0NzIgOC4yMjc2NiAyLjAzMzIgOC4zMTEwOCAyLjAzMzJDOC40ODA4MyAyLjAzMzIgOS4zMjYwOCAyLjA4MzM3IDkuMzI2MDggMy4wNzA5NUM5LjMyNjA4IDMuNDUzNjIgOS4yOTQ1OCAzLjc1MTEyIDkuMjI2OTEgNC4wMDg5NUw4Ljk4NjU4IDQuOTIzMDRDOC45NjI2NiA1LjAxNTc5IDkuMDMyMDggNS4xMDYyIDkuMTI3NzQgNS4xMDYySDEwLjA3MjdIMTEuMDEyNUMxMS4yNDA2IDUuMTA2MiAxMS40NTgyIDUuMjA1OTUgMTEuNjA5OCA1LjM3OTJDMTEuNzU4NiA1LjU1MTI5IDExLjgzMDkgNS43NzkzNyAxMS44MDkzIDYuMDA4MDRMMTAuOTcwNSAxMC4zMzkzTDEwLjk2NDcgMTAuMzY4NUwxMC45NjEyIDEwLjM5NzZDMTAuOTEzMyAxMC43Nzc0IDEwLjU2NzQgMTEuMDc0OSAxMC4xNzM3IDExLjA3NDlINS45Nzk0OVY1LjczOTdDNS45Nzk0OSA1LjUyMzg3IDYuMDk4NDkgNS4yOTQwNCA2LjMzNDE2IDUuMDU2NjJMNy45Mzk0OSAzLjQzMDI5TDguMTA0NTggMy4yNjI4N0M4LjE5NzMzIDMuMTY2NjIgOC4xOTczMyAzLjA0MTc5IDguMTk3MzMgMy4wNDE3OVpNMTIuMjY5NiA0LjgwNTc5QzExLjk1MTcgNC40NDAwNCAxMS40OTMyIDQuMjMxMiAxMS4wMTI1IDQuMjMxMkgxMC4wNzI3QzEwLjE2MiAzLjg5MjI5IDEwLjIwMTEgMy41MjA3IDEwLjIwMTEgMy4wNzA5NUMxMC4yMDExIDEuNzU2NyA5LjIyMTY2IDEuMTU4MiA4LjMxMTA4IDEuMTU4MkM3Ljk2ODA4IDEuMTU4MiA3LjcwMDMzIDEuMjY1NTQgNy41MTU5OSAxLjQ3NzI5QzcuMzk2OTkgMS42MTI2MiA3LjI2NTc0IDEuODUxMiA3LjMwMzA4IDIuMjIxNjJMNy4zMTY0OSAyLjgxNTQ1TDUuNzExMTYgNC40NDE3OUM1LjMwODY2IDQuODQ4OTUgNS4xMDQ0OSA1LjI4NTg3IDUuMTA0NDkgNS43Mzk3VjExLjM2NjVDNS4xMDQ0OSAxMS42ODg1IDUuMzY1ODMgMTEuOTQ5OSA1LjY4NzgzIDExLjk0OTlIMTAuMTczN0MxMS4wMTQyIDExLjk0OTkgMTEuNzI5NCAxMS4zMTIzIDExLjgyOTcgMTAuNTA1NUwxMi42NzUgNi4xNDA0NUMxMi43MzUxIDUuNjU2ODcgMTIuNTg2OSA1LjE3MDk1IDEyLjI2OTYgNC44MDU3OVoiIGZpbGw9IiM4Nzg5OEIiLz4KPC9zdmc+Cg==" -->
-<!-- 																							xmlns:xlink="http://www.w3.org/1999/xlink"> -->
-<!-- 																							<path fill-rule="evenodd" clip-rule="evenodd" d="M3.93783 5.5332H2.18783C1.86583 5.5332 1.60449 5.79454 1.60449 6.11654V11.9499C1.60449 12.2719 1.86583 12.5332 2.18783 12.5332H3.93783C4.26041 12.5332 4.52116 12.2719 4.52116 11.9499V6.11654C4.52116 5.79454 4.26041 5.5332 3.93783 5.5332Z" -->
-<!-- 																								fill="#87898B"></path> -->
-<!-- 																							<path fill-rule="evenodd" clip-rule="evenodd" d="M8.19733 3.04179L8.19149 2.79562L8.17808 2.20179L8.17691 2.16795L8.17341 2.1347C8.16816 2.0787 8.17574 2.0542 8.17458 2.05304C8.18449 2.0472 8.22766 2.0332 8.31108 2.0332C8.48083 2.0332 9.32608 2.08337 9.32608 3.07095C9.32608 3.45362 9.29458 3.75112 9.22691 4.00895L8.98658 4.92304C8.96266 5.01579 9.03208 5.1062 9.12774 5.1062H10.0727H11.0125C11.2406 5.1062 11.4582 5.20595 11.6098 5.3792C11.7586 5.55129 11.8309 5.77937 11.8093 6.00804L10.9705 10.3393L10.9647 10.3685L10.9612 10.3976C10.9133 10.7774 10.5674 11.0749 10.1737 11.0749H5.97949V5.7397C5.97949 5.52387 6.09849 5.29404 6.33416 5.05662L7.93949 3.43029L8.10458 3.26287C8.19733 3.16662 8.19733 3.04179 8.19733 3.04179ZM12.2696 4.80579C11.9517 4.44004 11.4932 4.2312 11.0125 4.2312H10.0727C10.162 3.89229 10.2011 3.5207 10.2011 3.07095C10.2011 1.7567 9.22166 1.1582 8.31108 1.1582C7.96808 1.1582 7.70033 1.26554 7.51599 1.47729C7.39699 1.61262 7.26574 1.8512 7.30308 2.22162L7.31649 2.81545L5.71116 4.44179C5.30866 4.84895 5.10449 5.28587 5.10449 5.7397V11.3665C5.10449 11.6885 5.36583 11.9499 5.68783 11.9499H10.1737C11.0142 11.9499 11.7294 11.3123 11.8297 10.5055L12.675 6.14045C12.7351 5.65687 12.5869 5.17095 12.2696 4.80579Z" -->
-<!-- 																								fill="#87898B"></path> -->
-<!-- 																						</svg> -->
-																					</div>
-																				</div>
-																				17
-																			</div>
-																			<div class="css-4ygot5">
-																				<div class="Icon more css-1b4hoch-SVG e1282e850">
-																					<div>
-																						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"
-																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMS4yNTEgNS40MjY3NkMxMS4yNTEgNi4xMTc1OSAxMC42OTEgNi42NzY3NiAxMC4wMDEgNi42NzY3NkM5LjMxMDE0IDYuNjc2NzYgOC43NTA5OCA2LjExNzU5IDguNzUwOTggNS40MjY3NkM4Ljc1MDk4IDQuNzM2NzYgOS4zMTAxNCA0LjE3Njc2IDEwLjAwMSA0LjE3Njc2QzEwLjY5MSA0LjE3Njc2IDExLjI1MSA0LjczNjc2IDExLjI1MSA1LjQyNjc2Wk0xMC4wMDEgOC43NDk5M0M5LjMxMDE0IDguNzQ5OTMgOC43NTA5OCA5LjMwOTkzIDguNzUwOTggOS45OTk5M0M4Ljc1MDk4IDEwLjY5MDggOS4zMTAxNCAxMS4yNDk5IDEwLjAwMSAxMS4yNDk5QzEwLjY5MSAxMS4yNDk5IDExLjI1MSAxMC42OTA4IDExLjI1MSA5Ljk5OTkzQzExLjI1MSA5LjMwOTkzIDEwLjY5MSA4Ljc0OTkzIDEwLjAwMSA4Ljc0OTkzWk0xMC4wMDEgMTMuMzIzMUM5LjMxMDE0IDEzLjMyMzEgOC43NTA5OCAxMy44ODIzIDguNzUwOTggMTQuNTczMUM4Ljc1MDk4IDE1LjI2MzkgOS4zMTAxNCAxNS44MjMxIDEwLjAwMSAxNS44MjMxQzEwLjY5MSAxNS44MjMxIDExLjI1MSAxNS4yNjM5IDExLjI1MSAxNC41NzMxQzExLjI1MSAxMy44ODIzIDEwLjY5MSAxMy4zMjMxIDEwLjAwMSAxMy4zMjMxWiIgZmlsbD0iI0EwQTBBMCIvPgo8L3N2Zz4K"
-																							xmlns:xlink="http://www.w3.org/1999/xlink">
-																							<path fill-rule="evenodd" clip-rule="evenodd" d="M11.251 5.42676C11.251 6.11759 10.691 6.67676 10.001 6.67676C9.31014 6.67676 8.75098 6.11759 8.75098 5.42676C8.75098 4.73676 9.31014 4.17676 10.001 4.17676C10.691 4.17676 11.251 4.73676 11.251 5.42676ZM10.001 8.74993C9.31014 8.74993 8.75098 9.30993 8.75098 9.99993C8.75098 10.6908 9.31014 11.2499 10.001 11.2499C10.691 11.2499 11.251 10.6908 11.251 9.99993C11.251 9.30993 10.691 8.74993 10.001 8.74993ZM10.001 13.3231C9.31014 13.3231 8.75098 13.8823 8.75098 14.5731C8.75098 15.2639 9.31014 15.8231 10.001 15.8231C10.691 15.8231 11.251 15.2639 11.251 14.5731C11.251 13.8823 10.691 13.3231 10.001 13.3231Z"
-																								fill="#A0A0A0"></path>
-																						</svg>
-																					</div>
-																				</div>
-																				<div class="css-aa3xw">
-																					<div class="css-ve4kut">
-																						<div class="css-19hkid5">부적절 표현 신고</div>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
+															
 															<form action="#" class="css-wbhcm7">
 																<div class="css-1xm32e0">
 																	<input name="replyMessage" placeholder="컬렉션에 댓글을 남겨보세요." class="css-uv85g1" type="text" value="">

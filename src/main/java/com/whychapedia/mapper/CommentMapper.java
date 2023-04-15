@@ -15,9 +15,13 @@ public interface CommentMapper {
 	//코멘트 10개 가져오기
 	List<CommentVo> commentSelect10(int movie_id1);
 
-//	List<Integer> likeCount(List<Integer> commentId);
-
 	List<Integer> replyCount(List<Integer> commentId);
 
 	CommentVo selectCommentOne(int comment_id);
+	
+	//영화 상세페이지에 들어갈 코멘트 2개 가져오기 
+	List<CommentVo> selectCommentTow(int movie_id);
+
+	//해당 영화의 코멘트 총 개수(content page)
+	int selectCommentAll(int movie_id);
 }

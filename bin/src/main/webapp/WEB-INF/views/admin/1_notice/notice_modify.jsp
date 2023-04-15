@@ -12,7 +12,7 @@
 		<link href="/css/admin/styles.css" rel="stylesheet" />
 		<link href="/css/admin/1_notice/Notice_Write.css" rel="stylesheet" />
 		
-		<script src="/js/admin_logout.js"></script>
+		<script src="/js/admin/admin_logout.js"></script>
 		
 		<script>
 			$(function() {

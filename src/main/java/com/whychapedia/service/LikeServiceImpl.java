@@ -43,21 +43,21 @@ public class LikeServiceImpl implements LikeService {
 	}
 
 
-	@Override
-	public int insertCommentLike(int user_id, int comment_id) {
+	@Override //코멘트 좋아요 추가
+	public int insertCommentLike(int comment_id, int user_id) {
 		int insertLike = likeMapper.insertLikeOne(comment_id, user_id);
 		System.out.println("likeservice insertLikeOne: "+ insertLike);
 		return insertLike;
 	}
 
-	@Override
+	@Override //코멘트 좋아요 삭제
 	public int deleteCommentLike(int comment_id, int user_id) {
 		int deleteLike = likeMapper.deleteLikeOne(comment_id, user_id);
 		System.out.println("likeservice deleteLikeOne: "+ deleteLike);
 		return deleteLike;
 	}
 
-	@Override
+	@Override//코멘트 좋아요 개수
 	public int selectCommentOneLike(int comment_id) {
 		int likeList = likeMapper.selectCommentOneLike(comment_id);
 		return likeList;
@@ -121,5 +121,60 @@ public class LikeServiceImpl implements LikeService {
         return actorlikeCount;
 	    }
 
+	//콜렉션 좋아요 추가/좋아요 개수
+	@Override
+	public int insertCollectionLike(int collection_id, int user_id) {
+		likeMapper.insertCollectionLike(collection_id, user_id);
+		int collectionCount = likeMapper.selectCollectionLikeCount(collection_id);
+		return collectionCount;
+	}
+	//콜렉션 좋아요 삭제/좋아요 개수
+	@Override
+	public int deleteCollectionLike(int collection_id, int user_id) {
+		likeMapper.deleteCollectionLike(collection_id, user_id);
+		int collectionCount = likeMapper.selectCollectionLikeCount(collection_id);
+		return collectionCount;
+	}
+	
+	//reply 좋아요 추가
+	@Override
+	public int insertReplyLike(int reply_id, int user_id) {
+		int likeresult = likeMapper.insertReplyLike(reply_id,user_id);
+		System.out.println("likeresult insert : "+likeresult);
+		return 0;
+	}
 
+	//reply 좋아요 삭제
+	@Override
+	public int deleteReplyLike(int reply_id, int user_id) {
+		int likeresult = likeMapper.deleteReplyLike(reply_id,user_id);
+		System.out.println("likeresult delete : "+likeresult);
+		return 0;
+	}
+	//reply like 수
+	@Override
+	public int selectReplyLike(int reply_id) {
+		int replyLike = likeMapper.selectReplyLike(reply_id);
+		return replyLike;
+	}
+
+	//코멘트 좋아요 list
+	@Override
+	public List<LikeVo> selectCommentLikeList(List<CommentVo> commentVolist) {
+		List<LikeVo> likeList = likeMapper.selectCommentLikeList(commentVolist);
+		return likeList;
+	}
+
+	//콜렉션 좋아요 list
+	@Override
+	public List<LikeVo> selectCollectionLikeList(int collection_id) {
+		List<LikeVo> collectionLikeList = likeMapper.selectCollectionLikeList(collection_id);
+		return collectionLikeList;
+	}
+	
+	@Override
+	public List<LikeVo> selectCommentLikeOne(int comment_id) {
+		List<LikeVo> likeList = likeMapper.selectCommentLikeOne(comment_id);
+		return likeList;
+	}
 }

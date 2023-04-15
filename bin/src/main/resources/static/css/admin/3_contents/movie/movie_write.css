@@ -77,9 +77,9 @@ select:visited {
 
 /* -------------------------------------- */
 .container {
-  margin: 5px 10px;
+  margin: 2px auto;
   border: 1px solid rgb(255, 255, 255);
-  width: 95%;
+  width: 99%;
 }
 
 .selection {
@@ -162,7 +162,7 @@ img:not(.profile_img, .profile_minus, .logo, .ott_img, .x_icon) {
   border: 1px solid rgb(228, 223, 223);
   border-radius: 0.25rem;
   width: 100%;
-  height: 320px;
+  height: 417px;
   align-items: center;
 }
 
@@ -199,7 +199,10 @@ img:not(.profile_img, .profile_minus, .logo, .ott_img, .x_icon) {
   border-radius: 0.25rem;
   width: 100%;
   height: 40px;
+  margin: 10px auto;
   overflow: auto;
+  overflow-x: hidden;
+  overflow-y: hidden;
   align-items: center;
   box-sizing: border-box;
 }
@@ -266,7 +269,7 @@ img:not(.profile_img, .profile_minus, .logo, .ott_img, .x_icon) {
 
 #margin_little {
   margin: 10px;
-  width: 85%;
+  width: 90%;
   overflow: hidden;
 }
 #inputFile {
@@ -290,7 +293,7 @@ img:not(.profile_img, .profile_minus, .logo, .ott_img, .x_icon) {
 #vBox {
   border: 1px solid rgb(228, 223, 223);
   width: 100%;
-  height: 320px;
+  height: 417px;
   overflow: auto;
 }
 
@@ -298,7 +301,7 @@ img:not(.profile_img, .profile_minus, .logo, .ott_img, .x_icon) {
   margin: 10px;
   border: 1px solid rgb(228, 223, 223);
   width: 95%;
-  height: 80px;
+  height: 40px;
 }
 
 #conBox {
@@ -320,6 +323,12 @@ img:not(.profile_img, .profile_minus, .logo, .ott_img, .x_icon) {
 .inBox1 {
   margin: 5px 10px;
   width: 95%;
+  border: 1px solid rgb(228, 223, 223);
+}
+
+.inBox2 {
+  margin: 5px 10px;
+  width: 87%;
   border: 1px solid rgb(228, 223, 223);
 }
 
@@ -472,17 +481,16 @@ img:not(.profile_img, .profile_minus, .logo, .ott_img, .x_icon) {
   margin: 10px;
   border: 1px solid rgb(228, 223, 223);
   width: 50%;
-  height: 130px;
-  padding-right: 10px;
+  height: 70px;
+  vertical-align:middle;
 }
 
 .wBox2 {
-  margin: 10px;
+  margin: 10px auto;
   border: 1px solid rgb(228, 223, 223);
   width: 95%;
-  height: 80px;
-  padding-top: 15px;
-  padding-right: 10px;
+  height: 50px;
+  vertical-align:middle;
 }
 
 .wBox3 {

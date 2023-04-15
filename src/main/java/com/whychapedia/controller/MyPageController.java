@@ -25,6 +25,7 @@ import com.whychapedia.service.MovieGenreService;
 import com.whychapedia.service.MovieService;
 import com.whychapedia.service.StarRateService;
 import com.whychapedia.service.WatchListService;
+import com.whychapedia.vo.AnnouncementVo;
 import com.whychapedia.vo.ArtistVo;
 import com.whychapedia.vo.CollectionArtistVo;
 import com.whychapedia.vo.LikeVo;
@@ -111,7 +112,9 @@ public class MyPageController {
 		//평가한 영화 중 높은 score top 6영화
 		List<StarRateVo> userMovieList=starRateService.selectTopRatedMovieOfUser(6,user_id);
 		model.addAttribute("userMovieList",userMovieList);
-		
+		//공지사항 가져오기
+		List<AnnouncementVo> announcementList = announcementService.selectAnnouncementList();
+		model.addAttribute("announcementList",announcementList);
 		return "myPage/userPage_SY";
 	}
 	

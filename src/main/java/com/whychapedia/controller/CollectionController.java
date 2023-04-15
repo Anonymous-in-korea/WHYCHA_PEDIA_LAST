@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -170,6 +171,17 @@ public class CollectionController {
 		model.addAttribute("collectionVo",collectionVo);//컬렉션 디테일
 		model.addAttribute("sizeCollection",sizeCollection);//컬렉션 사이즈
 		
+		
+		//collection에 대한 commentList
+		List<CollectionCommentVo> collectionCommentList = collectionCommentService.selectCollectionComment(collection_id);
+		//collection에 대한 likelist
+		List<LikeVo> collectionLikeList = likeService.selectCollectionLikeList(collection_id);
+		//콜렉션 코멘트 list에 대한 userlist
+		List<MemberVo> memberList = memberService.selectCollectionCommentMember(collectionCommentList);
+		model.addAttribute("collectionCommentList",collectionCommentList);
+		model.addAttribute("memberList",memberList);
+		model.addAttribute("collectionLikeList",collectionLikeList);
+		
 		return "/collection/collection_detail_HY";
 	}
 	
@@ -195,6 +207,41 @@ public class CollectionController {
 		map.put("collectionVo", collectionVo);
 		
 		return new ResponseEntity<>(map, HttpStatus.OK);
+	}
+	
+	//콜렉션 좋아요 추가
+	@ResponseBody
+	@PostMapping("/collection_like")
+	public int collection_like(@RequestParam("user_id") int user_id, @RequestParam("collection_id") int collection_id) {
+		int collectionCount = likeService.insertCollectionLike(collection_id, user_id);
+		return collectionCount;
+	}
+	
+	//콜렉션 좋아요 삭제
+	@ResponseBody
+	@PostMapping("/collection_like_delete")
+	public int collection_like_delete(@RequestParam("user_id") int user_id, @RequestParam("collection_id") int collection_id) {
+		int collectionCount = likeService.deleteCollectionLike(collection_id, user_id);
+		return collectionCount;
+	}
+	
+	//콜렉션 댓글 추가
+	@ResponseBody
+	@PostMapping("/collection_comment_insert")
+	public Map<String, Object> collection_comment_insert( @RequestParam("collection_id") int collection_id, @RequestParam("user_id") int user_id,
+			@RequestParam("collection_comment_content") String collection_comment_content) {
+		Map<String, Object> map = new HashMap<>();
+		int result = collectionCommentService.insertCollectioncomment(collection_id, user_id,collection_comment_content);
+		//collection에 대한 commentList
+		List<CollectionCommentVo> collectionCommentList = collectionCommentService.selectCollectionComment(collection_id);
+		//collection에 대한 likelist
+		List<LikeVo> collectionLikeList = likeService.selectCollectionLikeList(collection_id);
+		//콜렉션 코멘트 list에 대한 userlist
+		List<MemberVo> memberList = memberService.selectCollectionCommentMember(collectionCommentList);
+		map.put("collectionCommentList", collectionCommentList);
+		map.put("collectionLikeList", collectionLikeList);
+		map.put("memberList", memberList);
+		return map;
 	}
 	
 }

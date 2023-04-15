@@ -11,6 +11,18 @@
     padding: 88px 0px 0px;
 }
 
+#collectionRegister {
+  background-color: #FF8200;
+  color: white;
+  font-weight: 400;
+  font-size: 12px;
+  padding: 6px 13.5px; 
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
 
 
 .css-4g5dyy{
@@ -134,7 +146,7 @@ div {
 }
 
 .css-1ugqy9j > div {
-    color: rgb(255, 47, 110);
+    color:#FF8200;
     text-decoration: none;
 }
 
@@ -435,7 +447,7 @@ a {
 .css-hdhlfe {
     width: 103px;
     height: 150px;
-    background: url(https://an2-img.amz.wtchn.net/image/v2/Kh9MU2D6QKNnlyAiG38qYw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMM1JxYUdkbGNqaDVkSEIwZGpSNFkzZGhaWFJtSW4wLkxKXzlVZnNGOW56d1F1aU9WX2NZME9QNDVYdjFuSHVpZmNZSWFkbjQtXzQ) 0% 0% / cover no-repeat;
+/*     background: url(https://an2-img.amz.wtchn.net/image/v2/Kh9MU2D6QKNnlyAiG38qYw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMM1JxYUdkbGNqaDVkSEIwZGpSNFkzZGhaWFJtSW4wLkxKXzlVZnNGOW56d1F1aU9WX2NZME9QNDVYdjFuSHVpZmNZSWFkbjQtXzQ) 0% 0% / cover no-repeat; */
     background-repeat: no-repeat;
     border-radius: 6px;
     overflow: hidden;
@@ -449,7 +461,7 @@ a {
 .css-1lebkd8 {
     width: 103px;
     height: 150px;
-    background: url(https://an2-img.amz.wtchn.net/image/v2/NWMV3pDrbacNryQOOURhdQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMMjlsWjNKcVpHeDBabWwzWldGeGFtWnJNRE51SW4wLmprS2hIOGlxVzR0TU9GajRkVlExQ19KR20wX2p2WVRMNDlNeFBrSUotUnc) 0% 0% / cover no-repeat;
+/*     background: url(https://an2-img.amz.wtchn.net/image/v2/NWMV3pDrbacNryQOOURhdQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMMjlsWjNKcVpHeDBabWwzWldGeGFtWnJNRE51SW4wLmprS2hIOGlxVzR0TU9GajRkVlExQ19KR20wX2p2WVRMNDlNeFBrSUotUnc) 0% 0% / cover no-repeat; */
     background-repeat: no-repeat;
     border-radius: 6px;
     overflow: hidden;
@@ -461,7 +473,7 @@ a {
 .css-3a1vh6 {
     width: 103px;
     height: 150px;
-    background: url(https://an2-img.amz.wtchn.net/image/v2/KmQ2Y9px5vbdRhQJ1SuNrQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMMnBzWVhVM05uQjJNVGgwYTJRNGVYRjJaM0ZpSW4wLkpUeFNoYVhWMFAyZlN2d0EyV2lHRmR4Y2gzVDZBMjc4TW1KZVBueTlrZmM) 0% 0% / cover no-repeat;
+/*     background: url(https://an2-img.amz.wtchn.net/image/v2/KmQ2Y9px5vbdRhQJ1SuNrQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMMnBzWVhVM05uQjJNVGgwYTJRNGVYRjJaM0ZpSW4wLkpUeFNoYVhWMFAyZlN2d0EyV2lHRmR4Y2gzVDZBMjc4TW1KZVBueTlrZmM) 0% 0% / cover no-repeat; */
     background-repeat: no-repeat;
     border-radius: 6px;
     overflow: hidden;
@@ -472,7 +484,7 @@ a {
 .css-qpso0m {
     width: 103px;
     height: 150px;
-    background: url(https://an2-img.amz.wtchn.net/image/v2/VJvO958gZusxd3hUwDWSOA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMMkp4YVhsNU1tdGxiSEJsY3paa1pubDVhbk42SW4wLjNnV2tTeHRBMzREWUNCNjhobElwa2d2UHo3R2ZPUW53cmkxMW9JZkRySGc) 0% 0% / cover no-repeat;
+/*     background: url(https://an2-img.amz.wtchn.net/image/v2/VJvO958gZusxd3hUwDWSOA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMMkp4YVhsNU1tdGxiSEJsY3paa1pubDVhbk42SW4wLjNnV2tTeHRBMzREWUNCNjhobElwa2d2UHo3R2ZPUW53cmkxMW9JZkRySGc) 0% 0% / cover no-repeat; */
     background-repeat: no-repeat;
     border-radius: 6px;
     overflow: hidden;
@@ -484,7 +496,7 @@ a {
 .css-uifub2 {
     width: 103px;
     height: 150px;
-    background: url(https://an2-img.amz.wtchn.net/image/v2/Ht3b1vCvRnS6phBm4DpgOQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMMmgyYTNkdlltNXZOVzlxY0RadVlXOXBkRzA0SW4wLlpSRHJGR3dBMjhsNzNabGdvRXNfYzM0ZEhFOEphQ2tkM3NKX3pDazNIbHc) 0% 0% / cover no-repeat;
+/*     background: url(https://an2-img.amz.wtchn.net/image/v2/Ht3b1vCvRnS6phBm4DpgOQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMMmgyYTNkdlltNXZOVzlxY0RadVlXOXBkRzA0SW4wLlpSRHJGR3dBMjhsNzNabGdvRXNfYzM0ZEhFOEphQ2tkM3NKX3pDazNIbHc) 0% 0% / cover no-repeat; */
     background-repeat: no-repeat;
     border-radius: 6px;
     overflow: hidden;
@@ -495,7 +507,7 @@ a {
 .css-1c7wnm0 {
     width: 103px;
     height: 150px;
-    background: url(https://an2-img.amz.wtchn.net/image/v2/rQwrHoyzK6rv2t1cjbqIwA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMM0IxZEdkdGVXUXplbkJwYTJ4aWMydG1aV2RxSW4wLks3Ulg5Z1ZiRDJaU1ZTM3UtRkZvRnVzeVhxbExGYnR3X0xxZ3BaOVRYYVU) 0% 0% / cover no-repeat;
+/*     background: url(https://an2-img.amz.wtchn.net/image/v2/rQwrHoyzK6rv2t1cjbqIwA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMM0IxZEdkdGVXUXplbkJwYTJ4aWMydG1aV2RxSW4wLks3Ulg5Z1ZiRDJaU1ZTM3UtRkZvRnVzeVhxbExGYnR3X0xxZ3BaOVRYYVU) 0% 0% / cover no-repeat; */
     background-repeat: no-repeat;
     border-radius: 6px;
     overflow: hidden;
@@ -512,7 +524,7 @@ px
 .css-1ltg06n {
     width: 103px;
     height: 150px;
-    background: url(https://an2-img.amz.wtchn.net/image/v2/mOfjGIfQUfR9spFR54MQmA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMM0ZxZURSbWIzUnpaR1p1Y0dsMmIzbzViV053SW4wLlVNUHNiSkdmVkVPUGN6VTV4TUN2M01YSWRGT09mSUNDQVZJeUNmbVRVdDg) 0% 0% / cover no-repeat;
+/*     background: url(https://an2-img.amz.wtchn.net/image/v2/mOfjGIfQUfR9spFR54MQmA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMM0ZxZURSbWIzUnpaR1p1Y0dsMmIzbzViV053SW4wLlVNUHNiSkdmVkVPUGN6VTV4TUN2M01YSWRGT09mSUNDQVZJeUNmbVRVdDg) 0% 0% / cover no-repeat; */
     background-repeat: no-repeat;
     border-radius: 6px;
     overflow: hidden;
@@ -523,7 +535,7 @@ px
 .css-1pw0ykk {
     width: 103px;
     height: 150px;
-    background: url(https://an2-img.amz.wtchn.net/image/v2/0REDPggrDaqRTzwKkqXhTw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMM0puZEdoeWVHRjZhM1JyZW5Sck9IZHZaemw2SW4wLlJWWnp2bnVEbzNVNWg5Sm9IQlpRWHoxYXVSRnJiUmhTWVdxdGRNY0JSQXM) 0% 0% / cover no-repeat;
+/*     background: url(https://an2-img.amz.wtchn.net/image/v2/0REDPggrDaqRTzwKkqXhTw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMM0puZEdoeWVHRjZhM1JyZW5Sck9IZHZaemw2SW4wLlJWWnp2bnVEbzNVNWg5Sm9IQlpRWHoxYXVSRnJiUmhTWVdxdGRNY0JSQXM) 0% 0% / cover no-repeat; */
     background-repeat: no-repeat;
     border-radius: 6px;
     overflow: hidden;
@@ -1190,7 +1202,7 @@ div {
 		.css-hdhlfe {
 		    width: 103px;
 		    height: 150px;
-		    background: url("https://an2-img.amz.wtchn.net/image/v2/Kh9MU2D6QKNnlyAiG38qYw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMM1JxYUdkbGNqaDVkSEIwZGpSNFkzZGhaWFJtSW4wLkxKXzlVZnNGOW56d1F1aU9WX2NZME9QNDVYdjFuSHVpZmNZSWFkbjQtXzQ") 0% 0% / cover no-repeat;
+/* 		    background: url("https://an2-img.amz.wtchn.net/image/v2/Kh9MU2D6QKNnlyAiG38qYw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMM1JxYUdkbGNqaDVkSEIwZGpSNFkzZGhaWFJtSW4wLkxKXzlVZnNGOW56d1F1aU9WX2NZME9QNDVYdjFuSHVpZmNZSWFkbjQtXzQ") 0% 0% / cover no-repeat; */
 		    background-repeat: no-repeat;
 		    border-radius: 6px;
 		    overflow: hidden;
@@ -1203,7 +1215,7 @@ div {
 		.css-1lebkd8 {
 		    width: 103px;
 		    height: 150px;
-		    background: url("https://an2-img.amz.wtchn.net/image/v2/NWMV3pDrbacNryQOOURhdQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMMjlsWjNKcVpHeDBabWwzWldGeGFtWnJNRE51SW4wLmprS2hIOGlxVzR0TU9GajRkVlExQ19KR20wX2p2WVRMNDlNeFBrSUotUnc") 0% 0% / cover no-repeat;
+/* 		    background: url("https://an2-img.amz.wtchn.net/image/v2/NWMV3pDrbacNryQOOURhdQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMMjlsWjNKcVpHeDBabWwzWldGeGFtWnJNRE51SW4wLmprS2hIOGlxVzR0TU9GajRkVlExQ19KR20wX2p2WVRMNDlNeFBrSUotUnc") 0% 0% / cover no-repeat; */
 		    background-repeat: no-repeat;
 		    border-radius: 6px;
 		    overflow: hidden;
@@ -1212,7 +1224,7 @@ div {
 		.css-1hdabjv {
 		    width: 103px;
 		    height: 150px;
-		    background: url("https://an2-img.amz.wtchn.net/image/v2/TS7VLT4x-cSzSj18JZMncA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMMmg1T1RBeE4yaG9lRzFvWTNWalptbGpZbVZqSW4wLnp4My0zZ1JtejdCZWFMQTJKWXkwNndXaGZYNFVJeDhCNWotWU9fN3Vmdk0") 0% 0% / cover no-repeat;
+/* 		    background: url("https://an2-img.amz.wtchn.net/image/v2/TS7VLT4x-cSzSj18JZMncA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMMmg1T1RBeE4yaG9lRzFvWTNWalptbGpZbVZqSW4wLnp4My0zZ1JtejdCZWFMQTJKWXkwNndXaGZYNFVJeDhCNWotWU9fN3Vmdk0") 0% 0% / cover no-repeat; */
 		    background-repeat: no-repeat;
 		    border-radius: 6px;
 		    overflow: hidden;
@@ -1221,7 +1233,7 @@ div {
 		.css-1oa0hdt {
 		    width: 103px;
 		    height: 150px;
-		    background: url("https://an2-img.amz.wtchn.net/image/v2/OhO-q78YtR1iyk7OVtyQDg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMM3B0T1RkMWNXWjVOM2R3YVhsc2R6aHJhREJ3SW4wLjc3QW9BcVZlUlpta0thZ3U3YXlHVlpvMDVhRjBQYU43N0Q0V3pxZlhaQWc") 0% 0% / cover no-repeat;
+/* 		    background: url("https://an2-img.amz.wtchn.net/image/v2/OhO-q78YtR1iyk7OVtyQDg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMM3B0T1RkMWNXWjVOM2R3YVhsc2R6aHJhREJ3SW4wLjc3QW9BcVZlUlpta0thZ3U3YXlHVlpvMDVhRjBQYU43N0Q0V3pxZlhaQWc") 0% 0% / cover no-repeat; */
 		    background-repeat: no-repeat;
 		    border-radius: 6px;
 		    overflow: hidden;
@@ -1235,7 +1247,7 @@ div {
 		    width: 103px;
 		    height: 150px;
 		    filter: opacity(0.4);
-		    background: url("https://an2-img.amz.wtchn.net/image/v2/VJvO958gZusxd3hUwDWSOA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMMkp4YVhsNU1tdGxiSEJsY3paa1pubDVhbk42SW4wLjNnV2tTeHRBMzREWUNCNjhobElwa2d2UHo3R2ZPUW53cmkxMW9JZkRySGc") 0% 0% / cover no-repeat;
+/* 		    background: url("https://an2-img.amz.wtchn.net/image/v2/VJvO958gZusxd3hUwDWSOA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMMkp4YVhsNU1tdGxiSEJsY3paa1pubDVhbk42SW4wLjNnV2tTeHRBMzREWUNCNjhobElwa2d2UHo3R2ZPUW53cmkxMW9JZkRySGc") 0% 0% / cover no-repeat; */
 		    background-repeat: no-repeat;
 		    border-radius: 6px;
 		    overflow: hidden;
@@ -1248,7 +1260,7 @@ div {
 		.css-3a1vh6 {
 		    width: 103px;
 		    height: 150px;
-		    background: url("https://an2-img.amz.wtchn.net/image/v2/KmQ2Y9px5vbdRhQJ1SuNrQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMMnBzWVhVM05uQjJNVGgwYTJRNGVYRjJaM0ZpSW4wLkpUeFNoYVhWMFAyZlN2d0EyV2lHRmR4Y2gzVDZBMjc4TW1KZVBueTlrZmM") 0% 0% / cover no-repeat;
+/* 		    background: url("https://an2-img.amz.wtchn.net/image/v2/KmQ2Y9px5vbdRhQJ1SuNrQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMMnBzWVhVM05uQjJNVGgwYTJRNGVYRjJaM0ZpSW4wLkpUeFNoYVhWMFAyZlN2d0EyV2lHRmR4Y2gzVDZBMjc4TW1KZVBueTlrZmM") 0% 0% / cover no-repeat; */
 		    background-repeat: no-repeat;
 		    border-radius: 6px;
 		    overflow: hidden;
@@ -1261,7 +1273,7 @@ div {
 		.css-qpso0m {
 		    width: 103px;
 		    height: 150px;
-		    background: url("https://an2-img.amz.wtchn.net/image/v2/VJvO958gZusxd3hUwDWSOA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMMkp4YVhsNU1tdGxiSEJsY3paa1pubDVhbk42SW4wLjNnV2tTeHRBMzREWUNCNjhobElwa2d2UHo3R2ZPUW53cmkxMW9JZkRySGc") 0% 0% / cover no-repeat;
+/* 		    background: url("https://an2-img.amz.wtchn.net/image/v2/VJvO958gZusxd3hUwDWSOA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMMkp4YVhsNU1tdGxiSEJsY3paa1pubDVhbk42SW4wLjNnV2tTeHRBMzREWUNCNjhobElwa2d2UHo3R2ZPUW53cmkxMW9JZkRySGc") 0% 0% / cover no-repeat; */
 		    background-repeat: no-repeat;
 		    border-radius: 6px;
 		    overflow: hidden;
@@ -1278,7 +1290,7 @@ div {
 		.css-uifub2 {
 		    width: 103px;
 		    height: 150px;
-		    background: url("https://an2-img.amz.wtchn.net/image/v2/Ht3b1vCvRnS6phBm4DpgOQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMMmgyYTNkdlltNXZOVzlxY0RadVlXOXBkRzA0SW4wLlpSRHJGR3dBMjhsNzNabGdvRXNfYzM0ZEhFOEphQ2tkM3NKX3pDazNIbHc") 0% 0% / cover no-repeat;
+/* 		    background: url("https://an2-img.amz.wtchn.net/image/v2/Ht3b1vCvRnS6phBm4DpgOQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMMmgyYTNkdlltNXZOVzlxY0RadVlXOXBkRzA0SW4wLlpSRHJGR3dBMjhsNzNabGdvRXNfYzM0ZEhFOEphQ2tkM3NKX3pDazNIbHc") 0% 0% / cover no-repeat; */
 		    background-repeat: no-repeat;
 		    border-radius: 6px;
 		    overflow: hidden;
@@ -1291,7 +1303,7 @@ div {
 		.css-1c7wnm0 {
 		    width: 103px;
 		    height: 150px;
-		    background: url("https://an2-img.amz.wtchn.net/image/v2/rQwrHoyzK6rv2t1cjbqIwA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMM0IxZEdkdGVXUXplbkJwYTJ4aWMydG1aV2RxSW4wLks3Ulg5Z1ZiRDJaU1ZTM3UtRkZvRnVzeVhxbExGYnR3X0xxZ3BaOVRYYVU") 0% 0% / cover no-repeat;
+/* 		    background: url("https://an2-img.amz.wtchn.net/image/v2/rQwrHoyzK6rv2t1cjbqIwA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMM0IxZEdkdGVXUXplbkJwYTJ4aWMydG1aV2RxSW4wLks3Ulg5Z1ZiRDJaU1ZTM3UtRkZvRnVzeVhxbExGYnR3X0xxZ3BaOVRYYVU") 0% 0% / cover no-repeat; */
 		    background-repeat: no-repeat;
 		    border-radius: 6px;
 		    overflow: hidden;
@@ -1304,7 +1316,7 @@ div {
 		.css-1ltg06n {
 		    width: 103px;
 		    height: 150px;
-		    background: url("https://an2-img.amz.wtchn.net/image/v2/mOfjGIfQUfR9spFR54MQmA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMM0ZxZURSbWIzUnpaR1p1Y0dsMmIzbzViV053SW4wLlVNUHNiSkdmVkVPUGN6VTV4TUN2M01YSWRGT09mSUNDQVZJeUNmbVRVdDg") 0% 0% / cover no-repeat;
+/* 		    background: url("https://an2-img.amz.wtchn.net/image/v2/mOfjGIfQUfR9spFR54MQmA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMM0ZxZURSbWIzUnpaR1p1Y0dsMmIzbzViV053SW4wLlVNUHNiSkdmVkVPUGN6VTV4TUN2M01YSWRGT09mSUNDQVZJeUNmbVRVdDg") 0% 0% / cover no-repeat; */
 		    background-repeat: no-repeat;
 		    border-radius: 6px;
 		    overflow: hidden;
@@ -1317,7 +1329,7 @@ div {
 		.css-1pw0ykk {
 		    width: 103px;
 		    height: 150px;
-		    background: url("https://an2-img.amz.wtchn.net/image/v2/0REDPggrDaqRTzwKkqXhTw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMM0puZEdoeWVHRjZhM1JyZW5Sck9IZHZaemw2SW4wLlJWWnp2bnVEbzNVNWg5Sm9IQlpRWHoxYXVSRnJiUmhTWVdxdGRNY0JSQXM") 0% 0% / cover no-repeat;
+/* 		    background: url("https://an2-img.amz.wtchn.net/image/v2/0REDPggrDaqRTzwKkqXhTw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UZ3dlREkxT0hFNE1DSmRMQ0p3SWpvaUwzWXhMM0puZEdoeWVHRjZhM1JyZW5Sck9IZHZaemw2SW4wLlJWWnp2bnVEbzNVNWg5Sm9IQlpRWHoxYXVSRnJiUmhTWVdxdGRNY0JSQXM") 0% 0% / cover no-repeat; */
 		    background-repeat: no-repeat;
 		    border-radius: 6px;
 		    overflow: hidden;
@@ -1615,7 +1627,6 @@ div {
 		.css-q29adr-ProfilePhotoImage {
 		    position: relative;
 		    z-index: 1;
-		    background: url("https://an2-img.amz.wtchn.net/image/v2/jyHe6EFD1ye-qgjsRbBLgw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UQXdlREV3TUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNWelpYSXZNelpzZGxoTk0zQXpOVmhrYmk5d2NtOW1hV3hsTHpFMk16QXdOemd6TnpFeU9URXhORFU1T0RRaWZRLmM5cnZfUmJEVXRGb1R3NDlmQkYyWTlwUVhRb0RaRW1yR1FOalZWYVFialE") center center / cover no-repeat;
 		    width: 100%;
 		    height: 100%;
 		}

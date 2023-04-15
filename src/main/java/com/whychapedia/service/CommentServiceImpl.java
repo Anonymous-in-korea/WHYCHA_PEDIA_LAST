@@ -25,7 +25,7 @@ public class CommentServiceImpl implements CommentService {
 		List<CommentVo> commentlist = commentMapper.commentSelect10(movie_id1);
 		return commentlist;
 	}
-
+	//해당 영화의 코멘트에 해당하는 reply list
 	@Override
 	public List<Integer> replyCount(List<CommentVo> commentVolist) {
 		List<Integer> commentId = new ArrayList<>();
@@ -33,7 +33,6 @@ public class CommentServiceImpl implements CommentService {
 			commentId.add(commentVolist.get(i).getId());
 		}
 		List<Integer> replyCount = commentMapper.replyCount(commentId);
-//		System.out.println("commentService replyCount : "+replyCount);
 		return replyCount;
 	}
 
@@ -41,5 +40,19 @@ public class CommentServiceImpl implements CommentService {
 	public CommentVo selectCommentOne(int comment_id) {
 		CommentVo cvo = commentMapper.selectCommentOne(comment_id);
 		return cvo;
+	}
+	
+	//영화 상세페이지 코멘트 2개 가져오기 
+	@Override
+	public List<CommentVo> selectCommentList2(int movie_id) {
+		List<CommentVo> commentList2 = commentMapper.selectCommentTow(movie_id);
+		return commentList2;
+	}
+	
+	//해당 영화의 코멘트 총 개수(content page)
+	@Override
+	public int selectCommentAll(int movie_id) {
+		int commentCount = commentMapper.selectCommentAll(movie_id);
+		return commentCount;
 	}
 }

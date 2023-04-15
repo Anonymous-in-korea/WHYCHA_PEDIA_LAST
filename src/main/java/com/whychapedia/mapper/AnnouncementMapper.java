@@ -11,6 +11,4 @@ public interface AnnouncementMapper {
 
 	public List<AnnouncementVo> selectAnnouncementList();
 
-	public int selectCount();
-
 }

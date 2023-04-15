@@ -14,7 +14,7 @@
 	</select>
 	
 	<!-- 코멘트 대한 like 가져오기  -->
-	<select id="selectCommentLike" resultType="com.whychapedia.vo.LikeVo">
+	<select id="selectCommentLikeList" resultType="com.whychapedia.vo.LikeVo">
 		select * fROM comment_like 
 		where comment_id in 
 			<foreach collection="commentVolist" item="comment" open="(" close=")" separator=",">
@@ -37,6 +37,13 @@
 		select count(*) like_count fROM comment_like 
 			where comment_id=#{comment.id}
 	</select>
+	
+	<!-- 코멘트 1개에 대한 좋아요Vo list -->
+	<select id="selectCommentLikeOne" resultType="com.whychapedia.vo.LikeVo">
+		select * fROM comment_like 
+			where comment_id=#{comment.id}
+	</select>
+	
 	<!-- 해당 감독 좋아요 추가 -->
 	<insert id="insertDirectorLike">
 		insert into director_like(id, director_id, user_id) values((select coalesce(max(id),0)+1 from director_like), #{director_id}, #{user_id})
@@ -79,6 +86,42 @@
 		delete from actor_like where actor_id=#{actor_id} and user_id=#{user_id}
 	</delete>
 	
+	<!-- reply 좋아요 추가 -->
+	<insert id="insertReplyLike">
+		insert into reply_like(id, reply_id, user_id) values((select coalesce(max(id),0)+1 from reply_like), #{reply_id}, #{user_id})
+	</insert>
+	
+	<!-- reply 좋아요 삭제 -->
+	<delete id="deleteReplyLike">
+		delete from reply_like where reply_id=#{reply_id} and user_id=#{user_id}
+	</delete>
+	
+	<!-- reply 1개에 대한 좋아요 카운트 -->
+	<select id="selectReplyLike" resultType="int">
+		select count(*) like_count fROM reply_like 
+			where reply_id=#{reply_id}
+	</select>
+	
+	<!-- 콜렉션 좋아요 추가 -->
+	<insert id="insertCollectionLike">
+		insert into collection_like (id, collection_id, user_id) values((select coalesce(max(id),0)+1 from collection_like), #{collection_id}, #{user_id})
+	</insert>
+	
+	<!-- 콜렉션 좋아요 삭제 -->
+	<delete id="deleteCollectionLike">
+		delete from collection_like where collection_id=#{collection_id} and user_id=#{user_id}
+	</delete>
 
+	<!-- 콜렉션에 대한 좋아요 카운트 -->
+	<select id="selectCollectionLikeCount" resultType="int">
+		select count(*) like_count fROM collection_like 
+			where collection_id=#{collection.id}
+	</select>
+
+	<!-- 콜렉션에 대한 좋아요 카운트 -->
+	<select id="selectCollectionLikeList" resultType="com.whychapedia.vo.LikeVo">
+		select * fROM collection_like 
+			where collection_id = #{collection.id}
+	</select>
 
 </mapper>

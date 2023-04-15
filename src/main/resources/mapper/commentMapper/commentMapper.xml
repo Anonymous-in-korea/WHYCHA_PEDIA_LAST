@@ -3,11 +3,6 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.whychapedia.mapper.CommentMapper">
-<!-- 		select wc.*, (SELECT COUNT(*) FROM comment_like WHERE comment_id = wc.id) AS num_likes -->
-<!-- 		from wcomment wc  -->
-<!-- 		where movie_id = #{movie_id} and is_blind !=2 -->
-<!-- 		ORDER BY num_likes DESC -->
-<!-- 		FETCH FIRST 10 ROWS ONLY -->
 	<select id="commentSelect10" resultType="com.whychapedia.vo.CommentVo">
 		select wc.*, (SELECT COUNT(*) FROM comment_like WHERE comment_id = wc.id) AS like_count
 		from wcomment wc 
@@ -16,10 +11,24 @@
 		FETCH FIRST 10 ROWS ONLY
 	</select>
 	
+	<!-- 해당 영화의 코멘트 총 개수(content page) -->
+	<select id="selectCommentAll" resultType="int">
+		select count(*) commentCount from wcomment where movie_id = #{movie_id}
+	</select>
+	
 	<!-- 코멘트 1개 가져오기 -->
 	<select id="selectCommentOne" resultType="com.whychapedia.vo.CommentVo">
 		select wc.*, (SELECT COUNT(*) FROM comment_like WHERE comment_id = wc.id) AS like_count from wcomment wc
 		where id = #{comment_id}
+	</select>
+	
+	<!-- 영화 상세페이지에 들어갈 코멘트 2개 가져오기  -->
+	<select id="selectCommentTow" resultType="com.whychapedia.vo.CommentVo">
+		select wc.*, (SELECT COUNT(*) FROM comment_like WHERE comment_id = wc.id) AS like_count
+		from wcomment wc 
+		where movie_id = #{movie_id} and is_blind !=2
+		ORDER BY like_count DESC
+		FETCH FIRST 2 ROWS ONLY
 	</select>
 	
 		<!-- 	해당 코멘트 댓글 수 -->

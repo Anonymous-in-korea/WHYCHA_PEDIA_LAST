@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.whychapedia.vo.CollectionCommentVo;
 import com.whychapedia.vo.CommentReplyVo;
 import com.whychapedia.vo.CommentVo;
 import com.whychapedia.vo.MemberVo;
@@ -27,4 +28,10 @@ public interface MemberMapper {
 	public List<MemberVo> commentUserList(List<CommentVo> commentVolist);
 
 	public List<MemberVo> selectReplyuserList(List<CommentReplyVo> replyList);
+	
+	//콜렉션 코멘트 List의 user List
+	public List<MemberVo> selectCollectionCommentMember(List<CollectionCommentVo> collectionCommentList);
+	
+	//영화 상세페이지 코멘트에 해당하는 user List
+	public List<MemberVo> selectcommentUserList(List<CommentVo> commentVo2);
 }

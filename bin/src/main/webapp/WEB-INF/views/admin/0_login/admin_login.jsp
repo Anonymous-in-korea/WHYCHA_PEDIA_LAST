@@ -10,7 +10,7 @@
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		
 		<link href="/css/admin/styles.css" rel="stylesheet" />
-		<link rel="stylesheet" href="/css/admin/0_login/Login.css" />
+		<link href="/css/admin/0_login/Login.css" rel="stylesheet" />
 		
 		<script defer src="/js/admin/Login.js"></script>
 		

@@ -59,13 +59,25 @@
 			인물
 			<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 		</a>
-		
 		<div class="collapse" id="collapseLayouts_character" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 			<nav class="sb-sidenav-menu-nested nav">
 				<a class="nav-link" href="/admin/5_character/director_manage">감독 정보관리</a>
 				<a class="nav-link" href="/admin/5_character/actor_manage">배우 정보관리</a>
 			</nav>
 		</div>
+
+		<!-- 알림관리 -->
+		<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts_email" aria-expanded="false" aria-controls="collapseLayouts">
+			<div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+			알림
+			<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+		</a>
+		<div class="collapse" id="collapseLayouts_email" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+			<nav class="sb-sidenav-menu-nested nav">
+			  <a class="nav-link" href="/admin/7_email/member_manage_email">E-MAIL 전송</a>
+			</nav>
+		</div>
+
 
 
 		<div class="sb-sidenav-menu-heading">회원관리</div>

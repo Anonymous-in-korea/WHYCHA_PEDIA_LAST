@@ -4277,7 +4277,7 @@ dave
 /***** Status labels *****/
 /* Styles labels used in posts, articles and requests */
 .status-label {
-  background-color: #ff7f27 !important;
+  background-color: #ff7f27 ;
   border-radius: 4px;
   color: #fff;
   font-size: 12px;
@@ -6460,4 +6460,81 @@ html[dir="rtl"] .notification-left-aligned {
 
 .dropdown-chevron-icon {
   vertical-align: middle;
+}
+
+/* 현재 페이지 숫자에 대한 스타일 */
+/* 페이징 */
+ul > li> a{
+color: #ff7f27;
+font-size:18px;
+font-weight: bold;
+}
+ul.page-num > li.active {
+  display: inline-block !important;
+  vertical-align: top;
+  font-weight: bold;
+}
+
+
+.page-num li {
+  display: inline-block; /* 요소를 가로로 나열합니다 */
+  vertical-align: middle; /* 요소를 수직 중앙 정렬합니다 */
+}
+.paging {
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 20px;
+}
+
+.paging ul {
+list-style: none;
+margin: 0;
+padding: 0;
+display: flex;
+}
+
+.paging ul li {
+margin: 0 5px;
+padding: 3px 8px;
+text-decoration: none;
+color: #333;
+border: 1px solid #ccc;
+border-radius: 3px;
+cursor: pointer;
+font-size: 14px;
+}
+
+.paging ul li div {
+display: inline-block;
+}
+
+.paging ul li:hover {
+background-color: #f5f5f5;
+}
+
+.paging ul li.active {
+background-color: #333;
+color: #fff;
+}
+
+.paging ul li.disabled {
+color: #bbb;
+cursor: default;
+}
+
+.paging ul li.first-page:before {
+content: '\f049';
+}
+
+.paging ul li.last-page:before {
+content: '\f051';
+}
+
+.paging ul li.prev-page:before {
+content: '\f104';
+}
+
+.paging ul li.next-page:before {
+content: '\f105';
 }

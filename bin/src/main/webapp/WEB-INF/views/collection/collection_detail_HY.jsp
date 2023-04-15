@@ -63,14 +63,14 @@
 												<section class="css-5q4g58">
 													<div class="css-1gkas1x-Grid e1689zdh0">
 														<div class="css-1y901al-Row emmoxnt0">
-															<a title="WATCHA's page" class="css-1f9m1s4-StylelessLocalLink eovgsd01" href="/ko-KR/users/36lvXM3p35Xdn">
+															<a title="WATCHA's page" class="css-1f9m1s4-StylelessLocalLink eovgsd01" href="myPage/userPage_SY?user_id=${memberVo.id}">
 																<div class="css-bmael7">
 																	<div class="css-1hffj5n">
-																		<div class="css-q29adr-ProfilePhotoImage"></div>
+																		<div style="background: url(${memberVo.user_pic_url}) center center / cover no-repeat; " class="css-q29adr-ProfilePhotoImage"></div>
 																	</div>
 																	<div class="css-17nfp2s">
 																		<div class="css-180704h">
-																			${collectionVo.collection_name}
+																			${memberVo.user_name}
 																		</div>
 																	</div>
 																</div>
@@ -176,7 +176,7 @@
 													<div class="css-1y901al-Row emmoxnt0">
 														<header class="css-1ue9xs6">
 															<h2 class="css-1wtjsst">작품들</h2>
-															<span class="css-wzn7fp">22</span>
+															<span class="css-wzn7fp">${sizeCollection}</span>
 														</header>
 													</div>
 												</div>
@@ -185,6 +185,7 @@
 														<ul class="css-27z1qm-VisualUl-ContentGrid">
 											<!-- 영화 foreach -->
 														<c:forEach items="${movieInCollectionVoList}" var="movieVo" >
+															<c:if test="${movieVo.id!=0}">
 															<li class="css-1hp6p72">
 																<a title="${movieVo.movie_kor_title}" href="/contents/contents_SH?movie_id=${movieVo.id}">
 																	<div class="css-1qmeemv">
@@ -197,13 +198,13 @@
 																		<div class="css-niy0za">${movieVo.movie_kor_title}</div>
 																		<div>
 																			<c:if test="${ sessionId == null }"> <!--로그인 전 -->
-																			<div class="css-1kcd80z">평점 ${movieVo.movie_rating}</div>
-																				</c:if>
+																				<div class="css-1kcd80z">평점 ${movieVo.movie_rating}</div>
+																			</c:if>
 																			<c:if test="${ sessionId != null }">
-																				<c:if test="${ movieVo.is_rated != 0 }">
+																				<c:if test="${ movieVo.is_checked != 0 }">
 																					<div class="css-1kcd80z">평가함 ★ ${movieVo.scoreOfUser}</div>
 																				</c:if>
-																				<c:if test="${ movieVo.is_rated == 0 }">
+																				<c:if test="${ movieVo.is_checked == 0 }">
 																					<div class="css-1kcd80z">평점 ${movieVo.movie_rating}</div>
 																				</c:if>
 																			</c:if>
@@ -211,6 +212,7 @@
 																	</div>
 																</a>
 															</li>
+														  </c:if>
 														</c:forEach>	
 											<!-- 영화 foreach -->											
 														</ul>

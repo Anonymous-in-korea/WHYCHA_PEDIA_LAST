@@ -2,6 +2,7 @@ package com.whychapedia.service;
 
 import java.util.List;
 
+import com.whychapedia.vo.CollectionCommentVo;
 import com.whychapedia.vo.CommentReplyVo;
 import com.whychapedia.vo.CommentVo;
 import com.whychapedia.vo.MemberVo;
@@ -22,6 +23,7 @@ public interface MemberService {
 	//해당 코멘트의 reply가져오기
 	public List<MemberVo> selectReplyuserList(List<CommentReplyVo> replyList);
 
-
+	//콜렉션 코멘트에 대한 userList
+	public List<MemberVo> selectCollectionCommentMember(List<CollectionCommentVo> collectionCommentList);
 	
 }

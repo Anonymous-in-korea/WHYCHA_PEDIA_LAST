@@ -15,13 +15,10 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 	@Autowired
 	AnnouncementMapper announcementMapper;
 	
+	//공지사항 가져오기
 	@Override
-	public Map<String, Object> selectAnnouncementList() {
-		Map<String, Object> map = new HashMap<>();
+	public List<AnnouncementVo> selectAnnouncementList() {
 		List<AnnouncementVo> list = announcementMapper.selectAnnouncementList();
-		int listCount = announcementMapper.selectCount();
-		map.put("list", list);
-		map.put("count", listCount);
-		return map;
+		return list;
 	}
 }
