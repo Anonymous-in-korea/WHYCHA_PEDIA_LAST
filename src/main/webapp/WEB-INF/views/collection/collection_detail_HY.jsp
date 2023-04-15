@@ -244,11 +244,13 @@
 														<div class="css-cxqjs3">
 															<!-- 좋아요 버튼 -->
 															<c:set var="likedByUser" value="false" />
-															<c:forEach var="j" begin="0" end="${collectionLikeList.size()-1}">
-														    	<c:if test="${collectionLikeList[j].user_id == sessionId}">
-														      		<c:set var="likedByUser" value="true" />
-															 	 </c:if>
-															</c:forEach>
+															<c:if test="${collectionLikeList.size()!=0}">
+																<c:forEach var="j" begin="0" end="${collectionLikeList.size()-1}">
+															    	<c:if test="${collectionLikeList[j].user_id == sessionId}">
+															      		<c:set var="likedByUser" value="true" />
+																 	 </c:if>
+																</c:forEach>
+															</c:if>	
 															<c:if test="${likedByUser == true}">
 															  <button id="deckLike" type="button" class="css-3w1nnz-StylelessButton-StyledActionButton e19d4hrp0">
 																  <div  class="css-1umclh2-StyledIconContainer e19d4hrp1">
@@ -394,77 +396,77 @@
 																<button class="css-16halel">이전 댓글 보기</button>
 															</div>
 															<!-- 댓글 1개 시작-->
-															<c:forEach var="i" begin="0" end="${collectionCommentList.size()-1}" >
-															<div class="css-1pov5mm">
-																<div class="css-ov1ktg">
-																	<a class="css-255jr8" href="/myPage/userPage_SY?user_id=${memberList[i].id }">
-																		<div class="css-1kiwqkk" style="background-image: url('${memberList[i].user_pic_url}');"></div>
-																	</a>
-																	<div class="css-199ku80">
-																		<div class="css-1sg2lsz">
-																			<a class="css-255jr8" href="/myPage/userPage_SY?user_id=${memberList[i].id }">
-																				<div class="css-72k174">${memberList[i].user_name}</div>
-																				<div class="Icon playBadge css-13ebre0-SVG e1282e850">
-																					<div>
-																						<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"
-																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00Ljc3MDQ2IDAuNTYyNDU5QzUuMjQzMjggLTAuMTU2NDMyIDYuMzExNDcgLTAuMTkzMDcgNi44MzUzNSAwLjQ5MjE1NUM3LjE3MzM3IDAuOTMzNzg4IDcuNzczODUgMS4xMDExMyA4LjMwMTgxIDAuOTAwMTIxQzkuMTE5OCAwLjU4ODIwNSAxMC4wMDYyIDEuMTY3NDggMTAuMDE0NCAyLjAyMTA0QzEwLjAxOTUgMi41Njk2MSAxMC40MDU1IDMuMDQ3ODggMTAuOTUzOSAzLjE4NTUyQzExLjgwNDYgMy4zOTk0MSAxMi4xNzAyIDQuMzc0NzYgMTEuNjYwNiA1LjA2ODlDMTEuMzMxOCA1LjUxNjQ4IDExLjM1MzIgNi4xMjE0OSAxMS43MTM3IDYuNTQ2MjlDMTIuMjcyMyA3LjIwNDc4IDExLjk3NzIgOC4yMDE5MiAxMS4xNDM4IDguNDcyMjVDMTAuNjA2NyA4LjY0NzUyIDEwLjI1NzQgOS4xNTA1NCAxMC4yOTExIDkuNjk5MTJDMTAuMzQ0MiAxMC41NDk3IDkuNTAxNzQgMTEuMTg3NCA4LjY2MzMyIDEwLjkzMTlDOC4xMjIwOCAxMC43Njc2IDcuNTM0ODggMTAuOTc0NSA3LjIyOTU0IDExLjQzNzlDNi43NTY3MiAxMi4xNTY4IDUuNjg3NTEgMTIuMTkyNSA1LjE2NDY1IDExLjUwODJDNC44MjY2MyAxMS4wNjU2IDQuMjI2MTUgMTAuODk4MyAzLjY5ODE5IDExLjEwMDNDMi44ODAyIDExLjQxMjIgMS45OTM3OCAxMC44MzE5IDEuOTg0NTkgOS45ODAzNEMxLjk4MDUxIDkuNDI5NzggMS41OTU1MSA4Ljk1MjUgMS4wNDYxIDguODEzODdDMC4xOTU0MjggOC41OTk5OSAtMC4xNzAxNjYgNy42MjY2MSAwLjMzOTQxOSA2LjkzMjQ3QzAuNjY4MjQ5IDYuNDgzOTEgMC42NDY4MDQgNS44Nzc5IDAuMjg2MzE2IDUuNDUzMUMtMC4yNzIyODcgNC43OTQ2MSAwLjAyMjg0MyAzLjc5OTQ1IDAuODU2MTUyIDMuNTI3MTVDMS4zOTMzMSAzLjM1Mjg3IDEuNzQzNTkgMi44NTA4MyAxLjcwODg2IDIuMzAxMjdDMS42NTU3NiAxLjQ1MDY4IDIuNDk4MjYgMC44MTE5OTIgMy4zMzY2OCAxLjA2ODQ2QzMuODc3OTIgMS4yMzI4MyA0LjQ2NTEyIDEuMDI1ODggNC43NzA0NiAwLjU2MjQ1OVoiIGZpbGw9IiMwRTBGMTAiLz4KPHBhdGggZD0iTTcuNjk3MzMgMi40NDk5NUw3LjI4NjEyIDcuNzkzNjdMNy4xNzc3NCA3Ljc5ODAzTDYuNDUyMjYgMy45Nzk1MUg1LjI2MTIzTDQuNjY1NTggNy44OTEzMkw0LjUzNTc1IDcuODk2NTVMMy45NTA5NiAzLjk3OTUxSDIuNUwzLjgxMDI3IDkuNzE1NThMNS4zMTUyOCA5LjYxNDE1TDUuODQ1NzQgNS45NzE0NUg1Ljk2NDk4TDYuNTYwMzUgOS41Mjk4N0w4LjA3NjUxIDkuNDI2OTlMOS4xMDUxMSAyLjQ0OTk1SDcuNjk3MzNaIiBmaWxsPSIjRkYwNTU4Ii8+Cjwvc3ZnPgo="
-																							xmlns:xlink="http://www.w3.org/1999/xlink">
-																							<path fill-rule="evenodd" clip-rule="evenodd" d="M4.77046 0.562459C5.24328 -0.156432 6.31147 -0.19307 6.83535 0.492155C7.17337 0.933788 7.77385 1.10113 8.30181 0.900121C9.1198 0.588205 10.0062 1.16748 10.0144 2.02104C10.0195 2.56961 10.4055 3.04788 10.9539 3.18552C11.8046 3.39941 12.1702 4.37476 11.6606 5.0689C11.3318 5.51648 11.3532 6.12149 11.7137 6.54629C12.2723 7.20478 11.9772 8.20192 11.1438 8.47225C10.6067 8.64752 10.2574 9.15054 10.2911 9.69912C10.3442 10.5497 9.50174 11.1874 8.66332 10.9319C8.12208 10.7676 7.53488 10.9745 7.22954 11.4379C6.75672 12.1568 5.68751 12.1925 5.16465 11.5082C4.82663 11.0656 4.22615 10.8983 3.69819 11.1003C2.8802 11.4122 1.99378 10.8319 1.98459 9.98034C1.98051 9.42978 1.59551 8.9525 1.0461 8.81387C0.195428 8.59999 -0.170166 7.62661 0.339419 6.93247C0.668249 6.48391 0.646804 5.8779 0.286316 5.4531C-0.272287 4.79461 0.022843 3.79945 0.856152 3.52715C1.39331 3.35287 1.74359 2.85083 1.70886 2.30127C1.65576 1.45068 2.49826 0.811992 3.33668 1.06846C3.87792 1.23283 4.46512 1.02588 4.77046 0.562459Z"
-																								fill="#0E0F10">
-																							</path>
-																							<path d="M7.69733 2.44995L7.28612 7.79367L7.17774 7.79803L6.45226 3.97951H5.26123L4.66558 7.89132L4.53575 7.89655L3.95096 3.97951H2.5L3.81027 9.71558L5.31528 9.61415L5.84574 5.97145H5.96498L6.56035 9.52987L8.07651 9.42699L9.10511 2.44995H7.69733Z"
-																								fill="#FF0558">
-																							</path>
-																						</svg>
-																					</div>
-																				</div>
-																			</a>
-																			<div class="css-maxfbg">${collectionCommentList[i].regi_date}</div>
-																		</div>
-																		<div class="css-yb0jaq">${collectionCommentList[i].collection_comment_content}</div>
+															<c:if test="${collectionCommentList.size()!=0}">
+																<c:forEach var="i" begin="0" end="${collectionCommentList.size()-1}" >
+																	<div class="css-1pov5mm">
 																		<div class="css-ov1ktg">
-																			<div class="css-1d8juai">
-																				<div class="Icon like css-1tuvmpc-SVG e1282e850">
-<!-- 																					<div> -->
-<!-- 																						<img class="like1" src="../images/like1.png"> -->
-<!-- 																					</div> -->
+																			<a class="css-255jr8" href="/myPage/userPage_SY?user_id=${memberList[i].id }">
+																				<div class="css-1kiwqkk" style="background-image: url('${memberList[i].user_pic_url}');"></div>
+																			</a>
+																			<div class="css-199ku80">
+																				<div class="css-1sg2lsz">
+																					<a class="css-255jr8" href="/myPage/userPage_SY?user_id=${memberList[i].id }">
+																						<div class="css-72k174">${memberList[i].user_name}</div>
+																						<div class="Icon playBadge css-13ebre0-SVG e1282e850">
+																							<div>
+																								<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"
+																									class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00Ljc3MDQ2IDAuNTYyNDU5QzUuMjQzMjggLTAuMTU2NDMyIDYuMzExNDcgLTAuMTkzMDcgNi44MzUzNSAwLjQ5MjE1NUM3LjE3MzM3IDAuOTMzNzg4IDcuNzczODUgMS4xMDExMyA4LjMwMTgxIDAuOTAwMTIxQzkuMTE5OCAwLjU4ODIwNSAxMC4wMDYyIDEuMTY3NDggMTAuMDE0NCAyLjAyMTA0QzEwLjAxOTUgMi41Njk2MSAxMC40MDU1IDMuMDQ3ODggMTAuOTUzOSAzLjE4NTUyQzExLjgwNDYgMy4zOTk0MSAxMi4xNzAyIDQuMzc0NzYgMTEuNjYwNiA1LjA2ODlDMTEuMzMxOCA1LjUxNjQ4IDExLjM1MzIgNi4xMjE0OSAxMS43MTM3IDYuNTQ2MjlDMTIuMjcyMyA3LjIwNDc4IDExLjk3NzIgOC4yMDE5MiAxMS4xNDM4IDguNDcyMjVDMTAuNjA2NyA4LjY0NzUyIDEwLjI1NzQgOS4xNTA1NCAxMC4yOTExIDkuNjk5MTJDMTAuMzQ0MiAxMC41NDk3IDkuNTAxNzQgMTEuMTg3NCA4LjY2MzMyIDEwLjkzMTlDOC4xMjIwOCAxMC43Njc2IDcuNTM0ODggMTAuOTc0NSA3LjIyOTU0IDExLjQzNzlDNi43NTY3MiAxMi4xNTY4IDUuNjg3NTEgMTIuMTkyNSA1LjE2NDY1IDExLjUwODJDNC44MjY2MyAxMS4wNjU2IDQuMjI2MTUgMTAuODk4MyAzLjY5ODE5IDExLjEwMDNDMi44ODAyIDExLjQxMjIgMS45OTM3OCAxMC44MzE5IDEuOTg0NTkgOS45ODAzNEMxLjk4MDUxIDkuNDI5NzggMS41OTU1MSA4Ljk1MjUgMS4wNDYxIDguODEzODdDMC4xOTU0MjggOC41OTk5OSAtMC4xNzAxNjYgNy42MjY2MSAwLjMzOTQxOSA2LjkzMjQ3QzAuNjY4MjQ5IDYuNDgzOTEgMC42NDY4MDQgNS44Nzc5IDAuMjg2MzE2IDUuNDUzMUMtMC4yNzIyODcgNC43OTQ2MSAwLjAyMjg0MyAzLjc5OTQ1IDAuODU2MTUyIDMuNTI3MTVDMS4zOTMzMSAzLjM1Mjg3IDEuNzQzNTkgMi44NTA4MyAxLjcwODg2IDIuMzAxMjdDMS42NTU3NiAxLjQ1MDY4IDIuNDk4MjYgMC44MTE5OTIgMy4zMzY2OCAxLjA2ODQ2QzMuODc3OTIgMS4yMzI4MyA0LjQ2NTEyIDEuMDI1ODggNC43NzA0NiAwLjU2MjQ1OVoiIGZpbGw9IiMwRTBGMTAiLz4KPHBhdGggZD0iTTcuNjk3MzMgMi40NDk5NUw3LjI4NjEyIDcuNzkzNjdMNy4xNzc3NCA3Ljc5ODAzTDYuNDUyMjYgMy45Nzk1MUg1LjI2MTIzTDQuNjY1NTggNy44OTEzMkw0LjUzNTc1IDcuODk2NTVMMy45NTA5NiAzLjk3OTUxSDIuNUwzLjgxMDI3IDkuNzE1NThMNS4zMTUyOCA5LjYxNDE1TDUuODQ1NzQgNS45NzE0NUg1Ljk2NDk4TDYuNTYwMzUgOS41Mjk4N0w4LjA3NjUxIDkuNDI2OTlMOS4xMDUxMSAyLjQ0OTk1SDcuNjk3MzNaIiBmaWxsPSIjRkYwNTU4Ii8+Cjwvc3ZnPgo="
+																									xmlns:xlink="http://www.w3.org/1999/xlink">
+																									<path fill-rule="evenodd" clip-rule="evenodd" d="M4.77046 0.562459C5.24328 -0.156432 6.31147 -0.19307 6.83535 0.492155C7.17337 0.933788 7.77385 1.10113 8.30181 0.900121C9.1198 0.588205 10.0062 1.16748 10.0144 2.02104C10.0195 2.56961 10.4055 3.04788 10.9539 3.18552C11.8046 3.39941 12.1702 4.37476 11.6606 5.0689C11.3318 5.51648 11.3532 6.12149 11.7137 6.54629C12.2723 7.20478 11.9772 8.20192 11.1438 8.47225C10.6067 8.64752 10.2574 9.15054 10.2911 9.69912C10.3442 10.5497 9.50174 11.1874 8.66332 10.9319C8.12208 10.7676 7.53488 10.9745 7.22954 11.4379C6.75672 12.1568 5.68751 12.1925 5.16465 11.5082C4.82663 11.0656 4.22615 10.8983 3.69819 11.1003C2.8802 11.4122 1.99378 10.8319 1.98459 9.98034C1.98051 9.42978 1.59551 8.9525 1.0461 8.81387C0.195428 8.59999 -0.170166 7.62661 0.339419 6.93247C0.668249 6.48391 0.646804 5.8779 0.286316 5.4531C-0.272287 4.79461 0.022843 3.79945 0.856152 3.52715C1.39331 3.35287 1.74359 2.85083 1.70886 2.30127C1.65576 1.45068 2.49826 0.811992 3.33668 1.06846C3.87792 1.23283 4.46512 1.02588 4.77046 0.562459Z"
+																										fill="#0E0F10">
+																									</path>
+																									<path d="M7.69733 2.44995L7.28612 7.79367L7.17774 7.79803L6.45226 3.97951H5.26123L4.66558 7.89132L4.53575 7.89655L3.95096 3.97951H2.5L3.81027 9.71558L5.31528 9.61415L5.84574 5.97145H5.96498L6.56035 9.52987L8.07651 9.42699L9.10511 2.44995H7.69733Z"
+																										fill="#FF0558">
+																									</path>
+																								</svg>
+																							</div>
+																						</div>
+																					</a>
+																					<div class="css-maxfbg">${collectionCommentList[i].regi_date}</div>
 																				</div>
-<!-- 																				0 -->
-																			</div>
-																			<div class="css-4ygot5">
-																				<div class="Icon more css-1b4hoch-SVG e1282e850">
-																					<div>
-																						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"
-																							class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMS4yNTEgNS40MjY3NkMxMS4yNTEgNi4xMTc1OSAxMC42OTEgNi42NzY3NiAxMC4wMDEgNi42NzY3NkM5LjMxMDE0IDYuNjc2NzYgOC43NTA5OCA2LjExNzU5IDguNzUwOTggNS40MjY3NkM4Ljc1MDk4IDQuNzM2NzYgOS4zMTAxNCA0LjE3Njc2IDEwLjAwMSA0LjE3Njc2QzEwLjY5MSA0LjE3Njc2IDExLjI1MSA0LjczNjc2IDExLjI1MSA1LjQyNjc2Wk0xMC4wMDEgOC43NDk5M0M5LjMxMDE0IDguNzQ5OTMgOC43NTA5OCA5LjMwOTkzIDguNzUwOTggOS45OTk5M0M4Ljc1MDk4IDEwLjY5MDggOS4zMTAxNCAxMS4yNDk5IDEwLjAwMSAxMS4yNDk5QzEwLjY5MSAxMS4yNDk5IDExLjI1MSAxMC42OTA4IDExLjI1MSA5Ljk5OTkzQzExLjI1MSA5LjMwOTkzIDEwLjY5MSA4Ljc0OTkzIDEwLjAwMSA4Ljc0OTkzWk0xMC4wMDEgMTMuMzIzMUM5LjMxMDE0IDEzLjMyMzEgOC43NTA5OCAxMy44ODIzIDguNzUwOTggMTQuNTczMUM4Ljc1MDk4IDE1LjI2MzkgOS4zMTAxNCAxNS44MjMxIDEwLjAwMSAxNS44MjMxQzEwLjY5MSAxNS44MjMxIDExLjI1MSAxNS4yNjM5IDExLjI1MSAxNC41NzMxQzExLjI1MSAxMy44ODIzIDEwLjY5MSAxMy4zMjMxIDEwLjAwMSAxMy4zMjMxWiIgZmlsbD0iI0EwQTBBMCIvPgo8L3N2Zz4K"
-																							xmlns:xlink="http://www.w3.org/1999/xlink">
-																							<path fill-rule="evenodd" clip-rule="evenodd" d="M11.251 5.42676C11.251 6.11759 10.691 6.67676 10.001 6.67676C9.31014 6.67676 8.75098 6.11759 8.75098 5.42676C8.75098 4.73676 9.31014 4.17676 10.001 4.17676C10.691 4.17676 11.251 4.73676 11.251 5.42676ZM10.001 8.74993C9.31014 8.74993 8.75098 9.30993 8.75098 9.99993C8.75098 10.6908 9.31014 11.2499 10.001 11.2499C10.691 11.2499 11.251 10.6908 11.251 9.99993C11.251 9.30993 10.691 8.74993 10.001 8.74993ZM10.001 13.3231C9.31014 13.3231 8.75098 13.8823 8.75098 14.5731C8.75098 15.2639 9.31014 15.8231 10.001 15.8231C10.691 15.8231 11.251 15.2639 11.251 14.5731C11.251 13.8823 10.691 13.3231 10.001 13.3231Z"
-																								fill="#A0A0A0">
-																							</path>
-																						</svg>
+																				<div class="css-yb0jaq">${collectionCommentList[i].collection_comment_content}</div>
+																				<div class="css-ov1ktg">
+																					<div class="css-1d8juai">
+																						<div class="Icon like css-1tuvmpc-SVG e1282e850">
+		<!-- 																					<div> -->
+		<!-- 																						<img class="like1" src="../images/like1.png"> -->
+		<!-- 																					</div> -->
+																						</div>
+		<!-- 																				0 -->
 																					</div>
-																				</div>
-																				<div class="css-aa3xw">
-																				<c:if test="${sessionId != memberList[i].id}">
-																					<div class="css-ve4kut">
-																						<div class="css-19hkid5">부적절 표현 신고</div>
+																					<div class="css-4ygot5">
+																						<div class="Icon more css-1b4hoch-SVG e1282e850">
+																							<div>
+																								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"
+																									class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMS4yNTEgNS40MjY3NkMxMS4yNTEgNi4xMTc1OSAxMC42OTEgNi42NzY3NiAxMC4wMDEgNi42NzY3NkM5LjMxMDE0IDYuNjc2NzYgOC43NTA5OCA2LjExNzU5IDguNzUwOTggNS40MjY3NkM4Ljc1MDk4IDQuNzM2NzYgOS4zMTAxNCA0LjE3Njc2IDEwLjAwMSA0LjE3Njc2QzEwLjY5MSA0LjE3Njc2IDExLjI1MSA0LjczNjc2IDExLjI1MSA1LjQyNjc2Wk0xMC4wMDEgOC43NDk5M0M5LjMxMDE0IDguNzQ5OTMgOC43NTA5OCA5LjMwOTkzIDguNzUwOTggOS45OTk5M0M4Ljc1MDk4IDEwLjY5MDggOS4zMTAxNCAxMS4yNDk5IDEwLjAwMSAxMS4yNDk5QzEwLjY5MSAxMS4yNDk5IDExLjI1MSAxMC42OTA4IDExLjI1MSA5Ljk5OTkzQzExLjI1MSA5LjMwOTkzIDEwLjY5MSA4Ljc0OTkzIDEwLjAwMSA4Ljc0OTkzWk0xMC4wMDEgMTMuMzIzMUM5LjMxMDE0IDEzLjMyMzEgOC43NTA5OCAxMy44ODIzIDguNzUwOTggMTQuNTczMUM4Ljc1MDk4IDE1LjI2MzkgOS4zMTAxNCAxNS44MjMxIDEwLjAwMSAxNS44MjMxQzEwLjY5MSAxNS44MjMxIDExLjI1MSAxNS4yNjM5IDExLjI1MSAxNC41NzMxQzExLjI1MSAxMy44ODIzIDEwLjY5MSAxMy4zMjMxIDEwLjAwMSAxMy4zMjMxWiIgZmlsbD0iI0EwQTBBMCIvPgo8L3N2Zz4K"
+																									xmlns:xlink="http://www.w3.org/1999/xlink">
+																									<path fill-rule="evenodd" clip-rule="evenodd" d="M11.251 5.42676C11.251 6.11759 10.691 6.67676 10.001 6.67676C9.31014 6.67676 8.75098 6.11759 8.75098 5.42676C8.75098 4.73676 9.31014 4.17676 10.001 4.17676C10.691 4.17676 11.251 4.73676 11.251 5.42676ZM10.001 8.74993C9.31014 8.74993 8.75098 9.30993 8.75098 9.99993C8.75098 10.6908 9.31014 11.2499 10.001 11.2499C10.691 11.2499 11.251 10.6908 11.251 9.99993C11.251 9.30993 10.691 8.74993 10.001 8.74993ZM10.001 13.3231C9.31014 13.3231 8.75098 13.8823 8.75098 14.5731C8.75098 15.2639 9.31014 15.8231 10.001 15.8231C10.691 15.8231 11.251 15.2639 11.251 14.5731C11.251 13.8823 10.691 13.3231 10.001 13.3231Z"
+																										fill="#A0A0A0">
+																									</path>
+																								</svg>
+																							</div>
+																						</div>
+																						<div class="css-aa3xw">
+																						<c:if test="${sessionId != memberList[i].id}">
+																							<div class="css-ve4kut">
+																								<div class="css-19hkid5">부적절 표현 신고</div>
+																							</div>
+																						</c:if>
+																						<c:if test="${sessionId == memberList[i].id}">
+																							<div class="css-ve4kut">
+					                                                                            <div class="css-19hkid5" id="commentUpdate">댓글 수정</div>
+					                                                                            <div class="css-19hkid5" id="commentDelete">댓글 삭제</div>
+					                                                                        </div>
+																						</c:if>				
+																						</div>
 																					</div>
-																				</c:if>
-																				<c:if test="${sessionId == memberList[i].id}">
-																					<div class="css-ve4kut">
-			                                                                            <div class="css-19hkid5" id="commentUpdate">댓글 수정</div>
-			                                                                            <div class="css-19hkid5" id="commentDelete">댓글 삭제</div>
-			                                                                        </div>
-																				</c:if>
-																				
 																				</div>
 																			</div>
 																		</div>
 																	</div>
-																</div>
-															</div>
-														</c:forEach>
+																</c:forEach>
 															<!-- 댓글 1개 끝-->
-															
+															</c:if>	
 															<form action="#" class="css-wbhcm7">
 																<div class="css-1xm32e0">
 																	<input name="replyMessage" placeholder="컬렉션에 댓글을 남겨보세요." class="css-uv85g1" type="text" value="">

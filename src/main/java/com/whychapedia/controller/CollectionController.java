@@ -151,7 +151,8 @@ public class CollectionController {
 		System.out.println("oneCollectionVoList"+oneMovieCollectionVoList.size());
 		List<MovieVo> movieInCollectionVoList=new ArrayList<MovieVo>();
 		List<StarRateVo> ratedList=new ArrayList<StarRateVo>();
-		
+
+
 		if(oneMovieCollectionVoList!=null) {
 			//해당 컬렉션 영화 가져오기
 			movieInCollectionVoList=movieService.selectMovieInCollectionList(oneMovieCollectionVoList);
@@ -163,19 +164,31 @@ public class CollectionController {
 				movieInCollectionVoList=movieService.insertStarRateInfo(movieInCollectionVoList,ratedList);
 			}
 		}
+		
+		
+		//해당 컬렉션 코멘트 관련 정보
+		List<CollectionCommentVo> collectionCommentList =new ArrayList<>();
+		List<LikeVo> collectionLikeList=new ArrayList<>();
+		List<MemberVo> memberList = new ArrayList<>();
+		//collection에 대한 commentList
+		collectionCommentList = collectionCommentService.selectCollectionComment(collection_id);
+		System.out.println("collectionCommentList"+collectionCommentList);
+		if(collectionCommentList.size()!=0) {
+			//collection에 대한 likelist
+			collectionLikeList = likeService.selectCollectionLikeList(collection_id);
+			System.out.println("collectionLikeList"+collectionLikeList);
+			//콜렉션 코멘트 list에 대한 userlist
+			memberList = memberService.selectCollectionCommentMember(collectionCommentList);
+			System.out.println("memberList"+memberList);
+		}
+		
 		int sizeCollection=movieInCollectionVoList.size()-1;
+		
+		
 		model.addAttribute("movieInCollectionVoList", movieInCollectionVoList); //영화
 		model.addAttribute("memberVo",memberVo);//페이지 주인
 		model.addAttribute("collectionVo",collectionVo);//컬렉션 디테일
 		model.addAttribute("sizeCollection",sizeCollection);//컬렉션 사이즈
-		
-		
-		//collection에 대한 commentList
-		List<CollectionCommentVo> collectionCommentList = collectionCommentService.selectCollectionComment(collection_id);
-		//collection에 대한 likelist
-		List<LikeVo> collectionLikeList = likeService.selectCollectionLikeList(collection_id);
-		//콜렉션 코멘트 list에 대한 userlist
-		List<MemberVo> memberList = memberService.selectCollectionCommentMember(collectionCommentList);
 		model.addAttribute("collectionCommentList",collectionCommentList);
 		model.addAttribute("memberList",memberList);
 		model.addAttribute("collectionLikeList",collectionLikeList);
