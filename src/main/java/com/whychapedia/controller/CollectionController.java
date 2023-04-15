@@ -117,9 +117,7 @@ public class CollectionController {
 			
 			//컬렉션 존재함
 			isInCollection=1;				
-			
-			
-			
+
 		}
 			model.addAttribute("loginVo", loginVo); //접속자 
 			model.addAttribute("memberVo", memberVo); //콜렉션 페이지 주인

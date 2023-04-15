@@ -18,12 +18,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.whychapedia.service.ArtistService;
 import com.whychapedia.service.CollectionArtistService;
 import com.whychapedia.service.LikeService;
+import com.whychapedia.service.MemberService;
 import com.whychapedia.service.MovieActorService;
 import com.whychapedia.service.MovieDirectorService;
 import com.whychapedia.service.MovieOttService;
 import com.whychapedia.service.MovieService;
 import com.whychapedia.vo.ArtistVo;
 import com.whychapedia.vo.CollectionArtistVo;
+import com.whychapedia.vo.MemberVo;
 import com.whychapedia.vo.MovieActorVo;
 import com.whychapedia.vo.MovieDirectorVo;
 import com.whychapedia.vo.MovieOttVo;
@@ -33,6 +35,8 @@ import com.whychapedia.vo.MovieVo;
 @Controller
 public class PersonController {
 
+	@Autowired
+	MemberService memberService;
 	@Autowired 
 	ArtistService artistService;
 	@Autowired
@@ -59,12 +63,13 @@ public class PersonController {
 	CollectionArtistService collectionArtistService;
 	
 	
-	//해당 배우id로 배우 정보 가져오기
+	/*배우 디테일 페이지*/
 	@RequestMapping(method = RequestMethod.GET, value = "person/person_detail_ACTOR_HY")
 	public String person_detail_HY( @RequestParam("actor_name") String actor_name,@RequestParam("actor_id")int  actor_id,
             					   @RequestParam("role") String role, Model model) {
 		model.addAttribute("actor_name", actor_name);
 	    model.addAttribute("actor_id", actor_id);
+	    System.out.println("actor_id"+actor_id);
 	    model.addAttribute("role", role);
 	    ArtistVo actorPersonlist = artistService.selectActorOnelist(actor_id);
 	    model.addAttribute("actorPersonlist",actorPersonlist);
@@ -86,12 +91,33 @@ public class PersonController {
   		int actorlikeCount = likeService.selectActorLikeList(actor_id);
   		System.out.println("actorlikeCount : "+actorlikeCount);
   		model.addAttribute("actorlikeCount",actorlikeCount);
+  		
+  		/*        로그인 이후 인물 좋아요/컬렉션 정보   */
+  		Integer sessionId = (Integer) session.getAttribute("sessionId");
+  		MemberVo loginVo=new MemberVo();
+  		int like=0;
+		int inCollection=0;
+		
+		//로그인했을때 
+		if(sessionId!=null) {
+			int loginId = sessionId.intValue();
+			loginVo=memberService.selectOneMember(loginId);			
+			like=likeService.checkActorLike(loginId,actor_id);
+			inCollection=collectionArtistService.checkCollectionActor(loginId,actor_id);
+		}
+		System.out.println(like);
+		System.out.println(inCollection);
+		
+		model.addAttribute("like",like);
+		model.addAttribute("inCollection",inCollection);
+		
+  		
 	    
 	    
 		return "person/person_detail_ACTOR_HY";
 	}
 	
-	//해당 감독id로 감독 정보 가져오기
+	/*감독 디테일 페이지*/
 	@RequestMapping(method = RequestMethod.GET, value = "person/person_detail_DIRECTOR_HY")
 	public String person_detail_HY2( @RequestParam("director_name") String director_name,@RequestParam("director_id")int  director_id,
 			@RequestParam("role") String role, Model model) {
@@ -120,10 +146,24 @@ public class PersonController {
 		model.addAttribute("directorlikeCount",directorlikeCount);
 
 		
-		//헤당 유저 아이디가 해당감독을 구독하는지 여부 체크하기
-//		 boolean isCollectedDirector = collectionArtistService.checkDirectorCollected(user_id,id);//여기서 id는 director_id입니다.
-//		 model.addAttribute("isCollectedDirector", isCollectedDirector);
-//		 System.out.println("isCollectedDirector: "+isCollectedDirector);
+  		/*        로그인 이후 인물 좋아요/컬렉션 정보   */
+  		Integer sessionId = (Integer) session.getAttribute("sessionId");
+  		int like=0;
+		int inCollection=0;
+		
+		//로그인했을때 
+		if(sessionId!=null) {
+			int loginId = sessionId.intValue();	
+			like=likeService.checkDirectorLike(loginId,director_id);
+			inCollection=collectionArtistService.checkCollectionDirector(loginId,director_id);
+		}
+		System.out.println(like);
+		System.out.println(inCollection);
+		
+		model.addAttribute("like",like);
+		model.addAttribute("inCollection",inCollection);
+		
+
 		
 		return "person/person_detail_DIRECTOR_HY";
 	}
@@ -156,10 +196,10 @@ public class PersonController {
 		//해당 유저가 해당 감독 컬렉션 추가했는지 체크
 		@ResponseBody
 		@GetMapping("/person/checkCollectionDirector")
-		public boolean checkCollectionDirector(Model model, @RequestParam("user_id") int user_id, @RequestParam("director_id") int director_id) {
-			boolean isCollected = collectionArtistService.checkCollectionDirector(user_id, director_id);
+		public int checkCollectionDirector(Model model, @RequestParam("user_id") int user_id, @RequestParam("director_id") int director_id) {
+			int isCollected = collectionArtistService.checkCollectionDirector(user_id, director_id);
 			model.addAttribute("isCollected", isCollected);
-			 if (isCollected) {
+			 if (isCollected==0) {
 			        // 이미 구독을 누른 경우, 삭제 로직 호출
 			        int collectionDirectorDeleteResult = collectionArtistService.deleteCollectionDirector(user_id, director_id);
 			    	System.out.println("collectionDirectorDeleteResult : "+collectionDirectorDeleteResult);
@@ -204,10 +244,10 @@ public class PersonController {
 		@PostMapping("/person/insertActorLike")
 		public int actor_like(Model model, @RequestParam("user_id") int user_id, @RequestParam("actor_id") int actor_id) {
 			  // 중복 체크 로직
-		    boolean isLiked = likeService.checkActorLike(user_id, actor_id);
+		    int isLiked = likeService.checkActorLike(user_id, actor_id);
 		    System.out.println("isLiked : "+isLiked);
 		    model.addAttribute("isLiked",isLiked);
-		    if (isLiked) {
+		    if (isLiked==1) {
 		        // 이미 좋아요를 누른 경우, 삭제 로직 호출
 		        int actorlikeDeleteresult = likeService.deleteActorLike(user_id, actor_id);
 		        int actorlikeCount = likeService.selectActorLikeList(actor_id);

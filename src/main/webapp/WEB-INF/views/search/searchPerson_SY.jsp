@@ -118,13 +118,6 @@
 	                                                        <div class="css-1evnpxk-StyledSubtitle">
 	                                                            <div class="css-qzyxgk">
 		                                                            <span class="css-htvp8y">감독</span>
-		                                                            <span class="css-1jpatke"> ・ </span>
-		                                                            <span class="personContents css-yn5nfu" title="다바타 신타로"></span>
-	                                                            </div>
-	                                                        </div>
-	                                                        <div class="css-v9psum">
-	                                                            <div title="다바타 신타로" class="css-txztjz">
-	                                                            	<span class="css-mudjgk"></span>
 	                                                            </div>
 	                                                        </div>
 	                                                    </div>

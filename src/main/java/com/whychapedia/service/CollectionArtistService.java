@@ -16,8 +16,9 @@ public interface CollectionArtistService {
 	//보관함 감독 #
 	int selectDirectorCount(int user_id);
 	
-	//해당 유저가 해당 감독 컬렉션에 넣었는지 확인
-	boolean checkCollectionDirector(int user_id, int director_id);
+	//해당 유저가 해당 감독을 컬렉션에 넣었는지 확인
+	int checkCollectionDirector(int user_id, int director_id);
+	
 	//해당 감독 구독컬렉션 추가하기
 	int insertCollectionDirector(int user_id, int director_id);
 
@@ -27,4 +28,7 @@ public interface CollectionArtistService {
 	int insertCollectionActor(int user_id, int actor_id);
 	//해당 배우 컬렉션 삭제하기
 	int deleteCollectionActor(int user_id, int actor_id);
+	
+	//해당 유저가 해당 배우를 컬렉션에 넣었는지 확인
+	int checkCollectionActor(int user_id, int actor_id);
 }

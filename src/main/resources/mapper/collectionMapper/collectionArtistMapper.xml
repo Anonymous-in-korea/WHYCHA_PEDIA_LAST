@@ -20,10 +20,19 @@
 		inner join director d on cd.director_id=d.id
 		where w.id=#{user_id}
 	</select>
+	
+	
 	<!-- 	해당 유저가 해당 감독 컬렉션 구독하는지 체크 -->
-	<select id="checkCollectionDirector" parameterType="map" resultType="int">
+	<select id="checkCollectionDirector" resultType="int">
 		SELECT COUNT(*) FROM collection_director WHERE user_id = #{user_id} AND director_id = #{director_id}
 	</select>
+	
+	<!-- 	해당 유저가 해당 감독 컬렉션 구독하는지 체크 -->
+	<select id="checkCollectionActor"  resultType="int">
+		SELECT COUNT(*) FROM collection_actor WHERE user_id = #{user_id} AND actor_id = #{actor_id}
+	</select>
+	
+
 	<!-- 	해당 유저 id가 해당 감독 컬렉션 추가 -->
 	<insert id="insertCollectionDirector">
 		insert into collection_director(ID,USER_ID,DIRECTOR_ID)
@@ -33,21 +42,18 @@
 	<delete id="deleteCollectionDirector">
 		delete from collection_director where director_id=#{director_id} and user_id=#{user_id}
 	</delete>
+	
 	<!-- 	해당 유저 id가 해당 배우 컬렉션 추가 -->
 	<insert id="insertCollectionActor">
-		INSERT INTO collection_actor(user_id, actor_id)   
-		select coalesce(max(id),0)+1, #{user_id}, #{actor_id} 
-		FROM dual
-		WHERE NOT EXISTS (
-		  SELECT *
-		  FROM collection_actor
-		  WHERE actor_id=#{actor_id} and user_id=#{user_id}
-		)
+		insert into collection_actor(ID,USER_ID,actor_ID)
+		select coalesce(max(id),0)+1, #{user_id}, #{actor_id} from collection_actor
 	</insert>
-		<!-- 해당 유저 id가 해당 배우 컬렉션 취소 -->
+	
+	<!-- 해당 유저 id가 해당 배우 컬렉션 취소 -->
 	<delete id="deleteCollectionActor">
 		delete from collection_actor where actor_id=#{actor_id} and user_id=#{user_id}
 	</delete>
+	
 	<!-- 해당 유저가 구독하는 감독 개수 -->
 	<select id="selectDirectorCount" resultType="int">
 		select count(*)

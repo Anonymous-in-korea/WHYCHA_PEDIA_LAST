@@ -36,17 +36,21 @@ public interface LikeService {
 
 	//해당 감독 좋아요 수
 	int selectDirectorLikeList(int director_id);
+	
+	//해당 유저가 해당 감독을 좋아요 헸는지 체크	
+	int checkDirectorLike(int user_id, int director_id);
 
 	//해당 배우 좋아요 수
 	int selectActorLikeList(int actor_id);
 
 	//해당 배우 좋아요 추가
 	int insertActorLike(int user_id, int actor_id);
+	
 	//해당 배우 좋아요 삭제
 	int deleteActorLike(int user_id, int actor_id);
 
 	//해당 유저가 해당 배우를 좋아요 헸는지 체크
-	boolean checkActorLike(int user_id, int actor_id);
+	int checkActorLike(int user_id, int actor_id);
 
 	//콜렉션 좋아요 추가
 	int insertCollectionLike(int collection_id, int user_id);
@@ -65,6 +69,8 @@ public interface LikeService {
 
 	//콜렉션 좋아요 list
 	List<LikeVo> selectCollectionLikeList(int collection_id);
+
+	
 
 	
 

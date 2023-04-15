@@ -85,6 +85,13 @@ public class LikeServiceImpl implements LikeService {
 		System.out.println("likeservice directorlikeDeleteresult: "+ directorlikeDeleteresult);
 		return directorlikeDeleteresult;
 	}
+	
+	//해당 유저가 해당 배우 좋아요 했는지 체크여부
+	@Override
+	public int checkDirectorLike(int user_id, int director_id) {
+		int count = likeMapper.checkDirectorLike(user_id, director_id);
+		return count;
+	}
 
 	//해당 배우 좋아요 수 가져오기
 	@Override
@@ -95,9 +102,9 @@ public class LikeServiceImpl implements LikeService {
 	
 	//해당 유저가 해당 배우 좋아요 했는지 체크여부
 	@Override
-	public boolean checkActorLike(int user_id, int actor_id) {
+	public int checkActorLike(int user_id, int actor_id) {
 		 int count = likeMapper.checkActorLike(user_id, actor_id);
-		    return count > 0;
+		    return count;
 	}
 	
 	//해당 배우 좋아요 추가
@@ -177,4 +184,6 @@ public class LikeServiceImpl implements LikeService {
 		List<LikeVo> likeList = likeMapper.selectCommentLikeOne(comment_id);
 		return likeList;
 	}
+
+
 }

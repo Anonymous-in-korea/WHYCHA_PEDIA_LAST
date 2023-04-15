@@ -21,38 +21,7 @@
 	  
 
 		/*=====================================인물컬렉션 추가삭제 시작======================================================================  */
-/*초기 css상태 설정하는거 지금 애러나는데 아직 못찾음 */
-// 		$(document).ready(function() {
-// 		  var id = $("#directorPersonId").val();
-// 		  if (!${empty sessionId}) {
-// 			// 초기 CSS 상태 설정하는 ajax
-// 				$.ajax({
-// 				    url: "/person/checkCollectionDirector",
-// 				    type: "GET",
-// 				    dataType: "json",
-// 				    data: {
-// 				        user_id: "${sessionId}",
-// 				        director_id: id
-// 				    },
-// 				    success: function(data) {
-// 				        if (data) {
-// 				            $("#perLike").css("background-color", "#ff7f27");
-// 				            $("#perLike").css("color", "#ffffff");
-// 				            $("#perLike").css("border-radius","5px");
-// 				            $("#perLike").html("+🙆‍♂️ Add ARTIST Collection");
-// 				        } else {
-// 				            $("#perLike").css("background-color", "");
-// 				            $("#perLike").css("color", "#959595");
-// 				            $("#perLike").html("+🙆 Add ARTIST Collection");
-// 				        }
-// 				    },
-// 				    error: function() {
-// 				        alert("Failure: ");
-// 				    }
-// 				}); 
-		  
-// 		  	}//ifsessionId
-// 		  }//페이지 열릴때
+
   $(function(){
 			$("#perLike").click(function() {
 				  var id = $("#directorPersonId").val();
@@ -74,7 +43,7 @@
 						      director_id: id
 						    },
 						    success: function(data) {
-						      alert("Success: " + data);
+						      //alert("Success: " + data);
 						  
 						    },
 						    error: function() {
@@ -128,7 +97,7 @@ $(document).ready(function() {
         director_id: id
       },
       success: function(data) {
-    	  alert("색고정");
+    	  //alert("색고정");
         if (data.isLiked) {
           $('#like').addClass('liked');
           $('#likeIcon').attr('src', '/images/orange_like_fill.png');
@@ -149,60 +118,60 @@ $(document).ready(function() {
 
 
 $(function(){  
-/* 좋아요 추가 */
-$("#like").click(function() {
- var id = $("#directorPersonId").val();
- $("#like-Count-before").hide();
- if (!${empty sessionId}) {
-   	$(this).toggleClass('liked');
-	    if ($(this).hasClass('liked')) {
-		      $('#likeIcon').attr('src', '/images/orange_like_fill.png');
-		      $('.css-mr5mym-StyledButtonText').css('color', '#ff7f27');
-		      /*좋아요 ajax 시작  */
-		      $.ajax({
-		        url: "/person/insertDirectorLike",
-		        type: "POST",
-		        dataType: "json",
-		        data: {
-		          user_id: "${sessionId}",
-		          director_id: id
-		        },
-		        success: function(data) {
-		          alert("data: " + data);
-		          console.log(data);
-		          document.getElementById("like-count-value").innerText = data;
-		         // $("#like-count").text(data.directorlikeCount);
-		          
-		        },
-		        error: function() {
-		          alert("Failure: ");
-		        }
-		      }); 
-				      /*좋아요 ajax 끝  */
-	    } else {
-	      $('#likeIcon').attr('src', '/images/orange_like.png');
-	      $('.css-mr5mym-StyledButtonText').css('color', '');
-	      /*좋아요 삭제 ajax 시작  */
-		      $.ajax({
-		        url: "/person/deleteDirectorLike",
-		        type: "POST",
-		        dataType: "json",
-		        data: {
-		          user_id: "${sessionId}",
-		          director_id: id
-		        },
-		        success: function(data) {
-		          alert("Success: " + data);
-		          document.getElementById("like-count-value").innerText = data;
-		        },
-		        error: function() {
-		         // alert("Failure: ");
-		        }
-		      }); 
-		  /*좋아요 삭제 ajax 끝 */
-   	}//if 
-	  }//if 세션아이디가 있을때 좋아요 가능하게
-	}); //좋아요 버튼 클릭시
+	/* 좋아요 추가 */
+	$("#like").click(function() {
+	 var id = $("#directorPersonId").val();
+	 $("#like-Count-before").hide();
+	 if (!${empty sessionId}) {
+	   	$(this).toggleClass('liked');
+		    if ($(this).hasClass('liked')) {
+			      $('#likeIcon').attr('src', '/images/orange_like_fill.png');
+			      $('.css-mr5mym-StyledButtonText').css('color', '#ff7f27');
+			      /*좋아요 ajax 시작  */
+			      $.ajax({
+			        url: "/person/insertDirectorLike",
+			        type: "POST",
+			        dataType: "json",
+			        data: {
+			          user_id: "${sessionId}",
+			          director_id: id
+			        },
+			        success: function(data) {
+			          //alert("data: " + data);
+			          console.log(data);
+			          document.getElementById("like-count-value").innerText = data;
+			         // $("#like-count").text(data.directorlikeCount);
+			          
+			        },
+			        error: function() {
+			          alert("Failure: ");
+			        }
+			      }); 
+					      /*좋아요 ajax 끝  */
+		    } else {
+		      $('#likeIcon').attr('src', '/images/orange_like.png');
+		      $('.css-mr5mym-StyledButtonText').css('color', '');
+		      /*좋아요 삭제 ajax 시작  */
+			      $.ajax({
+			        url: "/person/deleteDirectorLike",
+			        type: "POST",
+			        dataType: "json",
+			        data: {
+			          user_id: "${sessionId}",
+			          director_id: id
+			        },
+			        success: function(data) {
+			          //alert("Success: " + data);
+			          document.getElementById("like-count-value").innerText = data;
+			        },
+			        error: function() {
+			         // alert("Failure: ");
+			        }
+			      }); 
+			  /*좋아요 삭제 ajax 끝 */
+	   	}//if 
+		  }//if 세션아이디가 있을때 좋아요 가능하게
+		}); //좋아요 버튼 클릭시
 /* ========================================좋아요 추가 삭제 끝============================================================================== */
 });//function
 		</script>
@@ -245,18 +214,55 @@ $("#like").click(function() {
 			                                        <div class="css-n52eyj">
 			                                            <h1 id="personName">${directorPersonlist.director_name}</h1>
 			                                            <p id="perRole">${role}</p>
-			                                            <p id="perLike">🙆 Add ARTIST Collection</p>
-			                                            
+			                                            <!-- 인물 컬렉션 등록 start -->
+			                                            <!--로그인 전-->
+			                                            <c:if test="${ sessionId == null }">
+			                                            	<p id="perLike">🙆 Add ARTIST Collection</p>
+			                                            </c:if>
+			                                            <!--로그인 후-->
+			                                            <c:if test="${ sessionId != null }">
+			                                           		<!--콜렉션에 없을 때-->
+			                                            	<c:if test="${inCollection==0}">
+			                                            		<p id="perLike" style="background-color: none; color: #959595;">🙆 Add ARTIST Collection</p>
+			                                            	</c:if>
+			                                            	<!--콜렉션에 있을 때-->
+			                                            	<c:if test="${inCollection!=0}">
+			                                            		<p id="perLike" style="background-color: #ff7f27; color: #ffffff; border-radius:5px;" class="collected">🙆 Add ARTIST Collection</p>
+			                                            	</c:if>
+			                                            </c:if>
+			                                             <!-- 인물 컬렉션 등록  end -->
 			                                        </div>
 			                                    </div>
 		                                    <hr class="css-god8tc">
-											<!-- 좋아요 버튼 -->
-		                                    <button id="like" class="css-1ski1qz-StylelessButton-StyledActionButton e150ls9t0">
-		                                        <img src="/images/orange_like.png" id="likeIcon">
-		                                        <div class="css-1umclh2-StyledIconContainer e150ls9t1"></div>
-<%-- 		                                        <span type="desktop" class="css-mr5mym-StyledButtonText e150ls9t2">좋아요${directorlikeCount}명이 이 인물을 좋아합니다</span> --%>
-												<span id="like-count" type="desktop" class="css-mr5mym-StyledButtonText e150ls9t2">좋아요 <span id="like-Count-before">${directorlikeCount }</span><span id="like-count-value"></span>명이 이 인물을 좋아합니다</span>
-		                                    </button>
+											<!-- 좋아요 버튼 시작 -->
+											<!--로그인 전-->
+											<c:if test="${ sessionId == null }">
+			                                    <button id="like" class="css-1ski1qz-StylelessButton-StyledActionButton e150ls9t0">
+			                                        <img src="/images/orange_like.png" id="likeIcon">
+			                                        <div class="css-1umclh2-StyledIconContainer e150ls9t1"></div>
+			                                        <span type="desktop" class="css-mr5mym-StyledButtonText e150ls9t2">좋아요 <span id="like-Count-before">${directorlikeCount }</span><span id="like-count-value"></span>명이 이 인물을 좋아합니다</span>
+			                                    </button>
+			                                </c:if>
+			                                <!--로그인 후-->
+			                                <c:if test="${ sessionId != null }">
+			                                	<!--좋아요 x-->
+			                                	<c:if test="${ like == 0 }">
+			                                		<button id="like" class="css-1ski1qz-StylelessButton-StyledActionButton e150ls9t0">
+				                                        <img src="/images/orange_like.png" id="likeIcon">
+				                                        <div class="css-1umclh2-StyledIconContainer e150ls9t1"></div>
+				                                        <span type="desktop" class="css-mr5mym-StyledButtonText e150ls9t2">좋아요 <span id="like-Count-before">${directorlikeCount }</span><span id="like-count-value"></span>명이 이 인물을 좋아합니다</span>
+				                                    </button>
+			                                	</c:if>
+			                                	<!--좋아요 o-->
+			                                	<c:if test="${ like != 0 }">
+				                                	<button id="like" class="css-1ski1qz-StylelessButton-StyledActionButton e150ls9t0" class="liked">
+				                                        <img src="/images/orange_like_fill.png" id="likeIcon">
+				                                        <div class="css-1umclh2-StyledIconContainer e150ls9t1"></div>
+				                                        <span type="desktop" class="css-mr5mym-StyledButtonText e150ls9t2" style="color:#ff7f27;">좋아요 <span id="like-Count-before">${directorlikeCount }</span><span id="like-count-value"></span>명이 이 인물을 좋아합니다</span>
+				                                    </button>
+			                                	</c:if>
+			                                </c:if>
+			                                <!-- 좋아요 버튼 끝-->    
 		                                </div>
 		                            </section>
 		                            <hr class="css-l71a9o">

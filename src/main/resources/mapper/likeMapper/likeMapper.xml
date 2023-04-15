@@ -60,6 +60,11 @@
 			where director_id=#{director_id}
 	</select>
 	
+		<!-- 	해당 유저가 해당 배우 좋아요 눌렀는지 체크 -->
+	<select id="checkDirectorLike" parameterType="map" resultType="int">
+	  SELECT COUNT(*) FROM director_like WHERE user_id = #{user_id} AND director_id = #{director_id}
+	</select>
+	
 	<!-- 해당배우에 대한 좋아요 총 카운트 -->
 	<select id="selectActorLikeList" resultType="int">
 		select count(*) like_count fROM actor_like 
@@ -71,12 +76,13 @@
 	    SELECT COUNT(*) FROM actor_like
 	    WHERE USER_ID = #{user_id} AND ACTOR_ID = #{actor_id}
 	</select>
-<!-- 	해당 유저가 해당 배우 좋아요 눌렀는지 체크 -->
+	
+	<!-- 	해당 유저가 해당 배우 좋아요 눌렀는지 체크 -->
 	<select id="checkActorLike" parameterType="map" resultType="int">
-	  SELECT COUNT(*) FROM collection_actor WHERE user_id = #{user_id} AND actor_id = #{actor_id}
+	  SELECT COUNT(*) FROM actor_like WHERE user_id = #{user_id} AND actor_id = #{actor_id}
 	</select>
 
-		<!-- 해당 배우 좋아요 추가 -->
+	<!-- 해당 배우 좋아요 추가 -->
 	<insert id="insertActorLike">
 		insert into actor_like(id, actor_id, user_id) values((select coalesce(max(id),0)+1 from actor_like), #{actor_id}, #{user_id})
 	</insert>

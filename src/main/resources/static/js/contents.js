@@ -356,7 +356,7 @@ $(function() {
 					data:{"movie_id":parseInt(movieVoId),"wishWatch":parseInt(wishWatch),"isWatching":parseInt(isWatching)},
 					dataType:"json",
 					success:function(response){
-						alert("성공");
+						//alert("성공");
 					},
 					error:function(){
 					}
@@ -373,7 +373,7 @@ $(function() {
 					data:{"movie_id":parseInt(movieVoId),"wishWatch":parseInt(wishWatch),"isWatching":parseInt(isWatching)},
 					dataType:"json",
 					success:function(response){
-						alert("성공");
+						//alert("성공");
 					},
 					error:function(){
 					}
@@ -438,7 +438,7 @@ $(function() {
 					data:{"movie_id":parseInt(movieVoId),"wishWatch":parseInt(wishWatch),"isWatching":parseInt(isWatching)},
 					dataType:"json",
 					success:function(response){
-						alert("성공");
+						//alert("성공");
 					},
 					error:function(){
 					}
@@ -455,7 +455,7 @@ $(function() {
 					data:{"movie_id":parseInt(movieVoId),"wishWatch":parseInt(wishWatch),"isWatching":parseInt(isWatching)},
 					dataType:"json",
 					success:function(response){
-						alert("성공");
+						//alert("성공");
 					},
 					error:function(){
 					}

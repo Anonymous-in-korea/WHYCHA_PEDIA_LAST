@@ -31,6 +31,9 @@ public interface LikeMapper {
 
 	//해당 감독 좋아요 삭제
 	int deleteDirectorLike(int user_id, int director_id);
+	
+	//해당 유저가 해당 감독 좋아요 눌렀는지 체크
+	int checkDirectorLike(int user_id, int director_id);
 
 	//해당 배우 좋아요 수 가져오기
 	int selectActorLikeList(int actor_id);
@@ -73,6 +76,8 @@ public interface LikeMapper {
 
 	//코멘트 상세페이지 해당 코멘트 좋아요 list 가져오기
 	List<LikeVo> selectCommentLikeOne(int comment_id);
+
+
 
 	
 

@@ -42,12 +42,23 @@ public class CollectionArtistServiceImpl implements CollectionArtistService {
 		int directorCount=collectionArtistMapper.selectDirectorCount(user_id);
 		return directorCount;
 	}
-	//해당 유저가 해당 감독 컬렉션에 넣었는지 확인
+	
+	
+		//해당 유저가 해당 감독을 컬렉션에 넣었는지 확인
 		@Override
-		public boolean checkCollectionDirector(int user_id, int director_id) {
+		public int checkCollectionDirector(int user_id, int director_id) {
 			 int collectCount = collectionArtistMapper.checkCollectionDirector(user_id, director_id);
-			  return collectCount > 0;
+			  return collectCount;
 		}
+		
+		//해당 유저가 해당 배우를 컬렉션에 넣었는지 확인
+		@Override
+		public int checkCollectionActor(int user_id, int actor_id) {
+			 int collectCount = collectionArtistMapper.checkCollectionActor(user_id, actor_id);
+			return collectCount;
+		}	
+		
+		
 		
 
 		//해당 감독 구독컬렉션 추가하기 //ajax로 해당 유저의 감독컬레션 추가하기
@@ -81,5 +92,7 @@ public class CollectionArtistServiceImpl implements CollectionArtistService {
 			
 			return collectionActorDeleteResult;
 		}
+
+
 	
 }

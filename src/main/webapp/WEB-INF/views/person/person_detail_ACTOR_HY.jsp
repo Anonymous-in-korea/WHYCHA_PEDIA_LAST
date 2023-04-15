@@ -145,7 +145,7 @@ $("#like").click(function() {
 							<!-- header end -->
 		                </div>
 		            </header>
-		             <input type="hidden" id="actorPersonId" value="${actorPersonlist.id}">
+		            <input type="hidden" id="actorPersonId" value="${actorPersonlist.id}">
 		            <section class="css-18gwkcr">
 		                <section class="css-ohiqjz">
 		                    <section class="css-tq98he-Self e1555cob0">
@@ -171,16 +171,55 @@ $("#like").click(function() {
 			                                        <div class="css-n52eyj">
 			                                            <h1 id="personName">${actorPersonlist.actor_name}</h1>
 			                                            <p id="perRole">${role}</p>
-			                                            <p id="perLike">🙆 Add ARTIST Collection</p>
+			                                            <!-- 인물 컬렉션 등록 start -->
+			                                            <!--로그인 전-->
+			                                            <c:if test="${ sessionId == null }">
+			                                            	<p id="perLike" style="background-color: none; color: #959595;">🙆 Add ARTIST Collection</p>
+			                                            </c:if>
+			                                            <!--로그인 후-->
+			                                            <c:if test="${ sessionId != null }">
+			                                           		<!--콜렉션에 없을 때-->
+			                                            	<c:if test="${inCollection==0}">
+			                                            		<p id="perLike" style="background-color: none; color: #959595;">🙆 Add ARTIST Collection</p>
+			                                            	</c:if>
+			                                            	<!--콜렉션에 있을 때-->
+			                                            	<c:if test="${inCollection!=0}">
+			                                            		<p id="perLike" style="background-color: #ff7f27; color: #ffffff; border-radius:5px;" class="collected">🙆 Add ARTIST Collection</p>
+			                                            	</c:if>
+			                                            </c:if>
+			                                             <!-- 인물 컬렉션 등록  end -->
 			                                        </div>
 			                                    </div>
 		                                    <hr class="css-god8tc">
-											<!-- 좋아요 버튼 -->
-		                                    <button id="like" class="css-1ski1qz-StylelessButton-StyledActionButton e150ls9t0">
-		                                        <img src="/images/orange_like.png" id="likeIcon">
-		                                        <div class="css-1umclh2-StyledIconContainer e150ls9t1"></div>
-		                                        <span type="desktop" class="css-mr5mym-StyledButtonText e150ls9t2">좋아요 <span id="like-Count-before">${actorlikeCount }</span><span id="like-count-value"></span>명이 이 인물을 좋아합니다</span>
-		                                    </button>
+											<!-- 좋아요 버튼 시작 -->
+											<!--로그인 전-->
+											<c:if test="${ sessionId == null }">
+			                                    <button id="like" class="css-1ski1qz-StylelessButton-StyledActionButton e150ls9t0">
+			                                        <img src="/images/orange_like.png" id="likeIcon">
+			                                        <div class="css-1umclh2-StyledIconContainer e150ls9t1"></div>
+			                                        <span type="desktop" class="css-mr5mym-StyledButtonText e150ls9t2">좋아요 <span id="like-Count-before">${actorlikeCount }</span><span id="like-count-value"></span>명이 이 인물을 좋아합니다</span>
+			                                    </button>
+			                                </c:if>
+			                                <!--로그인 후-->
+			                                <c:if test="${ sessionId != null }">
+			                                	<!--좋아요 x-->
+			                                	<c:if test="${ like == 0 }">
+			                                		<button id="like" class="css-1ski1qz-StylelessButton-StyledActionButton e150ls9t0">
+				                                        <img src="/images/orange_like.png" id="likeIcon">
+				                                        <div class="css-1umclh2-StyledIconContainer e150ls9t1"></div>
+				                                        <span type="desktop" class="css-mr5mym-StyledButtonText e150ls9t2">좋아요 <span id="like-Count-before">${actorlikeCount }</span><span id="like-count-value"></span>명이 이 인물을 좋아합니다</span>
+				                                    </button>
+			                                	</c:if>
+			                                	<!--좋아요 o-->
+			                                	<c:if test="${ like != 0 }">
+				                                	<button id="like" class="css-1ski1qz-StylelessButton-StyledActionButton e150ls9t0" class="liked">
+				                                        <img src="/images/orange_like_fill.png" id="likeIcon">
+				                                        <div class="css-1umclh2-StyledIconContainer e150ls9t1"></div>
+				                                        <span type="desktop" class="css-mr5mym-StyledButtonText e150ls9t2" style="color:#ff7f27;">좋아요 <span id="like-Count-before">${actorlikeCount }</span><span id="like-count-value"></span>명이 이 인물을 좋아합니다</span>
+				                                    </button>
+			                                	</c:if>
+			                                </c:if>
+			                                <!-- 좋아요 버튼 끝-->    
 		                                </div>
 		                            </section>
 		                            <hr class="css-l71a9o">

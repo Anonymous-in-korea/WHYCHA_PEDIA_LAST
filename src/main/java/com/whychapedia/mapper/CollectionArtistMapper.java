@@ -36,4 +36,7 @@ public interface CollectionArtistMapper {
 	//해당 유저가 해당 감독을 구독하는지 체크
 	int checkCollectionDirector(int user_id, int director_id);
 
+	//해당 유저가 해당 배우를 구독하는지 체크
+	int checkCollectionActor(int user_id, int actor_id);
+
 }
