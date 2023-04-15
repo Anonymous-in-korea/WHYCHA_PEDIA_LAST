@@ -22,13 +22,28 @@
 		where id = #{comment_id}
 	</select>
 	
+	<!-- 내가 작성한 코멘트 가져오기 -->
+	<select id="selectMyCommentOne" resultType="com.whychapedia.vo.CommentVo">
+		select * from wcomment where user_id = #{id} and movie_id = #{movie_id}
+	</select>
+
+	<!-- 내가 작성한 코멘트 수정하기 -->
+	<select id="myCommentModify">
+		update wcomment set comment_content = #{comment_content} where user_id = #{user_id} and movie_id = #{movie_id}
+	</select>
+	
 	<!-- 영화 상세페이지에 들어갈 코멘트 2개 가져오기  -->
 	<select id="selectCommentTow" resultType="com.whychapedia.vo.CommentVo">
 		select wc.*, (SELECT COUNT(*) FROM comment_like WHERE comment_id = wc.id) AS like_count
 		from wcomment wc 
 		where movie_id = #{movie_id} and is_blind !=2
 		ORDER BY like_count DESC
-		FETCH FIRST 2 ROWS ONLY
+		
+		<!-- select wc.*, (SELECT COUNT(*) FROM comment_like WHERE comment_id = wc.id) AS like_count
+		from wcomment wc 
+		where movie_id = #{movie_id} and is_blind !=2
+		ORDER BY like_count DESC
+		FETCH FIRST 2 ROWS ONLY -->
 	</select>
 	
 		<!-- 	해당 코멘트 댓글 수 -->

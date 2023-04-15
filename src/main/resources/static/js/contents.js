@@ -527,6 +527,38 @@ $(function() {
 		});
 		/* 콜렉션_box end ----------------------------------------------------------------------------------------------------------------- */
 		
+		
+		
+		
+		/* 코멘트가 null이 아닐 때, 수정버튼 눌렀을 경우 ------------------------------------------------------------------------------------------ */
+		$("#edit-btn").click(function() {
+			if ( $(".comment_pop_up2_background").css("display") == "none" ) {
+				$(".comment_pop_up2_background").show();
+			}
+		});
+		
+		/* 코멘트 창 내리기 */
+		$(".comment_pop_up2_background").click(function() {
+			if ( $(".collection_pop_up2_background").css("display") != "none" ) {
+				$(".collection_pop_up2_background").hide();
+				$("#collection_btn").removeClass("active");
+				$("#collection_icon").css({"display":"block"});
+				$("#collection_icon_color").css({"display":"none"});
+				$("#collection_text").css({"color":""});
+			}
+		});
+		
+		/* 창 내리기 방지 */
+    	$(".comment_content_box2").click(function(e) {
+			e.stopPropagation();
+			$(".comment_pop_up2_background").css("display", "block");
+		});
+		
+		$("#comment_modify").click(function() {
+			myCommentModify.submit();
+		});
+		/* 코멘트가 null이 아닐 때, 수정버튼 눌렀을 경우 ------------------------------------------------------------------------------------------ */
+		
 	/* 마우스로 클릭하면 색깔변화 (로그인 후) --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 	
 });

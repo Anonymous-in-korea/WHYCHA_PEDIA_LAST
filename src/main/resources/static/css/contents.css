@@ -4870,6 +4870,7 @@ html {
         .css-mainn9-LeftBackground {
             flex: 1 1 0%;
             background: rgb(154, 125, 105);
+            /* background: #FEAE27; */
         }
 
         .css-92c08v-BlurPoster {
@@ -4885,11 +4886,8 @@ html {
         #background-poster-image{
             position: absolute;
             top: -10%;
-            left: -10%;
-            width: 120%;
+            width: 100%;
             height: 110%;
-            
-           
         }
 
         @media (min-width: 719px) {
@@ -5022,7 +5020,7 @@ html {
 		}
         @media (min-width: 719px) {
             .css-r6qxq2-ContentMetaInfoBlock {
-                min-height: unset;
+                min-height: 34px;
                 margin-left: unset;
             }
             .css-r6qxq2-ContentMetaInfoBlock [class*="Detail"] {
@@ -5032,27 +5030,6 @@ html {
 
         em { font-style: normal; }
 
-		.css-r6qxq2-ContentMetaInfoBlock {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			min-height: 117px;
-			margin-left: 18px;
-		}
-        .css-r6qxq2-ContentMetaInfoBlock [class*="Detail"] {
-            display: block;
-            color: #dddee4;
-            opacity: 0.8;
-        }
-        @media (min-width: 719px) {
-        	.css-r6qxq2-ContentMetaInfoBlock {
-				min-height:unset;
-				margin-left: unset;
-			}
-            .css-r6qxq2-ContentMetaInfoBlock [class*="Detail"] {
-                display: none;
-            }
-        }
         
         .css-1v9zk7c-RankingInfoList {
 			text-align: left;

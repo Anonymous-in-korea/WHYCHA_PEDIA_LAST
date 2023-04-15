@@ -181,10 +181,13 @@
 				<div height="100%" class="css-2zu8pq">
 					<div class="css-cdzmq7">
 						<div class="css-iowq1w">
+							<form action="/contents/myCommentModify" method="get" name="myCommentModify">
+							<input type="hidden" name="userId" value="${ myCommentVo.user_id }">
+							<input type="hidden" name="movieId" value="${ movieVo.id }">
 							<div class="css-iowq1w">
-								<textarea maxlength="1000" placeholder="이 작품에 대한 생각을 자유롭게 표현해주세요.(1000 글자이내)" class="css-137vxyg"></textarea>
-								<div class="css-238o9r">null</div>
+								<textarea name="comment_content" maxlength="1000" placeholder="이 작품에 대한 생각을 자유롭게 표현해주세요.(1000 글자이내)" class="css-137vxyg">${ myCommentVo.comment_content }</textarea>
 							</div>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -213,7 +216,7 @@
 					</div>
 					<div class="css-6qnjre">
 						<p class="css-1s08rlk"></p>
-						<button type="button" id="comment_input" class="css-1ukikc-StylelessButton">저장</button>
+						<button type="button" id="comment_modify" class="css-1ukikc-StylelessButton">수정</button>
 					</div>
 				</div>
 			</div>
@@ -280,4 +283,5 @@
 	</div>
 </div>
 <!-- 컬렉션 팝업창 로그인 후 end -->
+
 <!-- 로그인 후 팝업창 end -->

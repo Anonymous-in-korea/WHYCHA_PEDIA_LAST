@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -262,8 +263,18 @@ public class ContentsController {
 			
 			
 			/*  출연 제작 인물 받아오기 끝*/
-		//------------------------------------------------------------------------------------------------------------//	
-
+		//------------------------------------------------------------------------------------------------------------//
+		
+		//내가 쓴 코멘트 가져오기
+		int id = (int)session.getAttribute("sessionId"); //sessionId 가져오기
+		System.out.println("sessionId : " + id);
+		CommentVo myCommentVo = commentService.selectMyCommentOne(id, movie_id);
+		model.addAttribute("myCommentVo", myCommentVo);
+		System.out.println("myCommentVo_userId : " + myCommentVo.getUser_id());
+		System.out.println("myCommentVo_comment_content : " + myCommentVo.getComment_content());
+		
+		
+		
 		//해당 영화 코멘트 2개 받아오기
 		List<CommentVo> commentVo2 = commentService.selectCommentList2(movie_id);
 		List<MemberVo> commentUserList2 = memberService.commentUserList(commentVo2);
@@ -281,6 +292,17 @@ public class ContentsController {
 		return "/contents/contents_SH";
 	}
 	
+	
+	@GetMapping("contents/myCommentModify") // 내 코멘트 수정하기
+	public String myCommentModify(@RequestParam String userId, @RequestParam String movieId, @RequestParam String comment_content) {
+		
+		int user_id = Integer.parseInt(userId);
+		int movie_id = Integer.parseInt(movieId);
+		
+		commentService.myCommentModify(user_id, movie_id, comment_content);
+		
+		return "redirect:/contents/contents_SH";
+	}
 	
 	
 	

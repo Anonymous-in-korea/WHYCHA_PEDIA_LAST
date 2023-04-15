@@ -284,15 +284,18 @@
 		                                        <div class="css-uvsgck">
 		                                        	
 		                                        	<!-- 보고싶어요 or 보는중 버튼 클릭 시 (로그인 후) start -->
+		                                        	<c:if test="${ sessionId != null }">
+                                            		<c:if test="${ isWishWatch == 1 || isWatching == 1 }"><!-- 이거 밑에 코멘트 null일때 작동하도록 el태그 걸기 -->
 		                                            <div data-rowindex="1" class="w_exposed_cell css-sd2jre-SectionBlock eue8w0j0">
 		                                            	<div class="css-12ru3m0">
 		                                            		<!-- 코멘트 안달았을 때 나타나는 div start -->
 		                                            		<c:if test="${ isWishWatch == 1 || isWatching == 1 }"><!-- 이거 밑에 코멘트 null일때 작동하도록 el태그 걸기 -->
+		                                            		<c:if test="${ myCommentVo.user_id == sessionId && myCommentVo.comment_content == null }">
 			                                                	<section class="css-1v9og64-LeaveCommentSection eue8w0j1">
 			                                                		<div class="css-1gkas1x-Grid e1689zdh0">
 			                                                			<div class="css-1y901al-Row emmoxnt0">
 			                                                				<div class="css-vshgrn-LeaveCommentBlock eue8w0j2">
-			                                                					<h3 class="css-1p0zhfu-Title eue8w0j11">[ sessionName ]님의 생각을 글로 적어보세요.</h3>
+			                                                					<h3 class="css-1p0zhfu-Title eue8w0j11">[ ${ sessionName } ]님의 생각을 글로 적어보세요.</h3>
 			                                                					<div class="css-1jbrsnx-ButtonBlock eue8w0j12">
 			                                                						<button id="comment_write" class="css-2gm869-StylelessButton-MediumButton-LeaveCommentButton eue8w0j10">
 			                                                							코멘트 남기기
@@ -303,10 +306,12 @@
 			                                                		</div>
 			                                                	</section>
 		                                            		</c:if>
+		                                            		</c:if>
 		                                                	<!-- 코멘트 안달았을 때 나타나는 div end -->
 		                                                	
 		                                                	<!-- 코멘트 달았을 때 나타나는 div start -->
 		                                                	<c:if test="${ isWishWatch == 1 || isWatching == 1 }">
+		                                            		<c:if test="${ myCommentVo.user_id == sessionId && myCommentVo.comment_content != null }">
 															<div class="css-1gkas1x-Grid e1689zdh0 hasComm">
 																<div class="css-1y901al-Row emmoxnt0">
 																	<section class="css-10tfsfb-MyCommentSection eue8w0j3">
@@ -319,7 +324,7 @@
 																			<a class="css-1bh5fq7-StylelessLocalLink-LinkToMyComment eue8w0j13" href="/ko-KR/comments/1Vl2bWn96AMrR">
 																				<div class="css-2a9q6o-MyComment eue8w0j5">
 																					<div class=" css-gujidv-StyledSelf eb5y16b0">
-																						<div class="css-1fucs4t-StyledText eb5y16b1">개같다개같다개같다개같다개같다개같다개같다</div>
+																						<div class="css-1fucs4t-StyledText eb5y16b1">${ myCommentVo.comment_content }</div>
 																					</div>
 																				</div>
 																			</a>
@@ -343,10 +348,13 @@
 																	</section>
 																</div>
 															</div>
+															</c:if>
 		                                                	</c:if>
 															<!-- 코멘트 달았을 때 나타나는 div end -->
 		                                           		</div>
 		                                           	</div>
+		                                           	</c:if>
+		                                           	</c:if>
 		                                           	<!-- 보고싶어요 or 보는중 버튼 클릭 시 (로그인 후) end -->
 		                                           	
 		                                            <div class="css-1nxfhfk">

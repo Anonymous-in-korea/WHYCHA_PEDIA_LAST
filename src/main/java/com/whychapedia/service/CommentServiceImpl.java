@@ -42,6 +42,19 @@ public class CommentServiceImpl implements CommentService {
 		return cvo;
 	}
 	
+	//내가 쓴 코멘트 가져오기
+	@Override
+	public CommentVo selectMyCommentOne(int id, int movie_id) {
+		CommentVo myCommentVo = commentMapper.selectMyCommentOne(id, movie_id);
+		return myCommentVo;
+	}
+
+	//내가 쓴 코멘트 수정하기
+	@Override
+	public void myCommentModify(int user_id, int movie_id, String comment_content) {
+		commentMapper.myCommentModify(user_id, movie_id, comment_content);
+	}
+
 	//영화 상세페이지 코멘트 2개 가져오기 
 	@Override
 	public List<CommentVo> selectCommentList2(int movie_id) {
@@ -55,4 +68,5 @@ public class CommentServiceImpl implements CommentService {
 		int commentCount = commentMapper.selectCommentAll(movie_id);
 		return commentCount;
 	}
+	
 }
