@@ -4,6 +4,13 @@
 <html>
 <head>
   <link rel="icon" href="/image/favicon.png" />
+  <!-- Google Tag Manager -->
+  <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+  <script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-1PYHGTCRYW&amp;l=dataLayer&amp;cx=c"></script>
+  <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+  <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-KVV8C33"></script>
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-27006241-7"></script>
+
   <style>
     .css-1iuqns0-StyledFooterTopSection {
       background-color: rgb(16, 17, 19);
@@ -13,26 +20,7 @@
       /* height: 62px; */
     }
   </style>
-  <!-- Google Tag Manager -->
-  <script
-          type="text/javascript"
-          async=""
-          src="https://www.google-analytics.com/analytics.js"
-  ></script>
-  <script
-          type="text/javascript"
-          async=""
-          src="https://www.googletagmanager.com/gtag/js?id=G-1PYHGTCRYW&amp;l=dataLayer&amp;cx=c"
-  ></script>
-  <script
-          type="text/javascript"
-          async=""
-          src="https://www.google-analytics.com/analytics.js"
-  ></script>
-  <script
-          async=""
-          src="https://www.googletagmanager.com/gtm.js?id=GTM-KVV8C33"
-  ></script>
+
   <script>
     window.dataLayer = window.dataLayer || [
       { dimension5: "" },
@@ -53,10 +41,6 @@
     })(window, document, "script", "dataLayer", "GTM-KVV8C33");
   </script>
 
-  <script
-          async=""
-          src="https://www.googletagmanager.com/gtag/js?id=UA-27006241-7"
-  ></script>
 
   <!-- Global Site Tag (gtag.js) - Google Analytics -->
   <script>

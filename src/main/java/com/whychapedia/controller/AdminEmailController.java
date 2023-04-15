@@ -30,15 +30,20 @@ public class AdminEmailController {
 	@PostMapping("sendEmail")
 	@ResponseBody
 	public String sendEmail(String userEmail,String userName) {
+		
 		System.out.println("EmailController userEmail : "+userEmail);
 		System.out.println("EmailController userName : "+userName);
+		
+		List<MemberVo> emailMemberList = new ArrayList<>();
+		
 		//텍스트 이메일발송
-		String pwCode = adminMailService.emailSend(userEmail, userName);
+//		MemberVo memberVo = adminMailService.emailSend(userEmail, userName);
+		
 		//html 이메일발송
 		//String pwCode = adminMailService.mailSend2(userEmail, userName);
 		//파일포함 이메일발송
 		//String pwCode = adminMailService.mailSend3(userEmail, userName);
-		session.setAttribute("sessionPwCode", pwCode);
+		
 		return null;
 	}
 	

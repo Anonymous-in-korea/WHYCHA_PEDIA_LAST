@@ -1,7 +1,9 @@
 package com.whychapedia.service;
 
+import com.whychapedia.vo.MemberVo;
+
 public interface AdminMailService {
 
-	String emailSend(String userEmail, String userName);
+	MemberVo emailSend(String userEmail, String userName);
 
 }

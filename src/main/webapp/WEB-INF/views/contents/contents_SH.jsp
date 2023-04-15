@@ -285,12 +285,10 @@
 		                                        	
 		                                        	<!-- 보고싶어요 or 보는중 버튼 클릭 시 (로그인 후) start -->
 		                                        	<c:if test="${ sessionId != null }">
-                                            		<c:if test="${ isWishWatch == 1 || isWatching == 1 }"><!-- 이거 밑에 코멘트 null일때 작동하도록 el태그 걸기 -->
 		                                            <div data-rowindex="1" class="w_exposed_cell css-sd2jre-SectionBlock eue8w0j0">
 		                                            	<div class="css-12ru3m0">
 		                                            		<!-- 코멘트 안달았을 때 나타나는 div start -->
-		                                            		<c:if test="${ isWishWatch == 1 || isWatching == 1 }"><!-- 이거 밑에 코멘트 null일때 작동하도록 el태그 걸기 -->
-		                                            		<c:if test="${ myCommentVo.user_id == sessionId && myCommentVo.comment_content == null }">
+		                                            		<c:if test="${ myCommentVo.comment_content == null }"><!-- 이거 밑에 코멘트 null일때 작동하도록 el태그 걸기 -->
 			                                                	<section class="css-1v9og64-LeaveCommentSection eue8w0j1">
 			                                                		<div class="css-1gkas1x-Grid e1689zdh0">
 			                                                			<div class="css-1y901al-Row emmoxnt0">
@@ -306,12 +304,10 @@
 			                                                		</div>
 			                                                	</section>
 		                                            		</c:if>
-		                                            		</c:if>
 		                                                	<!-- 코멘트 안달았을 때 나타나는 div end -->
 		                                                	
 		                                                	<!-- 코멘트 달았을 때 나타나는 div start -->
-		                                                	<c:if test="${ isWishWatch == 1 || isWatching == 1 }">
-		                                            		<c:if test="${ myCommentVo.user_id == sessionId && myCommentVo.comment_content != null }">
+		                                                	<c:if test="${ myCommentVo.comment_content != null }">
 															<div class="css-1gkas1x-Grid e1689zdh0 hasComm">
 																<div class="css-1y901al-Row emmoxnt0">
 																	<section class="css-10tfsfb-MyCommentSection eue8w0j3">
@@ -348,12 +344,10 @@
 																	</section>
 																</div>
 															</div>
-															</c:if>
 		                                                	</c:if>
 															<!-- 코멘트 달았을 때 나타나는 div end -->
 		                                           		</div>
 		                                           	</div>
-		                                           	</c:if>
 		                                           	</c:if>
 		                                           	<!-- 보고싶어요 or 보는중 버튼 클릭 시 (로그인 후) end -->
 		                                           	

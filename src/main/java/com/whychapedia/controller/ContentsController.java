@@ -247,8 +247,18 @@ public class ContentsController {
 			isWatching=watchListService.selectIsWatch(1,movie_id,user_id);
 			System.out.println("보는중?"+isWatching);
 		}
+		
+		int wishNwatch = 0;
+		if ( isWishWatch == 0 && isWatching == 0 ) {
+			wishNwatch = 0;
+		} else if ( isWishWatch != 0 || isWatching != 0 ) {
+			wishNwatch = 1;
+		}
+		System.out.println("wishNwatch : " + wishNwatch);
+		
 		model.addAttribute("isWishWatch",isWishWatch);
 		model.addAttribute("isWatching",isWatching);
+		model.addAttribute("wishNwatch",wishNwatch);
 		/*보고싶어요 && 보는중 끝*/
 	    //----------------------------------------------------------------------------------------------------------//
 		 /*  출연 제작 인물 받아오기 시작*/
@@ -270,10 +280,14 @@ public class ContentsController {
 		
 		if(session.getAttribute("sessionId")!=null) {
 			Integer sessionId = (Integer) session.getAttribute("sessionId");
+			System.out.println("sessionId : " + sessionId);
 			int user_id = sessionId.intValue();
 			myCommentVo = commentService.selectMyCommentOne(user_id, movie_id);
-		}	
-		model.addAttribute("myCommentVo", myCommentVo);
+		}
+		
+		if ( myCommentVo != null ) {
+			model.addAttribute("myCommentVo", myCommentVo);
+		}
 		
 		
 		//해당 영화의 코멘트 총 개수(content page)

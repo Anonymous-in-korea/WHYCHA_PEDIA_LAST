@@ -10,6 +10,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import com.whychapedia.vo.MemberVo;
+
 @Service
 public class AdminMailServiceImpl implements AdminMailService {
 
@@ -21,7 +23,7 @@ public class AdminMailServiceImpl implements AdminMailService {
 	
 	@Override
 	@Async //html포함 이메일발송
-	public String emailSend(String userEmail, String userName) {
+	public MemberVo emailSend(String userEmail, String userName) {
 		//이메일 text, html, 파일첨부
 		//SimpleMailMessage message = new SimpleMailMessage();
 		MimeMessage message = mailSender.createMimeMessage();

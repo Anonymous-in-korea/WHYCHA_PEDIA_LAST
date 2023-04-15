@@ -26,7 +26,7 @@
 		    a { text-decoration: none; }
 		</style>
 		
-		<script>
+		<!-- <script>
 			$(function() {
 				$("#send_email").click(function() {
 			    	alert("입력한 이메일로 발송됩니다.");
@@ -49,7 +49,7 @@
 			    	});
 				});
 			});
-		</script>
+		</script> -->
 	</head>
 	<body class="sb-nav-fixed">
 	    <div id="layoutSidenav">
