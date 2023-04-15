@@ -24,6 +24,6 @@ public class CollectionVo {
 	private int like_count;
 	private int comment_count;
 	private List<String> movie_post_urls;
-	
+	private String movie_post_url;
 
 }

@@ -22,5 +22,9 @@ public interface CollectionService {
 	public int insertCollection(int user_id, String collection_name, String collection_desc);
 	//해당 유저의 가장 최근 업뎃한 컬렉션 가져오기
 	public CollectionVo selectLatestUpdate(int user_id);
+	//해당 유저의 해당 영화가 들어가 있는 콜렉션
+	public List<CollectionVo> selectCollectionMovieIn(int user_id, int movie_id);
+	//해당 유저의 해당 영화가 들어가 있지않은 콜렉션
+	public List<CollectionVo> selectCollectionMovieNotIn(int user_id, int movie_id);
 
 }

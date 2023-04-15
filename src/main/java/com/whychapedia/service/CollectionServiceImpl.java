@@ -97,6 +97,20 @@ public class CollectionServiceImpl implements CollectionService {
 		return collectionVo;
 	}
 
+	//해당 유저의 해당 영화가 들어가 있는 콜렉션
+	@Override
+	public List<CollectionVo> selectCollectionMovieIn(int user_id, int movie_id) {
+		List<CollectionVo> collectionMovieIn=collectionMapper.selectCollectionMovieIn(user_id,movie_id);
+		return collectionMovieIn;
+	}
+
+	//해당 유저의 해당 영화가 들어가 있지않은 콜렉션
+	@Override
+	public List<CollectionVo> selectCollectionMovieNotIn(int user_id, int movie_id) {
+		List<CollectionVo> collectionMovieNotIn=collectionMapper.selectCollectionMovieNotIn(user_id,movie_id);
+		return collectionMovieNotIn;
+	}
+
 
 
 }

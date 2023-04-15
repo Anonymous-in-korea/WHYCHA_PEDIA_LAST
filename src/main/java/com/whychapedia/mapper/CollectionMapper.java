@@ -31,5 +31,11 @@ public interface CollectionMapper {
 
 	//해당 유저의 가장 최근 업뎃한 컬렉션 가져오기
 	CollectionVo selectLatestUpdate(int user_id);
+	
+	//해당 유저의 해당 영화가 들어가 있는 콜렉션
+	List<CollectionVo> selectCollectionMovieIn(int user_id, int movie_id);
+
+	//해당 유저의 해당 영화가 들어가 있지않은 콜렉션
+	List<CollectionVo> selectCollectionMovieNotIn(int user_id, int movie_id);
 
 }

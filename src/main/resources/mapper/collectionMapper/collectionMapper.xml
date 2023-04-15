@@ -50,4 +50,25 @@
 	</select>
 	
 	
+	<!--해당 유저의 해당 영화가 들어가 있는 콜렉션-->
+	<select id="selectCollectionMovieIn" resultType="com.whychapedia.vo.CollectionVo">
+	SELECT c.id,c.collection_name,c.collection_desc,MIN(m.movie_post_url) as movie_post_url
+		FROM Collection c
+		LEFT JOIN Movie_Collection mc ON c.id = mc.collection_id
+		LEFT JOIN Movie m ON mc.movie_id = m.id
+		WHERE c.user_id =#{user_id} AND (mc.movie_id != #{movie_id})
+		GROUP BY c.id, c.collection_name,c.collection_desc
+	</select>
+	
+	
+	<!--해당 유저의 해당 영화가 들어가 있지않은 콜렉션-->
+	<select id="selectCollectionMovieNotIn" resultType="com.whychapedia.vo.CollectionVo">
+	SELECT c.id,c.collection_name,c.collection_desc
+		FROM Collection c
+		JOIN Movie_Collection mc ON c.id = mc.collection_id
+		JOIN Movie m ON mc.movie_id = m.id
+		WHERE c.user_id = #{user_id} AND mc.movie_id = #{movie_id}
+	</select>
+	
+	
 </mapper>

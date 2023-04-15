@@ -477,16 +477,35 @@ $(function() {
 		/* 콜렉션_box start ----------------------------------------------------------------------------------------------------------------- */
 		$("#collection_btn_login").on("click", function() {
 			if ($("#collection_btn_login").hasClass("active")) {
+				/* 콜렉션 닫기 */
 				$("#collection_btn_login").removeClass("active");
 				$("#collection_icon").css({"display":"block"});
 				$("#collection_icon_color").css({"display":"none"});
 				$("#collection_text").css({"color":""});
 			} else {
+				/* 콜렉션 열기 */
 				$("#collection_btn_login").addClass("active");
 				$("#collection_icon").css({"display":"none"});
 				$("#collection_icon_color").css({"display":"block"});
 				$("#collection_text").css({"color":"#FEAE27"});
 				if ( $(".collection_pop_up2_background").css("display") == "none" ) { $(".collection_pop_up2_background").show(); }
+				
+				/*콜렉션 정보 가져오기 */ 
+				let movieVoId = $("#ajaxMovieId").text();
+				$.ajax({
+					type:"post",
+					url:"/contents/collectionInfo",
+					data:{"movie_id":parseInt(movieVoId)},
+					dataType:"json",
+					success:function(response){
+						console.log("성공");
+					},
+					error:function(){
+						console.log("실패");
+					}
+				}); //ajax
+
+			
 			}
 		});
 		
