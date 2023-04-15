@@ -62,5 +62,19 @@ public class MemberServiceImpl implements MemberService {
 		List<MemberVo> colCommentUserList = memberMapper.selectCollectionCommentMember(collectionCommentList);
 		return colCommentUserList;
 	}
+
+	//해당 감독을 컬렉션에 담은 유저 리스트
+	@Override
+	public List<MemberVo> selectCollectionDirectorUser(int director_id) {
+		List<MemberVo> collectionDirectorUser=memberMapper.selectCollectionDirectorUser(director_id);
+		return collectionDirectorUser;
+	}
+
+	//해당 배우를 컬렉션에 담은 유저 리스트
+	@Override
+	public List<MemberVo> selectCollectionActorUser(int actor_id) {
+		List<MemberVo> collectionActorUser = memberMapper.selectCollectionActorUser(actor_id);
+		return collectionActorUser;
+	}
 	
 }

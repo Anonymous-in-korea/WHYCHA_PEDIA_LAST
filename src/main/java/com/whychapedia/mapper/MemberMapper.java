@@ -34,4 +34,10 @@ public interface MemberMapper {
 	
 	//영화 상세페이지 코멘트에 해당하는 user List
 	public List<MemberVo> selectcommentUserList(List<CommentVo> commentVo2);
+
+	//해당 감독을 컬렉션에 담은 유저 리스트
+	public List<MemberVo> selectCollectionDirectorUser(int director_id);
+
+	//해당 배우를 컬렉션에 담은 유저 리스트
+	public List<MemberVo> selectCollectionActorUser(int actor_id);
 }
