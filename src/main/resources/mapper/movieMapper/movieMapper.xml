@@ -82,6 +82,7 @@
 	INNER JOIN movie m ON ma.MOVIE_ID = m.ID
 	WHERE a.ID = #{actor_id}
   </select>
+  
   <!--해당 감독 id의 출연영화 정보 모두 가져오기  -->
   <select id="selectDirectorPersonMovieAll" resultType="com.whychapedia.vo.MovieVo">
     SELECT m.*

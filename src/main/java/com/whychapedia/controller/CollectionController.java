@@ -188,7 +188,7 @@ public class CollectionController {
 	
 	
 	
-	//콜렉션 넣기 ajax
+	/*            콜렉션 넣기 ajax                 */
 	@RequestMapping("/collection/collectionInsert")
 	@ResponseBody 
 	public ResponseEntity<Map<String, Object>> collectionInsert(int user_id,String collection_name,String collection_desc,Model model) {

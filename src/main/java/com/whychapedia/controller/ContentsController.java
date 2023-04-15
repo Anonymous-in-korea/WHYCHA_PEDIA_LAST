@@ -8,6 +8,8 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -458,21 +460,30 @@ public class ContentsController {
 	
 	@RequestMapping("/contents/collectionInfo")
 	@ResponseBody 
-	public Map<String, Integer> collectionInfo(int movie_id,Model model ){ 
-		Map<String, Integer>response = new HashMap<>();
+	public ResponseEntity<Map<String, Object>> collectionInfo(int movie_id,Model model ){ 
+		Map<String, Object> map = new HashMap<>();
 		Integer sessionId = (Integer) session.getAttribute("sessionId");
 		int user_id = sessionId.intValue();
 		System.out.println("user_id:"+user_id);
 		System.out.println("movie_id:"+movie_id);
 		/*해당 영화가 들어가 있는 콜렉션*/
-		List<CollectionVo> collectionMovieIn=collectionService.selectCollectionMovieIn(user_id,movie_id);
+		List<CollectionVo> collectionMovieIn=new ArrayList<>();
+		collectionMovieIn=collectionService.selectCollectionMovieIn(user_id,movie_id);
+		if(collectionMovieIn!=null) {
+			System.out.println("collectionMovieIn"+collectionMovieIn);	
+		}
+		
 		/*해당 영화가 들어가 있지 않는 콜렉션*/
-		List<CollectionVo> collectionMovieNotIn=collectionService.selectCollectionMovieNotIn(user_id,movie_id);
-		/**/
+		List<CollectionVo> collectionMovieNotIn=new ArrayList<>();		
+		collectionMovieNotIn=collectionService.selectCollectionMovieNotIn(user_id,movie_id);
+		if(collectionMovieNotIn!=null) {
+			System.out.println("collectionMovieNotIn"+collectionMovieNotIn);
+		}
 		
-		/**/
+		map.put("collectionMovieIn", collectionMovieIn);
+		map.put("collectionMovieNotIn", collectionMovieNotIn);
 		
-		return response;}	
+		return new ResponseEntity<>(map, HttpStatus.OK);}	
 	
 	
 /*                         영화 콜렉션 ajax                    */	
