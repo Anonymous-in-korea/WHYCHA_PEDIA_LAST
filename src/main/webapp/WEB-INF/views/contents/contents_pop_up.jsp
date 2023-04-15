@@ -227,48 +227,50 @@
 	<div id="modal-container-_UXspPLNadvpHIg80kJol" class="css-rpyl6s">
 		<div class="css-ikkedy collection_content_box2">
 			<header title="" class="css-155l1de-HeaderBarPrimitive">
-				<div class="css-19pxr9t">
-					<button aria-label="close" class="css-1d7tft4-StylelessButton-HeaderCloseButtonSelf e1k34u8y0">
-						<strong><img src="/images/close_button.png" style="width:100%; height:100%;"></strong>
-					</button>
-				</div>
 				<div class="css-addMycollection">내 컬렉션에 추가</div>
-				<div class="css-collection_addcheck">확인</div>
 			</header>
 			<div class="css-1s8we4x">
 				<div class="css-oi2wld">
 					<div class="css-blhbko2">
 						<div class="css-1gkas1x-Grid e1689zdh0">
 							<ul class="css-pr4hr1-VisualUl-ArchivesByActionUl ei8r22x0">
+								<%-- <c:forEach items="" var=""> --%>
 								<li class="css-17543n0">
 									<div class="css-11axhrb">
-										<div class="css-1ciqeix">
+										<form action="" method="" name="" id="">
+										<div style="width:20px; height:20px;">
 											<!-- c:if로 영화가 들어있으면 안보이게 해주기 -->
+											<%-- <c:if test=""> --%>
 											<input type="radio" name="chk_collection" value="새로운 영화" class="css-1j6t0vk-StylelessLocalLink-ArchivesActionListLink ei8r22x2">
+											<%-- </c:if> --%>
+											<input type="hidden" name="" value=""><!-- 여기에 ajax에 태워보낼 정보들 담아 -->
 											<!-- c:if로 영화가 들어있으면 안보이게 해주기 -->
-											<label>&nbsp;&nbsp;&nbsp;&nbsp;새로운 영화</label>
-											<br>
-											<span class="css-collection_popup_span ei8r22x1">&nbsp;&nbsp;1개의 작품</span>
-											<!-- c:if로 영화가 들어있으면 보이게 해주기 -->
-											<img src="/images/check.png" style="width:7%; margin-left:150px;">
-											<!-- c:if로 영화가 들어있으면 보이게 해주기 -->
+										</div>
+										</form>
+										<div class="css-1ciqeix" style="margin-left:15px; vertical-align:middle;">
+											<div class="movie_post_url">
+												<img src=""><!-- 여기에 movie_post_url 적용시키기 -->
+											</div>
+											<div style="width:69%; margin-left:10px; margin-top:25px; display:inline-block;">
+												<p>새로운 영화</p><!-- collection 이름 적용 -->
+												<div class="css-collection_popup_span ei8r22x1">
+													0개의 작품 <!-- 몇개의 작품 저 0이란 숫자에 collection에 들어있는 작품 갯수 count(*)로 불러온거 적용시키기 -->
+													
+													<!-- c:if로 영화가 들어있으면 지금 보고있는 영화 poster 보이게 해주기 -->
+													<%-- <c:if test=""> --%>
+													<div>
+														<img src="/images/check.png" style="width:7%;">
+													</div>
+													<%-- </c:if> --%>
+													<!-- c:if로 영화가 들어있으면 지금 보고있는 영화 poster 보이게 해주기 -->
+												</div>
+											</div>
 										</div>
 										<div class="css-0"></div>
 									</div>
 								</li>
 								<hr class="box_hr">
-								<li class="css-17543n0">
-									<div class="css-11axhrb">
-										<div class="css-1ciqeix">
-											<input type="radio" name="chk_collection" value="생각나는 작품" class="css-1j6t0vk-StylelessLocalLink-ArchivesActionListLink ei8r22x2">
-											<label>&nbsp;&nbsp;&nbsp;&nbsp;생각나는 작품</label>
-											<br>
-											<span class="css-collection_popup_span ei8r22x1">&nbsp;&nbsp;3개의 작품</span>
-										</div>
-										<div class="css-0"></div>
-									</div>
-								</li>
-								<hr class="box_hr">
+								<%-- </c:forEach> --%>
 							</ul>
 						</div>
 					</div>

@@ -18,7 +18,7 @@
 			<div class="header_footer_div">
 				<ul class="header_ul">
 					<li class="header_li">
-						<a href="/"><img src="/images/no1_WHYCHA_orange.png" id="logo_change" style="width: 210px;"></a>
+						<a href="/"><img src="/images/no1_WHYCHA_NONBACK.png" id="logo_change" style="width: 210px;"></a>
 					</li>
 					<li class="header_li_searchBox">
 						<div class="header_li_searchBox_div">
@@ -162,8 +162,8 @@
 							</svg>
 						</a>
 					</li>
-					<li  class="header_li_button">
-						<a href="/myPage/userPage_SY" title="${ sessionName }'s page">
+					<li class="header_li_button">
+						<a href="/myPage/myPage_SY" title="${ sessionName }'s page">
 							<div class="user_picture_div">
 								<img src="${ sessionUserPic }" class="user_picture">
 							</div>

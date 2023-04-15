@@ -11,7 +11,7 @@ $(function() {
             $(".join_button").addClass("active");
             $(".evaluate_button").addClass("active");
             $(".user_picture_div").addClass("active");
-            $("#logo_change").attr("src", "/images/no1_WHYCHA.png")
+            $("#logo_change").attr("src", "/images/no1_WHYCHA_orange.png")
         } else {
             $(".header").removeClass("active");
             $(".header_li_movie").removeClass("active");
