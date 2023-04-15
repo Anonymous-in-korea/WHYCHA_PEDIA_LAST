@@ -115,6 +115,14 @@
 					    </div>
 					</div>
 					<div class="push">
+						<!--감독 알림 -->
+						<c:if test="${ artistVo.director_post_url != null }">
+							<button id="email_submit" onclick="location.href='/admin/7_email/member_director_email_send?director_id=${artistVo.id}'">알림보내기</button>
+						</c:if>
+						<!--배우 알림 -->
+						<c:if test="${ artistVo.director_post_url == null }">
+							<button id="email_submit" onclick="location.href='/admin/7_email/member_actor_email_send?actor_id=${artistVo.id}'">알림보내기</button>
+						</c:if>
 						<c:if test="${ artistVo.director_post_url != null }">
 					    <button id="modifyBtn_director">수정하기</button>
 						</c:if>

@@ -135,7 +135,7 @@
 		                    				</thead>
 		                    				<!-- c:foreach로 반복 돌리기 -->
 		                    				<tbody>
-	                    					<c:forEach items="${ memberVo }" var="memberVo">
+	                    					<c:forEach items="${collectionArtistUser}" var="memberVo">
 		                    					<tr>
 		                    						<td>${ memberVo.id }</td>
 		                    						<td>

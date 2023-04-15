@@ -25,5 +25,11 @@ public interface MemberService {
 
 	//콜렉션 코멘트에 대한 userList
 	public List<MemberVo> selectCollectionCommentMember(List<CollectionCommentVo> collectionCommentList);
+
+	//해당 감독을 컬렉션에 담은 유저 리스트
+	public List<MemberVo> selectCollectionDirectorUser(int director_id);
+
+	//해당 배우을 컬렉션에 담은 유저 리스트
+	public List<MemberVo> selectCollectionActorUser(int actor_id);
 	
 }

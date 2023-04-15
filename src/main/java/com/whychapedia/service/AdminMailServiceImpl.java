@@ -21,7 +21,7 @@ public class AdminMailServiceImpl implements AdminMailService {
 	
 	@Override
 	@Async //html포함 이메일발송
-	public String mailSend(String userEmail, String userName) {
+	public String emailSend(String userEmail, String userName) {
 		//이메일 text, html, 파일첨부
 		//SimpleMailMessage message = new SimpleMailMessage();
 		MimeMessage message = mailSender.createMimeMessage();
