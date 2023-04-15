@@ -266,23 +266,34 @@ public class ContentsController {
 		//------------------------------------------------------------------------------------------------------------//
 		
 		//내가 쓴 코멘트 가져오기
-		int id = (int)session.getAttribute("sessionId"); //sessionId 가져오기
-		System.out.println("sessionId : " + id);
-		CommentVo myCommentVo = commentService.selectMyCommentOne(id, movie_id);
+		CommentVo myCommentVo=new CommentVo();
+		
+		if(session.getAttribute("sessionId")!=null) {
+			Integer sessionId = (Integer) session.getAttribute("sessionId");
+			int user_id = sessionId.intValue();
+			myCommentVo = commentService.selectMyCommentOne(user_id, movie_id);
+		}	
 		model.addAttribute("myCommentVo", myCommentVo);
-		System.out.println("myCommentVo_userId : " + myCommentVo.getUser_id());
-		System.out.println("myCommentVo_comment_content : " + myCommentVo.getComment_content());
 		
 		
-		
-		//해당 영화 코멘트 2개 받아오기
-		List<CommentVo> commentVo2 = commentService.selectCommentList2(movie_id);
-		List<MemberVo> commentUserList2 = memberService.commentUserList(commentVo2);
 		//해당 영화의 코멘트 총 개수(content page)
 		int commentCount = commentService.selectCommentAll(movie_id);
-		List<StarRateVo> starRatelist = starRateService.starRatelist(commentVo2);
-		//코멘트 1개에 해당하는 replylis개수 가져오기
-		List<Integer> replyCount = commentService.replyCount(commentVo2);
+		
+		//해당 영화 코멘트 2개 받아오기
+		List<CommentVo> commentVo2 = new ArrayList<>();
+		List<MemberVo> commentUserList2= new ArrayList<>();
+		List<StarRateVo> starRatelist= new ArrayList<>();
+		List<Integer> replyCount=new ArrayList<>();
+		if(commentCount!=0) {
+			commentVo2 = commentService.selectCommentList2(movie_id);
+			if(commentVo2!=null) {
+				commentUserList2 = memberService.commentUserList(commentVo2);
+				starRatelist = starRateService.starRatelist(commentVo2);
+				//코멘트 1개에 해당하는 reply개수 가져오기
+				replyCount = commentService.replyCount(commentVo2);
+			}
+		}
+		
 		model.addAttribute("commentVo2", commentVo2);		
 		model.addAttribute("commentUserList2",commentUserList2);
 		model.addAttribute("commentCount",commentCount);
