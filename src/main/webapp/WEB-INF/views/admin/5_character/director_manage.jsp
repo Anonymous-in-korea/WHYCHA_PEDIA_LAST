@@ -110,7 +110,7 @@
 		                    					<tr>
 		                    						<td>${ director.id }</td>
 		                    						<td>
-		                    							<a href="/admin/5_character/character_detail?id=${ director.id }">
+		                    							<a href="/admin/5_character/character_modify_director?id=${ director.id }">
 		                    								<img src="${ director.director_post_url }">
 		                    							</a>
 		                    						</td>

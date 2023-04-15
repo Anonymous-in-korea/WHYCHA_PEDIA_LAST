@@ -90,7 +90,7 @@ public class AdminContentsController {
 		
 		@SuppressWarnings("unchecked")
 		List<MovieVo> adminContentsList = (List<MovieVo>) adminContents.get("adminContentsList");
-		if ( adminContentsList != null ) {
+		if ( adminContentsList.size() != 0 ) {
 			model.addAttribute("adminContentsList", adminContentsList);
 			model.addAttribute("now_page", now_page);
 			model.addAttribute("listCount", listCount);
@@ -99,9 +99,10 @@ public class AdminContentsController {
 			model.addAttribute("endPage", endPage);
 			model.addAttribute("startRow", startRow);
 			model.addAttribute("endRow", endRow);
+			System.out.println("컨텐츠List size : " + adminContentsList.size());
+			System.out.println("컨텐츠ID : " + adminContentsList.get(0).getId());
 		}
-		System.out.println("컨텐츠List size : " + adminContentsList.size());
-		System.out.println("컨텐츠ID : " + adminContentsList.get(0).getId());
+		
 		
 		model.addAttribute("datatableSelector", datatableSelector);
 		

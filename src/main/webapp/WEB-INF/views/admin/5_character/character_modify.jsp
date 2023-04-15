@@ -27,9 +27,15 @@
 		
 		<script>
 			$(function() {
-				$("#modifyBtn").click(function() {
-					if ( $("#artist_post_url").val().length < 1 ) { confirm("프로필 URL이 입력되지 않았습니다. 등록하시겠습니까?"); }
-					else if ( $("#artist_name").val().length < 1 ) { confirm("이름이 입력되지 않았습니다. 등록하시겠습니까?"); }
+				$("#modifyBtn_director").click(function() {
+					if ( $("#director_post_url").val().length < 1 ) { confirm("프로필 URL이 입력되지 않았습니다. 등록하시겠습니까?"); }
+					else if ( $("#director_name").val().length < 1 ) { confirm("이름이 입력되지 않았습니다. 등록하시겠습니까?"); }
+					else { modify.submit(); }
+				});
+				
+				$("#modifyBtn_actor").click(function() {
+					if ( $("#actor_post_url").val().length < 1 ) { confirm("프로필 URL이 입력되지 않았습니다. 등록하시겠습니까?"); }
+					else if ( $("#actor_name").val().length < 1 ) { confirm("이름이 입력되지 않았습니다. 등록하시겠습니까?"); }
 					else { modify.submit(); }
 				});
 			});
@@ -59,8 +65,7 @@
                                 인물관리_수정페이지
                             </div>
 							<form action="/admin/5_character/character_modify" method="post" name="modify">
-								<input type="hidden" method="post" name="director_id" value="${ D_id.director_id }">
-								<input type="hidden" method="post" name="actor_id" value="${ A_id.actor_id }">
+								<input type="hidden" method="post" name="id" value="${ artistVo.id }">
 	                            <div class="card-body">
 									프로필사진(240x240)
 	                                <div class="conBox2">
@@ -69,7 +74,12 @@
 	                                        	*1개의 파일만 등록가능합니다.
 	                                        </span>
 	                                        <div id="poBox">
-	                                            <img src="${ artistVo.artist_post_url }" class="profile">
+	                                        	<c:if test="${ artistVo.director_post_url != null }">
+	                                            <img src="${ artistVo.director_post_url }" class="profile">
+	                                        	</c:if>
+	                                        	<c:if test="${ artistVo.director_post_url == null }">
+	                                            <img src="${ artistVo.actor_post_url }" class="profile">
+	                                        	</c:if>
 	                                        </div>
 	                                    </div>
 	                                </div>
@@ -77,13 +87,23 @@
 	                                <div>
 	                                	프로필 URL
 	                                	<br>
-										<input type="text" name="artist_post_url" id="artist_post_url" size="100%" value="${ artistVo.artist_post_url }">
+                                       	<c:if test="${ artistVo.director_post_url != null }">
+										<input type="text" name="director_post_url" id="director_post_url" size="100%" value="${ artistVo.director_post_url }">
+                                       	</c:if>
+                                       	<c:if test="${ artistVo.director_post_url == null }">
+										<input type="text" name="actor_post_url" id="actor_post_url" size="100%" value="${ artistVo.actor_post_url }">
+                                       	</c:if>
 	                                </div>
 	
 									<div>
 										이름
 										<br>
-										<input type="text" name="artist_name" id="artist_name" size="50" value="${ artistVo.artist_name }">
+                                       	<c:if test="${ artistVo.director_post_url != null }">
+										<input type="text" name="director_name" id="director_name" size="50" value="${ artistVo.director_name }">
+                                       	</c:if>
+                                       	<c:if test="${ artistVo.director_post_url == null }">
+										<input type="text" name="actor_name" id="actor_name" size="50" value="${ artistVo.actor_name }">
+                                       	</c:if>
 									</div>
 									<!-- <div>
 										바이오그래피
@@ -95,8 +115,18 @@
 					    </div>
 					</div>
 					<div class="push">
-					    <button id="modifyBtn">수정하기</button>
-					    <button onclick="location.href='/admin/5_character/character_detail'">취소하기</button>
+						<c:if test="${ artistVo.director_post_url != null }">
+					    <button id="modifyBtn_director">수정하기</button>
+						</c:if>
+						<c:if test="${ artistVo.director_post_url == null }">
+					    <button id="modifyBtn_actor">수정하기</button>
+						</c:if>
+						<c:if test="${ artistVo.director_post_url != null }">
+					    <button onclick="location.href='/admin/5_character/director_manage'">취소하기</button>
+					    </c:if>
+					    <c:if test="${ artistVo.director_post_url == null }">
+					    <button onclick="location.href='/admin/5_character/actor_manage'">취소하기</button>
+					    </c:if>
 					</div>
                 </main>
             </div>

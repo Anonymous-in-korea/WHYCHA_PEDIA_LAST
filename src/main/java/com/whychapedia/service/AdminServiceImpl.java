@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.whychapedia.mapper.AdminMemberMapper;
+import com.whychapedia.mapper.AdminMapper;
 import com.whychapedia.vo.AdminVo;
 
 @Service
-public class AdminMemberServiceImpl implements AdminMemberService {
+public class AdminServiceImpl implements AdminService {
 
 	@Autowired
-	AdminMemberMapper adminMemberMapper;
+	AdminMapper adminMemberMapper;
 	@Autowired
 	AdminVo adminVo;
 	

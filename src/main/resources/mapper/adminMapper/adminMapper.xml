@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.whychapedia.mapper.AdminMemberMapper">
+<mapper namespace="com.whychapedia.mapper.AdminMapper">
 
 	<!-- admin 로그인 query구문 -->
 	<select id="adminSelectOne" resultType="com.whychapedia.vo.AdminVo">

@@ -19,22 +19,7 @@ public class AdminArtistServiceImpl implements AdminArtistService {
 	@Autowired
 	AdminArtistMapper adminArtistMapper;
 	
-	@Override
-	public List<MovieActorVo> actorSelectAll() {
-		List<MovieActorVo> actorVo = adminArtistMapper.actorSelectAll();
-		
-		//중복 삭제
-		Set<Integer> movieIdSet = new HashSet<>();
-		List<MovieActorVo> NoRepeatActorVo = new ArrayList<>();
-		for (MovieActorVo movieVo : actorVo) {
-		    if (movieIdSet.add(movieVo.getId())) {
-		    	NoRepeatActorVo.add(movieVo);
-		    }
-		}
-		
-		return NoRepeatActorVo;
-	}
-
+	// ARTIST_LIST -----------------------------------------------------------------------------------------------------------------------------------
 	@Override
 	public List<MovieDirectorVo> directorSelectAll() {
 		List<MovieDirectorVo> directorVo = adminArtistMapper.directorSelectAll();
@@ -43,14 +28,34 @@ public class AdminArtistServiceImpl implements AdminArtistService {
 		Set<Integer> movieIdSet = new HashSet<>();
 		List<MovieDirectorVo> NoRepeatDirectorVo = new ArrayList<>();
 		for (MovieDirectorVo movieVo : directorVo) {
-		    if (movieIdSet.add(movieVo.getId())) {
-		    	NoRepeatDirectorVo.add(movieVo);
-		    }
+			if (movieIdSet.add(movieVo.getId())) {
+				NoRepeatDirectorVo.add(movieVo);
+			}
 		}
 		
 		return NoRepeatDirectorVo;
 	}
 
+	@Override
+	public List<MovieActorVo> actorSelectAll() {
+		List<MovieActorVo> actorVo = adminArtistMapper.actorSelectAll();
+		
+		//중복 삭제
+		Set<Integer> movieIdSet = new HashSet<>();
+		List<MovieActorVo> NoRepeatActorVo = new ArrayList<>();
+		for (MovieActorVo movieVo : actorVo) {
+			if (movieIdSet.add(movieVo.getId())) {
+				NoRepeatActorVo.add(movieVo);
+			}
+		}
+		
+		return NoRepeatActorVo;
+	}
+	// ARTIST_LIST -----------------------------------------------------------------------------------------------------------------------------------
+
+	
+	
+	// ARTIST_CREATE -----------------------------------------------------------------------------------------------------------------------------------
 	@Override //감독입력
 	public void directorInput(String director_post_url, String director_name) {
 		adminArtistMapper.directorInput(director_post_url, director_name);
@@ -61,9 +66,11 @@ public class AdminArtistServiceImpl implements AdminArtistService {
 		adminArtistMapper.actorInput(actor_post_url, actor_name);
 		
 	}
+	// ARTIST_CREATE -----------------------------------------------------------------------------------------------------------------------------------
 
 	
 	
+	// ARTIST_MODIFY -----------------------------------------------------------------------------------------------------------------------------------
 	@Override //감독정보 가져오기
 	public ArtistVo directorDetailView(int director_id) {
 		ArtistVo artistVo = adminArtistMapper.directorDetailView(director_id);
@@ -79,13 +86,14 @@ public class AdminArtistServiceImpl implements AdminArtistService {
 	
 	
 	@Override //감독정보 수정하기
-	public void directorModify(int director_id, String artist_post_url, String artist_name) {
-		adminArtistMapper.directorModify(director_id, artist_post_url, artist_name);
+	public void directorModify(int id, String director_post_url, String director_name) {
+		adminArtistMapper.directorModify(id, director_post_url, director_name);
 	}
 
 	@Override //배우정보 수정하기
-	public void actorModify(int actor_id, String artist_post_url, String artist_name) {
-		adminArtistMapper.actorModify(actor_id, artist_post_url, artist_name);
+	public void actorModify(int id, String actor_post_url, String actor_name) {
+		adminArtistMapper.actorModify(id, actor_post_url, actor_name);
 	}
+	// ARTIST_MODIFY -----------------------------------------------------------------------------------------------------------------------------------
 
 }

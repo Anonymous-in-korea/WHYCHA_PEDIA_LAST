@@ -1,13 +1,10 @@
-package com.whychapedia.mapper;
+package com.whychapedia.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
-
 import com.whychapedia.vo.AdminVo;
 
-@Mapper
-public interface AdminMemberMapper {
+public interface AdminService {
 
 	public AdminVo adminSelectOne(String admin_email, String admin_pw); // admin 로그인 메서드
 

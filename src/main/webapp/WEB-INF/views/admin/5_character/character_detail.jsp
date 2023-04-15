@@ -47,10 +47,10 @@
 							<div class="conBox2">
 								<div id="po">
 									<div id="poBox">
-										<c:if test="${ director_id != null }">
+										<c:if test="${ artistVo.director_post_url != null }">
 	                                    <img src="${ artistVo.director_post_url }">
 										</c:if>
-	                                    <c:if test="${ director_id != null }">
+	                                    <c:if test="${ artistVo.director_post_url != null }">
 	                                    <img src="${ artistVo.actor_post_url }">
 										</c:if>
 									</div>
@@ -60,10 +60,10 @@
 							<div>
 								이름
 								<br>
-								<c:if test="${ director_id != null }">
+								<c:if test="${ artistVo.director_post_url != null }">
 								<p style="font-size:25px; margin-left:50px;"><strong>[ ${ artistVo.director_name } ]</strong></p>
 								</c:if>
-								<c:if test="${ director_id == null }">
+								<c:if test="${ artistVo.director_post_url == null }">
 								<p style="font-size:25px; margin-left:50px;"><strong>[ ${ artistVo.actor_name } ]</strong></p>
 								</c:if>
 							</div>

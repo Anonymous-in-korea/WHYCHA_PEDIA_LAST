@@ -124,7 +124,12 @@
 													<td><a href="/admin/1_notice/notice_view?id=${ noticeList.id }">${ noticeList.announcement_title }</a></td>
 													<td>${ noticeList.admin_name }</td>
 													<td>${ noticeList.announcement_date }</td>
-													<td>2023-03-16</td>
+													<c:if test="${ noticeList.is_regi == 1 }">
+													<td> </td>
+													</c:if>
+													<c:if test="${ noticeList.is_regi == 2 }">
+													<td>${ noticeList.update_date }</td>
+													</c:if>
 													<td>
 														<c:if test="${ noticeList.is_regi == 1 }">
 					                                    <button type="button" id="status_btn_active">미등록</button>

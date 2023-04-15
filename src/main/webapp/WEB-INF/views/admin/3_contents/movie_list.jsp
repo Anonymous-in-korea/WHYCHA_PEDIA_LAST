@@ -35,7 +35,7 @@
 				$(".datatable-input").on("keypress", function(key) {
 					if ( key.keyCode == 13 ) {
 						if ( $("#searchWord").val().length > 0 ) {
-							reportSearch.submit();
+							movieSearch.submit();
 						} else {
 							alert("글자를 입력하셔야 검색이 가능합니다");
 							$("#searchWord").focus();
@@ -52,7 +52,7 @@
 					$("#datatableSelector").val("30");
 					$("#searchWord").val("");
 					datatableOption.submit();
-					searchWord.submit();
+					movieSearch.submit();
 				});
 			});
 		</script>
@@ -97,7 +97,7 @@
 			                    				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 게시글 출력갯수 : ${ datatableSelector }개
 		                    				</form>
 		                    			</div>
-		                    			<form action="/admin/3_contents/movie_list" method="get" name="reportSearch">
+		                    			<form action="/admin/3_contents/movie_list" method="get" name="movieSearch">
 			                    			<div class="datatable-search">
 			                    				<input type="search" name="searchWord" id="searchWord" class="datatable-input" placeholder="영화제목으로 검색" aria-controls="datatablesSimple" style="float:right;">
 			                    			</div>

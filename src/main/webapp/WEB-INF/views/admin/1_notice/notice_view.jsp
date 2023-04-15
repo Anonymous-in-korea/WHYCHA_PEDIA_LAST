@@ -53,7 +53,9 @@
 		                    </c:if>
 		                    
 		                    <div id="btn0" >
+		                    	<c:if test="${ announcementVo.is_regi == 1 }">
 		                        <button type="button" class="btn1" style="width:200px" onclick="location.href='/admin/1_notice/notice_update?id=${announcementVo.id}&is_regi=2'">등록하기</button>
+		                    	</c:if>
 		                        <button type="button" class="btn1" style="width:200px" onclick="location.href='/admin/1_notice/notice_modify?id=${announcementVo.id}'">수정페이지로</button>
 		                        <button type="button" class="btn1" style="width:200px" onclick="location.href='/admin/1_notice/notice_view_delete?id=${announcementVo.id}'">삭제하기</button>
 		                        <button type="button" class="btn1" style="width:200px" onclick="location.href='/admin/1_notice/notice_list'">목록으로</button>

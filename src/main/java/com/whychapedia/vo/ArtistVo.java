@@ -15,11 +15,11 @@ import lombok.NoArgsConstructor;
 public class ArtistVo {
 	private int id;
 	private String director_name;
+	private String director_post_url;
+	private String diretor_role;
 	private String actor_name;
 	private String actor_post_url;
-	private String director_post_url;
 	private String actor_role;
-	private String diretor_role;
 	private int search_count; // 출연 횟수
 	private String represent_movie; //대표작
 	private String represent_movie_post;//대표작 포스터

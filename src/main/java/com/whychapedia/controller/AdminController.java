@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.whychapedia.service.AdminAnnouncementService;
-import com.whychapedia.service.AdminMemberService;
+import com.whychapedia.service.AdminService;
 import com.whychapedia.service.AdminQnAService;
 import com.whychapedia.service.AdminReportService;
 import com.whychapedia.vo.AdminVo;
@@ -28,7 +28,7 @@ public class AdminController {
 	@Autowired
 	AdminVo adminVo;
 	@Autowired
-	AdminMemberService adminMemberService;
+	AdminService adminMemberService;
 	
 	@Autowired
 	AnnouncementVo announcementVo;

@@ -4,29 +4,27 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.whychapedia.mapper.AdminArtistMapper">
 
-	<!-- admin Actor List query구문 -->
-	<select id="actorSelectAll" resultType="com.whychapedia.vo.MovieActorVo">
-		select a.*, m.movie_post_url as actor_debut_url from actor a
-		join movie_actor ma ON a.id = ma.actor_id
-		join movie m ON ma.movie_id = m.id
-		where (a.id, m.movie_rating) in
-		( SELECT a.id, max(m.movie_rating) from actor a
-		join movie_actor ma on a.id = ma.actor_id join movie m on ma.movie_id = m.id
-		group by a.id ) order by a.id asc, m.movie_rating desc
-	</select>
+	<!-- ARTIST_LIST >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 
 	<!-- admin Director List query구문 -->
 	<select id="directorSelectAll" resultType="com.whychapedia.vo.MovieDirectorVo">
-		select d.*, m.movie_post_url as director_debut_url from director d
-		join movie_director md on d.id = md.director_id
-		join movie m on md.movie_id = m.id
-		where (d.id, m.movie_rating) in
-		( SELECT d.id, max(m.movie_rating) from director d
-		join movie_director md on d.id = md.director_id join movie m on md.movie_id = m.id
-		group by d.id ) order by d.id, m.movie_rating desc
+		select z.id, z.director_name, z.director_post_url, m.movie_post_url as director_debut_url
+		from movie m, ( select d.*, md.movie_id from director d, movie_director md where d.id = md.director_id ) z
+		where m.id = z.movie_id order by z.id asc, m.movie_rating desc
 	</select>
+
+	<!-- admin Actor List query구문 -->
+	<select id="actorSelectAll" resultType="com.whychapedia.vo.MovieActorVo">
+		select z.id, z.actor_name, z.actor_post_url, m.movie_post_url as actor_debut_url
+		from movie m, ( select a.*, ma.movie_id from actor a, movie_actor ma where a.id = ma.actor_id ) z
+		where m.id = z.movie_id order by z.id asc, m.movie_rating desc
+	</select>
+	<!-- ARTIST_LIST >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 	
+
+
 	
+	<!-- ARTIST_CREATE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 	
 	<!-- 감독 인적사항 입력 -->
 	<insert id="directorInput">
@@ -37,29 +35,33 @@
 	<insert id="actorInput">
 		insert into actor values ( ( select coalesce ( max ( id ), 0 ) + 1 from actor ), #{actor_name}, #{actor_post_url} )
 	</insert>
+	<!-- ARTIST_CREATE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 	
 	
 	
+	<!-- ARTIST_MODIFY >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+
 	<!-- 감독정보 가져오기 -->
 	<select id="directorDetailView" resultType="com.whychapedia.vo.ArtistVo">
-		select id, director_name as artist_name, director_post_url as artist_post_url from director where id = #{director_id}
+		select id, director_name, director_post_url from director where id = #{director_id}
 	</select>
 	
 	<!-- 배우정보 가져오기 -->
 	<select id="actorDetailView" resultType="com.whychapedia.vo.ArtistVo">
-		select id, actor_name as artist_name, actor_post_url as artist_post_url from actor where id = #{actor_id}
+		select id, actor_name, actor_post_url from actor where id = #{actor_id}
 	</select>
 	
 	
 	
 	<!-- 감독정보 수정하기 -->
 	<update id="directorModify">
-		update director set director_name = #{artist_name}, director_post_url = #{artist_post_url} where id = #{director_id}
+		update director set director_name = #{director_name}, director_post_url = #{director_post_url} where id = #{id}
 	</update>
 	
 	<!-- 배우정보 수정하기 -->
 	<update id="actorModify">
-		update actor set actor_name = #{artist_name}, actor_post_url = #{artist_post_url} where id = #{actor_id}
+		update actor set actor_name = #{actor_name}, actor_post_url = #{actor_post_url} where id = #{id}
 	</update>
+	<!-- ARTIST_MODIFY >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 
 </mapper>

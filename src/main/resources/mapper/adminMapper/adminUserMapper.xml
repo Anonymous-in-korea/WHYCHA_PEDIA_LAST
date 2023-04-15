@@ -4,10 +4,31 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.whychapedia.mapper.AdminUserMapper">
 
-	<!-- admin Member List query구문 -->
+	<!-- ADMIN_MEMBER_LIST query구문 -->
 	<select id="userMemberSelectAll" resultType="com.whychapedia.vo.MemberVo">
-		select * from ( select rownum rnum, a.* from wuser a order by regi_date desc ) where rnum between 1 and 50
+		select * from ( select row_number() over ( order by id desc ) rnum, a.* from wuser a ) where rnum between #{startRow} and #{endRow}
+	</select> 
+	
+	<!-- ADMIN_MEMBER_COUNT query구문 -->
+	<select id="selectCount" resultType="int">
+		select count(*) count from wuser
 	</select>
+	
+
+	<!-- ADMIN_MEMBER_LIST_SEARCHWORD query구문 -->
+	<select id="userMemberSelectAll_searchWord" resultType="com.whychapedia.vo.MemberVo">
+		select * from ( select row_number() over ( order by id desc ) rnum, a.* from wuser a where user_name like '%' || #{searchWord} || '%' ) where rnum between #{startRow} and #{endRow}
+	</select>
+
+	<!-- ADMIN_MEMBER_COUNT_SEARCHWORD query구문 -->
+	<select id="selectCount_searchWord" resultType="int">
+		select count(*) count from wuser where user_name like '%' || #{searchWord} || '%'
+	</select>
+
+
+
+
+
 
 	<!-- admin Member SelectOne query구문 -->
 	<select id="userMemberSelectOne" resultType="com.whychapedia.vo.MemberVo">

@@ -63,15 +63,20 @@
 		                        공지사항_WRITE
 		                    </div>
 		                    <form action="" method="post" name="notice_write" id="notice_write">
-								<input type="text" class="fo" name="announcement_title" id="announcement_title" placeholder="제목을 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder='제목을 입력하세요.'">
+								<input type="text" class="fo" name="announcement_title" id="announcement_title" placeholder="제목을 입력하세요." onfocus="this.placeholder=''"
+									onblur="this.placeholder='제목을 입력하세요.'">
 		                        <div class="centerdiv">
-		                            <p><span>내용</span></p>
 		                            <p>
-		                            	<textarea name="announcement_content" id="announcement_content" placeholder="공지할 내용을 입력해 주세요. (3000자 이내)" onfocus="this.placeholder=''" onblur="this.placeholder='공지할 내용을 입력해 주세요. (3000자 이내)'"></textarea>
+		                            	<span>내용</span>
+		                            </p>
+		                            <p>
+		                            	<textarea name="announcement_content" id="announcement_content" placeholder="공지할 내용을 입력해 주세요. (3000자 이내)" onfocus="this.placeholder=''"
+		                            		onblur="this.placeholder='공지할 내용을 입력해 주세요. (3000자 이내)'"></textarea>
 		                            </p>
 		                            <p><span>링크</span></p>
 		                            <p>
-		                            	<input type="text" name="announcement_url" id="announcement_url" placeholder="입력할 이미지의 URL을 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder='입력할 이미지의 URL을 입력하세요.'">
+		                            	<input type="text" name="announcement_url" id="announcement_url" placeholder="입력할 이미지의 URL을 입력하세요." onfocus="this.placeholder=''"
+		                            		onblur="this.placeholder='입력할 이미지의 URL을 입력하세요.'">
 		                            </p>
 		                            <p><span>공지사항 중요도</span></p>
 		                            <p>
