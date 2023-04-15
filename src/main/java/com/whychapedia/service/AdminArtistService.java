@@ -1,17 +1,17 @@
 package com.whychapedia.service;
 
-import java.util.List;
+import java.util.Map;
 
 import com.whychapedia.vo.ArtistVo;
-import com.whychapedia.vo.MovieActorVo;
-import com.whychapedia.vo.MovieDirectorVo;
 
 public interface AdminArtistService {
 
 	// ARTIST_LIST -----------------------------------------------------------------------------------------------------------------------------------
-	public List<MovieDirectorVo> directorSelectAll();
+	public Map<String, Object> directorSelectAll(int page, int datatableSelector);
+	public Map<String, Object> directorSelectAll_searchWord(int page, String searchWord, int datatableSelector);
 
-	public List<MovieActorVo> actorSelectAll();
+	public Map<String, Object> actorSelectAll(int page, int datatableSelector);
+	public Map<String, Object> actorSelectAll_searchWord(int page, String searchWord, int datatableSelector);
 	// ARTIST_LIST -----------------------------------------------------------------------------------------------------------------------------------
 	
 	
@@ -31,5 +31,7 @@ public interface AdminArtistService {
 
 	public void actorModify(int id, String actor_post_url, String actor_name); //배우정보 수정하기
 	// ARTIST_MODIFY -----------------------------------------------------------------------------------------------------------------------------------
+
+
 
 }

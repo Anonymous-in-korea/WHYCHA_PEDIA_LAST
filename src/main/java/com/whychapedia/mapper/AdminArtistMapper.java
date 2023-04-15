@@ -12,9 +12,19 @@ import com.whychapedia.vo.MovieDirectorVo;
 public interface AdminArtistMapper {
 
 	// ARTIST_LIST -----------------------------------------------------------------------------------------------------------------------------------
-	public List<MovieDirectorVo> directorSelectAll();
+	public List<MovieDirectorVo> directorSelectAll(int startRow, int endRow);
+	public List<MovieDirectorVo> directorSelectAll_searchWord(int startRow, int endRow, String searchWord);
 
-	public List<MovieActorVo> actorSelectAll();
+	public int director_selectCount();
+	public int director_selectCount_searchWord(String searchWord);
+	
+	
+	
+	public List<MovieActorVo> actorSelectAll(int startRow, int endRow);
+	public List<MovieActorVo> actorSelectAll_searchWord(int startRow, int endRow, String searchWord);
+
+	public int actor_selectCount();
+	public int actor_selectCount_searchWord(String searchWord);
 	// ARTIST_LIST -----------------------------------------------------------------------------------------------------------------------------------
 
 	
@@ -34,5 +44,7 @@ public interface AdminArtistMapper {
 
 	public void actorModify(int id, String actor_post_url, String actor_name); //배우정보 수정하기
 	// ARTIST_MODIFY -----------------------------------------------------------------------------------------------------------------------------------
+
+
 
 }

@@ -6,18 +6,48 @@
 
 	<!-- ARTIST_LIST >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 
-	<!-- admin Director List query구문 -->
+	<!-- ADMIN_DIRECTOR_LIST query구문 -->
 	<select id="directorSelectAll" resultType="com.whychapedia.vo.MovieDirectorVo">
-		select z.id, z.director_name, z.director_post_url, m.movie_post_url as director_debut_url
-		from movie m, ( select d.*, md.movie_id from director d, movie_director md where d.id = md.director_id ) z
-		where m.id = z.movie_id order by z.id asc, m.movie_rating desc
+		select * from ( select z.rnum, z.id, z.director_name, z.director_post_url, m.movie_post_url as director_debut_url
+		from movie m, ( select rownum rnum, d.*, md.movie_id from director d, movie_director md where d.id = md.director_id ) z
+		where m.id = z.movie_id order by z.id asc, m.movie_rating desc ) where rnum between #{startRow} and #{endRow}
+	</select>
+	<select id="director_selectCount" resultType="int">
+		select count(*) count from director
 	</select>
 
-	<!-- admin Actor List query구문 -->
+	<!-- ADMIN_DIRECTOR_LIST_SEARCHWORD query구문 -->
+	<select id="directorSelectAll_searchWord" resultType="com.whychapedia.vo.MovieDirectorVo">
+		select * from ( select z.rnum, z.id, z.director_name, z.director_post_url, m.movie_post_url as director_debut_url
+		from movie m, ( select rownum rnum, d.*, md.movie_id from director d, movie_director md where d.id = md.director_id ) z
+		where m.id = z.movie_id and z.director_name like '%' || #{searchWord} || '%' order by z.id asc, m.movie_rating desc )
+	</select>
+	<select id="director_selectCount_searchWord" resultType="int">
+		select count(*) count from director where director_name like '%' || #{searchWord} || '%'
+	</select>
+
+
+
+
+
+	<!-- ADMIN_ACTOR_LIST query구문 -->
 	<select id="actorSelectAll" resultType="com.whychapedia.vo.MovieActorVo">
-		select z.id, z.actor_name, z.actor_post_url, m.movie_post_url as actor_debut_url
-		from movie m, ( select a.*, ma.movie_id from actor a, movie_actor ma where a.id = ma.actor_id ) z
-		where m.id = z.movie_id order by z.id asc, m.movie_rating desc
+		select * from ( select z.rnum, z.id, z.actor_name, z.actor_post_url, m.movie_post_url as actor_debut_url
+		from movie m, ( select rownum rnum, a.*, ma.movie_id from actor a, movie_actor ma where a.id = ma.actor_id ) z
+		where m.id = z.movie_id order by z.id asc, m.movie_rating desc ) where rnum between #{startRow} and #{endRow}
+	</select>
+	<select id="actor_selectCount" resultType="int">
+		select count(*) count from actor
+	</select>
+
+	<!-- ADMIN_ACTOR_LIST_SEARCHWORD query구문 -->
+	<select id="actorSelectAll_searchWord" resultType="com.whychapedia.vo.MovieActorVo">
+		select * from ( select z.rnum, z.id, z.actor_name, z.actor_post_url, m.movie_post_url as actor_debut_url
+		from movie m, ( select rownum rnum, a.*, ma.movie_id from actor a, movie_actor ma where a.id = ma.actor_id ) z
+		where m.id = z.movie_id and z.actor_name like '%' || #{searchWord} || '%' order by z.id asc, m.movie_rating desc )
+	</select>
+	<select id="actor_selectCount_searchWord" resultType="int">
+		select count(*) count from actor where actor_name like '%' || #{searchWord} || '%'
 	</select>
 	<!-- ARTIST_LIST >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 	

@@ -1,6 +1,8 @@
 package com.whychapedia.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,23 +27,127 @@ public class AdminCharacterController {
 	
 	// ARTIST_LIST -----------------------------------------------------------------------------------------------------------------------------------
 	@GetMapping("admin/5_character/director_manage")
-	public String director_manage(Model model) {
+	public String director_manage(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "5") int datatableSelector, @RequestParam(defaultValue = "") String searchWord) {
 		
-		List<MovieDirectorVo> directorVo = adminArtistService.directorSelectAll();
-		if ( directorVo != null ) {
-			model.addAttribute("directorVo", directorVo);
+		System.out.println("datatableSelector : " + datatableSelector);
+		System.out.println("searchWord : " + searchWord);
+		
+		int now_page = 0;
+		int listCount = 0;
+		int maxPage = 0;
+		int startPage = 0;
+		int endPage = 0;
+		int startRow = 0;
+		int endRow = 0;
+		
+		Map<String, Object> artistListMap = new HashMap<>();
+		
+		if ( searchWord.equals("이름으로 검색") || searchWord.equals("") ) {
+			
+			artistListMap = adminArtistService.directorSelectAll(page, datatableSelector);
+
+			now_page = (int) artistListMap.get("page");
+			listCount = (int) artistListMap.get("listCount");
+			maxPage = (int) artistListMap.get("maxPage");
+			startPage = (int) artistListMap.get("startPage");
+			endPage = (int) artistListMap.get("endPage");
+			startRow = (int) artistListMap.get("startRow");
+			endRow = (int) artistListMap.get("endRow");
+			
+		} else {
+			artistListMap = adminArtistService.directorSelectAll_searchWord(page, searchWord, datatableSelector);
+			System.out.println("입력된 영화검색어 : " + searchWord);
+
+			now_page = (int) artistListMap.get("page");
+			listCount = (int) artistListMap.get("listCount");
+			maxPage = (int) artistListMap.get("maxPage");
+			startPage = (int) artistListMap.get("startPage");
+			endPage = (int) artistListMap.get("endPage");
+			startRow = (int) artistListMap.get("startRow");
+			endRow = (int) artistListMap.get("endRow");
 		}
+		
+		System.out.println("maxPage : " + maxPage);
+		
+		@SuppressWarnings("unchecked")
+		List<MovieDirectorVo> directorVo = (List<MovieDirectorVo>) artistListMap.get("artistList");
+		if ( directorVo.size() != 0 ) {
+			model.addAttribute("directorVo", directorVo);
+			model.addAttribute("now_page", now_page);
+			model.addAttribute("listCount", listCount);
+			model.addAttribute("maxPage", maxPage);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("endPage", endPage);
+			model.addAttribute("startRow", startRow);
+			model.addAttribute("endRow", endRow);
+			System.out.println("director_list size : " + directorVo.size());
+			System.out.println("director_id : " + directorVo.get(0).getId());
+		}
+		
+		model.addAttribute("datatableSelector", datatableSelector);
 		
 		return "admin/5_character/director_manage";
 	}
 	
 	@GetMapping("admin/5_character/actor_manage")
-	public String actor_manage(Model model) {
+	public String actor_manage(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "5") int datatableSelector, @RequestParam(defaultValue = "") String searchWord) {
 		
-		List<MovieActorVo> actorVo = adminArtistService.actorSelectAll();
-		if ( actorVo != null ) {
-			model.addAttribute("actorVo", actorVo);
+		System.out.println("datatableSelector : " + datatableSelector);
+		System.out.println("searchWord : " + searchWord);
+		
+		int now_page = 0;
+		int listCount = 0;
+		int maxPage = 0;
+		int startPage = 0;
+		int endPage = 0;
+		int startRow = 0;
+		int endRow = 0;
+		
+		Map<String, Object> artistListMap = new HashMap<>();
+		
+		if ( searchWord.equals("이름으로 검색") || searchWord.equals("") ) {
+			
+			artistListMap = adminArtistService.actorSelectAll(page, datatableSelector);
+
+			now_page = (int) artistListMap.get("page");
+			listCount = (int) artistListMap.get("listCount");
+			maxPage = (int) artistListMap.get("maxPage");
+			startPage = (int) artistListMap.get("startPage");
+			endPage = (int) artistListMap.get("endPage");
+			startRow = (int) artistListMap.get("startRow");
+			endRow = (int) artistListMap.get("endRow");
+			
+		} else {
+			artistListMap = adminArtistService.actorSelectAll_searchWord(page, searchWord, datatableSelector);
+			System.out.println("입력된 영화검색어 : " + searchWord);
+
+			now_page = (int) artistListMap.get("page");
+			listCount = (int) artistListMap.get("listCount");
+			maxPage = (int) artistListMap.get("maxPage");
+			startPage = (int) artistListMap.get("startPage");
+			endPage = (int) artistListMap.get("endPage");
+			startRow = (int) artistListMap.get("startRow");
+			endRow = (int) artistListMap.get("endRow");
 		}
+		
+		System.out.println("maxPage : " + maxPage);
+		
+		@SuppressWarnings("unchecked")
+		List<MovieActorVo> actorVo = (List<MovieActorVo>) artistListMap.get("artistList");
+		if ( actorVo.size() != 0 ) {
+			model.addAttribute("actorVo", actorVo);
+			model.addAttribute("now_page", now_page);
+			model.addAttribute("listCount", listCount);
+			model.addAttribute("maxPage", maxPage);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("endPage", endPage);
+			model.addAttribute("startRow", startRow);
+			model.addAttribute("endRow", endRow);
+			System.out.println("director_list size : " + actorVo.size());
+			System.out.println("director_id : " + actorVo.get(0).getId());
+		}
+		
+		model.addAttribute("datatableSelector", datatableSelector);
 		
 		return "admin/5_character/actor_manage";
 	}
