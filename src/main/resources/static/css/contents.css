@@ -1,3 +1,12 @@
+/* collectionMovieNotIn 에서는 초기에 border 스타일 적용하지 않음 */
+.collection-item .css-unzuzl-StyledLazyLoadingImage.ezcopuc0 {
+  border: none; /* 초기 스타일 적용을 none으로 설정 */
+}
+
+/* collectionMovieIn 에서는 초기에 border 스타일을 적용함 */
+.collection-item.collection-border .css-unzuzl-StyledLazyLoadingImage.ezcopuc0 {
+  border: 5px solid #FEAE27; /* 초기 스타일 적용을 border로 설정 */
+}
 .css-1xm32e0 {
        position: relative;
        width: 100%;

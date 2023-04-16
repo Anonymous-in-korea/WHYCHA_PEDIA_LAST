@@ -492,85 +492,7 @@ $(function() {
 				$("#collection_icon_color").css({"display":"block"});
 				$("#collection_text").css({"color":"#FEAE27"});
 				if ( $(".collection_box").css("display") == "none" ) {
-					$(".collection_box").css({"display":"block"});
-				
-				/*콜렉션 정보 가져오기 */ 
-				let movieVoId = $("#ajaxMovieId").text();
-				$.ajax({
-					type:"post",
-					url:"/contents/collectionInfo",
-					data:{"movie_id":parseInt(movieVoId)},
-					dataType:"json",
-					success:function(response){
-						console.log("왔다");
-						let html="";
-						let collectionInMovieList=response.collectionMovieIn;
-						let collectionMovieNotList=response.collectionMovieNotIn;
-						/*영화가 들어가 있을 때*/
-						for (var i = 0; i < collectionInMovieList.length; i++){
-							let collectionVo=collectionInMovieList[i];
-							html="";
-							html+='<li class="css-17543n0">';
-							html+='<div class="css-11axhrb">';
-							html+='<div style="width:20px; height:20px;">';
-							html+='</div>';
-							html+='<div class="css-1ciqeix" style="margin-left:15px; vertical-align:middle;">';
-							html+='<div class="movie_post_url">';
-							html+='<img src="'+collectionVo.movie_post_url+'" style="width:100%;">';
-							html+='</div>';
-							html+='<div style="width:69%; margin-left:10px; margin-top:25px; display:inline-block;">';
-							html+='<p>'+collectionVo.collection_name+'</p>';
-							html+='<div class="css-collection_popup_span ei8r22x1">';
-							html+='<div>';
-							html+='<img src="/images/check.png" style="width:7%;">';
-							html+='</div>';
-							html+='</div>';
-							html+='</div>';
-							html+='</div>';
-							html+='<div class="css-0"></div>';
-							html+='</div>';
-							html+='</li>';
-							html+='<hr class="box_hr">';
-							html+='</div>';
-							$('.css-pr4hr1-VisualUl-ArchivesByActionUl.ei8r22x0').append(html);
-
-						
-						}
-						
-							/*영화가 들어가 있지 않을 때*/
-						for (var i = 0; i < collectionMovieNotList.length; i++){
-							let collectionVo=collectionMovieNotList[i];
-							html="";
-							html+='<li class="css-17543n0">';
-							html+='<div class="css-11axhrb">';
-							html+='<div style="width:20px; height:20px;">';
-							html+='<input type="radio" name="collection" value="'+collectionVo.id+'" class="css-1j6t0vk-StylelessLocalLink-ArchivesActionListLink ei8r22x2">';
-							html+='</div>';
-							html+='<div class="css-1ciqeix" style="margin-left:15px; vertical-align:middle;">';
-							html+='<div class="movie_post_url">';
-							html+='<img src="'+collectionVo.movie_post_url+'">';
-							html+='</div>';
-							html+='<div style="width:69%; margin-left:10px; margin-top:25px; display:inline-block;">';
-							html+='<p>'+collectionVo.collection_name+'</p>';
-							html+='<div class="css-collection_popup_span ei8r22x1">';
-							html+='</div>';
-							html+='</div>';
-							html+='</div>';
-							html+='<div class="css-0"></div>';
-							html+='</div>';
-							html+='</li>';
-							html+='<hr class="box_hr">';
-							html+='</div>';
-							$('.css-pr4hr1-VisualUl-ArchivesByActionUl.ei8r22x0').append(html);
-
-						}
-									
-					},
-					error:function(){
-						console.log("실패");
-					}
-				}); //ajax
-				
+					$(".collection_box").css({"display":"block"});				
 			 }
 			
 			}
@@ -618,3 +540,26 @@ $(function() {
 	/* 마우스로 클릭하면 색깔변화 (로그인 후) --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 	
 });
+
+$(document).ready(function() {
+    // 클릭 이벤트 처리
+    $('.collection-item').on('click', function() {
+        console.log('Clicked on:', this); // 클릭된 요소를 콘솔에 출력
+        toggleBorderStyleByClass(this);
+    });
+});
+
+function toggleBorderStyleByClass(liElement) {
+    // li 요소 내부의 div 요소를 찾습니다.
+    var targetDiv = liElement.querySelector('.css-unzuzl-StyledLazyLoadingImage.ezcopuc0');
+
+    // 클래스가 있는 경우 제거하고, 없는 경우 추가합니다.
+    if (targetDiv.classList.contains('collection_border-style')) {
+        targetDiv.classList.remove('collection_border-style');
+    } else {
+        targetDiv.classList.add('collection_border-style');
+    }
+
+    console.log('Target Div:', targetDiv);
+}
+
