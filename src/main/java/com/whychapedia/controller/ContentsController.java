@@ -216,13 +216,14 @@ public class ContentsController {
 		
 
 		/*-------------------------------로그인 전/후 따로-------------------------------------------------*/
+		int user_id=0;
+		Integer sessionId = (Integer) session.getAttribute("sessionId");
 		/*별점 정보 시작*/
 		System.out.println("-------------------start_나의 별점정보-Controller--------------------------------");
 		double my_star_rate=0;/* 로그인 전 0으로 default :별점 평가 하기 */		
 		/*로그인 후*/
-		if(session.getAttribute("sessionId")!=null) {
-			Integer sessionId = (Integer) session.getAttribute("sessionId");
-			int user_id = sessionId.intValue();
+		if(sessionId!=null) {
+			user_id = sessionId.intValue();
 			/*user가 해당 영화에 대해서 평가 했는지 안했는지check (0:평가안함 1:평가함)*/
 			int IsRating=0;
 			IsRating=starRateService.selectIsRating(user_id,movie_id);
@@ -241,9 +242,8 @@ public class ContentsController {
 		int isWishWatch=0;/* 로그인 전  default 0:보고싶어요 x */	
 		int isWatching=0;/* 로그인 전  default 0:보는중 x */	
 		/*로그인 후*/
-		if(session.getAttribute("sessionId")!=null) {
-			Integer sessionId = (Integer) session.getAttribute("sessionId");
-			int user_id = sessionId.intValue();
+		if(sessionId!=null) {
+			user_id = sessionId.intValue();
 			isWishWatch=watchListService.selectIsWatch(0,movie_id,user_id);
 			System.out.println("보고싶은가?"+isWishWatch);
 			isWatching=watchListService.selectIsWatch(1,movie_id,user_id);
@@ -263,7 +263,36 @@ public class ContentsController {
 		model.addAttribute("wishNwatch",wishNwatch);
 		/*보고싶어요 && 보는중 끝*/
 	    //----------------------------------------------------------------------------------------------------------//
-		 /*  출연 제작 인물 받아오기 시작*/
+		
+		/*로그인 user collection 정보 시작*/
+		
+		
+		List<CollectionVo> collectionMovieIn=new ArrayList<>();
+		List<CollectionVo> collectionMovieNotIn=new ArrayList<>();		
+		if(sessionId!=null) {
+			user_id = sessionId.intValue();
+			/*해당 영화가 들어가 있는 콜렉션*/
+			collectionMovieIn=collectionService.selectCollectionMovieIn(user_id,movie_id);
+			if(collectionMovieIn!=null) {
+				System.out.println("collectionMovieIn"+collectionMovieIn);			
+			}
+			/*해당 영화가 들어가 있지 않는 콜렉션*/
+			collectionMovieNotIn=collectionService.selectCollectionMovieNotIn(user_id,movie_id);
+			if(collectionMovieNotIn!=null) {
+				System.out.println("collectionMovieNotIn"+collectionMovieNotIn);
+			}
+			
+		}
+		
+		model.addAttribute("collectionMovieIn",collectionMovieIn);
+		model.addAttribute("collectionMovieNotIn",collectionMovieNotIn);
+		
+		
+		/*로그인 user collection 정보 끝*/
+		
+		//----------------------------------------------------------------------------------------------------------//
+		
+		/*  출연 제작 인물 받아오기 시작*/
 		//해당 영화의 감독전체 가져오기 
 		List<MovieDirectorVo> oneMovieDirectorList = movieDirectorService.selectMovieDirectorList(movie_id);
 		model.addAttribute("oneMovieDirectorList",oneMovieDirectorList);
@@ -280,10 +309,8 @@ public class ContentsController {
 		//내가 쓴 코멘트 가져오기
 		CommentVo myCommentVo=new CommentVo();
 		
-		if(session.getAttribute("sessionId")!=null) {
-			Integer sessionId = (Integer) session.getAttribute("sessionId");
-			System.out.println("sessionId : " + sessionId);
-			int user_id = sessionId.intValue();
+		if(sessionId!=null) {
+			user_id = sessionId.intValue();
 			myCommentVo = commentService.selectMyCommentOne(user_id, movie_id);
 		}
 		
@@ -454,39 +481,7 @@ public class ContentsController {
 	
 	
 
-	
-/*                         영화 콜렉션 ajax                    */		
-	
-	
-	@RequestMapping("/contents/collectionInfo")
-	@ResponseBody 
-	public ResponseEntity<Map<String, Object>> collectionInfo(int movie_id,Model model ){ 
-		Map<String, Object> map = new HashMap<>();
-		Integer sessionId = (Integer) session.getAttribute("sessionId");
-		int user_id = sessionId.intValue();
-		System.out.println("user_id:"+user_id);
-		System.out.println("movie_id:"+movie_id);
-		/*해당 영화가 들어가 있는 콜렉션*/
-		List<CollectionVo> collectionMovieIn=new ArrayList<>();
-		collectionMovieIn=collectionService.selectCollectionMovieIn(user_id,movie_id);
-		if(collectionMovieIn!=null) {
-			System.out.println("collectionMovieIn"+collectionMovieIn);	
-		}
-		
-		/*해당 영화가 들어가 있지 않는 콜렉션*/
-		List<CollectionVo> collectionMovieNotIn=new ArrayList<>();		
-		collectionMovieNotIn=collectionService.selectCollectionMovieNotIn(user_id,movie_id);
-		if(collectionMovieNotIn!=null) {
-			System.out.println("collectionMovieNotIn"+collectionMovieNotIn);
-		}
-		
-		map.put("collectionMovieIn", collectionMovieIn);
-		map.put("collectionMovieNotIn", collectionMovieNotIn);
-		
-		return new ResponseEntity<>(map, HttpStatus.OK);}	
-	
-	
-/*                         영화 콜렉션 ajax                    */	
+
 	
 	
 	

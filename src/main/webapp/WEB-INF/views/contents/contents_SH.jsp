@@ -23,7 +23,7 @@
 		<script src="../js/login.js"></script>
 		<script src="../js/join.js"></script>
 		<script src="../js/contents.js"></script>
-		<script src="../js/contents_SH.js"></script>
+		
 	</head>
 	<body>
 		<div id="ajaxMovieId" style="display:none;">${movieVo.id}</div>
@@ -284,7 +284,7 @@
 		                                        <div class="css-uvsgck">
 		                                        
 		                                        	
-		                                        	
+		                                        	<c:if test="${ sessionId != null }">
 		                                        	<!-- COLLECTION section start -->
 		                                            <div class="css-1gfvga7-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock css-12ru3m0 collection_box" style="display:block;">
 		                                                <div style="min-height: 1px;">
@@ -297,27 +297,29 @@
 		                                                                </header>
 		                                                            </div>
 		                                                        </div>
-		                                                        <form action="" method="post" name="collectionSubmit" id="collectionSubmit">
 		                                                        <div class="css-1gkas1x-Grid e1689zdh0">
 		                                                            <div class="css-1y901al-Row emmoxnt0">
 		                                                                <ul class="css-27z1qm-VisualUl-ContentGrid e14whxmg0">
-		                                                                <c:forEach items="${movieWithSameGenreList}" var="movieSameGenreVo">
-		                                                                    <li class="css-1hp6p72" id="collection${ movieSameGenreVo.id }"><!-- 이거 이렇게 넣으면 id값이 부여되려나?? -->
-		                                                                    	<a title="${movieSameGenreVo.movie_kor_title}" href="/contents/contents_SH?movie_id=${movieSameGenreVo.id}">
+		                                                                <!-- 영화가 포함 안된 컬렉션 시작-->
+		                                                       		 <form action="" method="post" name="collectionSubmit" id="collectionSubmit" >
+		                                                                <c:forEach items="${collectionMovieNotIn}" var="collectionVo">
+		                                                                    <li class="css-1hp6p72 collection-item" id="collection${ collectionVo.id }">
+		                                                                    	<a title="${collectionVo.collection_name}">
 			                                                                        <div class="css-1qmeemv">
-			                                                                            <div class="css-unzuzl-StyledLazyLoadingImage ezcopuc0" style="border:5px solid #FEAE27;">
-			                                                                                <img src="${movieSameGenreVo.movie_post_url}"
+			                                                                            <div class="css-unzuzl-StyledLazyLoadingImage ezcopuc0">
+			                                                                                <img src="${collectionVo.movie_post_url}"
 			                                                                                     class="css-qhzw1o-StyledImg ezcopuc1">
 			                                                                            </div>
+			                                                                            
 			                                                                            <div class="ottBadge css-5o7sb2"
-			                                                                                 src="/images/check.png"></div>
+			                                           										src="/images/check.png"></div>
 			                                                                            <!-- <div class="ottBadge css-5o7sb2"
 			                                                                                 src="https://an2-img.amz.wtchn.net/image/v1/updatable_images/2571/original/42e70f1bc34d7af54478a311983ecf6d3601eefa.png"></div>
 			                                                                            <div class="ottBadge css-oobk33"
 			                                                                                 src="https://an2-img.amz.wtchn.net/image/v2/33c15d90f101414a351372f19172859f.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKd1lYUm9Jam9pTDNZeUwzTjBiM0psTDNWcGJXRm5aUzh4TmpFeE1qQXdNVGN3T1RZd05qWTVNRE0xSW4wLlFwWFc3MERPaF9GR3ZMWVVzSUFCOFdLNWhLRjE3Ym5za1Z1bVFEN0lsSkU"></div> -->
 			                                                                        </div>
 			                                                                        <div class="css-ixy093">
-			                                                                            <div class="css-niy0za">${movieSameGenreVo.movie_kor_title}</div>
+			                                                                            <div class="css-niy0za">${collectionVo.collection_name}</div>
 			                                                                            <%-- <div>
 			                                                                                <div class="css-m9i0qw">평균 ★${movieSameGenreVo.movie_rating}</div>
 			                                                                                <div class="css-1vvt4am">누적 관객 ${movieSameGenreVo.movie_total_audience}</div>
@@ -326,10 +328,29 @@
 		                                                                    	</a>
 		                                                                    </li>
 		                                                                 </c:forEach>
+		                                                                 <!-- 영화가 포함 안된 컬렉션 끝-->
+		                                                              </form> 
+		                                                                 <!-- 영화가 포함 된 컬렉션 시작-->
+		                                                                 <c:forEach items="${collectionMovieIn}" var="collectionVo">
+		                                                                    <li class="css-1hp6p72 collection-item collection-border" id="collection${collectionVo.id}">	                        
+		                                                                    	<a title="${collectionVo.collection_name}">
+			                                                                        <div class="css-1qmeemv" onclick="toggleBorderStyle(this)">
+			                                                                            <div class="css-unzuzl-StyledLazyLoadingImage ezcopuc0">
+			                                                                                <img src="${movieVo.movie_post_url}"
+			                                                                                     class="css-qhzw1o-StyledImg ezcopuc1" >
+			                                                                            </div>
+			                                                                            <div class="ottBadge css-5o7sb2"
+			                                                                                 src="/images/check.png"></div>
+			                                                                        </div>
+			                                                                        <div class="css-ixy093">
+			                                                                            <div class="css-niy0za">${collectionVo.collection_name}</div>
+			                                                                        </div>
+		                                                                    	</a>
+		                                                                    </li>
+		                                                                 </c:forEach>
 		                                                                </ul>
 		                                                            </div>
 		                                                        </div>
-		                                                        </form>
 		                                                    </section>
 		                                                    <div class="css-1712rt5"></div>
 		                                                    <div class="css-1e9niz8">
@@ -341,6 +362,7 @@
 		                                                    </div>
 		                                                </div>
 		                                            </div>
+		                                            </c:if>
 				                                    <!-- COLLECTION section end -->
 		                                        	
 		                                        	
