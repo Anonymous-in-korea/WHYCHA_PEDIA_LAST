@@ -9,13 +9,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.whychapedia.mapper.CollectionMapper;
+import com.whychapedia.mapper.MovieCollectionMapper;
+import com.whychapedia.mapper.MovieMapper;
 import com.whychapedia.vo.CollectionVo;
 import com.whychapedia.vo.MovieCollectionVo;
+import com.whychapedia.vo.MovieVo;
 
 @Service
 public class CollectionServiceImpl implements CollectionService {
 	@Autowired
 	CollectionMapper collectionMapper;
+	
+	@Autowired
+	MovieCollectionMapper movieCollectionMapper;
 	
 	@Autowired
 	CollectionVo collectionVo;
@@ -107,7 +113,13 @@ public class CollectionServiceImpl implements CollectionService {
 	//해당 유저의 해당 영화가 들어가 있지않은 콜렉션
 	@Override
 	public List<CollectionVo> selectCollectionMovieNotIn(int user_id, int movie_id) {
+		//해당 영화가 들어가 있지 않은 컬렉션 가져옴 
 		List<CollectionVo> collectionMovieNotIn=collectionMapper.selectCollectionMovieNotIn(user_id,movie_id);
+		//해당 컬렉션에 영화 한개씩 넣기
+		for(CollectionVo collectionVo : collectionMovieNotIn ) {
+			collectionVo.setMovie_post_url(movieCollectionMapper.selectMovieUlrWithCollectionList(collectionVo.getId()));
+		}
+
 		return collectionMovieNotIn;
 	}
 

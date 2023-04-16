@@ -17,6 +17,10 @@ public interface MovieCollectionService {
 
 	int insertDefaultMovie(int collection_id);
 
+	int deleteMovieInCollection(int movie_id, Integer collectionId);
+
+	int insertMovieInCollection(int movie_id, Integer collectionId);
+
 	
 
 

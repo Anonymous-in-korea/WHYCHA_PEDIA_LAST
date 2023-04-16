@@ -18,5 +18,11 @@ public interface MovieCollectionMapper {
 	List<MovieCollectionVo> selectCollectionVoWithMoviePostUrlList(List<CollectionVo> collectionVoList);
 	//업뎃한 콜렉션에 디폴트로 영화 한개 넣기
 	int insertDefaultMovie(int collection_id);
+	//해당 컬렉션 속 영화 삭제
+	int deleteMovieInCollection(int movie_id, Integer collectionId);
+	//해당 컬렉션 속 영화 등록
+	int insertMovieInCollection(int movie_id, Integer collectionId);
+	//하나의 콜렉션 속 하나의 moviePosturl 가져오기
+	String selectMovieUlrWithCollectionList(int id);
 
 }
