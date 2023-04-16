@@ -23,6 +23,7 @@ import com.whychapedia.service.CollectionService;
 import com.whychapedia.service.CommentService;
 import com.whychapedia.service.MemberService;
 import com.whychapedia.service.MovieActorService;
+import com.whychapedia.service.MovieCollectionService;
 import com.whychapedia.service.MovieCountryService;
 import com.whychapedia.service.MovieDirectorService;
 import com.whychapedia.service.MovieGalleryTrailerService;
@@ -87,6 +88,9 @@ public class ContentsController {
 	
 	@Autowired
 	MemberService memberService;
+	
+	@Autowired
+	MovieCollectionService movieCollectionService;
 	
 	@Autowired
 	MovieVo movieVo;
@@ -275,11 +279,13 @@ public class ContentsController {
 			collectionMovieIn=collectionService.selectCollectionMovieIn(user_id,movie_id);
 			if(collectionMovieIn!=null) {
 				System.out.println("collectionMovieIn"+collectionMovieIn);			
+				System.out.println("collectionMovieInSize"+collectionMovieIn.size());			
 			}
 			/*해당 영화가 들어가 있지 않는 콜렉션*/
 			collectionMovieNotIn=collectionService.selectCollectionMovieNotIn(user_id,movie_id);
 			if(collectionMovieNotIn!=null) {
 				System.out.println("collectionMovieNotIn"+collectionMovieNotIn);
+				System.out.println("collectionMovieNotInsize"+collectionMovieNotIn.size());
 			}
 			
 		}
@@ -480,11 +486,53 @@ public class ContentsController {
 	
 	
 	
+	/*                    컬렉션 영화 추가 삭제 페이지               */
 
+	@RequestMapping("/contents/updateCollectionMovie")
+	public String updateCollectionMovie(@RequestParam("movieId") int movie_id,@RequestParam("collectionId") List<Integer> collectionIds,Model model) {
+		System.out.println("movie_id"+movie_id);
+		System.out.println("collectionIds"+collectionIds);
+		int user_id=0;
+		Integer sessionId = (Integer) session.getAttribute("sessionId");
+		List<CollectionVo> collectionMovieIn=new ArrayList<>();
+		List<CollectionVo> collectionMovieNotIn=new ArrayList<>();		
+		if(sessionId!=null) {
+			user_id = sessionId.intValue();
+			/*해당 영화가 들어가 있는 콜렉션*/
+			collectionMovieIn=collectionService.selectCollectionMovieIn(user_id,movie_id);
+			/*해당 영화가 들어가 있지 않는 콜렉션*/
+			collectionMovieNotIn=collectionService.selectCollectionMovieNotIn(user_id,movie_id);
+			int result=0;
+			
+			for (Integer collectionId : collectionIds) {
+				//컬렉션이 영화를 기존에 가지고 있을 경우 삭제
+				if(collectionMovieIn!=null) {
+					System.out.println("collectionMovieIn"+collectionMovieIn);
+					System.out.println("collectionMovieInsize"+collectionMovieIn.size());
+					for (CollectionVo collection : collectionMovieIn) {
+				        if (collection.getId() == collectionId) {
+				        	System.out.println("삭제"+collectionId);
+				        	result=movieCollectionService.deleteMovieInCollection(movie_id,collectionId);
+				        }
+					}      	
+				}
+				
+				//컬렉션이 영화를 기존에 가지고 있지 않을 경우 추가
+				if(collectionMovieNotIn!=null) {
+					System.out.println("collectionMovieNotIn"+collectionMovieNotIn);
+					System.out.println("collectionMovieNotInsize"+collectionMovieNotIn.size());
+					 for (CollectionVo collection : collectionMovieNotIn) {
+				         if (collection.getId() == collectionId) {
+				        	 System.out.println("넣기"+collectionId);
+				            result=movieCollectionService.insertMovieInCollection(movie_id,collectionId);
+				         }
+				    }
+				}
+			}//collectionIds for문
 
-	
-	
-	
+		}
+		return "redirect:/contents/contents_SH?movie_id="+movie_id;
+	}
 	
 	
 	

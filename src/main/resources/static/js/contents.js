@@ -473,38 +473,36 @@ $(function() {
 		
 		
 		
-		
 		/* 콜렉션_box start ----------------------------------------------------------------------------------------------------------------- */
-		$("#collection_btn_login").on("click", function() {
-			if ($("#collection_btn_login").hasClass("active")) {
-				/* 콜렉션 닫기 */
-				$("#collection_btn_login").removeClass("active");
-				$("#collection_icon").css({"display":"block"});
-				$("#collection_icon_color").css({"display":"none"});
-				$("#collection_text").css({"color":""});
-				if ( $(".collection_box").css("display") != "none" ) {
-					$(".collection_box").css({"display":"block"});
-				}
-			} else {
-				/* 콜렉션 열기 */
-				$("#collection_btn_login").addClass("active");
-				$("#collection_icon").css({"display":"none"});
-				$("#collection_icon_color").css({"display":"block"});
-				$("#collection_text").css({"color":"#FEAE27"});
-				if ( $(".collection_box").css("display") == "none" ) {
-					$(".collection_box").css({"display":"block"});				
-			 }
-			
-			}
-		});
-		
-		$("#collection_submit").click(function() {
-			alert("컬렉션 저장한드아아아!!!");
-			collectionSubmit.submit();
-		});
-		
-		/* 콜렉션_box end ----------------------------------------------------------------------------------------------------------------- */
-		
+      $("#collection_btn_login").on("click", function() {
+         if ($("#collection_btn_login").hasClass("active")) {
+            /* 콜렉션 닫기 */
+            $("#collection_btn_login").removeClass("active");
+            $("#collection_icon").css({"display":"block"});
+            $("#collection_icon_color").css({"display":"none"});
+            $("#collection_text").css({"color":""});
+            if ( $(".collection_box").css("display") != "none" ) {
+               $(".collection_box").css({"display":"none"});
+            }
+         } else {
+            /* 콜렉션 열기 */
+            $("#collection_btn_login").addClass("active");
+            $("#collection_icon").css({"display":"none"});
+            $("#collection_icon_color").css({"display":"block"});
+            $("#collection_text").css({"color":"#FEAE27"});
+            if ( $(".collection_box").css("display") == "none" ) {
+               $(".collection_box").css({"display":"block"});            
+          }
+         
+         }
+      });
+      
+      $("#collection_submit").click(function() {
+         //alert("컬렉션 저장한드아아아!!!");
+         collectionSubmit.submit();
+      });
+      
+      /* 콜렉션_box end ----------------------------------------------------------------------------------------------------------------- */
 		
 		
 		
@@ -554,12 +552,15 @@ function toggleBorderStyleByClass(liElement) {
     var targetDiv = liElement.querySelector('.css-unzuzl-StyledLazyLoadingImage.ezcopuc0');
 
     // 클래스가 있는 경우 제거하고, 없는 경우 추가합니다.
-    if (targetDiv.classList.contains('collection_border-style')) {
-        targetDiv.classList.remove('collection_border-style');
+    if (targetDiv.classList.contains('collection_border')) {
+        targetDiv.classList.remove('collection_border');
+        var liId = liElement.id.replace('collection', '');
+        $('#collectionSubmit input[value="' + liId + '"]').remove();
     } else {
-        targetDiv.classList.add('collection_border-style');
+        targetDiv.classList.add('collection_border');
+        var liId = liElement.id.replace('collection', '');
+        $('#collectionSubmit').append('<input type="hidden" name="collectionId" value="' + liId + '">');
     }
 
     console.log('Target Div:', targetDiv);
 }
-

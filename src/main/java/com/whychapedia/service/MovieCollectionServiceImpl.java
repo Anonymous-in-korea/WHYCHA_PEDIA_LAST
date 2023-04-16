@@ -105,6 +105,20 @@ public class MovieCollectionServiceImpl implements MovieCollectionService {
 		return result;
 	}
 
+	//해당 컬렉션 속 영화 삭제
+	@Override
+	public int deleteMovieInCollection(int movie_id,Integer collectionId) {
+		int result=movieCollectionMapper.deleteMovieInCollection(movie_id,collectionId);
+		return result;
+	}
+
+	//해당 컬렉션 속 영화 넣기
+	@Override
+	public int insertMovieInCollection(int movie_id, Integer collectionId) {
+		int result=movieCollectionMapper.insertMovieInCollection(movie_id,collectionId);
+		return result;
+	}
+
 
 
 }

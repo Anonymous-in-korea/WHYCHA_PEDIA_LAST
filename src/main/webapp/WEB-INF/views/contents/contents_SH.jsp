@@ -282,8 +282,6 @@
 		                                <div class="css-bs9kkj">
 		                                    <div class="css-1po9d5k">
 		                                        <div class="css-uvsgck">
-		                                        
-		                                        	
 		                                        	<c:if test="${ sessionId != null }">
 		                                        	<!-- COLLECTION section start -->
 		                                            <div class="css-1gfvga7-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock css-12ru3m0 collection_box" style="display:block;">
@@ -299,40 +297,31 @@
 		                                                        </div>
 		                                                        <div class="css-1gkas1x-Grid e1689zdh0">
 		                                                            <div class="css-1y901al-Row emmoxnt0">
+		                                                       		 <form action="/contents/updateCollectionMovie" method="post" name="collectionSubmit" id="collectionSubmit" >
+		                                                       		 <input type="hidden" name="movieId" value="${movieVo.id}">
 		                                                                <ul class="css-27z1qm-VisualUl-ContentGrid e14whxmg0">
 		                                                                <!-- 영화가 포함 안된 컬렉션 시작-->
-		                                                       		 <form action="" method="post" name="collectionSubmit" id="collectionSubmit" >
 		                                                                <c:forEach items="${collectionMovieNotIn}" var="collectionVo">
 		                                                                    <li class="css-1hp6p72 collection-item" id="collection${ collectionVo.id }">
+		                                                                     <input type="hidden" name="collectionId${collectionVo.id}" value="${collectionVo.id}">
 		                                                                    	<a title="${collectionVo.collection_name}">
 			                                                                        <div class="css-1qmeemv">
 			                                                                            <div class="css-unzuzl-StyledLazyLoadingImage ezcopuc0">
 			                                                                                <img src="${collectionVo.movie_post_url}"
 			                                                                                     class="css-qhzw1o-StyledImg ezcopuc1">
 			                                                                            </div>
-			                                                                            
-			                                                                            <div class="ottBadge css-5o7sb2"
-			                                           										src="/images/check.png"></div>
-			                                                                            <!-- <div class="ottBadge css-5o7sb2"
-			                                                                                 src="https://an2-img.amz.wtchn.net/image/v1/updatable_images/2571/original/42e70f1bc34d7af54478a311983ecf6d3601eefa.png"></div>
-			                                                                            <div class="ottBadge css-oobk33"
-			                                                                                 src="https://an2-img.amz.wtchn.net/image/v2/33c15d90f101414a351372f19172859f.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKd1lYUm9Jam9pTDNZeUwzTjBiM0psTDNWcGJXRm5aUzh4TmpFeE1qQXdNVGN3T1RZd05qWTVNRE0xSW4wLlFwWFc3MERPaF9GR3ZMWVVzSUFCOFdLNWhLRjE3Ym5za1Z1bVFEN0lsSkU"></div> -->
 			                                                                        </div>
 			                                                                        <div class="css-ixy093">
 			                                                                            <div class="css-niy0za">${collectionVo.collection_name}</div>
-			                                                                            <%-- <div>
-			                                                                                <div class="css-m9i0qw">평균 ★${movieSameGenreVo.movie_rating}</div>
-			                                                                                <div class="css-1vvt4am">누적 관객 ${movieSameGenreVo.movie_total_audience}</div>
-			                                                                            </div> --%>
 			                                                                        </div>
 		                                                                    	</a>
 		                                                                    </li>
 		                                                                 </c:forEach>
 		                                                                 <!-- 영화가 포함 안된 컬렉션 끝-->
-		                                                              </form> 
+		                                                              
 		                                                                 <!-- 영화가 포함 된 컬렉션 시작-->
 		                                                                 <c:forEach items="${collectionMovieIn}" var="collectionVo">
-		                                                                    <li class="css-1hp6p72 collection-item collection-border" id="collection${collectionVo.id}">	                        
+		                                                                    <li class="css-1hp6p72 collection-item collection-border" id="collection${collectionVo.id}">
 		                                                                    	<a title="${collectionVo.collection_name}">
 			                                                                        <div class="css-1qmeemv" onclick="toggleBorderStyle(this)">
 			                                                                            <div class="css-unzuzl-StyledLazyLoadingImage ezcopuc0">
@@ -349,6 +338,7 @@
 		                                                                    </li>
 		                                                                 </c:forEach>
 		                                                                </ul>
+		                                                               </form> 
 		                                                            </div>
 		                                                        </div>
 		                                                    </section>

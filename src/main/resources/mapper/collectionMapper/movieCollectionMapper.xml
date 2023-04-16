@@ -34,5 +34,24 @@
 	 	INSERT INTO movie_collection values ((select coalesce(max(id),0)+1 from movie_collection), 0, #{collection_id})
 	</insert>
 	
+	<!--해당 컬렉션 속 영화 삭제-->
+	<delete id="deleteMovieInCollection">
+		delete movie_collection where movie_id=#{movie_id}  and collection_id=#{collectionId} 
+	</delete>
 	
+	<!--해당 컬렉션 속 영화 등록-->
+	<insert id="insertMovieInCollection">
+	 	INSERT INTO movie_collection values ((select coalesce(max(id),0)+1 from movie_collection), #{movie_id}, #{collectionId} )
+	</insert>
+	
+	<!--컬렉션_movie vo 생성 ( collection_id,movie_id,movie_post_url 들어가 있음)-->
+	<select id="selectMovieUlrWithCollectionList" resultType="string">
+		SELECT m.movie_post_url
+		  FROM Collection c
+		  INNER JOIN Movie_Collection mc ON c.id = mc.collection_id
+		  INNER JOIN Movie m ON mc.movie_id = m.id
+		  WHERE c.id = #{collectionId}
+		  ORDER BY m.movie_release_date DESC
+		  FETCH FIRST 1 ROWS ONLY
+	</select>
 </mapper>
