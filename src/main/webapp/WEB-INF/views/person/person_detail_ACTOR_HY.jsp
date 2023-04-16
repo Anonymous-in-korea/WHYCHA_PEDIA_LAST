@@ -78,10 +78,12 @@ $("#perLike").click(function() {
 /*=========================================좋아요 추가 삭제 시작==============================================================  */
 $("#like").click(function() {
  var id = $("#actorPersonId").val();
- $("#like-Count-before").hide();
+/*  var countPresent=$("#like-Count-before").val(); */
+/*  $("#like-Count-before").hide(); */
  if (!${empty sessionId}) {
    	$(this).toggleClass('liked');
 	    if ($(this).hasClass('liked')) {
+	    	  $("#like-Count-before").hide();
 		      $('#likeIcon').attr('src', '/images/orange_like_fill.png');
 		      $('.css-mr5mym-StyledButtonText').css('color', '#ff7f27');
 		      /*좋아요 ajax 시작  */
@@ -91,7 +93,8 @@ $("#like").click(function() {
 		        dataType: "json",
 		        data: {
 		          user_id: "${sessionId}",
-		          actor_id: id
+		          actor_id: id,
+		        /*   countPresent: parseInt(countPresent) */
 		        },
 		        success: function(data) {
 		          //alert("data: " + data);
@@ -119,6 +122,7 @@ $("#like").click(function() {
 		        },
 		        success: function(data) {
 		         // alert("Success: " + data);
+		          $("#like-Count-before").hide();
 		          document.getElementById("like-count-value").innerText = data;
 		        },
 		        error: function() {
@@ -212,7 +216,7 @@ $("#like").click(function() {
 			                                	</c:if>
 			                                	<!--좋아요 o-->
 			                                	<c:if test="${ like != 0 }">
-				                                	<button id="like" class="css-1ski1qz-StylelessButton-StyledActionButton e150ls9t0" class="liked">
+				                                	<button id="like" class="css-1ski1qz-StylelessButton-StyledActionButton e150ls9t0 liked">
 				                                        <img src="/images/orange_like_fill.png" id="likeIcon">
 				                                        <div class="css-1umclh2-StyledIconContainer e150ls9t1"></div>
 				                                        <span type="desktop" class="css-mr5mym-StyledButtonText e150ls9t2" style="color:#ff7f27;">좋아요 <span id="like-Count-before">${actorlikeCount }</span><span id="like-count-value"></span>명이 이 인물을 좋아합니다</span>

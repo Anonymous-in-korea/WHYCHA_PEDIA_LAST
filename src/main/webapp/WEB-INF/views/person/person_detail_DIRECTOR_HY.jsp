@@ -121,10 +121,10 @@ $(function(){
 	/* 좋아요 추가 */
 	$("#like").click(function() {
 	 var id = $("#directorPersonId").val();
-	 $("#like-Count-before").hide();
 	 if (!${empty sessionId}) {
 	   	$(this).toggleClass('liked');
 		    if ($(this).hasClass('liked')) {
+		    	  $("#like-Count-before").hide();
 			      $('#likeIcon').attr('src', '/images/orange_like_fill.png');
 			      $('.css-mr5mym-StyledButtonText').css('color', '#ff7f27');
 			      /*좋아요 ajax 시작  */
@@ -151,6 +151,7 @@ $(function(){
 		    } else {
 		      $('#likeIcon').attr('src', '/images/orange_like.png');
 		      $('.css-mr5mym-StyledButtonText').css('color', '');
+		      $("#like-Count-before").hide();
 		      /*좋아요 삭제 ajax 시작  */
 			      $.ajax({
 			        url: "/person/deleteDirectorLike",
@@ -255,7 +256,7 @@ $(function(){
 			                                	</c:if>
 			                                	<!--좋아요 o-->
 			                                	<c:if test="${ like != 0 }">
-				                                	<button id="like" class="css-1ski1qz-StylelessButton-StyledActionButton e150ls9t0" class="liked">
+				                                	<button id="like" class="css-1ski1qz-StylelessButton-StyledActionButton e150ls9t0 liked" >
 				                                        <img src="/images/orange_like_fill.png" id="likeIcon">
 				                                        <div class="css-1umclh2-StyledIconContainer e150ls9t1"></div>
 				                                        <span type="desktop" class="css-mr5mym-StyledButtonText e150ls9t2" style="color:#ff7f27;">좋아요 <span id="like-Count-before">${directorlikeCount }</span><span id="like-count-value"></span>명이 이 인물을 좋아합니다</span>
