@@ -82,12 +82,7 @@
 									<div class="css-19lj1vd-RoundedCornerBlock-RoundedCornerBlock">
 										<section class="css-q4evg3-MyPage e19zkogf2">
 											<!--content header 시작  -->
-											<div class="css-17iws0v-WallPaper" id="settingBtn">
-											<c:if test="${sessionId!=null} && ${sessionId!=memberVo.id}">
-											<!-- 톱니바퀴 버튼시작-->
-												<button aria-label="setting"  class="css-vmz9k0-StylelessButton-WallPaperTopRightButton e19zkogf20"></button>
-											<!-- 톱니바퀴 버튼 끝 -->
-											</c:if>
+											<div class="css-17iws0v-WallPaper">
 												<div class="css-nylf5i">
 													<div class=" css-12eknxq-StyledSelf e1q5rx9q0">
 														<span class="css-bhgne5-StyledBackground e1q5rx9q1"
@@ -121,13 +116,18 @@
 														<div class="css-1gry5r7">
 														<!--유저 프로필 이미지 -->
 														<c:if test="${memberVo.user_pic_url != '0' }">
-															<div class="css-h6h0rq-ProfilePhotoImage"  style="background-image:url('${memberVo.user_pic_url}')"></div>
+															<div class="css-h6h0rq-ProfilePhotoImage"  style="background-image:url('${memberVo.user_pic_url}');"></div>
 														</c:if>
 														<c:if test="${memberVo.user_pic_url == '0' }">
 															<div class="css-h6h0rq-ProfilePhotoImage"></div>
 														</c:if>
 														</div>
-														<div class="css-5inudd-NameBlock e19zkogf5">
+														<!-- 톱니바퀴 버튼시작-->
+														<div style="margin-top:-20px;">
+															<img src="/images/setting_icon.png" id="settingBtn" style="width:40px; float:right;">
+														</div>
+														<!-- 톱니바퀴 버튼 끝 -->
+														<div class="css-5inudd-NameBlock e19zkogf5" style="margin-top:20px;">
 															<!--유저이름 -->
 															<h1 class="css-aizam7-Name e19zkogf6">${memberVo.user_name}</h1>
 															<!--유저이름 -->

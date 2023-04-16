@@ -31,13 +31,13 @@ public class AdminEmailController {
 	@ResponseBody
 	public String sendEmail(String userEmail,String userName) {
 		
-		System.out.println("EmailController userEmail : "+userEmail);
-		System.out.println("EmailController userName : "+userName);
+		System.out.println("EmailController userEmail(발송됨) : "+userEmail);
+		System.out.println("EmailController userName(발송됨) : "+userName);
 		
 		List<MemberVo> emailMemberList = new ArrayList<>();
 		
 		//텍스트 이메일발송
-//		MemberVo memberVo = adminMailService.emailSend(userEmail, userName);
+		MemberVo memberVo = adminMailService.emailSend(userEmail, userName);
 		
 		//html 이메일발송
 		//String pwCode = adminMailService.mailSend2(userEmail, userName);

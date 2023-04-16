@@ -101,14 +101,12 @@
 								</dl>
 								<dl class="section2_content_dl2 e1kvv3951">
 									<dt class="section2_content_dt e1kvv3952">내용</dt>
-									<dd class="section2_content_dd2 e1kvv3954">
-										<c:if test="${movieVo.movie_desc == '0' }">
-										영화 내용이 등록되지 않았습니다.
-										</c:if>
-										<c:if test="${movieVo.movie_desc != '0' }">
-										${movieVo.movie_desc}
-										</c:if>
-									</dd>
+									<c:if test="${movieVo.movie_desc == '0' }">
+									<dd class="section2_content_dd2 e1kvv3954">영화 내용이 등록되지 않았습니다.</dd>
+									</c:if>
+									<c:if test="${movieVo.movie_desc != '0' }">
+									<dd class="section2_content_dd2 e1kvv3954">${movieVo.movie_desc}</dd>
+									</c:if>
 								</dl>
 							</ul>
 						</div>

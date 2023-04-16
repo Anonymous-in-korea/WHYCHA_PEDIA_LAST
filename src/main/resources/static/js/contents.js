@@ -482,13 +482,17 @@ $(function() {
 				$("#collection_icon").css({"display":"block"});
 				$("#collection_icon_color").css({"display":"none"});
 				$("#collection_text").css({"color":""});
+				if ( $(".collection_box").css("display") != "none" ) {
+					$(".collection_box").css({"display":"block"});
+				}
 			} else {
 				/* 콜렉션 열기 */
 				$("#collection_btn_login").addClass("active");
 				$("#collection_icon").css({"display":"none"});
 				$("#collection_icon_color").css({"display":"block"});
 				$("#collection_text").css({"color":"#FEAE27"});
-				if ( $(".collection_pop_up2_background").css("display") == "none" ) {
+				if ( $(".collection_box").css("display") == "none" ) {
+					$(".collection_box").css({"display":"block"});
 				
 				/*콜렉션 정보 가져오기 */ 
 				let movieVoId = $("#ajaxMovieId").text();
@@ -560,7 +564,6 @@ $(function() {
 							$('.css-pr4hr1-VisualUl-ArchivesByActionUl.ei8r22x0').append(html);
 
 						}
-							$(".collection_pop_up2_background").show();
 									
 					},
 					error:function(){
@@ -573,22 +576,11 @@ $(function() {
 			}
 		});
 		
-    	/* 콜렉션 창 내리기 */
-		$(".css-1d7tft4-StylelessButton-HeaderCloseButtonSelf, .collection_pop_up2_background").click(function() {
-			if ( $(".collection_pop_up2_background").css("display") != "none" ) {
-				$(".collection_pop_up2_background").hide();
-				$("#collection_btn").removeClass("active");
-				$("#collection_icon").css({"display":"block"});
-				$("#collection_icon_color").css({"display":"none"});
-				$("#collection_text").css({"color":""});
-			}
+		$("#collection_submit").click(function() {
+			alert("컬렉션 저장한드아아아!!!");
+			collectionSubmit.submit();
 		});
 		
-		/* 창 내리기 방지 */
-    	$(".collection_content_box2").click(function(e) {
-			e.stopPropagation();
-			$(".collection_pop_up2_background").css("display", "block");
-		});
 		/* 콜렉션_box end ----------------------------------------------------------------------------------------------------------------- */
 		
 		

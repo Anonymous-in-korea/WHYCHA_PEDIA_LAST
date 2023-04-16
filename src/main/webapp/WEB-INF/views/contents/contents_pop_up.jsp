@@ -225,64 +225,75 @@
 </div>
 <!-- 코멘트 팝업창 로그인 후 end -->
 
+<!-- 로그인 후 팝업창 end -->
+
+
+
+
+
+
+
+
 <!-- 컬렉션 팝업창 로그인 후 start --> 
-<div class="collection_pop_up2_background" style="display:none;">
+<%-- <div class="collection_pop_up2_background" style="display:none;">
 	<div id="modal-container-_UXspPLNadvpHIg80kJol" class="css-rpyl6s">
-		<div class="css-ikkedy collection_content_box2">
-			<header title="" class="css-155l1de-HeaderBarPrimitive">
-				<div class="css-addMycollection">내 컬렉션에 추가</div>
+		<div class="css-ikkedy">
+			<header class="css-155l1de-HeaderBarPrimitive">
+				<div class="css-addMycollection" style="vertical-align:middle;">
+					내 컬렉션 목록
+					<img src="/images/collection_plus.png" id="collection_submit" style="margin-left:-10px; width:7%; height:22px; float:right;">
+				</div>
 			</header>
-			<div class="css-1s8we4x">
+			<div class="css-1s8we4x collection_content_box2">
 				<div class="css-oi2wld">
 					<div class="css-blhbko2">
 						<div class="css-1gkas1x-Grid e1689zdh0">
-						 <form action="/collection/insertMovie" method="get" name="insertMovie" id="insertMovie">
-						 	<input type="hidden" name="movie_id" value="${movieVoId}">
-								<ul class="css-pr4hr1-VisualUl-ArchivesByActionUl ei8r22x0">
-									<%-- <c:forEach items="" var=""> --%>
-									<li class="css-17543n0">
-										<div class="css-11axhrb">
-											<div style="width:20px; height:20px;">
-												<!-- c:if로 영화가 들어있으면 안보이게 해주기 -->
-												<%-- <c:if test=""> --%>
-												<input type="radio" name="chk_collection" value="새로운 영화" class="css-1j6t0vk-StylelessLocalLink-ArchivesActionListLink ei8r22x2">
-												<%-- </c:if> --%>
-												<!-- 여기에 ajax에 태워보낼 정보들 담아 -->
-												<!-- c:if로 영화가 들어있으면 안보이게 해주기 -->
-											</div>
-											<div class="css-1ciqeix" style="margin-left:15px; vertical-align:middle;">
-												<div class="movie_post_url">
-													<img src="https://an2-img.amz.wtchn.net/image/v2/7CHhnnLM75Z…c1blVTbHRkNzRJc2UxczBxTUxwQmwtVXhaOVRFLTdRamhjZ2c" style="width:100%;"><!-- 여기에 movie_post_url 적용시키기 -->
-												</div>
-												<div style="width:69%; margin-left:10px; margin-top:25px; display:inline-block;">
-													<p>새로운 영화</p><!-- collection 이름 적용 -->
-													<div class="css-collection_popup_span ei8r22x1">
-														0개의 작품 <!-- 몇개의 작품 저 0이란 숫자에 collection에 들어있는 작품 갯수 count(*)로 불러온거 적용시키기 -->
-														
-														<!-- c:if로 영화가 들어있으면 지금 보고있는 영화 poster 보이게 해주기 -->
-														<%-- <c:if test=""> --%>
-														<div>
-															<img src="/images/check.png" style="width:7%;">
-														</div>
-														<%-- </c:if> --%>
-														<!-- c:if로 영화가 들어있으면 지금 보고있는 영화 poster 보이게 해주기 -->
-													</div>
-												</div>
-											</div>
-											<div class="css-0"></div>
+						<form action="/collection/insertMovie" method="get" name="insertMovie" id="insertMovie">
+							<input type="hidden" name="movie_id" value="${movieVoId}">
+							<ul class="css-pr4hr1-VisualUl-ArchivesByActionUl ei8r22x0">
+								<c:forEach items="" var="">
+								<li class="css-17543n0">
+									<div class="css-11axhrb">
+										<div style="width:20px; height:20px;">
+											<!-- c:if로 영화가 들어있으면 안보이게 해주기 -->
+											<c:if test="">
+											<input type="radio" name="chk_collection" value="새로운 영화" class="css-1j6t0vk-StylelessLocalLink-ArchivesActionListLink ei8r22x2">
+											</c:if>
+											<!-- 여기에 ajax에 태워보낼 정보들 담아 -->
+											<!-- c:if로 영화가 들어있으면 안보이게 해주기 -->
 										</div>
-									</li>
-									<hr class="box_hr">
-									<%-- </c:forEach> --%>
+										<div class="css-1ciqeix" style="margin-left:15px; vertical-align:middle;">
+											<div class="movie_post_url">
+												<img src="https://an2-img.amz.wtchn.net/image/v2/7CHhnnLM75Z…c1blVTbHRkNzRJc2UxczBxTUxwQmwtVXhaOVRFLTdRamhjZ2c" style="width:100%;"><!-- 여기에 movie_post_url 적용시키기 -->
+											</div>
+											<div style="width:60%; height:100%; margin-left:10px; margin-top:25px; display:inline-block;">
+												<p>새로운 영화</p><!-- collection 이름 적용 -->
+												<div class="css-collection_popup_span ei8r22x1">
+													0개의 작품 <!-- 몇개의 작품 저 0이란 숫자에 collection에 들어있는 작품 갯수 count(*)로 불러온거 적용시키기 -->
+													
+													<!-- c:if로 영화가 들어있으면 지금 보고있는 영화 poster 보이게 해주기 -->
+													<c:if test="">
+													<div>
+														<img src="/images/check.png" style="width:7%;">
+													</div>
+													</c:if>
+													<!-- c:if로 영화가 들어있으면 지금 보고있는 영화 poster 보이게 해주기 -->
+												</div>
+											</div>
+										</div>
+										<div class="css-0"></div>
+									</div>
+								</li>
+								<hr class="box_hr">
+								</c:forEach>
 							</ul>
-						  </form>
+						</form>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+</div> --%>
 <!-- 컬렉션 팝업창 로그인 후 end -->
 
-<!-- 로그인 후 팝업창 end -->

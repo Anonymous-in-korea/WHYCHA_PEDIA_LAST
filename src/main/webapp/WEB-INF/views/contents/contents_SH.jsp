@@ -282,6 +282,68 @@
 		                                <div class="css-bs9kkj">
 		                                    <div class="css-1po9d5k">
 		                                        <div class="css-uvsgck">
+		                                        
+		                                        	
+		                                        	
+		                                        	<!-- COLLECTION section start -->
+		                                            <div class="css-1gfvga7-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock css-12ru3m0 collection_box" style="display:block;">
+		                                                <div style="min-height: 1px;">
+		                                                    <section class="w_exposed_cell css-rwltgb">
+		                                                        <div class="css-1gkas1x-Grid e1689zdh0">
+		                                                            <div class="css-1y901al-Row emmoxnt0">
+		                                                                <header class="css-1ue9xs6">
+		                                                                	<h2 class="css-1wtjsst">[ ${ sessionName } ]님의 COLLECTION</h2>
+		                                                                	<img src="/images/collection_plus.png" id="collection_submit" style="margin-left:-10px; margin-top:10px; width:5%; height:5%; float:right;">
+		                                                                </header>
+		                                                            </div>
+		                                                        </div>
+		                                                        <form action="" method="post" name="collectionSubmit" id="collectionSubmit">
+		                                                        <div class="css-1gkas1x-Grid e1689zdh0">
+		                                                            <div class="css-1y901al-Row emmoxnt0">
+		                                                                <ul class="css-27z1qm-VisualUl-ContentGrid e14whxmg0">
+		                                                                <c:forEach items="${movieWithSameGenreList}" var="movieSameGenreVo">
+		                                                                    <li class="css-1hp6p72" id="collection${ movieSameGenreVo.id }"><!-- 이거 이렇게 넣으면 id값이 부여되려나?? -->
+		                                                                    	<a title="${movieSameGenreVo.movie_kor_title}" href="/contents/contents_SH?movie_id=${movieSameGenreVo.id}">
+			                                                                        <div class="css-1qmeemv">
+			                                                                            <div class="css-unzuzl-StyledLazyLoadingImage ezcopuc0" style="border:5px solid #FEAE27;">
+			                                                                                <img src="${movieSameGenreVo.movie_post_url}"
+			                                                                                     class="css-qhzw1o-StyledImg ezcopuc1">
+			                                                                            </div>
+			                                                                            <div class="ottBadge css-5o7sb2"
+			                                                                                 src="/images/check.png"></div>
+			                                                                            <!-- <div class="ottBadge css-5o7sb2"
+			                                                                                 src="https://an2-img.amz.wtchn.net/image/v1/updatable_images/2571/original/42e70f1bc34d7af54478a311983ecf6d3601eefa.png"></div>
+			                                                                            <div class="ottBadge css-oobk33"
+			                                                                                 src="https://an2-img.amz.wtchn.net/image/v2/33c15d90f101414a351372f19172859f.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKd1lYUm9Jam9pTDNZeUwzTjBiM0psTDNWcGJXRm5aUzh4TmpFeE1qQXdNVGN3T1RZd05qWTVNRE0xSW4wLlFwWFc3MERPaF9GR3ZMWVVzSUFCOFdLNWhLRjE3Ym5za1Z1bVFEN0lsSkU"></div> -->
+			                                                                        </div>
+			                                                                        <div class="css-ixy093">
+			                                                                            <div class="css-niy0za">${movieSameGenreVo.movie_kor_title}</div>
+			                                                                            <%-- <div>
+			                                                                                <div class="css-m9i0qw">평균 ★${movieSameGenreVo.movie_rating}</div>
+			                                                                                <div class="css-1vvt4am">누적 관객 ${movieSameGenreVo.movie_total_audience}</div>
+			                                                                            </div> --%>
+			                                                                        </div>
+		                                                                    	</a>
+		                                                                    </li>
+		                                                                 </c:forEach>
+		                                                                </ul>
+		                                                            </div>
+		                                                        </div>
+		                                                        </form>
+		                                                    </section>
+		                                                    <div class="css-1712rt5"></div>
+		                                                    <div class="css-1e9niz8">
+		                                                        <div class="css-1gkas1x-Grid e1689zdh0">
+		                                                            <div class="css-1y901al-Row emmoxnt0">
+		                                                                <div class="css-1thiwcu-StyledInfinityScroll eu826xw0"></div>
+		                                                            </div>
+		                                                        </div>
+		                                                    </div>
+		                                                </div>
+		                                            </div>
+				                                    <!-- COLLECTION section end -->
+		                                        	
+		                                        	
 		                                        	
 		                                        	<!-- 보고싶어요 or 보는중 버튼 클릭 시 (로그인 후) start -->
 		                                        	<c:if test="${ sessionId != null }">
@@ -317,7 +379,7 @@
 																					<div class="css-18d1ipb-ProfilePhotoImage"></div>
 																				</div>
 																			</div>
-																			<a class="css-1bh5fq7-StylelessLocalLink-LinkToMyComment eue8w0j13" href="/ko-KR/comments/1Vl2bWn96AMrR">
+																			<a class="css-1bh5fq7-StylelessLocalLink-LinkToMyComment eue8w0j13" href="">
 																				<div class="css-2a9q6o-MyComment eue8w0j5">
 																					<div class=" css-gujidv-StyledSelf eb5y16b0">
 																						<div class="css-1fucs4t-StyledText eb5y16b1">${ myCommentVo.comment_content }</div>

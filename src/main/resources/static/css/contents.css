@@ -1002,7 +1002,7 @@
 .collection_content_box { display: flex; position: absolute; inset: 0px; flex-direction: column; -webkit-box-pack: end; justify-content: flex-end; }
 
 .comment_pop_up2_background { display:block; position:fixed; inset:0px; z-index:98; background:rgba(0, 0, 0, 0.56); overflow:hidden scroll; }
-.collection_pop_up2_background { display:block; position:fixed; inset:0px; z-index:98; background:rgba(0, 0, 0, 0.56); overflow:hidden scroll; }
+.collection_pop_up2_background { display:block; position:fixed; inset:0px; z-index:98; background:rgba(0, 0, 0, 0.56); }
 
 /* 콜렉션 팝업 css */
 .css-collection_addcheck{ padding: 0px; border: none; cursor: pointer; width: 50px; height: 24px; margin: 10px 0px; text-align: center; text-color: rgb(255, 47, 110) !important; }
@@ -1024,7 +1024,7 @@
 
 .css-ntv7u { display: inline-block; vertical-align: top; width: 88px; height: 88px; }
 
-.css-rpyl6s { position: absolute; inset: 0px; z-index: 99; text-align: center; padding: 20px 0px; overflow: auto; }
+.css-rpyl6s { position: absolute; inset: 0px; z-index: 99; text-align: center; padding: 20px 0px; }
 @media (min-width: 719px) { .css-rpyl6s { text-align:center; padding:20px 0px; overflow:auto; } }
 
 .css-1mbuso5 {
@@ -2402,6 +2402,7 @@
        background: #fff;
        border-color: #e3e3e3 !important;
        overflow: hidden;
+       margin: 0 0 12px;
    }
    .css-1gfvga7-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock:empty {
        display: none;
@@ -2413,6 +2414,7 @@
            border-bottom: 1px solid;
            border-bottom-right-radius: 6px;
            border-bottom-left-radius: 6px;
+           margin: 0 0 12px;
        }
    }
    @media (min-width: 1023px) {
@@ -2422,6 +2424,7 @@
            border-bottom: 1px solid;
            border-bottom-right-radius: 6px;
            border-bottom-left-radius: 6px;
+           margin: 0 0 12px;
        }
    }
 
@@ -3675,7 +3678,6 @@ html {
 	width: 100%;
 	height: 100%;
 	box-shadow: rgb(0 0 0/ 12%) 0px 0px 6px 0px;
-	overflow: hidden;
 }
 
 @media ( min-width : 719px) {
@@ -3688,7 +3690,6 @@ html {
 		height: auto;
 		min-height: 540px;
 		border-radius: 6px;
-		overflow: auto;
 	}
 }
 
@@ -3700,10 +3701,11 @@ html {
 	letter-spacing: -0.5px;
 	line-height: 22px;
 	width: 100%;
-	height: 44px;
-	padding: 0 20px;
+	height: 54px;
+	padding: 10px 20px;
 	display: flex;
-	margin:10px auto;
+	vertical-align:middle;
+	/* margin:10px auto; */
 	-webkit-box-pack: justify;
 	justify-content: space-between;
 	box-sizing: border-box;
@@ -3715,14 +3717,13 @@ html {
 .css-1s8we4x {
 	box-sizing: border-box;
 	height: 100%;
-	padding: 44px 0px 0px;
-	overflow-y: scroll;
+	margin: 44px 0px 0px;
 }
 @media ( min-width : 719px) {
 	.css-1s8we4x {
 		box-sizing: content-box;
 		height: 540px;
-		overflow: auto;
+		overflow: scroll;
 	}
 }
 
@@ -4222,6 +4223,7 @@ html {
             width: 100%;
             height: 0;
             padding-bottom: 145.37037037037038%;
+            
         }
 
         .css-tpjapx-StyledLazyLoadingImage {
@@ -5264,7 +5266,7 @@ html {
             box-sizing: border-box;
             width: 100%;
             height: 100%;
-            border: 1px solid rgb(234, 233, 232);
+            /* border: 1px solid rgb(234, 233, 232); */
             border-radius: 5px;
             background: rgb(248, 248, 248);
             transition: all 300ms ease 0s;
@@ -5331,10 +5333,11 @@ html {
         .css-5o7sb2 {
             position: relative;
             float: right;
-            background: url(https://an2-img.amz.wtchn.net/image/v1/updatable_images/2571/original/42e70f1bc34d7af54478a311983ecf6d3601eefa.png) center center / 17px no-repeat rgb(255, 255, 255);
+            /* background: url(https://an2-img.amz.wtchn.net/image/v1/updatable_images/2571/original/42e70f1bc34d7af54478a311983ecf6d3601eefa.png) center center / 17px no-repeat rgb(255, 255, 255); */
+            background: url(/images/check.png) center center / 17px no-repeat;
             box-sizing: border-box;
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             padding: 4px 3px 3px 4px;
             border: 1px solid rgba(0, 0, 0, 0.07);
             border-radius: 50%;
