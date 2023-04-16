@@ -174,14 +174,12 @@ public class CollectionController {
 		collectionCommentList = collectionCommentService.selectCollectionComment(collection_id);
 		System.out.println("collectionCommentList"+collectionCommentList);
 		if(collectionCommentList.size()!=0) {
-			//collection에 대한 likelist
-			collectionLikeList = likeService.selectCollectionLikeList(collection_id);
-			System.out.println("collectionLikeList"+collectionLikeList);
-			//콜렉션 코멘트 list에 대한 userlist
+			//콜렉션 코멘트 list에 대한 유저 리스트 중복없이 들고오기
 			memberList = memberService.selectCollectionCommentMember(collectionCommentList);
 			System.out.println("memberList"+memberList);
 		}
 		
+		//default 영화 빼고 개수 가져오기
 		int sizeCollection=movieInCollectionVoList.size()-1;
 		
 		
@@ -235,6 +233,7 @@ public class CollectionController {
 		int collectionCount = likeService.deleteCollectionLike(collection_id, user_id);
 		return collectionCount;
 	}
+	
 	
 	//콜렉션 댓글 추가
 	@ResponseBody

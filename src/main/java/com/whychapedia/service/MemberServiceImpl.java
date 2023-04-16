@@ -1,6 +1,9 @@
 package com.whychapedia.service;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +13,7 @@ import com.whychapedia.vo.CollectionCommentVo;
 import com.whychapedia.vo.CommentReplyVo;
 import com.whychapedia.vo.CommentVo;
 import com.whychapedia.vo.MemberVo;
+import com.whychapedia.vo.MovieVo;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -56,10 +60,17 @@ public class MemberServiceImpl implements MemberService {
 		return mvoReplyList;
 	}
 	
-	//콜렉션 코멘트 List에 대한 user List
+	//콜렉션 코멘트 List에 대한 user List(중복없이 들고오기)
 	@Override
 	public List<MemberVo> selectCollectionCommentMember(List<CollectionCommentVo> collectionCommentList) {
 		List<MemberVo> colCommentUserList = memberMapper.selectCollectionCommentMember(collectionCommentList);
+		Set<Integer> userIdSet = new HashSet<>();
+		List<MemberVo> NoRepeatMemberVoList=new ArrayList<>();
+		for (MemberVo memberVo : colCommentUserList) {
+		    if (userIdSet.add(memberVo.getId())) {
+		    	NoRepeatMemberVoList.add(memberVo);
+		    }
+		}
 		return colCommentUserList;
 	}
 

@@ -38,22 +38,7 @@
 			end
 	</select>
 
-	<!-- 코멘트에 해당하는 댓글 userList 가져오기 -->
-	<select id="selectReplyuserList" resultType="com.whychapedia.vo.MemberVo">
-		select * from wuser where id in 
-			<foreach collection="replyList" item="rlist" open="(" close=")" separator=",">
-				#{rlist.user_id}
-			</foreach>
-	</select>
 	
-	<!-- 콜렉션 코멘트에 해당하는 댓글 userList 가져오기 -->
-	<select id="selectCollectionCommentMember" resultType="com.whychapedia.vo.MemberVo">
-		select * from wuser where id in 
-			<foreach collection="collectionCommentList" item="list" open="(" close=")" separator=",">
-				#{list.user_id}
-			</foreach>
-			
-	</select>
 	
 		<!--해당 감독을 컬렉션에 담은 유저 리스트 -->
 	<select id="selectCollectionDirectorUser" resultType="com.whychapedia.vo.MemberVo">
@@ -69,6 +54,27 @@
 			where ca.actor_id=#{actor_id} and u.is_block=1
 	</select>
 
+   <!-- 코멘트에 해당하는 댓글 userList 가져오기 -->
+   <select id="selectReplyuserList" resultType="com.whychapedia.vo.MemberVo">
+      select * from wuser where id in 
+         <foreach collection="replyList" item="rlist" open="(" close=")" separator=",">
+            #{rlist.user_id}
+         </foreach>
+      ORDER BY 
+         case 
+            <foreach collection="replyList" item="replyList" index="index">
+               when id = #{replyList.user_id} then #{index}
+            </foreach>
+         end
+   </select>
+   
+	<!-- 콜렉션 코멘트에 해당하는 댓글 userList 가져오기 -->
+	<select id="selectCollectionCommentMember" resultType="com.whychapedia.vo.MemberVo">
+		select * from wuser where id in 
+			<foreach collection="collectionCommentList" item="list" open="(" close=")" separator=",">
+				#{list.user_id}
+			</foreach>			
+	</select>
 	
 	
 </mapper>
