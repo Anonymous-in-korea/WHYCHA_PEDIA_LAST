@@ -1,12 +1,19 @@
 /* collectionMovieNotIn 에서는 초기에 border 스타일 적용하지 않음 */
-.collection-item .css-unzuzl-StyledLazyLoadingImage.ezcopuc0 {
-  border: none; /* 초기 스타일 적용을 none으로 설정 */
-}
+/* .collection-item .css-unzuzl-StyledLazyLoadingImage.ezcopuc0 {
+  border: none; 초기 스타일 적용을 none으로 설정
+} */
+
+/* collectionMovieIn 에서는 초기에 border 스타일을 적용함
+.collection-item .collection_border .css-unzuzl-StyledLazyLoadingImage.ezcopuc0 {
+  border: 5px solid #FEAE27; 초기 스타일 적용을 border로 설정
+} */
 
 /* collectionMovieIn 에서는 초기에 border 스타일을 적용함 */
-.collection-item.collection-border .css-unzuzl-StyledLazyLoadingImage.ezcopuc0 {
+.collection_border {
   border: 5px solid #FEAE27; /* 초기 스타일 적용을 border로 설정 */
 }
+
+
 .css-1xm32e0 {
        position: relative;
        width: 100%;
@@ -1005,6 +1012,7 @@
 .watch_pop_up_background { display:block; position:fixed; inset:0px; z-index:98; background:rgba(0, 0, 0, 0.56); overflow:hidden scroll; }
 .collection_pop_up_background { display:block; position:fixed; inset:0px; z-index:98; background:rgba(0, 0, 0, 0.56); overflow:hidden scroll; }
 .comment_reply_popUp { display:block; position:fixed; inset:0px; z-index:98; background:rgba(0, 0, 0, 0.56); overflow:hidden scroll; }
+.comment_modify_popUp { display:block; position:fixed; inset:0px; z-index:98; background:rgba(0, 0, 0, 0.56); overflow:hidden scroll; }
 
 .wish_content_box { display: flex; position: absolute; inset: 0px; flex-direction: column; -webkit-box-pack: end; justify-content: flex-end; }
 .comment_content_box { display: flex; position: absolute; inset: 0px; flex-direction: column; -webkit-box-pack: end; justify-content: flex-end; }

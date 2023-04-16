@@ -38,7 +38,7 @@
 				console.log(user_id);
 				console.log(comment_id);
 				
-				/* 스포일러 / 신고 */
+				/* COMMENT_SECTION 신고 ---------------------------------------------------------------------------------------------------------------------------- */
 				$("#comment_opt").click(function() {
 					if(result==0){
 						$(".login_button").click();
@@ -48,9 +48,16 @@
 					}
 				});
 				
-				//스포일러 신고 클릭
 				
-				/* 댓글 신고 */
+				// 스포일러 신고 클릭
+				
+				
+				
+				/* COMMENT_SECTION 신고 ---------------------------------------------------------------------------------------------------------------------------- */
+				
+				
+				
+				/* COMMENT_REPLY_SECTION 신고 ---------------------------------------------------------------------------------------------------------------------- */
 				$(".comment_reply_opt").click(function() {
 					if(result==0){
 						$(".login_button").click();
@@ -60,8 +67,10 @@
 					}
 				});
 				
-				//댓글신고 클릭
-	
+				/* COMMENT_REPLY_SECTION 신고 ---------------------------------------------------------------------------------------------------------------------- */
+
+				
+				
 				//코멘트 좋아요 버튼 클릭 css변경
 				$("#deckLike").click(function(){
 					if(result == 0){
@@ -188,7 +197,7 @@
 				});
 				
 				
-				
+				// 신규 댓글 팝업창 --------------------------------------------------------------------------------------------------------------------------------------------------
 				// 댓글버튼을 눌렀을 때 뜨는 팝업창 -------------------------------------------------------------------------------------------------
 				$("#reply").click(function() {
 					alert("test");
@@ -216,13 +225,12 @@
 				// 댓글버튼을 눌렀을 때 뜨는 팝업창 -------------------------------------------------------------------------------------------------
 				
 				
-				
 				//코멘트 reply 저장버튼 댓글달기
 				$("#comment_reply_input").click(function(){
 					
-					alert( $(".css-137vxyg").val() );
+					alert( $("#reply_write").val() );
 					
-					if( $(".css-137vxyg").val() == "댓글을 작성해주세요.(1000 글자이내)" || $(".css-137vxyg").val().length < 1 ){
+					if( $("#reply_write").val() == "댓글을 작성해주세요.(1000 글자이내)" || $("#reply_write").val().length < 1 ){
 						alert("1자 이상 작성하셔야 등록이 가능합니다. ");
 						return false;
 					}
@@ -239,6 +247,72 @@
 						success:function(data){
 							alert("성공");
 							$(".comment_reply_popUp").click();
+							location.href="/comment/comment_reply_GC?comment_id=" + ${ commentVo.id };
+						},
+						error:function(){
+							alert("실패");
+						}
+					});
+					
+				});
+				// 신규 댓글 팝업창 --------------------------------------------------------------------------------------------------------------------------------------------------
+
+				
+				
+				
+				// 댓글 수정하기 팝업창 --------------------------------------------------------------------------------------------------------------------------------------------------
+				
+				// 수정버튼을 눌렀을 때 뜨는 팝업창 -------------------------------------------------------------------------------------------------
+				$("#replyUpdate").click(function() {
+					alert("test");
+					if ( result == 0 ) {
+						login_button.click();
+					} else {
+						if ( $(".comment_modify_popUp").css("display") == "none" ) {
+							$(".comment_modify_popUp").show();
+						}
+					}
+				});
+				
+				/* 댓글팝업 창 내리기 */
+				$(".comment_modify_popUp").click(function() {
+					if ( $(".comment_modify_popUp").css("display") != "none" ) {
+						$(".comment_modify_popUp").hide();
+					}
+				});
+				
+				/* 창 내리기 방지 */
+		    	$(".comment_modify_pop_up_inside").click(function(e) {
+					e.stopPropagation();
+					$(".comment_modify_popUp").css("display", "block");
+				});
+				// 수정버튼을 눌렀을 때 뜨는 팝업창 -------------------------------------------------------------------------------------------------
+				
+				
+				//코멘트 reply 저장버튼 댓글달기
+				$("#comment_modify_input").click(function(){
+					
+					alert( $("#reply_modify").val() );
+					
+					if( $("#reply_modify").val() == "댓글을 작성해주세요.(1000 글자이내)" || $("#reply_modify").val().length < 1 ){
+						alert("1자 이상 작성하셔야 등록이 가능합니다. ");
+						return false;
+					}
+					
+					$.ajax({
+						url:"/replyModify",
+						type:"post",
+						dataType:"json",
+						data:{
+							"id" : $("#reply_id").val(),
+							"comment_id" : comment_id,
+							"user_id" : user_id,
+							"reply_content" : $("#reply_modify").val()
+						},
+						success:function(data){
+							alert("성공");
+							$(".comment_modify_popUp").click();
+							location.href="/comment/comment_reply_GC?comment_id=" + ${ commentVo.id };
 						},
 						error:function(){
 							alert("실패");
@@ -247,32 +321,7 @@
 					
 				});
 				
-	// 			$.ajax({ //reply 수정
-	// 				url:"/replyUpdate",
-	// 				type:"post",
-	// 				dataType:"json",
-	// 				data:{
-	// 					"reply_id": reply_id,
-	// 					"user_id" : user_id,
-	// 					"reply_content": $(".css-1k5ei58").val();
-	// 				},
-	// 				success:function(data){
-	// 					alert("성공");
-	// 				},
-	// 				error:function(data){
-	// 					alert("실패");
-	// 				}
-	// 			});
-				
-				
-				$("#replyUpdate").click(function(){
-					
-					var reply_id = $(this).parent().parent().parent().parent().siblings(".likeIcon").data('id');
-					
-					alert("수정");
-					$(".css-14gy7wr-reply").show();
-					
-				});
+				// 댓글 수정하기 팝업창 --------------------------------------------------------------------------------------------------------------------------------------------------
 				
 				
 				
@@ -293,7 +342,7 @@
 							},
 							success:function(data){
 								alert("성공");
-								
+								location.href="/comment/comment_reply_GC?comment_id=" + ${ commentVo.id };
 							},
 							error:function(){
 								alert("실패");
@@ -316,9 +365,15 @@
 			    	<!-- header start -->
 					<%@ include file="../head_foot/header.jsp" %>
 					<!-- header end -->
+
 					<!-- 댓글 팝업창 시작 --> 
 					<%@ include file="reply_pop.jsp" %>
 					<!-- 댓글 팝업창 끝 -->
+
+					<!-- 스포일러&블라인드 팝업창 시작 --> 
+					<%@ include file="spoil_blind_pop.jsp" %>
+					<!-- 스포일러&블라인드 팝업창 끝 -->
+
 		            <section class="css-18gwkcr">
 			            <input type="hidden" name="result" id="result" value="${result}">
 	                    <input type="hidden" name="userId" id="userId" value="${commentVo.user_id}">
@@ -360,8 +415,8 @@
 		                                            	</a>
 		                                            	<a class="css-1f9m1s4-StylelessLocalLink eovgsd01" id="content-info" href="/ko-KR/contents/m5eJDJZ">
 			                                                <div class="css-0">
-			                                                    <div class="css-dbu6le">김광석</div>
-			                                                    <div class="css-1futg35">영화 · 2016</div>
+			                                                    <div class="css-dbu6le">${ movieVo.movie_kor_title }</div>
+			                                                    <div class="css-1futg35">영화 · ${ movieVo.movie_release_date }</div>
 			                                                </div>
 		                                            	</a>
 		                                            	<div class="css-1edcxeb">
@@ -374,7 +429,7 @@
 		                                            </div>
 		                                            <a class="css-1f9m1s4-StylelessLocalLink eovgsd01" href="/ko-KR/contents/m5eJDJZ">
 		                                                <div class="css-1dl0k9f-StyledLazyLoadingImage ezcopuc0">
-		                                                	<img src="https://an2-img.amz.wtchn.net/image/v2/6Yf62ULB74XlZd0gt7Lm9g.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qZ3dlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMjEwY0hsaWRYVmxZbVZ4YUcxb2QzWjVNM1J6SW4wLmRBM2xuTDB0Z2FxdTYtOXNGSzNGcjk5SkZWbTJLVzBaNU4tNzNvMkN5UGs"
+		                                                	<img src="${ movieVo.movie_post_url }"
 		                                                        class="css-qhzw1o-StyledImg ezcopuc1">
 														</div>
 		                                            </a>
@@ -397,8 +452,8 @@
 		                                            	<span class="css-1n0dvqq">좋아요 ${commentVo.like_count}</span>
 		                                            	<span class="css-0">댓글 ${replyList.size()}</span>
 													</div>
+                                                    <!-- COMMENT SECTION 신고 -->
 		                                            <div class="css-j985f6" id="comment_opt">
-	                                                    <!-- 다른사람이 작성한 글 일때 -->
 	                                                    <c:if test="${ sessionId == null || sessionId != commentMember.id}">
 			                                                <div class="css-4ygot5">
 			                                                    <div class="Icon more css-1b4hoch-SVG e1282e850">
@@ -511,6 +566,7 @@
 		                                    <section class="css-1r5nwql">
 		                                        <div class="css-0">
 		                                        <c:forEach var="i" begin="0" end="${replyList.size()-1}">
+		                                        	<input type="hidden" name="" id="reply_id" value="${ replyuserList[i].id }">
 		                                            <div class="css-1m1whp6">
 		                                                <div class="css-ov1ktg">
 		                                                	<a class="css-255jr8" href="/myPage/userPage_SY?id=${replyuserList[i].id}">
@@ -539,7 +595,7 @@
 		                                                                </div>
 		                                                                <h4 class="like-sum">${replyList[i].like_count}</h4><!-- 좋아요 수 -->
 		                                                            </div>
-		                                                            <!-- 부적절한 표현 신고 -->
+		                                                            <!-- COMMENT_REPLY SECTION 표현 신고 -->
 		                                                            <div class="css-4ygot5 comment_reply_opt">
 		                                                                <div class="Icon more css-1b4hoch-SVG e1282e850">
 		                                                                    <div>

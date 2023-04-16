@@ -286,7 +286,7 @@
 		                                        	
 		                                        	<c:if test="${ sessionId != null }">
 		                                        	<!-- COLLECTION section start -->
-		                                            <div class="css-1gfvga7-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock css-12ru3m0 collection_box" style="display:block;">
+		                                            <div class="css-1gfvga7-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock-RoundedCornerBlock css-12ru3m0 collection_box" style="display:none;">
 		                                                <div style="min-height: 1px;">
 		                                                    <section class="w_exposed_cell css-rwltgb">
 		                                                        <div class="css-1gkas1x-Grid e1689zdh0">

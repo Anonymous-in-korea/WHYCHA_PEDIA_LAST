@@ -3,9 +3,28 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.whychapedia.mapper.CommentReplyMapper">
+
+	<!-- 한 개 COMMENT에 달린 REPLY 모두 가져오기 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 	<select id="selectReply" resultType="com.whychapedia.vo.CommentReplyVo">
 		select * from comment_reply where comment_id = #{id}
 	</select>
+	<!-- 한 개 COMMENT에 달린 REPLY 모두 가져오기 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+
+
+	<!-- 한 개 COMMENT에 달린 MY_REPLY 가져오기 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+	<select id="selectMyCommentReply" resultType="com.whychapedia.vo.CommentReplyVo">
+		select * from comment_reply where comment_id = #{comment_id} and user_id = #{user_id_myReply}
+	</select>
+	<!-- 한 개 COMMENT에 달린 MY_REPLY 가져오기 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+
+
+	<!-- COMMENT가 달린 영화정보 가져오기 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+	<select id="selectCommentMovie" resultType="com.whychapedia.vo.MovieVo">
+		select * from movie where id = #{movie_id}
+	</select>
+	<!-- COMMENT가 달린 영화정보 가져오기 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+
+
 	
 	<insert id="insertReply">
 		insert into comment_reply(id, comment_id, user_id, reply_content, regi_date, is_block) 
@@ -16,4 +35,8 @@
 	<delete id="deleteReply">
 		delete from comment_reply where id = #{reply_id}
 	</delete>
+
+	<update id="modifyReply">
+		update comment_reply set comment_id = #{comment_id}, user_id = #{user_id}, reply_content = #{reply_content}, regi_date = sysdate, is_block = 1
+	</update>
 </mapper>

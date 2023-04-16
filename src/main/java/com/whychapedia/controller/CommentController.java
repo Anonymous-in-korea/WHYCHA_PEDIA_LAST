@@ -23,6 +23,7 @@ import com.whychapedia.vo.CommentReplyVo;
 import com.whychapedia.vo.CommentVo;
 import com.whychapedia.vo.LikeVo;
 import com.whychapedia.vo.MemberVo;
+import com.whychapedia.vo.MovieVo;
 import com.whychapedia.vo.StarRateVo;
 
 import oracle.jdbc.proxy.annotation.Post;
@@ -74,11 +75,25 @@ public class CommentController {
 	}
 	
 	@GetMapping("comment/comment_reply_GC")
-	public String comment_reply_GC(Model model, @RequestParam("comment_id") int comment_id) {
+	public String comment_reply_GC(Model model, @RequestParam("comment_id") int comment_id, @RequestParam int movie_id) {
+		
 		int result = 0; //로그인 확인용
+		int user_id_myReply = 0;
 		if(session.getAttribute("sessionId") != null) {
+			user_id_myReply = (int)session.getAttribute("sessionId");
+			System.out.println("user_id : " + user_id_myReply);
+			System.out.println("comment_id : " + comment_id);
 			result = 1;
 		}
+		
+		//내가 작성한 COMMENT_REPLY 가져오기
+		CommentReplyVo myReply = commentReplyService.selectMyCommentReply(comment_id, user_id_myReply);
+		if ( myReply != null ) { model.addAttribute("myReply", myReply); System.out.println("myReply : " + myReply); }
+		
+		//코멘트가 달린 영화정보 가져오기
+		MovieVo movieVo = commentReplyService.selectCommentMovie(movie_id);
+		if ( movieVo != null ) { model.addAttribute("movieVo", movieVo); }
+
 		CommentVo commentVo =  commentService.selectCommentOne(comment_id);
 		//해당 코멘트에 달린 댓글list가져오기
 		List<CommentReplyVo> replyList = commentReplyService.selectCommentReplyList(comment_id);
@@ -92,6 +107,7 @@ public class CommentController {
 		//해당 commentLike list
 		List<LikeVo> likeList = likeService.selectCommentLikeOne(comment_id);
 		System.out.println("reply commentLikeVo : "+likeList);
+		
 		//replyList 작성자 정보 가져오기
 		List<MemberVo> replyuserList = memberService.selectReplyuserList(replyList);
 		model.addAttribute("result",result);
@@ -102,6 +118,7 @@ public class CommentController {
 		model.addAttribute("commentMember",commentMember);
 		model.addAttribute("likeList",likeList);
 		if(commentMember != null)	System.out.println("controller commentRep mvo : "+ commentMember.getUser_name());
+		
 		return "comment/comment_reply_GC";
 	}
 	
@@ -128,63 +145,74 @@ public class CommentController {
 	}
 	
 	//reply content 저장하기
-		@ResponseBody
-		@PostMapping("/replyInsert")
-		public Map<String, Object> replySave(Model model, @RequestParam("comment_id") int comment_id,
-				@RequestParam("user_id") int user_id, @RequestParam("reply_content") String reply_content){
-			Map<String, Object> map = new HashMap<>();
-			
-			int result = commentReplyService.insertReply(comment_id,user_id,reply_content);
-			System.out.println("save result : "+ result);
-			CommentVo commentVo =  commentService.selectCommentOne(comment_id);
-			List<CommentReplyVo> replyList = commentReplyService.selectCommentReplyList(comment_id);
-			//replyList 작성자 정보 가져오기
-			List<MemberVo> replyuserList = memberService.selectReplyuserList(replyList);
-			System.out.println("replyList : "+replyList);
-			map.put("result", result);
-			map.put("replyList", replyList);
-			map.put("replyuserList", replyuserList);
-			return map;
-		}
+	@ResponseBody
+	@PostMapping("/replyInsert")
+	public Map<String, Object> replySave(Model model, @RequestParam("comment_id") int comment_id, @RequestParam("user_id") int user_id, @RequestParam("reply_content") String reply_content) {
+		Map<String, Object> map = new HashMap<>();
 		
-		//코멘트 reply 삭제
-		@ResponseBody
-		@PostMapping("replyDelete")
-		public Map<String, Object> replyDelete(@RequestParam("reply_id") int reply_id,
-				@RequestParam int comment_id) {
-			System.out.println("replyDelete reply_id : "+ reply_id);
-			Map<String, Object> map = new HashMap<>();
-			int result = commentReplyService.deleteReply(reply_id);
-			List<CommentReplyVo> replyList = commentReplyService.selectCommentReplyList(comment_id);
-			//replyList 작성자 정보 가져오기
-			List<MemberVo> replyuserList = memberService.selectReplyuserList(replyList);
-			map.put("replyList", replyList);
-			map.put("replyuserList", replyuserList);
-			return map;
-		}
+		int result = commentReplyService.insertReply(comment_id,user_id,reply_content);
+		System.out.println("save result : "+ result);
+		CommentVo commentVo =  commentService.selectCommentOne(comment_id);
+		List<CommentReplyVo> replyList = commentReplyService.selectCommentReplyList(comment_id);
+		//replyList 작성자 정보 가져오기
+		List<MemberVo> replyuserList = memberService.selectReplyuserList(replyList);
+		System.out.println("replyList : "+replyList);
+		map.put("result", result);
+		map.put("replyList", replyList);
+		map.put("replyuserList", replyuserList);
+		return map;
+	}
+	
+	
+	//COMMENT_REPLY_MODIFY 저장하기
+	@ResponseBody
+	@PostMapping("/replyModify")
+	public int replyModify( @RequestParam int id, @RequestParam int comment_id, @RequestParam int user_id, @RequestParam String reply_content ) {
 		
-		//코멘트 reply 좋아요 추가
-		@ResponseBody
-		@PostMapping("reply_like")
-		public int commentReply_like(Model model, @RequestParam("reply_id") int reply_id, @RequestParam("user_id") int user_id) {
-			//좋아요 클릭했을때 추가하기
-			int result= likeService.insertReplyLike(reply_id, user_id);
-			//좋아요 추가후 코멘트 1개에 대한 likelist 모두 가져오기
-			int replyLikeCount = likeService.selectReplyLike(reply_id);
-			System.out.println("replyLikeCount : "+replyLikeCount);
-			model.addAttribute("replyLikeCount ",replyLikeCount);
-			return replyLikeCount;
-		}
+		System.out.println("reply_content : " + reply_content);
+		int result = commentReplyService.modifyReply(id, comment_id, user_id, reply_content);
 		
-		//코멘트 reply 좋아요 삭제
-		@ResponseBody
-		@PostMapping("reply_like_remove")
-		public int commentReply_like_remove(Model model, @RequestParam("reply_id") int reply_id, @RequestParam("user_id") int user_id) {
-			int result= likeService.deleteReplyLike(reply_id, user_id);
-			int replyLikeCount = likeService.selectReplyLike(reply_id);
-			System.out.println("likeList : "+replyLikeCount);
-			model.addAttribute("replyLikeCount ",replyLikeCount);
-			return replyLikeCount;
-		}
+		return result;
+	}
+	
+	
+	//코멘트 reply 삭제
+	@ResponseBody
+	@PostMapping("replyDelete")
+	public Map<String, Object> replyDelete(@RequestParam("reply_id") int reply_id, @RequestParam int comment_id) {
+		System.out.println("replyDelete reply_id : "+ reply_id);
+		Map<String, Object> map = new HashMap<>();
+		int result = commentReplyService.deleteReply(reply_id);
+		List<CommentReplyVo> replyList = commentReplyService.selectCommentReplyList(comment_id);
+		//replyList 작성자 정보 가져오기
+		List<MemberVo> replyuserList = memberService.selectReplyuserList(replyList);
+		map.put("replyList", replyList);
+		map.put("replyuserList", replyuserList);
+		return map;
+	}
+	
+	//코멘트 reply 좋아요 추가
+	@ResponseBody
+	@PostMapping("reply_like")
+	public int commentReply_like(Model model, @RequestParam("reply_id") int reply_id, @RequestParam("user_id") int user_id) {
+		//좋아요 클릭했을때 추가하기
+		int result= likeService.insertReplyLike(reply_id, user_id);
+		//좋아요 추가후 코멘트 1개에 대한 likelist 모두 가져오기
+		int replyLikeCount = likeService.selectReplyLike(reply_id);
+		System.out.println("replyLikeCount : "+replyLikeCount);
+		model.addAttribute("replyLikeCount ",replyLikeCount);
+		return replyLikeCount;
+	}
+	
+	//코멘트 reply 좋아요 삭제
+	@ResponseBody
+	@PostMapping("reply_like_remove")
+	public int commentReply_like_remove(Model model, @RequestParam("reply_id") int reply_id, @RequestParam("user_id") int user_id) {
+		int result= likeService.deleteReplyLike(reply_id, user_id);
+		int replyLikeCount = likeService.selectReplyLike(reply_id);
+		System.out.println("likeList : "+replyLikeCount);
+		model.addAttribute("replyLikeCount ",replyLikeCount);
+		return replyLikeCount;
+	}
 	
 }

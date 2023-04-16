@@ -483,7 +483,7 @@ $(function() {
 				$("#collection_icon_color").css({"display":"none"});
 				$("#collection_text").css({"color":""});
 				if ( $(".collection_box").css("display") != "none" ) {
-					$(".collection_box").css({"display":"block"});
+					$(".collection_box").css({"display":"none"});
 				}
 			} else {
 				/* 콜렉션 열기 */
@@ -554,10 +554,10 @@ function toggleBorderStyleByClass(liElement) {
     var targetDiv = liElement.querySelector('.css-unzuzl-StyledLazyLoadingImage.ezcopuc0');
 
     // 클래스가 있는 경우 제거하고, 없는 경우 추가합니다.
-    if (targetDiv.classList.contains('collection_border-style')) {
-        targetDiv.classList.remove('collection_border-style');
+    if (targetDiv.classList.contains('collection_border')) {
+        targetDiv.classList.remove('collection_border');
     } else {
-        targetDiv.classList.add('collection_border-style');
+        targetDiv.classList.add('collection_border');
     }
 
     console.log('Target Div:', targetDiv);
