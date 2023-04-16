@@ -602,7 +602,7 @@ path[Attributes] {
 .css-cxqjs3 {
     display: grid;
     position: relative;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 1px;
     height: 43px;
 }

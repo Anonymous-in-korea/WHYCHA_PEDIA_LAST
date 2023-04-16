@@ -146,10 +146,9 @@
 												</c:forEach>
 											</ul>
 											</form>	
-											<div class="e1omr9iu0 css-z4jx26-StyledInfinityScroll-InfinityScroll eu826xw0">
-											</div>
-											<div id="newMovie">
-												 <button id="submit">새로운 영화 불러오기</button>
+											<div class="e1omr9iu0 css-z4jx26-StyledInfinityScroll-InfinityScroll eu826xw0"></div>
+											<div id="submit" style="margin:0 auto 15px; text-align:center;">
+												<img src="/images/collection_plus.png" style="width:5%; height:5%; cursor:pointer;">
 											</div>
 										</div>
 									</div>
@@ -159,6 +158,13 @@
 						</section>
 					</section>
 				</div>
+				
+				<div id="top" style="position:fixed; bottom:50px; right:100px;">
+					<a href="#root">
+						<img src="/images/direct_top.png" style="width:7%;" title="맨 위로 가기">
+					</a>
+				</div>
+				
 				<!-- 평가 영화 정렬 팝업 시작 -->					
 				<div id="random_movie" class="css-pjxj5o" disabled="">
 					<div id="modal-container-ZP2YWjQjAaWO5sL-M4fVx" class="css-rpyl6s">

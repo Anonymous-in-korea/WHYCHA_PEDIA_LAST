@@ -995,6 +995,7 @@
 .comment_pop_up_background { display:block; position:fixed; inset:0px; z-index:98; background:rgba(0, 0, 0, 0.56); overflow:hidden scroll; }
 .watch_pop_up_background { display:block; position:fixed; inset:0px; z-index:98; background:rgba(0, 0, 0, 0.56); overflow:hidden scroll; }
 .collection_pop_up_background { display:block; position:fixed; inset:0px; z-index:98; background:rgba(0, 0, 0, 0.56); overflow:hidden scroll; }
+.comment_reply_popUp { display:block; position:fixed; inset:0px; z-index:98; background:rgba(0, 0, 0, 0.56); overflow:hidden scroll; }
 
 .wish_content_box { display: flex; position: absolute; inset: 0px; flex-direction: column; -webkit-box-pack: end; justify-content: flex-end; }
 .comment_content_box { display: flex; position: absolute; inset: 0px; flex-direction: column; -webkit-box-pack: end; justify-content: flex-end; }

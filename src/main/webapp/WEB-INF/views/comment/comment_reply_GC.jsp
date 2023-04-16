@@ -6,266 +6,306 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>와이챠피디아</title>
+		
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+		
 		<link href="/css/header.css" rel="stylesheet" type="text/css">
 		<link href="/css/comment_reply.css" rel="stylesheet" type="text/css">
-		<link href="/css/comment_reply_GC2.css" rel="stylesheet" type="text/css">
+		<link href="/css/contents.css" rel="stylesheet" type="text/css">
 		<link href="/css/login.css" rel="stylesheet" type="text/css">
 	    <link href="/css/join.css" rel="stylesheet" type="text/css">
 		<link href="/css/footer.css" rel="stylesheet" type="text/css">
+		
 		<script src="/js/login.js"></script>
 		<script src="/js/join.js"></script>
+		<!-- <script src="/js/comment_reply.js"></script> -->
+		
 		<style>
 			.like1{width:14px; height:14px;}
 			.like2{width:14px; height:14px;}
 		</style>
-<!-- 		<script src="/js/comment_reply.js"></script> -->
+		
 		<script>
-		$(function() {
-			var result = $("#result").val();
-			var user_id = "${sessionId}";
-			var comment_id = $("#commentId").val();
-			console.log(result);
-			console.log(user_id);
-			console.log(comment_id);
-			
-			/* 스포일러 / 신고 */
-			$("#comment_opt").click(function() {
-				if(result==0){
-					$(".login_button").click();
-				}else{
-					if ( $(".css-4in6y9").css("display") == "none" ) { $(".css-4in6y9").show(); }
-					else if ( $(".css-4in6y9").css("display") != "none" ) { $(".css-4in6y9").hide(); }
-				}
-			});
-			
-			//스포일러 신고 클릭
-			
-			/* 댓글 신고 */
-			$(".comment_reply_opt").click(function() {
-				if(result==0){
-					$(".login_button").click();
-				}else{ 
-					if ( $(this).find(".css-1pfl1eu").css("display") == "none" ) { $(this).find(".css-1pfl1eu").show(); }
-					else if ( $(this).find(".css-1pfl1eu").css("display") != "none" ) { $(this).find(".css-1pfl1eu").hide(); }
-				}
-			});
-			
-			//댓글신고 클릭
-
-			//코멘트 좋아요 버튼 클릭 css변경
-			$("#deckLike").click(function(){
-				if(result == 0){
-					$(".login_button").click();
-		        }else{ 
-		        	if($("#deckLike").hasClass("css-135c2b4-StylelessButton-StyledActionButton")){
-						$("#deckLike").removeClass("css-135c2b4-StylelessButton-StyledActionButton");
-						$("#deckLike").addClass("css-3w1nnz-StylelessButton-StyledActionButton boing");
-						$("#deckLike .fillTarget").attr("fill","#FEAE27");
-						$.ajax({
-			   		       	url:"/comment/comment_like",
-			   		       	type:"post",
-			   		       	dataType:"json",
-			   		       	data:{
-			   		       		"comment_id":comment_id,
-			   		       		"user_id":user_id
-			   		       		},
-			   		       	success:function(data){
-			   		       		alert("성공");
-			   		       		$(".css-1n0dvqq").text("좋아요 "+data);
-			   		       	},
-			   		       	error:function(){
-			   		       		alert("실패");
-			   		       	}
-			   		   });
-					}else{ 
-						$("#deckLike").addClass("css-135c2b4-StylelessButton-StyledActionButton");
-						$("#deckLike").removeClass("css-3w1nnz-StylelessButton-StyledActionButton boing");
-						$("#deckLike .fillTarget").attr("fill","#67686a");
-						$.ajax({
-		   		        	url:"/comment/comment_like_remove",
-		   		        	type:"post",
-		   		        	dataType:"json",
-		   		        	data:{
-		   		        		"comment_id":comment_id,
-			   		       		"user_id":user_id
-		   		        		},
-		   		        	success:function(data){
-		   		        		alert("성공");
-		   		        		$(".css-1n0dvqq").text("좋아요 "+data);
-		   		        	},
-		   		        	error:function(){
-		   		        		alert("실패");
-		   		        	}
-		   		        }); //ajax
-					}//else
-		        }//else
-			}); //decklikd
-		    
-			//코멘트 reply 좋아요
-			$(".css-1d8juai").click(function(){
-				var reply_id = $(this).data('id');
-				var $button = $(this);
-				alert("reply_id : "+reply_id);
-				if(result == 0){
-					$(".login_button").click();
-		        }else{ 
-		        	if($(this).hasClass("css-1d8juai")){
-		        		$(this).removeClass("css-1d8juai").addClass("css-jpkqok");
-		 				$(this).find("img").attr("src","/images/like2.png");
-			 			$.ajax({
-		   		        	url:"/reply_like",
-		   		        	type:"post",
-		   		        	dataType:"json",
-		   		        	data:{
-		   		        		"reply_id":reply_id,
-		   		        		"user_id":"${sessionId}",
-		   		        		"comment_id":comment_id
-		   		        		},
-		   		        	success:function(data){
-		   		        		alert("성공");
-		   		        		$button.find(".like-sum").text(data);
-		   		        	},
-		   		        	error:function(){
-		   		        		alert("실패");
-		   		        	}
-		   		        }); //ajax
-		        	}else{
-		        		$(this).removeClass("css-jpkqok").addClass("css-1d8juai");
-		 				$(this).find("img").attr("src","/images/like1.png");
-			 			$.ajax({
-		   		        	url:"/reply_like_remove",
-		   		        	type:"post",
-		   		        	dataType:"json",
-		   		        	data:{
-		   		        		"reply_id":reply_id,
-		   		        		"user_id":"${sessionId}",
-		   		        		"comment_id":comment_id
-		   		        		},
-		   		        	success:function(data){
-		   		        		alert("성공");
-		   		        		$button.find(".like-sum").text(data);
-		   		        	},
-		   		        	error:function(){
-		   		        		alert("실패");
-			        		}
-		   		        });//ajax
-					}//else
-		    	}//else
-			});//function
-			
-			//댓글 클릭
-			$("#reply").click(function(){
-				if(result == 0){
-					$(".login_button").click();
-		        }else{ 
-		        	$(".css-14gy7wr-reply").show();
-		        }
-			});
-			
-			//댓글 쓸때 글자수 올리기 / 3000자 이하
-			$(".css-1k5ei58").on("input keyup keydown",function(){
-				var maxBytes = 3000; //최대 바이트수
-				var str = $(".css-1k5ei58").val();
-				var encoder = new TextEncoder(); 
-				var textCount = encoder.encode(str).byteLength;
-				$(".css-ynpx67").text(textCount+"/3000");
-// 				console.log("byte : "+ textCount);				
-				if(textCount > maxBytes){
-					$(".css-6qnjre1").text("3000자 이상 글을 적을 수 없습니다.");
-					$(".css-1k5ei58").off("input keyup keydown");
-				}else{
-					$(".css-6qnjre1").text("");
-					$(".css-1k5ei58").on("input keyup keydown");
-				}
-			});
-			
-			//댓글 x버튼 클릭
-			$(".css-1lvet1d-StylelessButton").click(function(){
-				$(".css-14gy7wr-reply").hide();
-			});
-			 			
-			 			
-			//코멘트 reply 저장버튼 댓글달기
-			$("#replysave").click(function(){
-				alert($(".css-1k5ei58").val());
-				if($(".css-1k5ei58").val()==0){
-					alert("1자 이상 작성하셔야 등록이 가능합니다. ");
-					return ;
-				}
-				$(".css-14gy7wr-reply").hide();
-				$.ajax({
-					url:"/replyInser",
-					type:"post",
-					dataType:"json",
-					data:{
-						"comment_id": comment_id,
-						"user_id" : user_id,
-						"reply_content":$(".css-1k5ei58").val()
-					},
-					success:function(data){
-						alert("성공");
-						
-					},
-					error:function(){
-						alert("실패");
-					}
-				});//ajax
-			});//function
-			
-// 			$.ajax({ //reply 수정
-// 				url:"/replyUpdate",
-// 				type:"post",
-// 				dataType:"json",
-// 				data:{
-// 					"reply_id": reply_id,
-// 					"user_id" : user_id,
-// 					"reply_content": $(".css-1k5ei58").val();
-// 				},
-// 				success:function(data){
-// 					alert("성공");
-// 				},
-// 				error:function(data){
-// 					alert("실패");
-// 				}
-// 			});
-			
-			
-			$("#replyUpdate").click(function(){
-				var reply_id = $(this).parent().parent().parent().parent().siblings(".likeIcon").data('id');
-				alert("수정");
-				$(".css-14gy7wr-reply").show();
+			$(function() {
+				var result = $("#result").val();
+				var user_id = "${sessionId}";
+				var comment_id = $("#commentId").val();
+				console.log(result);
+				console.log(user_id);
+				console.log(comment_id);
 				
-			});
-			
-			//댓글 삭제 
-			$("#replyDelete").click(function(){
-				var reply_id = $(this).parent().parent().parent().parent().siblings(".likeIcon").data('id');
-				if(confirm("댓글을 삭제하시겠습니까?")){
+				/* 스포일러 / 신고 */
+				$("#comment_opt").click(function() {
+					if(result==0){
+						$(".login_button").click();
+					}else{
+						if ( $(".css-4in6y9").css("display") == "none" ) { $(".css-4in6y9").show(); }
+						else if ( $(".css-4in6y9").css("display") != "none" ) { $(".css-4in6y9").hide(); }
+					}
+				});
+				
+				//스포일러 신고 클릭
+				
+				/* 댓글 신고 */
+				$(".comment_reply_opt").click(function() {
+					if(result==0){
+						$(".login_button").click();
+					}else{ 
+						if ( $(this).find(".css-1pfl1eu").css("display") == "none" ) { $(this).find(".css-1pfl1eu").show(); }
+						else if ( $(this).find(".css-1pfl1eu").css("display") != "none" ) { $(this).find(".css-1pfl1eu").hide(); }
+					}
+				});
+				
+				//댓글신고 클릭
+	
+				//코멘트 좋아요 버튼 클릭 css변경
+				$("#deckLike").click(function(){
+					if(result == 0){
+						$(".login_button").click();
+			        }else{ 
+			        	if($("#deckLike").hasClass("css-135c2b4-StylelessButton-StyledActionButton")){
+							$("#deckLike").removeClass("css-135c2b4-StylelessButton-StyledActionButton");
+							$("#deckLike").addClass("css-3w1nnz-StylelessButton-StyledActionButton boing");
+							$("#deckLike .fillTarget").attr("fill","#FEAE27");
+							$.ajax({
+				   		       	url:"/comment/comment_like",
+				   		       	type:"post",
+				   		       	dataType:"json",
+				   		       	data:{
+				   		       		"comment_id":comment_id,
+				   		       		"user_id":user_id
+				   		       		},
+				   		       	success:function(data){
+				   		       		alert("성공");
+				   		       		$(".css-1n0dvqq").text("좋아요 "+data);
+				   		       	},
+				   		       	error:function(){
+				   		       		alert("실패");
+				   		       	}
+				   		   });
+						}else{ 
+							$("#deckLike").addClass("css-135c2b4-StylelessButton-StyledActionButton");
+							$("#deckLike").removeClass("css-3w1nnz-StylelessButton-StyledActionButton boing");
+							$("#deckLike .fillTarget").attr("fill","#67686a");
+							$.ajax({
+			   		        	url:"/comment/comment_like_remove",
+			   		        	type:"post",
+			   		        	dataType:"json",
+			   		        	data:{
+			   		        		"comment_id":comment_id,
+				   		       		"user_id":user_id
+			   		        		},
+			   		        	success:function(data){
+			   		        		alert("성공");
+			   		        		$(".css-1n0dvqq").text("좋아요 "+data);
+			   		        	},
+			   		        	error:function(){
+			   		        		alert("실패");
+			   		        	}
+			   		        }); //ajax
+						}//else
+			        }//else
+				}); //decklike
+			    
+				//코멘트 reply 좋아요
+				$(".css-1d8juai").click(function(){
+					var reply_id = $(this).data('id');
+					var $button = $(this);
+					alert("reply_id : "+reply_id);
+					if(result == 0){
+						$(".login_button").click();
+			        }else{ 
+			        	if($(this).hasClass("css-1d8juai")){
+			        		$(this).removeClass("css-1d8juai").addClass("css-jpkqok");
+			 				$(this).find("img").attr("src","/images/like2.png");
+				 			$.ajax({
+			   		        	url:"/reply_like",
+			   		        	type:"post",
+			   		        	dataType:"json",
+			   		        	data:{
+			   		        		"reply_id":reply_id,
+			   		        		"user_id":"${sessionId}",
+			   		        		"comment_id":comment_id
+			   		        		},
+			   		        	success:function(data){
+			   		        		alert("성공");
+			   		        		$button.find(".like-sum").text(data);
+			   		        	},
+			   		        	error:function(){
+			   		        		alert("실패");
+			   		        	}
+			   		        }); //ajax
+			        	}else{
+			        		$(this).removeClass("css-jpkqok").addClass("css-1d8juai");
+			 				$(this).find("img").attr("src","/images/like1.png");
+				 			$.ajax({
+			   		        	url:"/reply_like_remove",
+			   		        	type:"post",
+			   		        	dataType:"json",
+			   		        	data:{
+			   		        		"reply_id":reply_id,
+			   		        		"user_id":"${sessionId}",
+			   		        		"comment_id":comment_id
+			   		        		},
+			   		        	success:function(data){
+			   		        		alert("성공");
+			   		        		$button.find(".like-sum").text(data);
+			   		        	},
+			   		        	error:function(){
+			   		        		alert("실패");
+				        		}
+			   		        });//ajax
+						}//else
+			    	}//else
+				});//function
+				
+
+				
+				//댓글 쓸때 글자수 올리기 / 3000자 이하
+				$(".css-1k5ei58").on("input keyup keydown",function(){
+					var maxBytes = 3000; //최대 바이트수
+					var str = $(".css-1k5ei58").val();
+					var encoder = new TextEncoder(); 
+					var textCount = encoder.encode(str).byteLength;
+					$(".css-ynpx67").text(textCount+"/3000");
+	 				//console.log("byte : "+ textCount);			
+					if(textCount > maxBytes){
+						$(".css-6qnjre1").text("3000자 이상 글을 적을 수 없습니다.");
+						$(".css-1k5ei58").off("input keyup keydown");
+					}else{
+						$(".css-6qnjre1").text("");
+						$(".css-1k5ei58").on("input keyup keydown");
+					}
+				});
+				
+				//댓글 x버튼 클릭
+				$(".css-1lvet1d-StylelessButton").click(function(){
+					$(".css-14gy7wr-reply").hide();
+				});
+				
+				
+				
+				// 댓글버튼을 눌렀을 때 뜨는 팝업창 -------------------------------------------------------------------------------------------------
+				$("#reply").click(function() {
+					alert("test");
+					if ( result == 0 ) {
+						login_button.click();
+					} else {
+						if ( $(".comment_reply_popUp").css("display") == "none" ) {
+							$(".comment_reply_popUp").show();
+						}
+					}
+				});
+				
+				/* 댓글팝업 창 내리기 */
+				$(".comment_reply_popUp").click(function() {
+					if ( $(".comment_reply_popUp").css("display") != "none" ) {
+						$(".comment_reply_popUp").hide();
+					}
+				});
+				
+				/* 창 내리기 방지 */
+		    	$(".comment_reply_pop_up_inside").click(function(e) {
+					e.stopPropagation();
+					$(".comment_reply_popUp").css("display", "block");
+				});
+				// 댓글버튼을 눌렀을 때 뜨는 팝업창 -------------------------------------------------------------------------------------------------
+				
+				
+				
+				//코멘트 reply 저장버튼 댓글달기
+				$("#comment_reply_input").click(function(){
+					
+					alert( $(".css-137vxyg").val() );
+					
+					if( $(".css-137vxyg").val() == "댓글을 작성해주세요.(1000 글자이내)" || $(".css-137vxyg").val().length < 1 ){
+						alert("1자 이상 작성하셔야 등록이 가능합니다. ");
+						return false;
+					}
+					
 					$.ajax({
-						url:"/replyDelete",
+						url:"/replyInsert",
 						type:"post",
 						dataType:"json",
 						data:{
-							"reply_id":reply_id,
-							"comment_id": comment_id
+							"comment_id": comment_id,
+							"user_id" : user_id,
+							"reply_content":$(".css-137vxyg").val()
 						},
 						success:function(data){
 							alert("성공");
-							
+							$(".comment_reply_popUp").click();
 						},
 						error:function(){
 							alert("실패");
 						}
-					});//ajax
-				}//if
-			});//replydelete
-			
-		}); //function
-		
+					});
+					
+				});
+				
+	// 			$.ajax({ //reply 수정
+	// 				url:"/replyUpdate",
+	// 				type:"post",
+	// 				dataType:"json",
+	// 				data:{
+	// 					"reply_id": reply_id,
+	// 					"user_id" : user_id,
+	// 					"reply_content": $(".css-1k5ei58").val();
+	// 				},
+	// 				success:function(data){
+	// 					alert("성공");
+	// 				},
+	// 				error:function(data){
+	// 					alert("실패");
+	// 				}
+	// 			});
+				
+				
+				$("#replyUpdate").click(function(){
+					
+					var reply_id = $(this).parent().parent().parent().parent().siblings(".likeIcon").data('id');
+					
+					alert("수정");
+					$(".css-14gy7wr-reply").show();
+					
+				});
+				
+				
+				
+				//댓글 삭제 -------------------------------------------------------------------------------------------------------------------
+				$("#replyDelete").click(function(){
+					
+					var reply_id = $(this).parent().parent().parent().parent().siblings(".likeIcon").data('id');
+					
+					if(confirm("댓글을 삭제하시겠습니까?")){
+						
+						$.ajax({
+							url:"/replyDelete",
+							type:"post",
+							dataType:"json",
+							data:{
+								"reply_id":reply_id,
+								"comment_id": comment_id
+							},
+							success:function(data){
+								alert("성공");
+								
+							},
+							error:function(){
+								alert("실패");
+							}
+						});
+						
+					}
+					
+				});
+				//댓글 삭제 -------------------------------------------------------------------------------------------------------------------
+				
+			}); //function
 		</script>		
 	</head>
 	<body>
@@ -461,75 +501,6 @@
 		                                                            댓글
 		                                                        </button>
 		                                                        <!-- 댓글 버튼 -->
-		                                                        <!-- 공유 버튼 -->
-<!-- 		                                                        <button class="css-135c2b4-StylelessButton-StyledActionButton e19d4hrp0"> -->
-<!-- 		                                                            <div class="css-1umclh2-StyledIconContainer e19d4hrp1"> -->
-<!-- 		                                                                <svg viewBox="0 0 20 20" class="css-vkoibk"> -->
-<!-- 		                                                                    <path class="fillTarget" fill-rule="evenodd" clip-rule="evenodd" d="M14.6475 13.314C13.9492 13.314 13.3192 13.6015 12.8658 14.0631L6.98249 10.664C7.04166 10.4515 7.08333 10.2315 7.08333 9.99981C7.08333 9.76815 7.04166 9.54815 6.98333 9.33565L12.8658 5.93565C13.3192 6.39731 13.9492 6.68481 14.6475 6.68481C16.0275 6.68481 17.1475 5.56565 17.1475 4.18481C17.1475 2.80481 16.0275 1.68481 14.6475 1.68481C13.2675 1.68481 12.1475 2.80481 12.1475 4.18481C12.1475 4.41648 12.1892 4.63648 12.2483 4.84981L6.365 8.24898C5.91166 7.78731 5.28166 7.49981 4.58333 7.49981C3.20249 7.49981 2.08333 8.61898 2.08333 9.99981C2.08333 11.3806 3.20249 12.4998 4.58333 12.4998C5.28166 12.4998 5.91166 12.2123 6.365 11.7506L12.2483 15.1498C12.1892 15.3623 12.1475 15.5823 12.1475 15.814C12.1475 17.1948 13.2675 18.314 14.6475 18.314C16.0275 18.314 17.1475 17.1948 17.1475 15.814C17.1475 14.4331 16.0275 13.314 14.6475 13.314Z" -->
-<!-- 		                                                                          fill="#87898B"> -->
-<!-- 		                                                                    </path> -->
-<!-- 		                                                                </svg> -->
-<!-- 		                                                            </div> -->
-<!-- 		                                                            공유 -->
-<!-- 		                                                        </button> -->
-<!-- 		                                                        <div class="css-pfmsf9"> -->
-<!-- 		                                                        	<div class="css-ve4kut"> -->
-<!-- 		                                                        		<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fpedia.watcha.com%2Fko-KR%2Fcomments%2FVw8MLyWLvDQel&amp;text=%EC%8B%9C%EB%A7%A8%ED%8B%B1+%EC%97%90%EB%9F%AC%3A+%EB%8D%94+%EB%AC%B4%EB%B9%84&amp;browser_open_type=external" -->
-<!-- 		                                                        			target="_blank" class="css-1cqdd33-StylelessHref"> -->
-<!-- 		                                                        			<div class="css-3wahtm"> -->
-<!-- 		                                                        				<div class="Icon twitter icon css-ormu9t-SVG e1282e850" color="#292a32"> -->
-<!-- 			                                                        				<div> -->
-<!-- 			                                                        					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik04LjQ3NTM1IDE5LjdDMTUuNjQ1NSAxOS43IDE5LjU2NjUgMTMuODUyNyAxOS41NjY1IDguNzgyMzVDMTkuNTY2NSA4LjYxNjE5IDE5LjU2MzEgOC40NTA3OCAxOS41NTUzIDguMjg2MjdDMjAuMzE2NCA3Ljc0NDcxIDIwLjk3OCA3LjA2ODk0IDIxLjUgNi4yOTk1MUMyMC44MDE1IDYuNjA0ODkgMjAuMDQ5OCA2LjgxMDc3IDE5LjI2MTMgNi45MDM1NEMyMC4wNjYyIDYuNDI4NjMgMjAuNjg0MSA1LjY3NjkzIDIwLjk3NTQgNC43ODA5OUMyMC4yMjIxIDUuMjIwNTEgMTkuMzg4MiA1LjU0MDE4IDE4LjUwMDMgNS43MTIzMkMxNy43ODkgNC45NjY1MiAxNi43NzU5IDQuNSAxNS42NTQ5IDQuNUMxMy41MDIgNC41IDExLjc1NjIgNi4yMTg0OSAxMS43NTYyIDguMzM2OTJDMTEuNzU2MiA4LjYzODExIDExLjc5MDUgOC45MzA4NSAxMS44NTczIDkuMjExODRDOC42MTc2MiA5LjA1MTUyIDUuNzQ0ODIgNy41MjQ1NCAzLjgyMjQgNS4yMDI3OEMzLjQ4NzMyIDUuNzY5NyAzLjI5NDUgNi40Mjg2MyAzLjI5NDUgNy4xMzEzNEMzLjI5NDUgOC40NjI2OCAzLjk4MjY4IDkuNjM3ODkgNS4wMjkxMyAxMC4zMjU0QzQuMzg5ODIgMTAuMzA2IDMuNzg5MDQgMTAuMTMzMSAzLjI2MzY1IDkuODQ1MzRDMy4yNjI3NCA5Ljg2MTM1IDMuMjYyNzQgOS44Nzc0MyAzLjI2Mjc0IDkuODk0MjdDMy4yNjI3NCAxMS43NTI5IDQuNjA2NjQgMTMuMzA0MyA2LjM5MDE0IDEzLjY1NjFDNi4wNjI4IDEzLjc0MzggNS43MTgyMiAxMy43OTExIDUuMzYyNTQgMTMuNzkxMUM1LjExMTQ0IDEzLjc5MTEgNC44NjcxNyAxMy43NjY2IDQuNjI5NzUgMTMuNzIxOUM1LjEyNjAzIDE1LjI0NjQgNi41NjUwMSAxNi4zNTU4IDguMjcxMzYgMTYuMzg3MUM2LjkzNjk2IDE3LjQxNjIgNS4yNTYyOSAxOC4wMjk1IDMuNDI5OTQgMTguMDI5NUMzLjExNTM3IDE4LjAyOTUgMi44MDUxNCAxOC4wMTE5IDIuNSAxNy45NzY0QzQuMjI1MjggMTkuMDY0NyA2LjI3MzYzIDE5LjcgOC40NzUzNSAxOS43WiIgZmlsbD0iY3VycmVudENvbG9yIi8+Cjwvc3ZnPgo=" xmlns:xlink="http://www.w3.org/1999/xlink"> -->
-<!-- 		                                                            						<path fill-rule="evenodd" clip-rule="evenodd" d="M8.47535 19.7C15.6455 19.7 19.5665 13.8527 19.5665 8.78235C19.5665 8.61619 19.5631 8.45078 19.5553 8.28627C20.3164 7.74471 20.978 7.06894 21.5 6.29951C20.8015 6.60489 20.0498 6.81077 19.2613 6.90354C20.0662 6.42863 20.6841 5.67693 20.9754 4.78099C20.2221 5.22051 19.3882 5.54018 18.5003 5.71232C17.789 4.96652 16.7759 4.5 15.6549 4.5C13.502 4.5 11.7562 6.21849 11.7562 8.33692C11.7562 8.63811 11.7905 8.93085 11.8573 9.21184C8.61762 9.05152 5.74482 7.52454 3.8224 5.20278C3.48732 5.7697 3.2945 6.42863 3.2945 7.13134C3.2945 8.46268 3.98268 9.63789 5.02913 10.3254C4.38982 10.306 3.78904 10.1331 3.26365 9.84534C3.26274 9.86135 3.26274 9.87743 3.26274 9.89427C3.26274 11.7529 4.60664 13.3043 6.39014 13.6561C6.0628 13.7438 5.71822 13.7911 5.36254 13.7911C5.11144 13.7911 4.86717 13.7666 4.62975 13.7219C5.12603 15.2464 6.56501 16.3558 8.27136 16.3871C6.93696 17.4162 5.25629 18.0295 3.42994 18.0295C3.11537 18.0295 2.80514 18.0119 2.5 17.9764C4.22528 19.0647 6.27363 19.7 8.47535 19.7Z" fill="currentColor"> -->
-<!-- 		                                                            						</path> -->
-<!-- 		                                                        						</svg> -->
-<!-- 		                                                        					</div> -->
-<!-- 		                                                        				</div> -->
-<!-- 		                                                        				트위터 -->
-<!-- 		                                                        			</div> -->
-<!-- 		                                                        		</a> -->
-<!-- 		                                                        		<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpedia.watcha.com%2Fko-KR%2Fcomments%2FVw8MLyWLvDQel&amp;browser_open_type=external" -->
-<!-- 		                                                        			target="_blank" class="css-1cqdd33-StylelessHref"> -->
-<!-- 		                                                        			<div class="css-3wahtm"> -->
-<!-- 		                                                        				<div class="Icon facebook icon css-ormu9t-SVG e1282e850" color="#292a32"> -->
-<!-- 		                                                        					<div> -->
-<!-- 		                                                        						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yMS41IDEyLjA1ODFDMjEuNSA2Ljc3OTMgMTcuMjQ2NyAyLjUgMTIgMi41QzYuNzUzMjkgMi41IDIuNSA2Ljc3OTMgMi41IDEyLjA1ODFDMi41IDE2LjgyODggNS45NzQwMSAyMC43ODMgMTAuNTE1NiAyMS41VjE0LjgyMUg4LjEwMzUyVjEyLjA1ODFIMTAuNTE1NlY5Ljk1MjMyQzEwLjUxNTYgNy41NTY4MiAxMS45MzM5IDYuMjMzNjMgMTQuMTAzOSA2LjIzMzYzQzE1LjE0MzMgNi4yMzM2MyAxNi4yMzA1IDYuNDIwMzEgMTYuMjMwNSA2LjQyMDMxVjguNzcyNDlIMTUuMDMyNUMxMy44NTI0IDguNzcyNDkgMTMuNDg0NCA5LjUwOTI3IDEzLjQ4NDQgMTAuMjY1MVYxMi4wNTgxSDE2LjExOTFMMTUuNjk3OSAxNC44MjFIMTMuNDg0NFYyMS41QzE4LjAyNiAyMC43ODMgMjEuNSAxNi44Mjg4IDIxLjUgMTIuMDU4MVoiIGZpbGw9ImN1cnJlbnRDb2xvciIvPgo8L3N2Zz4K" xmlns:xlink="http://www.w3.org/1999/xlink"> -->
-<!-- 		                                                            						<path fill-rule="evenodd" clip-rule="evenodd" d="M21.5 12.0581C21.5 6.7793 17.2467 2.5 12 2.5C6.75329 2.5 2.5 6.7793 2.5 12.0581C2.5 16.8288 5.97401 20.783 10.5156 21.5V14.821H8.10352V12.0581H10.5156V9.95232C10.5156 7.55682 11.9339 6.23363 14.1039 6.23363C15.1433 6.23363 16.2305 6.42031 16.2305 6.42031V8.77249H15.0325C13.8524 8.77249 13.4844 9.50927 13.4844 10.2651V12.0581H16.1191L15.6979 14.821H13.4844V21.5C18.026 20.783 21.5 16.8288 21.5 12.0581Z" fill="currentColor"> -->
-<!-- 		                                                            						</path> -->
-<!-- 							                                                        	</svg> -->
-<!-- 							                                                        </div> -->
-<!-- 						                                                        </div> -->
-<!-- 						                                                        페이스북 -->
-<!-- 					                                                        </div> -->
-<!-- 				                                                        </a> -->
-<!-- 				                                                        <a id="shareCommentForKakao" target="_blank" class="css-1cqdd33-StylelessHref"> -->
-<!-- 				                                                        	<div class="css-3wahtm"> -->
-<!-- 				                                                        		<div class="Icon kakaotalk icon css-ormu9t-SVG e1282e850" color="#292a32"> -->
-<!-- 				                                                        			<div> -->
-<!-- 				                                                        				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMi4wMzk0IDE4LjNDMTcuMDMxOCAxOC4zIDIxLjA3ODkgMTUuMDk4OCAyMS4wNzg5IDExLjE1QzIxLjA3ODkgNy4yMDExNiAxNy4wMzE4IDQgMTIuMDM5NCA0QzcuMDQ3MDkgNCAzIDcuMjAxMTYgMyAxMS4xNUMzIDEzLjcyNDkgNC43MjA3NSAxNS45ODE5IDcuMzAyMjkgMTcuMjQwN0M3LjAzNjA3IDE4LjM1NTQgNi41Njg1NSAyMC4zMTk4IDYuNTUxNDcgMjAuNDM4NUM2LjUyNzU0IDIwLjYwNDggNi43MTkyNSAyMC43NDA2IDYuODg3NTggMjAuNjI1MUM3LjAxMDUgMjAuNTQwOCA5LjI1Mjk1IDE5LjAxMDIgMTAuNDU0MSAxOC4xOTA0QzEwLjk2ODggMTguMjYyNCAxMS40OTg2IDE4LjMgMTIuMDM5NCAxOC4zWiIgZmlsbD0iY3VycmVudENvbG9yIi8+Cjwvc3ZnPgo=" xmlns:xlink="http://www.w3.org/1999/xlink"> -->
-<!-- 		                                                            						<path fill-rule="evenodd" clip-rule="evenodd" d="M12.0394 18.3C17.0318 18.3 21.0789 15.0988 21.0789 11.15C21.0789 7.20116 17.0318 4 12.0394 4C7.04709 4 3 7.20116 3 11.15C3 13.7249 4.72075 15.9819 7.30229 17.2407C7.03607 18.3554 6.56855 20.3198 6.55147 20.4385C6.52754 20.6048 6.71925 20.7406 6.88758 20.6251C7.0105 20.5408 9.25295 19.0102 10.4541 18.1904C10.9688 18.2624 11.4986 18.3 12.0394 18.3Z" fill="currentColor"> -->
-<!-- 		                                                            						</path> -->
-<!-- 		                                                        						</svg> -->
-<!-- 		                                                        					</div> -->
-<!-- 		                                                        				</div> -->
-<!-- 		                                                       					카카오톡 -->
-<!-- 		                                                        			</div> -->
-<!-- 		                                                        		</a> -->
-<!-- 			                                                        	<div class="css-3wahtm"> -->
-<!-- 			                                                        		<div class="Icon link icon css-ormu9t-SVG e1282e850" color="#292a32"> -->
-<!-- 			                                                        			<div> -->
-<!-- 			                                                        				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMuOSAxMkMzLjkgMTAuMjkgNS4yOSA4LjkgNyA4LjlIMTFWN0g3QzQuMjQgNyAyIDkuMjQgMiAxMkMyIDE0Ljc2IDQuMjQgMTcgNyAxN0gxMVYxNS4xSDdDNS4yOSAxNS4xIDMuOSAxMy43MSAzLjkgMTJaTTggMTNIMTZWMTFIOFYxM1pNMTcgN0gxM1Y4LjlIMTdDMTguNzEgOC45IDIwLjEgMTAuMjkgMjAuMSAxMkMyMC4xIDEzLjcxIDE4LjcxIDE1LjEgMTcgMTUuMUgxM1YxN0gxN0MxOS43NiAxNyAyMiAxNC43NiAyMiAxMkMyMiA5LjI0IDE5Ljc2IDcgMTcgN1oiIGZpbGw9ImN1cnJlbnRDb2xvciIvPgo8L3N2Zz4K" xmlns:xlink="http://www.w3.org/1999/xlink"> -->
-<!-- 			                                                            				<path d="M3.9 12C3.9 10.29 5.29 8.9 7 8.9H11V7H7C4.24 7 2 9.24 2 12C2 14.76 4.24 17 7 17H11V15.1H7C5.29 15.1 3.9 13.71 3.9 12ZM8 13H16V11H8V13ZM17 7H13V8.9H17C18.71 8.9 20.1 10.29 20.1 12C20.1 13.71 18.71 15.1 17 15.1H13V17H17C19.76 17 22 14.76 22 12C22 9.24 19.76 7 17 7Z" fill="currentColor"> -->
-<!-- 			                                                            				</path> -->
-<!-- 			                                                        				</svg> -->
-<!-- 		                                                        				</div> -->
-<!-- 	                                                        				</div> -->
-<!-- 	                                                       					링크 복사 -->
-<!-- 	                                                   					</div> -->
-<!--                                                						</div> -->
-<!--                                            						</div> -->
-<!-- 	                                                        	<textarea readonly="" class="css-1hxlv9b">https://pedia.watcha.com/ko-KR/comments/W4zQrdpLxO2w1</textarea> -->
-	                                                        	<!-- 공유 버튼 -->
 		                                                    </div>
 		                                                </div>
 		                                            </div>

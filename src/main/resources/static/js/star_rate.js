@@ -149,4 +149,23 @@ $('body').on('change', '.star_rating', function() {
 /*                     ajax 추가 된 별점 추가  script end                       */  
 
 /*							전체 function 끝                      */
+
+
+
+
+
+/* top버튼 슬라이드 부드럽게 */
+$( window ).scroll(function() {
+	if ( $( this ).scrollTop() > 200 ) {
+		$( "#top" ).show();
+	} else {
+		$( "#top" ).hide();
+	}
+});
+$( "#top" ).click( function() {
+	$( "html, body" ).animate( { scrollTop : 0 }, 400 );
+	return false;
+});
+
+
 });

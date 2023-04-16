@@ -129,7 +129,7 @@ public class CommentController {
 	
 	//reply content 저장하기
 		@ResponseBody
-		@PostMapping("/replyInser")
+		@PostMapping("/replyInsert")
 		public Map<String, Object> replySave(Model model, @RequestParam("comment_id") int comment_id,
 				@RequestParam("user_id") int user_id, @RequestParam("reply_content") String reply_content){
 			Map<String, Object> map = new HashMap<>();

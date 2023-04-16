@@ -37,7 +37,7 @@
 	                      <span class="css-1haseg">취향분석</span>
 	                        <div class="css-1yyol1o">
 	                          <div class="css-170kft5">
-	                            <div style="background: url(${memberVo.user_pic_url}) center center / cover no-repeat; " class="css-fom973-ProfilePhotoImage"></div>
+	                            <div style="background: white url(${memberVo.user_pic_url}) center center / cover no-repeat; " class="css-fom973-ProfilePhotoImage"></div>
 	                          </div>
 	                          <!-- 누구의 취향분석 -->
 	                          <div class="css-mp2a8y">${memberVo.user_name}</div>
