@@ -9,8 +9,8 @@
 	});
 	
 	/* 페이지 URL넘겨주는 스크립트 */
-	const url = window.location.href; // Replace with your actual URL
-	const baseUrl = "http://localhost:8000"; // host??? request
+	const url = window.location.href;
+	const baseUrl = "http://localhost:8000";
 	const inputUrl = $("#redirectUrl");
 
 	inputUrl.val(url.replace(baseUrl, ""));

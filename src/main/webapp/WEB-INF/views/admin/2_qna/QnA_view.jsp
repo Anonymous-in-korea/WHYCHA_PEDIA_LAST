@@ -56,11 +56,11 @@
 		                                	${ questionListVo.question_content }
 		                                	<br><br>
 		                                	<!-- 첨부파일 -->
-			                                <c:if test="${ questionListVo.question_file_url != 0 }">
+			                                <c:if test="${ questionListVo.question_file_url != '0' }">
 												<img src="${ questionListVo.question_file_url }" style="height:80%;">
 			                                </c:if>
 
-			                                <c:if test="${ questionListVo.question_file_url == 0 }"> [ 첨부파일이 없습니다 ]</c:if>
+			                                <c:if test="${ questionListVo.question_file_url == '0' }"> [ 첨부파일이 없습니다 ]</c:if>
 		                                	<!-- 첨부파일 -->
 		                                </div>
 		                                <div>

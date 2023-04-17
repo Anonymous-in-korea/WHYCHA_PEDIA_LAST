@@ -6,13 +6,19 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link href="../css/header.css" rel="stylesheet" type="text/css">
-		<link href="../css/searchCollection_HY.css" rel="stylesheet" type="text/css">
-		<script src="http://code.jquery.com/jquery-latest.min.js"></script>	
-		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 		<meta charset="utf-8">
 		<title>왓챠피디아 - collection</title>
+		
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+		
+		<link href="../css/header.css" rel="stylesheet" type="text/css">
+		<link href="../css/searchCollection_HY.css" rel="stylesheet" type="text/css">
+		
+		<script src="/js/login.js"></script>
+		<script src="/js/join.js"></script>
+			
 		<script>
 		 $(function(){
 			 
@@ -26,7 +32,6 @@
 			 });
 		 });
 		</script>
-
 	</head>
 	<body>
 		<div id="root">

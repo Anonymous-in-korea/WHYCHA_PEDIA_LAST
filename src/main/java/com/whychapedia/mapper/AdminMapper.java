@@ -11,7 +11,11 @@ public interface AdminMapper {
 
 	public AdminVo adminSelectOne(String admin_email, String admin_pw); // admin 로그인 메서드
 
-	public List<AdminVo> adminMemberList(); // admin 계정 전체 가져오기 메서드
+	public List<AdminVo> adminMemberList(int startRow, int endRow); // admin 계정 전체 가져오기 메서드
+	public List<AdminVo> adminMemberList_searchWord(int startRow, int endRow, String searchWord);
+	public int selectCount();
+	public int selectCount_searchWord(String searchWord);
+	
 
 	public int admin_email_check(String admin_email_check); // admin_email 중복체크 메서드
 

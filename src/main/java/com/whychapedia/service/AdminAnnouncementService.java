@@ -1,6 +1,7 @@
 package com.whychapedia.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.whychapedia.vo.AnnouncementVo;
 
@@ -9,7 +10,8 @@ public interface AdminAnnouncementService {
 	// NOTICE_LIST ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	public List<AnnouncementVo> adminAnnouncementList(); // admin 페이지 공지사항 리스트 메서드
 	
-	public List<AnnouncementVo> adminAnnouncementListAll();
+	public Map<String, Object> adminAnnouncementListAll(int page, int datatableSelector);
+	public Map<String, Object> adminAnnouncementListAll_searchWord(int page, String searchWord, int datatableSelector);
 	// NOTICE_LIST ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	

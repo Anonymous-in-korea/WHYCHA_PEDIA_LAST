@@ -470,8 +470,8 @@
 			                                                    </div>
 			                                                    <div class="css-4in6y9">
 			                                                        <div class="css-ve4kut">
-			                                                            <div class="css-19hkid5" id="spo-report">스포일러 신고</div>
-			                                                            <div class="css-19hkid5 inap-report">부적절한 표현 신고</div>
+			                                                            <div class="css-19hkid5" id="comment_spoil_report">스포일러 신고</div>
+			                                                            <div class="css-19hkid5" id="comment_blind_report">부적절한 표현 신고</div>
 			                                                        </div>
 			                                                    </div>
 			                                                </div>

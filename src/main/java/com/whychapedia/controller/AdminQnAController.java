@@ -1,6 +1,8 @@
 package com.whychapedia.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,17 +27,71 @@ public class AdminQnAController {
 	
 	
 	@GetMapping("admin/2_qna/QnA_list")
-	public String QnA_list(Model model) {
+	public String QnA_list(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "30") int datatableSelector, @RequestParam(defaultValue = "") String searchWord) {
+		
+		System.out.println("datatableSelector : " + datatableSelector);
+		System.out.println("searchWord : " + searchWord);
+		
+		int now_page = 0;
+		int listCount = 0;
+		int maxPage = 0;
+		int startPage = 0;
+		int endPage = 0;
+		int startRow = 0;
+		int endRow = 0;
+		
+		Map<String, Object> adminQnA = new HashMap<>();
+		
+		if ( searchWord.equals("영화제목으로 검색") || searchWord.equals("") ) {
+			
+			adminQnA = adminQnAService.adminQnAListAll(page, datatableSelector);
+
+			now_page = (int) adminQnA.get("page");
+			listCount = (int) adminQnA.get("listCount");
+			maxPage = (int) adminQnA.get("maxPage");
+			startPage = (int) adminQnA.get("startPage");
+			endPage = (int) adminQnA.get("endPage");
+			startRow = (int) adminQnA.get("startRow");
+			endRow = (int) adminQnA.get("endRow");
+			
+		} else {
+			adminQnA = adminQnAService.adminQnAListAll_searchWord(page, searchWord, datatableSelector);
+			System.out.println("입력된 영화검색어 : " + searchWord);
+
+			now_page = (int) adminQnA.get("page");
+			listCount = (int) adminQnA.get("listCount");
+			maxPage = (int) adminQnA.get("maxPage");
+			startPage = (int) adminQnA.get("startPage");
+			endPage = (int) adminQnA.get("endPage");
+			startRow = (int) adminQnA.get("startRow");
+			endRow = (int) adminQnA.get("endRow");
+		}
+		
+		System.out.println("maxPage : " + maxPage);
 		
 		int result = 0;
-		List<QuestionListVo> adminQnAListAll = adminQnAService.adminQnAListAll();
+		
+		@SuppressWarnings("unchecked")
 		List<AnswerListVo> adminAnswerList = adminQnAService.adminAnswerList();
-		if ( adminQnAListAll != null && adminAnswerList != null ) {
-			model.addAttribute("adminQnAListAll", adminQnAListAll);
-			model.addAttribute("adminAnswerList", adminAnswerList);
+		model.addAttribute("adminAnswerList", adminAnswerList);
+		
+		List<QuestionListVo> adminQnAListAll = (List<QuestionListVo>) adminQnA.get("adminQnAListAll");
+		if ( adminQnAListAll.size() != 0 ) {
 			result = 1;
+			model.addAttribute("result", result);
+			model.addAttribute("adminQnAListAll", adminQnAListAll);
+			model.addAttribute("now_page", now_page);
+			model.addAttribute("listCount", listCount);
+			model.addAttribute("maxPage", maxPage);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("endPage", endPage);
+			model.addAttribute("startRow", startRow);
+			model.addAttribute("endRow", endRow);
+			System.out.println("QnAList size : " + adminQnAListAll.size());
+			System.out.println("QnA_ID : " + adminQnAListAll.get(0).getId());
 		}
-		model.addAttribute("result", result);
+		
+		model.addAttribute("datatableSelector", datatableSelector);
 		
 		return "admin/2_qna/QnA_list";
 	}

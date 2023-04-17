@@ -1,13 +1,14 @@
 package com.whychapedia.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.whychapedia.service.AdminAnnouncementService;
@@ -23,15 +24,68 @@ public class AdminAnnouncementController {
 	
 	// ANNOUNCEMENT_LIST --------------------------------------------------------------------------------------------------------------------------------------------------------
 	@GetMapping("admin/1_notice/notice_list")
-	public String notice_list(Model model) {
+	public String notice_list(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "30") int datatableSelector, @RequestParam(defaultValue = "") String searchWord) {
+		
+		System.out.println("datatableSelector : " + datatableSelector);
+		System.out.println("searchWord : " + searchWord);
+		
+		int now_page = 0;
+		int listCount = 0;
+		int maxPage = 0;
+		int startPage = 0;
+		int endPage = 0;
+		int startRow = 0;
+		int endRow = 0;
+		
+		Map<String, Object> adminAnnouncement = new HashMap<>();
+		
+		if ( searchWord.equals("영화제목으로 검색") || searchWord.equals("") ) {
+			
+			adminAnnouncement = adminAnnouncementService.adminAnnouncementListAll(page, datatableSelector);
+
+			now_page = (int) adminAnnouncement.get("page");
+			listCount = (int) adminAnnouncement.get("listCount");
+			maxPage = (int) adminAnnouncement.get("maxPage");
+			startPage = (int) adminAnnouncement.get("startPage");
+			endPage = (int) adminAnnouncement.get("endPage");
+			startRow = (int) adminAnnouncement.get("startRow");
+			endRow = (int) adminAnnouncement.get("endRow");
+			
+		} else {
+			adminAnnouncement = adminAnnouncementService.adminAnnouncementListAll_searchWord(page, searchWord, datatableSelector);
+			System.out.println("입력된 영화검색어 : " + searchWord);
+
+			now_page = (int) adminAnnouncement.get("page");
+			listCount = (int) adminAnnouncement.get("listCount");
+			maxPage = (int) adminAnnouncement.get("maxPage");
+			startPage = (int) adminAnnouncement.get("startPage");
+			endPage = (int) adminAnnouncement.get("endPage");
+			startRow = (int) adminAnnouncement.get("startRow");
+			endRow = (int) adminAnnouncement.get("endRow");
+		}
+		
+		System.out.println("maxPage : " + maxPage);
 		
 		int result = 0;
-		List<AnnouncementVo> adminAnnouncementListAll = adminAnnouncementService.adminAnnouncementListAll();
-		if ( adminAnnouncementListAll != null ) {
-			model.addAttribute("adminAnnouncementListAll", adminAnnouncementListAll);
+		
+		@SuppressWarnings("unchecked")
+		List<AnnouncementVo> adminAnnouncementListAll = (List<AnnouncementVo>) adminAnnouncement.get("adminAnnouncementList");
+		if ( adminAnnouncementListAll.size() != 0 ) {
 			result = 1;
+			model.addAttribute("result", result);
+			model.addAttribute("adminAnnouncementListAll", adminAnnouncementListAll);
+			model.addAttribute("now_page", now_page);
+			model.addAttribute("listCount", listCount);
+			model.addAttribute("maxPage", maxPage);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("endPage", endPage);
+			model.addAttribute("startRow", startRow);
+			model.addAttribute("endRow", endRow);
+			System.out.println("컨텐츠List size : " + adminAnnouncementListAll.size());
+			System.out.println("컨텐츠ID : " + adminAnnouncementListAll.get(0).getId());
 		}
-		model.addAttribute("result", result);
+		
+		model.addAttribute("datatableSelector", datatableSelector);
 		
 		return "admin/1_notice/notice_list";
 	}

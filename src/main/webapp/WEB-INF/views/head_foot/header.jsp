@@ -53,7 +53,7 @@
 								<div class="css-1i2oi66-login">
 									<header class="css-17bvwx1">
 										<a href="/">
-											<img src="/images/no1_WHYCHA.png" width="210px" height="38.03px">
+											<img src="/images/no1_WHYCHA_orange.png" width="210px" height="38.03px">
 										</a>
 									</header>
 									<h2 class="css-g6a59h">로그인</h2>
@@ -100,7 +100,7 @@
 								<div class="css-1i2oi66-join">
 									<header class="css-17bvwx1">
 										<a href="/">
-											<img src="/images/no1_WHYCHA.png" width="210px" height="38.03px">
+											<img src="/images/no1_WHYCHA_orange.png" width="210px" height="38.03px">
 										</a>
 									</header>
 									<h2 class="css-g6a59h">회원가입</h2>

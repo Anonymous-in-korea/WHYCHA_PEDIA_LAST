@@ -19,38 +19,34 @@
 		<link href="/css/login.css" rel="stylesheet" type="text/css">
 		<link href="/css/searchContents_GC.css" rel="stylesheet" type="text/css">
 		
+		<script src="/js/login.js"></script>
+		<script src="/js/join.js"></script>
 		
 		<script>
 			$(function() {
+				
 				/* 로그인 창 띄우기 */
 				$(".login_button").click(function() {
 					if ( $(".css-14gy7wr").css("display") == "none" ) {
 						$(".css-14gy7wr").show();
 					}
 				});
+				
 				/* 로그인 창 내리기 */
 				$(".css-14gy7wr").click(function() {
 					if ( $(".css-14gy7wr").css("display") != "none" ) {
 						$(".css-14gy7wr").hide();
 					}
 				});
-			});
-		</script>
-		<script>
-		 $(function(){
 			 
-			 $("#person").click(function(){
-				 //alert("person");
-				 location.href = "/search/searchPerson_SY?searchKeyword=" + encodeURIComponent("${param.searchKeyword}") + "&category=person";
+				$("#person").click(function(){
+					location.href = "/search/searchPerson_SY?searchKeyword=" + encodeURIComponent("${param.searchKeyword}") + "&category=person";
+				});
+				$("#collection").click(function(){
+					location.href = "/search/searchCollection_HY?searchKeyword=" + encodeURIComponent("${param.searchKeyword}") + "&category=collection";
+				});
+				 
 			 });
-			 $("#collection").click(function(){
-				 //alert("collection");
-				 location.href = "/search/searchCollection_HY?searchKeyword=" + encodeURIComponent("${param.searchKeyword}") + "&category=collection";
-			 });
-			 
-		 });
-		
-		
 		</script>
 	</head>
 	<body>

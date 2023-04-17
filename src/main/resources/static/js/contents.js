@@ -474,7 +474,6 @@ $(function() {
 		
 		
 		/* 콜렉션_box start ----------------------------------------------------------------------------------------------------------------- */
-<<<<<<< HEAD
 		$("#collection_btn_login").on("click", function() {
 			if ($("#collection_btn_login").hasClass("active")) {
 				/* 콜렉션 닫기 */
@@ -504,39 +503,6 @@ $(function() {
 		});
 		
 		/* 콜렉션_box end ----------------------------------------------------------------------------------------------------------------- */
-		
-=======
-      $("#collection_btn_login").on("click", function() {
-         if ($("#collection_btn_login").hasClass("active")) {
-            /* 콜렉션 닫기 */
-            $("#collection_btn_login").removeClass("active");
-            $("#collection_icon").css({"display":"block"});
-            $("#collection_icon_color").css({"display":"none"});
-            $("#collection_text").css({"color":""});
-            if ( $(".collection_box").css("display") != "none" ) {
-               $(".collection_box").css({"display":"none"});
-            }
-         } else {
-            /* 콜렉션 열기 */
-            $("#collection_btn_login").addClass("active");
-            $("#collection_icon").css({"display":"none"});
-            $("#collection_icon_color").css({"display":"block"});
-            $("#collection_text").css({"color":"#FEAE27"});
-            if ( $(".collection_box").css("display") == "none" ) {
-               $(".collection_box").css({"display":"block"});            
-          }
-         
-         }
-      });
-      
-      $("#collection_submit").click(function() {
-         //alert("컬렉션 저장한드아아아!!!");
-         collectionSubmit.submit();
-      });
-      
-      /* 콜렉션_box end ----------------------------------------------------------------------------------------------------------------- */
->>>>>>> branch 'master' of https://github.com/Anonymous-in-korea/WHYCHA_PEDIA_PROJECT.git
-		
 		
 		
 		/* 코멘트가 null이 아닐 때, 수정버튼 눌렀을 경우 ------------------------------------------------------------------------------------------ */

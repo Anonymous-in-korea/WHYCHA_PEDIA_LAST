@@ -14,20 +14,47 @@
 		where rnum between 1 and 5
 	</select>
 
-	<!-- admin QnA list_all query구문 -->
+
+
+	<!-- ANSWER_LIST_ALL query구문 -->
+	<select id="adminAnswerList" resultType="com.whychapedia.vo.AnswerListVo">
+		select * from answer_list
+	</select>
+
+	<!-- QnA_LIST_ALL query구문 -->
 	<select id="adminQnAListAll" resultType="com.whychapedia.vo.QuestionListVo">
 		select * from
 		( select rownum rnum, a.id, a.question_title, a.question_content, a.question_file_url, b.user_name as user_name, a.regi_date, a.processing_statu
 		from question_list a, wuser b
 		where a.user_id = b.id
+		order by a.regi_date desc ) where rnum between #{startRow} and #{endRow}
+	</select>
+
+	<select id="selectCount" resultType="int">
+		select count(*) count from
+		( select a.id, a.question_title, a.question_content, a.question_file_url, b.user_name as user_name, a.regi_date, a.processing_statu
+		from question_list a, wuser b
+		where a.user_id = b.id
 		order by a.regi_date desc )
 	</select>
 
-	<!-- admin answer list query구문 -->
-	<select id="adminAnswerList" resultType="com.whychapedia.vo.AnswerListVo">
-		select * from answer_list
+
+	<!-- QnA_LIST_ALL query구문 -->
+	<select id="adminQnAListAll_searchWord" resultType="com.whychapedia.vo.QuestionListVo">
+		select * from
+		( select rownum rnum, a.id, a.question_title, a.question_content, a.question_file_url, b.user_name as user_name, a.regi_date, a.processing_statu
+		from question_list a, wuser b
+		where a.user_id = b.id and b.user_name like '%' || #{searchWord} || '%'
+		order by a.regi_date desc ) where rnum between #{startRow} and #{endRow}
 	</select>
-	
+
+	<select id="selectCount_searchWord" resultType="int">
+		select count(*) count from
+		( select a.id, a.question_title, a.question_content, a.question_file_url, b.user_name as user_name, a.regi_date, a.processing_statu
+		from question_list a, wuser b
+		where a.user_id = b.id and b.user_name like '%' || #{searchWord} || '%'
+		order by a.regi_date desc )
+	</select>
 	
 	
 	

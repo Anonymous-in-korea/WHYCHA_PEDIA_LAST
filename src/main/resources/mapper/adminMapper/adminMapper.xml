@@ -9,10 +9,27 @@
 		select * from admin where admin_email = #{admin_email} and admin_pw = #{admin_pw}
 	</select>
 
-	<!-- admin Member List query구문 -->
+	<!-- ADMIN_MEMBER_LIST query구문 -->
 	<select id="adminMemberList" resultType="com.whychapedia.vo.AdminVo">
-		select * from admin
+		select * from ( select rownum rnum, a.* from admin a ) where rnum between #{startRow} and #{endRow}
 	</select>
+	
+	<select id="selectCount" resultType="int">
+		select count(*) count from admin
+	</select>
+
+
+	<!-- ADMIN_MEMBER_LIST_SEARCHWORD query구문 -->
+	<select id="adminMemberList_searchWord" resultType="com.whychapedia.vo.AdminVo">
+		select * from ( select rownum rnum, a.* from admin a where a.admin_name like '%' || #{searchWord} || '%' ) where rnum between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="selectCount_searchWord" resultType="int">
+		select count(*) count from admin where admin_name like '%' || #{searchWord} || '%'
+	</select>
+
+
+
 
 	<!-- admin Member create admin_email체크 query구문 -->
 	<select id="admin_email_check" parameterType="String" resultType="int">

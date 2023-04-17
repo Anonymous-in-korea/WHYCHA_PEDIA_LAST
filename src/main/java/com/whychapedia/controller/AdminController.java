@@ -1,6 +1,8 @@
 package com.whychapedia.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -19,6 +21,7 @@ import com.whychapedia.service.AdminQnAService;
 import com.whychapedia.service.AdminReportService;
 import com.whychapedia.vo.AdminVo;
 import com.whychapedia.vo.AnnouncementVo;
+import com.whychapedia.vo.AnswerListVo;
 import com.whychapedia.vo.QuestionListVo;
 import com.whychapedia.vo.ReportVo;
 
@@ -153,15 +156,68 @@ public class AdminController {
 	
 	//admin page (admin)
 	@GetMapping("admin/8_admin/hradmin/admin_search")
-	public String admin_search(Model model) {
+	public String admin_search(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "30") int datatableSelector, @RequestParam(defaultValue = "") String searchWord) {
+		
+		System.out.println("datatableSelector : " + datatableSelector);
+		System.out.println("searchWord : " + searchWord);
+		
+		int now_page = 0;
+		int listCount = 0;
+		int maxPage = 0;
+		int startPage = 0;
+		int endPage = 0;
+		int startRow = 0;
+		int endRow = 0;
+		
+		Map<String, Object> adminMember = new HashMap<>();
+		
+		if ( searchWord.equals("영화제목으로 검색") || searchWord.equals("") ) {
+			
+			adminMember = adminMemberService.adminMemberList(page, datatableSelector);
+
+			now_page = (int) adminMember.get("page");
+			listCount = (int) adminMember.get("listCount");
+			maxPage = (int) adminMember.get("maxPage");
+			startPage = (int) adminMember.get("startPage");
+			endPage = (int) adminMember.get("endPage");
+			startRow = (int) adminMember.get("startRow");
+			endRow = (int) adminMember.get("endRow");
+			
+		} else {
+			adminMember = adminMemberService.adminMemberList_searchWord(page, searchWord, datatableSelector);
+			System.out.println("입력된 영화검색어 : " + searchWord);
+
+			now_page = (int) adminMember.get("page");
+			listCount = (int) adminMember.get("listCount");
+			maxPage = (int) adminMember.get("maxPage");
+			startPage = (int) adminMember.get("startPage");
+			endPage = (int) adminMember.get("endPage");
+			startRow = (int) adminMember.get("startRow");
+			endRow = (int) adminMember.get("endRow");
+		}
+		
+		System.out.println("maxPage : " + maxPage);
 		
 		int result = 0;
-		List<AdminVo> adminMemberList = adminMemberService.adminMemberList();
-		if ( adminMemberList != null ) {
-			model.addAttribute("adminMemberList", adminMemberList);
+		
+		@SuppressWarnings("unchecked")
+		List<AdminVo> adminMemberList = (List<AdminVo>) adminMember.get("adminMemberList");
+		if ( adminMemberList.size() != 0 ) {
 			result = 1;
+			model.addAttribute("result", result);
+			model.addAttribute("adminMemberList", adminMemberList);
+			model.addAttribute("now_page", now_page);
+			model.addAttribute("listCount", listCount);
+			model.addAttribute("maxPage", maxPage);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("endPage", endPage);
+			model.addAttribute("startRow", startRow);
+			model.addAttribute("endRow", endRow);
+			System.out.println("QnAList size : " + adminMemberList.size());
+			System.out.println("QnA_ID : " + adminMemberList.get(0).getId());
 		}
-		model.addAttribute("result", result);
+		
+		model.addAttribute("datatableSelector", datatableSelector);
 		
 		return "admin/8_admin/hradmin/admin_search";
 	}

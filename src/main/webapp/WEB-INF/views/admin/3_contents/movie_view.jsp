@@ -64,16 +64,16 @@
 			                    		<th style="border:2px solid gray">감독</th>
 			                    		<td style="border:2px solid gray">
 			                    			<strong>
-			                    				<c:forEach items="${ adminDirectorView }" var="director">
-			                    				${ director.director_name }
+			                    				<c:forEach items="${ adminDirectorView }" var="director" varStatus="status">
+			                    				${status.index == 0 ? '' : ','} ${ director.director_name }
 			                    				</c:forEach>
 			                    			</strong>
 			                    		</td>
 			                    		<th style="border:2px solid gray">배우</th>
 			                    		<td style="border:2px solid gray">
 			                    			<strong>
-			                    				<c:forEach items="${ adminActorView }" var="actor">
-			                    				${ actor.actor_name }
+			                    				<c:forEach items="${ adminActorView }" var="actor" varStatus="status">
+			                    				${status.index == 0 ? '' : ','} ${ actor.actor_name }
 			                    				</c:forEach>
 			                    			</strong>
 			                    		</td>
@@ -83,16 +83,16 @@
 			                    		<td style="border:2px solid gray">
 			                    			<strong>
 			                    				${ movieVo.movie_release_date } / 
-			                    				<c:forEach items="${ adminCountryView }" var="country">
-			                    				${ country.name_kor }
+			                    				<c:forEach items="${ adminCountryView }" var="country" varStatus="status">
+			                    				${status.index == 0 ? '' : ','} ${ country.name_kor }
 			                    				</c:forEach>
 			                    			</strong>
 			                    		</td>
 			                    		<th style="border:2px solid gray">장르</th>
 			                    		<td style="border:2px solid gray">
 			                    			<strong>
-			                    				<c:forEach items="${ adminGenreView }" var="genre">
-			                    				${ genre.genre_kor }
+			                    				<c:forEach items="${ adminGenreView }" var="genre" varStatus="status">
+			                    				${status.index == 0 ? '' : ','} ${ genre.genre_kor }
 			                    				</c:forEach>
 			                    			</strong>
 			                    		</td>

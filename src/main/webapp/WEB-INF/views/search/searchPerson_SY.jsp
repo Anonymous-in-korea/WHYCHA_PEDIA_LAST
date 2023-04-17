@@ -13,6 +13,10 @@
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 	<link href="/css/header.css" rel="stylesheet" type="text/css">
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	
+	<script src="/js/login.js"></script>
+	<script src="/js/join.js"></script>
+	
 	<script>
 	 $(function(){
 		 

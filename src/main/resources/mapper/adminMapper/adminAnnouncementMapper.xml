@@ -22,6 +22,33 @@
 		( select rownum rnum, a.id, a.announcement_title, a.announcement_content, a.announcement_url, b.admin_name as admin_name, a.announcement_date, a.announcement_important, a.update_date, a.is_regi
 		from announcement a, admin b
 		where a.admin_id = b.id
+		order by a.announcement_important desc, a.id asc ) where rnum between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="selectCount" resultType="int">
+		select count(*) count from
+		( select a.id, a.announcement_title, a.announcement_content, a.announcement_url, b.admin_name as admin_name, a.announcement_date, a.announcement_important, a.update_date, a.is_regi
+		from announcement a, admin b
+		where a.admin_id = b.id
+		order by a.announcement_important desc, a.id asc )
+	</select>
+
+
+
+	<!-- ANNOUNCEMENT_LIST_SEARCHWORD query구문 -->
+	<select id="adminAnnouncementListAll_searchWord" resultType="com.whychapedia.vo.AnnouncementVo">
+		select * from
+		( select rownum rnum, a.id, a.announcement_title, a.announcement_content, a.announcement_url, b.admin_name as admin_name, a.announcement_date, a.announcement_important, a.update_date, a.is_regi
+		from announcement a, admin b
+		where a.admin_id = b.id and b.admin_name like '%' || #{searchWord} || '%'
+		order by a.announcement_important desc, a.id asc ) where rnum between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="selectCount_searchWord" resultType="int">
+		select count(*) count from
+		( select a.id, a.announcement_title, a.announcement_content, a.announcement_url, b.admin_name as admin_name, a.announcement_date, a.announcement_important, a.update_date, a.is_regi
+		from announcement a, admin b
+		where a.admin_id = b.id and b.admin_name like '%' || #{searchWord} || '%'
 		order by a.announcement_important desc, a.id asc )
 	</select>
 	<!-- NOTICE_LIST >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
