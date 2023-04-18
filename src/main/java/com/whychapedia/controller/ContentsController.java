@@ -566,18 +566,6 @@ public class ContentsController {
 	public String myCommentDelete(@RequestParam int user_id,@RequestParam int movie_id, @RequestParam int comment_id) {
 		int result=0;
 		//해당 코멘트를 좋아요를 누른 모든 걸 삭제 
-		result=likeService.deleteCommentLikeAll(comment_id);
-		System.out.println("코멘트 좋아요 삭제"+result);
-		//해당 코멘트에 달린 reply의 좋아요를 누른 모든 걸 삭제 
-		result=0;
-		result=likeService.deleteCommentReplyLikeAll(comment_id);
-		System.out.println("reply의 좋아요 삭제"+result);
-		//해당 코멘트에 달린 reply 모두 삭제
-		result=0;
-		result=commentReplyService.deleteCommentReplyAll(comment_id);
-		System.out.println(" reply 삭제"+result);
-		//해당 코멘트 삭제
-		result=0;
 		result=commentService.myCommentDelete(user_id, movie_id);	
 		System.out.println("코멘트 삭제"+result);
 		
