@@ -30,9 +30,9 @@
 										</div>
 										<div class="css-0"></div>
 									</div>
-									<div class="css-1d4ojes">
+<!-- 									<div class="css-1d4ojes">
 										<div class="css-1bvesam">보는중 작품들</div>
-									</div>
+									</div> -->
 									<div class="css-10bjf2k">보는중 작품들</div>
 								</header>
 								<ul class="css-1e0vaz3-VisualUl">

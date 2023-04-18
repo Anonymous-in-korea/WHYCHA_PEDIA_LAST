@@ -30,13 +30,13 @@
 										</div>
 										<div class="css-0"></div>
 									</div>
-									<div class="css-1d4ojes">
+<!-- 									<div class="css-1d4ojes">
 										<div class="css-1bvesam">보고싶은 작품들</div>
-									</div>
-									<div class="css-10bjf2k">보고싶은 작품들</div>
+									</div> -->
+									<!-- <div class="css-10bjf2k">보고싶은 작품들</div> -->
 								</header>
 								<ul class="css-1e0vaz3-VisualUl">
-									<li class="css-1qee6f7"><a href="/watchList/rated_SY?user_id=${memberVo.id}">평가</a></li>
+									<li class="css-1qee6f7"><a href="/watchList/rated_SY?user_id=${memberVo.id}" >평가</a></li>
 									<li class="css-1qee6f7">보고싶은</li>
 									<li class="css-1qee6f7"><a href="/watchList/watching_SY?user_id=${memberVo.id}">보는중</a></li>
 								</ul>
