@@ -214,9 +214,9 @@ $(function(){
 			                                        </div>
 			                                        <div class="css-n52eyj">
 			                                            <h1 id="personName">${directorPersonlist.director_name}</h1>
-			                                            <p id="perRole">${role}</p>
 			                                            <!-- 인물 컬렉션 등록 start -->
 			                                            <!--로그인 전-->
+			                                            <p><strong>구독하기</strong></p>
 			                                            <c:if test="${ sessionId == null }">
 			                                            	<p id="perLike">🙆 Add ARTIST Collection</p>
 			                                            </c:if>
@@ -232,6 +232,8 @@ $(function(){
 			                                            	</c:if>
 			                                            </c:if>
 			                                             <!-- 인물 컬렉션 등록  end -->
+			                                             <div></div>
+			                                             <p id="perRole">${role}</p>
 			                                        </div>
 			                                    </div>
 		                                    <hr class="css-god8tc">
@@ -333,11 +335,6 @@ $(function(){
 																</c:if>
 		                                                <!-- 출연작 불러오기 1개 -->
 		                                                <div class="css-1gh9vn6" id="tvmorebtn">
-		                                                    <button class="css-1gvrt49" onclick="tvmore()">
-		                                                        <p class="css-122mh9j">더보기</p><img
-		                                                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik02LjUgOS4wOTk5OEwxMiAxNC42TDE3LjUgOS4wOTk5OCIgc3Ryb2tlPSIjNzg3OTgyIiBzdHJva2Utd2lkdGg9IjEuNSIvPgo8L3N2Zz4K"
-		                                                            alt="load more">
-		                                                    </button>
 		                                                </div>
 		                                            </div>
 		                                        </div>

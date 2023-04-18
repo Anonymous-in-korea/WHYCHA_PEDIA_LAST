@@ -40,13 +40,13 @@
 		   		        		},
 		   		        	success:function(data){
 		   		        		$("#coll_like").text(data);
-		   		        		alert("성공");
+		   		        		//alert("성공");
 		   		        		$("#deckLike").removeClass("css-135c2b4-StylelessButton-StyledActionButton");
 								$("#deckLike").addClass("css-3w1nnz-StylelessButton-StyledActionButton boing");
 								$("#deckLike .fillTarget").attr("fill","#FEAE27");
 		   		        	},
 		   		        	error:function(){
-		   		        		alert("실패");
+		   		        		//alert("실패");
 		   		        	}
 		   		        }); //ajax
 					}else{
@@ -60,13 +60,13 @@
 		   		        		},
 		   		        	success:function(data){
 		   		        		$("#coll_like").text(data);
-		   		        		alert("성공");
+		   		        		//alert("성공");
 		   		        		$("#deckLike").addClass("css-135c2b4-StylelessButton-StyledActionButton");
 								$("#deckLike").removeClass("css-3w1nnz-StylelessButton-StyledActionButton boing");
 								$("#deckLike .fillTarget").attr("fill","#67686a");
 		   		        	},
 		   		        	error:function(){
-		   		        		alert("실패");
+		   		        		//alert("실패");
 		   		        	}
 		   		        }); //ajax
 					}
@@ -111,10 +111,10 @@
 								"collection_comment_content" : collection_comment_content
 		   		        		},
 		   		        	success:function(data){
-		   		        		alert("성공");
+		   		        		//alert("성공");
 		   		        	},
 		   		        	error:function(){
-		   		        		alert("실패");
+		   		        		//alert("실패");
 		   		        	}
 						});//ajax
 						$(".css-uv85g1").val("");
@@ -192,7 +192,7 @@
 												<section class="css-5q4g58">
 													<div class="css-1gkas1x-Grid e1689zdh0">
 														<div class="css-1y901al-Row emmoxnt0">
-															<a title="WATCHA's page" class="css-1f9m1s4-StylelessLocalLink eovgsd01" href="myPage/userPage_SY?user_id=${memberVo.id}">
+															<a title="WATCHA's page" class="css-1f9m1s4-StylelessLocalLink eovgsd01" href="/myPage/userPage_SY?user_id=${memberVo.id}">
 																<div class="css-bmael7">
 																	<div class="css-1hffj5n">
 																		<div style="background: url(${memberVo.user_pic_url}) center center / cover no-repeat; " class="css-q29adr-ProfilePhotoImage"></div>
@@ -379,11 +379,6 @@
 											<!-- 영화 foreach -->											
 														</ul>
 														<div class="css-tf1605">
-															<button class="css-1d4r906-StylelessButton">
-																더보기
-																<span src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYuNSA5LjEwMDFMMTIgMTQuNjAwMUwxNy41IDkuMTAwMSIgc3Ryb2tlPSIjNzg3OTgyIiBzdHJva2Utd2lkdGg9IjEuNSIvPgo8L3N2Zz4K"
-																	width="24px" height="24px" class="css-cg0u6i"></span>
-															</button>
 														</div>
 													</div>
 												</div>

@@ -163,7 +163,7 @@
 																	<ul class="e19zkogf12 css-i1bo8u-VisualUl-CategoryArchivesUl">
 																		<!--MOVIE 버튼 시작  -->
 																		<li class="css-1u4jvye-CategoryArchivesListItem e19zkogf13">
-																			<a background="[object Object]" class="css-h3f67w-CategoryArchivesLink e19zkogf14" href="/watchList/movieContainer_SY?user_id=${memberVo.id}">
+																			<a background="[object Object]" class="css-h3f67w-CategoryArchivesLink e19zkogf14" href="/watchList/rated_SY?user_id=${memberVo.id}">
 																				<ul class="css-reeb92-VisualUl-CategoryArchives e19zkogf15">
 																					<li class="css-r3hbc5-CategoryArchivesName e19zkogf16">MOVIE</li>
 																					<li class="css-7xoi89-CategoryArchivesRatedCount e19zkogf17">★${starRateCount}</li>

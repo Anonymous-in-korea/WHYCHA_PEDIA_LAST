@@ -447,10 +447,34 @@ html{
 	height: 18px;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	text-align:center;
 }
 
 @media ( min-width : 719px) {
 	.css-1kcd80z {
+		margin-top: 2px;
+	}
+}
+
+.css-1kcd80z2 {
+	background-color: #ff0558;
+    color: white;
+	font-size: 13px;
+	font-weight: 400;
+	-webkit-letter-spacing: -0.2px;
+	-moz-letter-spacing: -0.2px;
+	-ms-letter-spacing: -0.2px;
+	letter-spacing: -0.2px;
+	line-height: 18px;
+	white-space: nowrap;
+	height: 18px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align:center;
+}
+
+@media ( min-width : 719px) {
+	.css-1kcd80z2 {
 		margin-top: 2px;
 	}
 }

@@ -23,13 +23,21 @@ public interface CommentMapper {
 	CommentVo selectMyCommentOne(int id, int movie_id);
 
 	//내가 쓴 코멘트 수정하기
-	void myCommentModify(int user_id, int movie_id, String comment_content);
-
+	int myCommentModify(int user_id, int movie_id, String comment_content);
+	
+	//내가 쓴 코멘트 등록하기
+	int myCommentInsert(int user_id, int movie_id, String comment_content);
+	
+	//내가 쓴 코멘트 삭제하기
+	int myCommentDelete(int user_id, int movie_id);
+	
 	//영화 상세페이지에 들어갈 코멘트 2개 가져오기 
 	List<CommentVo> selectCommentTow(int movie_id);
 
 	//해당 영화의 코멘트 총 개수(content page)
 	int selectCommentAll(int movie_id);
+
+
 
 
 }

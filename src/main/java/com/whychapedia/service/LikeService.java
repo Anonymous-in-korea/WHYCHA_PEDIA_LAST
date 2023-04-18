@@ -69,6 +69,12 @@ public interface LikeService {
 
 	//콜렉션 좋아요 list
 	List<LikeVo> selectCollectionLikeList(int collection_id);
+	
+	//코맨트 좋아요 모두 삭제
+	int deleteCommentLikeAll(int comment_id);
+
+	//코맨트 좋아요 댓글 모두 삭제
+	int deleteCommentReplyLikeAll(int comment_id);
 
 	
 

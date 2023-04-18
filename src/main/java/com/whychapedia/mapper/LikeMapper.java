@@ -77,6 +77,12 @@ public interface LikeMapper {
 	//코멘트 상세페이지 해당 코멘트 좋아요 list 가져오기
 	List<LikeVo> selectCommentLikeOne(int comment_id);
 
+	//코맨트 좋아요 모두 삭제
+	int deleteCommentLikeAll(int comment_id);
+
+	//해당 코멘트에 대한 reply 모두 삭제
+	int deleteCommentReplyLikeAll(int comment_id);
+
 
 
 	

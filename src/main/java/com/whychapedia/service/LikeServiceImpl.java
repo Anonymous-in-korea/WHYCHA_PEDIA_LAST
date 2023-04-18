@@ -50,7 +50,7 @@ public class LikeServiceImpl implements LikeService {
 		return insertLike;
 	}
 
-	@Override //코멘트 좋아요 삭제
+	@Override //한명의 user가 코멘트 좋아요 삭제
 	public int deleteCommentLike(int comment_id, int user_id) {
 		int deleteLike = likeMapper.deleteLikeOne(comment_id, user_id);
 		System.out.println("likeservice deleteLikeOne: "+ deleteLike);
@@ -179,10 +179,27 @@ public class LikeServiceImpl implements LikeService {
 		return collectionLikeList;
 	}
 	
+	//코멘트 1개에 대한 like list
 	@Override
 	public List<LikeVo> selectCommentLikeOne(int comment_id) {
 		List<LikeVo> likeList = likeMapper.selectCommentLikeOne(comment_id);
 		return likeList;
+	}
+
+	//해당 코멘트에 대한 like 모두 삭제
+	@Override
+	public int deleteCommentLikeAll(int comment_id) {
+		int result=0;
+		result=likeMapper.deleteCommentLikeAll(comment_id);
+		return result;
+	}
+
+	//해당 코멘트에 대한 reply 모두 삭제
+	@Override
+	public int deleteCommentReplyLikeAll(int comment_id) {
+		int result=0;
+		result=likeMapper.deleteCommentReplyLikeAll(comment_id);
+		return result;
 	}
 
 

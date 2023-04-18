@@ -50,7 +50,7 @@ public class WatchListController {
 	
 
 	//평가한 페이지
-	@GetMapping("watchList/rated_SY")
+	@GetMapping("/watchList/rated_SY")
 	public String rated_SY(@RequestParam int user_id,Model model) {
 		//페이지 주인 
 		memberVo = memberService.selectOneMember(user_id);
@@ -108,7 +108,7 @@ public class WatchListController {
 	}
 	
 	//보고싶은 페이지
-	@GetMapping("watchList/wishWatch_SY")
+	@GetMapping("/watchList/wishWatch_SY")
 	public String wishWatch_SY(@RequestParam int user_id,Model model) {
 		//페이지 주인 
 		memberVo = memberService.selectOneMember(user_id);
@@ -132,6 +132,9 @@ public class WatchListController {
 		model.addAttribute("movieWishWatchList",movieWishWatchList);//영화 모든 정보 + 개인 평가까지		
 		return "watchList/wishWatch_SY";
 	}
+	
+	
+	
 	
 	//영화 보관함 전체 페이지(평가&보는중&보고싶은)
 	@GetMapping("watchList/movieContainer_SY")

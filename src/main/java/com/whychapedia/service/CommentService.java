@@ -22,7 +22,13 @@ public interface CommentService {
 	CommentVo selectMyCommentOne(int id, int movie_id);
 	
 	//내 코멘트 수정하기
-	void myCommentModify(int user_id, int movie_id, String comment_content);
+	int myCommentModify(int user_id, int movie_id, String comment_content);
+
+	//내 코멘트 등록하기
+	int myCommentInsert(int user_id, int movie_id, String comment_content);
+	
+	//내 코멘트 삭제하기
+	int myCommentDelete(int user_id, int movie_id);
 
 	//영화 상세페이지 코멘트 2개 가져오기 
 	List<CommentVo> selectCommentList2(int movie_id);
@@ -30,6 +36,9 @@ public interface CommentService {
 	//해당 영화의 코멘트 총 개수(content page)
 	int selectCommentAll(int movie_id);
 
+
+
+	
 
 	
 }

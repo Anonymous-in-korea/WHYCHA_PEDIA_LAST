@@ -23,6 +23,7 @@
 		<script src="../js/login.js"></script>
 		<script src="../js/join.js"></script>
 		<script src="../js/contents.js"></script>
+		<script src="../js/contents_SH.js"></script>
 		
 	</head>
 	<body>
@@ -290,7 +291,7 @@
 		                                                        <div class="css-1gkas1x-Grid e1689zdh0">
 		                                                            <div class="css-1y901al-Row emmoxnt0">
 		                                                                <header class="css-1ue9xs6">
-		                                                                	<h2 class="css-1wtjsst">[ ${ sessionName } ]님의 COLLECTION</h2>
+		                                                                	<h2 class="css-1wtjsst">📂[ ${ sessionName } ]님의 COLLECTION 폴더 리스트</h2>
 		                                                                	<img src="/images/collection_plus.png" id="collection_submit" style="margin-left:-10px; margin-top:10px; width:5%; height:5%; float:right;">
 		                                                                </header>
 		                                                            </div>
@@ -312,7 +313,7 @@
 			                                                                            </div>
 			                                                                        </div>
 			                                                                        <div class="css-ixy093">
-			                                                                            <div class="css-niy0za">${collectionVo.collection_name}</div>
+			                                                                            <div class="css-niy0za">📂${collectionVo.collection_name}</div>
 			                                                                        </div>
 		                                                                    	</a>
 		                                                                    </li>
@@ -332,7 +333,7 @@
 			                                                                                 src="/images/check.png"></div>
 			                                                                        </div>
 			                                                                        <div class="css-ixy093">
-			                                                                            <div class="css-niy0za">${collectionVo.collection_name}</div>
+			                                                                            <div class="css-niy0za">📂${collectionVo.collection_name}</div>
 			                                                                        </div>
 		                                                                    	</a>
 		                                                                    </li>
@@ -401,6 +402,11 @@
 																			<ul class="css-llsddo-VisualUl-CommentUpdateButtons eue8w0j7">
 																				<li class="css-15b6b8j-CommentUpdateButtonListItem eue8w0j8">
 																					<button id="delete-btn" class="css-1nmgbsq-StylelessButton-CommentUpdateButton eue8w0j9">
+																						<form action="/contents/myCommentDelete" method="get" name="myCommentDelete">
+																						<input type="hidden" name="movie_id" value="${movieVo.id }">
+																						<input type="hidden" name="comment_id" value="${myCommentVo.id}">
+																						<input type="hidden" name="user_id" value="${sessionId}">
+																					</form>
 																						<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI0EwQTBBMCIgZD0iTTUuMjUgMTQuMjVoNy41di03LjVoMS41VjE1YS43NS43NSAwIDAgMS0uNzUuNzVoLTlhLjc1Ljc1IDAgMCAxLS43NS0uNzVWNi43NWgxLjV2Ny41ek0xMiA0LjVoMy43NVY2SDIuMjVWNC41SDZWM2EuNzUuNzUgMCAwIDEgLjc1LS43NWg0LjVBLjc1Ljc1IDAgMCAxIDEyIDN2MS41em0tMS41IDB2LS43NWgtM3YuNzVoM3pNNi43NSA2Ljc1aDEuNXY2Ljc1aC0xLjVWNi43NXptMyAwaDEuNXY2Ljc1aC0xLjVWNi43NXoiLz4KICAgIDwvZz4KPC9zdmc+Cg=="
 																							alt="delete comment">
 																						삭제

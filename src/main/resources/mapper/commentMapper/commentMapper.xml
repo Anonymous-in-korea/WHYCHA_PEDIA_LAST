@@ -27,10 +27,20 @@
 		select * from wcomment where user_id = #{id} and movie_id = #{movie_id}
 	</select>
 
-	<!-- 내가 작성한 코멘트 수정하기 -->
-	<select id="myCommentModify">
+	<!-- 내가 작성한 코멘트 등록하기 -->
+	<insert id="myCommentInsert" >
+		insert into wcomment values((select coalesce(max(id),0)+1 from wcomment),#{movie_id},#{user_id},#{comment_content},sysdate,1,1)
+	</insert>
+	
+		<!-- 내가 작성한 코멘트 삭제하기 -->
+	<delete id="myCommentDelete" >
+		delete wcomment where user_id=#{user_id} and movie_id=#{movie_id}
+	</delete>
+	
+		<!-- 내가 작성한 코멘트 수정하기 -->
+	<update id="myCommentModify" >
 		update wcomment set comment_content = #{comment_content} where user_id = #{user_id} and movie_id = #{movie_id}
-	</select>
+	</update>
 	
 	<!-- 영화 상세페이지에 들어갈 코멘트 2개 가져오기  -->
 	<select id="selectCommentTow" resultType="com.whychapedia.vo.CommentVo">

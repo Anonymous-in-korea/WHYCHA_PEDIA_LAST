@@ -56,6 +56,13 @@ public class CommentReplyServiceImpl implements CommentReplyService {
 		return result;
 	}
 
+	//해당 comment에 대한 reply 모두 삭제하기
+	@Override
+	public int deleteCommentReplyAll(int comment_id) {
+		int result = commentReplyMapper.deleteCommentReplyAll(comment_id);
+		return result;
+	}
+
 
 
 }

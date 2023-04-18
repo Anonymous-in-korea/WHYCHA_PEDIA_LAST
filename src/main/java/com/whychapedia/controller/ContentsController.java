@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.whychapedia.mapper.StarRateMapper;
 import com.whychapedia.service.CollectionService;
+import com.whychapedia.service.CommentReplyService;
 import com.whychapedia.service.CommentService;
+import com.whychapedia.service.LikeService;
 import com.whychapedia.service.MemberService;
 import com.whychapedia.service.MovieActorService;
 import com.whychapedia.service.MovieCollectionService;
@@ -87,7 +89,13 @@ public class ContentsController {
 	CommentService commentService;
 	
 	@Autowired
+	LikeService likeService;
+	
+	@Autowired
 	MemberService memberService;
+	
+	@Autowired
+	CommentReplyService commentReplyService;
 	
 	@Autowired
 	MovieCollectionService movieCollectionService;
@@ -222,6 +230,7 @@ public class ContentsController {
 		/*-------------------------------로그인 전/후 따로-------------------------------------------------*/
 		int user_id=0;
 		Integer sessionId = (Integer) session.getAttribute("sessionId");
+	
 		/*별점 정보 시작*/
 		System.out.println("-------------------start_나의 별점정보-Controller--------------------------------");
 		double my_star_rate=0;/* 로그인 전 0으로 default :별점 평가 하기 */		
@@ -320,9 +329,9 @@ public class ContentsController {
 			myCommentVo = commentService.selectMyCommentOne(user_id, movie_id);
 		}
 		
-		if ( myCommentVo != null ) {
-			model.addAttribute("myCommentVo", myCommentVo);
-		}
+		
+		model.addAttribute("myCommentVo", myCommentVo);
+		
 		
 		
 		//해당 영화의 코멘트 총 개수(content page)
@@ -353,16 +362,7 @@ public class ContentsController {
 	}
 	
 	
-	@GetMapping("contents/myCommentModify") // 내 코멘트 수정하기
-	public String myCommentModify(@RequestParam String userId, @RequestParam String movieId, @RequestParam String comment_content) {
-		
-		int user_id = Integer.parseInt(userId);
-		int movie_id = Integer.parseInt(movieId);
-		
-		commentService.myCommentModify(user_id, movie_id, comment_content);
-		
-		return "redirect:/contents/contents_SH";
-	}
+
 	
 	
 	
@@ -486,7 +486,7 @@ public class ContentsController {
 	
 	
 	
-	/*                    컬렉션 영화 추가 삭제 페이지               */
+	/*                    컬렉션에 영화 추가 삭제 페이지               */
 
 	@RequestMapping("/contents/updateCollectionMovie")
 	public String updateCollectionMovie(@RequestParam("movieId") int movie_id,@RequestParam("collectionId") List<Integer> collectionIds,Model model) {
@@ -533,7 +533,56 @@ public class ContentsController {
 		}
 		return "redirect:/contents/contents_SH?movie_id="+movie_id;
 	}
+
 	
+	/*                    코멘트 추가 or 수정              */
+	
+	@GetMapping("/contents/myCommentUpdate") 
+	public String myCommentUpdate(@RequestParam int user_id,@RequestParam int movie_id, @RequestParam(required = false) Integer comment_id, @RequestParam(required = false) String comment_content) {
+		int result=0;
+
+		if (comment_content == null) {
+			comment_content = "";
+	    }
+		
+		
+		if (comment_id == null) {
+	        comment_id = 0;
+	    }
+		
+		if(comment_id==0) { // 등록하기 
+			result=commentService.myCommentInsert(user_id, movie_id, comment_content);	
+		}else { //업데이트
+			result=commentService.myCommentModify(user_id, movie_id, comment_content);			
+		}
+		
+		
+		return "redirect:/contents/contents_SH?movie_id="+movie_id;
+	}
+	
+	/*                    코멘트 삭제              */
+	
+	@GetMapping("/contents/myCommentDelete") 
+	public String myCommentDelete(@RequestParam int user_id,@RequestParam int movie_id, @RequestParam int comment_id) {
+		int result=0;
+		//해당 코멘트를 좋아요를 누른 모든 걸 삭제 
+		result=likeService.deleteCommentLikeAll(comment_id);
+		System.out.println("코멘트 좋아요 삭제"+result);
+		//해당 코멘트에 달린 reply의 좋아요를 누른 모든 걸 삭제 
+		result=0;
+		result=likeService.deleteCommentReplyLikeAll(comment_id);
+		System.out.println("reply의 좋아요 삭제"+result);
+		//해당 코멘트에 달린 reply 모두 삭제
+		result=0;
+		result=commentReplyService.deleteCommentReplyAll(comment_id);
+		System.out.println(" reply 삭제"+result);
+		//해당 코멘트 삭제
+		result=0;
+		result=commentService.myCommentDelete(user_id, movie_id);	
+		System.out.println("코멘트 삭제"+result);
+		
+		return "redirect:/contents/contents_SH?movie_id="+movie_id;
+	}	
 	
 	
 /*                    영화 "더보기" 페이지                       */

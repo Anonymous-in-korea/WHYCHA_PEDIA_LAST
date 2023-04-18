@@ -498,7 +498,7 @@ $(function() {
 		});
 		
 		$("#collection_submit").click(function() {
-			alert("컬렉션 저장한드아아아!!!");
+			//alert("컬렉션 저장한드아아아!!!");
 			collectionSubmit.submit();
 		});
 		

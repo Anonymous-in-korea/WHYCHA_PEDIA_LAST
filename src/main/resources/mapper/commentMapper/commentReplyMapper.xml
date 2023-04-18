@@ -35,6 +35,11 @@
 	<delete id="deleteReply">
 		delete from comment_reply where id = #{reply_id}
 	</delete>
+	
+	<!-- 한 개 COMMENT에 달린 REPLY 모두 삭제하기-->
+	<delete id="deleteCommentReplyAll">
+		delete from comment_reply where comment_id = #{comment_id}
+	</delete>	
 
 	<update id="modifyReply">
 		update comment_reply set comment_id = #{comment_id}, user_id = #{user_id}, reply_content = #{reply_content}, regi_date = sysdate, is_block = 1

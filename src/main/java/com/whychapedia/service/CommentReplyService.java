@@ -23,5 +23,8 @@ public interface CommentReplyService {
 	//reply 수정하기
 	int modifyReply(int id, int comment_id, int user_id, String reply_content);
 
+	//해당 comment에 대한 reply 모두 삭제하기
+	int deleteCommentReplyAll(int comment_id);
+
 
 }

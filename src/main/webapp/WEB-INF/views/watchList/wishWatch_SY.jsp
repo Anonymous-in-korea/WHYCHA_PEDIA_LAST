@@ -26,7 +26,7 @@
 								<header class="css-1mxbo8g-HeaderBarPrimitive">
 									<div class="css-uf1ume">
 										<div class="css-0">
-											<button class="e1t9gclr0 css-a6n3jw-StylelessButton-HeaderCloseButtonSelf-TopLeftButton e1k34u8y0" onclick="history.back()"></button>
+											<button class="e1t9gclr0 css-a6n3jw-StylelessButton-HeaderCloseButtonSelf-TopLeftButton e1k34u8y0" onclick="location.href='/myPage/myPage_SY'"></button>
 										</div>
 										<div class="css-0"></div>
 									</div>
@@ -36,7 +36,9 @@
 									<div class="css-10bjf2k">보고싶은 작품들</div>
 								</header>
 								<ul class="css-1e0vaz3-VisualUl">
-									<li class="css-1qee6f7">전체</li>
+									<li class="css-1qee6f7"><a href="/watchList/rated_SY?user_id=${memberVo.id}">평가</a></li>
+									<li class="css-1qee6f7">보고싶은</li>
+									<li class="css-1qee6f7"><a href="/watchList/watching_SY?user_id=${memberVo.id}">보는중</a></li>
 								</ul>
 								<div class="e1ok85ex2 css-zfzr88-StyledFilterBar">
 									<div class="css-1gkas1x-Grid e1689zdh0">
@@ -68,14 +70,14 @@
 															<div class="css-ixy093">
 																<div class="css-niy0za">${movieVo.movie_kor_title}</div>
 																<c:if test="${ sessionId == null }"> <!--로그인 전 -->
-																	<div class="css-m9i0qw"> 평점 ${movieVo.movie_rating}</div>
+																	<div class="css-m9i0qw2"> 평점 ${movieVo.movie_rating}</div>
 																</c:if>
 																<c:if test="${ sessionId != null }">
 																	<c:if test="${ movieVo.is_checked != 0 }">
 																		<div class="css-m9i0qw" >평가함 ★ ${movieVo.scoreOfUser}</div>
 																	</c:if>
 																	<c:if test="${ movieVo.is_checked == 0 }">
-																		<div class="css-m9i0qw">평점 ${movieVo.movie_rating}</div>
+																		<div class="css-m9i0qw2">평점 ${movieVo.movie_rating}</div>
 																	</c:if>
 																</c:if>
 															</div>

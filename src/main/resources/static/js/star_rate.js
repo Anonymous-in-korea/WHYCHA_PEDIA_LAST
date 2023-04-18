@@ -14,7 +14,7 @@ $(function() {
 
 /*					   	영화 10개 더 불러오기	 시작                   */
 $('#submit').on('click', function() {
-    console.log("왔다");
+    //console.log("왔다");
     console.log($('form').serializeArray());
     $.ajax({
 			type: "post",

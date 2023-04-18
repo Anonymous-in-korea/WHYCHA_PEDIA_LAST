@@ -265,7 +265,7 @@ h1 {
 
 .css-n52eyj p {
     color: #959595;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 500;
     -webkit-letter-spacing: -0.2px;
     -moz-letter-spacing: -0.2px;
@@ -300,17 +300,6 @@ h1 {
     line-height: 26px;
 }
 
-.css-n52eyj p {
-    color: #959595;
-    font-size: 15px;
-    font-weight: 500;
-    -webkit-letter-spacing: -0.2px;
-    -moz-letter-spacing: -0.2px;
-    -ms-letter-spacing: -0.2px;
-    letter-spacing: -0.2px;
-    line-height: 18px;
-    margin-top: 2px;
-}
 
 @media (min-width: 720px) {
     .css-n52eyj {

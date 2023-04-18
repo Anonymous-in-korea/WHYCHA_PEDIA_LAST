@@ -32,6 +32,12 @@
 		delete from comment_like where comment_id=#{comment_id} and user_id=#{user_id}
 	</delete>
 	
+		
+	<!-- 해당 코멘트 좋아요 모두 삭제 -->
+	<delete id="deleteCommentLikeAll">
+		delete from comment_like where comment_id=#{comment_id}
+	</delete>
+	
 	<!-- 코멘트 1개에 대한 좋아요 카운트 -->
 	<select id="selectCommentOneLike" resultType="int">
 		select count(*) like_count fROM comment_like 
@@ -100,6 +106,11 @@
 	<!-- reply 좋아요 삭제 -->
 	<delete id="deleteReplyLike">
 		delete from reply_like where reply_id=#{reply_id} and user_id=#{user_id}
+	</delete>
+	
+	<!-- 해당 코멘트 댓글 좋아요 모두 삭제 -->
+	<delete id="deleteCommentReplyLikeAll">
+		DELETE FROM reply_like WHERE reply_id IN (SELECT id FROM comment_reply WHERE comment_id = #{comment_id})
 	</delete>
 	
 	<!-- reply 1개에 대한 좋아요 카운트 -->

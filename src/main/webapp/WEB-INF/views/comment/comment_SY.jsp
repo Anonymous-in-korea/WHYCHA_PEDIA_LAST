@@ -45,12 +45,12 @@
 		   		        		"comment_id":id
 		   		        		},
 		   		        	success:function(data){
-		   		        		alert("성공");
+		   		        		//alert("성공");
 		   		        		console.log(data);
 		   		        		$button.parent().siblings(".css-1atijos").find(".comment_like").text(data);
 		   		        	},
 		   		        	error:function(){
-		   		        		alert("실패");
+		   		        		//alert("실패");
 		   		        	}
 		   		        });
 		   		    } else {
@@ -65,12 +65,12 @@
 			   		       		"comment_id":id
 			   		       		},
 			   		       	success:function(data){
-			   		       		alert("성공");
+			   		       		//alert("성공");
 			   		       		console.log(data);
 			   		       		$button.parent().siblings(".css-1atijos").find(".comment_like").text(data);
 			   		       	},
 			   		       	error:function(){
-			   		       		alert("실패");
+			   		       		//alert("실패");
 			   		       	}
 			   		   });
 		   		    }
