@@ -292,7 +292,7 @@
 		                                                            <div class="css-1y901al-Row emmoxnt0">
 		                                                                <header class="css-1ue9xs6">
 		                                                                	<h2 class="css-1wtjsst">📂[ ${ sessionName } ]님의 COLLECTION 폴더 리스트</h2>
-		                                                                	<img src="/images/collection_plus.png" id="collection_submit" style="margin-left:-10px; margin-top:10px; width:5%; height:5%; float:right;">
+		                                                                	<img src="/images/plusminus.png" id="collection_submit" style="margin-left:-10px; margin-top:10px; width:5%; height:5%; float:right;">
 		                                                                </header>
 		                                                            </div>
 		                                                        </div>
