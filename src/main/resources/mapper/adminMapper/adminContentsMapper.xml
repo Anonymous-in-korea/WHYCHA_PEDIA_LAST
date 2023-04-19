@@ -6,7 +6,7 @@
 
 	<!-- MOVIE_LIST START >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 	
-	<!-- admin contents list query구문 -->
+	<!-- ADMIN_CONTENTS_LIST query구문 -->
 	<select id="adminContents" resultType="com.whychapedia.vo.MovieVo">
 		select * from ( select rownum rnum, m.* from movie m where id &lt;&gt; 0  order by id ) where rnum between #{startRow} and #{endRow}
 	</select>

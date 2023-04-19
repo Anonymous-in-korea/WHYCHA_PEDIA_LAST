@@ -42,12 +42,12 @@
 		                        공지사항_VIEW
 		                    </div>
 		                    
-		                    <c:if test="${ announcementVo != null && adminSessionEmail != null }">
+		                    <c:if test="${ result == 1 }">
 		                    <div id="box1" style="width:90%">${ announcementVo.announcement_title }</div>
 		                    <div id="box2" style="width:90%">${ announcementVo.announcement_content }</div>
 		                    </c:if>
 		                    
-		                    <c:if test="${ announcementVo == null || adminSessionEmail == null }">
+		                    <c:if test="${ result == 0 }">
 		                    <div id="box1" style="width:90%">표시할 제목이 없습니다</div>
 		                    <div id="box2" style="width:90%">표시할 내용이 없습니다</div>
 		                    </c:if>

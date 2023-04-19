@@ -104,15 +104,13 @@ public class AdminAnnouncementController {
 			result = 1;
 		}
 		model.addAttribute("result", result);
+		System.out.println("result : " + result);
 		
 		return "admin/1_notice/notice_view";
 	}
 	
 	@GetMapping("admin/1_notice/notice_update") // 공지 등록하기 메서드
 	public String notice_update(Model model, @RequestParam int id, @RequestParam int is_regi) {
-		
-		System.out.println("id : " + id);
-		System.out.println("is_regi : " + is_regi);
 		
 		 adminAnnouncementService.adminAnnouncementUpdateOne(id, is_regi); 
 		
