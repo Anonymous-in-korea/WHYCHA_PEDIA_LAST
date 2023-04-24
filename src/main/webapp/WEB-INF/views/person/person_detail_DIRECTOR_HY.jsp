@@ -144,7 +144,7 @@ $(function(){
 			          
 			        },
 			        error: function() {
-			          alert("Failure: ");
+			          /* alert("Failure: "); */
 			        }
 			      }); 
 					      /*좋아요 ajax 끝  */

@@ -81,4 +81,9 @@
 		where a.user_id = b.id and a.id = #{id} )
 	</select>
 	
+	<!-- admin QnA reply insert query 구문 -->
+	<!-- <insert id="">
+		insert into answer_list values (  )
+	</insert> -->
+	
 </mapper>

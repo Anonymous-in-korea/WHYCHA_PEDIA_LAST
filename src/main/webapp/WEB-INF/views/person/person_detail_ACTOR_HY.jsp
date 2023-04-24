@@ -42,7 +42,7 @@ $("#perLike").click(function() {
 			  
 			    },
 			    error: function() {
-			      alert("Failure: ");
+			      /* alert("Failure: "); */
 			    }
 			  }); 
 			  /*컬렉션 추가 ajax 끝  */
@@ -67,7 +67,7 @@ $("#perLike").click(function() {
 		         // 
 		        },
 		        error: function() {
-		          alert("Failure: ");
+		          /* alert("Failure: "); */
 		        }
 		      }); 
 			  /*컬렉션 삭제 ajax 끝 */
@@ -104,7 +104,7 @@ $("#like").click(function() {
 		          
 		        },
 		        error: function() {
-		          alert("Failure: ");
+		          /* alert("Failure: "); */
 		        }
 		      }); 
 				      /*좋아요 ajax 끝  */
@@ -126,7 +126,7 @@ $("#like").click(function() {
 		          document.getElementById("like-count-value").innerText = data;
 		        },
 		        error: function() {
-		          alert("Failure: ");
+		          /* alert("Failure: "); */
 		        }
 		      }); 
 		  /*좋아요 삭제 ajax 끝 */

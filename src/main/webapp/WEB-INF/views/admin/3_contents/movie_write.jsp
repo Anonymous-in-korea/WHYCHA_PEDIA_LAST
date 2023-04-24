@@ -29,7 +29,7 @@
 	    <script>
 	    	$(function() {
 	    		$(".writeBtn").click(function() {
-	    			alert("입력된 영화정보를 등록합니다");
+	    			/* alert("입력된 영화정보를 등록합니다"); */
 	    			movieWrite.submit();
 	    		});
 	    	});

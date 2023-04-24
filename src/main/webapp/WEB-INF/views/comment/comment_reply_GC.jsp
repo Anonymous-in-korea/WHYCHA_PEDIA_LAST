@@ -89,11 +89,11 @@
 				   		       		"user_id":user_id
 				   		       		},
 				   		       	success:function(data){
-				   		       		alert("성공");
+				   		       		/* alert("성공"); */
 				   		       		$(".css-1n0dvqq").text("좋아요 "+data);
 				   		       	},
 				   		       	error:function(){
-				   		       		alert("실패");
+				   		       		/* alert("실패"); */
 				   		       	}
 				   		   });
 						}else{ 
@@ -109,11 +109,11 @@
 				   		       		"user_id":user_id
 			   		        		},
 			   		        	success:function(data){
-			   		        		alert("성공");
+			   		        		/* alert("성공"); */
 			   		        		$(".css-1n0dvqq").text("좋아요 "+data);
 			   		        	},
 			   		        	error:function(){
-			   		        		alert("실패");
+			   		        		/* alert("실패"); */
 			   		        	}
 			   		        }); //ajax
 						}//else
@@ -124,7 +124,7 @@
 				$(".css-1d8juai").click(function(){
 					var reply_id = $(this).data('id');
 					var $button = $(this);
-					alert("reply_id : "+reply_id);
+					/* alert("reply_id : "+reply_id); */
 					if(result == 0){
 						$(".login_button").click();
 			        }else{ 
@@ -141,11 +141,11 @@
 			   		        		"comment_id":comment_id
 			   		        		},
 			   		        	success:function(data){
-			   		        		alert("성공");
+			   		        		/* alert("성공"); */
 			   		        		$button.find(".like-sum").text(data);
 			   		        	},
 			   		        	error:function(){
-			   		        		alert("실패");
+			   		        		/* alert("실패"); */
 			   		        	}
 			   		        }); //ajax
 			        	}else{
@@ -161,11 +161,11 @@
 			   		        		"comment_id":comment_id
 			   		        		},
 			   		        	success:function(data){
-			   		        		alert("성공");
+			   		        		/* alert("성공"); */
 			   		        		$button.find(".like-sum").text(data);
 			   		        	},
 			   		        	error:function(){
-			   		        		alert("실패");
+			   		        		/* alert("실패"); */
 				        		}
 			   		        });//ajax
 						}//else
@@ -200,7 +200,7 @@
 				// 신규 댓글 팝업창 --------------------------------------------------------------------------------------------------------------------------------------------------
 				// 댓글버튼을 눌렀을 때 뜨는 팝업창 -------------------------------------------------------------------------------------------------
 				$("#reply").click(function() {
-					alert("test");
+					/* alert("test"); */
 					if ( result == 0 ) {
 						login_button.click();
 					} else {
@@ -228,7 +228,7 @@
 				//코멘트 reply 저장버튼 댓글달기
 				$("#comment_reply_input").click(function(){
 					
-					alert( $("#reply_write").val() );
+					/* alert( $("#reply_write").val() ); */
 					
 					if( $("#reply_write").val() == "댓글을 작성해주세요.(1000 글자이내)" || $("#reply_write").val().length < 1 ){
 						alert("1자 이상 작성하셔야 등록이 가능합니다. ");
@@ -245,12 +245,12 @@
 							"reply_content":$(".css-137vxyg").val()
 						},
 						success:function(data){
-							alert("성공");
+							/* alert("성공"); */
 							$(".comment_reply_popUp").click();
 							location.href="/comment/comment_reply_GC?comment_id=" + ${ commentVo.id };
 						},
 						error:function(){
-							alert("실패");
+							/* alert("실패"); */
 						}
 					});
 					
@@ -264,7 +264,7 @@
 				
 				// 수정버튼을 눌렀을 때 뜨는 팝업창 -------------------------------------------------------------------------------------------------
 				$("#replyUpdate").click(function() {
-					alert("test");
+					/* alert("test"); */
 					if ( result == 0 ) {
 						login_button.click();
 					} else {
@@ -292,7 +292,7 @@
 				//코멘트 reply 저장버튼 댓글달기
 				$("#comment_modify_input").click(function(){
 					
-					alert( $("#reply_modify").val() );
+					/* alert( $("#reply_modify").val() ); */
 					
 					if( $("#reply_modify").val() == "댓글을 작성해주세요.(1000 글자이내)" || $("#reply_modify").val().length < 1 ){
 						alert("1자 이상 작성하셔야 등록이 가능합니다. ");
@@ -310,12 +310,12 @@
 							"reply_content" : $("#reply_modify").val()
 						},
 						success:function(data){
-							alert("성공");
+							/* alert("성공"); */
 							$(".comment_modify_popUp").click();
 							location.href="/comment/comment_reply_GC?comment_id=" + ${ commentVo.id };
 						},
 						error:function(){
-							alert("실패");
+							/* alert("실패"); */
 						}
 					});
 					
@@ -341,11 +341,11 @@
 								"comment_id": comment_id
 							},
 							success:function(data){
-								alert("성공");
+								/* alert("성공"); */
 								location.href="/comment/comment_reply_GC?comment_id=" + ${ commentVo.id };
 							},
 							error:function(){
-								alert("실패");
+								/* alert("실패"); */
 							}
 						});
 						

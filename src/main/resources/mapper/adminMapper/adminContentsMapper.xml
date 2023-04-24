@@ -131,20 +131,12 @@
 	
 	<!-- trailer insert -->
 	<insert id="adminMovieCreateTrailerList">
-		insert into movie_trailer values ( ( select coalesce ( max ( id ), 0 ) + 1 from movie_trailer ), #{id}, #{movie_trailer_url} )
+		insert into movie_trailer values ( ( select coalesce ( max ( id ), 0 ) + 1 from movie_trailer ), #{id}, #{movie_trailer_url}, 'https://img.youtube.com/vi/7pB7DPBqqvk/0.jpg' )
 	</insert>
 
 	<!-- MOVIE_INSERT END >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 
 
-
-
-
-	<!-- MOVIE_DELETE START >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
-
-
-
-	<!-- MOVIE_DELETE END >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 
 
 
@@ -250,7 +242,7 @@
 	
 	<!-- trailer insert -->
 	<insert id="adminMovieModifyTrailerList">
-		insert into movie_trailer values ( ( select coalesce ( max ( id ), 0 ) + 1 from movie_trailer ), #{id}, #{movie_trailer_url} )
+		insert into movie_trailer values ( ( select coalesce ( max ( id ), 0 ) + 1 from movie_trailer ), #{id}, #{movie_trailer_url}, 'https://img.youtube.com/vi/LeNb0A3_0aM/0.jpg' )
 	</insert>
 	<!-- MOVIE_TABLE제외 데이터 지우고 등록하기(등록하기) -->
 	

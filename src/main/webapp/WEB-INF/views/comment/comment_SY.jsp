@@ -24,7 +24,7 @@
 			$(".commentLike").click(function() {
 		        var id = $(this).attr("id");
 		        var result = $(this).siblings("#result").val();
-		        alert($(this).parent().siblings(".css-1atijos").find(".comment_like").text());
+		        /* alert($(this).parent().siblings(".css-1atijos").find(".comment_like").text()); */
 	//	        alert(id);
 	//	        alert(result);
 		        var $button = $(this);

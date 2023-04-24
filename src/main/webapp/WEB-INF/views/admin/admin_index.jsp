@@ -28,10 +28,10 @@
     
     	<!-- 로그인 script start -->
 		<c:if test="${ result == 1 }">
-			<script>alert("로그인되었습니다");</script>
+			<!-- <script>alert("로그인되었습니다");</script> -->
 		</c:if>
 		<c:if test="${ adminSessionEmail == null }">
-			<script>alert("로그인을 해주세요"); location.href="/admin/whycha_pedia_admin_login";</script>
+			<!-- <script>alert("로그인을 해주세요"); location.href="/admin/whycha_pedia_admin_login";</script> -->
 		</c:if>
 		<!-- 로그인 script end -->
 		
